@@ -153,6 +153,8 @@ defined at all.
 :::theorem "local_module_topology_for_completion" (parent := "adele_project")
 After base change to a local completion, the topology on `L_w` should agree with
 the `K_v`-module topology.
+This is the topological sharpening of {uses "local_completion_map"}[] and
+{uses "local_valuation_compatibility"}[].
 :::
 
 :::theorem "finite_primes_above_v_are_finite" (parent := "adele_project")
@@ -186,6 +188,8 @@ simultaneously at every nonarchimedean place.
 The same local decomposition identifies the integral subring
 $`B \otimes_A A_v` with the product of the local integer rings
 $`\prod_{w \mid v} B_w`.
+This is the integral refinement of
+{uses "nonarchimedean_base_change_local_decomposition"}[].
 :::
 
 :::proof "nonarchimedean_integral_decomposition"
@@ -199,6 +203,8 @@ restricted-product topology.
 The finite adele ring of `L` is algebraically isomorphic to
 $`L \otimes_K \mathbf{A}_K^\infty`.
 This is the finite-part algebraic precursor to {uses "adele_base_change"}[].
+The proof runs through {uses "finite_adele_base_change_integral"}[] and
+{uses "tensor_product_module_base_change"}[].
 :::
 
 :::proof "finite_adele_base_change_algebraic"
@@ -248,6 +254,8 @@ statement.
 :::theorem "finite_adele_base_change_topological" (parent := "adele_project")
 The same finite-adele base-change map is also a homeomorphism when the source is
 given the module topology and the target the restricted-product topology.
+This is the topological companion to
+{uses "finite_adele_base_change_algebraic"}[].
 :::
 
 :::proof "finite_adele_base_change_topological"
@@ -273,6 +281,9 @@ them to approximate any chosen tuple.
 :::theorem "infinite_adele_base_change" (parent := "adele_project")
 The infinite adele ring of `L` is isomorphic, both algebraically and
 topologically, to $`L \otimes_K K_\infty`.
+This is assembled from {uses "infinite_place_weak_approximation"}[],
+{uses "infinite_place_dimension_count"}[], and
+{uses "infinite_place_local_base_change_map"}[].
 :::
 
 :::proof "infinite_adele_base_change"
@@ -316,9 +327,54 @@ So {uses "adele_base_change"}[] is really the sum of
 
 # Discreteness and compactness
 
+:::theorem "rational_adele_zero_neighborhood" (parent := "adele_project")
+There is an open subset of the rational adeles whose intersection with `ℚ` is
+just `{0}`.
+:::
+
+:::proof "rational_adele_zero_neighborhood"
+The TeX chapter proves this using the explicit open set
+`\prod_p \mathbf{Z}_p \times (-1,1)`. A rational number lying in that set is a
+`p`-adic integer at every prime, hence an ordinary integer, and the archimedean
+condition then forces it to be `0`.
+:::
+
+:::theorem "number_field_adele_zero_neighborhood" (parent := "adele_project")
+There is an open subset of the adeles of a number field whose intersection with
+the number field is just `{0}`.
+:::
+
+:::proof "number_field_adele_zero_neighborhood"
+The TeX chapter reduces this to {uses "rational_adele_zero_neighborhood"}[] by
+choosing a `\mathbf{Q}`-basis and using the base-change description of the
+adeles from {uses "adele_base_change"}[].
+:::
+
+:::theorem "number_field_adele_discrete_embedding" (parent := "adele_project")
+The additive subgroup `K` of `\mathbf{A}_K` is discrete.
+:::
+
+:::proof "number_field_adele_discrete_embedding"
+This is the immediate corollary of
+{uses "number_field_adele_zero_neighborhood"}[] in the TeX chapter: translate
+the zero-neighborhood by an element of `K`.
+:::
+
+:::theorem "rational_adele_quotient_compact" (parent := "adele_project")
+The quotient `\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}` is compact.
+:::
+
+:::proof "rational_adele_quotient_compact"
+The TeX chapter gives an explicit compact fundamental-domain style argument
+using `\prod_p \mathbf{Z}_p \times [0,1]`.
+:::
+
 :::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
 The embedding of a number field into its adeles should be discrete with compact
 quotient, echoing the commutative prototype behind {uses "fujisaki_lemma_goal"}[].
+This global statement is assembled from
+{uses "number_field_adele_discrete_embedding"}[] and
+{uses "rational_adele_quotient_compact"}[].
 :::
 
 :::proof "adele_discrete_cocompact_embedding"
