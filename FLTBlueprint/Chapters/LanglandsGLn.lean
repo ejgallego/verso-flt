@@ -1,3 +1,4 @@
+import FLTBlueprint.Citations
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -11,7 +12,9 @@ open Informal
 :::group "gln_langlands_program"
 This chapter ports the TeX discussion of automorphic forms on
 GLn over Q and the shape of the global Langlands reciprocity
-conjectures in that setting.
+conjectures in that setting. Its immediate goal is modest: make the automorphic
+side precise enough that the later conjectural reciprocity statement can at
+least be formulated cleanly.
 :::
 
 The old TeX chapter explains that this material came out of conversations in
@@ -25,6 +28,15 @@ statement of the conjectural objects on the automorphic side.
 The old chapter specializes the general theory to GLn over Q,
 where the dual group is again GLn(C) and many technical
 obstructions disappear.
+:::
+
+:::proof "automorphic_form_for_gln"
+The TeX source says explicitly that this follows the Corvallis exposition of
+Borel and Jacquet {Informal.citep corvallisAutomorphicForms}[]. The point is not
+that `GL_n/ℚ` is the final destination of the project, but that it is the first
+place where one can write down a serious automorphic-form definition without
+first building the full formal apparatus of dual groups for arbitrary connected
+reductive groups.
 :::
 
 The TeX discussion begins by explaining why `GL_n` is the natural first testing
@@ -62,6 +74,21 @@ handled with manifold smoothness, while the finite adelic direction is handled
 by local constancy. This is exactly the kind of hybrid analytic/algebraic object
 that makes automorphic forms awkward to formalize in full generality.
 
+:::theorem "finite_level_condition_gln" (parent := "gln_langlands_program")
+The finite-adelic part of an automorphic form should factor through some compact
+open level subgroup, so the resulting object is locally constant in the finite
+direction and genuinely finite-level.
+:::
+
+:::proof "finite_level_condition_gln"
+The TeX definition does not treat local constancy as mere regularity. It uses
+local constancy together with compact openness to package the finite-level
+condition that later produces Hecke operators by double-coset averaging.
+
+This is the `GL_n` analogue of the fixed-level structure already emphasized in
+the quaternionic chapters.
+:::
+
 :::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program")
 The growth condition is factored into a separate notion of slowly-increasing
 function on GLn(R).
@@ -72,6 +99,22 @@ The TeX chapter introduces an explicit size function on `GL_n(ℝ)` built from
 with respect to that size. The point is to isolate the growth condition from the
 rest of the automorphic-form definition.
 
+:::theorem "slow_growth_size_function_gln" (parent := "gln_langlands_program")
+The size function on `GL_n(ℝ)` is designed to detect both very large and very
+small singular values, so polynomial bounds in that size encode the standard
+moderate-growth condition.
+:::
+
+:::proof "slow_growth_size_function_gln"
+The TeX chapter defines the size as the trace of
+`MM^T + M⁻¹M^{-T}`. This is a neat package: the first term sees large
+eigenvalues, the second sees small ones, and together they rule out both kinds
+of escape to infinity.
+
+So the slowly-increasing condition is really the analytic growth control that
+replaces the more classical “moderate growth” language.
+:::
+
 :::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
 The weight at infinity is modeled by a finite-dimensional continuous
 representation of a maximal compact subgroup such as On(R).
@@ -80,6 +123,20 @@ representation of a maximal compact subgroup such as On(R).
 The corresponding TeX explanation notes that the Lean definition is deliberately
 incomplete: it does not yet insist on irreducibility, because the category-theory
 and continuity packaging for those representations was still unsettled.
+
+:::theorem "infinite_level_condition_gln" (parent := "gln_langlands_program")
+The infinite-level condition is expressed through the action of the center of
+the universal enveloping algebra: an automorphic form should be annihilated by
+an ideal of finite codimension.
+:::
+
+:::proof "infinite_level_condition_gln"
+The TeX chapter explains why this is really a differential-equation condition.
+For classical modular forms, one can think of the Cauchy--Riemann equations as
+the model example. In the general `GL_n(ℝ)` setting, the center of the
+universal enveloping algebra packages the corresponding infinitesimal character
+constraint.
+:::
 
 :::definition "centre_action_gln" (parent := "gln_langlands_program")
 The center of the universal enveloping algebra acts by differential operators,
@@ -90,6 +147,23 @@ The TeX chapter builds this in three steps: first the Lie algebra acts on smooth
 complex-valued functions on `GL_n(ℝ)`, then its complexification acts, and then
 the universal enveloping algebra and its center act. This is the algebraic
 encoding of the differential-equation side of automorphic forms.
+
+:::theorem "automorphic_forms_fixed_data_finite_dimensional" (parent := "gln_langlands_program")
+After fixing the weight, a compact open finite level, and the infinite-level
+ideal, the resulting space of automorphic forms should be finite-dimensional.
+The TeX chapter attributes this to Harish-Chandra.
+:::
+
+:::proof "automorphic_forms_fixed_data_finite_dimensional"
+This theorem is not on the immediate FLT critical path, but it explains why the
+definition has exactly the five conditions it does. The finite-level and
+infinite-level packages are not decorative; together with the weight and growth
+condition they cut down the huge smooth-function space to a manageable
+finite-dimensional one.
+
+That is also why the chapter treats Hecke operators only after all five
+conditions have been stated.
+:::
 
 :::definition "full_automorphic_form_definition_gln" (parent := "gln_langlands_program")
 Combining periodicity, finite level, weight, infinitesimal character, and
@@ -109,6 +183,20 @@ It also points out that, once a weight, finite level, and infinite level are
 fixed, the resulting space should be finite-dimensional by Harish-Chandra's
 theorem.
 
+:::theorem "cuspidal_automorphic_form_gln_placeholder" (parent := "gln_langlands_program")
+There is also a cuspidal refinement of the definition, obtained by imposing the
+vanishing of appropriate adelic integrals.
+This is the version that should ultimately interact with the conjectural
+Langlands correspondence.
+:::
+
+:::proof "cuspidal_automorphic_form_gln_placeholder"
+The TeX chapter only mentions cusp forms briefly, but the mathematical reason is
+clear: the global Langlands conjectures are meant to attach Galois
+representations to automorphic representations of the right kind, and the
+cuspidal spectrum is the natural home for the irreducible arithmetic objects.
+:::
+
 :::theorem "hecke_operator_action_gln" (parent := "gln_langlands_program")
 The finite adelic group acts on these spaces, giving the usual Hecke operators
 after passing to fixed compact open level.
@@ -118,4 +206,26 @@ after passing to fixed compact open level.
 The TeX chapter phrases this in the standard adelic way: a finite adelic element
 acts by right translation on the finite coordinate, and double-coset averaging
 then produces the familiar Hecke operators on the fixed-level subspaces.
+:::
+
+# Langlands target
+
+:::theorem "global_langlands_reciprocity_target_gln" (parent := "gln_langlands_program")
+The ultimate target of the chapter is a clean statement of the global Langlands
+reciprocity conjecture for `GL_n/ℚ`: algebraic automorphic representations on
+the automorphic side should correspond to Galois representations with matching
+local and global properties.
+:::
+
+:::proof "global_langlands_reciprocity_target_gln"
+The separate `global_langlands.tex` notes make clear why this remains only a
+target. Even once the `GL_n` automorphic objects are stated, the conjecture
+still hides a large amount of infrastructure: connected reductive groups, dual
+groups, local-global compatibility, and the correct de Rham conditions on the
+Galois side.
+
+So the current chapter deliberately stops after building the automorphic side in
+the first nontrivial case. That is already enough to make the scope of the
+future conjectural statement mathematically serious rather than purely
+aspirational.
 :::

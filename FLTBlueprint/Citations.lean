@@ -103,6 +103,15 @@ def blggtPotentialAutomorphy : Verso.Genre.Manual.Bibliography.Citable := .artic
   url := some "https://doi.org/10.4007/annals.2014.179.2.3"
 }
 
+@[bib "corvallis1"]
+def corvallisAutomorphicForms : Verso.Genre.Manual.Bibliography.Citable := .inProceedings {
+  title := inlines!"Automorphic forms, representations and L-functions. Part 1"
+  authors := #[inlines!"Proceedings volume"]
+  year := 1979
+  booktitle := inlines!"Proceedings of Symposia in Pure Mathematics XXXIII"
+  editors := some #[inlines!"Armand Borel", inlines!"W. Casselman"]
+}
+
 @[bib "poitou_odlyzko_bounds"]
 def poitouOdlyzkoBounds : Verso.Genre.Manual.Bibliography.Citable := .article {
   title := inlines!"Sur les petits discriminants"
