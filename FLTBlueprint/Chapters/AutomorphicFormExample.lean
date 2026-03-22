@@ -85,6 +85,16 @@ The profinite completion contains the image of the integers, but it is much
 larger than `ℤ`.
 :::
 
+:::proof "zhat_is_not_the_integers"
+The TeX chapter immediately follows the ring construction with this warning.
+`ℤ` embeds into `\widehat{\mathbf{Z}}` by reduction modulo every positive
+integer, but the target has far more compatible residue-class collections than
+those coming from a single integer.
+
+That gap is not a pathology; it is exactly why the profinite completion is a
+useful finite-adelic toy model rather than just a verbose restatement of `ℤ`.
+:::
+
 :::definition "example_element_of_zhat" (parent := "automorphic_example_program")
 The TeX blueprint highlights the formal infinite sum
 $`0! + 1! + 2! + \cdots`$ as a concrete element of $`\widehat{\mathbf{Z}}`$
@@ -96,6 +106,135 @@ Modulo any positive integer `N`, the factorial series stabilizes after
 `(N-1)!`, because every subsequent term is divisible by `N`. So the sequence of
 partial factorial sums defines a compatible adelic-style object even though the
 naive infinite sum diverges in the ordinary real sense.
+:::
+
+:::theorem "factorial_element_not_integer" (parent := "automorphic_example_program")
+The factorial-series element of $`\widehat{\mathbf{Z}}`$ is not in the image of
+`ℤ`.
+:::
+
+:::proof "factorial_element_not_integer"
+The TeX argument is a neat size estimate. If the element were an ordinary
+integer `n`, then reducing modulo a suitable large factorial would force `n` to
+lie strictly between two distinct ordinary integers that represent the same
+residue class, which is impossible. The same idea works for positive and
+negative `n`.
+
+So the factorial example is not just a curiosity: it is the first explicit
+witness that `\widehat{\mathbf{Z}}` is genuinely larger than `ℤ`.
+:::
+
+:::theorem "zhat_torsionfree" (parent := "automorphic_example_program")
+Multiplication by a positive integer is injective on $`\widehat{\mathbf{Z}}`.
+:::
+
+:::proof "zhat_torsionfree"
+The TeX proof is coordinatewise. If `N z = 0` in `\widehat{\mathbf{Z}}`, then in
+particular the `(Nj)`-coordinate is annihilated by `N`, forcing the `j`-th
+coordinate to vanish after reducing modulo `j`. Since this works for every
+positive `j`, the whole compatible collection is zero.
+:::
+
+:::theorem "zhat_multiples_criterion" (parent := "automorphic_example_program")
+An element of $`\widehat{\mathbf{Z}}`$ is divisible by `N` if and only if its
+`N`-th coordinate is zero.
+:::
+
+:::proof "zhat_multiples_criterion"
+Necessity is immediate. For sufficiency, the TeX proof constructs the quotient
+coordinatewise by dividing the `(Nj)`-coordinate by `N`, using compatibility and
+the vanishing of the `N`-th coordinate to show that this makes sense.
+
+This criterion becomes a basic tool once the chapter moves from
+`\widehat{\mathbf{Z}}` to `\widehat{\mathbf{Q}}`.
+:::
+
+# Qhat and tensor products
+
+:::definition "qhat_definition" (parent := "automorphic_example_program")
+The finite-adelic toy model for `ℚ` is
+$`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`.
+More generally, the TeX chapter explains that
+$`F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` should be viewed as the finite
+adeles of a number field `F`.
+:::
+
+:::proof "qhat_definition"
+This is the place where the example chapter starts meeting the later adele
+infrastructure. The chapter introduces `\widehat{\mathbf{Q}}` as a low-level
+route to finite adeles before the general restricted-product formalism is in
+place; compare the broader blueprint node {uses "cheap_finite_adele_definition"}[].
+:::
+
+:::definition "tensor_product_crash_course" (parent := "automorphic_example_program")
+The tensor-product interlude is included only to explain how to build and
+manipulate elements of $`\widehat{\mathbf{Q}}`: pure tensors, finite sums of
+pure tensors, and the non-uniqueness of tensor expressions.
+:::
+
+:::proof "tensor_product_crash_course"
+The TeX chapter is unusually candid here. It does not try to give a grand
+categorical account of tensor products; it just explains the minimum needed to
+read the example. A general tensor need not have a canonical form, and equality
+between pure tensors can be subtle, but in `\widehat{\mathbf{Q}}` one gets a
+surprisingly concrete simplification.
+:::
+
+:::theorem "qhat_canonical_form" (parent := "automorphic_example_program")
+Every element of $`\widehat{\mathbf{Q}}`$ can be written as a pure tensor
+$`q \otimes z`, and even in the form $`\frac{1}{N} \otimes z`.
+:::
+
+:::proof "qhat_canonical_form"
+This is one of the nice surprises in the TeX chapter. A general tensor product
+does not admit such a simple normal form, but here one can clear denominators in
+a finite sum of pure tensors and move all integer factors across the tensor
+symbol. What remains is a single pure tensor with one rational denominator.
+
+So `\widehat{\mathbf{Q}}` is much more concrete than an arbitrary tensor
+product, even though it is still best viewed conceptually as a tensor product.
+:::
+
+:::definition "qhat_lowest_terms" (parent := "automorphic_example_program")
+Every element of $`\widehat{\mathbf{Q}}`$ should admit a lowest-terms
+representation $`z/N`, where the `N`-th coordinate of `z` is a unit modulo `N`.
+:::
+
+:::proof "qhat_lowest_terms"
+The TeX argument combines {uses "qhat_canonical_form"}[] with
+{uses "zhat_multiples_criterion"}[]. If a common divisor survives in both the
+denominator and the relevant residue coordinate, one divides it out inside
+`\widehat{\mathbf{Z}}`; uniqueness is then proved by comparing two such
+representations through a common multiple and using torsionfreeness.
+:::
+
+:::theorem "qhat_intersection_q_and_zhat" (parent := "automorphic_example_program")
+Inside $`\widehat{\mathbf{Q}}`, the intersection of `ℚ` and
+$`\widehat{\mathbf{Z}}`$ is exactly `ℤ`.
+:::
+
+:::proof "qhat_intersection_q_and_zhat"
+Once lowest terms are available, the argument is short. A rational element of
+`\widehat{\mathbf{Z}}` has a fraction representation `z/N`, but also the obvious
+integral representation with denominator `1`; uniqueness of lowest terms forces
+`N = 1`.
+:::
+
+:::theorem "qhat_additive_decomposition" (parent := "automorphic_example_program")
+Every element of $`\widehat{\mathbf{Q}}`$ can be written additively as
+$`q + z` with `q ∈ ℚ` and $`z ∈ \widehat{\mathbf{Z}}`.
+:::
+
+:::proof "qhat_additive_decomposition"
+The TeX proof again starts from a lowest-terms expression `z/N`. One lifts the
+`N`-th residue coordinate of `z` to an actual integer `t`, and then the
+difference `z - t` becomes divisible by `N` inside `\widehat{\mathbf{Z}}` by
+{uses "zhat_multiples_criterion"}[]. This rewrites `z/N` as a rational number
+plus an element of `\widehat{\mathbf{Z}}`.
+
+Conceptually, this explains how `ℚ` and `\widehat{\mathbf{Z}}` sit inside the
+finite adeles of `ℚ`, which is exactly the kind of bookkeeping the later
+quaternionic construction needs.
 :::
 
 # Target calculation
@@ -112,4 +251,10 @@ It also makes a methodological point: if this example were completed before
 mathlib proves the finite-dimensionality of classical modular-form spaces, then
 the first modular-form finite-dimensionality theorem in Lean would be
 quaternionic rather than classical.
+
+The enlarged Verso port now makes the chapter's preparatory role clearer too.
+Before one can even talk cleanly about adelic quaternionic level structures, one
+needs the toy finite-adelic algebra described by
+{uses "profinite_completion_zhat"}[] and {uses "qhat_definition"}[] as well as
+the concrete integral structure supplied by {uses "hurwitz_quaternion_order"}[].
 :::

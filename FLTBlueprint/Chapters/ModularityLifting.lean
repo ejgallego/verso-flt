@@ -1,3 +1,4 @@
+import FLTBlueprint.Citations
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -10,7 +11,10 @@ open Informal
 
 :::group "modularity_lifting_program"
 This chapter corresponds to the TeX work-in-progress chapter devoted to stating
-the minimal and non-minimal modularity lifting theorems precisely.
+the minimal and non-minimal modularity lifting theorems precisely. Its role in
+the blueprint is deliberately narrow but important: turn the vague phrase
+“there is an `R = T` theorem here” into a clean interface of local conditions,
+automorphic input, and reduction steps.
 :::
 
 The old TeX chapter opens with a practical claim: a very worthwhile medium-term
@@ -39,6 +43,24 @@ example. For totally definite quaternion algebras over totally real fields, the
 associated symmetric space is again zero-dimensional, so the definition of an
 automorphic form can be phrased without the usual analytic baggage. That is why
 the later quaternionic chapters have such an algebraic flavor.
+:::
+
+:::theorem "quaternionic_automorphic_forms_are_algebraic" (parent := "modularity_lifting_program")
+For the totally definite quaternionic groups relevant to FLT, automorphic forms
+behave like algebraic level structures rather than holomorphic functions on a
+positive-dimensional symmetric space.
+This is why the modularity-lifting chapter can point naturally toward
+{uses "weight_two_quaternionic_forms"}[] instead of classical modular forms.
+:::
+
+:::proof "quaternionic_automorphic_forms_are_algebraic"
+The TeX chapter makes this contrast with classical modular forms explicit.
+For `GL₂/ℚ`, quotienting `GL₂(ℝ)` by its center and maximal compact subgroup
+produces the upper half-plane, so differential operators and holomorphicity are
+built into the theory. For the quaternionic groups used in the FLT strategy,
+the analogous real quotient is zero-dimensional. So the automorphic theory is
+still deep, but its definitions are far more algebraic and much closer to the
+finite-level structures built later in {uses "quaternionic_modular_form_example"}[].
 :::
 
 # Central simple algebras
@@ -89,8 +111,52 @@ modularity-lifting theorem, built on {uses "automorphic_form_general_notion"}[]
 and {uses "central_simple_algebra_background"}[].
 :::
 
+:::proof "minimal_modularity_lifting_statement"
+The old TeX chapter is explicit that “stating the theorem” is already a serious
+goal. The minimal theorem is not a one-line modularity slogan: it depends on a
+precise automorphic notion, a definite quaternionic setting, and a deformation
+problem with controlled local conditions like the `S`-good package recorded in
+{uses "s_good_lift_condition"}[] and {uses "s_good_deformation_problem"}[].
+
+The strategy chapter already explains why this theorem matters. Potential
+modularity uses an auxiliary modular object to land inside the hypotheses of a
+lifting theorem, and the minimal case is the place where the Taylor--Wiles
+patching argument is expected to live.
+:::
+
+:::theorem "reduction_to_minimal_case" (parent := "modularity_lifting_program")
+The non-minimal modularity-lifting theorem should be reduced to the minimal
+case by Skinner--Wiles-style arguments together with cyclic base change and
+control of the local level structure.
+:::
+
+:::proof "reduction_to_minimal_case"
+The TeX proof sketch says exactly this. One first peels away the excess local
+level until the deformation problem is minimal, and only then runs the
+Taylor--Wiles/Kisin machine. In the quaternionic setting, that reduction phase
+is not purely local: it also needs global input such as cyclic base change and
+the characterization of which automorphic representations arise by base change.
+
+So this node records a real logical interface, not just a storytelling choice:
+the non-minimal theorem is expected to factor through the minimal one rather
+than being proved independently from scratch.
+:::
+
 :::theorem "nonminimal_modularity_lifting_statement" (parent := "modularity_lifting_program")
 The non-minimal theorem is expected to be derived from the minimal case by the
 additional modern arguments highlighted in the old blueprint.
 The overview chapter points back to this node through {uses "modularity_lifting_theorem"}[].
+:::
+
+:::proof "nonminimal_modularity_lifting_statement"
+The TeX chapter identifies the literature only approximately, but it does point
+to near-references for the kind of theorem the project wants:
+{Informal.citep taylorMeroCont}[] and {Informal.citep tobyModularity}[].
+The exact FLT statement is not copied verbatim from either source; rather, it
+is the theorem that should emerge after combining the minimal statement with the
+reduction mechanism recorded in {uses "reduction_to_minimal_case"}[].
+
+That is why this chapter stays focused on interfaces. The proof architecture is
+already visible, even before every surrounding automorphic and local-theory
+definition has been pushed all the way down into Lean.
 :::
