@@ -31,6 +31,11 @@ That shift is one reason the example matters. The chapter is not logically
 essential to the proof, but it is meant to prevent the general quaternionic
 theory from appearing out of nowhere. The explicit example serves as a test case
 for what infrastructure the later chapters should actually build.
+
+The TeX version is also personal in tone here: it says the author first learned
+these objects by playing with explicit examples as a PhD student, and that this
+is why the blueprint pauses for a concrete worked example before launching into
+the totally real general theory.
 :::
 
 # A quaternion algebra
@@ -78,6 +83,26 @@ inside the product of all `ℤ / Nℤ`.
 The point here is not depth but orientation: all ring operations are inherited
 componentwise, and compatibility with reduction maps is preserved by those same
 operations.
+:::
+
+:::theorem "zhat_nontrivial" (parent := "automorphic_example_program")
+The elements `0` and `1` are distinct in $`\widehat{\mathbf{Z}}`.
+:::
+
+:::proof "zhat_nontrivial"
+The TeX proof just evaluates both elements at `2`: their images in `ℤ/2ℤ` are
+different, so the compatible collections themselves are different.
+:::
+
+:::theorem "zhat_char_zero" (parent := "automorphic_example_program")
+The natural map from the natural numbers into $`\widehat{\mathbf{Z}}`$ is
+injective.
+:::
+
+:::proof "zhat_char_zero"
+The TeX chapter treats this as an immediate generalization of
+{uses "zhat_nontrivial"}[]: two different naturals can be separated by reducing
+modulo a suitable integer.
 :::
 
 :::theorem "zhat_is_not_the_integers" (parent := "automorphic_example_program")
@@ -208,6 +233,27 @@ denominator and the relevant residue coordinate, one divides it out inside
 representations through a common multiple and using torsionfreeness.
 :::
 
+:::theorem "qhat_rational_embedding_injective" (parent := "automorphic_example_program")
+The natural map from `ℚ` into $`\widehat{\mathbf{Q}}`$ is injective.
+:::
+
+:::proof "qhat_rational_embedding_injective"
+The TeX chapter proves this using flatness of `ℚ` over `ℤ`. Its practical role
+is to justify regarding ordinary rational numbers as honest elements of the
+finite-adelic toy model.
+:::
+
+:::theorem "qhat_zhat_embedding_injective" (parent := "automorphic_example_program")
+The natural map from $`\widehat{\mathbf{Z}}`$ into $`\widehat{\mathbf{Q}}`$ is
+injective.
+:::
+
+:::proof "qhat_zhat_embedding_injective"
+This is the companion to {uses "qhat_rational_embedding_injective"}[]. The TeX
+proof uses torsionfreeness of `\widehat{\mathbf{Z}}` to justify treating
+`\widehat{\mathbf{Z}}` as a genuine subring of `\widehat{\mathbf{Q}}`.
+:::
+
 :::theorem "qhat_intersection_q_and_zhat" (parent := "automorphic_example_program")
 Inside $`\widehat{\mathbf{Q}}`, the intersection of `ℚ` and
 $`\widehat{\mathbf{Z}}`$ is exactly `ℤ`.
@@ -235,6 +281,29 @@ plus an element of `\widehat{\mathbf{Z}}`.
 Conceptually, this explains how `ℚ` and `\widehat{\mathbf{Z}}` sit inside the
 finite adeles of `ℚ`, which is exactly the kind of bookkeeping the later
 quaternionic construction needs.
+:::
+
+:::theorem "qhat_units_intersection" (parent := "automorphic_example_program")
+Inside the unit group of $`\widehat{\mathbf{Q}}`, the intersection of
+`ℚ^×` with $`\widehat{\mathbf{Z}}^×` is `ℤ^×`.
+:::
+
+:::proof "qhat_units_intersection"
+The TeX chapter proves this by combining lowest terms with the additive
+intersection statement: a unit that is both rational and integral must already
+be an ordinary integer, and unit conditions force that integer to be `±1`.
+:::
+
+:::theorem "qhat_units_factorization" (parent := "automorphic_example_program")
+Every unit of $`\widehat{\mathbf{Q}}`$ factors as a product of a rational unit
+and a unit of $`\widehat{\mathbf{Z}}`.
+:::
+
+:::proof "qhat_units_factorization"
+This is the multiplicative counterpart to
+{uses "qhat_additive_decomposition"}[]. The TeX proof turns invertibility in
+`\widehat{\mathbf{Q}}` into a divisibility statement in `\widehat{\mathbf{Z}}`,
+then extracts a minimal positive integer generator of the corresponding ideal.
 :::
 
 # Target calculation

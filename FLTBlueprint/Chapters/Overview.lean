@@ -15,6 +15,16 @@ representation is isolated, the remaining strategy is to prove that no hardly
 ramified irreducible representation of that shape can exist.
 :::
 
+The opening sentence of the TeX chapter makes the reduction target explicit:
+modulo Mazur's theorem and some other still-unformalized 1980s background, FLT
+has been reduced to ruling out a hardly ramified irreducible two-dimensional
+mod-`ℓ` Galois representation over `ℚ`.
+
+It is also explicit there that we no longer need to assume the representation
+comes from the torsion of an elliptic curve. Once the Frey reduction has done
+its job, the rest of the strategy is formulated at the level of abstract Galois
+representations with the same local properties.
+
 # Potential modularity
 
 :::theorem "potential_modularity_step" (parent := "overview_strategy")
@@ -49,6 +59,10 @@ The TeX chapter explicitly lists the kinds of ingredients this uses:
 - converse-theorem input showing certain induced mod `p` representations are
   modular
 - a modularity lifting theorem
+
+Almost everything in this list dates back to the 1980s or earlier. The TeX
+chapter is explicit that the modularity lifting theorem is the main genuine
+post-1980s ingredient in this potential modularity package.
 :::
 
 :::theorem "potential_modularity_auxiliary_curve" (parent := "overview_strategy")
@@ -125,6 +139,10 @@ The chapter {uses "minimal_modularity_lifting_statement"}[] is devoted to
 making this interface precise, and the TeX discussion points in particular to
 {Informal.citep taylorMeroCont}[] and {Informal.citep tobyModularity}[] as near
 references.
+
+The TeX draft also says something worth preserving here: at the time of
+writing, it was already viewed as a worthwhile medium-term project milestone
+simply to state this theorem properly in Lean, even before proving it.
 :::
 
 # Compatible families and reduction at 3
@@ -161,4 +179,8 @@ with the deformation-theoretic bridge recorded earlier in
 {uses "hardly_ramified_compatible_family"}[], and the TeX bibliography traces
 the numerical estimate back to the Poitou--Odlyzko discriminant bounds
 {Informal.citep poitouOdlyzkoBounds}[].
+
+The TeX chapter ends by apologizing for how sketchy this whole discussion still
+is, and that remains the right reading instruction for the current overview: it
+is a strategic map, not yet a polished full-dress exposition.
 :::

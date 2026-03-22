@@ -23,6 +23,11 @@ cleanly. There are really two theorems in play. One is a minimal statement
 proved by a Taylor--Wiles style argument. The other is obtained from it using
 later refinements and reduction steps.
 
+The TeX chapter itself is still only a work in progress, and that should remain
+visible in the Verso port. Its ambition is not to prove the modularity lifting
+theorem, but to isolate what has to be stated before one can even begin to
+formalize the `R = T` story seriously.
+
 # Automorphic forms and analysis
 
 :::definition "automorphic_form_general_notion" (parent := "modularity_lifting_program")
@@ -73,6 +78,10 @@ groups used in the modularity lifting theorem, and feed directly into {uses "tot
 In the old TeX exposition, this section is meant as a warm-up before talking
 about quaternion algebras. Fields are always commutative here, but algebras over
 them are not assumed commutative.
+
+The TeX chapter also records an equivalent characterization of simplicity that
+is often better for formalization: every surjective ring homomorphism out of a
+central simple algebra is either an isomorphism or the zero map.
 
 :::definition "central_simple_algebra_definition" (parent := "modularity_lifting_program")
 A central simple algebra over a field `K` is a nonzero `K`-algebra whose center
@@ -159,4 +168,10 @@ reduction mechanism recorded in {uses "reduction_to_minimal_case"}[].
 That is why this chapter stays focused on interfaces. The proof architecture is
 already visible, even before every surrounding automorphic and local-theory
 definition has been pushed all the way down into Lean.
+
+The TeX draft also mentions a more informal modern reference for this proof
+architecture, namely Richard Taylor's 2018 Stanford course notes. The point of
+that remark is not bibliographic completeness, but that the theorem was already
+regarded as standard among experts even if the exact statement used here was
+not copied from a single published source.
 :::

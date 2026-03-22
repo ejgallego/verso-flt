@@ -22,6 +22,11 @@ formalization task as teaching this proof to Lean, starting from the mathematics
 already available in core Lean and mathlib rather than rebuilding all of basic
 number theory from scratch.
 
+The TeX introduction also pauses on two historical markers: Fermat raised the
+theorem in 1637, and Wiles proved it in the 1990s, with the proof completed in
+joint work with Taylor. All known proofs still move broadly through elliptic
+curves and modular forms.
+
 The old TeX blueprint emphasized that this is like explaining the proof to a
 very demanding audience member: Lean insists on complete detail, and in 2025-era
 formalization practice it only fills in the steps that are mathematically
@@ -141,6 +146,11 @@ workstreams is organized in {uses "legacy_blueprint_map"}[].
 
 # Which proof is being formalised?
 
+The TeX draft was explicit that, at the time of writing, the notes contained
+nothing close to a proof of FLT, or even a real sketch proof. That remains
+useful context for the shape of the blueprint: many chapters started life as
+staging areas for definitions and local goals rather than as polished surveys.
+
 The route followed by the project is not a direct transcription of the original
 Wiles and Taylor--Wiles papers. Instead, the plan is the modern strategy
 designed by Richard Taylor in discussion with Kevin Buzzard: a 21st century
@@ -153,6 +163,11 @@ already known by the end of 1989 are allowed as assumptions. The intended
 endpoint of that phase is a Lean proof that Fermat's Last Theorem follows from
 mathematics that humanity already knew in the 1980s.
 
+The TeX chapter makes this more concrete: one naive description of the goal is
+“formalize the papers of Wiles and Taylor--Wiles, assuming the results in their
+reference lists”. The actual project route is not identical to those papers,
+but that heuristic still captures the historical ambition of phase one.
+
 # The structure of this blueprint
 
 The original TeX document described itself as a nonlinear blueprint: a family
@@ -161,6 +176,10 @@ linear narrative. That same philosophy is kept here. The first reductions are
 tracked in the reduction chapter, while the later strategy is sketched in the
 overview chapter through the modularity lifting theorem and the reduction at 3
 step.
+
+The TeX introduction was also explicit about reading order: after this chapter,
+one should next read the reductions chapter, because that is where the proof
+begins by reducing FLT to two statements about the Frey curve.
 
 Much of the remaining work is organized as miniprojects. Those chapters are not
 mere appendices: they are where the project develops the background API around
@@ -176,3 +195,9 @@ collections of ideas. The Verso port is following the same staged approach. Some
 chapters are already close to their intended long-term role, while others are
 present mainly to preserve the project map and its dependency structure until
 their informal mathematics is ported more fully.
+
+Two further remarks from the TeX version are still worth preserving almost
+verbatim. First, the overview chapter was described there as extremely sketchy
+and mainly useful as a map of future work. Second, many of the remaining
+chapters were described as experiments or miniprojects whose ultimate goal was
+to push mathematics into mathlib, not just to decorate the blueprint.
