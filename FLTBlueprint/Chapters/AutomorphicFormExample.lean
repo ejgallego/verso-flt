@@ -306,6 +306,153 @@ This is the multiplicative counterpart to
 then extracts a minimal positive integer generator of the corresponding ideal.
 :::
 
+# More advanced remarks on Zhat versus Q
+
+The TeX chapter then steps back and explains why `\widehat{\mathbf{Z}}` is not
+just a curiosity. Seen abstractly, it is the profinite completion of the
+additive group `ℤ`. But completing before localizing gives a much more
+arithmetic object than the usual route through `ℚ` and `ℝ`.
+
+It is at this point that the TeX chapter explicitly identifies
+`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`
+with the finite adeles of `ℚ`, and more generally
+`F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` with the finite adeles of a number
+field `F`.
+
+# The Hurwitz quaternions
+
+:::definition "hurwitz_quaternions_definition" (parent := "automorphic_example_program")
+The Hurwitz quaternions are the lattice
+$`\mathcal{O} = \mathbf{Z} \oplus \mathbf{Z}\omega \oplus \mathbf{Z}i \oplus \mathbf{Z}i\omega`
+inside Hamilton's quaternions.
+:::
+
+:::proof "hurwitz_quaternions_definition"
+The TeX chapter rewrites this in the more concrete coordinate form too: a
+quaternion `a + bi + cj + dk` is Hurwitz precisely when either all four
+coordinates are integers or all four lie in `\mathbf{Z} + \frac12`.
+:::
+
+:::theorem "hurwitz_quaternions_form_ring" (parent := "automorphic_example_program")
+The Hurwitz quaternions form a ring.
+:::
+
+:::proof "hurwitz_quaternions_form_ring"
+This is presented in the TeX chapter as a straightforward algebra check once the
+definition of `\omega` and the quaternion multiplication rules are in place.
+:::
+
+:::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program")
+The Hurwitz quaternions carry the usual quaternionic conjugation, making them a
+star ring.
+:::
+
+:::definition "hurwitz_quaternion_norm" (parent := "automorphic_example_program")
+The Hurwitz quaternions carry an integer-valued norm extending the usual norm on
+Hamilton's quaternions.
+:::
+
+:::theorem "hurwitz_norm_eq_mul_conj" (parent := "automorphic_example_program")
+For a Hurwitz quaternion `x`, the norm is `x \overline{x}`.
+:::
+
+:::theorem "hurwitz_norm_zero" (parent := "automorphic_example_program")
+The norm of `0` is `0`.
+:::
+
+:::theorem "hurwitz_norm_one" (parent := "automorphic_example_program")
+The norm of `1` is `1`.
+:::
+
+:::theorem "hurwitz_norm_multiplicative" (parent := "automorphic_example_program")
+The norm of a product is the product of the norms.
+:::
+
+:::theorem "hurwitz_norm_nonnegative" (parent := "automorphic_example_program")
+The norm of a Hurwitz quaternion is nonnegative.
+:::
+
+:::theorem "hurwitz_norm_eq_zero_iff" (parent := "automorphic_example_program")
+The norm of a Hurwitz quaternion is zero if and only if the quaternion itself is
+zero.
+:::
+
+:::theorem "hurwitz_exists_near" (parent := "automorphic_example_program")
+Every real quaternion lies within norm `< 1` of some Hurwitz quaternion.
+:::
+
+:::proof "hurwitz_exists_near"
+The TeX argument is a nearest-integer estimate on the four coordinates. The
+only subtle case is when all four coordinates are half-integers, in which case
+the nearest lattice point is obtained using the shifted Hurwitz lattice rather
+than the obvious integer one.
+:::
+
+:::theorem "hurwitz_quotient_remainder" (parent := "automorphic_example_program")
+Given Hurwitz quaternions `a` and nonzero `b`, there exist `q` and `r` with
+`a = qb + r` and `N(r) < N(b)`.
+:::
+
+:::proof "hurwitz_quotient_remainder"
+This is Euclidean division in the TeX chapter. One approximates `a/b` by a
+Hurwitz quaternion using {uses "hurwitz_exists_near"}[] and then multiplies back
+up to produce the remainder estimate.
+:::
+
+:::theorem "hurwitz_left_ideal_principal" (parent := "automorphic_example_program")
+Every left ideal of the Hurwitz order is principal.
+:::
+
+:::proof "hurwitz_left_ideal_principal"
+The TeX proof is the standard Euclidean-domain argument: choose a nonzero
+element of minimal norm and apply
+{uses "hurwitz_quotient_remainder"}[].
+:::
+
+# Profinite completion of the Hurwitz quaternions
+
+:::definition "hurwitz_profinite_completion" (parent := "automorphic_example_program")
+The profinite completion `\widehat{\mathcal{O}}` of the Hurwitz order is
+`\mathcal{O} \otimes \widehat{\mathbf{Z}}`.
+:::
+
+:::theorem "hurwitz_mod_n_surjective" (parent := "automorphic_example_program")
+For every positive integer `N`, the natural map
+`\mathcal{O} \to \widehat{\mathcal{O}} / N\widehat{\mathcal{O}}` is surjective.
+:::
+
+:::proof "hurwitz_mod_n_surjective"
+The TeX chapter treats this as four copies of the corresponding statement for
+`\mathbf{Z} \to \widehat{\mathbf{Z}}/N\widehat{\mathbf{Z}}`.
+:::
+
+:::definition "completed_rational_quaternion_algebra" (parent := "automorphic_example_program")
+The rational quaternion algebra `D` gives rise to its finite-adelic completion
+`\widehat{D} = D \otimes \widehat{\mathbf{Z}}`.
+:::
+
+:::theorem "completed_quaternion_canonical_form" (parent := "automorphic_example_program")
+Every element of `\widehat{D}` can be written as `z/N` with
+`z \in \widehat{\mathcal{O}}` and `N` a positive integer.
+:::
+
+:::proof "completed_quaternion_canonical_form"
+The TeX chapter says this is proved exactly like the corresponding canonical-form
+statement for `\widehat{\mathbf{Q}}`.
+:::
+
+:::theorem "completed_quaternion_units_factorization" (parent := "automorphic_example_program")
+Every unit of `\widehat{D}` can be written as a product of a unit from `D` and a
+unit from `\widehat{\mathcal{O}}`.
+:::
+
+:::proof "completed_quaternion_units_factorization"
+This is the final theorem in the remaining TeX tail. The proof repeats the
+lowest-terms style argument from `\widehat{\mathbf{Q}}`, but now with one-sided
+ideals in the Hurwitz order replacing principal ideals in `\widehat{\mathbf{Z}}`.
+The Euclidean argument for the Hurwitz order is exactly what makes the factorization work.
+:::
+
 # Target calculation
 
 :::theorem "one_dimensional_example_space" (parent := "automorphic_example_program")
