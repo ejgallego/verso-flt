@@ -5,6 +5,13 @@ project. The upstream Lean formalization lives in the `FLT/` submodule; the
 Verso chapters, bibliography wiring, CI, and generated-site harness live at the
 repository root.
 
+## Porting Policy
+
+The TeX blueprint remains the source of truth for the written mathematics. The
+porting goal in this repository is a faithful, as-near-word-for-word-as-
+practical translation from TeX/`leanblueprint` layout into Verso layout, not a
+substantive rewrite of the mathematical content.
+
 ## Pages Artifact
 
 The GitHub Pages build is defined in `.github/workflows/blueprint.yml`.

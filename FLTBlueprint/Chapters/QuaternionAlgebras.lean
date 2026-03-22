@@ -13,18 +13,19 @@ This chapter develops the spaces of quaternionic automorphic forms whose Hecke
 algebras supply the `T` side of the `R = T` theorems in the FLT strategy.
 :::
 
+# Goal
+
 The TeX chapter introduces this material as a practical substitute for
 classical modular forms. Since mathlib does not yet prove the finite
 dimensionality of classical modular-form spaces, the project turns to the
 quaternionic setting, where finite-dimensionality can be approached through
 adelic compactness.
 
-It is also explicit that this is the first place where the project intends to
-see a genuine Hecke algebra acting on a concrete automorphic space. In that
-sense, this chapter is where the adelic and quaternionic miniprojects stop
-looking like background and start looking like the `T` side of `R = T`.
+The main result of the TeX chapter is finite-dimensionality of spaces of
+quaternionic modular forms. The Hecke algebras acting on those spaces are the
+`T`s that later appear in the modularity-lifting story.
 
-# Goals
+# Initial definitions
 
 :::definition "totally_definite_quaternion_algebra_setup" (parent := "quaternion_algebra_project")
 Fix a totally real field and a totally definite quaternion algebra over it.
@@ -58,11 +59,7 @@ This is exactly why the later definitions can be made for automorphic forms
 valued in an arbitrary additive commutative group, not just in `ℂ`.
 :::
 
-:::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
-The chapter defines spaces of weight-2 automorphic forms valued in an arbitrary
-additive commutative group, then specializes to level-$`U`$ invariants.
-Those spaces are the input for the concrete Hecke constructions in {uses "concrete_hecke_action"}[].
-:::
+# Brief introduction to automorphic forms in this setting
 
 The TeX chapter is explicit that the totally definite setting removes a large
 amount of analytic baggage. There is no upper half-plane, no holomorphicity
@@ -92,6 +89,24 @@ So the coefficient flexibility is not accidental convenience; it is one of the
 main reasons this quaternionic route is attractive for the FLT project.
 :::
 
+# Definition of spaces of automorphic forms
+
+:::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
+The chapter defines spaces of weight-2 automorphic forms valued in an arbitrary
+additive commutative group, then specializes to level-$`U`$ invariants.
+Those spaces are the input for the concrete Hecke constructions in {uses "concrete_hecke_action"}[].
+:::
+
+:::theorem "automorphic_forms_additive_group" (parent := "quaternion_algebra_project")
+Pointwise addition makes the space of quaternionic automorphic forms into an
+additive abelian group.
+:::
+
+:::theorem "automorphic_forms_module" (parent := "quaternion_algebra_project")
+If the coefficient object is a commutative ring, then the space of quaternionic
+automorphic forms is naturally a module over that ring.
+:::
+
 :::theorem "adelic_right_action_on_quaternionic_forms" (parent := "quaternion_algebra_project")
 The finite adelic unit group acts on the space of quaternionic automorphic
 forms by right translation on the argument.
@@ -100,10 +115,9 @@ This is the action whose `U`-fixed vectors define
 :::
 
 :::proof "adelic_right_action_on_quaternionic_forms"
-The TeX chapter spells this out before defining level. The left `Dˣ`-invariance
-and central-character triviality are part of the definition of an automorphic
-form, while the right action of the finite adelic units is the extra symmetry
-from which level structures and Hecke operators are cut out.
+The TeX chapter places this immediately after the additive and module
+structures, since it is the action from which levels and Hecke operators are
+cut out.
 :::
 
 :::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")

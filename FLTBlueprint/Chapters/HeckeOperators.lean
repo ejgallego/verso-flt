@@ -112,6 +112,10 @@ products, and even statements that sound tautological, such as
 `GL_2(A_F)` being a restricted product of `GL_2(F_v)`, need careful
 topological justification.
 
+The TeX source then proceeds in a very specific order: products, units, local
+matrix theory, adelic groups, automorphic forms, and only then the concrete
+Hecke operators. The Verso chapter follows that same order here.
+
 :::definition "restricted_product_definition" (parent := "hecke_operator_project")
 The restricted product is the subset of the full product consisting of tuples
 that lie in designated good subspaces for all but finitely many indices.
@@ -128,14 +132,53 @@ away from a finite set assemble continuously.
 Restricted products with respect to open subspaces commute with finite products.
 :::
 
+:::proof "restricted_product_product_homeomorphism"
+The TeX chapter proves this first for binary products and then for finite
+products by induction. The openness hypothesis is emphasized because the
+restricted-product topology behaves much better under products in that case.
+:::
+
+:::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project")
+Matrices over a restricted product identify homeomorphically with the
+restricted product of the corresponding matrix spaces.
+:::
+
+:::proof "restricted_product_matrix_homeomorphism"
+This is the immediate matrix-valued corollary of the finite-product theorem,
+since an `n × n` matrix space is just a finite product of copies of the
+coefficient space.
+:::
+
 :::theorem "units_of_open_submonoid_open" (parent := "hecke_operator_project")
 If `U` is an open submonoid of a topological monoid `M`, then `Uˣ` is naturally
 an open subgroup of `Mˣ`.
 :::
 
+:::proof "units_of_open_submonoid_open"
+The proof in the TeX chapter embeds `Mˣ` in `M × M` by `g ↦ (g, g⁻¹)`. Under
+that embedding, `Uˣ` is exactly the intersection of `Mˣ` with the open set
+`U × U`.
+:::
+
 :::theorem "units_of_compact_submonoid_compact" (parent := "hecke_operator_project")
 If `U` is a compact submonoid of a Hausdorff topological monoid `M`, then `Uˣ`
 is a compact subgroup of `Mˣ`.
+:::
+
+:::proof "units_of_compact_submonoid_compact"
+The same embedding argument works again. Hausdorffness makes `Mˣ` closed in
+`M × M`, so intersecting it with the compact subset `U × U` gives a compact
+space of units.
+:::
+
+:::theorem "product_units_homeomorphism" (parent := "hecke_operator_project")
+For a finite product of topological monoids, the units of the product are
+homeomorphic to the product of the unit groups.
+:::
+
+:::proof "product_units_homeomorphism"
+The TeX chapter proves continuity in both directions directly from the induced
+topology on units and the universal property of products.
 :::
 
 :::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project")
@@ -153,6 +196,27 @@ restricted-product topology and the topology on units interact cleanly.
 
 # Local matrix theory
 
+The local section of the TeX chapter specializes to completions `K_v` of number
+fields at finite places. The point is to manufacture the compact open
+subgroups and explicit double-coset decompositions that later define the local
+Hecke operators.
+
+:::theorem "local_integer_ring_open" (parent := "hecke_operator_project")
+The local integer ring `\mathcal{O}_v` is an open subring of `K_v`.
+:::
+
+:::theorem "local_integer_ring_compact" (parent := "hecke_operator_project")
+The local integer ring `\mathcal{O}_v` is a compact subring of `K_v`.
+:::
+
+:::theorem "matrix_full_level_open" (parent := "hecke_operator_project")
+The matrix ring `M₂(\mathcal{O}_v)` is an open subring of `M₂(K_v)`.
+:::
+
+:::theorem "matrix_full_level_compact" (parent := "hecke_operator_project")
+The matrix ring `M₂(\mathcal{O}_v)` is a compact subring of `M₂(K_v)`.
+:::
+
 :::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project")
 For a nonarchimedean local field `K_v`, the subgroup `GL₂(\mathcal{O}_v)` is a
 compact open subgroup of `GL₂(K_v)`.
@@ -163,6 +227,11 @@ The TeX chapter derives this from the corresponding statement for the matrix
 ring `M₂(\mathcal{O}_v)`: once the full matrix ring is known to be a compact
 open subring of `M₂(K_v)`, the compact-open statement for units follows from the
 general topology of units in compact/open submonoids.
+:::
+
+:::definition "local_level_from_residue_subgroup" (parent := "hecke_operator_project")
+If `Γ_v` is a subgroup of `GL₂(k_v)`, its preimage in `GL₂(\mathcal{O}_v)` gives
+the local compact open subgroup used to define the corresponding local level.
 :::
 
 :::theorem "local_congruence_level_compact_open" (parent := "hecke_operator_project")
@@ -176,6 +245,10 @@ Because the residue field is finite, the preimage is a finite union of cosets of
 the compact open ideal `M₂(\varpi \mathcal{O}_v)`, and hence is itself compact
 and open.
 :::
+
+The TeX chapter then specializes to upper-triangular congruence-type local
+subgroups in preparation for the explicit `U_{v,\alpha}` double-coset
+calculation.
 
 :::theorem "local_u_operator_double_coset_decomposition" (parent := "hecke_operator_project")
 For upper-triangular congruence-type local levels, the double coset of
@@ -191,6 +264,10 @@ The resulting representatives are unipotent translates of the diagonal matrix.
 :::
 
 # Adelic groups
+
+The group of actual interest is the adelic unit group
+`(D \otimes_K \mathbf{A}_K^\infty)^×`, which is identified via a chosen
+rigidification with `GL₂(\mathbf{A}_K^\infty)`.
 
 :::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project")
 After choosing the standard local full levels, `GL₂(\mathbf{A}_F^\infty)` is a
@@ -213,6 +290,35 @@ elsewhere produces a compact open adelic level subgroup.
 This is the basic global construction used throughout the concrete theory. The
 TeX chapter emphasizes that levels of interest are almost always built in this
 way from finitely many exceptional local conditions.
+:::
+
+# Automorphic forms
+
+:::definition "automorphic_forms_for_hecke_setup" (parent := "hecke_operator_project")
+For the concrete Hecke theory, one fixes a totally real field `F`, a totally
+definite quaternion algebra `D/F`, and a coefficient group `R`, and lets `A`
+denote the space of weight-2 quaternionic automorphic forms.
+:::
+
+:::proof "automorphic_forms_for_hecke_setup"
+The TeX chapter recalls the quaternionic automorphic-form axioms at this point:
+left `D^×`-invariance, triviality under the finite ideles in the center, and
+right invariance under some compact open subgroup. For a fixed level `U`, the
+forms of level `U` are exactly the fixed vectors `A^U`.
+:::
+
+# Concrete Hecke operators
+
+:::definition "t_v_hecke_operator" (parent := "hecke_operator_project")
+For a place `v` outside the bad set, the operator `T_v` is defined by the
+double coset of the element supported at `v` with local component
+`diag(\varpi_v,1)`.
+:::
+
+:::definition "u_valpha_hecke_operator" (parent := "hecke_operator_project")
+For a bad place `v` and a nonzero `\alpha \in \mathcal{O}_v`, the operator
+`U_{v,\alpha}` is defined by the double coset of the element supported at `v`
+with local component `diag(\alpha,1)`.
 :::
 
 :::theorem "concrete_hecke_action" (parent := "hecke_operator_project")
@@ -239,6 +345,17 @@ The TeX chapter reduces this to the abstract commutativity criterion
 {uses "abstract_hecke_operators_commute"}[]. Once the representatives are
 supported at disjoint places, they commute componentwise, so the abstract
 criterion applies immediately.
+:::
+
+:::theorem "u_operators_same_place_multiply" (parent := "hecke_operator_project")
+At a fixed bad place `v`, the operators `U_{v,\alpha}` satisfy
+`U_{v,\alpha} U_{v,\beta} = U_{v,\alpha\beta}`.
+:::
+
+:::proof "u_operators_same_place_multiply"
+The TeX chapter derives this from the explicit local double-coset
+decomposition. That stronger multiplicative relation is the last local input
+needed for commutativity of the whole Hecke algebra.
 :::
 
 :::theorem "hecke_algebra_noetherian_commutative_placeholder" (parent := "hecke_operator_project")

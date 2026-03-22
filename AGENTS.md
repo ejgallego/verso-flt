@@ -28,6 +28,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - The goal of this migration is to move the blueprint infrastructure from TeX /
   `leanblueprint` to Verso / `verso-blueprint`.
+- Treat the TeX blueprint as the content source of truth for the prose
+  structure: the port should be as close to word-for-word as practical, with
+  the main intended change being the layout language translation from TeX to
+  Verso rather than substantive rewriting.
 - Keep the existing FLT formalization files unchanged for blueprint-port work
   unless we are doing explicit rc6 compatibility work intended for the FLT fork.
 
@@ -75,6 +79,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - Port TeX blueprint content into the root Verso chapters in this repository,
   not into `FLT/`.
+- Prefer faithful TeX-to-Verso translation over editorial rewriting. Preserve
+  theorem order, section order, and mathematical claims unless there is a clear
+  build, tooling, or project-structure reason not to.
 - For each blueprint node, prefer attaching the real FLT declaration with
   `(lean := "...")`.
 - Before adding a Lean reference, check that the needed FLT module chain can be
