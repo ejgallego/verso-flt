@@ -77,7 +77,7 @@ reinterpret it as a unit. That shortcut is available only because the theorem is
 specialized to division algebras.
 :::
 
-# Proof outline
+# Enter the adeles
 
 :::definition "adelic_division_algebra_setup" (parent := "fujisaki_project")
 The argument studies the adelic algebra $`D \otimes_K \mathbf{A}_K`$ together
@@ -93,6 +93,21 @@ At that point the project’s compactness statement is a genuine quotient-space
 claim about `Dˣ \ D_A^{(1)}`. The chapter is careful to note that this is a
 subspace of the full unit group, equipped with the quotient topology coming from
 the Haar-character kernel.
+
+:::theorem "adelic_module_topologies_coincide" (parent := "fujisaki_project")
+If a finite-dimensional `K`-algebra is tensored with the adeles, the resulting
+`A_K`-module topology agrees with the `A_{\mathbf{Q}}`-module topology coming
+from scalar restriction.
+:::
+
+:::proof "adelic_module_topologies_coincide"
+The TeX chapter pauses to note this because `D_A` is often viewed both as
+`D \otimes_K A_K` and as a finite module over `A_{\mathbf{Q}}` via a choice of
+`K/\mathbf{Q}`-structure. The point is that no ambiguity of topology is being
+introduced when switching between those viewpoints.
+:::
+
+# The proof
 
 :::theorem "large_compact_set_mod_d_exists" (parent := "fujisaki_project")
 There is a compact subset `E ⊆ D_A` such that for every

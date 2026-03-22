@@ -22,7 +22,27 @@ the Verso port: most of the results are standard, but they are exactly the
 standard results that explain why the Frey curve is such a rigid arithmetic
 input.
 
+# Overview
+
+The TeX chapter begins by identifying two main outputs: first, that the
+`ℓ`-torsion of the Frey curve is hardly ramified; second, that Mazur's theorem
+forces the same `ℓ`-torsion representation to be irreducible.
+
 # Elliptic curve torsion
+
+The arithmetic-of-elliptic-curves section of the TeX chapter first recalls the
+cardinality of `n`-torsion, then a group-theoretic structure lemma, and then
+the determinant statement.
+
+:::theorem "elliptic_curve_torsion_cardinality" (parent := "elliptic_frey_bridge")
+For an elliptic curve over a separably closed field of characteristic prime to
+`n`, the `n`-torsion has cardinality `n²`.
+:::
+
+:::theorem "torsion_group_structure_lemma" (parent := "elliptic_frey_bridge")
+If the `d`-torsion in an abelian group has size `d^r` for every divisor `d` of
+`n`, then the `n`-torsion is isomorphic to `(\mathbf{Z}/n\mathbf{Z})^r`.
+:::
 
 :::theorem "elliptic_curve_torsion_two_dimensional" (parent := "elliptic_frey_bridge")
 For an elliptic curve over a field of characteristic prime to $`n`, the
@@ -58,10 +78,18 @@ must be compatible with that fixed determinant.
 
 # Reduction theory of the Frey curve
 
+The TeX source next splits into good reduction and multiplicative reduction,
+because those are the two local geometric shapes that later control the Galois
+representation.
+
 :::definition "good_reduction_definition" (parent := "elliptic_frey_bridge")
 Good reduction means that an elliptic curve admits an integral model whose
 reduction modulo the maximal ideal is still smooth.
 :::
+
+The TeX chapter also records the local Galois-language point here: saying the
+torsion representation is unramified at a prime means that the finite extension
+cut out by the torsion is unramified there.
 
 :::theorem "frey_curve_good_reduction_away_from_abc" (parent := "elliptic_frey_bridge")
 For the Frey curve attached to a Frey package, any odd prime not dividing
@@ -174,6 +202,17 @@ This is the theorem that makes
 {uses "frey_curve_good_reduction_away_from_abc"}[] useful for the Galois side.
 :::
 
+:::theorem "good_reduction_implies_finite_flat_torsion" (parent := "elliptic_frey_bridge")
+At a prime above `p`, good reduction implies that the `p`-torsion comes from a
+finite flat group scheme on the local integral model.
+:::
+
+:::proof "good_reduction_implies_finite_flat_torsion"
+This is the good-reduction half of the finite-flat analysis in the TeX chapter.
+The kernel of multiplication by `p` on a good integral model is the expected
+finite flat group scheme.
+:::
+
 :::theorem "frey_curve_unramified_away_from_two_and_l" (parent := "elliptic_frey_bridge")
 The Frey-curve `ℓ`-torsion representation is unramified at every prime
 `p ≠ 2, ℓ`.
@@ -228,7 +267,25 @@ Katz--Mazur for the local finite-flat input
 {Informal.citep edix}[] {Informal.citep katzMazurArithmeticModuli}[].
 :::
 
+:::theorem "frey_curve_hardly_ramified_bridge" (parent := "elliptic_frey_bridge")
+Putting the determinant, ramification, `2`-adic, and finite-flat statements
+together shows that the Frey-curve `ℓ`-torsion is hardly ramified.
+:::
+
+:::proof "frey_curve_hardly_ramified_bridge"
+This is exactly the first main conclusion of the TeX chapter: combine
+{uses "elliptic_curve_torsion_determinant_cyclotomic"}[],
+{uses "frey_curve_unramified_away_from_two_and_l"}[],
+{uses "frey_curve_local_shape_at_two"}[], and
+{uses "frey_curve_flat_at_l"}[].
+:::
+
 # The Mazur side
+
+The second half of the TeX chapter is the Mazur argument for irreducibility. It
+first analyzes the characters in a hypothetical reducible representation, then
+uses Minkowski to force triviality, and finally splits into the trivial
+submodule and trivial quotient cases.
 
 :::theorem "reducible_frey_characters_unramified_away_from_l" (parent := "elliptic_frey_bridge")
 If the Frey-curve `ℓ`-torsion representation were reducible with characters
@@ -297,6 +354,18 @@ A trivial subrepresentation is exactly a Galois-stable line inside `E[ℓ]`, and
 that line corresponds to a rational torsion point of order `ℓ`.
 :::
 
+:::theorem "no_trivial_submodule_by_mazur" (parent := "elliptic_frey_bridge")
+The Frey-curve `ℓ`-torsion representation cannot have a trivial
+one-dimensional subrepresentation.
+:::
+
+:::proof "no_trivial_submodule_by_mazur"
+This is the first explicit Mazur contradiction in the TeX chapter. A trivial
+submodule gives a rational point of order `ℓ`, and the Frey curve already has
+three points of order `2`, so the torsion subgroup would have order at least
+`4ℓ ≥ 20`, contradicting Mazur's theorem.
+:::
+
 :::theorem "quotient_by_galois_stable_l_subgroup" (parent := "elliptic_frey_bridge")
 If an elliptic curve has a Galois-stable subgroup of order `ℓ` in its
 `ℓ`-torsion, then there is an `ℓ`-isogenous quotient elliptic curve obtained by
@@ -320,6 +389,18 @@ subrepresentation.
 Apply {uses "quotient_by_galois_stable_l_subgroup"}[] to the Galois-stable
 kernel of the quotient map. On the new elliptic curve, the dual isogeny
 repackages the same reducibility into the submodule case.
+:::
+
+:::theorem "no_trivial_quotient_by_mazur" (parent := "elliptic_frey_bridge")
+The Frey-curve `ℓ`-torsion representation cannot have a trivial
+one-dimensional quotient.
+:::
+
+:::proof "no_trivial_quotient_by_mazur"
+The TeX chapter handles this by passing to the `ℓ`-isogenous quotient curve from
+{uses "quotient_by_galois_stable_l_subgroup"}[]. That quotient curve then has a
+trivial subrepresentation and still has the inherited `2`-torsion needed to
+contradict Mazur's bound.
 :::
 
 :::theorem "reducible_frey_representation_conflicts_with_mazur" (parent := "elliptic_frey_bridge")
