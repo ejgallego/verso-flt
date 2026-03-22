@@ -9,6 +9,7 @@ import FLTBlueprint.TeXPrelude
 import FLTBlueprint.Chapters.Introduction
 import FLTBlueprint.Chapters.MiniProjects
 import FLTBlueprint.Chapters.Reductions
+import FLTBlueprint.Chapters.EllipticFrey
 import FLTBlueprint.Chapters.HardlyRamified
 import FLTBlueprint.Chapters.Overview
 import FLTBlueprint.Chapters.AutomorphicFormExample
@@ -36,6 +37,7 @@ upstream formalization checkout.
 {include 0 FLTBlueprint.Chapters.Introduction}
 {include 0 FLTBlueprint.Chapters.MiniProjects}
 {include 0 FLTBlueprint.Chapters.Reductions}
+{include 0 FLTBlueprint.Chapters.EllipticFrey}
 {include 0 FLTBlueprint.Chapters.HardlyRamified}
 {include 0 FLTBlueprint.Chapters.Overview}
 {include 0 FLTBlueprint.Chapters.AutomorphicFormExample}

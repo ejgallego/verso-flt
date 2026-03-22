@@ -88,7 +88,8 @@ $`\\mathbf{Q}`$ together with the special structure of the Frey curve. The old
 blueprint cites Mazur's original paper {Informal.citep mazurTorsion}[] and
 Serre's later FLT notes {Informal.citep serreModularityConjecture}[] for a
 pre-1990 route from the general torsion theorem to this Frey-specific
-irreducibility statement.
+irreducibility statement. In the current Verso port, that mechanism is made
+explicit in {uses "reducible_frey_representation_conflicts_with_mazur"}[].
 :::
 
 :::theorem "wiles_frey_not_irreducible" (parent := "first_reductions")

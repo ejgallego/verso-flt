@@ -94,7 +94,12 @@ $`2` semistability forces the required one-dimensional quotient, and at
 $`p` the torsion is finite flat.
 
 This is the first place where the Frey curve stops being a geometric object and
-starts being an input to the deformation-theoretic part of the argument.
+starts being an input to the deformation-theoretic part of the argument. The
+intermediate arithmetic bridge is now spelled out in the new chapter through
+{uses "elliptic_curve_torsion_determinant_cyclotomic"}[],
+{uses "frey_curve_unramified_away_from_two_and_l"}[],
+{uses "frey_curve_local_shape_at_two"}[], and
+{uses "frey_curve_flat_at_l"}[].
 :::
 
 # Three bridges out of characteristic `p`
