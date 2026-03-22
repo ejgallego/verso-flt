@@ -82,6 +82,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Prefer faithful TeX-to-Verso translation over editorial rewriting. Preserve
   theorem order, section order, and mathematical claims unless there is a clear
   build, tooling, or project-structure reason not to.
+- Preserve TeX `\uses{...}` dependency edges as Verso `{uses "..."}[]`
+  references whenever the target exists in the blueprint graph. Put these
+  references inside informal nodes or proofs, not in free prose, so they are
+  actually captured by the rendered dependency graph.
 - For each blueprint node, prefer attaching the real FLT declaration with
   `(lean := "...")`.
 - Before adding a Lean reference, check that the needed FLT module chain can be

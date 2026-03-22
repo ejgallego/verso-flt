@@ -12,6 +12,10 @@ porting goal in this repository is a faithful, as-near-word-for-word-as-
 practical translation from TeX/`leanblueprint` layout into Verso layout, not a
 substantive rewrite of the mathematical content.
 
+When the TeX source records dependency edges with `\uses{...}`, the port should
+preserve those edges as Verso `{uses "..."}[]` references inside the relevant
+informal nodes or proofs so the dependency graph remains faithful too.
+
 ## Pages Artifact
 
 The GitHub Pages build is defined in `.github/workflows/blueprint.yml`.
