@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.Citations
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -28,7 +29,7 @@ to be integrated into the main project narrative from this appendix.
 :::theorem "local_galois_cohomology_package" (parent := "bestiary_appendix")
 The local cohomology package includes finiteness, cohomological dimension two,
 top-degree identifications, Poincare duality, and Euler-Poincare formulas.
-These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[].
+These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's Galois cohomology text {Informal.citep serreGalCoh}[] throughout this package.
 :::
 
 # Algebraic groups and automorphic forms

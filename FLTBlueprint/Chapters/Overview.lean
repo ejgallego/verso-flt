@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.Citations
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -25,7 +26,8 @@ representation becomes modular in the quaternionic sense, relying on {uses "modu
 :::proof "potential_modularity_step"
 The legacy blueprint explains this as the part of the argument that mixes
 Moret--Bailly, class field theory, Jacquet--Langlands, converse theorems, and a
-modularity lifting theorem.
+modularity lifting theorem. For the first ingredient, see
+{Informal.citep moretBailly1990}[].
 :::
 
 # A modularity lifting theorem
@@ -48,7 +50,7 @@ state cleanly in Lean.
 :::proof "modularity_lifting_theorem"
 The TeX blueprint presents this theorem as the key genuinely post-1980s input in
 the overview, with the proof split into a minimal case and a reduction to that
-case via Skinner--Wiles style arguments. The chapter {uses "minimal_modularity_lifting_statement"}[] is devoted to making this interface precise.
+case via Skinner--Wiles style arguments. The chapter {uses "minimal_modularity_lifting_statement"}[] is devoted to making this interface precise, and the old TeX discussion points in particular to {Informal.citep taylorMeroCont}[] and {Informal.citep tobyModularity}[] as near references.
 :::
 
 # Compatible families and reduction at 3

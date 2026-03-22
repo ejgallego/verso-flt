@@ -1,8 +1,10 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import VersoBlueprint.Commands.Bibliography
 import VersoBlueprint.Commands.Graph
 import VersoBlueprint.Commands.Summary
+import FLTBlueprint.Citations
 import FLTBlueprint.TeXPrelude
 import FLTBlueprint.Chapters.Introduction
 import FLTBlueprint.Chapters.Reductions
@@ -48,3 +50,4 @@ upstream formalization checkout.
 
 {blueprint_graph}
 {blueprint_summary}
+{blueprint_bibliography}

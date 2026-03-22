@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.Citations
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -24,7 +25,7 @@ This is the compactness statement later used in {uses "finite_dimensional_quater
 :::proof "fujisaki_lemma_goal"
 The old blueprint highlights this as the noncommutative compactness statement
 that simultaneously generalizes class-group finiteness and Dirichlet's unit
-theorem.
+theorem; it explicitly follows Voight's presentation {Informal.citep voightBook}[].
 :::
 
 # Proof outline
