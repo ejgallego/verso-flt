@@ -82,6 +82,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If the declaration exists but the import chain fails on `v4.29.0-rc6`, treat
   that as an FLT-fork task first. Fix it in `FLT/`, push to
   `ejgallego/FLT`, and only then enable the blueprint link.
+- Small, contained Lean-side fixes that directly unblock the port are fine.
+  Broader or cascading FLT-fork repair work should be postponed and tracked
+  explicitly instead of being expanded opportunistically during the port.
 - Keep rc6 compatibility fixes in the FLT fork and keep blueprint/integration
   changes in the outer `verso-flt` repository.
 - After FLT-fork changes land, update the `FLT/` submodule pointer in the outer

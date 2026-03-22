@@ -24,10 +24,27 @@ representation becomes modular in the quaternionic sense, relying on {uses "modu
 :::
 
 :::proof "potential_modularity_step"
-The legacy blueprint explains this as the part of the argument that mixes
-Moret--Bailly, class field theory, Jacquet--Langlands, converse theorems, and a
-modularity lifting theorem. For the first ingredient, see
-{Informal.citep moretBailly1990}[].
+In the old blueprint, “modular” here does not mean classical modular forms on
+`GL₂/ℚ`. It means automorphic forms for the units of a totally definite
+quaternion algebra over a totally real field of even degree. The parity
+condition matters: such a quaternion algebra exists only when the number of real
+places is even.
+
+The point of the potential modularity step is that one starts with a
+hardly-ramified representation over `ℚ`, passes to the number field cut out by
+its kernel, and then searches for a suitable totally real extension `F`
+disjoint from that field such that the restricted representation becomes
+modular.
+
+The TeX chapter explicitly lists the kinds of ingredients this uses:
+
+- Moret--Bailly's theorem on global points with prescribed local behavior; see
+  {Informal.citep moretBailly1990}[].
+- global class field theory
+- the Jacquet--Langlands correspondence
+- converse-theorem input showing certain induced mod `p` representations are
+  modular
+- a modularity lifting theorem
 :::
 
 # A modularity lifting theorem
@@ -48,9 +65,22 @@ state cleanly in Lean.
 :::
 
 :::proof "modularity_lifting_theorem"
-The TeX blueprint presents this theorem as the key genuinely post-1980s input in
-the overview, with the proof split into a minimal case and a reduction to that
-case via Skinner--Wiles style arguments. The chapter {uses "minimal_modularity_lifting_statement"}[] is devoted to making this interface precise, and the old TeX discussion points in particular to {Informal.citep taylorMeroCont}[] and {Informal.citep tobyModularity}[] as near references.
+The TeX chapter spells out the local conditions more concretely. For places
+`v ∈ S`, one uses a tame quotient condition encoded through a subgroup `J_v` of
+inertia. At places above `\ell`, one imposes flatness, meaning that the
+representation should be approximable by finite flat group schemes. That is the
+point where the “projective limit of finite flat objects” formulation enters.
+
+The overview is also explicit that this theorem is the main genuinely
+post-1980s ingredient in the whole chapter. The proof is presented as a
+two-stage argument: first reduce to a minimal case by Skinner--Wiles-style
+arguments and cyclic base change, then run a Taylor--Wiles/Kisin patching
+argument in the minimal setting.
+
+The chapter {uses "minimal_modularity_lifting_statement"}[] is devoted to
+making this interface precise, and the TeX discussion points in particular to
+{Informal.citep taylorMeroCont}[] and {Informal.citep tobyModularity}[] as near
+references.
 :::
 
 # Compatible families and reduction at 3
@@ -72,5 +102,11 @@ argument of Fontaine/Odlyzko type, contradicting the original irreducibility.
 :::
 
 :::proof "reduction_at_three_step"
-The contradiction uses {uses "odlyzko_root_discriminant_bound"}[] together with the deformation-theoretic bridge recorded earlier in {uses "hardly_ramified_compatible_family"}[].
+The TeX blueprint phrases this as a Fontaine-style contradiction. After passing
+to the 3-adic specialization of a compatible family, the reduction mod `3`
+becomes flat at `3` and tame at `2`. The resulting representation should then be
+reducible because an irreducible one would cut out a number field with root
+discriminant too small to satisfy the Odlyzko bounds.
+
+So the contradiction uses {uses "odlyzko_root_discriminant_bound"}[] together with the deformation-theoretic bridge recorded earlier in {uses "hardly_ramified_compatible_family"}[].
 :::
