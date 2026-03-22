@@ -14,6 +14,8 @@ This chapter is the representation-theoretic spine of the FLT strategy. After
 the Diophantine reductions have produced a Frey curve, the remaining task is to
 show that its mod-p Galois representation cannot simultaneously satisfy the
 very restrictive local conditions forced by that curve and remain irreducible.
+The TeX chapter organizes this through three deeper inputs: lifting,
+compatible families, and the reduction at `3`.
 :::
 
 The old TeX blueprint makes the reduction pattern explicit. One first proves
@@ -85,7 +87,9 @@ The determinant is cyclotomic for general elliptic-curve torsion
 representations, while the Frey-specific work is in the local conditions. The
 old blueprint points to Serre's discussion of the Frey curve and Serre's
 conjecture {Informal.citep serreModularityConjecture}[] for the bad-reduction
-analysis: outside $`2` and $`p` the representation is unramified, at
+analysis. For the general elliptic-curve facts on torsion and the Weil pairing,
+the standard reference is Silverman {Informal.citep silvermanArithmeticEllipticCurves}[]:
+outside $`2` and $`p` the representation is unramified, at
 $`2` semistability forces the required one-dimensional quotient, and at
 $`p` the torsion is finite flat.
 
@@ -99,7 +103,8 @@ starts being an input to the deformation-theoretic part of the argument.
 An irreducible mod $`p` hardly ramified representation lifts to a $`p`-adic
 hardly ramified representation.
 This is the first deformation-theoretic input needed after establishing
-{uses "frey_torsion_hardly_ramified"}[].
+{uses "frey_torsion_hardly_ramified"}[], and the first of the three ingredients
+used in {uses "hardly_ramified_reducible"}[].
 :::
 
 :::proof "hardly_ramified_lifts"
@@ -121,7 +126,8 @@ and {uses "modularity_lifting_theorem"}[].
 :::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program")
 A $`p`-adic hardly ramified representation belongs to a compatible family.
 This is the step that makes it possible to move from a prime $`p` coming from
-the Frey package to a controlled specialization at $`3`.
+the Frey package to a controlled specialization at $`3`, and it is the second
+major ingredient in {uses "hardly_ramified_reducible"}[].
 :::
 
 :::proof "hardly_ramified_compatible_family"
@@ -144,6 +150,7 @@ signaled by {uses "compatible_family_step"}[].
 :::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program")
 A hardly ramified mod $`3` representation is forced into a two-step filtration
 whose Jordan-Hölder factors are the trivial and cyclotomic characters.
+This is the residual input behind {uses "hardly_ramified_three_adic"}[].
 :::
 
 :::proof "hardly_ramified_mod_three"
@@ -160,6 +167,8 @@ semisimplification is already the expected reducible object.
 A hardly ramified $`3`-adic representation has the same semisimple Frobenius
 data as $`1 \oplus \chi_3`; in particular, away from $`2` and $`3` the trace
 at Frobenius is $`1+p`.
+This packages the final local contradiction used in
+{uses "hardly_ramified_reducible"}[].
 :::
 
 :::proof "hardly_ramified_three_adic"
@@ -170,7 +179,9 @@ would-be irreducible extension to cut out a number field with impossibly small
 root discriminant.
 
 So this theorem is the point where the chapter uses the historical input
-recorded as {uses "odlyzko_root_discriminant_bound"}[].
+recorded as {uses "odlyzko_root_discriminant_bound"}[], ultimately in the
+numerical form developed by Poitou and Odlyzko
+{Informal.citep poitouOdlyzkoBounds}[].
 :::
 
 # The reducibility contradiction
@@ -179,7 +190,9 @@ recorded as {uses "odlyzko_root_discriminant_bound"}[].
 If $`\ell \ge 3` is prime, then every hardly ramified mod $`\ell`
 representation is reducible.
 This is the general theorem that turns the Frey-curve local analysis into a
-contradiction.
+contradiction by combining {uses "hardly_ramified_lifts"}[],
+{uses "hardly_ramified_compatible_family"}[], and
+{uses "hardly_ramified_three_adic"}[].
 :::
 
 :::proof "hardly_ramified_reducible"
@@ -205,7 +218,8 @@ the project's preferred modularity-lifting infrastructure.
 :::theorem "frey_torsion_not_irreducible" (parent := "hardly_ramified_program")
 The Frey curve torsion representation is not irreducible.
 This is the modularity-side endpoint used in {uses "wiles_frey_not_irreducible"}[]
-and therefore in {uses "no_frey_package"}[].
+and therefore in {uses "no_frey_package"}[]; it is the direct Frey-curve
+specialization of {uses "hardly_ramified_reducible"}[].
 :::
 
 :::proof "frey_torsion_not_irreducible"

@@ -20,7 +20,11 @@ ramified irreducible representation of that shape can exist.
 :::theorem "potential_modularity_step" (parent := "overview_strategy")
 Starting from a hardly ramified mod $`\ell`$ representation, the strategy is to
 find a totally real field of even degree over $`\mathbf{Q}`$ over which the
-representation becomes modular in the quaternionic sense, relying on {uses "modularity_lifting_theorem"}[] and the automorphic infrastructure developed in {uses "quaternionic_modular_form_example"}[] and {uses "weight_two_quaternionic_forms"}[].
+representation becomes modular in the quaternionic sense, relying on
+{uses "potential_modularity_auxiliary_curve"}[],
+{uses "modularity_lifting_theorem"}[], and the automorphic infrastructure
+developed in {uses "quaternionic_modular_form_example"}[] and
+{uses "weight_two_quaternionic_forms"}[].
 :::
 
 :::proof "potential_modularity_step"
@@ -47,6 +51,24 @@ The TeX chapter explicitly lists the kinds of ingredients this uses:
 - a modularity lifting theorem
 :::
 
+:::theorem "potential_modularity_auxiliary_curve" (parent := "overview_strategy")
+Potential modularity is implemented by choosing a totally real field, an
+auxiliary prime, and an auxiliary elliptic curve whose mod $`\ell`$
+representation realizes the target representation and whose mod `p`
+representation is already modular.
+:::
+
+:::proof "potential_modularity_auxiliary_curve"
+The TeX overview makes this construction explicit. One uses Moret--Bailly to
+produce an auxiliary curve over a suitable totally real field `F`, arranged so
+that its mod $`\ell`$ representation is the one we care about while its mod `p`
+representation is induced from a character. Converse-theorem input then makes
+the mod `p` side modular, and {uses "modularity_lifting_theorem"}[] transports
+that modularity back to the mod $`\ell` side.
+
+This is the concrete mechanism hidden behind the slogan “potential modularity”.
+:::
+
 # A modularity lifting theorem
 
 :::definition "s_good_lift_condition" (parent := "overview_strategy")
@@ -57,9 +79,31 @@ places above $`\ell`$.
 The local cohomological background for these conditions is part of {uses "local_galois_cohomology_package"}[].
 :::
 
+:::theorem "s_good_deformation_problem" (parent := "overview_strategy")
+Once the `S`-good local conditions are fixed, the corresponding deformation
+problem for an absolutely irreducible residual representation is expected to be
+representable.
+This is the deformation-theoretic interface behind
+{uses "modularity_lifting_theorem"}[].
+:::
+
+:::proof "s_good_deformation_problem"
+The old TeX overview says this explicitly before stating the theorem: after
+fixing determinant, ramification, trace conditions at the auxiliary groups
+`J_v`, and flatness above $`\ell`, one can package the allowed lifts into a
+representable functor.
+
+This matters for the blueprint graph because the modularity lifting theorem is
+not merely about one distinguished lift. It is about a whole deformation
+problem with controlled local behavior, and that representable deformation
+problem is the `R` side of the later `R = T` story.
+:::
+
 :::theorem "modularity_lifting_theorem" (parent := "overview_strategy")
 If a residual representation is modular and a lift satisfies the relevant
 local conditions, then the lift is modular as well.
+The statement is meant to apply to lifts governed by
+{uses "s_good_lift_condition"}[] and {uses "s_good_deformation_problem"}[].
 This is the first major theorem the old blueprint identifies as a priority to
 state cleanly in Lean.
 :::
@@ -87,13 +131,17 @@ references.
 
 :::theorem "compatible_family_step" (parent := "overview_strategy")
 After potential modularity, the argument passes to a compatible
-family and studies the specialization at $`3`$.
+family and studies the specialization at $`3`$, matching the transfer
+formalized later in {uses "hardly_ramified_compatible_family"}[].
 :::
 
 :::proof "compatible_family_step"
 This is the place where the legacy blueprint invokes Khare--Wintenberger,
 Brauer's theorem tricks, and the move to a 3-adic specialization, matching the
-program sketched in {uses "hardly_ramified_compatible_family"}[].
+program sketched in {uses "hardly_ramified_compatible_family"}[]. The TeX notes
+specifically point toward the Khare--Wintenberger modularity machinery
+{Informal.citep khareWintenbergerII}[] and a Brauer-theoretic compatible-family
+construction in BLGGT {Informal.citep blggtPotentialAutomorphy}[].
 :::
 
 :::theorem "reduction_at_three_step" (parent := "overview_strategy")
@@ -108,5 +156,9 @@ becomes flat at `3` and tame at `2`. The resulting representation should then be
 reducible because an irreducible one would cut out a number field with root
 discriminant too small to satisfy the Odlyzko bounds.
 
-So the contradiction uses {uses "odlyzko_root_discriminant_bound"}[] together with the deformation-theoretic bridge recorded earlier in {uses "hardly_ramified_compatible_family"}[].
+So the contradiction uses {uses "odlyzko_root_discriminant_bound"}[] together
+with the deformation-theoretic bridge recorded earlier in
+{uses "hardly_ramified_compatible_family"}[], and the TeX bibliography traces
+the numerical estimate back to the Poitou--Odlyzko discriminant bounds
+{Informal.citep poitouOdlyzkoBounds}[].
 :::
