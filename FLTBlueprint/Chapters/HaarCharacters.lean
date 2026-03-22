@@ -58,6 +58,16 @@ The proof is the usual uniqueness-of-Haar-measure argument: changing the Haar
 measure by a positive scalar cancels on both sides of the defining relation.
 :::
 
+:::theorem "haar_character_pushforward_formula" (parent := "haar_character_project")
+For any regular Haar measure `μ`, one has
+$`d_A(\phi) (\phi_* \mu) = \mu`.
+:::
+
+:::proof "haar_character_pushforward_formula"
+The TeX chapter presents this as the direct reformulation of the definition once
+independence of Haar measure has been established.
+:::
+
 :::theorem "haar_character_pullback_formula" (parent := "haar_character_project")
 Pulling Haar measure back along an additive homeomorphism scales the measure by
 the same Haar-character factor.
@@ -67,6 +77,15 @@ the same Haar-character factor.
 The TeX chapter treats this as the immediate companion to the pushforward
 formula: once one knows what happens to `φ_* μ`, the pullback `φ^* μ` follows by
 applying the same statement to the inverse map.
+:::
+
+:::theorem "haar_character_identity" (parent := "haar_character_project")
+The Haar character of the identity automorphism is `1`.
+:::
+
+:::proof "haar_character_identity"
+The TeX chapter records this as an immediate formal consequence before proving
+multiplicativity under composition.
 :::
 
 :::theorem "haar_character_preimage_formula" (parent := "haar_character_project")
@@ -167,6 +186,10 @@ For $`\mathbf{Z}_p`$, the Haar character is constantly $`1`$ on the unit group.
 This is the integral counterpart to {uses "padic_haar_character_formula"}[].
 :::
 
+The TeX chapter also remarks here that for a finite extension of `ℚ_p`, the
+same computation gives the normalized nonarchimedean norm. It leaves that
+statement informal because the right local-field interface was not yet settled.
+
 # Finite-dimensional algebras
 
 :::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project")
@@ -225,6 +248,16 @@ measures this is exactly what one expects: product Haar measure scales by the
 product of the coordinatewise scaling factors.
 :::
 
+:::theorem "product_ring_haar_character_formula" (parent := "haar_character_project")
+For a finite product of locally compact topological rings, the ring-level Haar
+character is the product of the local ring-level Haar characters.
+:::
+
+:::proof "product_ring_haar_character_formula"
+The TeX chapter states this first for additive groups, then for rings as the
+immediate specialization to multiplication-by-units.
+:::
+
 :::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project")
 For a restricted product of locally compact groups with compact open reference
 subgroups, the Haar character of a restricted-product automorphism is the
@@ -254,6 +287,16 @@ resulting integral identities on the smaller and larger groups.
 This is a transfer principle: once one knows the Haar character in an ambient
 group, one can sometimes read off the character on an open embedded subgroup for
 free.
+:::
+
+:::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project")
+If an additive automorphism acts on a compact additive group, then its Haar
+character is `1`.
+:::
+
+:::proof "compact_group_haar_character_trivial"
+The TeX proof is the short measure argument: the whole compact group has finite,
+positive Haar measure, and that total measure is unchanged by the automorphism.
 :::
 
 :::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project")

@@ -40,6 +40,11 @@ compactness, prove base change along finite field extensions, and prove that
 the number field sits discretely with compact quotient.
 :::
 
+:::definition "adele_mathlib_goal" (parent := "adele_project")
+The TeX chapter also lists a fifth meta-goal: get the finished adele
+infrastructure into mathlib once the core statements are formalized cleanly.
+:::
+
 The chapter also stresses a useful distinction. Finite adeles are algebraic
 objects and can be defined for general Dedekind domains. Full adeles are more
 arithmetic: they add the archimedean factor and use special properties of number
@@ -123,6 +128,12 @@ The TeX chapter is also careful about the logical shape of this statement:
 `A_L = L ⊗_K A_K` is really a construction plus an isomorphism theorem, not just
 a bare equality.
 
+:::definition "finite_adele_base_change_map" (parent := "adele_project")
+Before proving finite-adele base change, one first defines the natural map
+$`\mathbf{A}_{A,K}^\infty \to \mathbf{A}_{B,L}^\infty` induced by the local maps
+on completions.
+:::
+
 :::definition "local_completion_map" (parent := "adele_project")
 Given a finite extension `L/K` and places `w | v`, there is a natural map from
 the completion `K_v` to the completion `L_w`.
@@ -198,6 +209,42 @@ restricted products along the finite-fibre map on places. The result is an
 algebraic identification of the finite adeles after base change.
 :::
 
+:::theorem "tensor_product_module_base_change" (parent := "adele_project")
+If `M` is a `K`-module, then the canonical map
+$`B \otimes_A M \to L \otimes_K M` is an isomorphism.
+:::
+
+:::proof "tensor_product_module_base_change"
+The TeX chapter inserts this algebraic lemma into the nonarchimedean base-change
+subsection because the later restricted-product arguments repeatedly move
+between `A`-module and `K`-module tensor products. So this is one of the hidden
+algebraic engines underneath the finite-adele base-change theorem.
+:::
+
+:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
+If an index map has finite fibres and each factor over the target is identified
+with the product of the corresponding fibres over the source, then the two
+restricted products are naturally in bijection.
+:::
+
+:::proof "restricted_product_relabel_isomorphism"
+The TeX chapter introduces this abstract relabelling construction because the
+finite-adele base-change proof needs to reorganize a restricted product indexed
+by places of `K` into one indexed by places of `L`.
+:::
+
+:::theorem "finite_adele_base_change_integral" (parent := "adele_project")
+At the integral level, one gets a `B`-algebra isomorphism
+$`B \otimes_A \mathbf{A}_K^\infty \cong \mathbf{A}_L^\infty`.
+:::
+
+:::proof "finite_adele_base_change_integral"
+In the TeX chapter this is the immediate predecessor of
+{uses "finite_adele_base_change_algebraic"}[]. One first matches the integral
+restricted products place by place and only then passes to the field-level
+statement.
+:::
+
 :::theorem "finite_adele_base_change_topological" (parent := "adele_project")
 The same finite-adele base-change map is also a homeomorphism when the source is
 given the module topology and the target the restricted-product topology.
@@ -233,6 +280,28 @@ The TeX chapter mirrors the nonarchimedean story but with archimedean
 completions. One first builds local maps at each infinite place, then proves
 surjectivity and injectivity using weak approximation and dimension counting,
 and finally upgrades the algebra isomorphism to a homeomorphism.
+:::
+
+:::theorem "infinite_place_dimension_count" (parent := "adele_project")
+For a fixed infinite place `v` of `K`, the `K_v`-dimension of
+$`\prod_{w \mid v} L_w` matches the `K_v`-dimension of $`L \otimes_K K_v`.
+:::
+
+:::proof "infinite_place_dimension_count"
+The TeX chapter separates this dimension count from the actual map construction,
+because surjectivity of the infinite-place base-change map is ultimately proved
+by combining weak approximation with finite-dimensional linear algebra.
+:::
+
+:::definition "infinite_place_local_base_change_map" (parent := "adele_project")
+At a fixed infinite place `v` of `K`, there is a natural map
+$`L \otimes_K K_v \to \prod_{w \mid v} L_w`.
+:::
+
+:::proof "infinite_place_local_base_change_map"
+The TeX chapter builds this in two stages: first a map `K_v → ∏_{w|v} L_w`,
+then the induced `L`-linear map on the tensor product. This mirrors the
+nonarchimedean completion story as closely as possible.
 :::
 
 :::proof "adele_base_change"
