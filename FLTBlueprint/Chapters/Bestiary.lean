@@ -19,6 +19,12 @@ state but hard to prove. Others are not even easy to state cleanly in Lean yet
 because the necessary surrounding definitions are still missing. The role of the
 appendix is to make that frontier explicit.
 
+:::definition "appendix_role_definition" (parent := "bestiary_appendix")
+The appendix is project-management infrastructure: it is where the blueprint
+records the missing background stack before that material has been migrated into
+dedicated chapters or promoted to explicit assumptions.
+:::
+
 # Class field theory
 
 The TeX appendix begins with the local case and, for simplicity, speaks only
@@ -32,6 +38,13 @@ Galois with Galois group canonically identifiable with `\widehat{ℤ}` in the tw
 normalizations corresponding to arithmetic and geometric Frobenius.
 :::
 
+:::proof "maximal_unramified_extension_placeholder"
+The TeX appendix is explicit about the normalization issue here: there are two
+equally natural identifications, one sending `1` to arithmetic Frobenius and
+the other to geometric Frobenius. The point of recording both is not pedantry;
+later local-global statements genuinely depend on the chosen normalization.
+:::
+
 :::definition "local_weil_group_placeholder" (parent := "bestiary_appendix")
 The appendix records the local Weil group and local class field theory among
 the core background items still waiting for polished Lean-facing statements.
@@ -40,6 +53,13 @@ the core background items still waiting for polished Lean-facing statements.
 :::theorem "local_class_field_theory_placeholder" (parent := "bestiary_appendix")
 Local class field theory is one of the major background theorems still waiting
 to be integrated into the main project narrative from this appendix.
+:::
+
+:::proof "local_class_field_theory_placeholder"
+In the TeX appendix this is stated for finite extensions of `ℚ_p`, not because
+the function-field case is irrelevant in principle, but because the FLT project
+only needs the p-adic case and even that already carries most of the relevant
+phenomena.
 :::
 
 :::theorem "local_galois_cohomology_package" (parent := "bestiary_appendix")
@@ -54,6 +74,13 @@ Global class field theory should identify the connected components of
 compatibly with the local reciprocity maps.
 :::
 
+:::proof "global_class_field_theory_placeholder"
+This is the global backdrop for the local reciprocity package above and the
+Skinner--Wiles class-field-theory trick below. The appendix uses it to explain
+why the relevant solvable extensions can be constructed with prescribed local
+behavior.
+:::
+
 :::theorem "skinner_wiles_cft_trick_placeholder" (parent := "bestiary_appendix")
 The appendix isolates a global class-field-theoretic construction that produces
 finite solvable extensions with prescribed local behavior and optional
@@ -63,6 +90,12 @@ disjointness from an auxiliary field.
 :::proof "skinner_wiles_cft_trick_placeholder"
 This is the background theorem later referenced in the modularity lifting story
 as the class-field-theory part of the Skinner--Wiles trick.
+:::
+
+:::theorem "poitou_tate_duality_placeholder" (parent := "bestiary_appendix")
+The project will also eventually need Poitou--Tate duality, but the appendix
+records it only at the level of dependencies because even the surrounding
+Galois-cohomology language is still being assembled.
 :::
 
 # Structures on the points of an affine variety
@@ -77,6 +110,13 @@ topology coming from the product topology on maps `A → R`.
 When an affine variety is embedded as a closed subscheme of affine space, the
 point-set topology described above should agree with the induced subspace
 topology from the ambient finite-dimensional `R`-space.
+:::
+
+:::proof "affine_variety_point_topology_computation"
+The appendix treats this as the key sanity check on the abstract definition of
+the topology on `X(R)`: once an affine scheme is concretely embedded in affine
+space, the formal topology should recover the one a working mathematician would
+write down by hand.
 :::
 
 :::definition "manifold_on_affine_variety_points_placeholder" (parent := "bestiary_appendix")
@@ -121,6 +161,13 @@ An admissible automorphic representation should decompose as a restricted tensor
 product of local representations, unramified at almost all finite places.
 :::
 
+:::proof "automorphic_representation_local_decomposition_placeholder"
+This is the global representation-theoretic package behind later chapters such
+as {uses "automorphic_form_for_gln"}[]. The TeX appendix cites Flath's theorem
+for this decomposition and uses it to explain why restricted products appear so
+inevitably in automorphic representation theory.
+:::
+
 # Galois representations
 
 :::definition "compatible_family_placeholder" (parent := "bestiary_appendix")
@@ -136,11 +183,24 @@ Galois representations from automorphic representations of an inner form of
 GL2 over a totally real field.
 :::
 
+:::proof "automorphic_to_galois_representation_placeholder"
+The appendix is very clear that this is far beyond the current Lean frontier.
+But it is also one of the decisive theorems for the FLT strategy, because it is
+the place where automorphic information is converted back into compatible
+families of Galois representations.
+:::
+
 # Algebraic geometry
 
 :::definition "shimura_varieties_placeholder" (parent := "bestiary_appendix")
 The project still needs precise Lean definitions of the compact Shimura curves
 and surfaces attached to suitable inner forms of GL2.
+:::
+
+:::proof "shimura_varieties_placeholder"
+The appendix emphasizes that even stating the right Shimura-theoretic objects is
+nontrivial. They are not decorative geometry; they are the source of the Galois
+representations that later chapters want to attach to automorphic forms.
 :::
 
 :::theorem "moret_bailly_placeholder" (parent := "bestiary_appendix")
@@ -159,4 +219,11 @@ see {Informal.citep moretBailly1990}[].
 The appendix records the classification of finite subgroups of
 `PGL₂(\overline{𝔽}_p)` as a background algebraic input still to be stated
 cleanly.
+:::
+
+:::proof "finite_subgroups_of_pgl2_placeholder"
+The appendix gives the usual list: cyclic, dihedral, `A₄`, `S₄`, `A₅`, and the
+finite groups of Lie type `PSL₂(k)` and `PGL₂(k)`. The point of keeping this in
+the appendix is not because the classification is obscure, but because the
+surrounding representation-theoretic infrastructure is still being assembled.
 :::

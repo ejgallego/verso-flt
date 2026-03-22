@@ -15,6 +15,7 @@ import FLTBlueprint.Chapters.Overview
 import FLTBlueprint.Chapters.AutomorphicFormExample
 import FLTBlueprint.Chapters.ModularityLifting
 import FLTBlueprint.Chapters.LanglandsGLn
+import FLTBlueprint.Chapters.GlobalLanglands
 import FLTBlueprint.Chapters.FrobeniusProject
 import FLTBlueprint.Chapters.AdeleProject
 import FLTBlueprint.Chapters.HaarCharacters
@@ -43,6 +44,7 @@ upstream formalization checkout.
 {include 0 FLTBlueprint.Chapters.AutomorphicFormExample}
 {include 0 FLTBlueprint.Chapters.ModularityLifting}
 {include 0 FLTBlueprint.Chapters.LanglandsGLn}
+{include 0 FLTBlueprint.Chapters.GlobalLanglands}
 {include 0 FLTBlueprint.Chapters.FrobeniusProject}
 {include 0 FLTBlueprint.Chapters.AdeleProject}
 {include 0 FLTBlueprint.Chapters.HaarCharacters}

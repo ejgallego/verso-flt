@@ -42,12 +42,47 @@ the main examples already surfaced as Lean declarations are Mazur’s torsion
 bound and the Odlyzko–Poitou discriminant bound.
 :::
 
+:::proof "formalized_assumptions_scope"
+The chapter is small on purpose. The project is not trying to dump every
+pre-1990 theorem into Lean as an undifferentiated axiom file; it is trying to
+surface the assumptions that are already strategic bottlenecks in the current
+proof spine.
+:::
+
 :::definition "forthcoming_assumptions_scope" (parent := "historical_inputs")
 The assumptions README also lists future targets that should eventually become
 formal assumptions once enough infrastructure exists: local/global class field
 theory consequences, Moret--Bailly, Galois representations attached to
 quaternionic automorphic forms, cyclic base change, Jacquet--Langlands, and
 Poitou–Tate duality.
+:::
+
+:::proof "forthcoming_assumptions_scope"
+This list already mirrors the appendix frontier recorded in
+{uses "bestiary_appendix"}[]. The difference is one of maturity: appendix nodes
+track mathematical obligations, while this chapter records which of those
+obligations have become precise enough to promote into explicit project
+assumptions.
+:::
+
+:::theorem "future_assumptions_pipeline" (parent := "historical_inputs")
+The likely next assumptions to be promoted are the major appendix/theory
+interfaces: class field theory, Moret--Bailly, automorphic-to-Galois
+constructions, and Poitou--Tate duality.
+:::
+
+:::proof "future_assumptions_pipeline"
+The chapter's own forward-looking list already names these themes. In current
+blueprint terms, the relevant appendix nodes are
+{uses "local_class_field_theory_placeholder"}[],
+{uses "global_class_field_theory_placeholder"}[],
+{uses "moret_bailly_placeholder"}[],
+{uses "automorphic_to_galois_representation_placeholder"}[], and
+{uses "poitou_tate_duality_placeholder"}[].
+
+So the assumptions chapter and the appendix are not redundant: one marks the
+currently explicit axioms, the other marks the queue of future axioms or future
+proof targets.
 :::
 
 :::theorem "mazur_torsion_bound" (parent := "historical_inputs") (lean := "Mazur_statement")
@@ -84,4 +119,17 @@ The project notes spell out the strategic point here too: this bound replaces
 the older Langlands–Tunnell detour in the classical Wiles/Taylor–Wiles proof by
 supporting a later contradiction on the 3-adic specialization of a compatible
 family.
+:::
+
+:::theorem "explicit_assumptions_replace_broad_knownin1980s_uses" (parent := "historical_inputs")
+One purpose of this chapter is to gradually replace broad uses of the
+`knownin1980s` tactic by a short, explicit list of named assumptions.
+:::
+
+:::proof "explicit_assumptions_replace_broad_knownin1980s_uses"
+The TeX-side project philosophy is that phase one should be historically
+faithful but still precise. The generic `knownin1980s` mechanism is a temporary
+project-management tool; the long-term aim is to replace it either by explicit
+named assumptions such as {uses "mazur_torsion_bound"}[] and
+{uses "odlyzko_root_discriminant_bound"}[], or by actual formal proofs.
 :::
