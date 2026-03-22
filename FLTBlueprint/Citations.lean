@@ -16,6 +16,19 @@ def moretBailly1990 : Verso.Genre.Manual.Bibliography.Citable := .article {
   pages := some (161, 179)
 }
 
+@[bib "serreconj"]
+def serreModularityConjecture : Verso.Genre.Manual.Bibliography.Citable := .article {
+  title := inlines!"Sur les représentations modulaires de degré 2 de GQ"
+  authors := #[inlines!"Jean-Pierre Serre"]
+  journal := inlines!"Duke Mathematical Journal"
+  year := 1987
+  month := none
+  volume := inlines!"54"
+  number := inlines!"1"
+  pages := some (179, 230)
+  url := some "https://doi.org/10.1215/S0012-7094-87-05413-5"
+}
+
 @[bib "serre-galcoh"]
 def serreGalCoh : Verso.Genre.Manual.Bibliography.Citable := .article {
   title := inlines!"Cohomologie galoisienne"
@@ -25,6 +38,19 @@ def serreGalCoh : Verso.Genre.Manual.Bibliography.Citable := .article {
   month := none
   volume := inlines!"5"
   number := inlines!"1"
+}
+
+@[bib "kwII"]
+def khareWintenbergerII : Verso.Genre.Manual.Bibliography.Citable := .article {
+  title := inlines!"Serre's modularity conjecture. II"
+  authors := #[inlines!"Chandrashekhar Khare", inlines!"Jean-Pierre Wintenberger"]
+  journal := inlines!"Inventiones Mathematicae"
+  year := 2009
+  month := none
+  volume := inlines!"178"
+  number := inlines!"3"
+  pages := some (505, 586)
+  url := some "https://doi.org/10.1007/s00222-009-0206-6"
 }
 
 @[bib "taylor-mero-cont"]
