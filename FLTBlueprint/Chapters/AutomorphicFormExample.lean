@@ -87,6 +87,8 @@ operations.
 
 :::theorem "zhat_nontrivial" (parent := "automorphic_example_program")
 The elements `0` and `1` are distinct in $`\widehat{\mathbf{Z}}`.
+This is an immediate consequence of the ring structure from
+{uses "zhat_is_a_ring"}[].
 :::
 
 :::proof "zhat_nontrivial"
@@ -97,6 +99,8 @@ different, so the compatible collections themselves are different.
 :::theorem "zhat_char_zero" (parent := "automorphic_example_program")
 The natural map from the natural numbers into $`\widehat{\mathbf{Z}}`$ is
 injective.
+This amplifies the basic separation argument already visible in
+{uses "zhat_nontrivial"}[].
 :::
 
 :::proof "zhat_char_zero"
@@ -124,6 +128,7 @@ useful finite-adelic toy model rather than just a verbose restatement of `ℤ`.
 The TeX blueprint highlights the formal infinite sum
 $`0! + 1! + 2! + \cdots`$ as a concrete element of $`\widehat{\mathbf{Z}}`$
 that is not visibly an integer.
+The construction uses the ring object from {uses "zhat_is_a_ring"}[].
 :::
 
 :::proof "example_element_of_zhat"
@@ -136,6 +141,8 @@ naive infinite sum diverges in the ordinary real sense.
 :::theorem "factorial_element_not_integer" (parent := "automorphic_example_program")
 The factorial-series element of $`\widehat{\mathbf{Z}}`$ is not in the image of
 `ℤ`.
+This is the nontriviality statement attached to
+{uses "example_element_of_zhat"}[].
 :::
 
 :::proof "factorial_element_not_integer"
@@ -151,6 +158,8 @@ witness that `\widehat{\mathbf{Z}}` is genuinely larger than `ℤ`.
 
 :::theorem "zhat_torsionfree" (parent := "automorphic_example_program")
 Multiplication by a positive integer is injective on $`\widehat{\mathbf{Z}}`.
+This is the torsion-freeness input later reused in the `\widehat{\mathbf{Q}}`
+discussion.
 :::
 
 :::proof "zhat_torsionfree"
@@ -163,6 +172,8 @@ positive `j`, the whole compatible collection is zero.
 :::theorem "zhat_multiples_criterion" (parent := "automorphic_example_program")
 An element of $`\widehat{\mathbf{Z}}`$ is divisible by `N` if and only if its
 `N`-th coordinate is zero.
+This is the divisibility criterion used repeatedly later in
+{uses "qhat_lowest_terms"}[] and {uses "qhat_additive_decomposition"}[].
 :::
 
 :::proof "zhat_multiples_criterion"
@@ -182,6 +193,7 @@ $`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`.
 More generally, the TeX chapter explains that
 $`F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` should be viewed as the finite
 adeles of a number field `F`.
+This construction is built from {uses "profinite_completion_zhat"}[].
 :::
 
 :::proof "qhat_definition"
@@ -208,6 +220,8 @@ surprisingly concrete simplification.
 :::theorem "qhat_canonical_form" (parent := "automorphic_example_program")
 Every element of $`\widehat{\mathbf{Q}}`$ can be written as a pure tensor
 $`q \otimes z`, and even in the form $`\frac{1}{N} \otimes z`.
+This is the first structural theorem about the tensor-product object from
+{uses "qhat_definition"}[].
 :::
 
 :::proof "qhat_canonical_form"
@@ -223,6 +237,8 @@ product, even though it is still best viewed conceptually as a tensor product.
 :::definition "qhat_lowest_terms" (parent := "automorphic_example_program")
 Every element of $`\widehat{\mathbf{Q}}`$ should admit a lowest-terms
 representation $`z/N`, where the `N`-th coordinate of `z` is a unit modulo `N`.
+This definition-style theorem depends on both
+{uses "qhat_canonical_form"}[] and {uses "zhat_multiples_criterion"}[].
 :::
 
 :::proof "qhat_lowest_terms"
@@ -235,6 +251,8 @@ representations through a common multiple and using torsionfreeness.
 
 :::theorem "qhat_rational_embedding_injective" (parent := "automorphic_example_program")
 The natural map from `ℚ` into $`\widehat{\mathbf{Q}}`$ is injective.
+This is one of the two basic embedding results for the tensor-product model
+{uses "qhat_definition"}[].
 :::
 
 :::proof "qhat_rational_embedding_injective"
@@ -246,6 +264,8 @@ finite-adelic toy model.
 :::theorem "qhat_zhat_embedding_injective" (parent := "automorphic_example_program")
 The natural map from $`\widehat{\mathbf{Z}}`$ into $`\widehat{\mathbf{Q}}`$ is
 injective.
+This is the companion embedding statement, using the torsion-freeness package
+from {uses "zhat_torsionfree"}[].
 :::
 
 :::proof "qhat_zhat_embedding_injective"
@@ -257,6 +277,7 @@ proof uses torsionfreeness of `\widehat{\mathbf{Z}}` to justify treating
 :::theorem "qhat_intersection_q_and_zhat" (parent := "automorphic_example_program")
 Inside $`\widehat{\mathbf{Q}}`, the intersection of `ℚ` and
 $`\widehat{\mathbf{Z}}`$ is exactly `ℤ`.
+The TeX proof uses the lowest-terms package from {uses "qhat_lowest_terms"}[].
 :::
 
 :::proof "qhat_intersection_q_and_zhat"
@@ -269,6 +290,7 @@ integral representation with denominator `1`; uniqueness of lowest terms forces
 :::theorem "qhat_additive_decomposition" (parent := "automorphic_example_program")
 Every element of $`\widehat{\mathbf{Q}}`$ can be written additively as
 $`q + z` with `q ∈ ℚ` and $`z ∈ \widehat{\mathbf{Z}}`.
+This is the additive companion to {uses "qhat_intersection_q_and_zhat"}[].
 :::
 
 :::proof "qhat_additive_decomposition"
@@ -286,6 +308,8 @@ quaternionic construction needs.
 :::theorem "qhat_units_intersection" (parent := "automorphic_example_program")
 Inside the unit group of $`\widehat{\mathbf{Q}}`, the intersection of
 `ℚ^×` with $`\widehat{\mathbf{Z}}^×` is `ℤ^×`.
+This is the multiplicative analogue of
+{uses "qhat_intersection_q_and_zhat"}[].
 :::
 
 :::proof "qhat_units_intersection"
@@ -297,6 +321,8 @@ be an ordinary integer, and unit conditions force that integer to be `±1`.
 :::theorem "qhat_units_factorization" (parent := "automorphic_example_program")
 Every unit of $`\widehat{\mathbf{Q}}`$ factors as a product of a rational unit
 and a unit of $`\widehat{\mathbf{Z}}`.
+The TeX proof explicitly uses {uses "qhat_canonical_form"}[] and the
+divisibility criterion {uses "zhat_multiples_criterion"}[].
 :::
 
 :::proof "qhat_units_factorization"
@@ -335,6 +361,8 @@ coordinates are integers or all four lie in `\mathbf{Z} + \frac12`.
 
 :::theorem "hurwitz_quaternions_form_ring" (parent := "automorphic_example_program")
 The Hurwitz quaternions form a ring.
+This is the first algebraic consequence of
+{uses "hurwitz_quaternions_definition"}[].
 :::
 
 :::proof "hurwitz_quaternions_form_ring"
@@ -345,11 +373,13 @@ definition of `\omega` and the quaternion multiplication rules are in place.
 :::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program")
 The Hurwitz quaternions carry the usual quaternionic conjugation, making them a
 star ring.
+This is defined on top of {uses "hurwitz_quaternions_form_ring"}[].
 :::
 
 :::definition "hurwitz_quaternion_norm" (parent := "automorphic_example_program")
 The Hurwitz quaternions carry an integer-valued norm extending the usual norm on
 Hamilton's quaternions.
+The subsequent norm lemmas all hang off this definition.
 :::
 
 :::theorem "hurwitz_norm_eq_mul_conj" (parent := "automorphic_example_program")
@@ -391,6 +421,8 @@ than the obvious integer one.
 :::theorem "hurwitz_quotient_remainder" (parent := "automorphic_example_program")
 Given Hurwitz quaternions `a` and nonzero `b`, there exist `q` and `r` with
 `a = qb + r` and `N(r) < N(b)`.
+This is the Euclidean-division statement built from
+{uses "hurwitz_exists_near"}[].
 :::
 
 :::proof "hurwitz_quotient_remainder"
@@ -401,6 +433,7 @@ up to produce the remainder estimate.
 
 :::theorem "hurwitz_left_ideal_principal" (parent := "automorphic_example_program")
 Every left ideal of the Hurwitz order is principal.
+This is the left-ideal consequence of {uses "hurwitz_quotient_remainder"}[].
 :::
 
 :::proof "hurwitz_left_ideal_principal"
@@ -419,6 +452,8 @@ The profinite completion `\widehat{\mathcal{O}}` of the Hurwitz order is
 :::theorem "hurwitz_mod_n_surjective" (parent := "automorphic_example_program")
 For every positive integer `N`, the natural map
 `\mathcal{O} \to \widehat{\mathcal{O}} / N\widehat{\mathcal{O}}` is surjective.
+This is the profinite-completion analogue of the corresponding `\widehat{\mathbf Z}`
+surjectivity statement.
 :::
 
 :::proof "hurwitz_mod_n_surjective"
@@ -434,6 +469,7 @@ The rational quaternion algebra `D` gives rise to its finite-adelic completion
 :::theorem "completed_quaternion_canonical_form" (parent := "automorphic_example_program")
 Every element of `\widehat{D}` can be written as `z/N` with
 `z \in \widehat{\mathcal{O}}` and `N` a positive integer.
+This is the quaternionic analogue of {uses "qhat_canonical_form"}[].
 :::
 
 :::proof "completed_quaternion_canonical_form"
@@ -444,6 +480,7 @@ statement for `\widehat{\mathbf{Q}}`.
 :::theorem "completed_quaternion_units_factorization" (parent := "automorphic_example_program")
 Every unit of `\widehat{D}` can be written as a product of a unit from `D` and a
 unit from `\widehat{\mathcal{O}}`.
+This is the quaternionic analogue of {uses "qhat_units_factorization"}[].
 :::
 
 :::proof "completed_quaternion_units_factorization"
