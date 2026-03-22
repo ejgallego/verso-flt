@@ -13,6 +13,11 @@ This miniproject develops the API around how additive Haar measure changes under
 linear automorphisms, especially on locally compact topological rings.
 :::
 
+The old TeX chapter frames this as infrastructure rather than a single isolated
+theorem. The point is to build a reusable measure-theoretic package that can be
+applied uniformly to local fields, finite products, restricted products, and
+adelic algebras.
+
 # Goal
 
 :::definition "haar_character_goal" (parent := "haar_character_project")
@@ -25,6 +30,11 @@ The TeX chapter is explicit that “Haar character” is project terminology rat
 than standard textbook terminology. The point is to package the multiplicative
 behavior of additive Haar measure on a locally compact ring in a way that is
 easy to reuse later for adelic algebras.
+
+It also records the project's historical provenance: this material was refined
+with substantial outside input during blueprint development, precisely because
+the eventual application to adeles and division algebras needs a dependable
+measure-theoretic API rather than ad hoc local computations.
 
 # Initial definitions
 
@@ -84,6 +94,29 @@ This is the point where the TeX chapter notes that the construction is really a
 group homomorphism into the positive reals.
 :::
 
+# Examples
+
+:::theorem "real_haar_character_formula" (parent := "haar_character_project")
+For the additive group of `ℝ`, the Haar character is the usual absolute value.
+:::
+
+:::proof "real_haar_character_formula"
+Take Lebesgue measure and evaluate on the interval `[0,1]`. Multiplication by a
+positive scalar stretches the interval by that factor, while multiplication by a
+negative scalar only adds an orientation reversal, so the scale factor is
+always the absolute value.
+:::
+
+:::theorem "complex_haar_character_formula" (parent := "haar_character_project")
+For the additive group of `ℂ`, the Haar character is $`|z|^2`.
+:::
+
+:::proof "complex_haar_character_formula"
+The TeX proof decomposes multiplication into a positive real dilation and a
+rotation. Rotations preserve area, while scaling by `r > 0` multiplies area by
+`r²`, so the resulting Haar character is the square of the complex norm.
+:::
+
 # Ring-level Haar characters
 
 :::definition "ring_level_haar_character" (parent := "haar_character_project")
@@ -99,6 +132,20 @@ multiplication by units.
 :::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project")
 Likewise, the Haar character controls how the measure of a Borel set changes
 under multiplication by a unit.
+:::
+
+:::theorem "ring_haar_character_continuous" (parent := "haar_character_project")
+The Haar character on the unit group of a locally compact topological ring is a
+continuous group homomorphism.
+:::
+
+:::proof "ring_haar_character_continuous"
+The TeX chapter derives continuity from the integral formula. One fixes a
+compactly supported continuous function with nonzero integral and then rewrites
+the Haar character as a ratio of two continuous integrals depending on the unit.
+
+So continuity is not an extra miracle; it is built into the same measure-scaling
+formalism used everywhere else in the chapter.
 :::
 
 :::theorem "padic_haar_character_formula" (parent := "haar_character_project")
@@ -120,8 +167,110 @@ For $`\mathbf{Z}_p`$, the Haar character is constantly $`1`$ on the unit group.
 This is the integral counterpart to {uses "padic_haar_character_formula"}[].
 :::
 
+# Finite-dimensional algebras
+
+:::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project")
+For a finite free module over a locally compact field, the Haar character of an
+invertible linear map is the field-level Haar character applied to its
+determinant.
+:::
+
+:::proof "haar_character_linear_map_determinant_formula"
+The TeX chapter reduces this to explicit matrix calculations, using that an
+invertible matrix can be decomposed into diagonal and transvection pieces. One
+checks the formula directly on those generators and then multiplies the answers.
+
+This is the bridge from additive Haar theory on groups to ring-theoretic Haar
+characters on finite-dimensional algebras.
+:::
+
+:::theorem "algebra_haar_character_determinant_formula" (parent := "haar_character_project")
+If `R` is a finite-dimensional algebra over a locally compact field `F`, then
+the ring-level Haar character of a unit `u` is obtained from the determinant of
+left multiplication by `u`.
+:::
+
+:::proof "algebra_haar_character_determinant_formula"
+This is the immediate algebraic application of
+{uses "haar_character_linear_map_determinant_formula"}[]: left multiplication
+by a unit is an invertible `F`-linear map on the underlying finite-dimensional
+`F`-vector space, so the determinant formula applies.
+:::
+
+:::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project")
+For a finite-dimensional central simple algebra, left and right multiplication
+by a unit have the same Haar-character factor.
+:::
+
+:::proof "central_simple_algebra_left_right_same_haar"
+The TeX chapter proves that left and right multiplication have the same
+determinant in a central simple algebra by base-changing to an algebraic closure
+and identifying the algebra with a matrix algebra. Once the determinants agree,
+the Haar-character factors agree as well.
+
+This symmetry is exactly what is needed later when quotient arguments in
+division algebras mix left and right multiplication.
+:::
+
+# Products and restricted products
+
+:::theorem "product_haar_character_formula" (parent := "haar_character_project")
+For a finite product of locally compact additive groups, the Haar character of a
+product automorphism is the product of the individual Haar characters.
+:::
+
+:::proof "product_haar_character_formula"
+The TeX chapter first handles binary products and then iterates. At the level of
+measures this is exactly what one expects: product Haar measure scales by the
+product of the coordinatewise scaling factors.
+:::
+
+:::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project")
+For a restricted product of locally compact groups with compact open reference
+subgroups, the Haar character of a restricted-product automorphism is the
+finite product of the local Haar characters.
+:::
+
+:::proof "restricted_product_haar_character_formula"
+This is one of the chapter's key technical payoffs. Because the reference
+subgroups are compact and open, any automorphism that preserves them has local
+Haar character `1` there. So only finitely many places contribute, and the
+global Haar character becomes a finite product of local terms.
+
+That is precisely the mechanism that later makes adelic Haar-character
+computations tractable.
+:::
+
+:::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project")
+If an additive automorphism on a locally compact group is intertwined with one
+on a larger group through an open embedding, then the two Haar characters
+agree.
+:::
+
+:::proof "open_embedding_preserves_haar_character"
+The TeX proof pulls back Haar measure along the open embedding and compares the
+resulting integral identities on the smaller and larger groups.
+
+This is a transfer principle: once one knows the Haar character in an ambient
+group, one can sometimes read off the character on an open embedded subgroup for
+free.
+:::
+
 :::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project")
 The key intended application is that adelic unit groups coming from
 finite-dimensional algebras over a number field land in the kernel of the Haar
 character.
+:::
+
+:::proof "adelic_units_in_kernel_of_haar_character"
+This is the culmination of the TeX chapter. For an algebra `B_A = B ⊗_K A_K`,
+the adelic ring decomposes into local factors. At the finite places, the global
+Haar character is the restricted-product product of the local ones by
+{uses "restricted_product_haar_character_formula"}[]. At the infinite places,
+the character is controlled by determinants via
+{uses "algebra_haar_character_determinant_formula"}[].
+
+The local determinant computations then cancel globally, forcing the units of
+the original algebra to land in the kernel. That is exactly the API input used
+by {uses "adelic_division_algebra_setup"}[] in the Fujisaki chapter.
 :::
