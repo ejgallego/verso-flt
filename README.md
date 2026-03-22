@@ -16,6 +16,9 @@ When the TeX source records dependency edges with `\uses{...}`, the port should
 preserve those edges as Verso `{uses "..."}[]` references inside the relevant
 informal nodes or proofs so the dependency graph remains faithful too.
 
+For the detailed chapter-by-chapter workflow and validation rules, see
+`AGENTS.md`.
+
 ## Pages Artifact
 
 The GitHub Pages build is defined in `.github/workflows/blueprint.yml`.

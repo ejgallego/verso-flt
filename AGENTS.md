@@ -100,3 +100,30 @@ This repository is the integration layer for the FLT Verso blueprint.
   changes in the outer `verso-flt` repository.
 - After FLT-fork changes land, update the `FLT/` submodule pointer in the outer
   repository.
+
+## Autonomous Porting Checklist
+
+- Work from the TeX source chapter-by-chapter. Treat section order, theorem
+  order, and dependency structure as intentional.
+- Prefer translating existing TeX material into Verso over inventing new
+  exposition. If explanatory glue is needed, keep it minimal and in service of
+  the source structure.
+- When the TeX source has a labeled theorem, definition, lemma, corollary, or
+  proof step that still matters to the dependency story, prefer creating a
+  corresponding Verso node rather than burying it in prose.
+- When the TeX source has `\uses{...}`, preserve those dependencies as
+  `{uses "..."}[]` inside the relevant theorem/definition/proof nodes so the
+  graph remains faithful. Do not leave important `\uses` edges only in free
+  prose.
+- If a TeX chapter is only partially ported, continue with the next coherent
+  section block rather than scattering small edits across unrelated chapters.
+- Keep Lean references conservative. Add `(lean := "...")` only when the import
+  chain is already root-harness-clean on the current toolchain.
+- After each real Lean edit, validate the edited file with one-module-at-a-time
+  `lean-beam sync`. Do not run multiple syncs in parallel for this repo root.
+- After a coherent batch, run `bash ./scripts/ci-pages.sh`.
+- Keep the root build green. If a faithful Lean link would pull in rc6-broken
+  imports, leave the chapter informal and note the dependency in prose instead
+  of breaking the build.
+- Commit and push coherent validated batches in the outer repo. Only touch the
+  `FLT/` submodule when the task is explicitly FLT-fork compatibility work.
