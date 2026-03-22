@@ -32,6 +32,11 @@ about finite extensions of `ℚ_p`. The point is not that the global theory is
 absent, but that local class field theory and local Galois cohomology already
 contain most of the background phenomena the FLT project eventually needs.
 
+Let `K` be such a finite extension of `ℚ_p`. The TeX appendix begins by fixing
+notation for the profinite completion `\widehat{ℤ}` because arithmetic and
+geometric Frobenius are stated there in terms of explicit maps to
+`\widehat{ℤ}`.
+
 :::theorem "maximal_unramified_extension_placeholder" (parent := "bestiary_appendix")
 For a finite extension `K / ℚ_p`, the maximal unramified extension should be
 Galois with Galois group canonically identifiable with `\widehat{ℤ}` in the two
@@ -68,6 +73,10 @@ top-degree identifications, Poincare duality, and Euler-Poincare formulas.
 These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's Galois cohomology text {Informal.citep serreGalCoh}[] throughout this package.
 :::
 
+The appendix then explicitly summarizes the package by analogy: cohomology of a
+local Galois group behaves like the cohomology of a compact connected
+2-manifold.
+
 :::theorem "global_class_field_theory_placeholder" (parent := "bestiary_appendix")
 Global class field theory should identify the connected components of
 `A_N^× / N^×` with the abelianized absolute Galois group of a number field `N`,
@@ -100,6 +109,10 @@ Galois-cohomology language is still being assembled.
 
 # Structures on the points of an affine variety
 
+The TeX appendix now switches from class field theory to a different kind of
+background problem: how to put topological and manifold structures on points of
+algebraic varieties.
+
 :::definition "topology_on_affine_variety_points_placeholder" (parent := "bestiary_appendix")
 If `X = Spec(A)` is affine of finite type over a field `K` and `R` is a
 topological `K`-algebra, then the `R`-points of `X` should inherit the subspace
@@ -130,6 +143,10 @@ the analytic spaces on which automorphic forms live.
 :::
 
 # Algebraic groups and automorphic forms
+
+Here the appendix becomes very candid: even stating the definitions correctly in
+Lean is expected to be a substantial project, and some of the draft
+generalizations may still contain imprecision.
 
 :::definition "connected_reductive_group_placeholder" (parent := "bestiary_appendix")
 The appendix also tracks the background definitions of connected reductive
@@ -170,6 +187,10 @@ inevitably in automorphic representation theory.
 
 # Galois representations
 
+At this point the TeX appendix records that the compatible-family definition was
+already formalized modulo Frobenius elements. The surrounding Galois-side
+theorem remains a much more distant target.
+
 :::definition "compatible_family_placeholder" (parent := "bestiary_appendix")
 The appendix records the notion of a compatible family of Galois
 representations: a common coefficient field, a finite bad set, Frobenius
@@ -191,6 +212,11 @@ families of Galois representations.
 :::
 
 # Algebraic geometry
+
+The appendix becomes sharply concrete again here. It points out that the proof
+of Mazur's torsion theorem starts with algebraic-geometry language that Lean was
+still far from handling, and uses that as a benchmark for how much surrounding
+infrastructure is still missing.
 
 :::definition "shimura_varieties_placeholder" (parent := "bestiary_appendix")
 The project still needs precise Lean definitions of the compact Shimura curves
@@ -214,6 +240,9 @@ see {Informal.citep moretBailly1990}[].
 :::
 
 # Algebra
+
+The appendix closes with one deliberately elementary-looking but strategically
+useful classification theorem: finite subgroups of `PGL₂`.
 
 :::theorem "finite_subgroups_of_pgl2_placeholder" (parent := "bestiary_appendix")
 The appendix records the classification of finite subgroups of

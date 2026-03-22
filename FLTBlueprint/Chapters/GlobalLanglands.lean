@@ -19,7 +19,7 @@ information. It shows that, even once the project can discuss automorphic forms
 for `GL_n/ℚ`, the fully general reciprocity conjecture remains blocked not by
 one theorem but by a stack of missing definitions.
 
-# Scope
+# Overview Of The Chapter
 
 :::definition "global_langlands_buzzard_gee_target" (parent := "global_langlands_program")
 The intended target is some formal statement of the Buzzard--Gee style motivic
@@ -33,7 +33,12 @@ be between automorphic representations and Galois representations, with all the
 local and motivic adjectives spelled out.
 :::
 
-# Foundational ingredients
+# Statement Of The Conjecture
+
+The TeX stub immediately specializes the base to a commutative ring `R`, not
+because the final statement is meant to stay at that level of generality, but
+because even the earliest group-scheme definitions already want a flexible base
+ring parameter.
 
 :::definition "affine_group_scheme_placeholder" (parent := "global_langlands_program")
 One foundational input is the notion of an affine group scheme over a
@@ -44,6 +49,12 @@ commutative base ring, or equivalently its Hopf-algebra presentation.
 The TeX stub already points in this direction: before one can even say
 “connected reductive group over a number field”, one needs a satisfactory Lean
 interface for affine group schemes and Hopf algebras.
+:::
+
+:::definition "hopf_algebra_placeholder" (parent := "global_langlands_program")
+The TeX stub immediately pairs affine group schemes with the corresponding
+Hopf-algebra language, signaling that the eventual formalization will need both
+viewpoints available.
 :::
 
 :::definition "connected_reductive_group_global_langlands" (parent := "global_langlands_program")

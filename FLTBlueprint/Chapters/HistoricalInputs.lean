@@ -36,6 +36,10 @@ idea is to allow easy access to mathematics that was unquestionably in the
 literature before 1990, then gradually replace broad uses of that tactic by a
 small, explicit list of named assumptions and eventually by full formal proofs.
 
+This point is important for fidelity to the original project notes: the
+`knownin1980s` mechanism was never meant to be the finished interface, only the
+first staging tool.
+
 :::definition "formalized_assumptions_scope" (parent := "historical_inputs")
 At the moment, the formally stated assumptions chapter is intentionally small:
 the main examples already surfaced as Lean declarations are Mazur’s torsion
