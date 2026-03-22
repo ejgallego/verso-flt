@@ -19,6 +19,11 @@ dimensionality of classical modular-form spaces, the project turns to the
 quaternionic setting, where finite-dimensionality can be approached through
 adelic compactness.
 
+It is also explicit that this is the first place where the project intends to
+see a genuine Hecke algebra acting on a concrete automorphic space. In that
+sense, this chapter is where the adelic and quaternionic miniprojects stop
+looking like background and start looking like the `T` side of `R = T`.
+
 # Goals
 
 :::definition "totally_definite_quaternion_algebra_setup" (parent := "quaternion_algebra_project")
@@ -35,6 +40,22 @@ quaternion algebra `D/F` that is totally definite, meaning that every real
 embedding lands in Hamilton's quaternions. Because `F` has a real place, that
 forces `D` to be a division algebra, which is why the Fujisaki compactness
 theorem applies.
+:::
+
+:::theorem "zero_dimensional_symmetric_space_quaternionic" (parent := "quaternion_algebra_project")
+In the totally definite quaternionic setting, the archimedean symmetric space
+is zero-dimensional, so the usual analytic conditions from classical modular
+forms disappear.
+:::
+
+:::proof "zero_dimensional_symmetric_space_quaternionic"
+The TeX chapter stresses this as the decisive simplification. There is no upper
+half-plane, no holomorphicity condition, and no cusp condition to impose.
+Instead, one works directly with adelic functions satisfying invariance and
+level conditions.
+
+This is exactly why the later definitions can be made for automorphic forms
+valued in an arbitrary additive commutative group, not just in `ℂ`.
 :::
 
 :::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
@@ -55,6 +76,36 @@ the same unit group via `d ↦ d ⊗ 1`, and then defines automorphic forms as
 functions on the adelic units satisfying left invariance, central-character
 triviality, and compact-open right invariance.
 
+:::theorem "quaternionic_forms_allow_general_coefficients" (parent := "quaternion_algebra_project")
+Because no differential equations are imposed in the totally definite setting,
+quaternionic automorphic forms can be defined with values in any additive
+commutative group, including mod-`p^n` and `p`-adic coefficient objects.
+:::
+
+:::proof "quaternionic_forms_allow_general_coefficients"
+This is a methodological point the TeX chapter makes very strongly. In the
+general automorphic theory, analytic conditions at infinity usually force one to
+work with complex-valued or analytically structured coefficient spaces. Here the
+vanishing of the archimedean analytic complexity removes that obstacle.
+
+So the coefficient flexibility is not accidental convenience; it is one of the
+main reasons this quaternionic route is attractive for the FLT project.
+:::
+
+:::theorem "adelic_right_action_on_quaternionic_forms" (parent := "quaternion_algebra_project")
+The finite adelic unit group acts on the space of quaternionic automorphic
+forms by right translation on the argument.
+This is the action whose `U`-fixed vectors define
+{uses "weight_two_quaternionic_forms_of_level"}[].
+:::
+
+:::proof "adelic_right_action_on_quaternionic_forms"
+The TeX chapter spells this out before defining level. The left `Dˣ`-invariance
+and central-character triviality are part of the definition of an automorphic
+form, while the right action of the finite adelic units is the extra symmetry
+from which level structures and Hecke operators are cut out.
+:::
+
 :::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")
 Fixing a compact open level subgroup yields the level-$`U`$ space of
 quaternionic automorphic forms.
@@ -64,6 +115,34 @@ This is the specific target space acted on by {uses "concrete_hecke_action"}[].
 The level construction is deliberately simple: one first defines the full space
 `S^D(R)` of automorphic forms, then level `U` means just taking the `U`-fixed
 points for the right action of the finite adelic unit group.
+
+:::theorem "levels_are_compact_open_subgroups" (parent := "quaternion_algebra_project")
+A level is, by definition, a compact open subgroup of the finite adelic unit
+group `D_{\mathbf{A}^\infty}^×`.
+:::
+
+:::proof "levels_are_compact_open_subgroups"
+The TeX chapter emphasizes that such subgroups are plentiful because the adelic
+unit group is locally profinite. This is the same topological input that later
+supports the double-coset finiteness criterion in the Hecke-operator chapter.
+:::
+
+:::theorem "fujisaki_implies_finite_double_cosets_quaternionic" (parent := "quaternion_algebra_project")
+For a fixed compact open level `U`, the quotient
+`Dˣ \ D_{\mathbf{A}^\infty}^× / U` is finite.
+This is the compactness-to-finiteness step behind
+{uses "finite_dimensional_quaternionic_forms"}[].
+:::
+
+:::proof "fujisaki_implies_finite_double_cosets_quaternionic"
+This is the central use of {uses "compact_quotient_for_division_algebra"}[] in
+the chapter. The quotient by `Dˣ` is compact, the right `U`-translates form an
+open cover, and compactness forces only finitely many double cosets to appear.
+
+So the finite-dimensionality theorem is not proved by analysis on functions
+directly; it is proved by first collapsing the adelic geometry to finitely many
+orbits.
+:::
 
 :::theorem "finite_dimensional_quaternionic_forms" (parent := "quaternion_algebra_project")
 The main result is that these spaces are finite-dimensional over a field.
@@ -77,7 +156,17 @@ needs explicit rc6 validation before we attach it here.
 
 The TeX proof is conceptually straightforward once the compactness theorem is in
 place. One writes the adelic quotient as a union of double cosets `Dˣ g_i U`,
-uses compactness to show there are only finitely many of them, and then evaluates
-an automorphic form on representatives to embed the space into a finite power of
-the coefficient field.
+uses {uses "fujisaki_implies_finite_double_cosets_quaternionic"}[] to show
+there are only finitely many of them, and then evaluates an automorphic form on
+representatives to embed the space into a finite power of the coefficient
+field.
+
+The two real inputs are therefore disjoint and clean:
+
+- compactness of the adelic quotient from {uses "compact_quotient_for_division_algebra"}[]
+- linear algebra on finitely many orbit representatives once the quotient is
+  finite
+
+That clean split is exactly what makes this chapter such a good bridge from the
+adelic miniprojects to the Hecke algebra story.
 :::
