@@ -19,12 +19,17 @@ algebras supply the `T` side of the `R = T` theorems in the FLT strategy.
 Fix a totally real field and a totally definite quaternion algebra over it.
 Because the associated symmetric space is zero-dimensional, the resulting
 automorphic-form theory is far more algebraic than the classical
-$`\mathrm{GL}_2`$ theory.
+GL2 theory.
 :::
 
 :::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
 The chapter defines spaces of weight-2 automorphic forms valued in an arbitrary
 additive commutative group, then specializes to level-$`U`$ invariants.
+:::
+
+:::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")
+Fixing a compact open level subgroup yields the level-$`U`$ space of
+quaternionic automorphic forms.
 :::
 
 :::theorem "finite_dimensional_quaternionic_forms" (parent := "quaternion_algebra_project")
@@ -34,4 +39,6 @@ The main result is that these spaces are finite-dimensional over a field.
 :::proof "finite_dimensional_quaternionic_forms"
 The old blueprint reduces the finite-dimensionality statement to Fujisaki's
 lemma by proving that only finitely many double cosets contribute.
+The corresponding Lean theorem exists in the FLT fork, but its import path still
+needs explicit rc6 validation before we attach it here.
 :::

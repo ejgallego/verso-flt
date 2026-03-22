@@ -37,6 +37,25 @@ The proof is the usual uniqueness-of-Haar-measure argument: changing the Haar
 measure by a positive scalar cancels on both sides of the defining relation.
 :::
 
+:::theorem "padic_haar_character_formula" (parent := "haar_character_project")
+For $`\mathbf{Q}_p`$, the Haar character agrees with the usual p-adic norm.
+:::
+
+:::proof "padic_haar_character_formula"
+The dedicated p-adic chapter in the FLT fork computes the Haar character
+explicitly and then deduces the standard volume-scaling formulas.
+The corresponding Lean declarations exist, but importing that rc6 path still
+needs FLT-fork compatibility work before we can attach them here.
+:::
+
+:::theorem "padic_integer_haar_character_formula" (parent := "haar_character_project")
+For $`\mathbf{Z}_p`$, the Haar character is constantly $`1`$ on the unit group.
+:::
+
+:::proof "padic_integer_haar_character_formula"
+This is the integral counterpart to {uses "padic_haar_character_formula"}[].
+:::
+
 :::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project")
 The key intended application is that adelic unit groups coming from
 finite-dimensional algebras over a number field land in the kernel of the Haar

@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.RingTheory.Invariant.Basic
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -22,13 +23,13 @@ sorry-free and has already been merged into mathlib.
 
 # The theorem
 
-:::definition "stabilizer_hom_definition" (parent := "frobenius_project")
+:::definition "stabilizer_hom_definition" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom")
 Given a finite group acting on a commutative ring, a prime of the big ring, and
 the induced residue-field extension, one gets a natural homomorphism from the
 decomposition group to the automorphism group of the residue-field extension.
 :::
 
-:::theorem "stabilizer_hom_surjective" (parent := "frobenius_project")
+:::theorem "stabilizer_hom_surjective" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom_surjective")
 The main theorem says that this stabilizer homomorphism is surjective.
 This is the abstract engine behind Frobenius elements in local and global
 Galois settings.
