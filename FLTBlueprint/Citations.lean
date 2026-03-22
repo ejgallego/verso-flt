@@ -66,6 +66,31 @@ def silvermanArithmeticEllipticCurves : Verso.Genre.Manual.Bibliography.Citable 
   url := some "https://doi.org/10.1007/978-0-387-09494-6"
 }
 
+@[bib "ddt"]
+def darmonDiamondTaylorFlt : Verso.Genre.Manual.Bibliography.Citable := .article {
+  title := inlines!"Fermat's last theorem"
+  authors := #[inlines!"Henri Darmon", inlines!"Fred Diamond", inlines!"Richard Taylor"]
+  journal := inlines!"Current Developments in Mathematics"
+  year := 1995
+  month := none
+  volume := inlines!"1995"
+  number := inlines!"1"
+  pages := some (1, 154)
+}
+
+@[bib "edix"]
+def edixWeightInSerreConjectures : Verso.Genre.Manual.Bibliography.Citable := .article {
+  title := inlines!"The weight in Serre's conjectures on modular forms"
+  authors := #[inlines!"Bas Edixhoven"]
+  journal := inlines!"Inventiones Mathematicae"
+  year := 1992
+  month := none
+  volume := inlines!"109"
+  number := inlines!"3"
+  pages := some (563, 594)
+  url := some "https://doi.org/10.1007/BF01232041"
+}
+
 @[bib "taylor-mero-cont"]
 def taylorMeroCont : Verso.Genre.Manual.Bibliography.Citable := .article {
   title := inlines!"On the meromorphic continuation of degree two L-functions"
@@ -134,6 +159,30 @@ def mazurTorsion : Verso.Genre.Manual.Bibliography.Citable := .article {
   number := inlines!"1"
   pages := some (33, 186)
   url := some "http://www.numdam.org/item?id=PMIHES_1977__47__33_0"
+}
+
+@[bib "serrepropgal"]
+def serreGaloisPointsEllipticCurves : Verso.Genre.Manual.Bibliography.Citable := .article {
+  title := inlines!"Propriétés galoisiennes des points d'ordre fini des courbes elliptiques"
+  authors := #[inlines!"Jean-Pierre Serre"]
+  journal := inlines!"Inventiones Mathematicae"
+  year := 1972
+  month := none
+  volume := inlines!"15"
+  number := inlines!"4"
+  pages := some (259, 331)
+  url := some "https://doi.org/10.1007/BF01405086"
+}
+
+@[bib "katz-mazur"]
+def katzMazurArithmeticModuli : Verso.Genre.Manual.Bibliography.Citable := .article {
+  title := inlines!"Arithmetic moduli of elliptic curves"
+  authors := #[inlines!"Nicholas M. Katz", inlines!"Barry Mazur"]
+  journal := inlines!"Annals of Mathematics Studies"
+  year := 1985
+  month := none
+  volume := inlines!"108"
+  number := inlines!"1"
 }
 
 @[bib "voightbook"]
