@@ -53,11 +53,16 @@ later local-global statements genuinely depend on the chosen normalization.
 :::definition "local_weil_group_placeholder" (parent := "bestiary_appendix")
 The appendix records the local Weil group and local class field theory among
 the core background items still waiting for polished Lean-facing statements.
+The Weil group is introduced by pulling back the surjection to
+`\widehat{ℤ}` from {uses "maximal_unramified_extension_placeholder"}[] along
+the discrete integers.
 :::
 
 :::theorem "local_class_field_theory_placeholder" (parent := "bestiary_appendix")
 Local class field theory is one of the major background theorems still waiting
 to be integrated into the main project narrative from this appendix.
+It is stated in the appendix as the reciprocity isomorphism attached to
+{uses "local_weil_group_placeholder"}[].
 :::
 
 :::proof "local_class_field_theory_placeholder"
@@ -73,6 +78,30 @@ top-degree identifications, Poincare duality, and Euler-Poincare formulas.
 These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's Galois cohomology text {Informal.citep serreGalCoh}[] throughout this package.
 :::
 
+:::theorem "local_galois_cohomology_finiteness" (parent := "bestiary_appendix")
+For finite coefficients `M`, the local Galois cohomology groups `H^i(G_K,M)` are
+finite.
+:::
+
+:::theorem "local_galois_cohomology_dimension_two" (parent := "bestiary_appendix")
+For torsion coefficients, local Galois cohomology vanishes above degree `2`.
+:::
+
+:::theorem "local_galois_cohomology_top_degree" (parent := "bestiary_appendix")
+The top-degree group `H^2(G_K,\mu_n)` should be canonically identifiable with
+`\mathbf{Z}/n\mathbf{Z}`.
+:::
+
+:::theorem "local_galois_cohomology_poincare_duality" (parent := "bestiary_appendix")
+Local Galois cohomology should satisfy a Poincare-duality pairing between degree
+`i` and degree `2-i`.
+:::
+
+:::theorem "local_galois_cohomology_euler_characteristic" (parent := "bestiary_appendix")
+The local Galois cohomology groups satisfy an Euler-Poincare characteristic
+formula.
+:::
+
 The appendix then explicitly summarizes the package by analogy: cohomology of a
 local Galois group behaves like the cohomology of a compact connected
 2-manifold.
@@ -81,6 +110,7 @@ local Galois group behaves like the cohomology of a compact connected
 Global class field theory should identify the connected components of
 `A_N^× / N^×` with the abelianized absolute Galois group of a number field `N`,
 compatibly with the local reciprocity maps.
+This is the global continuation of {uses "local_class_field_theory_placeholder"}[].
 :::
 
 :::proof "global_class_field_theory_placeholder"
@@ -94,6 +124,7 @@ behavior.
 The appendix isolates a global class-field-theoretic construction that produces
 finite solvable extensions with prescribed local behavior and optional
 disjointness from an auxiliary field.
+This is recorded as a consequence of {uses "global_class_field_theory_placeholder"}[].
 :::
 
 :::proof "skinner_wiles_cft_trick_placeholder"
@@ -123,6 +154,7 @@ topology coming from the product topology on maps `A → R`.
 When an affine variety is embedded as a closed subscheme of affine space, the
 point-set topology described above should agree with the induced subspace
 topology from the ambient finite-dimensional `R`-space.
+This is the first check on {uses "topology_on_affine_variety_points_placeholder"}[].
 :::
 
 :::proof "affine_variety_point_topology_computation"
@@ -135,6 +167,16 @@ write down by hand.
 :::definition "manifold_on_affine_variety_points_placeholder" (parent := "bestiary_appendix")
 For smooth affine varieties over `ℝ`, `ℂ`, or finite extensions of `ℚ_p`, the
 point set should carry a natural manifold structure.
+:::
+
+:::theorem "lie_group_from_algebraic_group_placeholder" (parent := "bestiary_appendix")
+For affine algebraic groups over `ℝ` or `ℂ`, the real or complex points should
+form Lie groups.
+:::
+
+:::proof "lie_group_from_algebraic_group_placeholder"
+The TeX appendix treats this as the concrete corollary of the manifold
+construction on algebraic-variety points.
 :::
 
 :::proof "manifold_on_affine_variety_points_placeholder"
@@ -167,10 +209,26 @@ left-invariance under rational points, finite-level conditions, infinitesimal
 character conditions, and a growth condition.
 :::
 
+:::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix")
+The appendix also isolates the slowly-increasing growth condition used in the
+general definition of an automorphic form.
+:::
+
+:::theorem "slowly_increasing_well_defined_placeholder" (parent := "bestiary_appendix")
+The slowly-increasing condition should be independent of the auxiliary choice
+of finite-dimensional representation used to define the norm at infinity.
+:::
+
 :::definition "cuspidal_automorphic_representation_placeholder" (parent := "bestiary_appendix")
 The eventual automorphic-representation theory is meant to include cusp forms,
 their decomposition into irreducible pieces, and the local tensor-product
 decomposition of admissible representations.
+:::
+
+:::definition "automorphic_form_actions_placeholder" (parent := "bestiary_appendix")
+The spaces of automorphic forms and cusp forms should carry the natural
+`(G(\mathbf{A}_N^f)\times U_\infty,\mathfrak g)`-module structures coming from
+right translation and differential operators.
 :::
 
 :::theorem "automorphic_representation_local_decomposition_placeholder" (parent := "bestiary_appendix")

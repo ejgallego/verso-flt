@@ -51,6 +51,7 @@ recording that scalar.
 
 :::theorem "haar_character_independent_of_measure" (parent := "haar_character_project")
 This scaling factor is independent of the chosen regular Haar measure.
+This is the first lemma attached to {uses "additive_haar_character"}[].
 :::
 
 :::proof "haar_character_independent_of_measure"
@@ -61,6 +62,7 @@ measure by a positive scalar cancels on both sides of the defining relation.
 :::theorem "haar_character_pushforward_formula" (parent := "haar_character_project")
 For any regular Haar measure `μ`, one has
 $`d_A(\phi) (\phi_* \mu) = \mu`.
+This is the direct restatement of {uses "haar_character_independent_of_measure"}[].
 :::
 
 :::proof "haar_character_pushforward_formula"
@@ -71,6 +73,7 @@ independence of Haar measure has been established.
 :::theorem "haar_character_pullback_formula" (parent := "haar_character_project")
 Pulling Haar measure back along an additive homeomorphism scales the measure by
 the same Haar-character factor.
+This is the pullback companion to {uses "haar_character_pushforward_formula"}[].
 :::
 
 :::proof "haar_character_pullback_formula"
@@ -91,11 +94,14 @@ multiplicativity under composition.
 :::theorem "haar_character_preimage_formula" (parent := "haar_character_project")
 For a Borel set `X`, the Haar-character factor can be read off from the ratio
 between the measures of `X` and `φ⁻¹(X)`.
+This is the set-theoretic specialization of
+{uses "haar_character_pushforward_formula"}[].
 :::
 
 :::theorem "haar_character_integral_formula" (parent := "haar_character_project")
 For a measurable real-valued function, the Haar-character factor also controls
 how integrals transform under pushforward and pullback.
+This is the integral version of {uses "haar_character_pushforward_formula"}[].
 :::
 
 :::proof "haar_character_integral_formula"
@@ -106,6 +112,8 @@ measure-scaling identities rewritten through the definition of integration.
 :::theorem "haar_character_is_multiplicative" (parent := "haar_character_project")
 The additive Haar-character construction is multiplicative under composition of
 homeomorphisms and equals `1` on the identity map.
+This combines {uses "haar_character_identity"}[] with the composition law from
+the additive Haar-character setup {uses "additive_haar_character"}[].
 :::
 
 :::proof "haar_character_is_multiplicative"
@@ -146,16 +154,22 @@ applying the additive theory to left multiplication by a unit.
 :::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project")
 At the ring level, the Haar character controls how integrals change under left
 multiplication by units.
+This is the ring-theoretic specialization of
+{uses "haar_character_integral_formula"}[].
 :::
 
 :::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project")
 Likewise, the Haar character controls how the measure of a Borel set changes
 under multiplication by a unit.
+This is the ring-theoretic specialization of
+{uses "haar_character_preimage_formula"}[].
 :::
 
 :::theorem "ring_haar_character_continuous" (parent := "haar_character_project")
 The Haar character on the unit group of a locally compact topological ring is a
 continuous group homomorphism.
+The TeX proof builds this directly from
+{uses "ring_haar_character_integral_formula"}[].
 :::
 
 :::proof "ring_haar_character_continuous"
@@ -211,6 +225,8 @@ characters on finite-dimensional algebras.
 If `R` is a finite-dimensional algebra over a locally compact field `F`, then
 the ring-level Haar character of a unit `u` is obtained from the determinant of
 left multiplication by `u`.
+This is the algebraic corollary of
+{uses "haar_character_linear_map_determinant_formula"}[].
 :::
 
 :::proof "algebra_haar_character_determinant_formula"
@@ -223,6 +239,8 @@ by a unit is an invertible `F`-linear map on the underlying finite-dimensional
 :::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project")
 For a finite-dimensional central simple algebra, left and right multiplication
 by a unit have the same Haar-character factor.
+This combines the determinant comparison with
+{uses "algebra_haar_character_determinant_formula"}[].
 :::
 
 :::proof "central_simple_algebra_left_right_same_haar"
@@ -240,6 +258,7 @@ division algebras mix left and right multiplication.
 :::theorem "product_haar_character_formula" (parent := "haar_character_project")
 For a finite product of locally compact additive groups, the Haar character of a
 product automorphism is the product of the individual Haar characters.
+This is the finite-product analogue of {uses "haar_character_is_multiplicative"}[].
 :::
 
 :::proof "product_haar_character_formula"
@@ -262,6 +281,9 @@ immediate specialization to multiplication-by-units.
 For a restricted product of locally compact groups with compact open reference
 subgroups, the Haar character of a restricted-product automorphism is the
 finite product of the local Haar characters.
+This uses the compact-triviality input from
+{uses "compact_group_haar_character_trivial"}[] and the finite-product formula
+{uses "product_haar_character_formula"}[].
 :::
 
 :::proof "restricted_product_haar_character_formula"
@@ -278,6 +300,8 @@ computations tractable.
 If an additive automorphism on a locally compact group is intertwined with one
 on a larger group through an open embedding, then the two Haar characters
 agree.
+This is the open-embedding transfer principle for
+{uses "additive_haar_character"}[].
 :::
 
 :::proof "open_embedding_preserves_haar_character"
@@ -303,6 +327,8 @@ positive Haar measure, and that total measure is unchanged by the automorphism.
 The key intended application is that adelic unit groups coming from
 finite-dimensional algebras over a number field land in the kernel of the Haar
 character.
+This combines {uses "restricted_product_haar_character_formula"}[] and
+{uses "algebra_haar_character_determinant_formula"}[].
 :::
 
 :::proof "adelic_units_in_kernel_of_haar_character"
