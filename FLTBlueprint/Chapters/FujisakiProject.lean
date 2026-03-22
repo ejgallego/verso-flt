@@ -39,6 +39,13 @@ algebra over a field has center exactly the base field and no nontrivial
 two-sided ideals. Quaternion algebras are the four-dimensional examples, and
 division algebras are the cases in which every nonzero element is invertible.
 
+It then stresses that matrix algebras are the basic examples, that central
+simple algebras behave well under base change, and that over algebraically
+closed fields matrix algebras are essentially the only finite-dimensional
+examples. The point is not just classification: it is to prepare the reader for
+why the adelic algebra attached to a division algebra still has enough linear
+structure for a compactness argument.
+
 # Proof outline
 
 :::definition "adelic_division_algebra_setup" (parent := "fujisaki_project")
@@ -51,6 +58,11 @@ input here. Once `D_A := D ⊗_K A_K` is viewed as a finite `A_K`-algebra with t
 module topology, it becomes a locally compact topological ring, and the kernel
 of its Haar character gives the norm-one part of the adelic unit group.
 
+At that point the project’s compactness statement is a genuine quotient-space
+claim about `Dˣ \ D_A^{(1)}`. The chapter is careful to note that this is a
+subspace of the full unit group, equipped with the quotient topology coming from
+the Haar-character kernel.
+
 :::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project")
 The compactness theorem for the adelic quotient is the final output of the
 chapter and the input needed by the quaternion algebra miniproject.
@@ -62,4 +74,10 @@ and `Y = X·X`. Their role is to force intersections with the Haar-character
 kernel and then to show that the quotient can be covered by the image of a
 compact set. Once that covering statement is in place, compactness of the
 quotient follows.
+
+The very first step in that proof is already informative: identify `D` with
+`ℚ^d` using a basis, identify the adelic algebra with `A_ℚ^d`, and note that
+`D \ D_A` inherits compactness from `ℚ \ A_ℚ`. The rest of the proof turns that
+commutative compactness input into the noncommutative statement needed for the
+quaternionic automorphic-form spaces.
 :::

@@ -49,11 +49,21 @@ condition, and no cusp condition. That is what makes the resulting theory
 algebraic enough to define with arbitrary coefficient groups, including
 mod-`p^n` and `p`-adic coefficients.
 
+The adelic language is still essential, though. The chapter regards the finite
+adeles `A_F^∞` as a central subring of `D ⊗_F A_F^∞`, regards `Dˣ` as sitting in
+the same unit group via `d ↦ d ⊗ 1`, and then defines automorphic forms as
+functions on the adelic units satisfying left invariance, central-character
+triviality, and compact-open right invariance.
+
 :::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")
 Fixing a compact open level subgroup yields the level-$`U`$ space of
 quaternionic automorphic forms.
 This is the specific target space acted on by {uses "concrete_hecke_action"}[].
 :::
+
+The level construction is deliberately simple: one first defines the full space
+`S^D(R)` of automorphic forms, then level `U` means just taking the `U`-fixed
+points for the right action of the finite adelic unit group.
 
 :::theorem "finite_dimensional_quaternionic_forms" (parent := "quaternion_algebra_project")
 The main result is that these spaces are finite-dimensional over a field.
