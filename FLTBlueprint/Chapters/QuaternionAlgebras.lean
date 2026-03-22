@@ -19,17 +19,19 @@ algebras supply the `T` side of the `R = T` theorems in the FLT strategy.
 Fix a totally real field and a totally definite quaternion algebra over it.
 Because the associated symmetric space is zero-dimensional, the resulting
 automorphic-form theory is far more algebraic than the classical
-GL2 theory.
+GL2 theory. This chapter sits on top of {uses "compact_quotient_for_division_algebra"}[].
 :::
 
 :::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
 The chapter defines spaces of weight-2 automorphic forms valued in an arbitrary
 additive commutative group, then specializes to level-$`U`$ invariants.
+Those spaces are the input for the concrete Hecke constructions in {uses "concrete_hecke_action"}[].
 :::
 
 :::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")
 Fixing a compact open level subgroup yields the level-$`U`$ space of
 quaternionic automorphic forms.
+This is the specific target space acted on by {uses "concrete_hecke_action"}[].
 :::
 
 :::theorem "finite_dimensional_quaternionic_forms" (parent := "quaternion_algebra_project")

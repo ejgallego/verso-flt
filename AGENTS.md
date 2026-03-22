@@ -39,6 +39,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - For Lean-facing checks on edited blueprint modules, prefer `lean-beam`
   (`ensure`, `sync`, `hover`, `run-at`) over full rebuild loops whenever that is
   enough to validate the change.
+- Avoid issuing multiple `lean-beam sync` requests in parallel for the same
+  project root. In this repository that sometimes trips a Beam/LSP worker exit
+  with messages like `Cannot read LSP message: offset ... unexpected end of
+  input`. Use one-module-at-a-time Beam sync as the stable path for now.
 
 ## Math Porting
 

@@ -26,6 +26,7 @@ the number field sits discretely with compact quotient.
 
 :::theorem "adele_local_compactness" (parent := "adele_project")
 The adeles of a number field should form a locally compact topological ring.
+This local compactness is one of the inputs needed by {uses "compact_quotient_for_division_algebra"}[].
 :::
 
 :::proof "adele_local_compactness"
@@ -38,6 +39,7 @@ subgroups, and the infinite part is finite-dimensional real linear algebra.
 :::theorem "adele_base_change" (parent := "adele_project")
 For a finite extension $`L/K`$, the adele ring of $`L`$ should identify with
 $`L \otimes_K \mathbf{A}_K`$ as both an algebra and a topological space.
+This is one of the basic background results for {uses "adelic_division_algebra_setup"}[] and {uses "haar_character_goal"}[].
 :::
 
 :::proof "adele_base_change"
@@ -49,5 +51,5 @@ local completion maps place by place before assembling the global theorem.
 
 :::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
 The embedding of a number field into its adeles should be discrete with compact
-quotient.
+quotient, echoing the commutative prototype behind {uses "fujisaki_lemma_goal"}[].
 :::
