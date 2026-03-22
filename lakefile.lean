@@ -3,7 +3,7 @@ open Lake DSL
 
 require FLT from "./FLT"
 require verso from git "git@github.com:leanprover/verso.git" @ "v4.29.0-rc6"
-require VersoBlueprint from git "git@github.com:leanprover/verso-blueprint.git" @
+require VersoBlueprint from git "git@github.com:ejgallego/verso-blueprint.git" @
   "7e15d20e6a03859de535a359bca3760c039858b2"
 
 package FLTBlueprint where

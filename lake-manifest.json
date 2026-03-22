@@ -1,7 +1,7 @@
 {"version": "1.1.0",
  "packagesDir": ".lake/packages",
  "packages":
- [{"url": "git@github.com:leanprover/verso-blueprint.git",
+ [{"url": "git@github.com:ejgallego/verso-blueprint.git",
    "type": "git",
    "subDir": null,
    "scope": "",

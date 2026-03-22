@@ -11,6 +11,9 @@ This repository is the integration layer for the FLT Verso blueprint.
   management at the repository root, not inside `FLT/`.
 - There is no separate harness package anymore: the repository root itself is
   the harness.
+- Use the `ejgallego/verso-blueprint` mirror as the Lake dependency source for
+  `VersoBlueprint`; do not switch back to the private upstream URL in project
+  config until the upstream repo is public.
 
 ## Source Of Truth
 
