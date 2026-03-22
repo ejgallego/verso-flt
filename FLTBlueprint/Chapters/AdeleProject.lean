@@ -19,6 +19,19 @@ library-design project. Some pieces already live in mathlib, some have been
 proved in external repos, and some still need to be formalized in a way that
 fits the existing restricted-product API cleanly.
 
+# Status
+
+:::definition "adele_project_status" (parent := "adele_project")
+This is still an active miniproject. The TeX chapter treats the existence of the
+adele ring as largely settled, while local compactness, base change, and the
+discrete cocompact embedding remain the real mathematical targets.
+:::
+
+The chapter is also explicit that finite adeles and full adeles sit at slightly
+different levels of generality. The finite adele construction works naturally
+for Dedekind domains, while the full adele ring uses archimedean places and so
+is genuinely number-field-specific.
+
 # Goals
 
 :::definition "adele_ring_goals" (parent := "adele_project")
@@ -31,6 +44,21 @@ The chapter also stresses a useful distinction. Finite adeles are algebraic
 objects and can be defined for general Dedekind domains. Full adeles are more
 arithmetic: they add the archimedean factor and use special properties of number
 fields.
+
+:::definition "finite_adeles_for_dedekind_domains" (parent := "adele_project")
+The finite-adele construction extends beyond number fields to general Dedekind
+domains by taking the restricted product of local fraction fields with respect
+to their local integer rings.
+:::
+
+:::proof "finite_adeles_for_dedekind_domains"
+The TeX chapter stresses this point because it affects API design. Many of the
+local and finite-adelic constructions should be developed at Dedekind-domain
+generality, even though the final FLT application only needs number fields.
+
+That is why the current chapter oscillates between number-field language and the
+more general “Dedekind domain with field of fractions” setup.
+:::
 
 :::definition "cheap_finite_adele_definition" (parent := "adele_project")
 A cheap definition of the finite adeles of a number field `K` is
@@ -78,17 +106,17 @@ This is exactly why {uses "local_integer_ring_compact_open"}[] is the key local
 input in the TeX chapter.
 :::
 
+The TeX miniproject also records the project status here: Salvatore Mercuri had
+already formalized local compactness in an external adele-ring repo, and the
+question for the blueprint was how to refactor that proof so it fits mathlib's
+restricted-product API cleanly.
+
 # Base change
 
 :::theorem "adele_base_change" (parent := "adele_project")
 For a finite extension $`L/K`$, the adele ring of $`L`$ should identify with
 $`L \otimes_K \mathbf{A}_K`$ as both an algebra and a topological space.
 This is one of the basic background results for {uses "adelic_division_algebra_setup"}[] and {uses "haar_character_goal"}[].
-:::
-
-:::proof "adele_base_change"
-The old blueprint splits this into finite and infinite pieces and develops the
-local completion maps place by place before assembling the global theorem.
 :::
 
 The TeX chapter is also careful about the logical shape of this statement:
@@ -116,6 +144,107 @@ After base change to a local completion, the topology on `L_w` should agree with
 the `K_v`-module topology.
 :::
 
+:::theorem "finite_primes_above_v_are_finite" (parent := "adele_project")
+For a fixed finite place `v` of `K`, there are only finitely many places `w` of
+`L` lying above it.
+:::
+
+:::proof "finite_primes_above_v_are_finite"
+This is a standard Dedekind-domain fact, but the TeX chapter singles it out
+because the restricted-product reindexing later depends on finite fibres over
+the map `w ↦ v`.
+:::
+
+:::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project")
+For a fixed finite place `v` of `K`, the algebra
+$`L \otimes_K K_v` decomposes as the finite product of the completions
+$`\prod_{w \mid v} L_w`.
+:::
+
+:::proof "nonarchimedean_base_change_local_decomposition"
+This is one of the key structural theorems in the TeX chapter. The local
+completion map {uses "local_completion_map"}[] is assembled over all `w | v`,
+and one proves that the resulting map is an algebraic isomorphism. At this
+stage the theorem is algebraic first, topological second.
+
+The later finite-adele base-change theorem is basically this statement applied
+simultaneously at every nonarchimedean place.
+:::
+
+:::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project")
+The same local decomposition identifies the integral subring
+$`B \otimes_A A_v` with the product of the local integer rings
+$`\prod_{w \mid v} B_w`.
+:::
+
+:::proof "nonarchimedean_integral_decomposition"
+The TeX chapter treats this as the crucial integral refinement of the previous
+theorem. Without it, one only knows the decomposition of the ambient local
+fields; with it, one can match the open compact subrings that define the
+restricted-product topology.
+:::
+
+:::theorem "finite_adele_base_change_algebraic" (parent := "adele_project")
+The finite adele ring of `L` is algebraically isomorphic to
+$`L \otimes_K \mathbf{A}_K^\infty`.
+This is the finite-part algebraic precursor to {uses "adele_base_change"}[].
+:::
+
+:::proof "finite_adele_base_change_algebraic"
+The TeX argument is a “put the local pieces together” theorem. One combines
+{uses "nonarchimedean_base_change_local_decomposition"}[],
+{uses "nonarchimedean_integral_decomposition"}[], and a relabelling of
+restricted products along the finite-fibre map on places. The result is an
+algebraic identification of the finite adeles after base change.
+:::
+
+:::theorem "finite_adele_base_change_topological" (parent := "adele_project")
+The same finite-adele base-change map is also a homeomorphism when the source is
+given the module topology and the target the restricted-product topology.
+:::
+
+:::proof "finite_adele_base_change_topological"
+The TeX chapter insists that this is a separate theorem, not a formality. The
+key issue is that the restricted-product topology is not the naive subspace
+topology from the full product, so one must check carefully that the local
+homeomorphisms respect the chosen open compact subrings and that restricted
+products commute with finite products in the required way.
+:::
+
+:::theorem "infinite_place_weak_approximation" (parent := "adele_project")
+For any finite set of infinite places, the diagonal embedding of a number field
+into the corresponding product of completions is dense.
+:::
+
+:::proof "infinite_place_weak_approximation"
+The TeX chapter uses this as the analytic input for infinite-adele base change.
+The proof is a version of weak approximation: construct elements that converge
+to `1` in one archimedean place and to `0` in the others, then linearly combine
+them to approximate any chosen tuple.
+:::
+
+:::theorem "infinite_adele_base_change" (parent := "adele_project")
+The infinite adele ring of `L` is isomorphic, both algebraically and
+topologically, to $`L \otimes_K K_\infty`.
+:::
+
+:::proof "infinite_adele_base_change"
+The TeX chapter mirrors the nonarchimedean story but with archimedean
+completions. One first builds local maps at each infinite place, then proves
+surjectivity and injectivity using weak approximation and dimension counting,
+and finally upgrades the algebra isomorphism to a homeomorphism.
+:::
+
+:::proof "adele_base_change"
+The old blueprint splits this into finite and infinite pieces and develops the
+local completion maps place by place before assembling the global theorem.
+
+So {uses "adele_base_change"}[] is really the sum of
+{uses "finite_adele_base_change_algebraic"}[],
+{uses "finite_adele_base_change_topological"}[], and
+{uses "infinite_adele_base_change"}[].
+:::
+
 # Discreteness and compactness
 
 :::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
@@ -128,4 +257,16 @@ In the TeX chapter this statement is positioned as the commutative prototype for
 the later division-algebra compactness theorem. The point is not just that `K`
 sits inside its adeles, but that the quotient carries genuine compactness
 content that later noncommutative arguments should imitate.
+:::
+
+:::theorem "commutative_compactness_prototype" (parent := "adele_project")
+The quotient $`K \backslash \mathbf{A}_K` is the commutative model for the later
+quotient compactness theorem in {uses "compact_quotient_for_division_algebra"}[].
+:::
+
+:::proof "commutative_compactness_prototype"
+The TeX chapter is explicit about this motivational role. Before one studies
+division algebras or norm-one adelic unit groups, one should understand the
+classical quotient of a number field inside its adeles. Fujisaki's lemma is then
+presented as the noncommutative analogue of exactly this compactness statement.
 :::
