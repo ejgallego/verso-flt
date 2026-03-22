@@ -23,6 +23,11 @@ that Frey-curve torsion is hardly ramified, then proves a general reducibility
 theorem for hardly ramified mod $`p` representations, and finally feeds that
 back into the contradiction from the reductions chapter.
 
+The TeX chapter also explains the strategic point by analogy with Minkowski's
+theorem: just as a number field unramified everywhere must be trivial, one hopes
+that a two-dimensional mod `p` representation with extremely little
+ramification should be forced to be reducible.
+
 What matters is not just that the Frey curve gives a two-dimensional
 representation, but that the local conditions at $`2` and $`p` are so rigid
 that the representation can be moved through deformation theory and compatible
@@ -69,6 +74,10 @@ representations, irreducible and absolutely irreducible coincide: because
 $`\ell \ge 3` and the determinant is cyclotomic, complex conjugation already
 has two distinct eigenvalues over the ground field. This removes an annoying
 field-of-definition ambiguity from the deformation theory.
+
+The TeX source inserts this remark before the main reducibility theorem, and it
+really is part of the setup: it tells you that the later deformation-theoretic
+statements are not hiding an extra absolutely-irreducible hypothesis.
 
 # The Frey curve enters the class
 
@@ -200,6 +209,11 @@ contradiction by combining {uses "hardly_ramified_lifts"}[],
 {uses "hardly_ramified_three_adic"}[].
 :::
 
+The TeX chapter then immediately restates the Wiles-side theorem for the Frey
+curve as an easy corollary of this general reducibility result. In the Verso
+port, that specialization appears as the Frey-curve non-irreducibility theorem
+below.
+
 :::proof "hardly_ramified_reducible"
 Assume a hardly ramified mod $`\ell` representation were irreducible. By
 {uses "hardly_ramified_lifts"}[] it lifts to a hardly ramified $`\ell`-adic
@@ -219,6 +233,11 @@ theorem by Khare and Wintenberger {Informal.citep khareWintenbergerII}[]; the
 point of the chapter is to isolate a route to this special case that matches
 the project's preferred modularity-lifting infrastructure.
 :::
+
+The TeX chapter closes with one final orientation remark: among the three deep
+inputs, the `3`-adic theorem is presented as the easiest, while the lifting and
+compatible-family theorems are the ones that really use modern `R = T`-style
+machinery.
 
 :::theorem "frey_torsion_not_irreducible" (parent := "hardly_ramified_program")
 The Frey curve torsion representation is not irreducible.

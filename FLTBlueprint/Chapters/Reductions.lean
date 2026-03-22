@@ -15,6 +15,17 @@ package, isolating the two deep external inputs of the first phase: Mazur on
 torsion and the Wiles-side reducibility theorem.
 :::
 
+The TeX chapter opens with a one-sentence goal statement: reduce FLT to one deep
+theorem of Mazur and one deep theorem of Wiles about a Galois representation.
+The rest of the chapter is a carefully staged route to exactly that
+contradiction.
+
+The TeX overview paragraph also states the whole reduction in one breath: start
+from a counterexample, normalize it into a Frey package, build the Frey curve,
+look at the associated Galois representation, and then show that two deep and
+independent theorems force that representation to be both reducible and
+irreducible.
+
 :::definition "frey_package_data" (parent := "first_reductions")
 A Frey package packages the normalized Diophantine data attached to a
 hypothetical counterexample to Fermat's Last Theorem. It is the formal entry
@@ -64,6 +75,11 @@ Diophantine problem to modularity.
 This curve is built from {uses "frey_package_data"}[].
 :::
 
+The TeX chapter is explicit that this is the first point where elliptic curves
+and Galois representations enter the argument in earnest. The Frey curve is not
+just an auxiliary gadget: it is the object whose torsion representation will
+eventually carry the contradiction.
+
 :::theorem "counterexample_yields_frey_package" (parent := "first_reductions")
 If Fermat's Last Theorem were false, then there would exist a Frey package.
 This isolates the entire Diophantine input of the argument in one formal
@@ -107,6 +123,10 @@ using the chain
 {uses "frey_torsion_not_irreducible"}[].
 :::
 
+The TeX chapter describes this theorem as the main content of Wiles' magnum
+opus and uses the whole remainder of the blueprint to unpack why it should be
+true.
+
 :::theorem "no_frey_package" (parent := "first_reductions")
 There is no Frey package.
 Combined with {uses "counterexample_yields_frey_package"}[], this closes the
@@ -119,3 +139,7 @@ The proof is the contradiction between {uses "mazur_frey_irreducible"}[] and
 {uses "wiles_frey_not_irreducible"}[] for the representation attached to
 {uses "frey_curve_definition"}[].
 :::
+
+The TeX chapter then closes by turning back to the modularity side: once Mazur
+is taken as historical input, the remaining task is to prove the Wiles-side
+non-irreducibility statement, which is exactly where the next chapter begins.
