@@ -9,6 +9,7 @@ repository root.
 
 The GitHub Pages build is defined in `.github/workflows/blueprint.yml`.
 
+- Public Pages site: <https://ejgallego.github.io/verso-flt/>
 - Local build command: `bash ./scripts/ci-pages.sh`
 - Local site output: `_out/site/html-multi/index.html`
 - Uploaded Pages artifact directory: `_out/site/html-multi`
