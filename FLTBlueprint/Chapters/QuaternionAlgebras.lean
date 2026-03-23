@@ -9,178 +9,200 @@ open Informal
 #doc (Manual) "Miniproject: Quaternion Algebras" =>
 
 :::group "quaternion_algebra_project"
-This chapter develops the spaces of quaternionic automorphic forms whose Hecke
-algebras supply the `T` side of the `R = T` theorems in the FLT strategy.
+This chapter studies spaces of quaternionic modular forms and the
+finite-dimensionality result needed to control the Hecke algebras on the `T`
+side of `R = T`.
 :::
 
 # Goal
 
-The TeX chapter introduces this material as a practical substitute for
-classical modular forms. Since mathlib does not yet prove the finite
-dimensionality of classical modular-form spaces, the project turns to the
-quaternionic setting, where finite-dimensionality can be approached through
-adelic compactness.
-
-The main result of the TeX chapter is finite-dimensionality of spaces of
-quaternionic modular forms. The Hecke algebras acting on those spaces are the
-`T`s that later appear in the modularity-lifting story.
+At the time of writing, `mathlib` still does not have a proof that the space of
+classical modular forms of a fixed weight, level and character is
+finite-dimensional. The main result in this miniproject is to prove that
+certain spaces of quaternionic modular forms are finite-dimensional. We need
+finiteness results like this in order to control the Hecke algebras which act
+on these spaces; these Hecke algebras are the `T`s which are isomorphic to the
+`R`s in the `R = T` theorem which is the big first target for the FLT project.
 
 # Initial definitions
 
+Our first goal in this miniproject is the definition of these spaces of
+quaternionic modular forms. We start with some preliminary work towards this.
+
 :::definition "totally_definite_quaternion_algebra_setup" (parent := "quaternion_algebra_project")
-Fix a totally real field and a totally definite quaternion algebra over it.
-Because the associated symmetric space is zero-dimensional, the resulting
-automorphic-form theory is far more algebraic than the classical
-GL2 theory. This chapter sits on top of {uses "compact_quotient_for_division_algebra"}[].
+Fix once and for all a totally real field $`F` and a quaternion algebra $`D`
+over $`F`. Assume furthermore that $`D` is totally definite, that is, that for
+all field embeddings $`\tau : F \to \R` we have $`D \otimes_{F,\tau} \R \cong
+\bbH`. Because $`F` has at least one real place, the totally definite
+hypothesis is enough to show that $`D` is not a matrix algebra and thus must be
+a division algebra. Thus {uses "compact_quotient_for_division_algebra"}[]
+applies.
 :::
 
 :::proof "totally_definite_quaternion_algebra_setup"
-The TeX chapter starts by recalling that quaternion algebras are central simple
-algebras of dimension `4`. Over a totally real field `F`, one fixes a
-quaternion algebra `D/F` that is totally definite, meaning that every real
-embedding lands in Hamilton's quaternions. Because `F` has a real place, that
-forces `D` to be a division algebra, which is why the Fujisaki compactness
-theorem applies.
+Let $`K` be a field. Recall that a quaternion algebra over $`K` is a central
+simple $`K`-algebra of $`K`-dimension `4`.
+
+A fundamental fact about central simple algebras is that if $`D/K` is a central
+simple $`K`-algebra and $`L/K` is an extension of fields, then $`D \otimes_K L`
+is a central simple $`L`-algebra. In particular, if $`D` is a quaternion
+algebra over $`K` then $`D \otimes_K L` is a quaternion algebra over $`L`.
+
+The TeX chapter then specializes to a totally real field $`F` and a totally
+definite quaternion algebra $`D/F`, and from there invokes Fujisaki's theorem
+to conclude that $`D^\times \backslash (D \otimes_F \A_F)^{(1)}` is compact.
 :::
 
-:::theorem "zero_dimensional_symmetric_space_quaternionic" (parent := "quaternion_algebra_project")
-In the totally definite quaternionic setting, the archimedean symmetric space
-is zero-dimensional, so the usual analytic conditions from classical modular
-forms disappear.
-:::
+The high-falutin' explanation of what is about to happen is that the units
+$`D^\times` of $`D` can be regarded as a connected reductive algebraic group
+over $`F`, and we are going to define certain spaces of automorphic forms for
+this algebraic group. For a general connected reductive algebraic group, part
+of the definition of an automorphic form is that it satisfies some differential
+equations. However, under the assumption that $`F` is totally real and $`D/F`
+is totally definite, the associated symmetric space is a `0`-dimensional
+manifold, meaning in practice that the part of the definition of an automorphic
+form involving differential equations is vacuously satisfied in this setting.
 
-:::proof "zero_dimensional_symmetric_space_quaternionic"
-The TeX chapter stresses this as the decisive simplification. There is no upper
-half-plane, no holomorphicity condition, and no cusp condition to impose.
-Instead, one works directly with adelic functions satisfying invariance and
-level conditions.
-
-This is exactly why the later definitions can be made for automorphic forms
-valued in an arbitrary additive commutative group, not just in `ℂ`.
-:::
+As a consequence, the definitions we are about to give have a far more
+algebraic flavour. Crucially, the fact that we do not need to talk about
+differential equations at all means that one does not need to assume that our
+automorphic forms are `ℂ`-valued; our definition makes sense for forms valued
+in an arbitrary additive commutative group. In particular, it is possible to
+talk about mod `p^n` and `p`-adic automorphic forms in this setting without
+doing any complicated algebraic geometry.
 
 # Brief introduction to automorphic forms in this setting
 
-The TeX chapter is explicit that the totally definite setting removes a large
-amount of analytic baggage. There is no upper half-plane, no holomorphicity
-condition, and no cusp condition. That is what makes the resulting theory
-algebraic enough to define with arbitrary coefficient groups, including
-mod-`p^n` and `p`-adic coefficients.
+Having made assumptions on $`D` which make the theory of automorphic forms over
+$`D^\times` far less technical, we will now make it a little more technical by
+using the modern adelic approach to the theory. Note that many results about
+the adeles of a number field are proved in the adele miniproject. Our
+automorphic forms will be certain functions on the units of the ring
+$`D_{\A^\infty} := D \otimes_F \A_F^\infty \cong D \otimes_{\Q} \A_{\Q}^\infty`.
 
-The adelic language is still essential, though. The chapter regards the finite
-adeles `A_F^∞` as a central subring of `D ⊗_F A_F^∞`, regards `Dˣ` as sitting in
-the same unit group via `d ↦ d ⊗ 1`, and then defines automorphic forms as
-functions on the adelic units satisfying left invariance, central-character
-triviality, and compact-open right invariance.
-
-:::theorem "quaternionic_forms_allow_general_coefficients" (parent := "quaternion_algebra_project")
-Because no differential equations are imposed in the totally definite setting,
-quaternionic automorphic forms can be defined with values in any additive
-commutative group, including mod-`p^n` and `p`-adic coefficient objects.
-:::
-
-:::proof "quaternionic_forms_allow_general_coefficients"
-This is a methodological point the TeX chapter makes very strongly. In the
-general automorphic theory, analytic conditions at infinity usually force one to
-work with complex-valued or analytically structured coefficient spaces. Here the
-vanishing of the archimedean analytic complexity removes that obstacle.
-
-So the coefficient flexibility is not accidental convenience; it is one of the
-main reasons this quaternionic route is attractive for the FLT project.
-:::
+To prove Fermat's Last Theorem it suffices to work in weight `2` and trivial
+character, and for simplicity we shall, at least for now, bake these
+assumptions into our definitions, even though they would be easy to remove. We
+remark again that there is no analogue of the holomorphicity condition that one
+sees in the classical theory, because the symmetric space is a finite set of
+points rather than the upper half plane. Also there is no analogue of the
+cuspidality condition because there are no cusps in this setting. Other than
+the number field $`F` and the quaternion algebra $`D`, the other variable we
+will see in our situation will be the level of the forms. The main result in
+this miniproject will be that the space of weight `2` automorphic forms of
+level $`U` is finite-dimensional.
 
 # Definition of spaces of automorphic forms
 
+Let us now give some precise definitions. Recall that by $`\A_F^\infty` we mean
+the finite adeles of the totally real number field $`F`.
+
+A level is a compact open subgroup $`U` of $`(D \otimes_F \A_F^\infty)^\times`.
+These are plentiful. The ring $`D_f := D \otimes_F \A_F^\infty` is a
+topological ring, and hence the units $`D_f^\times` of this ring are a
+topological group. This group is locally profinite, and hence has many compact
+open subgroups; we will see explicit examples later on.
+
+We regard $`\A_F^\infty` as a subring of
+$`D_{\A^\infty} := D \otimes_F \A_F^\infty`, which is possible because $`F` is
+a subring of $`D`. More precisely, we embed $`\A_F^\infty` into
+$`D \otimes_F \A_F^\infty` via the map sending $`g` to $`1 \otimes g`.
+Because $`F` is in the centre of $`D`, we have that $`\A_F^\infty` is in the
+centre of $`D_{\A^\infty}`. As a consequence we can identify
+$`(\A_F^\infty)^\times` as a subgroup of $`(D \otimes_F \A_F^\infty)^\times`.
+We may also regard $`D` as a subring of $`D \otimes_F \A_F^\infty` via the map
+$`d \mapsto d \otimes 1`, and hence we can think of $`D^\times` as a subgroup
+of $`(D \otimes_F \A_F^\infty)^\times`.
+
 :::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
-The chapter defines spaces of weight-2 automorphic forms valued in an arbitrary
-additive commutative group, then specializes to level-$`U`$ invariants.
-Those spaces are the input for the concrete Hecke constructions in {uses "concrete_hecke_action"}[].
+Let $`R` be an additive commutative group. The space of $`R`-valued automorphic
+forms for $`D^\times` is the set of functions
+$`f : D_{\A^\infty}^\times \to R` satisfying the following axioms:
+
+- $`f(dg) = f(g)` for all $`d \in D^\times` and $`g \in D_{\A^\infty}^\times`
+- $`f(gz) = f(g)` for all $`g \in D_{\A^\infty}^\times`
+- there exists a compact open subgroup
+  $`U \subseteq (D \otimes_F \A_F^\infty)^\times` such that $`f(gu) = f(g)` for
+  all $`g \in D_{\A^\infty}^\times` and $`u \in U`
 :::
 
-:::theorem "automorphic_forms_additive_group" (parent := "quaternion_algebra_project")
-Pointwise addition makes the space of quaternionic automorphic forms into an
-additive abelian group.
+Let $`S^D(R)` denote the set of automorphic forms for $`D^\times`. The space
+$`S^D(R)` is sometimes referred to as a space of quaternionic modular forms over
+$`R`. Three basic observations about $`S^D(R)` are as follows.
+
+:::definition "automorphic_forms_additive_group" (parent := "quaternion_algebra_project")
+Pointwise addition $`(f_1 + f_2)(g) := f_1(g) + f_2(g)` makes $`S^D(R)` into an
+additive abelian group. This depends on {uses "weight_two_quaternionic_forms"}[].
 :::
 
-:::theorem "automorphic_forms_module" (parent := "quaternion_algebra_project")
-If the coefficient object is a commutative ring, then the space of quaternionic
-automorphic forms is naturally a module over that ring.
+:::definition "automorphic_forms_module" (parent := "quaternion_algebra_project")
+If $`R` is a commutative ring then pointwise scalar multiplication
+$`(r \cdot f)(g) := r \cdot f(g)` makes $`S^D(R)` into an $`R`-module. This
+depends on {uses "weight_two_quaternionic_forms"}[] and
+{uses "automorphic_forms_additive_group"}[].
 :::
 
-:::theorem "adelic_right_action_on_quaternionic_forms" (parent := "quaternion_algebra_project")
-The finite adelic unit group acts on the space of quaternionic automorphic
-forms by right translation on the argument.
-This is the action whose `U`-fixed vectors define
-{uses "weight_two_quaternionic_forms_of_level"}[].
+:::definition "adelic_right_action_on_quaternionic_forms" (parent := "quaternion_algebra_project")
+The group $`D_{\A^\infty}^\times` acts on the additive abelian group $`S^D(R)`
+by $`(g \cdot f)(x) = f(xg)`. This depends on
+{uses "weight_two_quaternionic_forms"}[],
+{uses "automorphic_forms_additive_group"}[], and
+{uses "automorphic_forms_module"}[].
 :::
 
-:::proof "adelic_right_action_on_quaternionic_forms"
-The TeX chapter places this immediately after the additive and module
-structures, since it is the action from which levels and Hecke operators are
-cut out.
-:::
+If $`R` is a commutative ring then the action of $`D_{\A^\infty}^\times`
+commutes with the $`R`-action.
+
+Now let $`U` be a level, that is, a compact open subgroup of
+$`D_{\A^\infty}^\times`.
 
 :::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")
-Fixing a compact open level subgroup yields the level-$`U`$ space of
-quaternionic automorphic forms.
-This is the specific target space acted on by {uses "concrete_hecke_action"}[].
+The quaternionic modular forms of level $`U`, with notation $`S^D(U;R)`, are
+the $`U`-invariants for the $`D_{\A^\infty}^\times`-action on $`S^D(R)`. This
+depends on {uses "weight_two_quaternionic_forms"}[],
+{uses "automorphic_forms_additive_group"}[],
+{uses "adelic_right_action_on_quaternionic_forms"}[], and
+{uses "automorphic_forms_module"}[].
 :::
 
-The level construction is deliberately simple: one first defines the full space
-`S^D(R)` of automorphic forms, then level `U` means just taking the `U`-fixed
-points for the right action of the finite adelic unit group.
+The Hecke algebras involved in the main modularity lifting theorems needed in
+the FLT project will be endomorphisms of these spaces $`S^D(U;R)`.
 
-:::theorem "levels_are_compact_open_subgroups" (parent := "quaternion_algebra_project")
-A level is, by definition, a compact open subgroup of the finite adelic unit
-group `D_{\mathbf{A}^\infty}^×`.
-:::
+# The main result
 
-:::proof "levels_are_compact_open_subgroups"
-The TeX chapter emphasizes that such subgroups are plentiful because the adelic
-unit group is locally profinite. This is the same topological input that later
-supports the double-coset finiteness criterion in the Hecke-operator chapter.
-:::
-
-:::theorem "fujisaki_implies_finite_double_cosets_quaternionic" (parent := "quaternion_algebra_project")
-For a fixed compact open level `U`, the quotient
-`Dˣ \ D_{\mathbf{A}^\infty}^× / U` is finite.
-This is the compactness-to-finiteness step behind
-{uses "finite_dimensional_quaternionic_forms"}[].
-:::
-
-:::proof "fujisaki_implies_finite_double_cosets_quaternionic"
-This is the central use of {uses "compact_quotient_for_division_algebra"}[] in
-the chapter. The quotient by `Dˣ` is compact, the right `U`-translates form an
-open cover, and compactness forces only finitely many double cosets to appear.
-
-So the finite-dimensionality theorem is not proved by analysis on functions
-directly; it is proved by first collapsing the adelic geometry to finitely many
-orbits.
-:::
+The point of this miniproject is the finite-dimensionality result below. This
+is an analogue of the result that classical modular forms of a fixed level,
+weight and character are finite-dimensional. In fact, by delicate results of
+Jacquet and Langlands this result, in the case $`k = \bbC`, implies many cases
+of that classical claim, although of course the Jacquet--Langlands theorem is
+much harder to prove than the classical proof of finite-dimensionality.
 
 :::theorem "finite_dimensional_quaternionic_forms" (parent := "quaternion_algebra_project")
-The main result is that these spaces are finite-dimensional over a field.
+Let $`k` be a field. Then the space $`S^D(U;k)` is a finite-dimensional
+$`k`-vector space. This depends on {uses "automorphic_forms_module"}[].
 :::
 
 :::proof "finite_dimensional_quaternionic_forms"
-The old blueprint reduces the finite-dimensionality statement to Fujisaki's
-lemma by proving that only finitely many double cosets contribute.
-The corresponding Lean theorem exists in the FLT fork, but its import path still
-needs explicit rc6 validation before we attach it here.
+The finite-dimensionality theorem is an easy consequence of Fujisaki's lemma,
+proved in the Fujisaki miniproject. Write $`(D \otimes_F \A_F^\infty)^\times`
+as a disjoint union of double cosets $`\coprod_i D^\times g_i U`. This open
+cover descends to a disjoint open cover of
+$`D^\times \backslash (D \otimes_F \A_F^\infty)^\times`, and this latter space
+is compact by {uses "compact_quotient_for_division_algebra"}[]. Hence the cover
+is finite; write the double coset representatives as $`g_1, g_2, \ldots, g_n`.
 
-The TeX proof is conceptually straightforward once the compactness theorem is in
-place. One writes the adelic quotient as a union of double cosets `Dˣ g_i U`,
-uses {uses "fujisaki_implies_finite_double_cosets_quaternionic"}[] to show
-there are only finitely many of them, and then evaluates an automorphic form on
-representatives to embed the space into a finite power of the coefficient
-field.
+We claim that the function $`S^D(U;k) \to k^n` sending $`f` to
+$`(f(g_1), f(g_2), \ldots, f(g_n))` is injective and $`k`-linear, which
+suffices by finite-dimensionality of $`k^n`. $`k`-linearity is easy, so let us
+talk about injectivity.
 
-The two real inputs are therefore disjoint and clean:
-
-- compactness of the adelic quotient from {uses "compact_quotient_for_division_algebra"}[]
-- linear algebra on finitely many orbit representatives once the quotient is
-  finite
-
-That clean split is exactly what makes this chapter such a good bridge from the
-adelic miniprojects to the Hecke algebra story.
+Say $`f_1` and $`f_2` are two elements of $`S^D(U;k)` which agree on each
+$`g_i`. It suffices to prove that $`f_1(g) = f_2(g)` for all
+$`g \in (D \otimes_F \A_F^\infty)^\times`. So say
+$`g \in (D \otimes_F \A_F^\infty)^\times`, and write $`g = \delta g_i u` for
+$`\delta \in D^\times` and $`u \in U`. Then
+$`f_1(g) = f_1(\delta g_i u) = f_1(g_i)` by the definition of
+{uses "weight_two_quaternionic_forms_of_level"}[], and similarly
+$`f_2(g) = f_2(g_i)`. Because $`f_1(g_i) = f_2(g_i)` by assumption, we deduce
+that $`f_1(g) = f_2(g)` as required.
 :::
