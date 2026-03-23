@@ -382,6 +382,10 @@ This is presented in the TeX chapter as a straightforward algebra check once the
 definition of `\omega` and the quaternion multiplication rules are in place.
 :::
 
+The TeX chapter immediately notes that this ring is isomorphic to `ℤ^4` as an
+additive group, and that `\mathcal{O} \otimes_{\mathbf{Z}} \mathbf{R}` recovers
+the usual Hamilton quaternions.
+
 :::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program")
 The Hurwitz quaternions carry the usual quaternionic conjugation, making them a
 star ring.
@@ -398,25 +402,52 @@ The subsequent norm lemmas all hang off this definition.
 For a Hurwitz quaternion `x`, the norm is `x \overline{x}`.
 :::
 
+:::proof "hurwitz_norm_eq_mul_conj"
+This is the first norm computation in the TeX chapter. Once the conjugation map
+has been defined, the identity is a direct calculation.
+:::
+
 :::theorem "hurwitz_norm_zero" (parent := "automorphic_example_program")
 The norm of `0` is `0`.
+:::
+
+:::proof "hurwitz_norm_zero"
+The TeX proof is just a calculation from the definition of the norm.
 :::
 
 :::theorem "hurwitz_norm_one" (parent := "automorphic_example_program")
 The norm of `1` is `1`.
 :::
 
+:::proof "hurwitz_norm_one"
+Again this is an immediate calculation from the defining formula.
+:::
+
 :::theorem "hurwitz_norm_multiplicative" (parent := "automorphic_example_program")
 The norm of a product is the product of the norms.
+:::
+
+:::proof "hurwitz_norm_multiplicative"
+The TeX chapter treats this as another short calculation, now using the
+conjugation identity from {uses "hurwitz_norm_eq_mul_conj"}[].
 :::
 
 :::theorem "hurwitz_norm_nonnegative" (parent := "automorphic_example_program")
 The norm of a Hurwitz quaternion is nonnegative.
 :::
 
+:::proof "hurwitz_norm_nonnegative"
+The TeX proof is that the norm is a sum of rational squares.
+:::
+
 :::theorem "hurwitz_norm_eq_zero_iff" (parent := "automorphic_example_program")
 The norm of a Hurwitz quaternion is zero if and only if the quaternion itself is
 zero.
+:::
+
+:::proof "hurwitz_norm_eq_zero_iff"
+Again the TeX chapter appeals to the fact that the norm is a sum of rational
+squares: such a sum vanishes only when every summand vanishes.
 :::
 
 :::theorem "hurwitz_exists_near" (parent := "automorphic_example_program")
@@ -454,12 +485,19 @@ element of minimal norm and apply
 {uses "hurwitz_quotient_remainder"}[].
 :::
 
+The TeX chapter also remarks that all right ideals are principal too, because
+there is an analogous Euclidean statement with `a = bq + r`.
+
 # Profinite completion of the Hurwitz quaternions
 
 :::definition "hurwitz_profinite_completion" (parent := "automorphic_example_program")
 The profinite completion `\widehat{\mathcal{O}}` of the Hurwitz order is
 `\mathcal{O} \otimes \widehat{\mathbf{Z}}`.
 :::
+
+The TeX chapter immediately rewrites elements of `\widehat{\mathcal{O}}` as
+formal quaternions `a + bi + cj + d\omega` with `a,b,c,d` in
+`\widehat{\mathbf{Z}}`.
 
 :::theorem "hurwitz_mod_n_surjective" (parent := "automorphic_example_program")
 For every positive integer `N`, the natural map
@@ -488,6 +526,20 @@ This is the quaternionic analogue of {uses "qhat_canonical_form"}[].
 The TeX chapter says this is proved exactly like the corresponding canonical-form
 statement for `\widehat{\mathbf{Q}}`.
 :::
+
+The TeX chapter then records the additive analogues of the corresponding
+`\widehat{\mathbf{Q}}` statements: `\widehat{\mathcal{O}}` and `D` sit inside
+`\widehat{D}` as additive subgroups with
+`\widehat{\mathcal{O}} \cap D = \mathcal{O}` and
+`\widehat{\mathcal{O}} + D = \widehat{D}`. Because `\mathcal{O}` is just four
+copies of `\mathbf{Z}`, these are direct quaternionic analogues of the earlier
+adelic statements for `\widehat{\mathbf{Q}}`.
+
+The multiplicative structure is subtler. For a general quaternion algebra it is
+not true that `\widehat{D}^\times = D^\times \widehat{\mathcal{O}}^\times`;
+there are class-group-style obstructions, encoded by a noncommutative double
+coset space. The TeX chapter emphasizes that the Hamilton/Hurwitz example is
+special precisely because this obstruction vanishes here.
 
 :::theorem "completed_quaternion_units_factorization" (parent := "automorphic_example_program")
 Every unit of `\widehat{D}` can be written as a product of a unit from `D` and a
