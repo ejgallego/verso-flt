@@ -1,5 +1,3 @@
-import FLTBlueprint.Chapters.HistoricalInputs
-import FLTBlueprint.Chapters.MiniProjects
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -11,193 +9,104 @@ open Informal
 #doc (Manual) "Introduction" =>
 
 :::group "flt_main_story"
-The top-level route from the classical statement of Fermat's Last Theorem to
-the formal reduction currently implemented in Lean.
+This chapter introduces Fermat's Last Theorem, the formalization setting, and
+the reading order for the blueprint.
 :::
 
-Fermat's Last Theorem says that if $`a,b,c,n`$ are positive integers with
-$`n \ge 3`$, then $`a^n + b^n \ne c^n`$. In that sense it is a statement about
-an infinite family of Diophantine equations. The FLT project treats the
-formalization task as teaching this proof to Lean, starting from the mathematics
-already available in core Lean and mathlib rather than rebuilding all of basic
-number theory from scratch.
+Fermat's Last Theorem is the statement that if $`a,b,c,n` are positive whole
+numbers with $`n \geq 3`, then $`a^n + b^n \ne c^n`. It is thus the claim that a
+family of Diophantine equations, $`a^3+b^3=c^3`, $`a^4+b^4=c^4`, and so on, has
+no positive integer solutions. Diophantus was a Greek mathematician who lived
+around `1800` years ago, and he would have been able to understand the
+statement of the theorem.
 
-The TeX introduction also pauses on two historical markers: Fermat raised the
-theorem in 1637, and Wiles proved it in the 1990s, with the proof completed in
-joint work with Taylor. All known proofs still move broadly through elliptic
-curves and modular forms.
+Fermat's Last Theorem was explicitly raised by Fermat in `1637`, and was proved
+by Wiles, with the proof completed in joint work with Taylor, in `1994`. There
+are now several proofs, but all of them go broadly in the same direction, using
+elliptic curves and modular forms.
 
-The old TeX blueprint emphasized that this is like explaining the proof to a
-very demanding audience member: Lean insists on complete detail, and in 2025-era
-formalization practice it only fills in the steps that are mathematically
-utterly obvious. The resulting cost in human time is one of the central facts
-about the project.
+Lean is an interactive theorem prover; it checks mathematical arguments with
+super-human accuracy. Explaining a proof of Fermat's Last Theorem to Lean is in
+some sense like explaining the proof to Diophantus. For example, the proof
+starts by observing that before we go any further it is convenient to first
+invent or discover zero and negative numbers, and one can point explicitly at
+places in Lean's source code where these things happen. However, we will adopt
+a more efficient approach: we will assume all of the theorems both in core Lean
+and in its mathematics library `mathlib`, and proceed from there.
 
-:::definition "formalization_starting_point" (parent := "flt_main_story")
-The project starts from core Lean and mathlib rather than rebuilding basic
-arithmetic, algebra, and geometry from first principles inside the FLT repo.
-:::
+To give some idea of what this entails: `mathlib` at the time of writing
+contains most of an undergraduate mathematics degree and parts of several
+relevant Masters level courses. Thus our task can be likened to teaching a
+graduate level course on Fermat's Last Theorem to a computer. The computer is
+quite a challenging audience member: it will insist on being given all
+technical details of all arguments, and it will not accept proof by
+intimidation or by appeal to higher authority. In `2025`, at least, the
+computer will only start filling in details of arguments by itself once the
+arguments are mathematically utterly obvious. Thus, currently, formalization
+can be a very time-consuming process.
 
-:::proof "formalization_starting_point"
-The TeX introduction makes this pedagogical analogy explicit: formalizing FLT is
-not like formalizing Peano arithmetic from scratch, but like teaching a
-graduate-level course on Fermat's Last Theorem to a computer that already knows
-large parts of an undergraduate degree and some relevant graduate topics.
+# Which Proof Is Being Formalised?
 
-That is why the blueprint can begin directly with elliptic curves, Galois
-representations, and modularity rather than first rebuilding the integers,
-polynomials, completions, or basic field theory.
-:::
+At the time of writing, these notes do not contain anywhere near a proof of
+FLT, or even a sketch proof, although we are currently actively working on
+fixing this.
 
-:::author "kevin_buzzard" (name := "Kevin Buzzard")
-:::
+From `2024` to `2029` we will be beginning to build a proof of FLT, following a
+strategy constructed by Taylor, taking into account Buzzard's comments on what
+would be easy or hard to do in Lean. Our strategy uses refinements of the
+original Taylor--Wiles method by Diamond/Fujiwara, Khare--Wintenberger,
+Skinner--Wiles, Kisin, Taylor and others. One could call it a `21`st century
+proof of the theorem. During this initial phase of the project, we shall also
+be assuming many nontrivial theorems without proof, as long as they were
+published by `31 December 1989`.
 
-:::author "flt_contributors" (name := "FLT contributors")
-:::
+To get technical for just a second, we shall for example be assuming the
+existence of Galois representations attached to weight `2` Hilbert modular
+forms, Langlands' cyclic base change theorem for $`\GL_2`, Mazur's theorem
+bounding the torsion subgroup of an elliptic curve over the rationals, and
+several other nontrivial results which were known by the end of the `1980`s.
 
-:::theorem "flt_classical_statement" (parent := "flt_main_story") (owner := "flt_contributors")
-Fermat's Last Theorem states that there are no non-trivial positive integer
-solutions to $`x^n + y^n = z^n`$ for $`n >= 3`$.
-The public-facing theorem exported by the project is still tracked separately;
-the first Verso port keeps the informal statement here without forcing the
-blueprint build through the monolithic root import.
-:::
+The upshot of this is that, by `2029` at the end of this first phase, the
+project should contain a complete proof that FLT follows from results that were
+known to humanity in the `1980`s. In particular, one naive way of understanding
+the goal is that it is a formalization of the papers of Wiles and
+Taylor--Wiles, assuming the results in the references of those papers. However,
+as noted above, we will actually be taking a slightly different path.
 
-:::proof "flt_classical_statement"
-The project exports the classical positive-integer formulation directly, so the
-rendered blueprint can point at the same theorem that downstream users see.
-:::
+# The Structure Of This Blueprint
 
-:::theorem "flt_modern_reduction" (parent := "flt_main_story") (owner := "kevin_buzzard")
-The current formal route proves Fermat's Last Theorem by showing that a
-counterexample would yield a Frey package, then deriving incompatible
-properties of the associated Galois representation.
-The contradiction is assembled from {uses "mazur_frey_irreducible"}[] and
-{uses "wiles_frey_not_irreducible"}[].
-:::
+This blueprint is a nonlinear document, comprising many chapters. The chapters
+are not designed to be read in order. Each chapter is self-contained and has a
+well-defined goal, typically stated at the top of the chapter.
 
-:::proof "flt_modern_reduction"
-This is the project-level endpoint for the reduction chain. The detailed steps
-are tracked in the following chapters, starting with
-{uses "counterexample_yields_frey_package"}[] and ending with
-{uses "no_frey_package"}[].
-:::
-
-:::theorem "phase_one_goal" (parent := "flt_main_story")
-The current project phase aims for a Lean proof that Fermat's Last Theorem
-follows from mathematics already known by the end of 1989.
-This is the phase boundary recorded more systematically in
-{uses "known_in_1980s_phase_boundary"}[].
-:::
-
-:::proof "phase_one_goal"
-The introduction in the TeX blueprint is very clear about the intended staging.
-The first milestone is not a proof free of assumptions, but a proof whose
-remaining assumptions all belong to the pre-1990 literature.
-
-That is why the current blueprint keeps a dedicated chapter of explicit
-historical inputs and assumptions, beginning with
-{uses "formalized_assumptions_scope"}[].
-:::
-
-:::definition "verso_port_scope" (parent := "flt_main_story")
-This Verso port replaces the old `leanblueprint` build with the reference
-`verso-blueprint` structure. The initial migration keeps the central reduction
-nodes, the currently axiomatized historical inputs, and a map of the
-mini-project chapters that still need fuller informal migration.
-:::
-
-:::definition "nonlinear_blueprint_structure" (parent := "flt_main_story")
-The blueprint is intentionally nonlinear: one main route follows the reduction
-chapters, while a parallel collection of bottom-up workstreams supplies the API
-and background mathematics those chapters eventually need.
-The project map for those workstreams is recorded in
-{uses "legacy_blueprint_map"}[].
-:::
-
-:::proof "nonlinear_blueprint_structure"
-The TeX introduction explicitly warned readers not to expect a single linear
-chapter order. The intended reading route begins with the core contradiction
-chain in {uses "counterexample_yields_frey_package"}[],
-{uses "hardly_ramified_reducible"}[], and {uses "no_frey_package"}[], but many
-other chapters are written as local projects with their own concrete goals.
-
-That split survives in the Verso port: the proof spine lives in the reduction,
-hardly ramified, and overview chapters, while the project-map chapter records
-the auxiliary workstreams that build the surrounding infrastructure.
-:::
-
-:::definition "miniproject_workstyle" (parent := "flt_main_story")
-Many chapters are miniprojects: bottom-up projects with sharply defined local
-goals, often at early graduate level, and often motivated by the possibility of
-upstreaming reusable mathematics to mathlib.
-:::
-
-:::proof "miniproject_workstyle"
-This language comes directly from the old introduction. The point of a
-miniproject is not just to accumulate background material, but to isolate a
-concrete theorem or API boundary that can be attacked independently of the full
-global FLT proof.
-
-The Frobenius workstream is the model success story, summarized by
-{uses "miniproject_success_story"}[], and the broader collection of current
-workstreams is organized in {uses "legacy_blueprint_map"}[].
-:::
-
-# Which proof is being formalised?
-
-The TeX draft was explicit that, at the time of writing, the notes contained
-nothing close to a proof of FLT, or even a real sketch proof. That remains
-useful context for the shape of the blueprint: many chapters started life as
-staging areas for definitions and local goals rather than as polished surveys.
-
-The route followed by the project is not a direct transcription of the original
-Wiles and Taylor--Wiles papers. Instead, the plan is the modern strategy
-designed by Richard Taylor in discussion with Kevin Buzzard: a 21st century
-version of the proof, incorporating later refinements due to
-Diamond--Fujiwara, Khare--Wintenberger, Kisin, Skinner--Wiles, Taylor, and
-others.
-
-In the current first phase of the FLT project, many deep results that were
-already known by the end of 1989 are allowed as assumptions. The intended
-endpoint of that phase is a Lean proof that Fermat's Last Theorem follows from
-mathematics that humanity already knew in the 1980s.
-
-The TeX chapter makes this more concrete: one naive description of the goal is
-“formalize the papers of Wiles and Taylor--Wiles, assuming the results in their
-reference lists”. The actual project route is not identical to those papers,
-but that heuristic still captures the historical ambition of phase one.
-
-# The structure of this blueprint
-
-The original TeX document described itself as a nonlinear blueprint: a family
-of semi-independent chapters with explicit local goals rather than a single
-linear narrative. That same philosophy is kept here. The first reductions are
-tracked in the reduction chapter, while the later strategy is sketched in the
-overview chapter through the modularity lifting theorem and the reduction at 3
-step.
-
-The TeX introduction was also explicit about reading order: after this chapter,
-one should next read the reductions chapter, because that is where the proof
-begins by reducing FLT to two statements about the Frey curve.
-
-Much of the remaining work is organized as miniprojects. Those chapters are not
-mere appendices: they are where the project develops the background API around
-adeles, Haar characters, quaternion algebras, Hecke operators, and Frobenius
-elements that the global proof strategy eventually depends on. The rendered
-project map for those workstreams now lives in the dedicated legacy-map
-chapter.
+After this chapter, you should next read the reductions chapter, which explains
+how to reduce FLT to two highly nontrivial statements about the `p`-torsion in
+a certain elliptic curve, the Frey curve. One of these statements was proved in
+the `1970`s by Mazur, and we shall not be concentrating on it until after the
+first phase is complete. The other is a theorem of Wiles, and this is what we
+will be concentrating on in the remainder of the blueprint.
 
 # Remarks
 
-The TeX introduction was candid that many chapters were still rough sketches or
-collections of ideas. The Verso port is following the same staged approach. Some
-chapters are already close to their intended long-term role, while others are
-present mainly to preserve the project map and its dependency structure until
-their informal mathematics is ported more fully.
+The actual blueprint currently also contains a lot of disorganised ideas.
+Currently these should be disregarded.
 
-Two further remarks from the TeX version are still worth preserving almost
-verbatim. First, the overview chapter was described there as extremely sketchy
-and mainly useful as a map of future work. Second, many of the remaining
-chapters were described as experiments or miniprojects whose ultimate goal was
-to push mathematics into mathlib, not just to decorate the blueprint.
+The overview chapter is an extremely sketchy overview of how the rest of the
+proof goes. This is currently being expanded and should be ignored right now.
+
+All of the remaining chapters are experiments, and most of them are what I am
+currently calling miniprojects. A miniproject is a bottom-up project, typically
+at early graduate student level, with a concrete goal. The ultimate goal of
+many of these projects is to actually get some result into mathlib. We have had
+one success so far: the Frobenius miniproject is currently being PR'd to
+mathlib by Thomas Browning. Currently most of my efforts are going into running
+miniprojects, with the two most active ones currently being the adeles
+miniproject and the quaternion algebra miniproject. These projects do not
+logically depend on each other for the most part, and one can pick and choose
+how one reads them.
+
+There is also an appendix, which is again very sketchy, and comprises mostly of
+a big list of nontrivial theorems many of which we will be assuming without
+proof in the FLT project.
+
+The next chapter to read, where the proof begins, is the reductions chapter.
