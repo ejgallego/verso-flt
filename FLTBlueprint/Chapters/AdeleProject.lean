@@ -27,6 +27,13 @@ adele ring as largely settled, while local compactness, base change, and the
 discrete cocompact embedding remain the real mathematical targets.
 :::
 
+The TeX chapter is unusually explicit about project status:
+
+- defining the adeles of a number field as a `K`-algebra is treated as done, and the corresponding construction is already in mathlib
+- local compactness was formalized first in Salvatore Mercuri's external adele-ring development, but still needed clean integration with mathlib's restricted-product API
+- base change and the discrete cocompact embedding were not yet formalized and were presented as the main remaining mathematical targets
+- a further meta-goal is to upstream as much of the finished infrastructure to mathlib as possible
+
 The chapter is also explicit that finite adeles and full adeles sit at slightly
 different levels of generality. The finite adele construction works naturally
 for Dedekind domains, while the full adele ring uses archimedean places and so
@@ -49,6 +56,11 @@ The chapter also stresses a useful distinction. Finite adeles are algebraic
 objects and can be defined for general Dedekind domains. Full adeles are more
 arithmetic: they add the archimedean factor and use special properties of number
 fields.
+
+The TeX chapter begins the miniproject by spelling out “cheap” definitions
+before switching back to the literature and mathlib definitions. That contrast
+is important because it explains both what one morally wants the adeles to be
+and why the harness still follows the restricted-product implementation.
 
 :::definition "finite_adeles_for_dedekind_domains" (parent := "adele_project")
 The finite-adele construction extends beyond number fields to general Dedekind
@@ -90,6 +102,12 @@ integer subrings.
 :::proof "restricted_product_adele_definition"
 This is the definition the chapter chooses to follow, precisely because it is
 already the mathlib-facing one and generalizes well to the Dedekind-domain API.
+
+The TeX chapter also stresses that mathlib's full adele ring is the product of
+the finite adeles with the archimedean completions, so one should think of the
+cheap tensor-product definitions and the restricted-product definitions as
+different presentations of the same intended object rather than as competing
+mathematics.
 :::
 
 # Local compactness
@@ -109,12 +127,19 @@ The finite adele part is a restricted product over compact open integer
 subgroups, and the infinite part is finite-dimensional real linear algebra.
 This is exactly why {uses "local_integer_ring_compact_open"}[] is the key local
 input in the TeX chapter.
+
+The chapter is explicit that this is now meant to be proved using the
+restricted-product topology rather than the older ad hoc topology from the
+first external adele formalization. That is why the local compactness theorem
+for restricted products in mathlib is the real harness-facing endpoint here.
 :::
 
 The TeX miniproject also records the project status here: Salvatore Mercuri had
 already formalized local compactness in an external adele-ring repo, and the
 question for the blueprint was how to refactor that proof so it fits mathlib's
-restricted-product API cleanly.
+restricted-product API cleanly. It also notes the specific local input one
+needs: for number fields, unlike a general Dedekind domain, the local integer
+rings are compact because the residue fields are finite.
 
 # Base change
 
