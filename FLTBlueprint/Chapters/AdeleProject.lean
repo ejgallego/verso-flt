@@ -153,6 +153,24 @@ The TeX chapter is also careful about the logical shape of this statement:
 `A_L = L ⊗_K A_K` is really a construction plus an isomorphism theorem, not just
 a bare equality.
 
+It also immediately splits the problem into finite and infinite parts, because
+the adele ring itself is the product of the finite adeles and the infinite
+adeles. So the real work is to prove the two corresponding base-change
+statements separately and then reassemble them.
+
+## Base Change For Nonarchimedean Completions
+
+As pointed out earlier in the TeX chapter, the finite-adelic theory works
+perfectly well for Dedekind domains, so the nonarchimedean discussion is first
+carried out in that generality. One fixes a Dedekind domain `A` with field of
+fractions `K`, then a finite separable extension `L/K` with integral closure
+`B`, and works place by place.
+
+The TeX chapter also pauses to note a mathlib convention: fields are regarded
+as Dedekind domains, so their height-one spectrum is empty. The author remarks
+that this is slightly awkward geometrically, but it is the literature-facing
+convention that the current API follows.
+
 :::definition "finite_adele_base_change_map" (parent := "adele_project")
 Before proving finite-adele base change, one first defines the natural map
 $`\mathbf{A}_{A,K}^\infty \to \mathbf{A}_{B,L}^\infty` induced by the local maps
@@ -163,6 +181,10 @@ on completions.
 Given a finite extension `L/K` and places `w | v`, there is a natural map from
 the completion `K_v` to the completion `L_w`.
 :::
+
+The TeX chapter obtains this by completing the inclusion `K → L` with respect
+to the `v`-adic and `w`-adic topologies, so the first real input is the
+relation between the two valuations.
 
 :::theorem "local_valuation_compatibility" (parent := "adele_project")
 The `v`-adic and `w`-adic valuations are related by the ramification index:
@@ -182,6 +204,17 @@ This is the topological sharpening of {uses "local_completion_map"}[] and
 {uses "local_valuation_compatibility"}[].
 :::
 
+:::proof "local_module_topology_for_completion"
+The TeX proof uses that `L_w` is finite-dimensional over `K_v`, so the module
+topology is the same as a product topology after choosing a basis. The
+`w`-adic topology also comes from a `K_v`-norm, and the standard theorem that
+all norms on a finite-dimensional vector space over a complete field are
+equivalent identifies the two topologies.
+:::
+
+Because the local map `K_v → L_w` lies over `K → L`, the TeX chapter then views
+`L_w` as an `L ⊗_K K_v`-algebra before packaging all places `w | v` together.
+
 :::theorem "finite_primes_above_v_are_finite" (parent := "adele_project")
 For a fixed finite place `v` of `K`, there are only finitely many places `w` of
 `L` lying above it.
@@ -192,6 +225,9 @@ This is a standard Dedekind-domain fact, but the TeX chapter singles it out
 because the restricted-product reindexing later depends on finite fibres over
 the map `w ↦ v`.
 :::
+
+The TeX chapter writes `w | v` for this finite set of places above `v`, and
+then takes the product of the local completion maps over all such `w`.
 
 :::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project")
 For a fixed finite place `v` of `K`, the algebra
@@ -223,6 +259,12 @@ theorem. Without it, one only knows the decomposition of the ambient local
 fields; with it, one can match the open compact subrings that define the
 restricted-product topology.
 :::
+
+A summary of the local picture at this stage, exactly as in the TeX chapter:
+for each finite place `v`, the map
+$`L \otimes_K K_v \to \prod_{w \mid v} L_w`
+is both an algebraic and a topological isomorphism, and it matches the natural
+integral subrings `B \otimes_A A_v` and `\prod_{w \mid v} B_w`.
 
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project")
 The finite adele ring of `L` is algebraically isomorphic to
