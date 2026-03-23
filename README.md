@@ -19,6 +19,9 @@ informal nodes or proofs so the dependency graph remains faithful too.
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.
 
+For the current TeX-to-Verso fidelity snapshot inside the generated blueprint
+harness, see the `TeX To Verso Porting Status` chapter.
+
 ## Pages Artifact
 
 The GitHub Pages build is defined in `.github/workflows/blueprint.yml`.

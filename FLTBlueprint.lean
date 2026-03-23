@@ -7,6 +7,7 @@ import VersoBlueprint.Commands.Summary
 import FLTBlueprint.Citations
 import FLTBlueprint.TeXPrelude
 import FLTBlueprint.Chapters.Introduction
+import FLTBlueprint.Chapters.PortingStatus
 import FLTBlueprint.Chapters.MiniProjects
 import FLTBlueprint.Chapters.Reductions
 import FLTBlueprint.Chapters.EllipticFrey
@@ -36,6 +37,7 @@ It keeps the blueprint code at the repository root while treating `FLT/` as the
 upstream formalization checkout.
 
 {include 0 FLTBlueprint.Chapters.Introduction}
+{include 0 FLTBlueprint.Chapters.PortingStatus}
 {include 0 FLTBlueprint.Chapters.MiniProjects}
 {include 0 FLTBlueprint.Chapters.Reductions}
 {include 0 FLTBlueprint.Chapters.EllipticFrey}
