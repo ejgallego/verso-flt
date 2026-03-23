@@ -10,177 +10,172 @@ open Informal
 #doc (Manual) "An Overview Of The Proof" =>
 
 :::group "overview_strategy"
-This chapter mirrors the old overview chapter: once the Frey-curve torsion
-representation is isolated, the remaining strategy is to prove that no hardly
-ramified irreducible representation of that shape can exist.
+This chapter gives a sketch overview of the strategy for ruling out hardly
+ramified irreducible two-dimensional Galois representations and hence finishing
+the FLT argument after the first reductions.
 :::
 
-The opening sentence of the TeX chapter makes the reduction target explicit:
-modulo Mazur's theorem and some other still-unformalized 1980s background, FLT
-has been reduced to ruling out a hardly ramified irreducible two-dimensional
-mod-`ℓ` Galois representation over `ℚ`.
+So far we have seen that, modulo Mazur's theorem and various other things which
+will still take some work to formalize but which are much easier, Fermat's Last
+Theorem can be reduced to the statement that there is no prime $`\ell \geq 5`
+and hardly-ramified irreducible `2`-dimensional Galois representation
+$`\rho : \GQ \to \GL_2(\Z/\ell\Z)`.
 
-It is also explicit there that we no longer need to assume the representation
-comes from the torsion of an elliptic curve. Once the Frey reduction has done
-its job, the rest of the strategy is formulated at the level of abstract Galois
-representations with the same local properties.
+In this chapter we give an overview of our strategy for proving this, and
+collect various results which we will need along the way. Note that we no
+longer need to assume that $`\rho` comes from the $`\ell`-torsion in an
+elliptic curve.
 
-# Potential modularity
+# Potential Modularity
+
+We will only speak about modularity for `2`-dimensional representations of the
+absolute Galois group of a totally real field $`F` of even degree over $`\Q`.
+What we will mean by modular is associated to an automorphic representation of
+the units of the totally definite quaternion algebra over $`F` ramified at no
+finite places and at all infinite places. Such a quaternion algebra only exists
+if $`F` has even degree, hence the restriction in our definition of modularity.
+We can furthermore even demand that the infinity type of the form is trivial,
+the analogue in this setting of classical weight `2` forms, as these are the
+only forms we shall need for FLT.
 
 :::theorem "potential_modularity_step" (parent := "overview_strategy")
-Starting from a hardly ramified mod $`\ell`$ representation, the strategy is to
-find a totally real field of even degree over $`\mathbf{Q}`$ over which the
-representation becomes modular in the quaternionic sense, relying on
-{uses "potential_modularity_auxiliary_curve"}[],
-{uses "modularity_lifting_theorem"}[], and the automorphic infrastructure
-developed in {uses "quaternionic_modular_form_example"}[] and
-{uses "weight_two_quaternionic_forms"}[].
+Assume we have a hardly-ramified representation $`\rho` as above. Let $`K` be
+the number field corresponding to the kernel of $`\rho`. Then there is some
+totally real field $`F` of even degree, Galois over $`\Q`, unramified at
+$`\ell`, and disjoint from $`K`, such that $`\rho|G_F` is modular.
 :::
 
 :::proof "potential_modularity_step"
-In the old blueprint, “modular” here does not mean classical modular forms on
-`GL₂/ℚ`. It means automorphic forms for the units of a totally definite
-quaternion algebra over a totally real field of even degree. The parity
-condition matters: such a quaternion algebra exists only when the number of real
-places is even.
+The proof of this is very long, and uses a host of machinery. For example:
 
-The point of the potential modularity step is that one starts with a
-hardly-ramified representation over `ℚ`, passes to the number field cut out by
-its kernel, and then searches for a suitable totally real extension `F`
-disjoint from that field such that the restricted representation becomes
-modular.
-
-The TeX chapter explicitly lists the kinds of ingredients this uses:
-
-- Moret--Bailly's theorem on global points with prescribed local behavior; see
+- Moret--Bailly's result on points on curves with prescribed local behaviour,
+  recorded in {uses "moret_bailly_placeholder"}[] and cited in
   {Informal.citep moretBailly1990}[].
-- global class field theory
-- the Jacquet--Langlands correspondence
-- converse-theorem input showing certain induced mod `p` representations are
-  modular
-- a modularity lifting theorem
+- several nontrivial results in global class field theory.
+- the Jacquet--Langlands correspondence.
+- the assertion that irreducible `2`-dimensional mod `p` representations
+  induced from a character are modular.
+- a modularity lifting theorem, namely {uses "modularity_lifting_theorem"}[].
 
-Almost everything in this list dates back to the 1980s or earlier. The TeX
-chapter is explicit that the modularity lifting theorem is the main genuine
-post-1980s ingredient in this potential modularity package.
+Almost everything here dates back to the `1980`s or before. The exception is
+the modularity lifting theorem, which we now state explicitly.
 :::
 
-:::theorem "potential_modularity_auxiliary_curve" (parent := "overview_strategy")
-Potential modularity is implemented by choosing a totally real field, an
-auxiliary prime, and an auxiliary elliptic curve whose mod $`\ell`$
-representation realizes the target representation and whose mod `p`
-representation is already modular.
-:::
+# A Modularity Lifting Theorem
 
-:::proof "potential_modularity_auxiliary_curve"
-The TeX overview makes this construction explicit. One uses Moret--Bailly to
-produce an auxiliary curve over a suitable totally real field `F`, arranged so
-that its mod $`\ell`$ representation is the one we care about while its mod `p`
-representation is induced from a character. Converse-theorem input then makes
-the mod `p` side modular, and {uses "modularity_lifting_theorem"}[] transports
-that modularity back to the mod $`\ell` side.
+Suppose $`\ell \geq 5` is a prime, that $`F` is a totally real field of even
+degree in which $`\ell` is unramified, and that $`S` is a finite set of finite
+places of $`F` not dividing $`\ell`. Write $`G_F` for the absolute Galois group
+of $`F`.
 
-This is the concrete mechanism hidden behind the slogan “potential modularity”.
-:::
-
-# A modularity lifting theorem
+If $`v \in S` then let $`F_v` denote the completion of $`F` at $`v`, fix an
+inclusion $`\overline{F} \to \overline{F_v}`, let $`\calO_v` denote the
+integers of $`F_v`, and $`k(v)` the residue field. Let $`I_v \subset G_F`
+denote the inertia subgroup at $`v`. Local class field theory gives a map
+$`I_v \to \calO_{F_v}^\times` and hence a map $`I_v \to k(v)^\times`. Let
+$`J_v` denote the kernel of this map.
 
 :::definition "s_good_lift_condition" (parent := "overview_strategy")
-The modularity-lifting input is phrased in terms of a finite set of local
-conditions: cyclotomic determinant, controlled ramification away from
-$`S \cup \{\ell\}`$, trace restrictions at places in $`S`$, and flatness at the
-places above $`\ell`$.
-The local cohomological background for these conditions is part of {uses "local_galois_cohomology_package"}[].
+Let $`R` be a complete local Noetherian $`\Z_\ell`-algebra with finite residue
+field of characteristic $`\ell`. We will be interested in representations
+$`\rho : G_F \to \GL_2(R)` with the following four properties:
+
+- $`\det(\rho)` is the cyclotomic character.
+- $`\rho` is unramified outside $`S \cup \{\ell\}`.
+- If $`v \in S` then $`\rho(g)` has trace equal to `2` for all $`g \in J_v`.
+- If $`v \mid \ell` is a place of $`F` then $`\rho` is flat at $`v`.
+
+In the last bullet point, flat means projective limit of representations
+arising from finite flat group schemes. Let us use the temporary notation
+`S`-good to denote representations with these four properties.
 :::
 
 :::theorem "s_good_deformation_problem" (parent := "overview_strategy")
-Once the `S`-good local conditions are fixed, the corresponding deformation
-problem for an absolutely irreducible residual representation is expected to be
-representable.
-This is the deformation-theoretic interface behind
-{uses "modularity_lifting_theorem"}[].
+Say $`k` is a finite extension of $`\Z/\ell\Z` and
+$`\rhobar : G_F \to \GL_2(k)` is continuous, absolutely irreducible when
+restricted to $`F(\zeta_\ell)`, and `S`-good. Then one can check that the
+functor representing `S`-good lifts of $`\rhobar` is representable.
 :::
 
 :::proof "s_good_deformation_problem"
-The old TeX overview says this explicitly before stating the theorem: after
-fixing determinant, ramification, trace conditions at the auxiliary groups
-`J_v`, and flatness above $`\ell`, one can package the allowed lifts into a
-representable functor.
-
-This matters for the blueprint graph because the modularity lifting theorem is
-not merely about one distinguished lift. It is about a whole deformation
-problem with controlled local behavior, and that representable deformation
-problem is the `R` side of the later `R = T` story.
+This is the deformation-theoretic setup behind
+{uses "modularity_lifting_theorem"}[]. The surrounding local input is the
+cohomological package summarized in {uses "local_galois_cohomology_package"}[].
 :::
 
 :::theorem "modularity_lifting_theorem" (parent := "overview_strategy")
-If a residual representation is modular and a lift satisfies the relevant
-local conditions, then the lift is modular as well.
-The statement is meant to apply to lifts governed by
-{uses "s_good_lift_condition"}[] and {uses "s_good_deformation_problem"}[].
-This is the first major theorem the old blueprint identifies as a priority to
-state cleanly in Lean.
+If $`\rhobar` is modular of level $`\Gamma_1(S)` and
+$`\rho : G_F \to \GL_2(\calO)` is an `S`-good lift of $`\rhobar` to $`\calO`,
+the integers of a finite extension of $`\Q_\ell`, then $`\rho` is also modular
+of level $`\Gamma_1(S)`.
 :::
 
 :::proof "modularity_lifting_theorem"
-The TeX chapter spells out the local conditions more concretely. For places
-`v ∈ S`, one uses a tame quotient condition encoded through a subgroup `J_v` of
-inertia. At places above `\ell`, one imposes flatness, meaning that the
-representation should be approximable by finite flat group schemes. That is the
-point where the “projective limit of finite flat objects” formulation enters.
+Right now we are very far from even stating this theorem in Lean.
 
-The overview is also explicit that this theorem is the main genuinely
-post-1980s ingredient in the whole chapter. The proof is presented as a
-two-stage argument: first reduce to a minimal case by Skinner--Wiles-style
-arguments and cyclic base change, then run a Taylor--Wiles/Kisin patching
-argument in the minimal setting.
+One near-reference is Theorem `3.3` of {Informal.citep taylorMeroCont}[], which
+assumes that $`\ell` is totally split in $`F` rather than just unramified.
+Another near-reference is Theorem `5.2` of {Informal.citep tobyModularity}[],
+which assumes the slightly stronger hypothesis that the image of $`\rho`
+contains $`\SL_2(\Z/p\Z)`.
 
-The chapter {uses "minimal_modularity_lifting_statement"}[] is devoted to
-making this interface precise, and the TeX discussion points in particular to
-{Informal.citep taylorMeroCont}[] and {Informal.citep tobyModularity}[] as near
-references.
-
-The TeX draft also says something worth preserving here: at the time of
-writing, it was already viewed as a worthwhile medium-term project milestone
-simply to state this theorem properly in Lean, even before proving it.
+The proof is a two-stage procedure and has a nontrivial analytic input. First
+one uses the Skinner--Wiles trick, recorded abstractly in
+{uses "skinner_wiles_cft_trick_placeholder"}[], to reduce to the minimal case,
+and this needs cyclic base change for `GL(2)` and also a characterization of
+the image of the base change construction. Because of our definition of
+modular, this seems to need Jacquet--Langlands as well. In the minimal case,
+the argument is the usual Taylor--Wiles trick, using refinements due to Kisin
+and others.
 :::
 
-# Compatible families and reduction at 3
+:::theorem "potential_modularity_auxiliary_curve" (parent := "overview_strategy")
+Given this modularity lifting theorem, the strategy to show potential
+modularity of $`\rho` is to use Moret--Bailly to find an appropriate totally
+real field $`F`, an auxiliary prime $`p`, and an auxiliary elliptic curve over
+$`F` whose mod $`\ell` Galois representation is $`\rho` and whose mod `p`
+Galois representation is induced from a character.
+:::
+
+:::proof "potential_modularity_auxiliary_curve"
+By converse theorems, the mod `p` Galois representation is associated to an
+automorphic representation of $`\GL_2/F` and hence by Jacquet--Langlands it is
+modular. We then use {uses "modularity_lifting_theorem"}[] to deduce the
+modularity of the curve over $`F` and hence the modularity of the $`\ell`-torsion.
+:::
+
+# Compatible Families And Reduction At 3
 
 :::theorem "compatible_family_step" (parent := "overview_strategy")
-After potential modularity, the argument passes to a compatible
-family and studies the specialization at $`3`$, matching the transfer
-formalized later in {uses "hardly_ramified_compatible_family"}[].
+We now use Khare--Wintenberger to lift $`\rho` to a potentially modular
+$`\ell`-adic Galois representation of conductor `2`, and put it into an
+$`\ell`-adic family using Brauer's theorem trick in BLGGT.
 :::
 
 :::proof "compatible_family_step"
-This is the place where the legacy blueprint invokes Khare--Wintenberger,
-Brauer's theorem tricks, and the move to a 3-adic specialization, matching the
-program sketched in {uses "hardly_ramified_compatible_family"}[]. The TeX notes
-specifically point toward the Khare--Wintenberger modularity machinery
-{Informal.citep khareWintenbergerII}[] and a Brauer-theoretic compatible-family
-construction in BLGGT {Informal.citep blggtPotentialAutomorphy}[].
+This is the compatible-family step later echoed by
+{uses "hardly_ramified_compatible_family"}[]. The TeX notes point in
+particular to {Informal.citep khareWintenbergerII}[] and
+{Informal.citep blggtPotentialAutomorphy}[].
 :::
 
 :::theorem "reduction_at_three_step" (parent := "overview_strategy")
-The specialization at $`3`$ should force reducibility by a discriminant-bound
-argument of Fontaine/Odlyzko type, contradicting the original irreducibility.
+Finally we look at the `3`-adic specialization of this family. Reducing mod `3`
+we get a representation which is flat at `3` and tame at `2`, so it must be
+reducible. One can then deduce that the `3`-adic representation must be
+reducible, which contradicts the irreducibility of $`\rho`.
 :::
 
 :::proof "reduction_at_three_step"
-The TeX blueprint phrases this as a Fontaine-style contradiction. After passing
-to the 3-adic specialization of a compatible family, the reduction mod `3`
-becomes flat at `3` and tame at `2`. The resulting representation should then be
-reducible because an irreducible one would cut out a number field with root
-discriminant too small to satisfy the Odlyzko bounds.
+The reason for reducibility is that an irreducible representation would cut out
+a number field whose discriminant violates the Odlyzko bounds. This is the
+Fontaine/Odlyzko step later tracked abstractly through
+{uses "odlyzko_root_discriminant_bound"}[].
 
-So the contradiction uses {uses "odlyzko_root_discriminant_bound"}[] together
-with the deformation-theoretic bridge recorded earlier in
-{uses "hardly_ramified_compatible_family"}[], and the TeX bibliography traces
-the numerical estimate back to the Poitou--Odlyzko discriminant bounds
-{Informal.citep poitouOdlyzkoBounds}[].
-
-The TeX chapter ends by apologizing for how sketchy this whole discussion still
-is, and that remains the right reading instruction for the current overview: it
-is a strategic map, not yet a polished full-dress exposition.
+We apologize for the sketchiness of what is here. At the time of writing it is
+so far from what we are even able to state in Lean that there seems to be
+little point right now in fleshing out the argument further. As this document
+grows, we will add a far more detailed discussion of what is going on here.
+Note in particular that stating {uses "modularity_lifting_theorem"}[] in Lean
+is the first target.
 :::
