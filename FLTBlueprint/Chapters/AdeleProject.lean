@@ -241,8 +241,46 @@ completion map {uses "local_completion_map"}[] is assembled over all `w | v`,
 and one proves that the resulting map is an algebraic isomorphism. At this
 stage the theorem is algebraic first, topological second.
 
+The TeX file is explicit that this is probably the hardest proof in the section
+to formalize. The proposed strategy there is dimension-theoretic: prove the map
+is surjective because its image is dense and closed, then compare the
+`K_v`-dimensions of the source and target. The source has dimension `[L : K]`,
+and the target has dimension `\sum_{w \mid v} e_w f_w`; one then reduces to the
+local field fact that an extension of complete discretely valued fields has
+degree `ef`.
+
 The later finite-adele base-change theorem is basically this statement applied
 simultaneously at every nonarchimedean place.
+:::
+
+:::theorem "product_local_completion_module_topology" (parent := "adele_project")
+For fixed `v`, the product topology on $`\prod_{w \mid v} L_w` is the
+`K_v`-module topology.
+This packages the finite-product topological step immediately after the local
+algebraic decomposition.
+:::
+
+:::proof "product_local_completion_module_topology"
+This is a finite product of `K_v`-modules, each of which has the `K_v`-module
+topology by {uses "local_module_topology_for_completion"}[]. The TeX chapter
+then appeals to the standard fact that finite products of modules with module
+topologies again carry the product/module topology.
+:::
+
+:::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project")
+If `L \otimes_K K_v` is given the `K_v`-module topology, then the local
+algebraic isomorphism
+$`L \otimes_K K_v \cong \prod_{w \mid v} L_w`
+is also a homeomorphism.
+This is the topological sharpening of
+{uses "nonarchimedean_base_change_local_decomposition"}[].
+:::
+
+:::proof "nonarchimedean_base_change_local_homeomorphism"
+The TeX proof is short once the right topology has been identified on both
+sides: it is a `K_v`-linear algebra isomorphism between modules that both carry
+their `K_v`-module topology, and linear maps are automatically continuous for
+those topologies.
 :::
 
 :::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project")
@@ -258,6 +296,12 @@ The TeX chapter treats this as the crucial integral refinement of the previous
 theorem. Without it, one only knows the decomposition of the ambient local
 fields; with it, one can match the open compact subrings that define the
 restricted-product topology.
+
+The proof sketch in the TeX chapter now points to Matthew Jasper's argument:
+identify the closure of `A` in one completion and then in a finite product of
+completions, use Chinese remainder input to get the corresponding statement for
+`B`, and finally show that this closure is exactly the image of
+`B \otimes_A A_v`.
 :::
 
 A summary of the local picture at this stage, exactly as in the TeX chapter:
@@ -265,6 +309,12 @@ for each finite place `v`, the map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`
 is both an algebraic and a topological isomorphism, and it matches the natural
 integral subrings `B \otimes_A A_v` and `\prod_{w \mid v} B_w`.
+
+The finite adele ring is then the restricted product of the `K_v` with respect
+to the `A_v`, with a topology in which `\prod_v A_v` is open rather than merely
+closed in the full product. This is exactly why the next step is not just to
+tensor everything naively, but to show carefully that restricted products
+commute with the local finite-product decompositions.
 
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project")
 The finite adele ring of `L` is algebraically isomorphic to
@@ -292,6 +342,10 @@ The TeX chapter inserts this algebraic lemma into the nonarchimedean base-change
 subsection because the later restricted-product arguments repeatedly move
 between `A`-module and `K`-module tensor products. So this is one of the hidden
 algebraic engines underneath the finite-adele base-change theorem.
+
+Its proof in the TeX chapter factors the map through the basic algebraic
+identification `B \otimes_A K \cong L`, and then tensors that identification
+with the module `M`.
 :::
 
 :::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
@@ -316,6 +370,10 @@ In the TeX chapter this is the immediate predecessor of
 {uses "finite_adele_base_change_algebraic"}[]. One first matches the integral
 restricted products place by place and only then passes to the field-level
 statement.
+
+This is also the point where the TeX file says “it is just a case of putting
+everything together” informally, while warning that formally there is quite a
+lot of bookkeeping hidden inside that phrase.
 :::
 
 :::theorem "finite_adele_base_change_topological" (parent := "adele_project")
@@ -329,8 +387,10 @@ This is the topological companion to
 The TeX chapter insists that this is a separate theorem, not a formality. The
 key issue is that the restricted-product topology is not the naive subspace
 topology from the full product, so one must check carefully that the local
-homeomorphisms respect the chosen open compact subrings and that restricted
-products commute with finite products in the required way.
+homeomorphisms from
+{uses "nonarchimedean_base_change_local_homeomorphism"}[] respect the chosen
+open compact subrings and that restricted products commute with finite products
+in the required way.
 :::
 
 :::theorem "infinite_place_weak_approximation" (parent := "adele_project")
