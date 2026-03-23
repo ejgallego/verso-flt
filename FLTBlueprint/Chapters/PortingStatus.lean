@@ -42,7 +42,8 @@ The current chapter-by-chapter status for the main proof spine is:
 - `ch04overview.tex` -> `Overview.lean`: `fidelity pass completed`
 - `ch05automorphicformexample.tex` -> `AutomorphicFormExample.lean`: `fidelity pass completed`
   The chapter received explicit fidelity passes on both the `\widehat{\mathbf{Z}}` and Hurwitz halves.
-- `ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`: `substantial port present`
+- `ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`: `fidelity pass completed`
+  The TeX source itself is still a work in progress, so fidelity here means fidelity to the current draft rather than closure of the theorem-statement frontier.
 - `ch07exampleGLn.tex` -> `LanglandsGLn.lean`: `fidelity pass completed`
 - `global_langlands.tex` -> `GlobalLanglands.lean`: `intentional stub or frontier`
 - `chtopbestiary.tex` -> `Bestiary.lean`: `substantial port present`
@@ -86,7 +87,6 @@ At the moment, the core FLT proof spine from the introduction through the
 automorphic-form example is no longer just sketched in Verso. The main
 remaining fidelity frontier is:
 
-- a dedicated end-to-end fidelity audit for `ModularityLifting.lean`
 - broader fidelity sweeps on the adelic and measure-theoretic miniproject chapters
 - the intentional frontier material in `GlobalLanglands.lean` and the appendix
 :::

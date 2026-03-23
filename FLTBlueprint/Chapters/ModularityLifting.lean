@@ -11,29 +11,27 @@ open Informal
 
 :::group "modularity_lifting_program"
 This chapter corresponds to the TeX work-in-progress chapter devoted to stating
-the minimal and non-minimal modularity lifting theorems precisely. Its role in
-the blueprint is deliberately narrow but important: turn the vague phrase
-“there is an `R = T` theorem here” into a clean interface of local conditions,
-automorphic input, and reduction steps.
+the minimal and non-minimal modularity lifting theorems precisely.
 :::
 
-The old TeX chapter opens with a practical claim: a very worthwhile medium-term
-goal for the FLT project is simply to state the modularity lifting theorems
-cleanly. There are really two theorems in play. One is a minimal statement
-proved by a Taylor--Wiles style argument. The other is obtained from it using
-later refinements and reduction steps.
+The old TeX chapter opens with a practical claim: a nice and accessible
+medium-term goal for the FLT project is simply to state the modularity lifting
+theorems that the project wants to formalize. There are really two theorems in
+play. One is the minimal case, proved by a Taylor--Wiles-style argument. The
+other is deduced from it using later refinements and reduction steps.
 
-The TeX chapter itself is still only a work in progress, and that should remain
-visible in the Verso port. Its ambition is not to prove the modularity lifting
-theorem, but to isolate what has to be stated before one can even begin to
-formalize the `R = T` story seriously.
+That framing should remain visible in the Verso port. The point of the chapter
+is not to prove the modularity lifting theorem, and not even yet to present a
+finished final statement, but to isolate what has to be stated before one can
+even begin to formalize the `R = T` story seriously.
 
 # Automorphic forms and analysis
 
 :::definition "automorphic_form_general_notion" (parent := "modularity_lifting_program")
 Automorphic forms are introduced here in the general connected reductive setting
 over a global field, with the quaternionic and $`\mathrm{GL}_n`$ cases treated
-as specializations. The appendix placeholder for this background is {uses "connected_reductive_group_placeholder"}[].
+as specializations. The appendix placeholder for this background is
+{uses "connected_reductive_group_placeholder"}[].
 :::
 
 :::proof "automorphic_form_general_notion"
@@ -72,7 +70,8 @@ finite-level structures built later in {uses "quaternionic_modular_form_example"
 
 :::definition "central_simple_algebra_background" (parent := "modularity_lifting_program")
 Central simple algebras supply the algebraic background for the quaternionic
-groups used in the modularity lifting theorem, and feed directly into {uses "totally_definite_quaternion_algebra_setup"}[].
+groups used in the modularity lifting theorem, and feed directly into
+{uses "totally_definite_quaternion_algebra_setup"}[].
 :::
 
 In the old TeX exposition, this section is meant as a warm-up before talking
@@ -112,7 +111,17 @@ it to motivate why quaternion algebras remain quaternion algebras after
 extension of scalars.
 :::
 
-# Main theorem interface
+# The Theorem-Statement Goal
+
+The TeX chapter stops here in a deliberately unfinished state. After the
+automorphic discussion and the central-simple-algebra warm-up, it records that
+the next basic items to define are trace and norm before one can continue
+toward the actual theorem statement.
+
+The current Verso port goes one step further by making the intended theorem
+interfaces explicit, but these nodes should still be read as chapter-goal
+markers for a work in progress rather than as fully stabilized final theorem
+statements.
 
 :::theorem "minimal_modularity_lifting_statement" (parent := "modularity_lifting_program")
 One target of the full port is a clean Lean statement of the minimal
@@ -175,3 +184,9 @@ that remark is not bibliographic completeness, but that the theorem was already
 regarded as standard among experts even if the exact statement used here was
 not copied from a single published source.
 :::
+
+The TeX draft ends with a forward pointer rather than a finished theorem
+interface: next come trace and norm. So even after this fidelity pass, this
+chapter should still be regarded as a frontier chapter whose role is to keep
+the statement-level scaffolding visible while the surrounding infrastructure is
+filled in.
