@@ -185,14 +185,29 @@ This criterion becomes a basic tool once the chapter moves from
 `\widehat{\mathbf{Z}}` to `\widehat{\mathbf{Q}}`.
 :::
 
-# Qhat and tensor products
+# More Advanced Remarks On Zhat Versus Q
+
+This section can be skipped on first reading.
+
+The TeX chapter steps back here and explains why `\widehat{\mathbf{Z}}` is not
+just a curiosity. Seen abstractly, it is the profinite completion of the
+additive group `ℤ`. But the blueprint wants to emphasize a different point:
+completing before localizing gives a far more arithmetic object than the usual
+route through `ℚ` and then `ℝ`.
+
+Even though the profinite completion of the additive group `ℚ` vanishes, one
+can still form a local profinite completion by setting
+`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`.
+The TeX chapter identifies this with the finite adeles of `ℚ`, and more
+generally identifies `F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` with the
+finite adeles of a number field `F`. The full adelic ring is obtained by also
+including the archimedean factor `F \otimes_{\mathbf{Q}} \mathbf{R}`.
+
+# Qhat And Tensor Products
 
 :::definition "qhat_definition" (parent := "automorphic_example_program")
 The finite-adelic toy model for `ℚ` is
 $`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`.
-More generally, the TeX chapter explains that
-$`F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` should be viewed as the finite
-adeles of a number field `F`.
 This construction is built from {uses "profinite_completion_zhat"}[].
 :::
 
@@ -202,6 +217,8 @@ infrastructure. The chapter introduces `\widehat{\mathbf{Q}}` as a low-level
 route to finite adeles before the general restricted-product formalism is in
 place; compare the broader blueprint node {uses "cheap_finite_adele_definition"}[].
 :::
+
+# A Crash Course In Tensor Products
 
 :::definition "tensor_product_crash_course" (parent := "automorphic_example_program")
 The tensor-product interlude is included only to explain how to build and
@@ -274,6 +291,8 @@ proof uses torsionfreeness of `\widehat{\mathbf{Z}}` to justify treating
 `\widehat{\mathbf{Z}}` as a genuine subring of `\widehat{\mathbf{Q}}`.
 :::
 
+# Additive Structure Of Qhat
+
 :::theorem "qhat_intersection_q_and_zhat" (parent := "automorphic_example_program")
 Inside $`\widehat{\mathbf{Q}}`, the intersection of `ℚ` and
 $`\widehat{\mathbf{Z}}`$ is exactly `ℤ`.
@@ -305,6 +324,8 @@ finite adeles of `ℚ`, which is exactly the kind of bookkeeping the later
 quaternionic construction needs.
 :::
 
+# Multiplicative Structure Of The Units Of Qhat
+
 :::theorem "qhat_units_intersection" (parent := "automorphic_example_program")
 Inside the unit group of $`\widehat{\mathbf{Q}}`, the intersection of
 `ℚ^×` with $`\widehat{\mathbf{Z}}^×` is `ℤ^×`.
@@ -330,20 +351,11 @@ This is the multiplicative counterpart to
 {uses "qhat_additive_decomposition"}[]. The TeX proof turns invertibility in
 `\widehat{\mathbf{Q}}` into a divisibility statement in `\widehat{\mathbf{Z}}`,
 then extracts a minimal positive integer generator of the corresponding ideal.
+
+The TeX chapter notes that the resulting factorization is unique up to sign,
+because the intersection of `ℚ^×` and `\widehat{\mathbf{Z}}^×` is exactly
+`ℤ^×`.
 :::
-
-# More advanced remarks on Zhat versus Q
-
-The TeX chapter then steps back and explains why `\widehat{\mathbf{Z}}` is not
-just a curiosity. Seen abstractly, it is the profinite completion of the
-additive group `ℤ`. But completing before localizing gives a much more
-arithmetic object than the usual route through `ℚ` and `ℝ`.
-
-It is at this point that the TeX chapter explicitly identifies
-`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`
-with the finite adeles of `ℚ`, and more generally
-`F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` with the finite adeles of a number
-field `F`.
 
 # The Hurwitz quaternions
 
