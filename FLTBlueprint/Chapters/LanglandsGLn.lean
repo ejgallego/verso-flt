@@ -10,222 +10,189 @@ open Informal
 #doc (Manual) "Automorphic Forms And The Langlands Conjectures" =>
 
 :::group "gln_langlands_program"
-This chapter ports the TeX discussion of automorphic forms on
-GLn over Q and the shape of the global Langlands reciprocity
-conjectures in that setting. Its immediate goal is modest: make the automorphic
-side precise enough that the later conjectural reciprocity statement can at
-least be formulated cleanly.
+This chapter explains the definition of an automorphic form for `GL_n/ℚ` and
+tracks the chapter goal of formally stating a version of the global Langlands
+reciprocity conjectures in that special case.
 :::
 
-The old TeX chapter explains that this material came out of conversations in
-Bonn and had a deliberately modest but precise goal: not to prove the global
-Langlands conjectures for `GL_n/ℚ`, but to reach a mathematically serious formal
-statement of the conjectural objects on the automorphic side.
+This chapter came from discussions between Patrick, Mario and Kevin, all
+currently visiting the Hausdorff Research Institute for Mathematics in Bonn.
 
-# Definition for GLn over Q
-
-:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program")
-The old chapter specializes the general theory to GLn over Q,
-where the dual group is again GLn(C) and many technical
-obstructions disappear.
+:::definition "global_langlands_reciprocity_target_gln" (parent := "gln_langlands_program")
+The ultimate goal is to formally state some version of the global Langlands
+reciprocity conjectures for $`\GL_n` over $`\Q`.
 :::
 
-:::proof "automorphic_form_for_gln"
-The TeX source says explicitly that this follows the Corvallis exposition of
-Borel and Jacquet {Informal.citep corvallisAutomorphicForms}[]. The point is not
-that `GL_n/ℚ` is the final destination of the project, but that it is the first
-place where one can write down a serious automorphic-form definition without
-first building the full formal apparatus of dual groups for arbitrary connected
-reductive groups.
-:::
+# Definition Of An Automorphic Form For GLn Over Q
 
-The TeX discussion begins by explaining why `GL_n` is the natural first testing
-ground. For a general connected reductive group one needs the Langlands dual
-group and a large amount of surrounding Lie theory. For `GL_n/ℚ`, the dual group
-is simply `GL_n(C)`, so many of those technical issues disappear.
+The global Langlands reciprocity conjectures relate automorphic forms to Galois
+representations. The statements for a general connected reductive group involve
+the construction of the Langlands dual group, and we do not have quite enough
+Lie algebra theory to push this definition through in general. However, if we
+restrict to the special case of the group $`\GL_n/\Q`, the dual group is just
+$`\GL_n(\bbC)` and several other technical obstructions are also removed. In
+this section we explain the definition of an automorphic form for the group
+$`\GL_n/\Q`, following the exposition by Borel and Jacquet in Corvallis
+{Informal.citep corvallisAutomorphicForms}[].
 
-:::definition "finite_adeles_of_q_gln" (parent := "gln_langlands_program")
-The finite adeles of `ℚ` appear as the coefficient ring for the finite part of
-the automorphic variable.
-:::
+# The Finite Adeles Of The Rationals
 
-:::proof "finite_adeles_of_q_gln"
-The TeX chapter notes that mathlib already knows the finite adeles of `ℚ` as a
-commutative `ℚ`-algebra and already proves that they form a topological ring.
-:::
+Mathlib already has the definition of the finite adeles $`\A_{\Q}^f` of the
+rationals as a commutative $`\Q`-algebra, and the proof that they form a
+topological ring.
 
-:::definition "adelic_general_linear_group" (parent := "gln_langlands_program")
-The adelic general linear group is the product of the finite adelic `GL_n` with
-the real Lie group `GL_n(ℝ)`.
-:::
+# The Group GLn Of The Adeles
 
-:::proof "adelic_general_linear_group"
-The old blueprint is explicit that this is morally just `GL_n(A_Q^f) × GL_n(ℝ)`,
-using the product decomposition of the adeles into finite and infinite parts.
-:::
+The adeles $`\A_{\Q}` of $`\Q` are the product $`\A_{\Q}^f \times \R`, with the
+product topology. They are a topological ring. Hence
+$`\GL_n(\A_{\Q}) = \GL_n(\A_{\Q}^f) \times \GL_n(\R)` is a topological group,
+where we are being a bit liberal with our use of the equality symbol.
+
+# Smooth Functions
 
 :::definition "smooth_gln_function" (parent := "gln_langlands_program")
-Smoothness is split into three conditions: continuity, smoothness in the real
-direction, and local constancy on the finite adelic direction.
+A function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is smooth if it has
+the following three properties:
+
+1. $`f` is continuous.
+2. For all $`x \in \GL_n(\A_{\Q}^f)`, the function $`y \mapsto f(x,y)` is smooth.
+3. For all $`y \in \GL_n(\R)`, the function $`x \mapsto f(x,y)` is locally constant.
 :::
 
-The TeX chapter emphasizes that this is a mixed definition: the infinite part is
-handled with manifold smoothness, while the finite adelic direction is handled
-by local constancy. This is exactly the kind of hybrid analytic/algebraic object
-that makes automorphic forms awkward to formalize in full generality.
+Current state of this definition: it is only half-formalized. The issue is how
+to say the function is smooth on the infinite part, because the manifold
+library interface is not yet settled here.
 
-:::theorem "finite_level_condition_gln" (parent := "gln_langlands_program")
-The finite-adelic part of an automorphic form should factor through some compact
-open level subgroup, so the resulting object is locally constant in the finite
-direction and genuinely finite-level.
-:::
+# Slowly-Increasing Functions
 
-:::proof "finite_level_condition_gln"
-The TeX definition does not treat local constancy as mere regularity. It uses
-local constancy together with compact openness to package the finite-level
-condition that later produces Hecke operators by double-coset averaging.
+Automorphic representations satisfy a growth condition which we may as well
+factor out into a separate definition.
 
-This is the `GL_n` analogue of the fixed-level structure already emphasized in
-the quaternionic chapters.
-:::
+We define the following temporary size function $`s : \GL_n(\R) \to \R` by
+$`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}` denotes
+inverse-transpose. Note that $`s(M)` is always positive, and is large if $`M`
+has a very large or very small, in absolute value, eigenvalue.
 
 :::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program")
-The growth condition is factored into a separate notion of slowly-increasing
-function on GLn(R).
+We say that a function $`f : \GL_n(\R) \to \bbC` is slowly-increasing if there
+is some real constant $`C` and positive integer $`n` such that
+$`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 :::
 
-The TeX chapter introduces an explicit size function on `GL_n(ℝ)` built from
-`MM^T` and `(M^{-1})(M^{-T})`, so that slowly-increasing means polynomial growth
-with respect to that size. The point is to isolate the growth condition from the
-rest of the automorphic-form definition.
+The TeX note remarks that the book says $`n` is positive, but since
+$`\{ M \mid s(M) \leq 1 \}` is compact, this may make no difference.
 
-:::theorem "slow_growth_size_function_gln" (parent := "gln_langlands_program")
-The size function on `GL_n(ℝ)` is designed to detect both very large and very
-small singular values, so polynomial bounds in that size encode the standard
-moderate-growth condition.
-:::
-
-:::proof "slow_growth_size_function_gln"
-The TeX chapter defines the size as the trace of
-`MM^T + M⁻¹M^{-T}`. This is a neat package: the first term sees large
-eigenvalues, the second sees small ones, and together they rule out both kinds
-of escape to infinity.
-
-So the slowly-increasing condition is really the analytic growth control that
-replaces the more classical “moderate growth” language.
-:::
+# Weights At Infinity
 
 :::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
-The weight at infinity is modeled by a finite-dimensional continuous
-representation of a maximal compact subgroup such as On(R).
+The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
+finite-dimensional continuous complex representation $`\rho` of a maximal
+compact subgroup of $`\GL_n(\R)`, and it is convenient to choose one. We choose
+$`O_n(\R)`.
 :::
 
-The corresponding TeX explanation notes that the Lean definition is deliberately
-incomplete: it does not yet insist on irreducibility, because the category-theory
-and continuity packaging for those representations was still unsettled.
+The Lean definition is incomplete right now. It does not yet demand
+irreducibility, because it is not clear that the current packaging of
+continuous representations is the right one.
 
-:::theorem "infinite_level_condition_gln" (parent := "gln_langlands_program")
-The infinite-level condition is expressed through the action of the center of
-the universal enveloping algebra: an automorphic form should be annihilated by
-an ideal of finite codimension.
+# The Action Of The Universal Enveloping Algebra
+
+:::definition "instLieAlgebraAction" (parent := "gln_langlands_program")
+There is a natural action of the real Lie algebra of $`\GL_n(\R)` on the
+complex vector space of smooth complex-valued functions on $`\GL_n(\R)`.
 :::
 
-:::proof "infinite_level_condition_gln"
-The TeX chapter explains why this is really a differential-equation condition.
-For classical modular forms, one can think of the Cauchy--Riemann equations as
-the model example. In the general `GL_n(ℝ)` setting, the center of the
-universal enveloping algebra packages the corresponding infinitesimal character
-constraint.
+:::definition "instComplexLieAlgebraAction" (parent := "gln_langlands_program")
+This extends to a natural complex Lie algebra action of the complexification of
+the real Lie algebra on the smooth complex-valued functions on $`\GL_n(\R)`.
+This depends on {uses "instLieAlgebraAction"}[].
 :::
 
-:::definition "centre_action_gln" (parent := "gln_langlands_program")
-The center of the universal enveloping algebra acts by differential operators,
-encoding the infinite-level conditions in the automorphic-form definition.
+:::definition "instUniversalEnvelopingAlgebraAction" (parent := "gln_langlands_program")
+By functoriality, we get an action of the universal enveloping algebra of this
+complexified Lie algebra on the smooth complex-valued functions. This depends on
+{uses "instComplexLieAlgebraAction"}[].
 :::
 
-The TeX chapter builds this in three steps: first the Lie algebra acts on smooth
-complex-valued functions on `GL_n(ℝ)`, then its complexification acts, and then
-the universal enveloping algebra and its center act. This is the algebraic
-encoding of the differential-equation side of automorphic forms.
-
-:::theorem "automorphic_forms_fixed_data_finite_dimensional" (parent := "gln_langlands_program")
-After fixing the weight, a compact open finite level, and the infinite-level
-ideal, the resulting space of automorphic forms should be finite-dimensional.
-The TeX chapter attributes this to Harish-Chandra.
+:::definition "instCentreAction" (parent := "gln_langlands_program")
+Thus the centre $`Z_n` of this universal enveloping algebra also acts on the
+smooth complex-valued functions. This depends on
+{uses "instUniversalEnvelopingAlgebraAction"}[].
 :::
 
-:::proof "automorphic_forms_fixed_data_finite_dimensional"
-This theorem is not on the immediate FLT critical path, but it explains why the
-definition has exactly the five conditions it does. The finite-level and
-infinite-level packages are not decorative; together with the weight and growth
-condition they cut down the huge smooth-function space to a manageable
-finite-dimensional one.
+Remark: the centre just defined is a commutative ring which contains a copy of
+$`\bbC`. Harish-Chandra showed that it is a polynomial ring in `n` variables
+over the complexes. We shall not need this.
 
-That is also why the chapter treats Hecke operators only after all five
-conditions have been stated.
+# Automorphic Forms
+
+From here on there is no more Lean right now, only LaTeX.
+
+:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program")
+A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
+$`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
+five conditions. This depends on {uses "smooth_gln_function"}[],
+{uses "slowly_increasing_gln_function"}[],
+{uses "weight_at_infinity_gln"}[], and {uses "instCentreAction"}[].
+
+1. Periodicity: for all $`g \in \GL_n(\Q)`, we have $`f(gx,gy) = f(x,y)`.
+2. It has a finite level: there exists a compact open subgroup
+   $`U \subseteq \GL_n(\A_{\Q}^f)` such that $`f(xu,y) = f(x,y)` for all
+   $`u \in U`, $`x \in \GL_n(\A_{\Q}^f)`, and $`y \in \GL_n(\R)`.
+3. It has weight $`\rho`: there exists a continuous finite-dimensional
+   irreducible complex representation $`\rho` of $`O_n(\R)` such that for every
+   $`(x,y) \in \GL_n(\A_{\Q})`, the set of functions $`k \mapsto f(x,yk)` spans
+   a finite-dimensional complex vector space isomorphic, as an
+   $`O_n(\R)`-representation, to a direct sum of copies of $`\rho`.
+4. It has an infinite level: there is an ideal $`I` of the centre $`Z_n`
+   described in the previous section, which has finite complex codimension, and
+   which annihilates the function $`y \mapsto f(x,y)` for all
+   $`x \in \GL_n(\A_{\Q}^f)`. This is a very fancy way of saying that the
+   function satisfies some natural differential equations. In the case of
+   modular forms, these are the Cauchy-Riemann equations, which is why modular
+   forms are holomorphic.
+5. It satisfies the growth condition: for every $`x \in \GL_n(\A_{\Q}^f)`, the
+   function $`y \mapsto f(x,y)` on $`\GL_n(\R)` is slowly-increasing.
 :::
 
-:::definition "full_automorphic_form_definition_gln" (parent := "gln_langlands_program")
-Combining periodicity, finite level, weight, infinitesimal character, and
-growth yields the intended definition of an automorphic form for
-GLn(AQ).
-:::
+Automorphic forms of a fixed weight $`\rho` form a complex vector space, and if
+we also fix the finite level $`U` and the infinite level $`I` then we get a
+subspace which is finite-dimensional; this is a theorem of Harish-Chandra.
+There is also the concept of a cusp form, meaning an automorphic form for which
+furthermore some adelic integrals vanish.
 
-The old TeX definition lists five conditions explicitly:
-
-- periodicity under `GL_n(ℚ)`
-- invariance under some compact open finite level
-- a finite-dimensional weight condition at infinity
-- finite codimension for the annihilator of the center action
-- the slowly-increasing growth condition
-
-It also points out that, once a weight, finite level, and infinite level are
-fixed, the resulting space should be finite-dimensional by Harish-Chandra's
-theorem.
-
-:::theorem "cuspidal_automorphic_form_gln_placeholder" (parent := "gln_langlands_program")
-There is also a cuspidal refinement of the definition, obtained by imposing the
-vanishing of appropriate adelic integrals.
-This is the version that should ultimately interact with the conjectural
-Langlands correspondence.
-:::
-
-:::proof "cuspidal_automorphic_form_gln_placeholder"
-The TeX chapter only mentions cusp forms briefly, but the mathematical reason is
-clear: the global Langlands conjectures are meant to attach Galois
-representations to automorphic representations of the right kind, and the
-cuspidal spectrum is the natural home for the irreducible arithmetic objects.
-:::
+# Hecke Operators
 
 :::theorem "hecke_operator_action_gln" (parent := "gln_langlands_program")
-The finite adelic group acts on these spaces, giving the usual Hecke operators
-after passing to fixed compact open level.
+The group $`\GL_n(\A_{\Q}^f)` acts on the space of automorphic forms for
+$`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`.
 :::
 
 :::proof "hecke_operator_action_gln"
-The TeX chapter phrases this in the standard adelic way: a finite adelic element
-acts by right translation on the finite coordinate, and double-coset averaging
-then produces the familiar Hecke operators on the fixed-level subspaces.
+This is obvious. Note that the conjugate of a compact open subgroup is still
+compact and open.
 :::
 
-# Langlands target
+A formal development of the theory of Hecke operators looks like the following.
 
-:::theorem "global_langlands_reciprocity_target_gln" (parent := "gln_langlands_program")
-The ultimate target of the chapter is a clean statement of the global Langlands
-reciprocity conjecture for `GL_n/ℚ`: algebraic automorphic representations on
-the automorphic side should correspond to Galois representations with matching
-local and global properties.
+Let $`U` be a fixed compact open subgroup of $`\GL_n(\A_{\Q}^f)`, and let us
+also fix a weight $`\rho`. Let $`M_\rho(n)` denote the complex vector space of
+automorphic forms for $`\GL_n/\Q` of weight $`\rho`. The level $`U` forms
+$`M_\rho(n,U)` are just the $`U`-invariants of this space. If
+$`g \in \GL_n(\A_{\Q}^f)`, then the double coset space $`UgU` can be written as
+a finite disjoint union of single cosets $`g_iU`: the double coset space is
+certainly a disjoint union of left cosets, but the double coset space is
+compact and the left cosets are open.
+
+Define the Hecke operator $`T_g : M_\rho(n,U) \to M_\rho(n,U)` by
+$`T_g(f) = \sum g_i \cdot f`.
+
+:::theorem "gln_hecke_operator_well_defined" (parent := "gln_langlands_program")
+This function is well-defined, in the sense that it sends a $`U`-invariant form
+to a $`U`-invariant form and is independent of the choice of the representatives
+$`g_i`.
 :::
 
-:::proof "global_langlands_reciprocity_target_gln"
-The separate `global_langlands.tex` notes make clear why this remains only a
-target. Even once the `GL_n` automorphic objects are stated, the conjecture
-still hides a large amount of infrastructure: connected reductive groups, dual
-groups, local-global compatibility, and the correct de Rham conditions on the
-Galois side.
-
-So the current chapter deliberately stops after building the automorphic side in
-the first nontrivial case. That is already enough to make the scope of the
-future conjectural statement mathematically serious rather than purely
-aspirational.
+:::proof "gln_hecke_operator_well_defined"
+Easy group theory.
 :::
