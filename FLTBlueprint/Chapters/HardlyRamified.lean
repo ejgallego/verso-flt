@@ -7,252 +7,266 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
-#doc (Manual) "Hardly Ramified Representations" =>
+#doc (Manual) "Reducibility Of p-Torsion Of The Frey Curve" =>
 
 :::group "hardly_ramified_program"
-This chapter is the representation-theoretic spine of the FLT strategy. After
-the Diophantine reductions have produced a Frey curve, the remaining task is to
-show that its mod-p Galois representation cannot simultaneously satisfy the
-very restrictive local conditions forced by that curve and remain irreducible.
-The TeX chapter organizes this through three deeper inputs: lifting,
-compatible families, and the reduction at `3`.
+This chapter deduces reducibility of the Frey-curve torsion representation from
+three deeper theorems about hardly ramified Galois representations.
 :::
 
-The old TeX blueprint makes the reduction pattern explicit. One first proves
-that Frey-curve torsion is hardly ramified, then proves a general reducibility
-theorem for hardly ramified mod $`p` representations, and finally feeds that
-back into the contradiction from the reductions chapter.
+# Overview
 
-The TeX chapter also explains the strategic point by analogy with Minkowski's
-theorem: just as a number field unramified everywhere must be trivial, one hopes
-that a two-dimensional mod `p` representation with extremely little
-ramification should be forced to be reducible.
+In the reductions chapter we reduced Fermat's Last Theorem, modulo a hard
+theorem from the `1970`s, to the assertion that `p`-torsion in the Frey curve
+is reducible. In this chapter we deduce that assertion from three more complex
+claims about hardly ramified Galois representations. One of those three claims
+is comparatively close to Fontaine's work from the `1980`s on the
+nonexistence of nontrivial abelian schemes over `\mathbf{Z}`. The other two
+lie deeper and use techniques developed in the `1990`s and later around
+Wiles-style `R = T` arguments.
 
-What matters is not just that the Frey curve gives a two-dimensional
-representation, but that the local conditions at $`2` and $`p` are so rigid
-that the representation can be moved through deformation theory and compatible
-families. The reduction is designed to replace an arbitrary mod $`p`
-representation by one in a very small and structured class.
+The strategic point is the same one emphasized in the TeX source: just as
+Minkowski's theorem says that a number field unramified at every prime must be
+trivial, one expects a two-dimensional mod `p` Galois representation with very
+little ramification to be forced into a very small class. The goal of the
+chapter is to make that slogan precise enough to apply it to the Frey curve.
 
-# Coefficient rings
+# Hardly Ramified Representations
+
+Let $`(a,b,c,p)` be a Frey package, let `E` be the corresponding Frey curve
+over $`\Q`, and let
+$`\rho : \GQ \to \Aut(E(\Qbar)[p])`
+be the `2`-dimensional Galois representation on the `p`-torsion of `E`. Our
+goal is to prove that `\rho` is reducible.
+
+To leverage the arithmetic of the Frey curve, we need a definition that
+packages exactly how little ramification this representation has. Before giving
+that definition, the TeX chapter pauses to specify the coefficient rings over
+which the local conditions will be phrased.
 
 :::definition "coefficient_ring_definition" (parent := "hardly_ramified_program")
-The local conditions are phrased over profinite local coefficient rings with
-finite residue field, so the same definition covers finite-field
-representations, $`p`-adic lifts, and the coefficient rings that naturally
-appear in deformation theory.
+A coefficient ring is a local pro-Artinian topological ring with finite residue
+field. Equivalently, it is a profinite local ring with finite residue field for
+which additive translates of open ideals form a basis for the topology.
 :::
 
-The TeX blueprint pauses here because this generality is not cosmetic. The
-lifting theorem does not stay inside finite fields, and the compatible-family
-theorem moves between different completions of a number field. So the right
-framework is broad enough to talk uniformly about residual representations,
-integral $`p`-adic lifts, and inverse limits of finite local objects.
+The TeX chapter records several orientation remarks about coefficient rings.
+
+- Any complete local Noetherian ring with finite residue field is a coefficient ring when equipped with its maximal-ideal-adic topology.
+- In particular, finite fields and integer rings of finite extensions of $`\Q_p` are coefficient rings.
+- If `R` is a coefficient ring, then `R` is the projective limit of the finite local rings `R / I` as `I` ranges over the open ideals of `R`.
+- The TeX chapter also highlights non-Noetherian examples built from square-zero variables `\varepsilon_i`; these are useful because they make representability statements easier to formulate.
+- The category of coefficient rings is equivalent to the pro-category of the category of finite local rings.
+- A coefficient ring is pseudocompact in Grothendieck's sense, although pseudocompact local rings are more general because they may have infinite residue field.
+- If `R` has residue characteristic `\ell`, then there is a unique continuous map $`\mathbf{Z}_\ell \to R`, so coefficient rings of characteristic `\ell` naturally carry `\ell`-adic cyclotomic characters.
+- For deformation theory it is often convenient to fix the integer ring $`\mathcal{O}` in a finite extension of $`\Q_\ell` and work with coefficient `\mathcal{O}`-algebras rather than arbitrary coefficient rings.
+
+Because a coefficient ring with residue characteristic `\ell` is naturally a
+$`\mathbf{Z}_\ell`-algebra, we can talk about the `\ell`-adic cyclotomic
+character with values in that ring. We are now ready to define hardly ramified
+representations.
 
 :::definition "hardly_ramified_definition" (parent := "hardly_ramified_program")
-A two-dimensional Galois representation is hardly ramified if it satisfies four
-local conditions:
+Let `R` be a coefficient ring with finite residue field of characteristic
+$`\ell \ge 3`, and let `V` be a finite free `R`-module of rank `2` equipped
+with the product topology. A continuous representation
+$`\rho : \GQ \to \GL_R(V)` is hardly ramified if it satisfies four conditions:
 
-- its determinant is cyclotomic
-- it is unramified outside $`2\ell`
-- at $`2` it admits a $`G_{\mathbf{Q}_2}`-stable filtration with
-  one-dimensional unramified quotient whose square is trivial
-- at $`\ell` every finite quotient comes from a finite flat group scheme
+- `\det(\rho)` is the cyclotomic character
+- `\rho` is unramified outside $`2\ell`
+- at $`2` there is a $`G_{\mathbf{Q}_2}`-stable short exact sequence $`0 \to R \to V \to R \to 0` whose quotient character is unramified and has square trivial
+- at $`\ell`, for every open ideal `I` of `R`, the finite-image representation obtained from `\rho` modulo `I` comes from a finite flat group scheme
 
-This is the organizing definition behind the modern reduction strategy.
+This is the organizing definition behind the chapter.
 :::
 
 The point of the definition is that it packages four distinct local facts into
 one reusable hypothesis. The determinant condition comes from the Weil pairing,
 the ramification condition records the minimal bad places of the Frey curve,
-the upper-triangular behavior at $`2` reflects semistability there, and the
-finite-flat condition at $`\ell` is the local input that lets deformation
-theory see the representation as geometric rather than arbitrary.
-
-The TeX chapter also notes that for hardly ramified mod $`\ell`
-representations, irreducible and absolutely irreducible coincide: because
-$`\ell \ge 3` and the determinant is cyclotomic, complex conjugation already
-has two distinct eigenvalues over the ground field. This removes an annoying
-field-of-definition ambiguity from the deformation theory.
-
-The TeX source inserts this remark before the main reducibility theorem, and it
-really is part of the setup: it tells you that the later deformation-theoretic
-statements are not hiding an extra absolutely-irreducible hypothesis.
-
-# The Frey curve enters the class
+the upper-triangular behavior at `2` reflects semistability there, and the
+finite-flat condition at `\ell` is what makes the representation visible to
+deformation theory as a geometric object rather than an arbitrary local system.
 
 :::theorem "frey_torsion_hardly_ramified" (parent := "hardly_ramified_program")
-The mod $`p` representation on the torsion of the Frey curve is hardly
-ramified.
-This is the formal bridge from {uses "frey_curve_definition"}[] to the
-modularity package.
+The `\ell`-torsion representation in the Frey curve attached to a Frey package
+`(a,b,c,\ell)` is hardly ramified.
+This is the formal bridge from {uses "frey_curve_definition"}[] to the general
+reducibility theorem below.
 :::
 
 :::proof "frey_torsion_hardly_ramified"
-This theorem is where the arithmetic of the Frey curve is compressed into the
-single definition {uses "hardly_ramified_definition"}[].
+This theorem compresses the arithmetic of the Frey curve into the single
+definition {uses "hardly_ramified_definition"}[].
 
-The determinant is cyclotomic for general elliptic-curve torsion
-representations, while the Frey-specific work is in the local conditions. The
-old blueprint points to Serre's discussion of the Frey curve and Serre's
-conjecture {Informal.citep serreModularityConjecture}[] for the bad-reduction
-analysis. For the general elliptic-curve facts on torsion and the Weil pairing,
-the standard reference is Silverman {Informal.citep silvermanArithmeticEllipticCurves}[]:
-outside $`2` and $`p` the representation is unramified, at
-$`2` semistability forces the required one-dimensional quotient, and at
-$`p` the torsion is finite flat.
+The general elliptic-curve input is classical: the torsion is two-dimensional
+and its determinant is cyclotomic, as explained in Silverman
+{Informal.citep silvermanArithmeticEllipticCurves}[]. The Frey-specific work is
+in the local conditions. The TeX chapter points to Serre's discussion of the
+Frey curve and Serre's conjecture {Informal.citep serreModularityConjecture}[]
+for the remaining facts: away from `2` and `\ell` the representation is
+unramified, at `2` semistability and the Tate-curve analysis produce the
+required unramified one-dimensional quotient of order at most `2`, and at
+`\ell` the torsion is finite flat.
 
-This is the first place where the Frey curve stops being a geometric object and
-starts being an input to the deformation-theoretic part of the argument. The
-intermediate arithmetic bridge is now spelled out in the new chapter through
+In the current blueprint, those arithmetic ingredients are spelled out through
 {uses "elliptic_curve_torsion_determinant_cyclotomic"}[],
 {uses "frey_curve_unramified_away_from_two_and_l"}[],
 {uses "frey_curve_local_shape_at_two"}[], and
 {uses "frey_curve_flat_at_l"}[].
 :::
 
-# Three bridges out of characteristic `p`
+The TeX chapter inserts one important remark here: for hardly ramified mod
+`\ell` representations, irreducible and absolutely irreducible are the same.
+Because `\ell \ge 3` and the determinant is cyclotomic, complex conjugation
+already has two distinct eigenvalues defined over the ground field. So the
+later deformation-theoretic statements are not hiding any extra
+absolutely-irreducible hypothesis.
 
-:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program")
-An irreducible mod $`p` hardly ramified representation lifts to a $`p`-adic
-hardly ramified representation.
-This is the first deformation-theoretic input needed after establishing
-{uses "frey_torsion_hardly_ramified"}[], and the first of the three ingredients
-used in {uses "hardly_ramified_reducible"}[].
+:::theorem "hardly_ramified_reducible" (parent := "hardly_ramified_program")
+If $`\ell \ge 3` is prime and
+$`\rho : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
+is hardly ramified, then `\rho` is reducible.
+This is the key theorem about hardly ramified representations.
 :::
 
-:::proof "hardly_ramified_lifts"
-The formal statement isolates the existence of a characteristic-zero lift while
-keeping the hardly ramified local conditions intact.
+The TeX chapter stresses that this is a consequence of Serre's conjecture,
+now a theorem of Khare and Wintenberger
+{Informal.citep khareWintenbergerII}[], but that the blueprint isolates a route
+to this special case using the project's preferred modularity-lifting
+infrastructure.
 
-Conceptually, this is the first bridge away from the original residual
-representation. The lift theorem says that the relevant local deformation
-problem is nonempty: irreducibility does not trap us in characteristic
-$`p`, but instead produces a genuinely $`p`-adic representation with the same
-determinant, the same ramification restrictions, the same condition at $`2`,
-and the same flatness condition at $`p`.
+Given this theorem, the Wiles-side theorem from the reductions chapter is an
+easy corollary.
 
-That makes the representation accessible to the modularity-lifting and
-potential-modularity technology outlined in {uses "potential_modularity_step"}[]
-and {uses "modularity_lifting_theorem"}[].
+:::theorem "frey_torsion_not_irreducible" (parent := "hardly_ramified_program")
+The Frey curve torsion representation is not irreducible.
+This is the direct Frey-curve specialization of
+{uses "hardly_ramified_reducible"}[], and the modularity-side endpoint used in
+{uses "wiles_frey_not_irreducible"}[] and therefore in
+{uses "no_frey_package"}[].
 :::
 
-:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program")
-A $`p`-adic hardly ramified representation belongs to a compatible family.
-This is the step that makes it possible to move from a prime $`p` coming from
-the Frey package to a controlled specialization at $`3`, and it is the second
-major ingredient in {uses "hardly_ramified_reducible"}[].
-:::
-
-:::proof "hardly_ramified_compatible_family"
-The compatible-family theorem is the gateway from one local deformation problem
-to a global family where the switch to $`3` can be analyzed.
-
-The role of this theorem is easy to miss if one only looks at the endpoints.
-The original Frey package chooses one prime $`p`, but the later contradiction
-is most effective at $`3`. A compatible family is what makes that comparison
-legal: Frobenius characteristic polynomials agree across the family away from
-the finitely many excluded primes, so information proved for the $`3`-adic
-member propagates back to the original $`p`-adic member.
-
-This is the precise version, inside the chapter, of the strategy already
-signaled by {uses "compatible_family_step"}[].
-:::
-
-# Specialization at `3`
-
-:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program")
-A hardly ramified mod $`3` representation is forced into a two-step filtration
-whose Jordan-Hölder factors are the trivial and cyclotomic characters.
-This is the residual input behind {uses "hardly_ramified_three_adic"}[].
-:::
-
-:::proof "hardly_ramified_mod_three"
-This is the first place where the prime $`3` becomes special rather than just
-convenient. The local conditions are rigid enough in characteristic $`3` that
-there is essentially no room for exotic irreducible behavior.
-
-The old blueprint phrases the conclusion as an almost complete classification of
-the mod $`3` case. For the later contradiction, the key point is that the
-semisimplification is already the expected reducible object.
-:::
-
-:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program")
-A hardly ramified $`3`-adic representation has the same semisimple Frobenius
-data as $`1 \oplus \chi_3`; in particular, away from $`2` and $`3` the trace
-at Frobenius is $`1+p`.
-This packages the final local contradiction used in
+:::proof "frey_torsion_not_irreducible"
+Combine {uses "frey_torsion_hardly_ramified"}[] with
 {uses "hardly_ramified_reducible"}[].
 :::
 
+Our job of reducing FLT to theorems from the `1980`s is therefore reduced to
+proving the general hardly ramified reducibility theorem stated above.
+
+# Hardly Ramified Mod p Representations Are Reducible
+
+The TeX chapter now states three theorems from which that general reducibility
+theorem easily follows.
+
+:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program")
+If `\ell \ge 3` is prime and
+$`\overline{\rho} : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
+is hardly ramified and irreducible, then there exists a finite extension
+$`K / \Q_\ell` with integer ring $`\mathcal{O}` and a hardly ramified
+$`\ell`-adic representation
+$`\rho : \GQ \to \GL_2(\mathcal{O})`
+whose reduction is isomorphic to $`\overline{\rho}`.
+This is the first bridge away from characteristic `\ell`.
+:::
+
+:::proof "hardly_ramified_lifts"
+The TeX file leaves the proof as future work, but its role is very clear. This
+theorem says that irreducibility does not trap us inside the residual
+representation: the relevant deformation problem is nonempty, and one can pass
+to a genuine characteristic-zero representation while preserving the same
+determinant, ramification restrictions, condition at `2`, and flatness
+condition at `\ell`.
+
+That is exactly the input needed to make the later modularity-lifting and
+potential-modularity machinery available.
+:::
+
+:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program")
+A hardly ramified `\ell`-adic representation with irreducible reduction spreads
+out to a compatible family over a number field. In particular, one can choose a
+place `\lambda` above `\ell` recovering the original representation, and the
+Frobenius characteristic polynomials agree across the family away from the
+finitely many excluded primes.
+This is the theorem that makes it legal to move from the original prime
+`\ell` to a specialization at `3`.
+:::
+
+:::proof "hardly_ramified_compatible_family"
+This is the gateway from one local deformation problem to a global family where
+the switch to `3` can be analyzed. The original Frey package singles out one
+prime, but the eventual contradiction is cleanest at `3`; a compatible family
+is exactly what makes that comparison legitimate.
+
+The TeX theorem is more detailed, quantifying over the odd-characteristic
+finite places `\mu` of a number field `M` and requiring equality of Frobenius
+characteristic polynomials for the resulting `\mu`-adic representations away
+from the excluded primes. Inside the blueprint, that detailed statement is the
+precise form of the strategy already signaled by
+{uses "compatible_family_step"}[].
+:::
+
+In particular, one can move from an irreducible hardly ramified mod `\ell`
+representation to a hardly ramified `3`-adic representation and hence to a
+hardly ramified mod `3` representation.
+
+:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program")
+If `k` is a finite field of characteristic `3` and
+$`\overline{\rho} : \GQ \to \GL_2(k)` is hardly ramified, then
+$`\overline{\rho}` is an extension of the cyclotomic character by the trivial
+representation.
+This is the almost-complete classification of the mod `3` case recorded in the
+TeX chapter.
+:::
+
+:::proof "hardly_ramified_mod_three"
+This is the first place where the prime `3` becomes special rather than merely
+convenient. The local conditions are rigid enough in characteristic `3` that
+there is essentially no room for exotic irreducible behavior.
+
+For the later contradiction, the key point is that the semisimplification is
+already the expected reducible object.
+:::
+
+:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program")
+If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
+$`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
+representation to $`\GL_2(L)`, one has
+$`\rho_3^{ss} = 1 \oplus \chi_3`.
+This is the `3`-adic classification theorem from which the final Frobenius
+constraints are read off.
+:::
+
 :::proof "hardly_ramified_three_adic"
-In the TeX blueprint this is presented as the easiest of the three deep inputs.
-It is the stage where the Fontaine-style discriminant argument enters: the mod
-$`3` classification and the local flatness/tameness hypotheses force any
+The TeX chapter presents this as the easiest of the three deep inputs. It is
+the stage where the Fontaine-style discriminant argument enters: the mod `3`
+classification and the local flatness and tameness hypotheses force any
 would-be irreducible extension to cut out a number field with impossibly small
 root discriminant.
 
-So this theorem is the point where the chapter uses the historical input
-recorded as {uses "odlyzko_root_discriminant_bound"}[], ultimately in the
-numerical form developed by Poitou and Odlyzko
-{Informal.citep poitouOdlyzkoBounds}[].
+So this theorem is where the chapter uses the historical input recorded as
+{uses "odlyzko_root_discriminant_bound"}[], ultimately in the numerical form of
+Poitou and Odlyzko {Informal.citep poitouOdlyzkoBounds}[].
 :::
-
-# The reducibility contradiction
-
-:::theorem "hardly_ramified_reducible" (parent := "hardly_ramified_program")
-If $`\ell \ge 3` is prime, then every hardly ramified mod $`\ell`
-representation is reducible.
-This is the general theorem that turns the Frey-curve local analysis into a
-contradiction by combining {uses "hardly_ramified_lifts"}[],
-{uses "hardly_ramified_compatible_family"}[], and
-{uses "hardly_ramified_three_adic"}[].
-:::
-
-The TeX chapter then immediately restates the Wiles-side theorem for the Frey
-curve as an easy corollary of this general reducibility result. In the Verso
-port, that specialization appears as the Frey-curve non-irreducibility theorem
-below.
 
 :::proof "hardly_ramified_reducible"
-Assume a hardly ramified mod $`\ell` representation were irreducible. By
-{uses "hardly_ramified_lifts"}[] it lifts to a hardly ramified $`\ell`-adic
-representation, and by {uses "hardly_ramified_compatible_family"}[] that lift
-belongs to a compatible family. Moving to the place above $`3` and applying
+Assume for contradiction that a hardly ramified mod `\ell` representation
+$`\overline{\rho}` is irreducible. By {uses "hardly_ramified_lifts"}[],
+$`\overline{\rho}` lifts to a hardly ramified `\ell`-adic representation
+`\rho`. By {uses "hardly_ramified_compatible_family"}[], that lift belongs to a
+compatible family. Moving to the place above `3` and applying
 {uses "hardly_ramified_three_adic"}[] shows that for primes $`p \nmid 6\ell`
 the Frobenius characteristic polynomial is forced to be $`(X-p)(X-1)`.
 
 Compatibility carries the same characteristic polynomials back to the original
-$`\ell`-adic and then mod $`\ell` representation. Chebotarev and
-Brauer--Nesbitt then force the semisimplification to be $`1 \oplus \chi_\ell`,
-contradicting irreducibility.
-
-The old blueprint emphasizes that this is a very special case of Serre's
-conjecture {Informal.citep serreModularityConjecture}[], and therefore now a
-theorem by Khare and Wintenberger {Informal.citep khareWintenbergerII}[]; the
-point of the chapter is to isolate a route to this special case that matches
-the project's preferred modularity-lifting infrastructure.
+`\ell`-adic representation and hence to $`\overline{\rho}`. By the Chebotarev
+density theorem, $`\overline{\rho}` and $`1 \oplus \chi_\ell` have the same
+characteristic polynomials everywhere, and Brauer--Nesbitt then forces
+$`\overline{\rho}` to be reducible. That contradicts the assumption of
+irreducibility.
 :::
 
-The TeX chapter closes with one final orientation remark: among the three deep
-inputs, the `3`-adic theorem is presented as the easiest, while the lifting and
-compatible-family theorems are the ones that really use modern `R = T`-style
-machinery.
-
-:::theorem "frey_torsion_not_irreducible" (parent := "hardly_ramified_program")
-The Frey curve torsion representation is not irreducible.
-This is the modularity-side endpoint used in {uses "wiles_frey_not_irreducible"}[]
-and therefore in {uses "no_frey_package"}[]; it is the direct Frey-curve
-specialization of {uses "hardly_ramified_reducible"}[].
-:::
-
-:::proof "frey_torsion_not_irreducible"
-This is now a short deduction inside the blueprint narrative: combine
-{uses "frey_torsion_hardly_ramified"}[] with
-{uses "hardly_ramified_reducible"}[].
-
-The point of the Verso port is to restore the intermediate story from the TeX
-blueprint: lift, spread out to a compatible family, specialize at $`3`, and
-push the resulting Frobenius constraints back to the original mod $`p`
-representation.
-:::
+The TeX chapter closes with one final orientation remark: among these three
+deep inputs, the `3`-adic theorem is the easiest, while the lifting and
+compatible-family theorems are the places where modern `R = T`-style machinery
+really enters.
