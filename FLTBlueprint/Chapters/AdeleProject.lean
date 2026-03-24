@@ -461,21 +461,6 @@ to `1` in one archimedean place and to `0` in the others, then linearly combine
 them to approximate any chosen tuple.
 :::
 
-:::theorem "infinite_adele_base_change" (parent := "adele_project")
-The infinite adele ring of `L` is isomorphic, both algebraically and
-topologically, to $`L \otimes_K K_\infty`.
-This is assembled from {uses "infinite_place_weak_approximation"}[],
-{uses "infinite_place_dimension_count"}[], and
-{uses "infinite_place_local_base_change_map"}[].
-:::
-
-:::proof "infinite_adele_base_change"
-The TeX chapter mirrors the nonarchimedean story but with archimedean
-completions. One first builds local maps at each infinite place, then proves
-surjectivity and injectivity using weak approximation and dimension counting,
-and finally upgrades the algebra isomorphism to a homeomorphism.
-:::
-
 :::theorem "infinite_place_dimension_count" (parent := "adele_project")
 For a fixed infinite place `v` of `K`, the `K_v`-dimension of
 $`\prod_{w \mid v} L_w` matches the `K_v`-dimension of $`L \otimes_K K_v`.
@@ -496,6 +481,82 @@ $`L \otimes_K K_v \to \prod_{w \mid v} L_w`.
 The TeX chapter builds this in two stages: first a map `K_v → ∏_{w|v} L_w`,
 then the induced `L`-linear map on the tensor product. This mirrors the
 nonarchimedean completion story as closely as possible.
+:::
+
+:::theorem "infinite_place_local_base_change_surjective" (parent := "adele_project")
+For a fixed infinite place `v` of `K`, the local infinite-place base-change map
+$`L \otimes_K K_v \to \prod_{w \mid v} L_w`
+is surjective.
+:::
+
+:::proof "infinite_place_local_base_change_surjective"
+The TeX proof chooses a `K_v`-basis of `\prod_{w \mid v} L_w` and then uses
+{uses "infinite_place_weak_approximation"}[] to approximate those basis vectors
+by elements of `L`. Choosing the approximations carefully makes the resulting
+matrix invertible, so the images of those elements span the target.
+:::
+
+:::theorem "infinite_place_local_base_change_injective" (parent := "adele_project")
+For a fixed infinite place `v` of `K`, the local infinite-place base-change map
+$`L \otimes_K K_v \to \prod_{w \mid v} L_w`
+is injective.
+:::
+
+:::proof "infinite_place_local_base_change_injective"
+The TeX chapter observes that the map is `K_v`-linear. Once surjectivity is
+known from {uses "infinite_place_local_base_change_surjective"}[] and the
+dimensions agree by {uses "infinite_place_dimension_count"}[], injectivity
+follows immediately.
+:::
+
+:::theorem "infinite_place_local_module_topology" (parent := "adele_project")
+If `w \mid v` is an infinite place of `L` lying above an infinite place `v` of
+`K`, then `L_w` has the `K_v`-module topology.
+:::
+
+:::proof "infinite_place_local_module_topology"
+The TeX proof is finite-dimensional linear algebra: `L_w` is a finite-dimensional
+normed `K_v`-vector space, so after choosing a basis it is linearly
+homeomorphic to a finite power of `K_v`.
+:::
+
+:::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project")
+For a fixed infinite place `v` of `K`, the local base-change map gives a
+homeomorphism
+$`L \otimes_K K_v \cong \prod_{w \mid v} L_w`.
+:::
+
+:::proof "infinite_place_local_base_change_homeomorphism"
+The TeX chapter first obtains the algebraic isomorphism from
+{uses "infinite_place_local_base_change_surjective"}[] and
+{uses "infinite_place_local_base_change_injective"}[]. It then uses
+{uses "infinite_place_local_module_topology"}[] to see that both sides carry the
+`K_v`-module topology, so the `K_v`-linear isomorphism is automatically a
+homeomorphism.
+:::
+
+:::theorem "infinite_adele_base_change" (parent := "adele_project")
+The infinite adele ring of `L` is isomorphic, both algebraically and
+topologically, to $`L \otimes_K K_\infty`.
+This is assembled from {uses "infinite_place_weak_approximation"}[],
+{uses "infinite_place_dimension_count"}[], and
+{uses "infinite_place_local_base_change_homeomorphism"}[].
+:::
+
+:::proof "infinite_adele_base_change"
+The TeX chapter mirrors the nonarchimedean story but with archimedean
+completions. One first builds local maps at each infinite place, then proves
+surjectivity and injectivity using weak approximation and dimension counting,
+and finally upgrades the local algebra isomorphisms to homeomorphisms.
+
+At the global level, the TeX chapter then packages these local results into a
+`K_\infty`-linear homeomorphism
+$`K_\infty^{[L:K]} \cong L_\infty`
+and uses it to identify the topology on `L_\infty` with the
+`K_\infty`-module topology. Once both sides of
+$`L \otimes_K K_\infty \cong L_\infty`
+carry their `K_\infty`-module topology, the final algebra isomorphism is
+automatically a homeomorphism.
 :::
 
 :::proof "adele_base_change"
