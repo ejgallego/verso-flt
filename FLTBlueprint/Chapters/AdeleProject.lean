@@ -569,7 +569,27 @@ So {uses "adele_base_change"}[] is really the sum of
 {uses "infinite_adele_base_change"}[].
 :::
 
+:::theorem "adele_base_change_module_topology" (parent := "adele_project")
+If `K -> L` is a finite extension of number fields, then the topology on
+`\mathbf{A}_L` is the `\mathbf{A}_K`-module topology coming from the natural
+map `\mathbf{A}_K -> \mathbf{A}_L`.
+:::
+
+:::proof "adele_base_change_module_topology"
+This is the short theorem the TeX chapter inserts just before the final
+discreteness and compactness section. Once {uses "adele_base_change"}[] is
+known, the claim is immediate: `\mathbf{A}_L` is homeomorphic to
+`L \otimes_K \mathbf{A}_K`, and the tensor-product side carries the
+`\mathbf{A}_K`-module topology by construction.
+:::
+
 # Discreteness and compactness
+
+The TeX chapter now changes viewpoint completely. After the local and global
+base-change machinery, the goal is to show that a number field embeds in its
+adeles as a discrete subgroup with compact quotient. The chapter presents this
+as a proposed proof, first reducing the statements to the rational case and
+then handling `\mathbf{A}_{\mathbf{Q}}` explicitly.
 
 :::theorem "rational_adele_zero_neighborhood" (parent := "adele_project")
 There is an open subset of the rational adeles whose intersection with `ℚ` is
@@ -592,6 +612,10 @@ the number field is just `{0}`.
 The TeX chapter reduces this to {uses "rational_adele_zero_neighborhood"}[] by
 choosing a `\mathbf{Q}`-basis and using the base-change description of the
 adeles from {uses "adele_base_change"}[].
+
+More concretely, once one identifies `\mathbf{A}_K` with a finite power of
+`\mathbf{A}_{\mathbf{Q}}` through a chosen `\mathbf{Q}`-basis of `K`, the claim
+reduces to the corresponding rational statement coordinatewise.
 :::
 
 :::theorem "number_field_adele_discrete_embedding" (parent := "adele_project")
@@ -611,6 +635,10 @@ The quotient `\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}` is compact.
 :::proof "rational_adele_quotient_compact"
 The TeX chapter gives an explicit compact fundamental-domain style argument
 using `\prod_p \mathbf{Z}_p \times [0,1]`.
+
+The point is that every rational adele can be translated into this compact set
+by first clearing the finitely many nonintegral `p`-adic coordinates with a
+rational number and then adjusting the archimedean coordinate by an integer.
 :::
 
 :::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
@@ -626,6 +654,12 @@ In the TeX chapter this statement is positioned as the commutative prototype for
 the later division-algebra compactness theorem. The point is not just that `K`
 sits inside its adeles, but that the quotient carries genuine compactness
 content that later noncommutative arguments should imitate.
+
+The proof follows the same reduction-to-`\mathbf{Q}` pattern as the
+discreteness argument: after choosing a `\mathbf{Q}`-basis of `K`, the quotient
+`\mathbf{A}_K / K` is identified with a finite power of
+`\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}`, so compactness descends from the
+rational case.
 :::
 
 :::theorem "commutative_compactness_prototype" (parent := "adele_project")

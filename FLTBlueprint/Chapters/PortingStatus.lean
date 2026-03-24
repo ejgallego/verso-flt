@@ -55,7 +55,8 @@ The current chapter-by-chapter status for the main proof spine is:
 :::definition "miniproject_porting_status" (parent := "porting_status")
 The current miniproject-side status is:
 
-- `AdeleMiniproject.tex` -> `AdeleProject.lean`: `substantial port present`
+- `AdeleMiniproject.tex` -> `AdeleProject.lean`: `fidelity pass completed`
+  The status, cheap-versus-restricted-product setup, finite and infinite base-change story, and the final discrete/cocompact embedding section have all received explicit fidelity passes.
 - `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `substantial port present`
   This one is also a project success story, with the main theorem upstreamed to mathlib.
 - `FujisakiProject.tex` -> `FujisakiProject.lean`: `substantial port present`
