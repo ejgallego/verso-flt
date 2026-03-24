@@ -27,12 +27,24 @@ good shape, while the concrete adelic theory still depends on restricted-product
 and local matrix-group infrastructure.
 :::
 
+The TeX chapter is slightly sharper about the current state: the abstract theory
+is described as completely formalized, while the concrete theory is said to
+have no sorried definitions but still some sorried proofs. So the point of the
+chapter is not to invent the formalism, but to finish the local and adelic API
+needed to make the concrete operators sorry-free.
+
 # Goal
 
 The purpose of the chapter is to obtain sorry-free Hecke operators on spaces of
 automorphic forms. These operators generate the Hecke algebras that supply the
 `T` side of the modularity lifting theorems, and so they sit directly on the
 critical path toward `R = T`.
+
+The TeX source is explicit that the project splits into two parts. The abstract
+theory is pure algebra and comparatively short. The concrete theory is where
+the real infrastructure burden sits, because the adelic groups of interest are
+restricted products and the local compact-open subgroups are matrix groups over
+local rings.
 
 # Abstract theory
 
@@ -129,6 +141,10 @@ The chapter emphasizes that while group/ring/module structure is inherited
 componentwise, the topology is not the subspace topology from the full product.
 Instead, it is defined so that finite products of bad factors and good factors
 away from a finite set assemble continuously.
+
+The TeX chapter also stresses a subtle point that matters later: the natural map
+from the restricted product into the full product is continuous, but is not in
+general a topological embedding.
 :::
 
 :::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project")
@@ -139,6 +155,10 @@ Restricted products with respect to open subspaces commute with finite products.
 The TeX chapter proves this first for binary products and then for finite
 products by induction. The openness hypothesis is emphasized because the
 restricted-product topology behaves much better under products in that case.
+
+The TeX notes even remark that this may fail without the openness hypothesis,
+because filtered colimits and binary products do not commute well in general in
+the category of topological spaces.
 :::
 
 :::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project")
@@ -174,6 +194,10 @@ is a compact subgroup of `Mˣ`.
 The same embedding argument works again. Hausdorffness makes `Mˣ` closed in
 `M × M`, so intersecting it with the compact subset `U × U` gives a compact
 space of units.
+
+The TeX chapter explicitly asks whether Hausdorffness is really necessary here.
+The current proof uses it exactly at the point where `{1}` has to be a closed
+subset of the ambient monoid.
 :::
 
 :::theorem "product_units_homeomorphism" (parent := "hecke_operator_project")
@@ -199,6 +223,11 @@ The TeX chapter singles this out because it is exactly the statement one needs
 to pass from restricted products of local rings to restricted products of local
 matrix groups and their units. The openness of the `U_i` is what makes the
 restricted-product topology and the topology on units interact cleanly.
+
+The TeX proof there is deliberately indirect: it proves the map is a
+homeomorphism near the identity, using the open neighborhoods coming from the
+good submonoids, and then upgrades that local statement to a global
+homeomorphism of topological groups.
 :::
 
 # Local matrix theory
@@ -207,6 +236,11 @@ The local section of the TeX chapter specializes to completions `K_v` of number
 fields at finite places. The point is to manufacture the compact open
 subgroups and explicit double-coset decompositions that later define the local
 Hecke operators.
+
+The TeX chapter is candid that these local lemmas were not yet formalized in
+the right generality. It sticks to completions of number fields at finite
+places, even though the natural long-term statements should be about general
+nonarchimedean local fields.
 
 :::theorem "local_integer_ring_open" (parent := "hecke_operator_project")
 The local integer ring `\mathcal{O}_v` is an open subring of `K_v`.
@@ -275,6 +309,10 @@ This is the concrete local combinatorics behind the `U_{v,\alpha}` operators in
 the TeX chapter. After conjugating by `diag(\alpha,1)`, the double-coset
 problem reduces to a finite quotient of the upper-right entry modulo `\alpha`.
 The resulting representatives are unipotent translates of the diagonal matrix.
+
+The TeX proof is explicit that the real work is first to reduce the statement
+to a finite-group calculation inside the chosen congruence subgroup, and then to
+read off the quotient parameter from the upper-right entry modulo `\alpha`.
 :::
 
 # Adelic groups
