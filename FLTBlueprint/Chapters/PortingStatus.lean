@@ -63,7 +63,8 @@ The current miniproject-side status is:
   The chapter now covers the TeX goal/setup, the adelic compactness proof spine, and the two finite-adelic consequences stated at the end of the original miniproject.
 - `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `fidelity pass completed`
   The additive/ring-level setup, examples, algebraic determinant formulas, restricted-product section, and adelic application have all received explicit fidelity passes.
-- `HeckeOperatorProject.tex` -> `HeckeOperators.lean`: `substantial port present`
+- `HeckeOperatorProject.tex` -> `HeckeOperators.lean`: `fidelity pass completed`
+  The abstract theory, restricted-product and local matrix setup, adelic group construction, concrete operators, and Hecke-algebra endpoint have all received explicit fidelity passes.
 - `QuaternionAlgebraProject.tex` -> `QuaternionAlgebras.lean`: `fidelity pass completed`
 :::
 
