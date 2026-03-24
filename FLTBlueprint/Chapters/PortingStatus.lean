@@ -60,7 +60,8 @@ The current miniproject-side status is:
 - `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `substantial port present`
   This one is also a project success story, with the main theorem upstreamed to mathlib.
 - `FujisakiProject.tex` -> `FujisakiProject.lean`: `substantial port present`
-- `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `substantial port present`
+- `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `fidelity pass completed`
+  The additive/ring-level setup, examples, algebraic determinant formulas, restricted-product section, and adelic application have all received explicit fidelity passes.
 - `HeckeOperatorProject.tex` -> `HeckeOperators.lean`: `substantial port present`
 - `QuaternionAlgebraProject.tex` -> `QuaternionAlgebras.lean`: `fidelity pass completed`
 :::

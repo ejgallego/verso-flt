@@ -227,7 +227,7 @@ concrete: normalize Haar measure by `μ(\mathbf{Z}_p) = 1`, check that units
 preserve `\mathbf{Z}_p`, and compute the effect of multiplication by `p` using
 the index of `p\mathbf{Z}_p` inside `\mathbf{Z}_p`.
 
-# Finite-dimensional algebras
+# Algebras
 
 :::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project")
 For a finite free module over a locally compact field, the Haar character of an
@@ -259,6 +259,8 @@ by a unit is an invertible `F`-linear map on the underlying finite-dimensional
 `F`-vector space, so the determinant formula applies.
 :::
 
+# Left and right multiplication
+
 :::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project")
 For a finite-dimensional central simple algebra, left and right multiplication
 by a unit have the same Haar-character factor.
@@ -276,7 +278,7 @@ This symmetry is exactly what is needed later when quotient arguments in
 division algebras mix left and right multiplication.
 :::
 
-# Products and restricted products
+# Finite products
 
 :::theorem "product_haar_character_formula" (parent := "haar_character_project")
 For a finite product of locally compact additive groups, the Haar character of a
@@ -300,6 +302,73 @@ The TeX chapter states this first for additive groups, then for rings as the
 immediate specialization to multiplication-by-units.
 :::
 
+# Some measure-theoretic preliminaries
+
+:::theorem "open_embedding_pullback_is_haar_measure" (parent := "haar_character_project")
+If a locally compact topological group embeds openly into another, then pulling
+back a Haar measure along that open embedding again gives a Haar measure.
+:::
+
+:::proof "open_embedding_pullback_is_haar_measure"
+The TeX proof is elementary: translation invariance is immediate, compact sets
+stay finite because continuous images of compact sets are compact, and open sets
+stay bounded because open embeddings send open sets to open sets.
+:::
+
+:::theorem "open_embedding_pullback_regular_measure" (parent := "haar_character_project")
+Pulling a regular Borel measure back along an open embedding again gives a
+regular Borel measure.
+:::
+
+:::proof "open_embedding_pullback_regular_measure"
+Again this is exactly the TeX argument: the image of a compact set is compact
+and the image of an open set is open, so the usual regularity axioms are
+preserved by pullback.
+:::
+
+:::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project")
+If an additive automorphism acts on a compact additive group, then its Haar
+character is `1`.
+:::
+
+:::proof "compact_group_haar_character_trivial"
+The TeX proof is the short measure argument: the whole compact group has finite,
+positive Haar measure, and that total measure is unchanged by the automorphism.
+:::
+
+:::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project")
+If an additive automorphism on a locally compact group is intertwined with one
+on a larger group through an open embedding, then the two Haar characters
+agree.
+This is the open-embedding transfer principle for
+{uses "additive_haar_character"}[].
+:::
+
+:::proof "open_embedding_preserves_haar_character"
+The TeX proof pulls back Haar measure along the open embedding and compares the
+resulting integral identities on the smaller and larger groups. The pullback is
+a regular Haar measure by
+{uses "open_embedding_pullback_is_haar_measure"}[] and
+{uses "open_embedding_pullback_regular_measure"}[].
+
+This is a transfer principle: once one knows the Haar character in an ambient
+group, one can sometimes read off the character on an open embedded subgroup for
+free.
+:::
+
+# Restricted products
+
+:::theorem "restricted_product_maps_continuous" (parent := "haar_character_project")
+If one has compatible continuous maps on the factors of a restricted product,
+then the induced map on the restricted product is continuous.
+:::
+
+:::proof "restricted_product_maps_continuous"
+The TeX chapter reduces continuity to the universal property of the
+restricted-product topology. One checks continuity on sufficiently large finite
+stages, where the map becomes an ordinary finite product of continuous maps.
+:::
+
 :::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project")
 For a restricted product of locally compact groups with compact open reference
 subgroups, the Haar character of a restricted-product automorphism is the
@@ -315,36 +384,16 @@ subgroups are compact and open, any automorphism that preserves them has local
 Haar character `1` there. So only finitely many places contribute, and the
 global Haar character becomes a finite product of local terms.
 
+The TeX chapter also records the technical caveat that one wants a countable
+index set and second-countable factors so that the product sigma algebra agrees
+with the Borel sigma algebra on the restricted product. That is the level of
+generality needed for the adelic applications.
+
 That is precisely the mechanism that later makes adelic Haar-character
 computations tractable.
 :::
 
-:::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project")
-If an additive automorphism on a locally compact group is intertwined with one
-on a larger group through an open embedding, then the two Haar characters
-agree.
-This is the open-embedding transfer principle for
-{uses "additive_haar_character"}[].
-:::
-
-:::proof "open_embedding_preserves_haar_character"
-The TeX proof pulls back Haar measure along the open embedding and compares the
-resulting integral identities on the smaller and larger groups.
-
-This is a transfer principle: once one knows the Haar character in an ambient
-group, one can sometimes read off the character on an open embedded subgroup for
-free.
-:::
-
-:::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project")
-If an additive automorphism acts on a compact additive group, then its Haar
-character is `1`.
-:::
-
-:::proof "compact_group_haar_character_trivial"
-The TeX proof is the short measure argument: the whole compact group has finite,
-positive Haar measure, and that total measure is unchanged by the automorphism.
-:::
+# Adeles
 
 :::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project")
 The key intended application is that adelic unit groups coming from
@@ -362,6 +411,10 @@ Haar character is the restricted-product product of the local ones by
 the character is controlled by determinants via
 {uses "algebra_haar_character_determinant_formula"}[].
 
+The TeX chapter proves a series of intermediate product-formula statements over
+`\mathbf{Q}` and over finite-dimensional `\mathbf{Q}`-vector spaces, then uses a
+module-topology lemma for adele extensions to pass cleanly between
+`B \otimes_K \mathbf{A}_K` and `B \otimes_{\mathbf{Q}} \mathbf{A}_{\mathbf{Q}}`.
 The local determinant computations then cancel globally, forcing the units of
 the original algebra to land in the kernel. That is exactly the API input used
 by {uses "adelic_division_algebra_setup"}[] in the Fujisaki chapter.
