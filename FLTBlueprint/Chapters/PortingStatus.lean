@@ -57,8 +57,8 @@ The current miniproject-side status is:
 
 - `AdeleMiniproject.tex` -> `AdeleProject.lean`: `fidelity pass completed`
   The status, cheap-versus-restricted-product setup, finite and infinite base-change story, and the final discrete/cocompact embedding section have all received explicit fidelity passes.
-- `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `substantial port present`
-  This one is also a project success story, with the main theorem upstreamed to mathlib.
+- `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `fidelity pass completed`
+  This one is also a project success story, with the main theorem upstreamed to mathlib; the current Verso chapter now follows the TeX statement/proof strategy through the auxiliary fixed-field steps as well.
 - `FujisakiProject.tex` -> `FujisakiProject.lean`: `fidelity pass completed`
   The chapter now covers the TeX goal/setup, the adelic compactness proof spine, and the two finite-adelic consequences stated at the end of the original miniproject.
 - `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `fidelity pass completed`
