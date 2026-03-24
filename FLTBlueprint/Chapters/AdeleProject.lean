@@ -316,6 +316,15 @@ closed in the full product. This is exactly why the next step is not just to
 tensor everything naively, but to show carefully that restricted products
 commute with the local finite-product decompositions.
 
+The TeX chapter now introduces an auxiliary restricted product `R`, namely the
+restricted product of the `B \otimes_A K_v` with respect to the
+`B \otimes_A A_v`. The strategy is:
+
+- first compare `B \otimes_A \mathbf{A}_K^\infty` with this auxiliary ring `R`
+- then identify `R` with `\mathbf{A}_L^\infty` by relabelling places
+- finally pass from the integral tensor product to the field-level tensor
+  product `L \otimes_K \mathbf{A}_K^\infty`
+
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project")
 The finite adele ring of `L` is algebraically isomorphic to
 $`L \otimes_K \mathbf{A}_K^\infty`.
@@ -348,6 +357,27 @@ identification `B \otimes_A K \cong L`, and then tensors that identification
 with the module `M`.
 :::
 
+The TeX chapter also inserts a finite-presentation detour at this point. The
+reason is that one wants tensor products to commute with products in exactly the
+range needed to compare the integral tensor product with the auxiliary
+restricted product `R`, and finite presentation is the hypothesis that makes
+that statement work cleanly.
+
+:::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
+If `M` is a finitely presented module over a commutative ring `R`, then
+tensoring with `M` commutes with arbitrary products.
+This is one of the algebraic inputs behind the auxiliary restricted-product
+comparison in the TeX proof of finite-adele base change.
+:::
+
+:::proof "tensor_product_commutes_with_products_for_finite_presentation"
+The TeX chapter first records that the integral closure `B` is finitely
+presented over `A`. It then appeals to the standard theorem that finitely
+presented modules commute with products under tensor product. In the finite free
+case this is straightforward; the general case is obtained by presenting `M`
+as a cokernel of a map between finite free modules.
+:::
+
 :::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
 If an index map has finite fibres and each factor over the target is identified
 with the product of the corresponding fibres over the source, then the two
@@ -358,6 +388,21 @@ restricted products are naturally in bijection.
 The TeX chapter introduces this abstract relabelling construction because the
 finite-adele base-change proof needs to reorganize a restricted product indexed
 by places of `K` into one indexed by places of `L`.
+:::
+
+:::theorem "restricted_product_relabel_homeomorphism" (parent := "adele_project")
+If the fibres are finite and the local identifications are homeomorphisms
+matching the chosen open subspaces, then the relabelling bijection of
+restricted products is also a homeomorphism.
+This is the topological refinement of
+{uses "restricted_product_relabel_isomorphism"}[].
+:::
+
+:::proof "restricted_product_relabel_homeomorphism"
+The TeX chapter treats this as the natural topological companion to the
+relabelling bijection. The point is that once the open compact pieces and the
+local finite products match homeomorphically, the restricted-product topology is
+transported correctly across the change of index set.
 :::
 
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
@@ -373,7 +418,12 @@ statement.
 
 This is also the point where the TeX file says “it is just a case of putting
 everything together” informally, while warning that formally there is quite a
-lot of bookkeeping hidden inside that phrase.
+lot of bookkeeping hidden inside that phrase. More concretely, the proof factors
+through the auxiliary ring `R`: one first compares
+`B \otimes_A \mathbf{A}_K^\infty` with `R` using the finite-presentation tensor
+product input, and then identifies `R` with `\mathbf{A}_L^\infty` using the
+restricted-product relabelling argument and the local integral decomposition
+{uses "nonarchimedean_integral_decomposition"}[].
 :::
 
 :::theorem "finite_adele_base_change_topological" (parent := "adele_project")
@@ -391,6 +441,12 @@ homeomorphisms from
 {uses "nonarchimedean_base_change_local_homeomorphism"}[] respect the chosen
 open compact subrings and that restricted products commute with finite products
 in the required way.
+
+The TeX proof then adds one more module-topology observation: after identifying
+each `B \otimes_A A_v` with a finite power of `A_v`, the restricted product of
+those finite powers has the expected module topology because restricted products
+commute with finite products. This is the last step that turns the algebraic
+finite-adele base-change isomorphism into a homeomorphism.
 :::
 
 :::theorem "infinite_place_weak_approximation" (parent := "adele_project")
