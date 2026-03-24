@@ -36,6 +36,10 @@ with substantial outside input during blueprint development, precisely because
 the eventual application to adeles and division algebras needs a dependable
 measure-theoretic API rather than ad hoc local computations.
 
+The TeX chapter even pauses to thank Sebastien Gouezel explicitly for help in
+preparing this material, which is a good indication of how much of the work
+here is about getting the measure-theoretic interface exactly right.
+
 # Initial definitions
 
 :::definition "additive_haar_character" (parent := "haar_character_project")
@@ -48,6 +52,15 @@ group `A` and `φ : A ≃ₜ+ A` is an additive homeomorphism, then the pushforw
 `φ_* μ` is again a Haar measure. So it differs from `μ` by a unique positive
 scalar, and the Haar-character construction is just the systematic way of
 recording that scalar.
+
+The TeX chapter is careful about normalization here: one could equally well
+record the inverse scale factor. The project fixes the convention that
+`μ(X) = d_A(φ) (φ_* μ)(X)`, so multiplication by `2` on `ℝ` has Haar character
+`2` rather than `1/2`.
+
+It also notes that mathlib packages a preferred Haar measure, while the actual
+mathematics is independent of that choice. In the Lean code, the multiplicative
+version is primary and the additive statements are obtained by `to_additive`.
 
 :::theorem "haar_character_independent_of_measure" (parent := "haar_character_project")
 This scaling factor is independent of the chosen regular Haar measure.
@@ -107,6 +120,11 @@ This is the integral version of {uses "haar_character_pushforward_formula"}[].
 :::proof "haar_character_integral_formula"
 The TeX chapter emphasizes that these integral identities are simply the
 measure-scaling identities rewritten through the definition of integration.
+
+It also remarks that if one has a measurable function with positive finite
+integral, then the Haar character can be read off from the ratio of the two
+integrals before and after pushforward. This viewpoint is exactly what later
+drives the continuity proof on unit groups.
 :::
 
 :::theorem "haar_character_is_multiplicative" (parent := "haar_character_project")
@@ -203,6 +221,11 @@ This is the integral counterpart to {uses "padic_haar_character_formula"}[].
 The TeX chapter also remarks here that for a finite extension of `ℚ_p`, the
 same computation gives the normalized nonarchimedean norm. It leaves that
 statement informal because the right local-field interface was not yet settled.
+
+At the level of the TeX proof, the `\mathbf{Q}_p` calculation is completely
+concrete: normalize Haar measure by `μ(\mathbf{Z}_p) = 1`, check that units
+preserve `\mathbf{Z}_p`, and compute the effect of multiplication by `p` using
+the index of `p\mathbf{Z}_p` inside `\mathbf{Z}_p`.
 
 # Finite-dimensional algebras
 
