@@ -64,6 +64,11 @@ examples. The point is not just classification: it is to prepare the reader for
 why the adelic algebra attached to a division algebra still has enough linear
 structure for a compactness argument.
 
+The TeX chapter is concrete here. It mentions Hamilton's quaternions over `ℝ`
+as the motivating division-algebra example, contrasts them with matrix algebras
+that are central simple but never division rings, and notes that quaternion
+algebras over a general field play the same formal role later in the project.
+
 :::definition "division_algebra_hypothesis_for_fujisaki" (parent := "fujisaki_project")
 The final compactness theorem is stated for division algebras, not just arbitrary
 central simple algebras, because nonzero elements then form a genuine group and
@@ -230,4 +235,37 @@ the quotient. Therefore the quotient itself is compact.
 
 This is exactly the compactness input used later in
 {uses "finite_dimensional_quaternionic_forms"}[].
+:::
+
+The TeX chapter closes by recording two useful consequences of Fujisaki's
+lemma, both for the finite adelic unit group.
+
+:::theorem "finite_adele_units_cocompact_for_division_algebra" (parent := "fujisaki_project")
+The quotient
+$`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`
+is compact.
+:::
+
+:::proof "finite_adele_units_cocompact_for_division_algebra"
+The TeX proof constructs a natural map from the compact quotient
+{uses "compact_quotient_for_division_algebra"}[] to the finite-adelic unit
+quotient and proves that this map is surjective. The key point is that any
+finite-adelic unit can be extended by a suitable archimedean unit to land in
+the Haar-character kernel; the archimedean correction is possible because
+scalars in `\mathbf{R}^\times` scale Haar measure by an explicit positive power.
+:::
+
+:::theorem "finite_double_coset_for_open_subgroup" (parent := "fujisaki_project")
+If `U` is an open subgroup of
+$`(D \otimes_K \mathbf{A}_K^\infty)^\times`, then the double coset space
+$`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times / U`
+is finite.
+:::
+
+:::proof "finite_double_coset_for_open_subgroup"
+The TeX chapter observes that the double cosets define a disjoint open cover of
+the compact quotient from
+{uses "finite_adele_units_cocompact_for_division_algebra"}[]. A compact space
+cannot admit an infinite disjoint open cover, so only finitely many double
+cosets occur.
 :::

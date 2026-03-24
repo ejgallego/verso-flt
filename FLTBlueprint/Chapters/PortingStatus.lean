@@ -59,7 +59,8 @@ The current miniproject-side status is:
   The status, cheap-versus-restricted-product setup, finite and infinite base-change story, and the final discrete/cocompact embedding section have all received explicit fidelity passes.
 - `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `substantial port present`
   This one is also a project success story, with the main theorem upstreamed to mathlib.
-- `FujisakiProject.tex` -> `FujisakiProject.lean`: `substantial port present`
+- `FujisakiProject.tex` -> `FujisakiProject.lean`: `fidelity pass completed`
+  The chapter now covers the TeX goal/setup, the adelic compactness proof spine, and the two finite-adelic consequences stated at the end of the original miniproject.
 - `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `fidelity pass completed`
   The additive/ring-level setup, examples, algebraic determinant formulas, restricted-product section, and adelic application have all received explicit fidelity passes.
 - `HeckeOperatorProject.tex` -> `HeckeOperators.lean`: `substantial port present`
