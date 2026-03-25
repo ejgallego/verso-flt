@@ -136,12 +136,12 @@ mathematics.
 
 # Local compactness
 
-:::theorem "adele_local_compactness" (parent := "adele_project")
+:::theorem "adele_local_compactness" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
 The adeles of a number field should form a locally compact topological ring.
-This local compactness is one of the inputs needed by {uses "compact_quotient_for_division_algebra"}[].
+This local compactness is one of the inputs needed by {uses "local_integer_ring_compact_open"}[].
 :::
 
-:::theorem "local_integer_ring_compact_open" (parent := "adele_project")
+:::theorem "local_integer_ring_compact_open" (parent := "adele_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 For a nonarchimedean completion of a number field, the local integer ring
 should be a compact open subgroup.
 :::
@@ -235,13 +235,13 @@ as Dedekind domains, so their height-one spectrum is empty. The author remarks
 that this is slightly awkward geometrically, but it is the literature-facing
 convention that the current API follows.
 
-:::definition "finite_adele_base_change_map" (parent := "adele_project")
+:::definition "finite_adele_base_change_map" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
 Before proving finite-adele base change, one first defines the natural map
 $`\mathbf{A}_{A,K}^\infty \to \mathbf{A}_{B,L}^\infty` induced by the local maps
 on completions.
 :::
 
-:::definition "local_completion_map" (parent := "adele_project")
+:::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
 Given a finite extension `L/K` and places `w | v`, there is a natural map from
 the completion `K_v` to the completion `L_w`.
 :::
@@ -250,7 +250,7 @@ The TeX chapter obtains this by completing the inclusion `K → L` with respect
 to the `v`-adic and `w`-adic topologies, so the first real input is the
 relation between the two valuations.
 
-:::theorem "local_valuation_compatibility" (parent := "adele_project")
+:::theorem "local_valuation_compatibility" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
 The `v`-adic and `w`-adic valuations are related by the ramification index:
 `e · w(i(k)) = v(k)` in additive-valuation normalization.
 :::
@@ -276,7 +276,7 @@ defined at all.
 \end{proof}
 ```
 
-:::theorem "local_module_topology_for_completion" (parent := "adele_project")
+:::theorem "local_module_topology_for_completion" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
 After base change to a local completion, the topology on `L_w` should agree with
 the `K_v`-module topology.
 This is the topological sharpening of {uses "local_completion_map"}[] and
@@ -311,7 +311,7 @@ equivalent identifies the two topologies.
 Because the local map `K_v → L_w` lies over `K → L`, the TeX chapter then views
 `L_w` as an `L ⊗_K K_v`-algebra before packaging all places `w | v` together.
 
-:::theorem "finite_primes_above_v_are_finite" (parent := "adele_project")
+:::theorem "finite_primes_above_v_are_finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
 For a fixed finite place `v` of `K`, there are only finitely many places `w` of
 `L` lying above it.
 :::
@@ -339,10 +339,12 @@ the map `w ↦ v`.
 The TeX chapter writes `w | v` for this finite set of places above `v`, and
 then takes the product of the local completion maps over all such `w`.
 
-:::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project")
+:::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
 For a fixed finite place `v` of `K`, the algebra
 $`L \otimes_K K_v` decomposes as the finite product of the completions
 $`\prod_{w \mid v} L_w`.
+This is the local theorem behind {uses "local_completion_map"}[] and
+{uses "finite_primes_above_v_are_finite"}[].
 :::
 
 :::proof "nonarchimedean_base_change_local_decomposition"
@@ -374,11 +376,13 @@ simultaneously at every nonarchimedean place.
 \end{theorem}
 ```
 
-:::theorem "product_local_completion_module_topology" (parent := "adele_project")
+:::theorem "product_local_completion_module_topology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology")
 For fixed `v`, the product topology on $`\prod_{w \mid v} L_w` is the
 `K_v`-module topology.
 This packages the finite-product topological step immediately after the local
 algebraic decomposition.
+It packages {uses "local_module_topology_for_completion"}[] over the finite set
+of places above `v`.
 :::
 
 :::proof "product_local_completion_module_topology"
@@ -397,13 +401,13 @@ products place by place, first through the local decompositions and then by a
 relabelling of places.
 ```
 
-:::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project")
+:::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv")
 If `L \otimes_K K_v` is given the `K_v`-module topology, then the local
 algebraic isomorphism
 $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`
 is also a homeomorphism.
 This is the topological sharpening of
-{uses "nonarchimedean_base_change_local_decomposition"}[].
+{uses "nonarchimedean_base_change_local_decomposition"}[] and {uses "product_local_completion_module_topology"}[].
 :::
 
 :::proof "nonarchimedean_base_change_local_homeomorphism"
@@ -413,7 +417,7 @@ their `K_v`-module topology, and linear maps are automatically continuous for
 those topologies.
 :::
 
-:::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project")
+:::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
 The same local decomposition identifies the integral subring
 $`B \otimes_A A_v` with the product of the local integer rings
 $`\prod_{w \mid v} B_w`.
@@ -455,7 +459,7 @@ restricted product of the `B \otimes_A K_v` with respect to the
 - finally pass from the integral tensor product to the field-level tensor
   product `L \otimes_K \mathbf{A}_K^\infty`
 
-:::theorem "finite_adele_base_change_algebraic" (parent := "adele_project")
+:::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 The finite adele ring of `L` is algebraically isomorphic to
 $`L \otimes_K \mathbf{A}_K^\infty`.
 This is the finite-part algebraic precursor to {uses "adele_base_change"}[].
@@ -471,7 +475,7 @@ restricted products along the finite-fibre map on places. The result is an
 algebraic identification of the finite adeles after base change.
 :::
 
-:::theorem "tensor_product_module_base_change" (parent := "adele_project")
+:::theorem "tensor_product_module_base_change" (parent := "adele_project") (lean := "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv")
 If `M` is a `K`-module, then the canonical map
 $`B \otimes_A M \to L \otimes_K M` is an isomorphism.
 :::
@@ -508,7 +512,7 @@ case this is straightforward; the general case is obtained by presenting `M`
 as a cokernel of a map between finite free modules.
 :::
 
-:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
+:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project") (lean := "RestrictedProduct.relabelIso")
 If an index map has finite fibres and each factor over the target is identified
 with the product of the corresponding fibres over the source, then the two
 restricted products are naturally in bijection.
@@ -535,9 +539,11 @@ local finite products match homeomorphically, the restricted-product topology is
 transported correctly across the change of index set.
 :::
 
-:::theorem "finite_adele_base_change_integral" (parent := "adele_project")
+:::theorem "finite_adele_base_change_integral" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv")
 At the integral level, one gets a `B`-algebra isomorphism
 $`B \otimes_A \mathbf{A}_K^\infty \cong \mathbf{A}_L^\infty`.
+This is the theorem behind {uses "restricted_product_relabel_isomorphism"}[]
+and {uses "tensor_product_commutes_with_products_for_finite_presentation"}[].
 :::
 
 :::proof "finite_adele_base_change_integral"
@@ -638,11 +644,12 @@ we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$
 \end{proof}
 ```
 
-:::theorem "finite_adele_base_change_topological" (parent := "adele_project")
+:::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
 The same finite-adele base-change map is also a homeomorphism when the source is
 given the module topology and the target the restricted-product topology.
 This is the topological companion to
 {uses "finite_adele_base_change_algebraic"}[].
+The local topological input is {uses "nonarchimedean_base_change_local_homeomorphism"}[].
 :::
 
 :::proof "finite_adele_base_change_topological"

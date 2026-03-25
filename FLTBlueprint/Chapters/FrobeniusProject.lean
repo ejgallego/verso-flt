@@ -185,6 +185,20 @@ the finite group action is the finite product of the linear factors
 \end{definition}
 ```
 
+```tex "MulSemiringAction.monic_charpoly"
+\begin{lemma}
+  \label{MulSemiringAction.monic_charpoly}
+  \lean{MulSemiringAction.monic_charpoly}
+  \uses{MulSemiringAction.charpoly}
+  \mathlibok
+  $F_b$ is monic.
+\end{lemma}
+\begin{proof}
+  \mathlibok
+  Obvious.
+\end{proof}
+```
+
 This finite product is monic for the obvious reason: each linear factor is
 monic. The chapter emphasizes this because the later integrality theorem is
 built by showing that every element of `B` satisfies such a monic polynomial
@@ -199,6 +213,7 @@ to a monic polynomial over `A`.
 :::
 
 :::proof "invariant_characteristic_polynomial_descends"
+{uses "group_action_characteristic_polynomial"}[]
 The coefficients of the polynomial are symmetric expressions in the orbit
 `{g • b}`, so acting by any element of `G` merely permutes the factors and
 fixes every coefficient. By the invariant-ring hypothesis, those fixed

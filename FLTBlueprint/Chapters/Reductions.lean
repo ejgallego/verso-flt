@@ -255,6 +255,7 @@ congruences $`a \equiv 3 \pmod 4` and $`b \equiv 0 \pmod 2`. We have shown
 above that if Fermat's Last Theorem is false, then a Frey package exists.
 
 :::definition "frey_curve_definition" (parent := "first_reductions") (lean := "FreyPackage.freyCurve")
+{uses "frey_package_data"}[]
 Given a Frey package $`(a,b,c,p)`, the corresponding Frey curve is the elliptic
 curve over $`\Q` defined by the equation
 $`Y^2 = X(X-a^p)(X+b^p)`.
@@ -293,6 +294,7 @@ $`\GQ` coming from the `p`-torsion in the Frey curve associated to the package,
 and call this representation $`\rho`. Is $`\rho` irreducible or not?
 
 :::theorem "mazur_frey_irreducible" (parent := "first_reductions") (lean := "Mazur_Frey")
+{uses "frey_curve_definition"}[]
 The mod `p` Galois representation attached to a Frey package is irreducible.
 This is the Mazur-side half of the contradiction.
 :::
@@ -319,6 +321,7 @@ planning to formalize this result itself, because it was already known in the
 says the exact opposite.
 
 :::theorem "wiles_frey_not_irreducible" (parent := "first_reductions") (lean := "Wiles_Frey")
+{uses "frey_curve_definition"}[]
 The mod `p` Galois representation attached to a Frey package is reducible.
 This is the Wiles-side half of the contradiction.
 :::
@@ -335,6 +338,8 @@ In the current Verso port, the route to this theorem is made explicit through
 :::
 
 :::theorem "no_frey_package" (parent := "first_reductions") (lean := "FreyPackage.false")
+{uses "mazur_frey_irreducible"}[]
+{uses "wiles_frey_not_irreducible"}[]
 There is no Frey package.
 :::
 

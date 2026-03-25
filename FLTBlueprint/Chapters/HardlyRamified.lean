@@ -110,9 +110,10 @@ the upper-triangular behavior at `2` reflects semistability there, and the
 finite-flat condition at `\ell` is what makes the representation visible to
 deformation theory as a geometric object rather than an arbitrary local system.
 
-:::theorem "frey_torsion_hardly_ramified" (parent := "hardly_ramified_program")
+:::theorem "frey_torsion_hardly_ramified" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_isHardlyRamified")
 The `\ell`-torsion representation in the Frey curve attached to a Frey package
 `(a,b,c,\ell)` is hardly ramified.
+It uses {uses "hardly_ramified"}[].
 This is the formal bridge from {uses "frey_curve_definition"}[] to the general
 reducibility theorem below.
 :::
@@ -156,7 +157,7 @@ already has two distinct eigenvalues defined over the ground field. So the
 later deformation-theoretic statements are not hiding any extra
 absolutely-irreducible hypothesis.
 
-:::theorem "hardly_ramified_reducible" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_reducible" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_not_isIrreducible")
 If $`\ell \ge 3` is prime and
 $`\rho : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
 is hardly ramified, then `\rho` is reducible.
@@ -193,7 +194,7 @@ proving the general hardly ramified reducibility theorem stated above.
 The TeX chapter now states three theorems from which that general reducibility
 theorem easily follows.
 
-:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.lifts")
 If `\ell \ge 3` is prime and
 $`\overline{\rho} : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
 is hardly ramified and irreducible, then there exists a finite extension
@@ -201,6 +202,7 @@ $`K / \Q_\ell` with integer ring $`\mathcal{O}` and a hardly ramified
 $`\ell`-adic representation
 $`\rho : \GQ \to \GL_2(\mathcal{O})`
 whose reduction is isomorphic to $`\overline{\rho}`.
+It uses {uses "hardly_ramified"}[].
 This is the first bridge away from characteristic `\ell`.
 :::
 
@@ -216,12 +218,13 @@ That is exactly the input needed to make the later modularity-lifting and
 potential-modularity machinery available.
 :::
 
-:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mem_isCompatible")
 A hardly ramified `\ell`-adic representation with irreducible reduction spreads
 out to a compatible family over a number field. In particular, one can choose a
 place `\lambda` above `\ell` recovering the original representation, and the
 Frobenius characteristic polynomials agree across the family away from the
 finitely many excluded primes.
+It uses {uses "hardly_ramified"}[].
 This is the theorem that makes it legal to move from the original prime
 `\ell` to a specialization at `3`.
 :::
@@ -244,11 +247,12 @@ In particular, one can move from an irreducible hardly ramified mod `\ell`
 representation to a hardly ramified `3`-adic representation and hence to a
 hardly ramified mod `3` representation.
 
-:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mod_three")
 If `k` is a finite field of characteristic `3` and
 $`\overline{\rho} : \GQ \to \GL_2(k)` is hardly ramified, then
 $`\overline{\rho}` is an extension of the cyclotomic character by the trivial
 representation.
+It uses {uses "hardly_ramified"}[].
 This is the almost-complete classification of the mod `3` case recorded in the
 TeX chapter.
 :::
@@ -262,11 +266,12 @@ For the later contradiction, the key point is that the semisimplification is
 already the expected reducible object.
 :::
 
-:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.three_adic")
 If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has
 $`\rho_3^{ss} = 1 \oplus \chi_3`.
+It uses {uses "hardly_ramified"}[] and {uses "hardly_ramified_mod_three"}[].
 This is the `3`-adic classification theorem from which the final Frobenius
 constraints are read off.
 :::
