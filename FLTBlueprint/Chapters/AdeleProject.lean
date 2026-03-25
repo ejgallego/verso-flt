@@ -1,6 +1,10 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLT.NumberField.AdeleRing
+import FLT.NumberField.Completion.Finite
+import FLT.DedekindDomain.Completion.BaseChange
+import FLT.DedekindDomain.FiniteAdeleRing.BaseChange
 
 open Verso.Genre
 open Verso.Genre.Manual

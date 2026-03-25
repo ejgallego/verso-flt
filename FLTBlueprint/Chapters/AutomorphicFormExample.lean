@@ -532,7 +532,7 @@ because the intersection of `ℚ^×` and `\widehat{\mathbf{Z}}^×` is exactly
 
 # The Hurwitz quaternions
 
-:::definition "hurwitz_quaternions_definition" (parent := "automorphic_example_program")
+:::definition "hurwitz_quaternions_definition" (parent := "automorphic_example_program") (lean := "Hurwitz")
 The Hurwitz quaternions are the lattice
 $`\mathcal{O} = \mathbf{Z} \oplus \mathbf{Z}\omega \oplus \mathbf{Z}i \oplus \mathbf{Z}i\omega`
 inside Hamilton's quaternions.
@@ -573,19 +573,19 @@ The TeX chapter immediately notes that this ring is isomorphic to `ℤ^4` as an
 additive group, and that `\mathcal{O} \otimes_{\mathbf{Z}} \mathbf{R}` recovers
 the usual Hamilton quaternions.
 
-:::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program")
+:::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program") (lean := "Hurwitz.starRing")
 The Hurwitz quaternions carry the usual quaternionic conjugation, making them a
 star ring.
 This is defined on top of {uses "hurwitz_quaternions_form_ring"}[].
 :::
 
-:::definition "hurwitz_quaternion_norm" (parent := "automorphic_example_program")
+:::definition "hurwitz_quaternion_norm" (parent := "automorphic_example_program") (lean := "Hurwitz.norm")
 The Hurwitz quaternions carry an integer-valued norm extending the usual norm on
 Hamilton's quaternions.
 The subsequent norm lemmas all hang off this definition.
 :::
 
-:::theorem "hurwitz_norm_eq_mul_conj" (parent := "automorphic_example_program")
+:::theorem "hurwitz_norm_eq_mul_conj" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_mul_conj")
 For a Hurwitz quaternion `x`, the norm is `x \overline{x}`.
 :::
 
@@ -594,7 +594,7 @@ This is the first norm computation in the TeX chapter. Once the conjugation map
 has been defined, the identity is a direct calculation.
 :::
 
-:::theorem "hurwitz_norm_zero" (parent := "automorphic_example_program")
+:::theorem "hurwitz_norm_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_zero")
 The norm of `0` is `0`.
 :::
 
@@ -602,7 +602,7 @@ The norm of `0` is `0`.
 The TeX proof is just a calculation from the definition of the norm.
 :::
 
-:::theorem "hurwitz_norm_one" (parent := "automorphic_example_program")
+:::theorem "hurwitz_norm_one" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_one")
 The norm of `1` is `1`.
 :::
 
@@ -610,7 +610,7 @@ The norm of `1` is `1`.
 Again this is an immediate calculation from the defining formula.
 :::
 
-:::theorem "hurwitz_norm_multiplicative" (parent := "automorphic_example_program")
+:::theorem "hurwitz_norm_multiplicative" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_mul")
 The norm of a product is the product of the norms.
 :::
 
@@ -619,7 +619,7 @@ The TeX chapter treats this as another short calculation, now using the
 conjugation identity from {uses "hurwitz_norm_eq_mul_conj"}[].
 :::
 
-:::theorem "hurwitz_norm_nonnegative" (parent := "automorphic_example_program")
+:::theorem "hurwitz_norm_nonnegative" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg")
 The norm of a Hurwitz quaternion is nonnegative.
 :::
 
@@ -627,7 +627,7 @@ The norm of a Hurwitz quaternion is nonnegative.
 The TeX proof is that the norm is a sum of rational squares.
 :::
 
-:::theorem "hurwitz_norm_eq_zero_iff" (parent := "automorphic_example_program")
+:::theorem "hurwitz_norm_eq_zero_iff" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_zero")
 The norm of a Hurwitz quaternion is zero if and only if the quaternion itself is
 zero.
 :::
@@ -637,7 +637,7 @@ Again the TeX chapter appeals to the fact that the norm is a sum of rational
 squares: such a sum vanishes only when every summand vanishes.
 :::
 
-:::theorem "hurwitz_exists_near" (parent := "automorphic_example_program")
+:::theorem "hurwitz_exists_near" (parent := "automorphic_example_program") (lean := "Hurwitz.exists_near")
 Every real quaternion lies within norm `< 1` of some Hurwitz quaternion.
 :::
 
@@ -648,7 +648,7 @@ the nearest lattice point is obtained using the shifted Hurwitz lattice rather
 than the obvious integer one.
 :::
 
-:::theorem "hurwitz_quotient_remainder" (parent := "automorphic_example_program")
+:::theorem "hurwitz_quotient_remainder" (parent := "automorphic_example_program") (lean := "Hurwitz.quot_rem")
 Given Hurwitz quaternions `a` and nonzero `b`, there exist `q` and `r` with
 `a = qb + r` and `N(r) < N(b)`.
 This is the Euclidean-division statement built from
@@ -661,7 +661,7 @@ Hurwitz quaternion using {uses "hurwitz_exists_near"}[] and then multiplies back
 up to produce the remainder estimate.
 :::
 
-:::theorem "hurwitz_left_ideal_principal" (parent := "automorphic_example_program")
+:::theorem "hurwitz_left_ideal_principal" (parent := "automorphic_example_program") (lean := "Hurwitz.left_ideal_princ")
 Every left ideal of the Hurwitz order is principal.
 This is the left-ideal consequence of {uses "hurwitz_quotient_remainder"}[].
 :::
@@ -680,6 +680,8 @@ there is an analogous Euclidean statement with `a = bq + r`.
 :::definition "hurwitz_profinite_completion" (parent := "automorphic_example_program")
 The profinite completion `\widehat{\mathcal{O}}` of the Hurwitz order is
 `\mathcal{O} \otimes \widehat{\mathbf{Z}}`.
+This depends on {uses "hurwitz_quaternions_definition"}[] and
+{uses "profinite_completion_zhat"}[].
 :::
 
 The TeX chapter immediately rewrites elements of `\widehat{\mathcal{O}}` as
@@ -691,6 +693,7 @@ For every positive integer `N`, the natural map
 `\mathcal{O} \to \widehat{\mathcal{O}} / N\widehat{\mathcal{O}}` is surjective.
 This is the profinite-completion analogue of the corresponding `\widehat{\mathbf Z}`
 surjectivity statement.
+It is built from {uses "hurwitz_profinite_completion"}[].
 :::
 
 :::proof "hurwitz_mod_n_surjective"
@@ -701,12 +704,15 @@ The TeX chapter treats this as four copies of the corresponding statement for
 :::definition "completed_rational_quaternion_algebra" (parent := "automorphic_example_program")
 The rational quaternion algebra `D` gives rise to its finite-adelic completion
 `\widehat{D} = D \otimes \widehat{\mathbf{Z}}`.
+This completion is the quaternionic analogue of the `\widehat{\mathbf{Q}}`
+construction from {uses "qhat_definition"}[].
 :::
 
 :::theorem "completed_quaternion_canonical_form" (parent := "automorphic_example_program")
 Every element of `\widehat{D}` can be written as `z/N` with
 `z \in \widehat{\mathcal{O}}` and `N` a positive integer.
 This is the quaternionic analogue of {uses "qhat_canonical_form"}[].
+It uses the completion setup from {uses "hurwitz_profinite_completion"}[].
 :::
 
 :::proof "completed_quaternion_canonical_form"
@@ -732,6 +738,7 @@ special precisely because this obstruction vanishes here.
 Every unit of `\widehat{D}` can be written as a product of a unit from `D` and a
 unit from `\widehat{\mathcal{O}}`.
 This is the quaternionic analogue of {uses "qhat_units_factorization"}[].
+The key Hurwitz input is {uses "hurwitz_left_ideal_principal"}[].
 :::
 
 :::proof "completed_quaternion_units_factorization"
