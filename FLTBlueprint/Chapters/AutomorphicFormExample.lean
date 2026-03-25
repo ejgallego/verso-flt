@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLT.Data.Hurwitz
 import FLT.Data.QHat
 
 open Verso.Genre
@@ -532,7 +533,7 @@ because the intersection of `ℚ^×` and `\widehat{\mathbf{Z}}^×` is exactly
 
 # The Hurwitz quaternions
 
-:::definition "hurwitz_quaternions_definition" (parent := "automorphic_example_program") (lean := "Hurwitz")
+:::definition "hurwitz_quaternions_definition" (parent := "automorphic_example_program")
 The Hurwitz quaternions are the lattice
 $`\mathcal{O} = \mathbf{Z} \oplus \mathbf{Z}\omega \oplus \mathbf{Z}i \oplus \mathbf{Z}i\omega`
 inside Hamilton's quaternions.

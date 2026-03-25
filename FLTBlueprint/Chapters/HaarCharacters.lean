@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLT.HaarMeasure.HaarChar.AdeleRing
 
 open Verso.Genre
 open Verso.Genre.Manual

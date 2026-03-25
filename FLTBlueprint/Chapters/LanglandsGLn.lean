@@ -1,4 +1,5 @@
 import FLTBlueprint.Citations
+import FLT.GlobalLanglandsConjectures.GLnDefs
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -69,7 +70,7 @@ where we are being a bit liberal with our use of the equality symbol.
 
 # Smooth Functions
 
-:::definition "smooth_gln_function" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.IsSmooth")
+:::definition "smooth_gln_function" (parent := "gln_langlands_program")
 A function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is smooth if it has
 the following three properties:
 
@@ -109,7 +110,7 @@ $`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}` denotes
 inverse-transpose. Note that $`s(M)` is always positive, and is large if $`M`
 has a very large or very small, in absolute value, eigenvalue.
 
-:::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.IsSlowlyIncreasing")
+:::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program")
 We say that a function $`f : \GL_n(\R) \to \bbC` is slowly-increasing if there
 is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
@@ -141,7 +142,7 @@ $`\{ M \mid s(M) \leq 1 \}` is compact, this may make no difference.
 
 # Weights At Infinity
 
-:::definition "weight_at_infinity_gln" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.Weight")
+:::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
 The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
 finite-dimensional continuous complex representation $`\rho` of a maximal
 compact subgroup of $`\GL_n(\R)`, and it is convenient to choose one. We choose
@@ -198,7 +199,7 @@ over the complexes. We shall not need this.
 
 From here on there is no more Lean right now, only LaTeX.
 
-:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ")
+:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program")
 A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
 $`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
 five conditions. This depends on {uses "smooth_gln_function"}[],

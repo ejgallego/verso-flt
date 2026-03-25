@@ -2,6 +2,8 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLTBlueprint.Citations
+import FLT.Deformations.RepresentationTheory.GaloisRepFamily
+import FLT.GaloisRepresentation.HardlyRamified.Frey
 
 open Verso.Genre
 open Verso.Genre.Manual

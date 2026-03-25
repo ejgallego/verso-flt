@@ -2,6 +2,8 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLTBlueprint.Citations
+import FLT.Deformations.RepresentationTheory.GaloisRepFamily
+import FLT.GlobalLanglandsConjectures.GLnDefs
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -319,7 +321,7 @@ the package assembled from {uses "connected_reductive_group_placeholder"}[],
 {uses "affine_variety_point_topology_computation"}[].
 :::
 
-:::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix") (lean := "AutomorphicForm.GLn.IsSlowlyIncreasing")
+:::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix")
 The appendix also isolates the slowly-increasing growth condition used in the
 general definition of an automorphic form. This is the same growth condition
 formalized in the `GL_n/ℚ` development as {uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[].

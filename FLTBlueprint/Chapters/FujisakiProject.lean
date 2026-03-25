@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLT.DivisionAlgebra.Finiteness
 import FLTBlueprint.Citations
 
 open Verso.Genre
