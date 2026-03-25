@@ -46,8 +46,8 @@ The current chapter-by-chapter status for the main proof spine is:
   The TeX source itself is still a work in progress, so fidelity here means fidelity to the current draft rather than closure of the theorem-statement frontier.
 - `ch07exampleGLn.tex` -> `LanglandsGLn.lean`: `fidelity pass completed`
 - `global_langlands.tex` -> `GlobalLanglands.lean`: `intentional stub or frontier`
-- `chtopbestiary.tex` -> `Bestiary.lean`: `substantial port present`
-  The appendix is placeholder-heavy by design because the TeX source is itself a frontier queue.
+- `chtopbestiary.tex` -> `Bestiary.lean`: `fidelity pass completed`
+  The appendix is still placeholder-heavy by design, but its current Verso chapter now follows the TeX appendix’s frontier-tracking role and section structure closely.
 :::
 
 # Miniproject Chapters
@@ -91,6 +91,5 @@ At the moment, the core FLT proof spine from the introduction through the
 automorphic-form example is no longer just sketched in Verso. The main
 remaining fidelity frontier is:
 
-- broader fidelity sweeps on the adelic and measure-theoretic miniproject chapters
-- the intentional frontier material in `GlobalLanglands.lean` and the appendix
+- the intentional frontier material in `GlobalLanglands.lean`
 :::

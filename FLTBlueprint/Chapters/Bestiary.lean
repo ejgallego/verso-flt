@@ -19,6 +19,11 @@ state but hard to prove. Others are not even easy to state cleanly in Lean yet
 because the necessary surrounding definitions are still missing. The role of the
 appendix is to make that frontier explicit.
 
+The TeX chapter is explicit that this appendix is temporary and unorganized. It
+is meant as a task map for the community rather than a polished mathematical
+text, and it repeatedly warns that several of the listed “definitions” are not
+yet formalized well enough even to begin theorem statements seriously.
+
 :::definition "appendix_role_definition" (parent := "bestiary_appendix")
 The appendix is project-management infrastructure: it is where the blueprint
 records the missing background stack before that material has been migrated into
@@ -106,6 +111,11 @@ The appendix then explicitly summarizes the package by analogy: cohomology of a
 local Galois group behaves like the cohomology of a compact connected
 2-manifold.
 
+The TeX notes also remark, more than once, that the word “canonical” is doing a
+lot of work in these statements. In a Lean-facing treatment many of the claimed
+equalities will have to become explicitly constructed maps or chosen
+identifications rather than informal appeals to canonicality.
+
 :::theorem "global_class_field_theory_placeholder" (parent := "bestiary_appendix")
 Global class field theory should identify the connected components of
 `A_N^× / N^×` with the abelianized absolute Galois group of a number field `N`,
@@ -184,11 +194,20 @@ The appendix presents this as the conjectural bridge from algebraic geometry to
 the analytic spaces on which automorphic forms live.
 :::
 
+The TeX appendix adds that the smooth case is the only one relevant in
+applications, and even then the right generality for the manifold statement is
+not yet settled.
+
 # Algebraic groups and automorphic forms
 
 Here the appendix becomes very candid: even stating the definitions correctly in
 Lean is expected to be a substantial project, and some of the draft
 generalizations may still contain imprecision.
+
+The TeX source is also frank that, for the actual FLT project, one only needs
+these definitions in much narrower settings: abelian algebraic groups and inner
+forms of `GL₂` over totally real fields. The appendix works in greater
+generality only to keep the long-term target visible.
 
 :::definition "connected_reductive_group_placeholder" (parent := "bestiary_appendix")
 The appendix also tracks the background definitions of connected reductive
@@ -249,6 +268,10 @@ At this point the TeX appendix records that the compatible-family definition was
 already formalized modulo Frobenius elements. The surrounding Galois-side
 theorem remains a much more distant target.
 
+The appendix specifically credits Ivan Farabella for the compatible-family
+definition and Jou Glasheen for the Frobenius existence input that makes such a
+definition usable.
+
 :::definition "compatible_family_placeholder" (parent := "bestiary_appendix")
 The appendix records the notion of a compatible family of Galois
 representations: a common coefficient field, a finite bad set, Frobenius
@@ -276,6 +299,11 @@ of Mazur's torsion theorem starts with algebraic-geometry language that Lean was
 still far from handling, and uses that as a benchmark for how much surrounding
 infrastructure is still missing.
 
+The TeX chapter is especially pointed here: at the time of writing, Lean's
+algebraic geometry could not even get through the first sentence of Mazur's
+paper, and it recommends that sentence itself as a natural first milestone for
+anyone who wants to formalize Mazur's theorem seriously.
+
 :::definition "shimura_varieties_placeholder" (parent := "bestiary_appendix")
 The project still needs precise Lean definitions of the compact Shimura curves
 and surfaces attached to suitable inner forms of GL2.
@@ -297,6 +325,10 @@ The TeX appendix presents this theorem as a key input to potential modularity;
 see {Informal.citep moretBailly1990}[].
 :::
 
+The theorem is recorded there with all of the local prescribed-behavior and
+linearly-disjointness data visible, precisely because that is the form needed
+later in potential modularity arguments.
+
 # Algebra
 
 The appendix closes with one deliberately elementary-looking but strategically
@@ -313,4 +345,7 @@ The appendix gives the usual list: cyclic, dihedral, `A₄`, `S₄`, `A₅`, and
 finite groups of Lie type `PSL₂(k)` and `PGL₂(k)`. The point of keeping this in
 the appendix is not because the classification is obscure, but because the
 surrounding representation-theoretic infrastructure is still being assembled.
+
+The TeX appendix closes with the aside that this one should at least be easy to
+state, even if the surrounding project is not.
 :::
