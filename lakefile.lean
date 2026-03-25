@@ -2,7 +2,7 @@ import Lake
 open Lake DSL
 
 require FLT from "./FLT"
-require VersoBlueprint from git "https://github.com/ejgallego/verso-blueprint.git"@"0c236007b9e702a188af84a2dc4f3725e778e2af"
+require VersoBlueprint from git "https://github.com/ejgallego/verso-blueprint.git" @ "lean-v4.28.0"
 package FLTBlueprint where
   precompileModules := false
   leanOptions := #[
