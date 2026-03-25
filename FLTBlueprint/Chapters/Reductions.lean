@@ -1,4 +1,6 @@
 import FLTBlueprint.Citations
+import Mathlib.NumberTheory.FLT.Four
+import Mathlib.NumberTheory.FLT.Three
 import Verso
 import VersoManual
 import VersoBlueprint
