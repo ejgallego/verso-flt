@@ -434,6 +434,68 @@ by a unit is an invertible `F`-linear map on the underlying finite-dimensional
 `F`-vector space, so the determinant formula applies.
 :::
 
+```tex "haar_character_project/algebras"
+  Say $F$ is a locally compact topological ring (for example $\R$ or $\bbC$ or $\Q_p$,
+  or the adeles of a number field), $V$
+  is a finite free $F$-module, and $\phi:V\to V$ is an invertible $F$-linear map.
+  Then $V$ with its module topology (which is the product topology if one picks a basis)
+  is a locally compact topological abelian group, and $\phi$ is additive.
+  One can check that linearity implies continuity (this is
+  {\tt IsModuleTopology.continuous\_of\_linearMap} in mathlib),
+  so in fact $\phi$ is a homeomorphism
+  and our theory applies. The following lemma gives a formula for the scale factor $d_V(\phi)$.
+
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
+    MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc}
+  \lean{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
+    MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc}
+  \uses{MeasureTheory.ringHaarChar}
+  \leanok
+  \discussion{517}
+  Assume that there's an $F$-basis for $V$ such that $\phi$ is a product of elementary
+  and diagonal matrices (note that this is automatic if $F$ is a field and mathlib
+  has this). Then
+  $d_V(\phi)=\delta_F(\det(\phi))$, where $\det(\phi)\in F$ is the determinant of
+  $\phi$ as an $F$-linear map.
+\end{lemma}
+\begin{proof}
+\uses{MeasureTheory.addEquivAddHaarChar}
+\leanok
+The proof is a generalization of
+\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.html\#Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi}
+{\tt Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi},
+which crucially uses the induction principle
+\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/LinearAlgebra/Matrix/Transvection.html\#Matrix.diagonal\_transvection\_induction\_of\_det\_ne\_zero}
+{\tt Matrix.diagonal\_transvection\_induction\_of\_det\_ne\_zero}.
+One checks it explicitly for diagonal matrices and for matrices which are the identity
+except that one off-diagonal entry is non-zero.
+
+Note: we assume that $F$ is second countable
+(but it shouldn't be necessary).
+\end{proof}
+
+Now say $F$ is a locally compact topological field, and that $R$ is a (possibly
+non-commutative) $F$-algebra. Recall that this means that ($R=0$ or) $F$ lies in the centre of $R$.
+Assume that $R$ is finite-dimensional as an $F$-vector space. Then if we give $R$ the
+$F$-module topology (which is just the product topology if we pick a basis) then it is known
+that $R$ becomes a topological ring. Now say $u\in R^\times$, and
+recall $\ell_u:R\to R$ is left multiplication by $u$. Then $\ell_u$ is easily checked to be
+an $F$-linear homeomorphism.
+
+  \begin{corollary}
+  \label{MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det}
+  \lean{MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det}
+  \leanok
+  If $u\in R^\times$ then $\delta_R(u)=\delta_F(\det(\ell_u))$.
+\end{corollary}
+\begin{proof}
+  \uses{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
+  \leanok
+  Follows immediately from the preceding lemma.
+\end{proof}
+```
+
 # Left and right multiplication
 
 :::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project") (lean := "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight")
@@ -452,6 +514,64 @@ the Haar-character factors agree as well.
 This symmetry is exactly what is needed later when quotient arguments in
 division algebras mix left and right multiplication.
 :::
+
+```tex "haar_character_project/left_right_multiplication"
+If $R$ is a locally compact topological ring, and if multiplication on $R$ is not commutative,
+then left and right multiplication by an element of~$R$ can scale Haar measure in different ways.
+For example if $R$ is the upper-triangular $2\times 2$ matrices with real
+entries, then left multiplication by $\begin{pmatrix}a&0\\0&1\end{pmatrix}$
+sends $\begin{pmatrix}x&y\\0&z\end{pmatrix}$ to $\begin{pmatrix}ax&ay\\0&z\end{pmatrix}$
+and thus scales $R$'s additive
+Haar measure by $|a|^2$, but right multiplication by $\begin{pmatrix}a&0\\0&1\end{pmatrix}$
+sends $\begin{pmatrix}x&y\\0&z\end{pmatrix}$ to $\begin{pmatrix}ax&y\\0&z\end{pmatrix}$
+and thus scales $R$'s additive Haar measure by a factor of $|a|$.
+
+What's going on here is that if we regard left and right multiplication as $\R$-linear
+maps from $R$ to $R$, then their associated matrices with respect to the obvious basis
+are $diag(a,a,1)$ and $diag(a,1,1)$, which have different determinants.
+
+However, if $k$ is now any field and if $B$ is a finite-dimensional central
+simple algebra over $k$ (for example a quaternion algebra, the case we'll care about later),
+and if $u\in B^\times$ then $x\mapsto ux$ and $x\mapsto xu$
+are both $k$-linear endomorphisms of $B$, and I claim that they have
+the same determinant.
+
+\begin{lemma}
+  \label{IsSimpleRing.mulLeft_det_eq_mulRight_det}
+  \lean{IsSimpleRing.mulLeft_det_eq_mulRight_det}
+  \leanok
+  \discussion{518}
+  Say $B$ is a finite-dimensional central simple algebra over a field~$k$,
+  and $u\in B^\times$. Let $\ell_u:B\to B$ be the $k$-linear mapping $x$ to $ux$ and
+  let $r_u:B\to B$ be the $k$-linear map sending $x$ to $xu$. Then
+  $\det(\ell_u)=\det(r_u)$.
+\end{lemma}
+\begin{proof}
+  \leanok
+  Determinants are unchanged by base extension, so WLOG $k$ is algebraically closed.
+  Then it's known that $B$ must be a matrix algebra, say $M_n(k)$. Now $u$ can be thought
+  of as a matrix which has its own intrinsic determinant $d$, and $B$ as a left $B$-module
+  becomes a direct sum of $n$ copies of $V$, the standard $n$-dimensional representation of $B$.
+  Thus $\det(\ell_u)=d^n$. Similarly $\det(r_u)=d^n$ and in particular they are equal.
+\end{proof}
+
+\begin{corollary}
+  \label{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+  \lean{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+  \leanok
+  If $B$ is a central simple algebra over a locally compact field $F$, and if $u\in B^\times$,
+  then $d_B(r_u)=\delta_B(u)$ (recall that the latter is defined to mean $d_B(\ell_u)$).
+\end{corollary}
+\begin{proof}
+  \leanok
+  \uses{IsSimpleRing.mulLeft_det_eq_mulRight_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
+  If $\ell_u$ and $r_u$ denote left and right multiplication by $u$ on $B$, then we have
+  seen in lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} that $d_B(r_u)=\delta_F(\det(r_u))$.
+  Lemma~\ref{IsSimpleRing.mulLeft_det_eq_mulRight_det} tells
+  us that this is $\delta_F(\det(\ell_u))$ and this is $\delta_B(u)$ again by
+  corollary~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}.
+\end{proof}
+```
 
 # Finite products
 
@@ -846,6 +966,146 @@ by {uses "adelic_division_algebra_setup"}[] in the Fujisaki chapter.
 :::
 
 ```tex "haar_character_project/adeles"
+\begin{corollary}
+  \label{NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv}
+  \lean{NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv}
+  \leanok
+  If $K$ is a number field and $V$ is an $K$-module, then
+  the natural isomorphism $V\otimes_K\A_K=V\otimes_{\Q}\A_{\Q}$ induced by the natural
+  isomorphism $\A_K=K\otimes_K\A_{\Q}$ is a homeomorphism if the left hand side has the $\A_K$-module
+  topology and the right hand side has the $\A_{\Q}$-module topology.
+\end{corollary}
+\begin{proof}
+  \leanok
+  \uses{IsModuleTopology.continuous_bilinear_of_finite_left}
+  Lemma~\ref{IsModuleTopology.continuous_bilinear_of_finite_left} tells us that $V\otimes_K\A_K$
+  has the $\A_{\Q}$-module topology, and it is easily checked that the isomorphism is
+  $\A_{\Q}$-linear and hence automatically continuous.
+
+  Note that in the Lean we prove this for a general extension $L/K$ rather than $K/\Q$.
+\end{proof}
+
+As a consequence, if $B$ is a $K$-algebra then we can think of $B_{\A}$ as either $B\otimes_K\A_K$
+with the $\A_K$-module topology or as $B\otimes_{\Q}\A_{\Q}$ with the $\A_{\Q}$-module
+topology. Note that this isomorphism commutes with the inclusions from $B$ into these rings.
+But Lean is picky about these things so we'll have to be careful.
+
+\begin{theorem}
+  \label{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
+  \lean{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
+  \leanok
+  Let $B$ be a finite-dimensional central simple $K$-algebra.
+  Say $u\in B_{\A}^\times$, and define $\ell_u$ and $r_u:B_{\A}\to B_{\A}$ by
+  $\ell_u(x)=ux$ and $r_u(x)=xu$. Then $d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)$.
+\end{theorem}
+\begin{proof}
+  \uses{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight,
+    IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+  We think of $B_{\A}$ as $B\otimes_K\A_K$.
+  If $u=(u_v)$ as $v$ runs through the places of $K$ then
+  $d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})$ by
+  theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} (and the product is finite).
+  By corollary~\ref{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+  this equals $\prod_v d_{B_v}(r_{u_v})$, and again by
+  theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} this is $d_{B_{\A}}(r_u)$.
+\end{proof}
+
+The previous theorem only applies to inner forms of matrix algebras, but the below theorem,
+a generalization of the adelic product formula, is valid for any finite-dimensional
+$K$-algebra. Before we state it let's remind ourselves of the product formula for $\Q$,
+and restate it in the language of these Haar characters.
+
+\begin{lemma}
+  \label{MeasureTheory.ringHaarChar_adeles_rat}
+  \lean{MeasureTheory.ringHaarChar_adeles_rat}
+  \leanok
+  If $x\in\A_{\Q}^\times$ then $\delta_{\A_{\Q}}(x)=\prod_v|x_v|_v.$
+\end{lemma}
+\begin{proof}
+  \leanok
+  \uses{MeasureTheory.addEquivAddHaarChar_prodCongr,MeasureTheory.ringHaarChar_real,
+    MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight,MeasureTheory.ringHaarChar_padic}
+  By theorem~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}
+  we have $\delta_{\A_{\Q}}(x)=\delta_{\A_{\Q}^\infty}(x^\infty)\times\delta_{\R}(x_\infty)$.
+  By lemma~\ref{MeasureTheory.ringHaarChar_real} we have $\delta_{\R}(x_\infty)=|x|_\infty$, and by
+  theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} we have
+  $\delta_{\A_{\Q}^\infty}=\prod_p\delta_{\Q_p}(x_p)$. By lemma~\ref{MeasureTheory.ringHaarChar_padic}
+  we have $\delta_{\Q_p}(x_p)=|x_p|_p$ and putting everything together we get the result.
+\end{proof}
+
+Now $\A_{\Q}$ is nonzero a $\Q$-algebra and hence we have an inclusion $\Q^\times\to\A_{\Q}^\times$.
+Here is our reinterpretation of the product formula.
+
+\begin{lemma}
+  \label{MeasureTheory.ringHaarChar_adeles_units_rat_eq_one}
+  \lean{MeasureTheory.ringHaarChar_adeles_units_rat_eq_one}
+  \leanok
+  If $x\in\Q^\times\subseteq\A_{\Q}^\times$ then $\delta_{\A_{\Q}}(x)=1.$
+\end{lemma}
+\begin{proof}
+  \leanok
+  \uses{MeasureTheory.ringHaarChar_adeles_rat}
+  By lemma~\ref{MeasureTheory.ringHaarChar_adeles_rat} we have $\delta_{\A_{\Q}}(x)=\prod_v|x|_v$.
+  But the product formula says that this is 1.
+  A quick proof: if $x=\pm\prod_pp^{e_p}$ then $\prod_p|x|_p=\prod_pp^{-e_p}$
+  and $|x|_\infty=\prod_pp^{e_p}$ so they cancel.
+\end{proof}
+
+  Next we generalize this to finite-dimensional $\Q$-vector spaces.
+
+  So say $V$ is an $N$-dimensional $\Q$-vector space,
+  and define $V_{\A}:= V\otimes_{\Q}\A_{\Q}$ with its $\A_{\Q}$-module topology.
+  If we choose an isomorphism $V\cong\Q^N$ then $V_{\A}\cong\A_{\Q}^N$
+  as an additive topological abelian group. In particular, $V_{\A}$ is locally compact.
+
+  Fix a $\Q$-linear automorphism $\phi:V\to V$. By base extension $\phi$ induces
+  an $\A_{\Q}$-linear automorphism $\phi_{\A}$ of $V_{\A}$ which is also a homeomorphism of $V_{\A}$
+  if $V_{\A}$ is given the module topology as an $\A_{\Q}$-module. Our goal is
+
+  \begin{theorem}
+    \label{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
+    \lean{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
+    \leanok
+    In the above situation ($V$ a finite-dimensional $\Q$-vector space, $\phi:V\cong V$ is
+    $\Q$-linear, $\phi_{\A}$ the base extension to $V_{\A}:=V\otimes_{\Q}{\A_{\Q}}$, a continuous linear
+    endomorphism of $V_{\A}$ with the $\A_{\Q}$-module topology), we have $d_{V_{\A}}(\phi_{\A})=1.$
+  \end{theorem}
+  \begin{proof}
+    \leanok
+    \uses{
+      MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
+      MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight,
+      NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv
+    }
+    The original blueprint proof of this was that $\phi_{\mathbb{A}} : V_{\mathbb{A}}\to V_{\mathbb{A}}$
+    could be written as a restricted product of $\phi_v:V\otimes_{\Q}{\Q_v} \to V\otimes_{\Q}\Q_v$
+    and hence by theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
+    we have $d_{V_{\A}}(\phi_{\A})=\prod_p d_{V_p}(\phi_p)\times d_{V_\infty}(\phi_\infty)$,
+    and then applying Lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} this
+    is equal to $\prod_v\delta_{\Q_v}(\det(\phi_v))\prod_v\delta_{\Q_v}(\det(\phi))=1$.
+
+    This turned out to be a nightmare to formalize, because commuting the tensor product
+    and the restricted product cannot be done naively, as the tensor product is over $\Q$
+    and the submodules in the restricted product defining $\A_{\Q}$ are not $\Q$-modules.
+    So one has to choose a $\Z$-lattice in $V$ and
+    use the isomorphisms $V\otimes_{\mathbb{Q}}\mathbb{A}=\Lambda\otimes_{\mathbb{Z}}\mathbb{A}=
+    \Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_\infty\times\prod'_p[\Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_p;\Lambda\otimes_{\mathbb{Z}}\mathbb{Z}_p]=
+    V\otimes_{\mathbb{Q}}\mathbb{Q}_\infty\times\prod'_p[V\otimes_{\mathbb{Q}}\mathbb{Q}_p;im(\Lambda\otimes_{\Z}\mathbb{Z}_p)]$
+    and check that all of these canonical maps are continuous (and one of these claims
+    boils down to yet another claim of the form "if you do something to the factors and then
+    take the restricted product, then this is topologically the same as doing it to the restriced product",
+    with the thing being $\Lambda\otimes_{\Z}$ in this case, something which needs
+    checking).
+
+    So here is the proof which we actually formalized. Say an automorphism of a finite free
+    $R$-module is \emph{nice} if it's a product of transvections and diagonal matrices with unit
+    entries. Mathlib has the fact that if $R$ is a field then all automorphisms are nice,
+    and the base change of a nice morphism is nice. Hence $\phi_{\mathbb{A}}$ is nice,
+    and we can simply prove Lemma~\cite{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
+    for nice endomorphisms over a commutative ring, which gives the result we want immediately
+    by the product formula.
+  \end{proof}
+
   \begin{corollary}
     \label{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}
     \lean{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}

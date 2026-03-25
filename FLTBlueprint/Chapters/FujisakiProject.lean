@@ -342,6 +342,120 @@ This is exactly the compactness input used later in
 {uses "finite_dimensional_quaternionic_forms"}[].
 :::
 
+```tex "fujisaki_later_proof_and_finite_adele_raw"
+\begin{lemma}
+  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
+  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
+  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.C,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact}
+  \leanok
+  $C$ is compact.
+\end{lemma}
+\begin{proof}
+  \leanok
+   $X$ is compact and $T$ is finite.
+\end{proof}
+
+\begin{lemma}
+  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C}
+  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C}
+  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.C}
+  \leanok
+  For every $\beta\in D_{\A}^{(1)}$, there exists $b\in D^\times$
+  and $\nu\in D_{\A}^{(1)}$ such that $\beta=b\nu$ and $(\nu,\nu^{-1})\in C.$
+\end{lemma}
+\begin{proof}
+  \leanok
+  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.E,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel',
+    NumberField.AdeleRing.DivisionAlgebra.Aux.C}
+  By lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel},
+  $\beta X\cap D^\times\not=\emptyset$,
+  and lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'},
+  $X\beta^{-1}\cap D^\times\not=\emptyset$,
+  so we can write $\beta x_1=b_1$ and $x_2\beta^{-1}=b_2$ with $b_i\in D^\times$ and $x_i\in X$.
+  Note that $\beta\in D_{\A}^{(1)}$ and $b_i\in D^{\times}\subseteq D_{\A}^{(1)}$ by
+  corollary~\ref{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}, so $x_i\in D_{\A}^{(1)}$
+  as well. In particular $x_i\in D_{\A}^\times$ so $x_1^{-1}$ makes sense.
+
+  Multiplying the equations defining the $x_i$ and $b_i$ we deduce that
+  $x_2x_1=b_2b_1\in Y\cap D^\times=T$ (recall that $Y=X.X$ and $T=Y\cap D^\times$
+  is finite); call this element $t$. Then $x_1^{-1}=t^{-1}x_2\in T^{-1}.X$,
+  and $x_1\in X$, so if we set $\nu=x_1^{-1}\in D_{\A}^{(1)}$
+  and $b=b_1\in D^\times$ then we have $\beta=b\nu$ and $(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X$.
+  We are done!
+\end{proof}
+
+We can now prove Fujisaki's theorem~\ref{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}.
+
+\begin{proof}
+  \proves{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
+  \leanok
+  \uses{MeasureTheory.ringHaarChar_continuous,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
+  Indeed, if $M$ is the preimage of $C$ under the inclusion $D_{\A}^{(1)} \to D_{\A}\times D_{\A}$
+  sending $\nu$ to $(\nu,\nu^{-1})$, then $M$ is a closed subspace
+    of a compact
+  space so it's compact (note that $\delta_{D_{\A}}$ is continuous,
+  by theorem~\ref{MeasureTheory.ringHaarChar_continuous}, so $D_{\A}^{(1)}$ is a closed subset of
+  $D_{\A}^\times$ which is itself a closed subset of $D_{\A}\times D_{\A}$).
+  Lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C} shows that $M$ surjects onto
+  $D^\times\backslash D_{\A}^{(1)}$ which is thus also compact.
+\end{proof}
+
+We note here some useful consequences.
+
+\begin{theorem}
+  \label{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}
+  \lean{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}
+  \leanok
+  $D^\times\backslash(D\otimes_K\A_K^\infty)^\times$ is compact.
+\end{theorem}
+\begin{proof}
+  \uses{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
+  \leanok
+There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
+  $D^\times\backslash (D\otimes_K \A_K^\infty)^\times$. We claim that it's
+  surjective. Granted this claim, we are home, because if we put the quotient
+  topology on $D^\times\backslash (D\otimes_K \A_K^\infty)^\times$ coming from
+  $(D\otimes_K \A_K^\infty)^\times$ then it's readily verified that $\alpha$
+  is continuous, and the continuous image of a compact space is compact.
+
+  As for surjectivity: say $x\in (D\otimes_K \A_K^\infty)^\times$. We need to extend
+  $x$ to an element $(x,y)\in (D\otimes_K \A_K^\infty)^\times\times(D\otimes_K K_\infty)^\times$
+  which is in the kernel of $\delta_{D_{\A}}$. Because $\delta_{D_{\A}}(x,1)$ is some positive
+  real number, it will suffice to show that if $r$ is any positive real number then we can
+  find $y\in (D\otimes_K \A_K^\infty)^\times=(D\otimes_{\Q}\R)^\times$ with $\delta_{D_{\A}}(1,y)=r$,
+  or equivalently (setting $D_{\R}=D\otimes_{\Q}\R$) that $\delta_{D_{\R}}(y)=r$.
+  But $D\not=0$ as it is a division algebra,and hence $\Q\subseteq D$, meaning
+  $\R\subseteq D_{\R}$, and if
+  $x\in\R^\times\subseteq D_{\R}^\times$ then $\delta(x)=|x|^d$ with $d=\dim_{\Q}(D)$,
+  as multiplication by $x$ is just scaling by a factor of $x$ on $D_{\R}\cong\R^d$.
+  In particular we can set $x=y^{1/d}$.
+\end{proof}
+\begin{remark} In this generality the quotient might not be Hausdorff.
+\end{remark}
+
+\begin{theorem}
+  \label{NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
+  \lean{NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
+  \uses{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}
+  \leanok
+  If $U$ is an open subgroup of $(D\otimes_K \A_K^\infty)^\times$
+  then the double coset space $D^\times\backslash(D\otimes_K \A_K^\infty)^\times/U$ is finite.
+\end{theorem}
+\begin{proof}
+  \leanok
+  The double cosets give a disjoint open cover of $(D\otimes_K \A_K^\infty)$
+  which descends to a disjoint open cover of the quotient space
+  $D^\times\backslash(D\otimes_K \A_K^\infty)^\times$. However this space is compact
+  by theorem~\ref{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}.
+\end{proof}
+```
+
 The TeX chapter closes by recording two useful consequences of Fujisaki's
 lemma, both for the finite adelic unit group.
 

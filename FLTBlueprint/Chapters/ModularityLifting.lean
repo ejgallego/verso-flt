@@ -292,3 +292,7 @@ interface: next come trace and norm. So even after this fidelity pass, this
 chapter should still be regarded as a frontier chapter whose role is to keep
 the statement-level scaffolding visible while the surrounding infrastructure is
 filled in.
+
+```tex "chapter-forward-pointer"
+Next: define trace and norm.
+```

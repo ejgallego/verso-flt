@@ -559,6 +559,165 @@ coordinates are integers or all four lie in `\mathbf{Z} + \frac12`.
 \end{definition}
 ```
 
+```tex "Hurwitz.ring"
+\begin{lemma}
+    \label{Hurwitz.ring}
+    \lean{Hurwitz.ring}
+    \uses{Hurwitz}
+    \leanok
+    The Hurwitz quaternions form a ring.
+\end{lemma}
+\begin{proof}
+    \leanok
+    Follow your nose.
+\end{proof}
+
+
+This ring is isomorphic to $\Z^4$ as an additive group, and
+$\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega$
+is the usual Hamilton quaternions.
+
+\begin{definition}
+    \label{Hurwitz.starRing}
+    \lean{Hurwitz.starRing}
+    \uses{Hurwitz.ring}
+    \leanok
+    There's a conjugation map (which we'll call "star") from the Hurwitz quaternions to themselves, sending
+    integers to themselves and purely imaginary elements like $2\omega+1$ to minus themselves.
+    It satisfies $(x^*)^*=x$, $(xy)^*=y^*x^*$ and $(x+y)^*=x^*+y^*$. In particular, the Hurwitz
+    quaternions are a "star ring" in the sense of mathlib.
+\end{definition}
+
+\begin{definition}
+    \label{Hurwitz.norm}
+    \lean{Hurwitz.norm}
+    \uses{Hurwitz}
+    \leanok
+    The Hurwitz quaternions come equipped with an integer-valued norm, which is
+    $a^2+b^2+c^2+d^2$ on $a+bi+cj+dk$ but needs to be modified a bit to deal with $\omega$.
+\end{definition}
+
+\begin{lemma}
+    \label{Hurwitz.norm_eq_mul_conj}
+    \lean{Hurwitz.norm_eq_mul_conj}
+    \leanok
+    We have $N(x)=x\overline{x}$.
+\end{lemma}
+\begin{proof}
+    \uses{Hurwitz.norm, Hurwitz.starRing}
+    \leanok
+    Easy calculation.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.norm_zero}
+    \lean{Hurwitz.norm_zero}
+    \uses{Hurwitz.norm}
+    \leanok
+    The norm of $0$ is $0$.
+\end{lemma}
+\begin{proof}
+    \leanok
+    A calculation.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.norm_one}
+    \lean{Hurwitz.norm_one}
+    \uses{Hurwitz.norm}
+    \leanok
+    The norm of $1$ is $1$.
+\end{lemma}
+\begin{proof}
+    \leanok
+    A calculation.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.norm_mul}
+    \lean{Hurwitz.norm_mul}
+    \uses{Hurwitz.norm}
+    \leanok
+    The norm of a product is the product of the norms.
+\end{lemma}
+\begin{proof}
+    \leanok
+    A calculation.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.norm_nonneg}
+    \lean{Hurwitz.norm_nonneg}
+    \uses{Hurwitz.norm}
+    \leanok
+    The norm of an element is nonnegative.
+\end{lemma}
+\begin{proof} \leanok
+    It's a sum of rational squares.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.norm_eq_zero}
+    \lean{Hurwitz.norm_eq_zero}
+    \uses{Hurwitz.norm}
+    \leanok
+    The norm of an element is zero if and only if the element is zero.
+\end{lemma}
+\begin{proof}
+    \leanok
+    It's a sum of rational squares.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.exists_near}
+    \lean{Hurwitz.exists_near}
+    \uses{Hurwitz.norm}
+    \leanok
+    Given a ``usual'' quaternion $a=x+yi+zj+wk$ with $x,y,z,w\in\R$,
+    there exists a Hurwitz quaternion $q$ such that $N(a-q)<1$.
+\end{lemma}
+\begin{proof}
+    \leanok
+  If $[r]$ denotes the nearest integer to the real number $r$, then $|r-[r]|\leq \frac{1}{2}$.
+  Hence if $q=[x]+[y]i+[z]j+[w]k$ then $N(a-q)=|x-[x]|^2+\cdots
+  \leq \frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}\leq 1$, with strict inequality unless
+  $|x-[x]|=|y-[y]|=|z-[z]|=|w-[w]|=\frac{1}{2}$, in which case $a\in\mathcal{O}$ because $a-\omega$
+  has integer coordinates.
+\end{proof}
+
+\begin{lemma}
+    \label{Hurwitz.quot_rem}
+    \lean{Hurwitz.quot_rem}
+    \uses{Hurwitz.norm, Hurwitz.exists_near}
+    \leanok
+    Given two Hurwitz quaternions $a$ and $b$ with $b$ nonzero, there exists
+    $q$ and $r$ such that $a=qb+r$ and $N(r)<N(b)$.
+\end{lemma}
+\begin{proof}
+    \leanok
+  Let $q$ be the Hurwitz quaternion obtained by applying Lemma~\ref{Hurwitz.exists_near}
+  to $a/b := ab^{-1}$; then $N(a/b-q)<1$ and now everything follows after multiplying up.
+\end{proof}
+
+\begin{corollary}
+    \label{Hurwitz.left_ideal_princ}
+    \lean{Hurwitz.left_ideal_princ}
+    \uses{Hurwitz.norm}
+    \leanok
+    All left ideals of $\calO$ are principal.
+\end{corollary}
+\begin{proof}
+    \uses{Hurwitz.quot_rem}
+    \leanok
+    If the ideal is 0, use 0. Otherwise, choose a nonzero element of smallest norm.
+\end{proof}
+
+\begin{remark}
+    All right ideals are principal too, because there's
+    another version of Euclid saying $a=bq+r$.
+\end{remark}
+```
+
 :::theorem "hurwitz_quaternions_form_ring" (parent := "automorphic_example_program")
 The Hurwitz quaternions form a ring.
 This is the first algebraic consequence of
@@ -675,6 +834,66 @@ element of minimal norm and apply
 
 The TeX chapter also remarks that all right ideals are principal too, because
 there is an analogous Euclidean statement with `a = bq + r`.
+
+```tex "HurwitzRatHat.canonicalForm"
+\section{Profinite completion of the Hurwitz quaternions}
+
+We define $\calOhat$ to be $\calO\otimes\Zhat$, so it's elements $a+bi+cj+d\omega$
+with $a,b,c,d\in\Zhat$. The basic thing we need is this:
+
+\begin{theorem}
+    \label{Hurwitz.surjective_pnat_quotient}
+    \uses{Hurwitz}
+    If $N$ is a positive natural then the obvious map $\calO\to\calOhat/N\calOhat$ is surjective.
+\end{theorem}
+\begin{proof}
+    This is just four copies of the surjection $\Z\to\Zhat/N\Zhat$.
+    Note that this latter map is surjective because $\Z\to\Z/N\Z$ is surjective,
+    hence given $z\in\Zhat$ you can subtract an integer $w$ such
+    that $(z-w)_N=0$, so $z-w$ is a multiple of~$N$.
+\end{proof}
+
+We define $D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\oplus\Q j\oplus\Q k$.
+Finally, we define $\widehat{D}:=D\otimes\Zhat$. Just as with $\Qhat$ we have
+
+\begin{lemma}
+    \label{HurwitzRatHat.canonicalForm}
+    \lean{HurwitzRatHat.canonicalForm}
+    \uses{QHat, ZHat, Hurwitz}
+    \leanok
+    Every element of $\widehat{D}$ can be written as $z/N$ with $z\in\calOhat$ and $N\in\N^+$.
+\end{lemma}
+\begin{proof}
+    Same as the proof for $\Qhat$.
+\end{proof}
+
+It is not hard to check that $\widehat{D}$ contains $\widehat{\calO}$
+and $D$ as subrings, and that as additive abelian groups we have
+$\widehat{\calO}\cap D=\calO$ and $\widehat{\calO}+D=\widehat{D}$.
+This is because $\calO$ is just four copies of $\Z$ and we've proved
+the analogous result for $\Z$.
+
+However the multiplicative structure is more interesting, especially
+as $D$ is not commutative. For a general quaternion algebra it is \emph{not}
+true that $(\widehat{D})^\times=D^\times(\widehat{\calO})^\times$, because
+there are "class group obstructions". The double coset space is some
+kind of non-commutative analogue of a class group. However for our
+particular choice of $D$ and $\calO$ the result is true.
+
+\begin{theorem}
+    \label{HurwitzRatHat.completed_units}
+    \lean{HurwitzRatHat.completed_units}
+    \uses{HurwitzRatHat.canonicalForm}
+    \leanok
+    The group of units of $\widehat{D}$ is $D^\times\calOhat^\times$.
+\end{theorem}
+\begin{proof}
+    \uses{Hurwitz.left_ideal_princ}
+    \leanok
+    The proof uses a quaternionic version of the lowest-terms argument and the
+    Euclidean property of the Hurwitz order.
+\end{proof}
+```
 
 # Profinite completion of the Hurwitz quaternions
 
