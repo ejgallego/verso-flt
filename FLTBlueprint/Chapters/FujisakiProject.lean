@@ -33,7 +33,8 @@ This is the compactness statement later used in {uses "finite_dimensional_quater
 :::proof "fujisaki_lemma_goal"
 The old blueprint highlights this as the noncommutative compactness statement
 that simultaneously generalizes class-group finiteness and Dirichlet's unit
-theorem; it explicitly follows Voight's presentation {Informal.citep voightBook}[].
+theorem; it explicitly follows Voight's presentation {Informal.citep voightBook}[]
+and the commutative prototype {uses "commutative_prototype_for_fujisaki"}[].
 :::
 
 ```tex "fujisaki_goal_raw"
@@ -170,7 +171,7 @@ has the $\A_{\Q}$-module topology by definition.
 
 # The proof
 
-:::theorem "large_compact_set_mod_d_exists" (parent := "fujisaki_project")
+:::theorem "large_compact_set_mod_d_exists" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE")
 There is a compact subset `E ⊆ D_A` such that for every
 $`\beta \in D_A^{(1)}`, the translated set `βE` cannot inject into the quotient
 $`D \backslash D_A`.
@@ -215,11 +216,13 @@ We prove the theorem via a series of lemmas.
 \end{proof}
 ```
 
-:::definition "difference_set_x_for_fujisaki" (parent := "fujisaki_project")
+:::definition "difference_set_x_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
+{uses "large_compact_set_mod_d_exists"}[]
 From the compact set `E`, define the difference set `X = E - E`.
 :::
 
-:::definition "product_set_y_for_fujisaki" (parent := "fujisaki_project")
+:::definition "product_set_y_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y")
+{uses "difference_set_x_for_fujisaki"}[]
 Define `Y = X · X`, the product of the difference set with itself.
 :::
 
@@ -235,6 +238,9 @@ Both `X` and `Y` are compact subsets of the adelic algebra.
 :::
 
 :::proof "difference_and_product_sets_compact"
+{uses "difference_set_x_for_fujisaki"}[]
+{uses "product_set_y_for_fujisaki"}[]
+
 Each set is the continuous image of a compact product: `X` comes from `E × E`
 under subtraction, and `Y` comes from `X × X` under multiplication.
 :::
@@ -245,6 +251,7 @@ For every $`\beta \in D_A^{(1)}`, the translate `βX` meets `D^×`, and likewise
 :::
 
 :::proof "difference_set_meets_d_units"
+{uses "difference_set_x_for_fujisaki"}[]
 This is the first real use of {uses "large_compact_set_mod_d_exists"}[]. If
 `βE` fails to inject into the quotient, then two distinct points of `βE`
 differ by an element of `D`. Because `D` is a division algebra, that nonzero
@@ -256,37 +263,51 @@ of left and right Haar characters, which is why the Haar-character chapter had
 to prove {uses "central_simple_algebra_left_right_same_haar"}[] first.
 :::
 
-:::definition "finite_intersection_set_t" (parent := "fujisaki_project")
+:::definition "finite_intersection_set_t" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T")
+{uses "product_set_y_for_fujisaki"}[]
 Let `T = Y ∩ D^×`.
 :::
 
-:::theorem "finite_intersection_set_t_finite" (parent := "fujisaki_project")
+:::theorem "finite_intersection_set_t_finite" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite")
 The set `T` is finite.
 :::
 
 :::proof "finite_intersection_set_t_finite"
+{uses "finite_intersection_set_t"}[]
+{uses "difference_and_product_sets_compact"}[]
+
 The TeX proof uses only general topology. `Y` is compact, `D` is a discrete
 additive subgroup of `D_A`, hence closed, so `Y ∩ D` is compact and discrete and
 therefore finite. Since `T ⊆ Y ∩ D`, the set `T` is finite as well.
 :::
 
-:::definition "compact_constraint_set_c" (parent := "fujisaki_project")
+:::definition "compact_constraint_set_c" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C")
+{uses "finite_intersection_set_t"}[]
+{uses "difference_set_x_for_fujisaki"}[]
 Define the compact constraint set
 $`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
 :::
 
 :::proof "compact_constraint_set_c"
+{uses "finite_intersection_set_t_finite"}[]
+{uses "difference_set_x_for_fujisaki"}[]
+
 The TeX proof introduces `C` only after all previous compact and finiteness
 lemmas are in place. The point is to create one compact set that simultaneously
 controls an adelic element and its inverse.
 :::
 
-:::theorem "antidiagonal_hits_compact_constraint_set" (parent := "fujisaki_project")
+:::theorem "antidiagonal_hits_compact_constraint_set" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C")
+{uses "difference_set_meets_d_units"}[]
+{uses "compact_constraint_set_c"}[]
 For every $`\beta \in D_A^{(1)}`, there exist `b ∈ D^×` and `ν ∈ D_A^{(1)}`
 such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 :::
 
 :::proof "antidiagonal_hits_compact_constraint_set"
+{uses "difference_set_meets_d_units"}[]
+{uses "compact_constraint_set_c"}[]
+
 This is the heart of the TeX argument. Using
 {uses "difference_set_meets_d_units"}[] twice, one writes `βx₁ = b₁` and
 `x₂β⁻¹ = b₂` with `x_i ∈ X` and `b_i ∈ D^×`. Multiplying those equations shows
@@ -295,7 +316,7 @@ that `x₂x₁` lands in the finite set `T`, so `x₁⁻¹` belongs to `T^{-1}X`
 `(ν, ν⁻¹)`.
 :::
 
-:::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project")
+:::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
 The compactness theorem for the adelic quotient is the final output of the
 chapter and the input needed by the quaternion algebra miniproject.
 :::
@@ -323,7 +344,7 @@ This is exactly the compactness input used later in
 The TeX chapter closes by recording two useful consequences of Fujisaki's
 lemma, both for the finite adelic unit group.
 
-:::theorem "finite_adele_units_cocompact_for_division_algebra" (parent := "fujisaki_project")
+:::theorem "finite_adele_units_cocompact_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact")
 The quotient
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`
 is compact.
@@ -338,7 +359,7 @@ the Haar-character kernel; the archimedean correction is possible because
 scalars in `\mathbf{R}^\times` scale Haar measure by an explicit positive power.
 :::
 
-:::theorem "finite_double_coset_for_open_subgroup" (parent := "fujisaki_project")
+:::theorem "finite_double_coset_for_open_subgroup" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset")
 If `U` is an open subgroup of
 $`(D \otimes_K \mathbf{A}_K^\infty)^\times`, then the double coset space
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times / U`

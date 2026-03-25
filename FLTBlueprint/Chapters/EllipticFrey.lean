@@ -37,6 +37,7 @@ literature for proofs. Most of this material dates back to the `1970`s or
 earlier.
 
 :::theorem "elliptic_curve_torsion_cardinality" (parent := "elliptic_frey_bridge")
+  (lean := "WeierstrassCurve.n_torsion_card")
 For an elliptic curve over a separably closed field of characteristic prime to
 `n`, the `n`-torsion has cardinality `n²`.
 :::
@@ -58,6 +59,7 @@ This theorem determines the structure of the `n`-torsion once one adds the
 following purely group-theoretic lemma.
 
 :::theorem "torsion_group_structure_lemma" (parent := "elliptic_frey_bridge")
+  (lean := "group_theory_lemma")
 If the `d`-torsion in an abelian group has size `d^r` for every divisor `d` of
 `n`, then the `n`-torsion is isomorphic to `(\mathbf{Z}/n\mathbf{Z})^r`.
 :::
@@ -78,6 +80,7 @@ hypothesis first with `d = a_1` forces `t = r`, and then applying it with
 :::
 
 :::theorem "elliptic_curve_torsion_two_dimensional" (parent := "elliptic_frey_bridge")
+  (lean := "WeierstrassCurve.n_torsion_dimension")
 For an elliptic curve over a field of characteristic prime to `n`, the
 `n`-torsion over a separable closure is a two-dimensional
 `\mathbf{Z}/n\mathbf{Z}` module.
@@ -108,7 +111,8 @@ representation to `\GL_2(\mathbf{Z}/n\mathbf{Z})`.
 
 :::theorem "elliptic_curve_torsion_determinant_cyclotomic" (parent := "elliptic_frey_bridge")
 The determinant of the Galois action on elliptic-curve torsion is the
-cyclotomic character.
+cyclotomic character. This depends on
+{uses "elliptic_curve_torsion_two_dimensional"}[].
 This is the determinant input later repackaged in
 {uses "hardly_ramified_definition"}[].
 :::
@@ -140,7 +144,8 @@ same convention in the discussion below.
 
 :::theorem "frey_curve_good_reduction_away_from_abc" (parent := "elliptic_frey_bridge")
 For the Frey curve attached to a Frey package, any odd prime not dividing
-`abc` is a prime of good reduction.
+`abc` is a prime of good reduction. This is the notion of
+{uses "good_reduction_definition"}[].
 :::
 
 :::proof "frey_curve_good_reduction_away_from_abc"
@@ -187,7 +192,8 @@ This is the theorem that makes
 
 :::theorem "good_reduction_implies_finite_flat_torsion" (parent := "elliptic_frey_bridge")
 At a prime above `p`, good reduction implies that the `p`-torsion comes from a
-finite flat group scheme on the local integral model.
+finite flat group scheme on the local integral model. This packages
+{uses "finite_flat_group_scheme_definition"}[].
 :::
 
 :::proof "good_reduction_implies_finite_flat_torsion"
@@ -208,7 +214,8 @@ obtained by passing to the localization at the prime in question.
 
 :::theorem "frey_curve_multiplicative_reduction_at_bad_prime" (parent := "elliptic_frey_bridge")
 If an odd prime divides `abc`, then the Frey curve has multiplicative reduction
-at that prime.
+at that prime. This is the local reduction notion of
+{uses "multiplicative_reduction_definition"}[].
 :::
 
 :::proof "frey_curve_multiplicative_reduction_at_bad_prime"
@@ -224,7 +231,8 @@ The TeX chapter notes that one can also characterize when this reduction is
 split, but that the split/non-split distinction is not needed at this stage.
 
 :::theorem "frey_curve_multiplicative_reduction_at_two" (parent := "elliptic_frey_bridge")
-The Frey curve always has multiplicative reduction at `2`.
+The Frey curve always has multiplicative reduction at `2`. This is again a
+{uses "multiplicative_reduction_definition"}[] statement.
 :::
 
 :::proof "frey_curve_multiplicative_reduction_at_two"
@@ -249,7 +257,8 @@ for torsion representations.
 For an elliptic curve with multiplicative reduction over a nonarchimedean local
 field, the Tate-curve description shows that torsion is controlled by an
 extension of a cyclotomic character by an unramified character of order at most
-`2`.
+`2`. This is the torsion-theoretic consequence of
+{uses "multiplicative_reduction_definition"}[].
 :::
 
 :::proof "tate_curve_local_torsion_shape"
@@ -263,8 +272,10 @@ unramifiedness away from `2` and `\ell`, the special semisimplified shape at
 :::
 
 :::theorem "frey_curve_j_invariant_formula" (parent := "elliptic_frey_bridge")
+  (lean := "FreyCurve.j")
 The `j`-invariant of the Frey curve admits an explicit formula in terms of
-`A = a^\ell`, `B = b^\ell`, and `C = c^\ell`.
+`A = a^\ell`, `B = b^\ell`, and `C = c^\ell`. This is the explicit formula for
+{uses "FreyCurve"}[].
 :::
 
 :::proof "frey_curve_j_invariant_formula"
@@ -275,8 +286,10 @@ forced by that `j`-invariant formula.
 :::
 
 :::theorem "frey_curve_j_bad_prime_valuation" (parent := "elliptic_frey_bridge")
+  (lean := "FreyCurve.j_valuation_of_bad_prime")
 If an odd prime `p` divides `abc`, then the `p`-adic valuation of the
-Frey-curve `j`-invariant is a multiple of `\ell`.
+Frey-curve `j`-invariant is a multiple of `\ell`. This is a direct valuation
+consequence of {uses "frey_curve_j_invariant_formula"}[].
 :::
 
 :::proof "frey_curve_j_bad_prime_valuation"
@@ -324,15 +337,18 @@ character, so its semisimplification is unramified.
 
 :::theorem "frey_curve_flat_at_l" (parent := "elliptic_frey_bridge")
 At the prime `\ell`, the Frey-curve `\ell`-torsion comes from a finite flat
-group scheme.
+group scheme. This is the local-flatness input of
+{uses "finite_flat_group_scheme_definition"}[].
 This is the local-flatness input used in {uses "frey_torsion_hardly_ramified"}[].
 :::
 
 :::proof "frey_curve_flat_at_l"
 The TeX chapter splits into the same two cases that appear throughout the local
 theory. If the Frey curve has good reduction at `\ell`, then its `\ell`-torsion
-is finite flat on the integral model. If it has multiplicative reduction, the
-Tate-curve description again shows that the relevant extension is finite flat.
+is finite flat on the integral model
+{uses "good_reduction_implies_finite_flat_torsion"}[]. If it has multiplicative
+reduction, the Tate-curve description again shows that the relevant extension is
+finite flat {uses "tate_curve_local_torsion_shape"}[].
 
 So the `\ell`-adic local condition in the definition of hardly ramified is not
 an auxiliary hypothesis invented for convenience; it is genuinely one of the
@@ -351,6 +367,7 @@ hardly ramified chapter and simply verify that the Frey curve satisfies it.
 :::theorem "frey_curve_hardly_ramified_bridge" (parent := "elliptic_frey_bridge")
 The `\ell`-torsion Galois representation of the Frey curve coming from a Frey
 package is hardly ramified.
+This is the chapter-level theorem packaging {uses "hardly_ramified_definition"}[].
 This is the first main conclusion of the TeX chapter.
 :::
 
@@ -396,10 +413,11 @@ also unramified at `\ell`.
 :::
 
 :::proof "reducible_frey_character_unramified_at_l"
-In the multiplicative-reduction case, this follows immediately from the
-Tate-curve picture. In the good-reduction case, the `\ell`-torsion is finite
-flat at `\ell` by {uses "frey_curve_flat_at_l"}[], and the local theory of
-ordinary and supersingular reduction forces one character to be unramified.
+In the multiplicative-reduction case, this follows immediately from
+{uses "tate_curve_local_torsion_shape"}[]. In the good-reduction case, the
+`\ell`-torsion is finite flat at `\ell` by {uses "frey_curve_flat_at_l"}[], and
+the local theory of ordinary and supersingular reduction forces one character
+to be unramified.
 
 This is the last local input needed before Minkowski's theorem can be applied.
 :::

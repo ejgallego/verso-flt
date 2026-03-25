@@ -69,7 +69,7 @@ where we are being a bit liberal with our use of the equality symbol.
 
 # Smooth Functions
 
-:::definition "smooth_gln_function" (parent := "gln_langlands_program")
+:::definition "smooth_gln_function" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.IsSmooth")
 A function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is smooth if it has
 the following three properties:
 
@@ -109,7 +109,7 @@ $`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}` denotes
 inverse-transpose. Note that $`s(M)` is always positive, and is large if $`M`
 has a very large or very small, in absolute value, eigenvalue.
 
-:::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program")
+:::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.IsSlowlyIncreasing")
 We say that a function $`f : \GL_n(\R) \to \bbC` is slowly-increasing if there
 is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
@@ -141,7 +141,7 @@ $`\{ M \mid s(M) \leq 1 \}` is compact, this may make no difference.
 
 # Weights At Infinity
 
-:::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
+:::definition "weight_at_infinity_gln" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.Weight")
 The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
 finite-dimensional continuous complex representation $`\rho` of a maximal
 compact subgroup of $`\GL_n(\R)`, and it is convenient to choose one. We choose
@@ -198,7 +198,7 @@ over the complexes. We shall not need this.
 
 From here on there is no more Lean right now, only LaTeX.
 
-:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program")
+:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ")
 A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
 $`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
 five conditions. This depends on {uses "smooth_gln_function"}[],
@@ -235,7 +235,8 @@ furthermore some adelic integrals vanish.
 
 :::theorem "hecke_operator_action_gln" (parent := "gln_langlands_program")
 The group $`\GL_n(\A_{\Q}^f)` acts on the space of automorphic forms for
-$`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`.
+$`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`. This depends on
+{uses "automorphic_form_for_gln"}[].
 :::
 
 :::proof "hecke_operator_action_gln"
@@ -260,7 +261,7 @@ $`T_g(f) = \sum g_i \cdot f`.
 :::theorem "gln_hecke_operator_well_defined" (parent := "gln_langlands_program")
 This function is well-defined, in the sense that it sends a $`U`-invariant form
 to a $`U`-invariant form and is independent of the choice of the representatives
-$`g_i`.
+$`g_i`. This depends on {uses "hecke_operator_action_gln"}[].
 :::
 
 :::proof "gln_hecke_operator_well_defined"

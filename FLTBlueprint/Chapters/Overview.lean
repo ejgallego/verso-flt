@@ -62,7 +62,8 @@ The proof of this is very long, and uses a host of machinery. For example:
 - Moret--Bailly's result on points on curves with prescribed local behaviour,
   recorded in {uses "moret_bailly_placeholder"}[] and cited in
   {Informal.citep moretBailly1990}[].
-- several nontrivial results in global class field theory.
+- several nontrivial results in global class field theory, recorded in
+  {uses "global_class_field_theory_placeholder"}[].
 - the Jacquet--Langlands correspondence.
 - the assertion that irreducible `2`-dimensional mod `p` representations
   induced from a character are modular.
@@ -136,6 +137,7 @@ Say $`k` is a finite extension of $`\Z/\ell\Z` and
 $`\rhobar : G_F \to \GL_2(k)` is continuous, absolutely irreducible when
 restricted to $`F(\zeta_\ell)`, and `S`-good. Then one can check that the
 functor representing `S`-good lifts of $`\rhobar` is representable.
+It uses {uses "s_good_lift_condition"}[].
 :::
 
 :::proof "s_good_deformation_problem"
@@ -149,6 +151,10 @@ If $`\rhobar` is modular of level $`\Gamma_1(S)` and
 $`\rho : G_F \to \GL_2(\calO)` is an `S`-good lift of $`\rhobar` to $`\calO`,
 the integers of a finite extension of $`\Q_\ell`, then $`\rho` is also modular
 of level $`\Gamma_1(S)`.
+It uses {uses "s_good_deformation_problem"}[],
+{uses "local_galois_cohomology_package"}[],
+{uses "skinner_wiles_cft_trick_placeholder"}[], and
+{uses "moret_bailly_placeholder"}[].
 :::
 
 :::proof "modularity_lifting_theorem"
@@ -206,6 +212,7 @@ modularity of $`\rho` is to use Moret--Bailly to find an appropriate totally
 real field $`F`, an auxiliary prime $`p`, and an auxiliary elliptic curve over
 $`F` whose mod $`\ell` Galois representation is $`\rho` and whose mod `p`
 Galois representation is induced from a character.
+It uses {uses "moret_bailly_placeholder"}[] and {uses "modularity_lifting_theorem"}[].
 :::
 
 :::proof "potential_modularity_auxiliary_curve"
@@ -217,7 +224,7 @@ modularity of the curve over $`F` and hence the modularity of the $`\ell`-torsio
 
 # Compatible Families And Reduction At 3
 
-:::theorem "compatible_family_step" (parent := "overview_strategy")
+:::theorem "compatible_family_step" (parent := "overview_strategy") (lean := "GaloisRepFamily.isCompatible")
 We now use Khare--Wintenberger to lift $`\rho` to a potentially modular
 $`\ell`-adic Galois representation of conductor `2`, and put it into an
 $`\ell`-adic family using Brauer's theorem trick in BLGGT.
@@ -230,7 +237,7 @@ particular to {Informal.citep khareWintenbergerII}[] and
 {Informal.citep blggtPotentialAutomorphy}[].
 :::
 
-:::theorem "reduction_at_three_step" (parent := "overview_strategy")
+:::theorem "reduction_at_three_step" (parent := "overview_strategy") (lean := "FreyCurve.torsion_not_isIrreducible")
 Finally we look at the `3`-adic specialization of this family. Reducing mod `3`
 we get a representation which is flat at `3` and tame at `2`, so it must be
 reducible. One can then deduce that the `3`-adic representation must be

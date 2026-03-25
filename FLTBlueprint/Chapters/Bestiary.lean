@@ -229,7 +229,8 @@ as the class-field-theory part of the Skinner--Wiles trick.
 :::theorem "poitou_tate_duality_placeholder" (parent := "bestiary_appendix")
 The project will also eventually need Poitou--Tate duality, but the appendix
 records it only at the level of dependencies because even the surrounding
-Galois-cohomology language is still being assembled.
+Galois-cohomology language is still being assembled. It depends on the local
+Galois-cohomology package summarized by {uses "local_galois_cohomology_package"}[].
 :::
 
 # Structures on the points of an affine variety
@@ -260,12 +261,14 @@ write down by hand.
 
 :::definition "manifold_on_affine_variety_points_placeholder" (parent := "bestiary_appendix")
 For smooth affine varieties over `ℝ`, `ℂ`, or finite extensions of `ℚ_p`, the
-point set should carry a natural manifold structure.
+point set should carry a natural manifold structure. This is meant to build on
+the topology supplied by {uses "topology_on_affine_variety_points_placeholder"}[].
 :::
 
 :::theorem "lie_group_from_algebraic_group_placeholder" (parent := "bestiary_appendix")
 For affine algebraic groups over `ℝ` or `ℂ`, the real or complex points should
-form Lie groups.
+form Lie groups. This is the concrete corollary of
+{uses "manifold_on_affine_variety_points_placeholder"}[].
 :::
 
 :::proof "lie_group_from_algebraic_group_placeholder"
@@ -309,34 +312,45 @@ They are later specialized in {uses "automorphic_form_general_notion"}[] and {us
 The appendix’s fully general automorphic-form definition includes local
 constancy on the finite adelic side, smoothness on the archimedean side,
 left-invariance under rational points, finite-level conditions, infinitesimal
-character conditions, and a growth condition.
+character conditions, and a growth condition. The chapter is treating this as
+the package assembled from {uses "connected_reductive_group_placeholder"}[],
+{uses "lie_group_from_algebraic_group_placeholder"}[],
+{uses "slowly_increasing_well_defined_placeholder"}[], and
+{uses "affine_variety_point_topology_computation"}[].
 :::
 
-:::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix")
+:::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix") (lean := "AutomorphicForm.GLn.IsSlowlyIncreasing")
 The appendix also isolates the slowly-increasing growth condition used in the
-general definition of an automorphic form.
+general definition of an automorphic form. This is the same growth condition
+formalized in the `GL_n/ℚ` development as {uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[].
 :::
 
 :::theorem "slowly_increasing_well_defined_placeholder" (parent := "bestiary_appendix")
 The slowly-increasing condition should be independent of the auxiliary choice
-of finite-dimensional representation used to define the norm at infinity.
+of finite-dimensional representation used to define the norm at infinity. This
+depends on {uses "slowly_increasing_placeholder"}[].
 :::
 
 :::definition "cuspidal_automorphic_representation_placeholder" (parent := "bestiary_appendix")
 The eventual automorphic-representation theory is meant to include cusp forms,
 their decomposition into irreducible pieces, and the local tensor-product
-decomposition of admissible representations.
+decomposition of admissible representations. This sits on top of
+{uses "automorphic_form_actions_placeholder"}[] and
+{uses "automorphic_representation_local_decomposition_placeholder"}[].
 :::
 
 :::definition "automorphic_form_actions_placeholder" (parent := "bestiary_appendix")
 The spaces of automorphic forms and cusp forms should carry the natural
 `(G(\mathbf{A}_N^f)\times U_\infty,\mathfrak g)`-module structures coming from
-right translation and differential operators.
+right translation and differential operators. This depends on
+{uses "automorphic_form_placeholder"}[].
 :::
 
 :::theorem "automorphic_representation_local_decomposition_placeholder" (parent := "bestiary_appendix")
 An admissible automorphic representation should decompose as a restricted tensor
-product of local representations, unramified at almost all finite places.
+product of local representations, unramified at almost all finite places. This
+is the representation-theoretic consequence of
+{uses "automorphic_form_actions_placeholder"}[].
 :::
 
 :::proof "automorphic_representation_local_decomposition_placeholder"
@@ -356,17 +370,20 @@ The appendix specifically credits Ivan Farabella for the compatible-family
 definition and Jou Glasheen for the Frobenius existence input that makes such a
 definition usable.
 
-:::definition "compatible_family_placeholder" (parent := "bestiary_appendix")
+:::definition "compatible_family_placeholder" (parent := "bestiary_appendix") (lean := "GaloisRepFamily.isCompatible")
 The appendix records the notion of a compatible family of Galois
 representations: a common coefficient field, a finite bad set, Frobenius
 polynomials away from that set, and ℓ-adic realizations compatible with those
-polynomials.
+polynomials. In Lean this is tracked by {uses "GaloisRepFamily.isCompatible"}[]
+and the surrounding family structure `GaloisRepFamily`.
 :::
 
 :::theorem "automorphic_to_galois_representation_placeholder" (parent := "bestiary_appendix")
 One of the major missing theorem statements is the construction of compatible
 Galois representations from automorphic representations of an inner form of
-GL2 over a totally real field.
+GL2 over a totally real field. This depends on {uses "compatible_family_placeholder"}[],
+{uses "automorphic_representation_local_decomposition_placeholder"}[], and
+{uses "shimura_varieties_placeholder"}[].
 :::
 
 :::proof "automorphic_to_galois_representation_placeholder"

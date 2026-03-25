@@ -53,7 +53,7 @@ here is about getting the measure-theoretic interface exactly right.
 
 # Initial definitions
 
-:::definition "additive_haar_character" (parent := "haar_character_project")
+:::definition "additive_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar")
 For a locally compact additive group and an additive automorphism, the Haar
 character measures the positive scalar by which Haar measure is rescaled.
 :::
@@ -84,7 +84,7 @@ It also notes that mathlib packages a preferred Haar measure, while the actual
 mathematics is independent of that choice. In the Lean code, the multiplicative
 version is primary and the additive statements are obtained by `to_additive`.
 
-:::theorem "haar_character_independent_of_measure" (parent := "haar_character_project")
+:::theorem "haar_character_independent_of_measure" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
 This scaling factor is independent of the chosen regular Haar measure.
 This is the first lemma attached to {uses "additive_haar_character"}[].
 :::
@@ -110,7 +110,7 @@ measure by a positive scalar cancels on both sides of the defining relation.
 \end{proof}
 ```
 
-:::theorem "haar_character_pushforward_formula" (parent := "haar_character_project")
+:::theorem "haar_character_pushforward_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
 For any regular Haar measure `μ`, one has
 $`d_A(\phi) (\phi_* \mu) = \mu`.
 This is the direct restatement of {uses "haar_character_independent_of_measure"}[].
@@ -136,7 +136,7 @@ independence of Haar measure has been established.
 \end{proof}
 ```
 
-:::theorem "haar_character_pullback_formula" (parent := "haar_character_project")
+:::theorem "haar_character_pullback_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
 Pulling Haar measure back along an additive homeomorphism scales the measure by
 the same Haar-character factor.
 This is the pullback companion to {uses "haar_character_pushforward_formula"}[].
@@ -164,7 +164,7 @@ applying the same statement to the inverse map.
 \end{proof}
 ```
 
-:::theorem "haar_character_identity" (parent := "haar_character_project")
+:::theorem "haar_character_identity" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
 The Haar character of the identity automorphism is `1`.
 :::
 
@@ -211,7 +211,7 @@ integrals before and after pushforward. This viewpoint is exactly what later
 drives the continuity proof on unit groups.
 :::
 
-:::theorem "haar_character_is_multiplicative" (parent := "haar_character_project")
+:::theorem "haar_character_is_multiplicative" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
 The additive Haar-character construction is multiplicative under composition of
 homeomorphisms and equals `1` on the identity map.
 This combines {uses "haar_character_identity"}[] with the composition law from
@@ -246,7 +246,7 @@ group homomorphism into the positive reals.
 
 # Examples
 
-:::theorem "real_haar_character_formula" (parent := "haar_character_project")
+:::theorem "real_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_real")
 For the additive group of `ℝ`, the Haar character is the usual absolute value.
 :::
 
@@ -257,7 +257,7 @@ negative scalar only adds an orientation reversal, so the scale factor is
 always the absolute value.
 :::
 
-:::theorem "complex_haar_character_formula" (parent := "haar_character_project")
+:::theorem "complex_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_complex")
 For the additive group of `ℂ`, the Haar character is $`|z|^2`.
 :::
 
@@ -269,9 +269,11 @@ rotation. Rotations preserve area, while scaling by `r > 0` multiplies area by
 
 # Ring-level Haar characters
 
-:::definition "ring_level_haar_character" (parent := "haar_character_project")
+:::definition "ring_level_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
 For a locally compact topological ring, the left Haar character is obtained by
 applying the additive theory to left multiplication by a unit.
+This packages the additive setup for ring-level use via
+{uses "additive_haar_character"}[].
 :::
 
 ```tex "haar_character_project/ring_level"
@@ -280,11 +282,12 @@ or more precisely the \emph{left Haar character} of $R$, is a group homomorphism
 $R^\times\to\R^\times$ defined in the following way.
 ```
 
-:::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project")
+:::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
 At the ring level, the Haar character controls how integrals change under left
 multiplication by units.
 This is the ring-theoretic specialization of
-{uses "haar_character_integral_formula"}[].
+{uses "haar_character_integral_formula"}[] and depends on
+{uses "ring_level_haar_character"}[].
 :::
 
 ```tex "haar_character_project/ring_integral"
@@ -304,11 +307,12 @@ This is the ring-theoretic specialization of
 \end{proof}
 ```
 
-:::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project")
+:::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
 Likewise, the Haar character controls how the measure of a Borel set changes
 under multiplication by a unit.
 This is the ring-theoretic specialization of
-{uses "haar_character_preimage_formula"}[].
+{uses "haar_character_preimage_formula"}[] and depends on
+{uses "ring_level_haar_character"}[].
 :::
 
 ```tex "haar_character_project/ring_volume"
@@ -327,7 +331,7 @@ This is the ring-theoretic specialization of
 \end{proof}
 ```
 
-:::theorem "ring_haar_character_continuous" (parent := "haar_character_project")
+:::theorem "ring_haar_character_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
 The Haar character on the unit group of a locally compact topological ring is a
 continuous group homomorphism.
 The TeX proof builds this directly from
@@ -398,10 +402,11 @@ the index of `p\mathbf{Z}_p` inside `\mathbf{Z}_p`.
 
 # Algebras
 
-:::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project")
+:::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
 For a finite free module over a locally compact field, the Haar character of an
 invertible linear map is the field-level Haar character applied to its
 determinant.
+This is the linear-algebra counterpart to {uses "ring_level_haar_character"}[].
 :::
 
 :::proof "haar_character_linear_map_determinant_formula"
@@ -413,7 +418,7 @@ This is the bridge from additive Haar theory on groups to ring-theoretic Haar
 characters on finite-dimensional algebras.
 :::
 
-:::theorem "algebra_haar_character_determinant_formula" (parent := "haar_character_project")
+:::theorem "algebra_haar_character_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det")
 If `R` is a finite-dimensional algebra over a locally compact field `F`, then
 the ring-level Haar character of a unit `u` is obtained from the determinant of
 left multiplication by `u`.
@@ -430,10 +435,10 @@ by a unit is an invertible `F`-linear map on the underlying finite-dimensional
 
 # Left and right multiplication
 
-:::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project")
+:::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project") (lean := "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight")
 For a finite-dimensional central simple algebra, left and right multiplication
 by a unit have the same Haar-character factor.
-This combines the determinant comparison with
+This combines the determinant comparison {uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[] with
 {uses "algebra_haar_character_determinant_formula"}[].
 :::
 
@@ -449,7 +454,7 @@ division algebras mix left and right multiplication.
 
 # Finite products
 
-:::theorem "product_haar_character_formula" (parent := "haar_character_project")
+:::theorem "product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_prodCongr")
 For a finite product of locally compact additive groups, the Haar character of a
 product automorphism is the product of the individual Haar characters.
 This is the finite-product analogue of {uses "haar_character_is_multiplicative"}[].
@@ -461,9 +466,10 @@ measures this is exactly what one expects: product Haar measure scales by the
 product of the coordinatewise scaling factors.
 :::
 
-:::theorem "product_ring_haar_character_formula" (parent := "haar_character_project")
+:::theorem "product_ring_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
 For a finite product of locally compact topological rings, the ring-level Haar
 character is the product of the local ring-level Haar characters.
+This is the ring-theoretic specialization of {uses "product_haar_character_formula"}[].
 :::
 
 :::proof "product_ring_haar_character_formula"
@@ -545,7 +551,7 @@ immediate specialization to multiplication-by-units.
 
 # Some measure-theoretic preliminaries
 
-:::theorem "open_embedding_pullback_is_haar_measure" (parent := "haar_character_project")
+:::theorem "open_embedding_pullback_is_haar_measure" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.isHaarMeasure_comap")
 If a locally compact topological group embeds openly into another, then pulling
 back a Haar measure along that open embedding again gives a Haar measure.
 :::
@@ -556,7 +562,7 @@ stay finite because continuous images of compact sets are compact, and open sets
 stay bounded because open embeddings send open sets to open sets.
 :::
 
-:::theorem "open_embedding_pullback_regular_measure" (parent := "haar_character_project")
+:::theorem "open_embedding_pullback_regular_measure" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.regular_comap")
 Pulling a regular Borel measure back along an open embedding again gives a
 regular Borel measure.
 :::
@@ -567,7 +573,7 @@ and the image of an open set is open, so the usual regularity axioms are
 preserved by pullback.
 :::
 
-:::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project")
+:::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project") (lean := "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace")
 If an additive automorphism acts on a compact additive group, then its Haar
 character is `1`.
 :::
@@ -577,7 +583,7 @@ The TeX proof is the short measure argument: the whole compact group has finite,
 positive Haar measure, and that total measure is unchanged by the automorphism.
 :::
 
-:::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project")
+:::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding")
 If an additive automorphism on a locally compact group is intertwined with one
 on a larger group through an open embedding, then the two Haar characters
 agree.
@@ -677,7 +683,7 @@ Then $d_A(\phi)=1.$
 
 # Restricted products
 
-:::theorem "restricted_product_maps_continuous" (parent := "haar_character_project")
+:::theorem "restricted_product_maps_continuous" (parent := "haar_character_project") (lean := "Continuous.restrictedProduct_congrRight")
 If one has compatible continuous maps on the factors of a restricted product,
 then the induced map on the restricted product is continuous.
 :::
@@ -688,7 +694,7 @@ restricted-product topology. One checks continuity on sufficiently large finite
 stages, where the map becomes an ordinary finite product of continuous maps.
 :::
 
-:::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project")
+:::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight")
 For a restricted product of locally compact groups with compact open reference
 subgroups, the Haar character of a restricted-product automorphism is the
 finite product of the local Haar characters.
@@ -813,7 +819,7 @@ As a special case, if $R$ is the restricted product of a collection of topologic
 
 # Adeles
 
-:::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project")
+:::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
 The key intended application is that adelic unit groups coming from
 finite-dimensional algebras over a number field land in the kernel of the Haar
 character.

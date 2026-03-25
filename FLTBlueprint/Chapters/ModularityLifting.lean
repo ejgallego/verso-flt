@@ -102,7 +102,8 @@ produces the upper half-plane, so differential operators and holomorphicity are
 built into the theory. For the quaternionic groups used in the FLT strategy,
 the analogous real quotient is zero-dimensional. So the automorphic theory is
 still deep, but its definitions are far more algebraic and much closer to the
-finite-level structures built later in {uses "quaternionic_modular_form_example"}[].
+finite-level structures built later in {uses "weight_two_quaternionic_forms_of_level"}[]
+and {uses "quaternionic_modular_form_example"}[].
 :::
 
 # Central simple algebras
@@ -144,11 +145,12 @@ is exactly `K` and which has no nontrivial two-sided ideals.
 :::theorem "matrix_algebra_is_central_simple" (parent := "modularity_lifting_program")
 Matrix algebras are the basic examples of central simple algebras, and their
 base change behavior is the prototype for the quaternionic constructions used
-later.
+later. The theorem instantiates {uses "central_simple_algebra_definition"}[].
 :::
 
 :::proof "matrix_algebra_is_central_simple"
-The TeX chapter sketches the usual argument: scalar matrices show that `K` is in
+The TeX chapter sketches the usual argument for the notion fixed in
+{uses "central_simple_algebra_definition"}[]: scalar matrices show that `K` is in
 the center, commutation with matrix units forces every central element to be
 scalar, and any nonzero two-sided ideal contains a matrix unit and therefore the
 identity. So the whole matrix algebra is central simple.
@@ -187,13 +189,15 @@ nonempty.
 
 :::theorem "central_simple_algebra_base_change" (parent := "modularity_lifting_program")
 If `D` is central simple over `K` and `L/K` is a field extension, then
-`L ⊗_K D` is central simple over `L`.
+`L ⊗_K D` is central simple over `L`. This is the stability statement for
+{uses "central_simple_algebra_definition"}[] under scalar extension.
 :::
 
 :::proof "central_simple_algebra_base_change"
 The TeX chapter cites standard algebra references for this fact and then uses
 it to motivate why quaternion algebras remain quaternion algebras after
-extension of scalars.
+extension of scalars, all in the setting fixed by
+{uses "central_simple_algebra_definition"}[].
 
 ```tex "central-simple-algebra-base-change-proof"
 \begin{lemma}
@@ -260,6 +264,7 @@ than being proved independently from scratch.
 :::theorem "nonminimal_modularity_lifting_statement" (parent := "modularity_lifting_program")
 The non-minimal theorem is expected to be derived from the minimal case by the
 additional modern arguments highlighted in the old blueprint.
+The reduction interface is recorded in {uses "reduction_to_minimal_case"}[].
 The overview chapter points back to this node through {uses "modularity_lifting_theorem"}[].
 :::
 

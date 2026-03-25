@@ -140,6 +140,7 @@ $`d \mapsto d \otimes 1`, and hence we can think of $`D^\times` as a subgroup
 of $`(D \otimes_F \A_F^\infty)^\times`.
 
 :::definition "weight_two_quaternionic_forms" (parent := "quaternion_algebra_project")
+  (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm")
 Let $`R` be an additive commutative group. The space of $`R`-valued automorphic
 forms for $`D^\times` is the set of functions
 $`f : D_{\A^\infty}^\times \to R` satisfying the following axioms:
@@ -195,6 +196,7 @@ $`S^D(R)` is sometimes referred to as a space of quaternionic modular forms over
 $`R`. Three basic observations about $`S^D(R)` are as follows.
 
 :::definition "automorphic_forms_additive_group" (parent := "quaternion_algebra_project")
+  (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup")
 Pointwise addition $`(f_1 + f_2)(g) := f_1(g) + f_2(g)` makes $`S^D(R)` into an
 additive abelian group. This depends on {uses "weight_two_quaternionic_forms"}[].
 :::
@@ -211,6 +213,7 @@ additive abelian group. This depends on {uses "weight_two_quaternionic_forms"}[]
 ```
 
 :::definition "automorphic_forms_module" (parent := "quaternion_algebra_project")
+  (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module")
 If $`R` is a commutative ring then pointwise scalar multiplication
 $`(r \cdot f)(g) := r \cdot f(g)` makes $`S^D(R)` into an $`R`-module. This
 depends on {uses "weight_two_quaternionic_forms"}[] and
@@ -230,6 +233,7 @@ depends on {uses "weight_two_quaternionic_forms"}[] and
 ```
 
 :::definition "adelic_right_action_on_quaternionic_forms" (parent := "quaternion_algebra_project")
+  (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction")
 The group $`D_{\A^\infty}^\times` acts on the additive abelian group $`S^D(R)`
 by $`(g \cdot f)(x) = f(xg)`. This depends on
 {uses "weight_two_quaternionic_forms"}[],
@@ -256,6 +260,7 @@ Now let $`U` be a level, that is, a compact open subgroup of
 $`D_{\A^\infty}^\times`.
 
 :::definition "weight_two_quaternionic_forms_of_level" (parent := "quaternion_algebra_project")
+  (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel")
 The quaternionic modular forms of level $`U`, with notation $`S^D(U;R)`, are
 the $`U`-invariants for the $`D_{\A^\infty}^\times`-action on $`S^D(R)`. This
 depends on {uses "weight_two_quaternionic_forms"}[],
@@ -290,13 +295,19 @@ of that classical claim, although of course the Jacquet--Langlands theorem is
 much harder to prove than the classical proof of finite-dimensionality.
 
 :::theorem "finite_dimensional_quaternionic_forms" (parent := "quaternion_algebra_project")
+  (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional")
 Let $`k` be a field. Then the space $`S^D(U;k)` is a finite-dimensional
-$`k`-vector space. This depends on {uses "automorphic_forms_module"}[].
+$`k`-vector space. This depends on {uses "weight_two_quaternionic_forms_of_level"}[]
+and {uses "automorphic_forms_module"}[].
 :::
 
 :::proof "finite_dimensional_quaternionic_forms"
 The finite-dimensionality theorem is an easy consequence of Fujisaki's lemma,
-proved in the Fujisaki miniproject. Write $`(D \otimes_F \A_F^\infty)^\times`
+proved in the Fujisaki miniproject. This uses
+{uses "compact_quotient_for_division_algebra"}[],
+{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[], and
+{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"}[].
+Write $`(D \otimes_F \A_F^\infty)^\times`
 as a disjoint union of double cosets $`\coprod_i D^\times g_i U`. This open
 cover descends to a disjoint open cover of
 $`D^\times \backslash (D \otimes_F \A_F^\infty)^\times`, and this latter space
