@@ -1,4 +1,5 @@
 import FLTBlueprint.Citations
+import FLT.GaloisRepresentation.HardlyRamified.Frey
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -194,7 +195,7 @@ proving the general hardly ramified reducibility theorem stated above.
 The TeX chapter now states three theorems from which that general reducibility
 theorem easily follows.
 
-:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.lifts")
+:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program")
 If `\ell \ge 3` is prime and
 $`\overline{\rho} : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
 is hardly ramified and irreducible, then there exists a finite extension
@@ -218,7 +219,7 @@ That is exactly the input needed to make the later modularity-lifting and
 potential-modularity machinery available.
 :::
 
-:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mem_isCompatible")
+:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program")
 A hardly ramified `\ell`-adic representation with irreducible reduction spreads
 out to a compatible family over a number field. In particular, one can choose a
 place `\lambda` above `\ell` recovering the original representation, and the
@@ -247,7 +248,7 @@ In particular, one can move from an irreducible hardly ramified mod `\ell`
 representation to a hardly ramified `3`-adic representation and hence to a
 hardly ramified mod `3` representation.
 
-:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mod_three")
+:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program")
 If `k` is a finite field of characteristic `3` and
 $`\overline{\rho} : \GQ \to \GL_2(k)` is hardly ramified, then
 $`\overline{\rho}` is an extension of the cyclotomic character by the trivial
@@ -266,7 +267,7 @@ For the later contradiction, the key point is that the semisimplification is
 already the expected reducible object.
 :::
 
-:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.three_adic")
+:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program")
 If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has

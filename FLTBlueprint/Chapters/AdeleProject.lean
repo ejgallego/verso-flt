@@ -475,7 +475,7 @@ restricted products along the finite-fibre map on places. The result is an
 algebraic identification of the finite adeles after base change.
 :::
 
-:::theorem "tensor_product_module_base_change" (parent := "adele_project") (lean := "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv")
+:::theorem "tensor_product_module_base_change" (parent := "adele_project")
 If `M` is a `K`-module, then the canonical map
 $`B \otimes_A M \to L \otimes_K M` is an isomorphism.
 :::
@@ -512,7 +512,7 @@ case this is straightforward; the general case is obtained by presenting `M`
 as a cokernel of a map between finite free modules.
 :::
 
-:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project") (lean := "RestrictedProduct.relabelIso")
+:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
 If an index map has finite fibres and each factor over the target is identified
 with the product of the corresponding fibres over the source, then the two
 restricted products are naturally in bijection.
@@ -539,7 +539,7 @@ local finite products match homeomorphically, the restricted-product topology is
 transported correctly across the change of index set.
 :::
 
-:::theorem "finite_adele_base_change_integral" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv")
+:::theorem "finite_adele_base_change_integral" (parent := "adele_project")
 At the integral level, one gets a `B`-algebra isomorphism
 $`B \otimes_A \mathbf{A}_K^\infty \cong \mathbf{A}_L^\infty`.
 This is the theorem behind {uses "restricted_product_relabel_isomorphism"}[]
@@ -1003,7 +1003,6 @@ The left-hand side is given the $K_v$-module topology, while we show that the ri
 has the $K_v$-module topology.
 \begin{theorem}
   \label{NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT}
-  \lean{NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT}
   \leanok
   If $w \mid v$ is an infinite place of $L$ lying above the infinite place $v$ of $K$, then
   $L_w$ has the $K_v$-module topology.
