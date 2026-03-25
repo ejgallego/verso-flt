@@ -190,6 +190,11 @@ the quotient. Any translate of that set must then intersect two points mapping
 to the same quotient class.
 :::
 
+:::definition "compact_set_e_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.E")
+{uses "large_compact_set_mod_d_exists"}[]
+We let `E` denote any compact set satisfying the hypothesis of the previous lemma.
+:::
+
 ```tex "fujisaki_first_proof_raw"
 \section{The proof}
 
@@ -218,7 +223,7 @@ We prove the theorem via a series of lemmas.
 ```
 
 :::definition "difference_set_x_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
-{uses "large_compact_set_mod_d_exists"}[]
+{uses "compact_set_e_for_fujisaki"}[]
 From the compact set `E`, define the difference set `X = E - E`.
 :::
 
@@ -234,13 +239,59 @@ collisions and another capturing multiplicative combinations of those
 collisions.
 :::
 
+:::theorem "difference_set_x_compact_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact")
+{uses "difference_set_x_for_fujisaki"}[]
+The set `X` is compact.
+:::
+
+:::proof "difference_set_x_compact_for_fujisaki"
+The TeX chapter records this as the continuous image of the compact set
+`E × E` under subtraction.
+:::
+
+:::theorem "product_set_y_compact_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact")
+{uses "product_set_y_for_fujisaki"}[]
+The set `Y` is compact.
+:::
+
+:::proof "product_set_y_compact_for_fujisaki"
+The TeX chapter records this as the continuous image of the compact set
+`X × X` under multiplication.
+:::
+
+:::theorem "difference_set_meets_d_units_left_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
+{uses "difference_set_x_for_fujisaki"}[]
+For every $`\beta \in D_A^{(1)}`, the translate `βX` meets `D^×`.
+:::
+
+:::proof "difference_set_meets_d_units_left_for_fujisaki"
+{uses "compact_set_e_for_fujisaki"}[]
+The TeX proof says that if `βE` fails to inject into the quotient, then two
+distinct points of `βE` differ by a nonzero element of `D`, and because `D` is
+a division algebra that difference lies in `D^×`. Since the original points
+differ by an element of `X`, the translate `βX` meets `D^×`.
+:::
+
+:::theorem "difference_set_meets_d_units_right_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'")
+{uses "difference_set_x_for_fujisaki"}[]
+Similarly, `Xβ⁻¹` meets `D^×` for every $`\beta \in D_A^{(1)}`.
+:::
+
+:::proof "difference_set_meets_d_units_right_for_fujisaki"
+{uses "compact_set_e_for_fujisaki"}[]
+{uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
+The right-multiplication argument is the same after using the Haar-measure
+symmetry for central simple algebras to pass from left multiplication by
+`β⁻¹` to right multiplication.
+:::
+
 :::theorem "difference_and_product_sets_compact" (parent := "fujisaki_project")
 Both `X` and `Y` are compact subsets of the adelic algebra.
 :::
 
 :::proof "difference_and_product_sets_compact"
-{uses "difference_set_x_for_fujisaki"}[]
-{uses "product_set_y_for_fujisaki"}[]
+{uses "difference_set_x_compact_for_fujisaki"}[]
+{uses "product_set_y_compact_for_fujisaki"}[]
 
 Each set is the continuous image of a compact product: `X` comes from `E × E`
 under subtraction, and `Y` comes from `X × X` under multiplication.
@@ -252,12 +303,11 @@ For every $`\beta \in D_A^{(1)}`, the translate `βX` meets `D^×`, and likewise
 :::
 
 :::proof "difference_set_meets_d_units"
-{uses "difference_set_x_for_fujisaki"}[]
-This is the first real use of {uses "large_compact_set_mod_d_exists"}[]. If
-`βE` fails to inject into the quotient, then two distinct points of `βE`
-differ by an element of `D`. Because `D` is a division algebra, that nonzero
-difference lies in `D^×`. Since the original points differed by an element of
-`X`, the translated set `βX` meets `D^×`.
+{uses "difference_set_meets_d_units_left_for_fujisaki"}[]
+{uses "difference_set_meets_d_units_right_for_fujisaki"}[]
+The two directions are the left- and right-multiplication versions of the same
+compactness argument: one starts from the failure of injectivity of `βE`, the
+other uses the corresponding right-multiplication symmetry.
 
 The TeX chapter repeats the same argument on the right using the compatibility
 of left and right Haar characters, which is why the Haar-character chapter had

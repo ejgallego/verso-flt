@@ -324,6 +324,11 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
     )
     lines.append("")
     lines.append("This board is driven by source markers rather than stale cross-chapter match counts.")
+    lines.append(
+        "The harness migration is largely done: most direct-port chapters now keep the remaining open"
+        " source in local `tex` blocks, and the main work left is selective chapter fidelity rather"
+        " than broad infrastructure."
+    )
     lines.append("It treats `\\leanok` and `\\mathlibok` as closed, and surfaces explicit `\\notready`,")
     lines.append("placeholder Lean targets, and unfinished proof sketches as open work.")
     lines.append(

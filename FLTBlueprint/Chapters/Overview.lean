@@ -230,6 +230,7 @@ modularity of the curve over $`F` and hence the modularity of the $`\ell`-torsio
 We now use Khare--Wintenberger to lift $`\rho` to a potentially modular
 $`\ell`-adic Galois representation of conductor `2`, and put it into an
 $`\ell`-adic family using Brauer's theorem trick in BLGGT.
+It uses {uses "hardly_ramified_compatible_family"}[].
 :::
 
 :::proof "compatible_family_step"
@@ -244,6 +245,7 @@ Finally we look at the `3`-adic specialization of this family. Reducing mod `3`
 we get a representation which is flat at `3` and tame at `2`, so it must be
 reducible. One can then deduce that the `3`-adic representation must be
 reducible, which contradicts the irreducibility of $`\rho`.
+It uses {uses "odlyzko_root_discriminant_bound"}[].
 :::
 
 :::proof "reduction_at_three_step"

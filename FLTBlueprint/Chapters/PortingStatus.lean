@@ -10,7 +10,9 @@ open Informal
 
 :::group "porting_status"
 This chapter records the current harness-level view of how far the Verso port
-has progressed relative to the TeX blueprint.
+has progressed relative to the TeX blueprint. The harness migration is largely
+done, and the remaining work is now mostly selective chapter fidelity and
+source-local cleanup rather than broad infrastructure.
 :::
 
 # How To Read This Page
@@ -36,7 +38,8 @@ they do not replace the TeX source itself.
 
 The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so
 open source snippets can be attached locally in raw form when that is the
-cleanest way to keep the chapter close to the TeX source of truth.
+cleanest way to keep the chapter close to the TeX source of truth. Many of the
+direct-port chapters now use that pattern for the remaining open blocks.
 
 # Main Expository Chapters
 
@@ -79,7 +82,8 @@ The current miniproject-side status is:
 
 These chapters are generally further along than a bare stub but more uneven in
 how much explicit chapter-by-chapter fidelity auditing has been recorded in the
-harness so far.
+harness so far. In the current baseline, they are mostly source-backed already;
+the main remaining work is selective fidelity, not harness bootstrap.
 
 # Harness-Native Chapters
 
@@ -97,8 +101,9 @@ chapter.
 
 :::definition "porting_status_snapshot" (parent := "porting_status")
 At the moment, the core FLT proof spine from the introduction through the
-automorphic-form example is no longer just sketched in Verso. The main
-remaining fidelity frontier is:
+automorphic-form example is largely in place in Verso. Most of the remaining
+work is selective chapter fidelity and local source-block cleanup. The main
+remaining frontier is:
 
 - the intentional frontier material in `GlobalLanglands.lean`
 :::
@@ -107,7 +112,9 @@ remaining fidelity frontier is:
 The repository-level chapter audit is now tracked as source-backed local TeX
 block tasks rather than as a stale exact-match checklist. Each item points at
 the corresponding TeX snippet in `FLT/blueprint/src/chapter/*.tex` and records
-the local Verso follow-up needed for that block.
+the local Verso follow-up needed for that block. That reflects the current
+state well: the harness is mostly settled, and the remaining work is chapter
+fidelity plus local source preservation.
 
 When the right follow-up is to keep the source visible, attach the raw excerpt
 in a labeled `tex` block next to the local note or proof instead of rewriting

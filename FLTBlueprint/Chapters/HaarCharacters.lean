@@ -221,7 +221,8 @@ the additive Haar-character setup {uses "additive_haar_character"}[].
 
 :::proof "haar_character_is_multiplicative"
 This is the point where the TeX chapter notes that the construction is really a
-group homomorphism into the positive reals.
+group homomorphism into the positive reals. The identity case is recorded in
+{uses "haar_character_identity"}[].
 :::
 
 ```tex "haar_character_project/multiplicative"
@@ -584,7 +585,8 @@ This is the finite-product analogue of {uses "haar_character_is_multiplicative"}
 :::proof "product_haar_character_formula"
 The TeX chapter first handles binary products and then iterates. At the level of
 measures this is exactly what one expects: product Haar measure scales by the
-product of the coordinatewise scaling factors.
+product of the coordinatewise scaling factors. This is the additive-product
+formula behind {uses "product_haar_character_formula"}[].
 :::
 
 :::theorem "product_ring_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
@@ -595,7 +597,8 @@ This is the ring-theoretic specialization of {uses "product_haar_character_formu
 
 :::proof "product_ring_haar_character_formula"
 The TeX chapter states this first for additive groups, then for rings as the
-immediate specialization to multiplication-by-units.
+immediate specialization to multiplication-by-units. The additive product
+formula is the source of {uses "product_haar_character_formula"}[].
 :::
 
 ```tex "haar_character_project/finite_products"
@@ -702,6 +705,8 @@ character is `1`.
 :::proof "compact_group_haar_character_trivial"
 The TeX proof is the short measure argument: the whole compact group has finite,
 positive Haar measure, and that total measure is unchanged by the automorphism.
+The proof passes through the preimage formula
+{uses "haar_character_pullback_formula"}[].
 :::
 
 :::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding")
