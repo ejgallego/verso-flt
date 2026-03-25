@@ -36,7 +36,7 @@ The current chapter-by-chapter status for the main proof spine is:
 
 - `ch01introduction.tex` -> `Introduction.lean`: `fidelity pass completed`
 - `ch02reductions.tex` -> `Reductions.lean`: `fidelity pass completed`
-  The remaining non-fatal `lean :=` warnings come from rc6-clean import limits, not from missing TeX structure.
+  The chapter currently has all `lean :=` targets resolved in the 4.28 baseline.
 - `ch03freyold.tex` -> `EllipticFrey.lean`: `fidelity pass completed`
 - `ch03freyreduction.tex` -> `HardlyRamified.lean`: `fidelity pass completed`
 - `ch04overview.tex` -> `Overview.lean`: `fidelity pass completed`

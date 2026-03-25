@@ -1,4 +1,6 @@
 import FLTBlueprint.Citations
+import FLT.Basic.FreyPackage
+import FLT.Basic.Reductions
 import Mathlib.NumberTheory.FLT.Four
 import Mathlib.NumberTheory.FLT.Three
 import Verso
@@ -83,7 +85,7 @@ This is exactly the corollary deduced in the TeX source from
 
 For convenience we make the following definition.
 
-:::definition "frey_package_data" (parent := "first_reductions") (lean := "FreyPackage")
+:::definition "frey_package_data" (parent := "first_reductions")
 A Frey package $`(a,b,c,p)` is three nonzero pairwise-coprime integers `a`,
 `b`, and `c`, with $`a \equiv 3 \pmod 4` and $`b \equiv 0 \pmod 2`, together
 with a prime $`p \ge 5`, such that $`a^p+b^p=c^p`.
