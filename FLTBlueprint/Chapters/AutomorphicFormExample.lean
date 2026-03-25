@@ -67,6 +67,16 @@ residue classes modulo all positive integers.
 The chapter uses it as a low-level entry point to the adelic viewpoint.
 :::
 
+```tex "ZHat"
+\section{\texorpdfstring{$\Zhat$}{Zhat}}
+
+\begin{definition}\label{ZHat}\lean{ZHat}\leanok The profinite completion $\Zhat$ of $\Z$ is the set of
+    all compatible collections $c=(c_N)_N$ of elements of $\Z/N\Z$ indexed by $\N^+:=\{1,2,3,\ldots\}$.
+    A collection is said to be \emph{compatible} if for all positive integers
+    $D\mid N$, we have $c_N$ mod $D$ equals $c_D$.
+\end{definition}
+```
+
 The TeX chapter motivates this detour historically. Classical automorphic forms
 are functions on symmetric spaces such as the upper half-plane, but when one
 works over number fields with nontrivial class group the classical approach
@@ -85,6 +95,18 @@ componentwise, and compatibility with reduction maps is preserved by those same
 operations.
 :::
 
+```tex "ZHat.commRing"
+\begin{lemma}
+    \label{ZHat.commRing}
+    \lean{ZHat.commRing}
+    \uses{ZHat}
+    \leanok
+    $\Zhat$ is a subring of $\prod_{N\geq1}(Z/N\Z)$ and in particular is a ring.
+\end{lemma}
+\begin{proof} \leanok Follow your nose.
+\end{proof}
+```
+
 :::theorem "zhat_nontrivial" (parent := "automorphic_example_program")
 The elements `0` and `1` are distinct in $`\widehat{\mathbf{Z}}`.
 This is an immediate consequence of the ring structure from
@@ -95,6 +117,22 @@ This is an immediate consequence of the ring structure from
 The TeX proof just evaluates both elements at `2`: their images in `ℤ/2ℤ` are
 different, so the compatible collections themselves are different.
 :::
+
+```tex "ZHat.nontrivial"
+\begin{lemma}
+    \label{ZHat.nontrivial}
+    \lean{ZHat.nontrivial}
+    \uses{ZHat.commRing}
+    \leanok
+    $0\not=1$ in $\Zhat$.
+\end{lemma}
+\begin{proof}
+    \leanok
+    Recall that you can evaluate an element of $\Zhat$ at a positive integer.
+    Evaluating $0$ at 2 gives $0$, and evaluating $1$ at $2$ gives $1$, and these
+    are distinct elements of $\Z/2\Z$, so $0\not=1$ in $\Zhat$.
+\end{proof}
+```
 
 :::theorem "zhat_char_zero" (parent := "automorphic_example_program")
 The natural map from the natural numbers into $`\widehat{\mathbf{Z}}`$ is
@@ -108,6 +146,19 @@ The TeX chapter treats this as an immediate generalization of
 {uses "zhat_nontrivial"}[]: two different naturals can be separated by reducing
 modulo a suitable integer.
 :::
+
+```tex "ZHat.charZero"
+\begin{lemma}
+    \label{ZHat.charZero}
+    \lean{ZHat.charZero}
+    \leanok
+    The map from the naturals into $\Zhat$ sending $n$ to $n$ is injective.
+\end{lemma}
+\begin{proof}
+    \leanok
+    Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
+\end{proof}
+```
 
 :::theorem "zhat_is_not_the_integers" (parent := "automorphic_example_program")
 The profinite completion contains the image of the integers, but it is much
@@ -218,6 +269,17 @@ route to finite adeles before the general restricted-product formalism is in
 place; compare the broader blueprint node {uses "cheap_finite_adele_definition"}[].
 :::
 
+```tex "QHat"
+\begin{definition}
+    \label{QHat}
+    \lean{QHat}
+    \uses{ZHat}
+    \leanok
+    The profinite completion $\Qhat$ of $\Q$ is the tensor product $\Q\otimes_{\Z}\Zhat$,
+    or $\Qhat=\Q\otimes\Zhat$ for short.
+\end{definition}
+```
+
 # A Crash Course In Tensor Products
 
 :::definition "tensor_product_crash_course" (parent := "automorphic_example_program")
@@ -251,6 +313,31 @@ So `\widehat{\mathbf{Q}}` is much more concrete than an arbitrary tensor
 product, even though it is still best viewed conceptually as a tensor product.
 :::
 
+```tex "QHat.canonicalForm"
+\begin{lemma}
+    \label{QHat.canonicalForm}
+    \lean{QHat.canonicalForm}
+    \uses{QHat,ZHat.commRing}
+    \leanok
+    Every element of $\Qhat:=\Q\otimes\Zhat$ can be written as $q\otimes_t z$ with $q\in\Q$ and $z\in\Zhat$.
+    Furthermore one can even assume that $q=\frac{1}{N}$ for some positive integer $N$.
+\end{lemma}
+\begin{proof} \leanok
+    A proof I would write on the board would look like the following. Take a general
+    element of $\Qhat$; we know it can be expressed as a finite sum
+    $\sum_i q_i\otimes_t z_i$ with $q_i\in\Q$ and $z_i\in\Zhat$. Now choose a large
+    positive integer $N$, the lowest common multiple of all the denominators showing up in the
+    $q_i$, and then rewrite $\sum_i q_i\otimes_t z_i$ as $\sum_i \frac{n_i}{N}\otimes z_i$ with
+    $n_i\in\Z$. Now using the fundamental fact that $na\otimes_t b=a\otimes_t nb$ for $n\in\Z$,
+    we can rewrite the sum as $\sum_i \frac{1}{N}\otimes_t n_i z_i$
+    which is equal to the pure tensor $\frac{1}{N}\otimes(\sum_i n_i z_i)$.
+
+    In Lean I would prove this using {\tt TensorProduct.induction\_on}, which quickly
+    reduces us to the claim that the sum of two pure tensors is pure, which we can prove
+    using the above technique whilst avoiding the general theory of finite sums.
+\end{proof}
+```
+
 :::definition "qhat_lowest_terms" (parent := "automorphic_example_program")
 Every element of $`\widehat{\mathbf{Q}}`$ should admit a lowest-terms
 representation $`z/N`, where the `N`-th coordinate of `z` is a unit modulo `N`.
@@ -266,6 +353,45 @@ denominator and the relevant residue coordinate, one divides it out inside
 representations through a common multiple and using torsionfreeness.
 :::
 
+```tex "QHat.IsCoprime"
+\begin{definition}
+    \label{QHat.IsCoprime}
+    \lean{QHat.IsCoprime}
+    \uses{ZHat.commRing}
+    \leanok
+    If $N\in\N^+$ and $z\in\Zhat$ then we say that $N$ and $z$ are \emph{coprime} if
+    $z_N\in(\Z/N\Z)^\times$. We write $z/N$ as notation
+    for the element $\frac{1}{N}\otimes_tz$.
+\end{definition}
+
+\begin{lemma}
+    \label{QHat.lowestTerms}
+    \lean{QHat.lowestTerms}
+    \uses{QHat.IsCoprime}
+    \leanok
+    Every element of $\Qhat$ can be uniquely written as $z/N$ with $z\in\Zhat$, $N\in\N^+$,
+    and with $N$ and $z$ coprime.
+\end{lemma}
+\begin{proof}
+    Existence: by the previous lemma, an arbitrary element can be written as $z/N$; let $D$
+    be the greatest common divisor of $N$ and $z_N$ (lifted to a natural). If $D=1$
+    then the fraction is by definition in lowest terms. However if $1<D\mid N$ then $z_D$
+    is the reduction of $z_N$ and is hence 0. By lemma~\ref{ZHat.multiples} we deduce that $z=Dy$
+    is a multiple of~$D$, and hence $z/N=\frac{1}{N}\otimes_tDy=\frac{1}{E}\otimes y$, where
+    $E=N/D$. Now if a natural divided both $y_E$ and $E$ then this natural would divide both $z_N/D$
+    and $N/D$, contradicting the fact that $D$ is the greatest common divisor.
+
+    Uniqueness: if $z/N=w/M$, we deduce $1\otimes_t Mz=1\otimes_t Nw$,
+    and by injectivity of $\Zhat\to\Qhat$ we deduce that $Mz=Nw=y$.
+    In particular, if $L$ is the lowest common multiple of $M$ and $N$ then $y_L$ is a multiple of both $M$ and $N$ and is
+    hence zero, so $y=Lx$ is a multiple of~$L$ by~\ref{ZHat.multiples}, and we deduce
+    from torsionfreeness that $z=(L/M)x$ and $w=(L/N)x$. If some prime divided $L/M$
+    then it would have to divide~$N$ which means that $z$ is not in lowest terms;
+    similarly if some prime divided $L/N$ then $w/M$ would not be in lowest terms.
+    We deduce that $L=M=N$ and hence $z=w$ by torsionfreeness.
+\end{proof}
+```
+
 :::theorem "qhat_rational_embedding_injective" (parent := "automorphic_example_program")
 The natural map from `ℚ` into $`\widehat{\mathbf{Q}}`$ is injective.
 This is one of the two basic embedding results for the tensor-product model
@@ -277,6 +403,24 @@ The TeX chapter proves this using flatness of `ℚ` over `ℤ`. Its practical ro
 is to justify regarding ordinary rational numbers as honest elements of the
 finite-adelic toy model.
 :::
+
+```tex "QHat.injective_rat"
+\begin{lemma}
+    \label{QHat.injective_rat}
+    \lean{QHat.injective_rat}
+    \uses{QHat,ZHat.commRing}
+    \leanok
+    The ring homomorphism $\Q\to\Qhat$ sending $q$ to $q\otimes_t 1$
+    is injective.
+\end{lemma}
+\begin{proof} \leanok
+    We have seen that the map from $\Z$ to $\Zhat$ is
+    injective. Now $\Q$ is a flat $\Z$-module, because it's
+    torsion-free, so tensoring up we deduce that the map
+    from $\Q=\Q\otimes\Z$ to $\Qhat=\Q\otimes\Zhat$ is also injective.
+    There is no doubt a more elementary proof of this fact.
+\end{proof}
+```
 
 :::theorem "qhat_zhat_embedding_injective" (parent := "automorphic_example_program")
 The natural map from $`\widehat{\mathbf{Z}}`$ into $`\widehat{\mathbf{Q}}`$ is
@@ -290,6 +434,22 @@ This is the companion to {uses "qhat_rational_embedding_injective"}[]. The TeX
 proof uses torsionfreeness of `\widehat{\mathbf{Z}}` to justify treating
 `\widehat{\mathbf{Z}}` as a genuine subring of `\widehat{\mathbf{Q}}`.
 :::
+
+```tex "QHat.injective_zHat"
+\begin{lemma}
+    \label{QHat.injective_zHat}
+    \lean{QHat.injective_zHat}
+    \uses{QHat, ZHat.torsionfree}
+    \leanok
+    The ring homomorphism $\Zhat\to\Qhat$ sending
+    $z$ to $1\otimes_t z$ is injective.
+\end{lemma}
+\begin{proof} \leanok
+    The map from $\Z$ to $\Q$ is injective, and we have seen
+    that $\Zhat$ is a torsion-free and thus flat $\Z$-module,
+    so the map from $\Zhat$ to $\Qhat$ is also injective.
+\end{proof}
+```
 
 # Additive Structure Of Qhat
 
@@ -370,6 +530,20 @@ The TeX chapter rewrites this in the more concrete coordinate form too: a
 quaternion `a + bi + cj + dk` is Hurwitz precisely when either all four
 coordinates are integers or all four lie in `\mathbf{Z} + \frac12`.
 :::
+
+```tex "Hurwitz"
+\begin{definition}
+    \label{Hurwitz}
+    \lean{Hurwitz}
+    \leanok
+        The Hurwitz quaternions are the set $\calO := \Z\oplus\Z \omega\oplus\Z i\oplus
+    \Z i\omega$ (as an abstract abelian group or as a subgroup of the usual quaternions).
+    Here $\omega=\frac{-1+(i+j+k)}{2}$ and note that $(i+j+k)^2=-3$.
+    We have $\overline{\omega}=\omega^2=-(\omega+1)$. A general quaternion
+    $a+bi+cj+dk$ is a Hurwitz quaternion if either $a,b,c,d\in\Z$
+    or $a,b,c,d\in\Z+\frac{1}{2}$.
+\end{definition}
+```
 
 :::theorem "hurwitz_quaternions_form_ring" (parent := "automorphic_example_program")
 The Hurwitz quaternions form a ring.

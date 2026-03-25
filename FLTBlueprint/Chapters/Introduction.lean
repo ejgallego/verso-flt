@@ -20,10 +20,25 @@ no positive integer solutions. Diophantus was a Greek mathematician who lived
 around `1800` years ago, and he would have been able to understand the
 statement of the theorem.
 
+```tex "flt-intro-statement-tex"
+Fermat's Last Theorem is the statement that if $a,b,c,n$ are positive whole numbers with $n\geq 3$,
+then $a^n+b^n\not=c^n$. It is thus the claim that a family of \emph{Diophantine equations}
+($a^3+b^3=c^3, a^4+b^4=c^4,\ldots$) has no positive integer solutions.
+Diophantus was a Greek mathematician who lived around 1800
+years ago, and he would have been able to understand the statement of the theorem (he knew about
+positive integers, addition and multiplication).
+```
+
 Fermat's Last Theorem was explicitly raised by Fermat in `1637`, and was proved
 by Wiles, with the proof completed in joint work with Taylor, in `1994`. There
 are now several proofs, but all of them go broadly in the same direction, using
 elliptic curves and modular forms.
+
+```tex "flt-intro-history-tex"
+Fermat's Last Theorem was explicitly raised by Fermat in 1637, and was proved by Wiles (with the
+proof completed in joint work with Taylor) in 1994. There are now several proofs but all of them
+go broadly in the same direction, using elliptic curves and modular forms.
+```
 
 Lean is an interactive theorem prover; it checks mathematical arguments with
 super-human accuracy. Explaining a proof of Fermat's Last Theorem to Lean is in
@@ -33,6 +48,30 @@ invent or discover zero and negative numbers, and one can point explicitly at
 places in Lean's source code where these things happen. However, we will adopt
 a more efficient approach: we will assume all of the theorems both in core Lean
 and in its mathematics library `mathlib`, and proceed from there.
+
+```tex "flt-intro-lean-tex"
+Lean is an interactive theorem prover; it checks mathematical arguments with super-human accuracy.
+Explaining a proof of Fermat's Last Theorem to Lean is in some sense like explaining the proof to
+Diophantus; for example, the proof starts by observing that before we go any further it's convenient
+to first invent/discover zero and negative numbers, and one can point explicitly at places in Lean's
+source code \href{https://github.com/leanprover/lean4/blob/260eaebf4e804c9ac1319532970544a4e157c336/src/Init/Prelude.lean#L1049}{here}
+and \href{https://github.com/leanprover/lean4/blob/260eaebf4e804c9ac1319532970544a4e157c336/src/Init/Data/Int/Basic.lean#L45}{here}
+where these things happen. However we will adopt a more efficient approach: we will assume all of
+the theorems both in core Lean and in its mathematics library
+\href{https://github.com/leanprover-community/mathlib4}{\tt mathlib}, and proceed from there.
+To give some idea of what this entails: {\tt mathlib} at the time of writing contains most of an
+undergraduate mathematics degree and parts of several relevant Masters level courses (for example,
+the definitions and basic properties of
+\href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html}{elliptic curves}
+and \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/ModularForms/Basic.html}{modular forms}
+are in {\tt mathlib}). Thus our task can be likened to teaching a graduate level course on
+Fermat's Last Theorem to a computer. The computer is quite a challenging audience member -- it
+will insist on being given all technical details of all arguments, and it will not accept proof by
+intimidation or by appeal to higher authority. Most mathematicians know humans who also behave
+in this manner. However, it is worse than this; in 2025 at least, the computer will only start filling
+in details of arguments by itself once the arguments are mathematically utterly obvious.
+Thus, currently, formalization can be a very time-consuming process.
+```
 
 To give some idea of what this entails: `mathlib` at the time of writing
 contains most of an undergraduate mathematics degree and parts of several
@@ -72,6 +111,33 @@ known to humanity in the `1980`s. In particular, one naive way of understanding
 the goal is that it is a formalization of the papers of Wiles and
 Taylor--Wiles, assuming the results in the references of those papers. However,
 as noted above, we will actually be taking a slightly different path.
+
+```tex "flt-intro-which-proof-tex"
+\section{Which proof is being formalised?}
+
+At the time of writing, these notes do not contain anywhere near a proof of FLT, or even a sketch proof,
+although we are currently actively working on fixing this.
+
+From 2024 to 2029 we will be beginning to build a proof of FLT, following a strategy
+constructed by Taylor, taking into account Buzzard's comments on what would be easy or hard to do
+in Lean. Our strategy uses refinements of the original Taylor--Wiles method by Diamond/Fujiwara,
+Khare--Wintenberger, Skinner--Wiles, Kisin, Taylor and others. One could call it a 21st century
+proof of the theorem. During this initial phase of the project, we shall also be \emph{assuming}
+many nontrivial theorems without proof, as long as they were published by 31 December 1989.
+
+To get technical for just a second, we shall for example be assuming the
+existence of Galois representations attached to weight 2 Hilbert modular
+forms, Langlands' cyclic base change theorem for $\GL_2$, Mazur's theorem
+bounding the torsion subgroup of an elliptic curve over the rationals, and
+several other nontrivial results which were known by the end of the 1980s.
+
+The upshot of this is that, by 2029 at the end of this first phase, the
+project should contain a complete proof that FLT follows from results that were
+known to humanity in the 1980s. In particular, one naive way of understanding
+the goal is that it is a formalization of the papers of Wiles and
+Taylor--Wiles, assuming the results in the references of those papers. However,
+as noted above, we will actually be taking a slightly different path.
+```
 
 # The Structure Of This Blueprint
 

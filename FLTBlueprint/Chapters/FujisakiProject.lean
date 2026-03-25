@@ -36,6 +36,18 @@ that simultaneously generalizes class-group finiteness and Dirichlet's unit
 theorem; it explicitly follows Voight's presentation {Informal.citep voightBook}[].
 :::
 
+```tex "fujisaki_goal_raw"
+\section{The goal}
+
+There is an idelic compactness statement which encapsulates both finiteness of the class
+group of a number field and Dirichlet's units theorem about the rank of the unit group.
+In fact there is even a noncommutative version of this statement. In John Voight's
+book~\cite{voightbook} this is Main Theorem 27.6.14(a) and Voight calls it Fujisaki’s lemma.
+I know nothing of the history but I'm happy to adopt this name. In the quaternion algebra
+miniproject we will use this compactness result to prove finite-dimensionality of a
+space of quaternionic modular forms.
+```
+
 :::theorem "commutative_prototype_for_fujisaki" (parent := "fujisaki_project")
 The compact quotient theorem for a division algebra is meant to be the
 noncommutative analogue of the classical compactness of
@@ -82,6 +94,32 @@ reinterpret it as a unit. That shortcut is available only because the theorem is
 specialized to division algebras.
 :::
 
+```tex "fujisaki_initial_definitions_raw"
+\section{Initial definitions}
+
+Let $K$ be a field. A \emph{central simple $K$-algebra} is a $K$-algebra~$B$ (not necessarily
+commutative) with centre $K$ such that $B$ has exactly two two-sided ideals, namely ${0}$ and $B$
+(or $\bot$ and $\top$, as Lean would call them). We will be concerned
+only with central simple $K$-algebras which are finite-dimensional as $K$-vector spaces, and
+when $K$ is clear we will just refer to them as central simple algebras. We remark that a
+4-dimensional central simple algebra is called a \emph{quaternion algebra}; we will have
+more to say about these later on.
+
+Matrix algebras $M_n(K)$ are examples of finite-dimensional central simple $K$-algebras.
+If $K=\bbC$ (or more generally if $K$ is algebraically closed)
+then matrix algebras are the only finite-dimensional examples
+up to isomorphism. There are other examples over the reals: for example Hamilton's quaternions
+$\bbH:=\R\oplus\R i\oplus\R j\oplus\R k$ with the usual rules $i^2=j^2=k^2=-1$,
+$ij=-ji=k$ etc, are an example of a central simple $\R$-algebra (and a quaternion algebra), and
+matrix algebras over $\bbH$ are other central simple $\R$-algebras.
+For a general field $K$
+one can make an analogue of Hamilton's quaternions $K\oplus Ki\oplus Kj\oplus Kk$ with the
+same multiplication rules ($i^2=-1$ and so on) to describe the multiplication, and if the characteristic
+of~$K$ isn't 2
+then this is a quaternion algebra (which may or may not be isomorphic to $M_2(K)$ in this
+generality).
+```
+
 # Enter the adeles
 
 :::definition "adelic_division_algebra_setup" (parent := "fujisaki_project")
@@ -112,6 +150,24 @@ The TeX chapter pauses to note this because `D_A` is often viewed both as
 introduced when switching between those viewpoints.
 :::
 
+```tex "fujisaki_enter_adeles_raw"
+\section{Enter the adeles}
+
+The adeles of a number field are discussed in far more detail
+in the adele miniproject \ref{Adele_miniproject}. We just recall here that if $K$ is a number field
+then there are two huge commutative topological $K$-algebras called the \emph{finite adeles}
+$\A_K^\infty$ and the \emph{adeles} $\A_K$ of $K$, and that they're both locally compact
+as topological spaces. We also know from theorem~\ref{NumberField.AdeleRing.baseChangeEquiv}
+that $\A_K\cong K\otimes_{\Q}\A_{\Q}K$ (both topologically and algebraically), meaning
+that if $R$ is a $K$-algebra then $R_{\A} := R\otimes_K\A_K$ is naturally isomorphic
+to $R\otimes_{\Q}\A_{\Q}$. One can
+furthermore check that if $R$ is a finite $K$-algebra then the $\A_K$-module topologies and $\A_{\Q}$-module
+topologies on $R_{\A}$ coincide. Indeed, the topology on $\A_K$
+is the $\A_{\Q}$-module topology, as
+$\A_K=\A_{\Q}\otimes_{\Q}K$ as topological $\A_{\Q}$-algebras, where the right hand side
+has the $\A_{\Q}$-module topology by definition.
+```
+
 # The proof
 
 :::theorem "large_compact_set_mod_d_exists" (parent := "fujisaki_project")
@@ -131,6 +187,33 @@ One then chooses a compact set whose Haar measure is larger than the measure of
 the quotient. Any translate of that set must then intersect two points mapping
 to the same quotient class.
 :::
+
+```tex "fujisaki_first_proof_raw"
+\section{The proof}
+
+We prove the theorem via a series of lemmas.
+
+\begin{lemma}
+  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
+  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
+  \leanok
+  There's a compact subset $E$ of $D_{\A}$
+  with the property that for all $x\in D_{\A}^{(1)}$,
+  the obvious map $xE\to D\backslash D_{\A}$ is not injective.
+\end{lemma}
+
+\begin{proof}
+  \leanok
+  We know that if we pick a $\Q$-basis for $D$
+  of size $d$ then this identifies $D$ with $\Q^d$,
+  $D_{\A}$ with $\A_{\Q}^d$, and $D\backslash D_{\A}$ with
+  $(\Q\backslash\A_{\Q})^d$. Now $\Q$ is discrete in $\A_{\Q}$
+  by theorem~\ref{NumberField.AdeleRing.discrete}, and the quotient
+  $\Q\backslash \A_{\Q}$ is compact by theorem~\ref{Rat.AdeleRing.cocompact}.
+  Hence $D$ is discrete in $D_{\A}$
+  and the quotient $D\backslash D_{\A}$ is compact.
+\end{proof}
+```
 
 :::definition "difference_set_x_for_fujisaki" (parent := "fujisaki_project")
 From the compact set `E`, define the difference set `X = E - E`.

@@ -53,6 +53,31 @@ definite quaternion algebra $`D/F`, and from there invokes Fujisaki's theorem
 to conclude that $`D^\times \backslash (D \otimes_F \A_F)^{(1)}` is compact.
 :::
 
+```tex "totally_definite_quaternion_algebra_setup"
+\section{Initial definitions}
+
+Our first goal in this miniproject is the definition of these spaces of quaternionic modular forms.
+We start with some preliminary work towards this.
+
+Let $K$ be a field. Recall that a \emph{quaternion algebra}
+over $K$ is a central simple $K$-algebra of $K$-dimension~4.
+
+A fundamental fact about central simple algebras is that if $D/K$
+is a central simple $K$-algebra and $L/K$ is an extension of fields, then $D\otimes_KL$
+is a central simple $L$-algebra. In particular if $D$ is a quaternion algebra over $K$
+then $D\otimes_KL$ is a quaternion algebra over $L$. Some Imperial undergraduate students have established
+this fact in ongoing project work.
+
+A \emph{totally real field} is a number field~$F$ such that the image of every ring
+homomorphism $F\to\bbC$ is a subset of $\R$. We fix once and for all a totally real field~$F$ and a
+quaternion algebra $D$ over $F$. We furthermore assume that $D$ is \emph{totally definite}, that is,
+that for all field embeddings $\tau:F\to\R$ we have $D\otimes_{F,\tau}\R\cong\bbH$. Because $F$
+has at least one real place, the totally definite hypothesis is enough to show that $D$
+is not a matrix algebra and thus must be a division algebra. Thus Fujisaki's theorem (theorem~\ref{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}
+from the Fujisaki miniproject) applies, and we know that $D^\times\backslash (D\otimes_F\A_F)^{(1)}$
+is compact.
+```
+
 The high-falutin' explanation of what is about to happen is that the units
 $`D^\times` of $`D` can be regarded as a connected reductive algebraic group
 over $`F`, and we are going to define certain spaces of automorphic forms for
@@ -126,6 +151,45 @@ $`f : D_{\A^\infty}^\times \to R` satisfying the following axioms:
   all $`g \in D_{\A^\infty}^\times` and $`u \in U`
 :::
 
+```tex "weight_two_quaternionic_forms"
+\section{Definition of spaces of automorphic forms}
+
+Let us now give some precise definitions. Recall that by $\A_F^\infty$ we mean
+the finite adeles of the totally real number field $F$.
+
+A level is a compact open subgroup~$U$ of $(D\otimes_F\A_F^\infty)^\times$.
+These are plentiful. The ring $D_f:=D\otimes_F\A_F^\infty$ is a topological
+ring, and hence the units $D_f^\times$ of this ring are a topological group.
+This group is locally profinite, and hence has many compact open subgroups; we
+will see explicit examples later on.
+
+We regard $\A_F^\infty$ as a subring of
+$D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because $F$ is a
+subring of $D$. More precisely, we embed $\A_F^\infty$ into
+$D\otimes_F\A_F^\infty$ via the map sending $g$ to $1\otimes g$. Because $F$ is
+in the centre of $D$, we have that $\A_F^\infty$ is in the centre of
+$D_{\A^\infty}$. As a consequence we can identify $(\A_F^\infty)^\times$ as a
+subgroup of $(D\otimes_F\A_F^\infty)^\times$. We may also regard $D$ as a
+subring of $D\otimes_F\A_F^\infty$ via the map $d\mapsto d\otimes 1$, and hence
+we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
+
+Let $R$ be an additive commutative group. Later on $R$ will be a commutative
+ring but we will not need this for the definition.
+\begin{definition}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
+  \leanok
+  The space of $R$-valued \emph{automorphic forms} for $D^\times$ is the set of
+  functions $f:D_{\A^\infty}^\times\to R$ satisfying the following axioms:
+  \begin{itemize}
+    \item $f(dg)=f(g)$ for all $d\in D^\times$ and $g\in D_{\A^\infty}^\times$.
+    \item $f(gz)=f(g)$ for all $g\in D_{\A^\infty}^\times$.
+    \item There exists a compact open subgroup $U\subseteq (D_{\A^f}^\times)$
+      such that $f(gu)=f(g)$ for all $g\in D_{\A^\infty}^\times$ and $u\in U$.
+  \end{itemize}
+\end{definition}
+```
+
 Let $`S^D(R)` denote the set of automorphic forms for $`D^\times`. The space
 $`S^D(R)` is sometimes referred to as a space of quaternionic modular forms over
 $`R`. Three basic observations about $`S^D(R)` are as follows.
@@ -135,12 +199,35 @@ Pointwise addition $`(f_1 + f_2)(g) := f_1(g) + f_2(g)` makes $`S^D(R)` into an
 additive abelian group. This depends on {uses "weight_two_quaternionic_forms"}[].
 :::
 
+```tex "automorphic_forms_additive_group"
+\begin{definition}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
+  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
+  \leanok
+  Pointwise addition $(f_1 + f_2)(g) := f_1(g) + f_2(g)$ makes $S^D(R)$ into an
+  additive abelian group.
+\end{definition}
+```
+
 :::definition "automorphic_forms_module" (parent := "quaternion_algebra_project")
 If $`R` is a commutative ring then pointwise scalar multiplication
 $`(r \cdot f)(g) := r \cdot f(g)` makes $`S^D(R)` into an $`R`-module. This
 depends on {uses "weight_two_quaternionic_forms"}[] and
 {uses "automorphic_forms_additive_group"}[].
 :::
+
+```tex "automorphic_forms_module"
+\begin{definition}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
+  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
+    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
+  \leanok
+  If $R$ is a commutative ring then pointwise scalar multiplication $(r \cdot f)(g) := r \cdot f(g)$ makes
+  $S^D(R)$ into an $R$-module.
+\end{definition}
+```
 
 :::definition "adelic_right_action_on_quaternionic_forms" (parent := "quaternion_algebra_project")
 The group $`D_{\A^\infty}^\times` acts on the additive abelian group $`S^D(R)`
@@ -149,6 +236,18 @@ by $`(g \cdot f)(x) = f(xg)`. This depends on
 {uses "automorphic_forms_additive_group"}[], and
 {uses "automorphic_forms_module"}[].
 :::
+
+```tex "adelic_right_action_on_quaternionic_forms"
+\begin{definition}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
+  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
+    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
+    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
+  \leanok
+  The group $D_{\A^f}^\times$ acts on the additive abelian group $S^D(R)$ by $(g \cdot f)(x) = f(xg)$.
+\end{definition}
+```
 
 If $`R` is a commutative ring then the action of $`D_{\A^\infty}^\times`
 commutes with the $`R`-action.
@@ -164,6 +263,19 @@ depends on {uses "weight_two_quaternionic_forms"}[],
 {uses "adelic_right_action_on_quaternionic_forms"}[], and
 {uses "automorphic_forms_module"}[].
 :::
+
+```tex "weight_two_quaternionic_forms_of_level"
+\begin{definition}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
+  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
+    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
+    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction,
+    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
+  \leanok
+  The quaternionic modular forms of level $U$, with notation $S^D(U;R)$, are the $U$-invariants for the $D_{\A^\infty}^\times$-action on $S^D(R)$.
+\end{definition}
+```
 
 The Hecke algebras involved in the main modularity lifting theorems needed in
 the FLT project will be endomorphisms of these spaces $`S^D(U;R)`.

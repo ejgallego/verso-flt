@@ -29,6 +29,15 @@ is fully formalized or that every placeholder has disappeared. A chapter can be
 high-fidelity as prose and still depend on informal nodes, explicit
 assumptions, or unresolved Lean links.
 
+The TeX source of truth for these chapter trackers lives in
+`FLT/blueprint/src/chapter/*.tex`, together with the corresponding top-level
+chapter wrappers. The harness status pages summarize the local porting state;
+they do not replace the TeX source itself.
+
+The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so
+open source snippets can be attached locally in raw form when that is the
+cleanest way to keep the chapter close to the TeX source of truth.
+
 # Main Expository Chapters
 
 :::definition "main_expository_porting_status" (parent := "porting_status")
@@ -92,4 +101,55 @@ automorphic-form example is no longer just sketched in Verso. The main
 remaining fidelity frontier is:
 
 - the intentional frontier material in `GlobalLanglands.lean`
+:::
+
+:::definition "chapter_audit_todo_index" (parent := "porting_status")
+The repository-level chapter audit is now tracked as source-backed local TeX
+block tasks rather than as a stale exact-match checklist. Each item points at
+the corresponding TeX snippet in `FLT/blueprint/src/chapter/*.tex` and records
+the local Verso follow-up needed for that block.
+
+When the right follow-up is to keep the source visible, attach the raw excerpt
+in a labeled `tex` block next to the local note or proof instead of rewriting
+it away.
+
+Highlights from this audit:
+
+- `Introduction`, `Overview`, and `LanglandsGLn` remain among the cleanest
+  source-backed chapter blocks.
+- `Reductions`, `FrobeniusProject`, `AdeleProject`, and most miniproject
+  chapters still need focused dependency `\uses` work at the block level.
+- `GlobalLanglands` still has placeholder `\lean` entries in the TeX source, so
+  the relevant local task is to track the frontier faithfully rather than force
+  exact `lean :=` matching.
+:::
+
+:::definition "chapter_audit_todo_summary" (parent := "porting_status")
+Chapter-by-chapter tracker:
+
+- `Introduction` (`ch01introduction.tex` -> `Introduction.lean`)
+  Source-backed local TeX block tasks remain current, and the chapter-level
+  Verso structure is in good shape.
+- `Reductions` (`ch02reductions.tex` -> `Reductions.lean`)
+  The audit work here is still organized around the local TeX blocks rather
+  than a stale exact-declaration match.
+- `Elliptic-Frey` (`ch03freyold.tex` -> `EllipticFrey.lean`)
+- `Hardly Ramified` (`ch03freyreduction.tex` -> `HardlyRamified.lean`)
+- `Overview` (`ch04overview.tex` -> `Overview.lean`)
+- `Automorphic Form Example` (`ch05automorphicformexample.tex` -> `AutomorphicFormExample.lean`)
+- `Modularity Lifting` (`ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`)
+- `Langlands GLn` (`ch07exampleGLn.tex` -> `LanglandsGLn.lean`)
+- `Global Langlands` (`global_langlands.tex` -> `GlobalLanglands.lean`)
+  The remaining tasks here are still frontier-tracking tasks tied to the local
+  TeX source blocks.
+- `Frobenius Project` (`FrobeniusProject.tex` -> `FrobeniusProject.lean`)
+- `Adele Project` (`AdeleMiniproject.tex` -> `AdeleProject.lean`)
+- `Haar Characters` (`HaarCharacterProject.tex` -> `HaarCharacters.lean`)
+- `Fujisaki Project` (`FujisakiProject.tex` -> `FujisakiProject.lean`)
+- `Quaternion Algebras` (`QuaternionAlgebraProject.tex` -> `QuaternionAlgebras.lean`)
+- `Hecke Operators` (`HeckeOperatorProject.tex` -> `HeckeOperators.lean`)
+- `Bestiary` (`chtopbestiary.tex` -> `Bestiary.lean`)
+- `MiniProjects` (harness-native)
+- `Historical Inputs` (harness-native)
+- `Porting Status` (harness-native)
 :::

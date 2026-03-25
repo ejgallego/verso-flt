@@ -23,6 +23,25 @@ The ultimate goal is to formally state some version of the global Langlands
 reciprocity conjectures for $`\GL_n` over $`\Q`.
 :::
 
+```tex "ch07exampleGLn/introduction"
+\chapter{Automorphic forms and the Langlands Conjectures}
+
+This chapter came from discussions between Patrick, Mario and myself, all currently
+visiting the Hausdorff Research Institute for
+Mathematics in Bonn. The ultimate goal is to formally state some version of the global Langlands
+reciprocity conjectures for $\GL_n$ over $\Q$.
+
+\section[Definition of an automorphic form]{Definition of an automorphic form for $\GL_n$ over $\Q$.}
+
+The global Langlands reciprocity conjectures relate automorphic forms to Galois representations.
+The statements for a general connected reductive group involve the construction of the Langlands
+dual group, and we do not have quite enough Lie algebra theory to push this definition through
+in general. However if we restrict the special case of the group $\GL_n/\Q$, the dual group
+is just $\GL_n(\bbC)$ and several other technical obstructions are also removed. In this
+section we will explain the definition of an automorphic form for the group $\GL_n/\Q$, following
+the exposition by Borel and Jacquet in Corvallis.
+```
+
 # Definition Of An Automorphic Form For GLn Over Q
 
 The global Langlands reciprocity conjectures relate automorphic forms to Galois
@@ -59,6 +78,23 @@ the following three properties:
 3. For all $`y \in \GL_n(\R)`, the function $`x \mapsto f(x,y)` is locally constant.
 :::
 
+```tex "ch07exampleGLn/smooth_functions"
+\section{Smooth functions}
+
+\begin{definition}
+  \label{AutomorphicForm.GLn.IsSmooth}
+  \lean{AutomorphicForm.GLn.IsSmooth}
+  A function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is \emph{smooth}
+  if it has the following three properties.
+
+  \begin{enumerate}
+    \item $f$ is continuous.
+    \item For all $x\in\GL_n(\A_{\Q}^f)$, the function $y\mapsto f(x,y)$ is smooth.
+    \item For all $y\in\GL_n(\R)$, the function $x\mapsto f(x,y)$ is locally constant.
+  \end{enumerate}
+\end{definition}
+```
+
 Current state of this definition: it is only half-formalized. The issue is how
 to say the function is smooth on the infinite part, because the manifold
 library interface is not yet settled here.
@@ -79,6 +115,27 @@ is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 :::
 
+```tex "ch07exampleGLn/slowly_increasing_functions"
+\section{Slowly-increasing functions}
+
+Automorphic representations satisfy a growth condition which we may as well
+factor out into a separate definition.
+
+We define the following temporary size function $s : \GL_n(\R) \to \R$ by
+$s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})$, where $M^{-T}$ denotes
+inverse-transpose. Note that $s(M)$ is always positive, and is large if $M$
+has a very large or very small, in absolute value, eigenvalue.
+
+\begin{definition}
+  \label{AutomorphicForm.GLn.IsSlowlyIncreasing}
+  \lean{AutomorphicForm.GLn.IsSlowlyIncreasing}
+  \leanok
+  We say that a function $f:\GL_n(\R)\to\bbC$ is \emph{slowly-increasing}
+  if there's some real constant $C$ and positive integer $n$ such that $|f(M)|\leq Cs(M)^n$
+  for all $M\in\GL_n(\R)$.
+\end{definition}
+```
+
 The TeX note remarks that the book says $`n` is positive, but since
 $`\{ M \mid s(M) \leq 1 \}` is compact, this may make no difference.
 
@@ -90,6 +147,19 @@ finite-dimensional continuous complex representation $`\rho` of a maximal
 compact subgroup of $`\GL_n(\R)`, and it is convenient to choose one. We choose
 $`O_n(\R)`.
 :::
+
+```tex "ch07exampleGLn/weights_at_infinity"
+\section{Weights at infinity}
+
+\begin{definition}
+  \label{AutomorphicForm.GLn.Weight}
+  \lean{AutomorphicForm.GLn.Weight}
+
+The \emph{weight} of an automorphic form for $\GL_n/\Q$ can be thought of as a finite-dimensional
+continuous complex representation $\rho$ of a maximal compact subgroup of $\GL_n(\R)$,
+and it's convenient to choose one (they're all conjugate) so we choose $O_n(\R)$.
+\end{definition}
+```
 
 The Lean definition is incomplete right now. It does not yet demand
 irreducibility, because it is not clear that the current packaging of

@@ -19,6 +19,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - The source of truth for the mathematics is the existing FLT formalization in
   `FLT/**/*.lean` together with `FLT/FermatsLastTheorem.lean`.
+- The source of truth for the TeX prose structure is
+  `FLT/blueprint/src/chapter/*.tex`.
 - When a Verso blueprint node refers to existing formalized mathematics, prefer
   `(lean := "...")` links to the real declaration names in those FLT files.
 - Do not duplicate existing FLT declarations into the blueprint just to make a
@@ -86,6 +88,10 @@ This repository is the integration layer for the FLT Verso blueprint.
   references whenever the target exists in the blueprint graph. Put these
   references inside informal nodes or proofs, not in free prose, so they are
   actually captured by the rendered dependency graph.
+- When the source still needs to be shown verbatim, attach the raw TeX locally
+  in a labeled `tex` block. The refreshed VersoBlueprint 4.28 branch supports
+  this directly, so use it for source-backed notes instead of rewriting the
+  passage into placeholder prose.
 - For each blueprint node, prefer attaching the real FLT declaration with
   `(lean := "...")`.
 - Before adding a Lean reference, check that the needed FLT module chain can be
@@ -121,6 +127,9 @@ This repository is the integration layer for the FLT Verso blueprint.
   chain is already root-harness-clean on the current toolchain.
 - After each real Lean edit, validate the edited file with one-module-at-a-time
   `lean-beam sync`. Do not run multiple syncs in parallel for this repo root.
+- If the source block is still open, prefer a local `tex` block carrying the
+  raw TeX excerpt over a rewritten placeholder. That keeps the board and the
+  chapter close to the TeX source of truth.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.
 - Keep the root build green. If a faithful Lean link would pull in rc6-broken
   imports, leave the chapter informal and note the dependency in prose instead

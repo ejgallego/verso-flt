@@ -41,6 +41,13 @@ For an elliptic curve over a separably closed field of characteristic prime to
 `n`, the `n`-torsion has cardinality `n²`.
 :::
 
+```tex "WeierstrassCurve.n_torsion_card"
+\begin{theorem}\label{WeierstrassCurve.n_torsion_card}\lean{WeierstrassCurve.n_torsion_card}\notready
+  Let $n$ be a positive integer, let $F$ be a separably closed
+  field with $n$ nonzero in $F$, and let $E$ be an elliptic curve over $F$.
+\end{theorem}
+```
+
 :::proof "elliptic_curve_torsion_cardinality"
 The TeX chapter treats this as classical. One proof runs through division
 polynomials; the original blueprint notes that this route was being formalized
@@ -54,6 +61,12 @@ following purely group-theoretic lemma.
 If the `d`-torsion in an abelian group has size `d^r` for every divisor `d` of
 `n`, then the `n`-torsion is isomorphic to `(\mathbf{Z}/n\mathbf{Z})^r`.
 :::
+
+```tex "group_theory_lemma"
+\begin{lemma}\label{group_theory_lemma}\lean{group_theory_lemma}
+  Say $n$ is a positive integer, $r$ is a natural, and $A$ is an abelian group.
+\end{lemma}
+```
 
 :::proof "torsion_group_structure_lemma"
 The TeX proof argues by writing the finite abelian group in invariant-factor
@@ -69,6 +82,13 @@ For an elliptic curve over a field of characteristic prime to `n`, the
 `n`-torsion over a separable closure is a two-dimensional
 `\mathbf{Z}/n\mathbf{Z}` module.
 :::
+
+```tex "Elliptic_curve_n_torsion_2d"
+\begin{corollary}\label{Elliptic_curve_n_torsion_2d}\lean{WeierstrassCurve.n_torsion_dimension}\leanok
+  Let $n$ be a positive integer, let $F$ be a separably closed
+  field with $n$ nonzero in $F$, and let $E$ be an elliptic curve over $F$.
+\end{corollary}
+```
 
 :::proof "elliptic_curve_torsion_two_dimensional"
 This is the corollary the TeX chapter draws from

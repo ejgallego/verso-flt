@@ -1,0 +1,379 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import re
+from dataclasses import dataclass, field
+from pathlib import Path
+
+
+CHAPTERS = [
+    ("ch01introduction.tex", "Introduction.lean"),
+    ("ch02reductions.tex", "Reductions.lean"),
+    ("ch03freyold.tex", "EllipticFrey.lean"),
+    ("ch03freyreduction.tex", "HardlyRamified.lean"),
+    ("ch04overview.tex", "Overview.lean"),
+    ("ch05automorphicformexample.tex", "AutomorphicFormExample.lean"),
+    ("ch06automorphicrepresentations.tex", "ModularityLifting.lean"),
+    ("ch07exampleGLn.tex", "LanglandsGLn.lean"),
+    ("global_langlands.tex", "GlobalLanglands.lean"),
+    ("FrobeniusProject.tex", "FrobeniusProject.lean"),
+    ("AdeleMiniproject.tex", "AdeleProject.lean"),
+    ("HaarCharacterProject.tex", "HaarCharacters.lean"),
+    ("FujisakiProject.tex", "FujisakiProject.lean"),
+    ("QuaternionAlgebraProject.tex", "QuaternionAlgebras.lean"),
+    ("HeckeOperatorProject.tex", "HeckeOperators.lean"),
+    ("chtopbestiary.tex", "Bestiary.lean"),
+]
+
+TARGET_ENVS = {
+    "theorem",
+    "lemma",
+    "corollary",
+    "proposition",
+    "definition",
+    "example",
+    "remark",
+    "proof",
+}
+
+FORMAL_ENVS = {
+    "theorem",
+    "lemma",
+    "corollary",
+    "proposition",
+    "definition",
+    "example",
+}
+
+COMPLETION_FLAGS = {"leanok", "mathlibok"}
+PLACEHOLDER_LEAN_TARGETS = {"???", "TODO", "TBD", "FIXME"}
+OPEN_PROOF_MARKERS = (
+    "not ready",
+    "notready",
+    "todo",
+    "omitted for now",
+    "omit the argument",
+    "we omit",
+    "for now",
+    "presumably",
+    "need checking",
+    "i have not yet",
+    "i have not thought",
+    "not yet",
+    "maybe",
+)
+
+BEGIN_RE = re.compile(r"\\begin\{([A-Za-z*]+)\}(?:\[(.*?)\])?")
+END_RE = re.compile(r"\\end\{([A-Za-z*]+)\}")
+CHAPTER_RE = re.compile(r"\\chapter(?:\[[^\]]*\])?\{([^}]*)\}")
+LABEL_RE = re.compile(r"\\label\{([^}]*)\}")
+LEAN_RE = re.compile(r"\\lean\{([^}]*)\}")
+USES_RE = re.compile(r"\\uses\{([^}]*)\}")
+
+
+@dataclass
+class EnvNode:
+    kind: str
+    start_line: int
+    end_line: int | None = None
+    title: str | None = None
+    lines: list[str] = field(default_factory=list)
+    labels: list[str] = field(default_factory=list)
+    leans: list[str] = field(default_factory=list)
+    uses: list[str] = field(default_factory=list)
+    flags: set[str] = field(default_factory=set)
+    open_reasons: list[str] = field(default_factory=list)
+
+    def text(self) -> str:
+        return "\n".join(self.lines)
+
+
+@dataclass
+class ChapterData:
+    tex_path: Path
+    lean_path: str
+    title: str
+    raw_lines: list[str]
+    nodes: list[EnvNode]
+
+    @property
+    def open_nodes(self) -> list[EnvNode]:
+        return [node for node in self.nodes if node.open_reasons]
+
+
+def strip_tex_comment(line: str) -> str:
+    return re.sub(r"(?<!\\)%.*$", "", line)
+
+
+def extract_metadata(text: str) -> tuple[list[str], list[str], list[str], set[str]]:
+    labels = LABEL_RE.findall(text)
+    leans = LEAN_RE.findall(text)
+    uses = [chunk.strip() for chunk in USES_RE.findall(text)]
+    flags = set()
+    for flag in COMPLETION_FLAGS | {"notready"}:
+        if rf"\\{flag}" in text:
+            flags.add(flag)
+    return labels, leans, uses, flags
+
+
+def metadata_excerpt(lines: list[str], limit: int = 10) -> list[str]:
+    excerpt: list[str] = []
+    for index, line in enumerate(lines):
+        stripped = strip_tex_comment(line)
+        begins_here = [m for m in BEGIN_RE.finditer(stripped) if m.group(1) in TARGET_ENVS]
+        if index > 0 and begins_here:
+            break
+        excerpt.append(line)
+        if len(excerpt) >= limit:
+            break
+    return excerpt
+
+
+def parse_chapter(tex_path: Path, lean_path: str) -> ChapterData:
+    raw_lines = tex_path.read_text(encoding="utf-8").splitlines()
+    chapter_title = tex_path.stem
+    active: list[EnvNode] = []
+    nodes: list[EnvNode] = []
+
+    for line_no, raw_line in enumerate(raw_lines, start=1):
+        stripped = strip_tex_comment(raw_line)
+
+        chapter_match = CHAPTER_RE.search(stripped)
+        if chapter_match and chapter_title == tex_path.stem:
+            chapter_title = chapter_match.group(1).strip()
+
+        for node in active:
+            node.lines.append(raw_line)
+
+        begins = [m for m in BEGIN_RE.finditer(stripped) if m.group(1) in TARGET_ENVS]
+        for match in begins:
+            kind = match.group(1)
+            title = match.group(2).strip() if match.group(2) else None
+            active.append(
+                EnvNode(
+                    kind=kind,
+                    start_line=line_no,
+                    title=title,
+                    lines=[raw_line],
+                )
+            )
+
+        ends = [m for m in END_RE.finditer(stripped) if m.group(1) in TARGET_ENVS]
+        for match in ends:
+            kind = match.group(1)
+            for index in range(len(active) - 1, -1, -1):
+                if active[index].kind == kind:
+                    node = active.pop(index)
+                    node.end_line = line_no
+                    nodes.append(node)
+                    break
+
+    for node in nodes:
+        header_text = "\n".join(strip_tex_comment(line) for line in metadata_excerpt(node.lines))
+        full_text = "\n".join(strip_tex_comment(line) for line in node.lines)
+        labels, leans, uses, flags = extract_metadata(header_text)
+        node.labels = labels
+        node.leans = leans
+        node.uses = uses
+        node.flags = flags
+        node.open_reasons = open_reasons(node, header_text, full_text)
+
+    return ChapterData(
+        tex_path=tex_path,
+        lean_path=lean_path,
+        title=chapter_title,
+        raw_lines=raw_lines,
+        nodes=nodes,
+    )
+
+
+def display_name(node: EnvNode) -> str:
+    if node.labels:
+        return node.labels[0]
+    if node.leans:
+        return node.leans[0]
+    if node.title:
+        return node.title
+    return f"{node.kind} @{node.start_line}"
+
+
+def lean_targets_are_placeholder(node: EnvNode) -> bool:
+    if not node.leans:
+        return False
+    return any(lean.strip() in PLACEHOLDER_LEAN_TARGETS for lean in node.leans)
+
+
+def has_completion_flag(node: EnvNode) -> bool:
+    return bool(node.flags & COMPLETION_FLAGS)
+
+
+def proof_looks_unfinished(text: str) -> bool:
+    lower = text.lower()
+    return any(marker in lower for marker in OPEN_PROOF_MARKERS)
+
+
+def open_reasons(node: EnvNode, header_text: str, full_text: str) -> list[str]:
+    reasons: list[str] = []
+
+    if node.kind in FORMAL_ENVS:
+        if not node.leans:
+            reasons.append("no `\\lean{...}` target")
+        elif lean_targets_are_placeholder(node):
+            reasons.append("placeholder Lean target")
+        if not has_completion_flag(node):
+            reasons.append("missing `\\leanok` / `\\mathlibok`")
+        if "notready" in node.flags:
+            reasons.append("explicit `\\notready` marker")
+
+    if node.kind == "proof":
+        if "notready" in node.flags:
+            reasons.append("explicit `\\notready` marker")
+        elif proof_looks_unfinished(full_text):
+            reasons.append("proof sketch still reads as unfinished")
+
+    return reasons
+
+
+def first_nonempty_lines(lines: list[str], limit: int) -> list[str]:
+    out: list[str] = []
+    for line in lines:
+        out.append(line.rstrip())
+        if len(out) >= limit:
+            break
+    return out
+
+
+def snippet_for_node(node: EnvNode, limit: int = 10) -> str:
+    return "\n".join(first_nonempty_lines(node.lines, limit))
+
+
+def representative_snippet(chapter: ChapterData) -> str:
+    open_nodes = chapter.open_nodes
+    if open_nodes:
+        return snippet_for_node(open_nodes[0], limit=12)
+    if chapter.nodes:
+        return snippet_for_node(chapter.nodes[0], limit=12)
+    return "\n".join(first_nonempty_lines(chapter.raw_lines, limit=12))
+
+
+def render_node_task(node: EnvNode) -> list[str]:
+    lines: list[str] = []
+    title = display_name(node)
+    reason = "; ".join(node.open_reasons)
+    lines.append(f"- [ ] `{title}` needs attention: {reason}.")
+
+    metadata_bits: list[str] = []
+    if node.labels:
+        metadata_bits.append("labels: " + ", ".join(f"`\\label{{{label}}}`" for label in node.labels))
+    if node.leans:
+        metadata_bits.append("lean: " + ", ".join(f"`\\lean{{{lean}}}`" for lean in node.leans))
+    if node.uses:
+        metadata_bits.append("uses: " + ", ".join(f"`\\uses{{{use}}}`" for use in node.uses))
+    if node.flags:
+        metadata_bits.append("flags: " + ", ".join(f"`\\{flag}`" for flag in sorted(node.flags)))
+    if metadata_bits:
+        lines.append("  - metadata: " + "; ".join(metadata_bits) + ".")
+
+    lines.append("  - source:")
+    lines.append("```tex")
+    lines.extend(f"{line}" for line in snippet_for_node(node).splitlines())
+    lines.append("```")
+    return lines
+
+
+def render_chapter(chapter: ChapterData) -> list[str]:
+    lines: list[str] = []
+    tex_name = chapter.tex_path.name
+    lines.append(f"## {chapter.title}")
+    lines.append(f"- Source: `{tex_name}` -> `{chapter.lean_path}`")
+    lines.append(f"- Scanned nodes: {len(chapter.nodes)}")
+
+    open_nodes = chapter.open_nodes
+    if open_nodes:
+        formal_open = sum(1 for node in open_nodes if node.kind in FORMAL_ENVS)
+        proof_open = sum(1 for node in open_nodes if node.kind == "proof")
+        lines.append(
+            f"- Open work: {len(open_nodes)} source nodes need port attention "
+            f"({formal_open} formal statements, {proof_open} proof sketches)."
+        )
+        lines.append("- Tasks:")
+        for node in open_nodes:
+            lines.extend(render_node_task(node))
+    else:
+        lines.append("- [x] No formal statements or proof sketches are currently flagged as open in the source.")
+
+    lines.append("- Representative source:")
+    lines.append("```tex")
+    lines.extend(representative_snippet(chapter).splitlines())
+    lines.append("```")
+    return lines
+
+
+def generate_markdown(chapters: list[ChapterData]) -> str:
+    total_nodes = sum(len(chapter.nodes) for chapter in chapters)
+    total_open = sum(len(chapter.open_nodes) for chapter in chapters)
+    total_chapters = len(chapters)
+    open_chapters = sum(1 for chapter in chapters if chapter.open_nodes)
+
+    lines: list[str] = []
+    lines.append("# TeX to Verso Porting Task Board")
+    lines.append("")
+    lines.append(
+        "Generated from `FLT/blueprint/src/chapter/*.tex` by `scripts/update_porting_todo.py`."
+    )
+    lines.append("")
+    lines.append("This board is driven by source markers rather than stale cross-chapter match counts.")
+    lines.append("It treats `\\leanok` and `\\mathlibok` as closed, and surfaces explicit `\\notready`,")
+    lines.append("placeholder Lean targets, and unfinished proof sketches as open work.")
+    lines.append(
+        "When a source block is still open, keep the raw TeX nearby in a labeled `tex` block"
+        " instead of rewriting it into placeholder prose."
+    )
+    lines.append("")
+    lines.append("## Snapshot")
+    lines.append(f"- Mapped TeX chapters scanned: {total_chapters}")
+    lines.append(f"- Source nodes scanned: {total_nodes}")
+    lines.append(f"- Chapters with open work: {open_chapters}")
+    lines.append(f"- Open source nodes: {total_open}")
+    lines.append("")
+    for chapter in chapters:
+        lines.extend(render_chapter(chapter))
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Regenerate PortingTodo.md from FLT TeX chapters.")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path(__file__).resolve().parents[1],
+        help="Repository root containing PortingTodo.md and FLT/.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Optional output path. Defaults to <root>/PortingTodo.md.",
+    )
+    args = parser.parse_args()
+
+    root = args.root.resolve()
+    output = args.output.resolve() if args.output else root / "PortingTodo.md"
+    chapter_root = root / "FLT" / "blueprint" / "src" / "chapter"
+
+    chapters: list[ChapterData] = []
+    for tex_name, lean_name in CHAPTERS:
+        tex_path = chapter_root / tex_name
+        if not tex_path.exists():
+            continue
+        chapters.append(parse_chapter(tex_path, lean_name))
+
+    markdown = generate_markdown(chapters)
+    output.write_text(markdown, encoding="utf-8")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

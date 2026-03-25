@@ -50,6 +50,17 @@ field. Equivalently, it is a profinite local ring with finite residue field for
 which additive translates of open ideals form a basis for the topology.
 :::
 
+```tex "coefficient_ring_definition"
+We say that a topological ring is \emph{pro-Artinian} if it is a projective
+limit of Artin local rings each equipped with the discrete topology, and if it
+has the projective limit topology. We are only concerned with local
+pro-Artinian rings with finite residue field; such things can be checked to be
+the same thing as topological local rings with finite residue field whose
+underlying topological space is profinite, and such that additive translates of
+open ideals form a basis for the topology. Let us call such rings
+``coefficient rings'' for now.
+```
+
 The TeX chapter records several orientation remarks about coefficient rings.
 
 - Any complete local Noetherian ring with finite residue field is a coefficient ring when equipped with its maximal-ideal-adic topology.
@@ -80,6 +91,18 @@ $`\rho : \GQ \to \GL_R(V)` is hardly ramified if it satisfies four conditions:
 This is the organizing definition behind the chapter.
 :::
 
+```tex "hardly_ramified_definition"
+\begin{definition}
+  \lean{GaloisRepresentation.IsHardlyRamified}
+  \label{hardly_ramified}
+  \leanok
+  Let $R$ be a coefficient ring with finite residue field of characteristic $\ell\geq3$.
+  Let $V$ be a finite free $R$-module of rank~2, equipped with the product topology. A
+  continuous representation $\rho: \GQ\to \GL_R(V)$ is said to be \emph{hardly ramified} if it
+  satisfies the following four conditions:
+\end{definition}
+```
+
 The point of the definition is that it packages four distinct local facts into
 one reusable hypothesis. The determinant condition comes from the Weil pairing,
 the ramification condition records the minimal bad places of the Frey curve,
@@ -93,6 +116,17 @@ The `\ell`-torsion representation in the Frey curve attached to a Frey package
 This is the formal bridge from {uses "frey_curve_definition"}[] to the general
 reducibility theorem below.
 :::
+
+```tex "frey_torsion_hardly_ramified"
+\begin{theorem}
+  \lean{FreyCurve.torsion_isHardlyRamified}
+  \label{Frey_curve_hardly_ramified}
+  \uses{hardly_ramified}
+  \leanok
+  The $\ell$-torsion $\rho:\GQ\to\GL_2(\Z/\ell\Z)$ in the Frey curve associated to a Frey
+  package $(a,b,c,\ell)$ is hardly ramified.
+\end{theorem}
+```
 
 :::proof "frey_torsion_hardly_ramified"
 This theorem compresses the arithmetic of the Frey curve into the single

@@ -68,12 +68,43 @@ single-coset representatives. This is the abstract engine behind the concrete
 operator story in {uses "concrete_hecke_action"}[].
 :::
 
+```tex "hecke_operator_project/abstract_theory/introduction"
+\section{The abstract theory}
+
+\subsection{Introduction}
+
+The set-up: we have a commutative ring $R$, the coefficient ring, and
+all of our spaces which the operators act on will be $R$-modules.
+
+We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+```
+
 :::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project")
 The operator is independent of the chosen representatives, lands in the desired
 invariant submodule, and is $`R`$-linear.
 This is the formal heart of the abstract theory section of the old chapter.
 It is the theorem-level packaging of {uses "abstract_hecke_operator"}[].
 :::
+
+```tex "hecke_operator_project/abstract_theory/hecke_operator"
+\begin{definition}
+  \lean{AbstractHeckeOperator.HeckeOperator_toFun}
+  \label{AbstractHeckeOperator.HeckeOperator_toFun}
+  \leanok
+  Assuming $UgV$ is a finite union of cosets $g_iV$,
+  we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
+  to $\sum_i g_ia.$
+\end{definition}
+
+\begin{lemma}
+  \lean{AbstractHeckeOperator.HeckeOperator}
+  \label{AbstractHeckeOperator.HeckeOperator}
+  \uses{AbstractHeckeOperator.HeckeOperator_toFun}
+  \leanok
+  This function is well-defined (that is, independent of the
+  choice of $g_i$), has image in $A^U$ and is $R$-linear.
+\end{lemma}
+```
 
 :::proof "abstract_hecke_operator_well_defined"
 The TeX proof is the expected one. Replacing a representative `g_i` with
@@ -83,6 +114,19 @@ the relevant cosets. Finally, linearity is inherited from the linearity of the
 group action.
 :::
 
+```tex "hecke_operator_project/abstract_theory/hecke_operator_proof"
+\begin{proof}
+  \leanok
+  Well-definedness is because if we change $g_i$ to $g'_i:=g_iv$
+  for some $v\in V$ then $g_ia=g_i'a$ because $a\in A^V$.
+
+  The image lands in $A^U$ because left multiplication by $u$
+  fixes $UgV$ and hence permutes the cosets $g_iV$.
+
+  Finally $R$-linearity is because the $G$-action is $R$-linear.
+\end{proof}
+```
+
 :::theorem "finite_double_coset_criterion" (parent := "hecke_operator_project")
 In a topological group, compactness and openness hypotheses imply the required
 double-coset finiteness automatically, and this is the bridge from the abstract
@@ -91,12 +135,37 @@ The corresponding Lean theorem exists in the concrete Hecke file, but that path
 still sits behind the quaternionic rc6 compatibility work.
 :::
 
+```tex "hecke_operator_project/abstract_theory/finite_double_coset"
+The finiteness hypothesis that the decomposition $UgV=\coprod_i g_iV$ is
+into a finite union is necessary for the theory to work. If $G$ is a topological
+group then here is a criterion which gives the finiteness hypothesis for free.
+
+\begin{lemma}
+  \lean{QuotientGroup.mk_image_finite_of_compact_of_open}
+  \label{QuotientGroup.mk_image_finite_of_compact_of_open}
+  \discussion{563}
+  \leanok
+  If $U$ and $V$ are compact subgroups of a topological group~$G$,
+  if $V$ is also open, and if $g\in G$, then the double coset space $UgV$
+  is a finite union of left cosets $g_iV$.
+\end{lemma}
+```
+
 :::proof "finite_double_coset_criterion"
 The TeX proof is the standard compactness argument: a double coset `UgV` is a
 compact subset when `U` and `V` are compact, and a decomposition into left
 `V`-cosets is an open cover when `V` is open. Compactness then forces only
 finitely many cosets.
 :::
+
+```tex "hecke_operator_project/abstract_theory/finite_double_coset_proof"
+\begin{proof}
+  \leanok
+  The subset $UgV$ of $G$ is a continuous image of the compact set $U\times V$
+  and is hence compact, and it is covered by the disjoint left cosets $g_iV$;
+  this cover must thus be finite.
+\end{proof}
+```
 
 :::theorem "abstract_hecke_operators_commute" (parent := "hecke_operator_project")
   (lean := "AbstractHeckeOperator.comm")
@@ -106,11 +175,33 @@ This is the abstract commutativity criterion later used in
 {uses "hecke_operators_different_places_commute"}[].
 :::
 
+```tex "hecke_operator_project/abstract_theory/commutativity"
+\begin{lemma}
+  \lean{AbstractHeckeOperator.comm}
+  \label{AbstractHeckeOperator.comm}
+  \uses{AbstractHeckeOperator.HeckeOperator}
+  \leanok
+  Say $g,h\in G$ and we have $UgU=\coprod_i g_iU$
+  and $UhU=\coprod_j h_j$ and we have $g_ih_j=h_jg_i$ for all $i,j$.
+  Then $[UgU][UhU]=[UhU][UgU]$, that is, the Hecke operators
+  acting on $A^U$ commute.
+\end{lemma}
+```
+
 :::proof "abstract_hecke_operators_commute"
 The TeX chapter simply expands both compositions into double sums and then
 swaps the order of multiplication using the commutation relation on the chosen
 representatives.
 :::
+
+```tex "hecke_operator_project/abstract_theory/commutativity_proof"
+\begin{proof}
+  \leanok
+  We have $[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja$
+  and $[UhU][UgU]a=\sum_jh_j\sum_ig_ia=\sum_{j,i}h_jg_ia$ and these
+  sums are equal because $g_ih_j=h_jg_i$.
+\end{proof}
+```
 
 # Concrete theory
 
@@ -136,6 +227,25 @@ The restricted product is the subset of the full product consisting of tuples
 that lie in designated good subspaces for all but finitely many indices.
 :::
 
+```tex "hecke_operator_project/restricted_products/introduction"
+\section{Restricted products}
+
+In the concrete example of Hecke operators which we care about, the invariants $A^G$
+will be spaces of quaternionic automorphic
+forms (by definition). We do not need to worry about the definition of $A$ in this
+project at all. However we will need to do various computations with the
+specific groups $G$ which we are interested in, and they are restricted products.
+So we now develop some theory for restricted products,
+starting by recalling the definition.
+
+If $I$ is an index set, if $X_i$ are sets indexed by $i\in I$ and if $Y_i$
+are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
+to be the subset of the full product $\prod_i X_i$ consisting of those
+tuples $(x_i)$ such that $x_i\in Y_i$ for all but finitely many~$i$. We suppress
+the $Y_i$ from the notation in this document, although in Lean we cannot do this and
+the restricted product looks something like $\prod{}^{r} i,[X\ i, Y\ i]$.
+```
+
 :::proof "restricted_product_definition"
 The chapter emphasizes that while group/ring/module structure is inherited
 componentwise, the topology is not the subspace topology from the full product.
@@ -146,6 +256,34 @@ The TeX chapter also stresses a subtle point that matters later: the natural map
 from the restricted product into the full product is continuous, but is not in
 general a topological embedding.
 :::
+
+```tex "hecke_operator_project/restricted_products/topology"
+It is straightforward to check that if the $X_i$ are groups or rings or $R$-modules,
+and the $Y_i$ are subgroups or subrings or submodules, then the restricted product
+is a group, ring or $R$-module; indeed the structure is inherited via the
+inclusion $\prod'_iX_i\subseteq\prod_iX_i$ (and the fact that arbitrary products
+of groups/rings/modules are groups/rings/modules).
+
+More subtle is the theory of topological space structures. If the $X_i$
+are topological spaces then we do \emph{not} give $\prod'_iX_i$ the subspace
+topology coming from the product topology on $\prod_iX_i$; instead we give
+it the finest topology making all of the
+natural maps $\prod_{i\in S}X_i\times\prod_{i\notin S}Y_i\to \prod'_iX_i$ continuous,
+as $S$ runs through all finite subsets of~$I$; here the product of $X_i$s and $Y_i$s
+has the product topology. For example if all of the $Y_i$ are open
+then one can check that $\prod_iY_i$ is an open subset of
+$\prod'_iX_i$ (this is {\tt RestrictedProduct.isOpen\_forall\_mem} in mathlib),
+whereas it is not of the form $\left(\prod'_iX_i\right)\cap U$ for any open subset~$U$
+of $\prod_iX_i$ in general; the map from $\prod'_i X_i$ to $\prod_i X_i$ is continuous
+but is not in general an embedding.
+
+If you've seen automorphic forms before, then here is an obvious-sounding claim:
+because the adeles $\mathbb{A}_F$ of a number field are a restricted product of
+completions $F_v$ with respect to the integer rings $\mathcal{O}_v$, then
+$GL_2(\mathbb{A}_F)$ is obviously topologically a restricted product of
+$GL_2(F_v)$ with respect to $GL_2(\mathcal{O}_v)$. We now spend some time justifying
+this claim, which is a little more intricate than it sounds.
+```
 
 :::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project")
 Restricted products with respect to open subspaces commute with finite products.
@@ -161,6 +299,94 @@ because filtered colimits and binary products do not commute well in general in
 the category of topological spaces.
 :::
 
+```tex "hecke_operator_project/restricted_products/products"
+\subsection{Products}
+
+Here are some basic facts we need about restricted products.
+
+\begin{lemma}
+  \lean{Homeomorph.restrictedProductProd}
+  \label{Homeomorph.restrictedProductProd}
+  \leanok
+  \discussion{568}
+  If $A_i$ is a family of topological spaces equipped with open
+  subsets $B_i$, and if $C_i$ is a family of topological spaces equipped
+  with open subsets $D_i$, and if we equip $A_i\times C_i$ with the open
+  subset $B_i\times D_i$, then the natural bijection
+  $\prod'_i(A_i\times C_i)=\left(\prod'_iA_i\right)\times\left(\prod'_iB_i\right)$
+  is a homeomorphism.
+\end{lemma}
+\begin{remark} This may well not be true if $B_i$ and $D_i$ are not open, because
+  filtered colimits and binary products do not appear in general to commute
+  in the category of topological spaces. I don't know an explicit counterexample though.
+\end{remark}
+\begin{proof}
+  \leanok
+  \proves{Homeomorph.restrictedProductProd}
+  We need to check continuity in both directions. The easy way is
+  continuity of the map from the restricted product to the map from the binary
+  product; the lemma {\tt RestrictedProduct.continuous\_dom} in mathlib
+  tells us that a map from a restricted product is continuous when its restriction
+  to $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$
+  is continuous for all finite $S\subseteq I$; the universal property of the binary
+  product tells us that the map into the binary product is continuous iff the maps into
+  the factors are continuous, but the map into $\prod'_iX_i$ is a product of the
+  natural maps from $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$
+  to $\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)$
+  and the inclusion, and both are known to be continuous (an arbitrary product of continuous
+  maps is continuous, and the other claim is in the restricted product API in mathlib).
+
+  The harder direction is the other way, because we are working against both universal
+  properties. The trick is {\tt RestrictedProduct.continuous\_dom\_prod} in mathlib
+  (this is where we assume $B_i$ and $D_i$ are open), which tells us that a map out of
+  a binary product of restricted products is continuous when its restriction to
+  $\left(\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)\right)\times
+  \left(\left(\prod_{i\in S}C_i\right)\times\left(\prod_{i\notin S}D_i\right)\right)$
+  is, for all finite $S$ (note that the $S$ in the mathlib lemma is actually our $I-S$).
+  The map from this to the restricted product factors through
+  $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$;
+  the first map is a homeomorphism (use the fact that $\prod_iX_i\times Y_i$ is homeomorphic
+  to $\left(\prod_iX_i\right)\times\left(\prod_iY_i\right)$), and the second is continuous
+  by definition of the topology on a restricted product.
+\end{proof}
+
+\begin{corollary}
+  \lean{Homeomorph.restrictedProductPi}
+  \label{Homeomorph.restrictedProductPi}
+  \leanok
+  \discussion{570}
+  Restricted products (with respect to open subspaces) commute with finite products.
+  In other words, if $j$ runs through a finite set $J$ and $i$ runs through an arbitrary
+  set $I$, and if $X_{ji}$ are topological spaces equipped with open subspaces $Y_{ji}$,
+  then the obvious bijection $\prod'_i(\prod_j X_{ji})=\prod_j\left(\prod'_i X_{ji}\right)$
+  is a homeomorphism.
+\end{corollary}
+\begin{proof}
+  \leanok
+  \uses{Homeomorph.restrictedProductProd}
+  Induction on the size of the finite set, using lemma~\ref{Homeomorph.restrictedProductProd}
+  to get you started.
+\end{proof}
+
+ Let $n$ be a natural and let $M_n(X)$ for a set $X$ denote ``$n\times n$
+  matrices with coefficient in $X$'', i.e. $X^{n^2}$. If $X$ is a topological
+  spaces then give $M_n(X)$ the product topology.
+
+\begin{corollary}
+  \label{Homeomorph.restrictedProductMatrix}
+  \lean{Homeomorph.restrictedProductMatrix}
+  \leanok
+  \discussion{571}
+  If $X_i$ are topological spaces and the $Y_i$ are open subspaces,
+  then the obvious map $M_n(\prod'_iX_i)=\prod'_iM_n(X_i)$ is a homeomorphism.
+\end{corollary}
+\begin{proof}
+  \leanok
+  \uses{Homeomorph.restrictedProductPi}
+  Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}.
+\end{proof}
+```
+
 :::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project")
 Matrices over a restricted product identify homeomorphically with the
 restricted product of the corresponding matrix spaces.
@@ -173,6 +399,22 @@ This is the immediate matrix-valued corollary of the finite-product theorem,
 since an `n × n` matrix space is just a finite product of copies of the
 coefficient space.
 :::
+
+```tex "hecke_operator_project/restricted_products/matrix"
+\begin{corollary}
+  \label{Homeomorph.restrictedProductMatrix}
+  \lean{Homeomorph.restrictedProductMatrix}
+  \leanok
+  \discussion{571}
+  If $X_i$ are topological spaces and the $Y_i$ are open subspaces,
+  then the obvious map $M_n(\prod'_iX_i)=\prod'_iM_n(X_i)$ is a homeomorphism.
+\end{corollary}
+\begin{proof}
+  \leanok
+  \uses{Homeomorph.restrictedProductPi}
+  Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}.
+\end{proof}
+```
 
 :::theorem "units_of_open_submonoid_open" (parent := "hecke_operator_project")
 If `U` is an open submonoid of a topological monoid `M`, then `Uˣ` is naturally
@@ -229,6 +471,116 @@ homeomorphism near the identity, using the open neighborhoods coming from the
 good submonoids, and then upgrades that local statement to a global
 homeomorphism of topological groups.
 :::
+
+```tex "hecke_operator_project/restricted_products/units"
+\subsection{Units}
+
+We now want to move from matrices to invertible matrices whilst keeping track of topology,
+so we need to understand units of topological monoids. Openness of the subobject was
+crucial in the above arguments, so we need the next lemma before we can get anywhere.
+
+\begin{lemma}
+  \lean{Submonoid.units_isOpen}
+  \label{Submonoid.units_isOpen}
+  \leanok
+  \discussion{587}
+  If $M$ is a topological monoid and $U$ is an open submonoid, then
+  the units $U^\times$ of $U$ are naturally an open subgroup of $M^\times$.
+\end{lemma}
+\begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
+  it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
+  topology from the product. This makes it into a topological group.
+\end{remark}
+\begin{proof}
+  \proves{Submonoid.units_isOpen}
+  We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
+  embedded in $M\times M$ as explained in the remark above, then the intersection
+  of this subgroup with $U\times U$ is open in $M^\times$ and consists of the elements
+  of $M^\times$ which are in $U$ and whose inverse is also in $U$, which is easily
+  checked to be the copy of $U^\times$ we're talking about.
+\end{proof}
+
+Later on, compactness will be key for us, so we record the analogous result
+for compactness.
+
+\begin{lemma}
+  \lean{Submonoid.units_isCompact}
+  \label{Submonoid.units_isCompact}
+  \leanok
+  \discussion{588}
+  If $M$ is a Hausdorff topological monoid and $U$ is a compact submonoid,
+  then the units $U^\times$ of $U$ are naturally a compact subgroup of $M^\times$.
+\end{lemma}
+\begin{remark} Is Hausdorffness necessary?
+\end{remark}
+\begin{proof}
+  \proves{Submonoid.units_isCompact}
+  First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
+  is a closed subset of $M\times M$. Indeed, if $p:M\times M\to M$ is $(a,b)\mapsto ab$
+  and $q:M\times M\to M$ is $(a,b)\mapsto ba$, then $p$ and $q$ are continuous,
+  $M^\times\subseteq M\times M$ is the intersection
+  $p^{-1}\{1\}\cap q^{-1}\{1\}$, and $\{1\}$ is closed because $M$ is Hausdorff.
+
+  We have $U\times U$ is a compact subset of $M\times M$, and so
+  $U^\times=M^\times\cap U\times U$ is a closed subspace of a compact space
+  and is thus compact.
+\end{proof}
+
+\begin{lemma}
+  \lean{ContinuousMulEquiv.piUnits}
+  \label{ContinuousMulEquiv.piUnits}
+  \leanok
+  \discussion{581}
+  If $U_i$ are topological monoids then the canonical
+  group isomorphism $(\prod_i U_i)^\times=\prod_i(U_i^\times)$ is a homeomorphism.
+\end{lemma}
+\begin{proof}
+  \leanok
+  We prove that the maps in both directions are continuous. Let's start
+  with the map from left to right.
+
+  A map into a product is continuous when the maps to the factors
+  are continuous. A map into the units of a monoid is continuous when the
+  two projection maps to the monoid (the inclusion and the map $u\mapsto u^{-1}$)
+  are continuous (because $M^\times$ has the topology induced from $M\times M$).
+  This reduces us to checking that the maps $(\prod_i U_i)^\times\to U_j$
+  sending $(u_i)$ to $u_j$ resp $u_j^{-1}$ are continuous. But the former map
+  is the continuous inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ followed
+  by the continuous projection to $U_j$, and the latter map is the continuous
+  inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ sending $x$ to $x^{-1}$
+  followed by the projection.
+
+  To go the other way: because the units have the induced topology it suffices
+  to check that the two maps $\prod_i(U_i^\times)\to\prod_i U_i$
+  sending $(u_i)$ to $(u_i)$ resp $(u_i^{-1})$ are continuous. A map
+  to a product is continuous when the induced maps to the factors are.
+  A projection from a project is continuous, and the identity and inverse are
+  continuous maps $U_j^\times\to U_j$, and the maps we're concerned with are composites
+  of these maps and are hence continuous.
+\end{proof}
+
+\begin{theorem}
+  \lean{ContinuousMulEquiv.restrictedProductUnits}
+  \label{ContinuousMulEquiv.restrictedProductUnits}
+  \leanok
+  \discussion{582}
+  If $M_i$ are a family of topological monoids equipped with open
+  submonoids $U_i$, then the canonical map $(\prod'_iM_i)^\times\to\prod'_i(M_i^\times)$
+  is a homeomorphism.
+\end{theorem}
+\begin{proof}
+  \leanok
+  \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
+  I don't know a clean way of showing that the map from left to right is continuous,
+  so here is a ``direct'' proof that the map is a homeomorphism. It is certainly an abstract group
+  isomorphism between topological groups. So to prove that it is a homeomorphism it suffices
+  to prove that it is a homeomorphism near the identity, or equivalently that there are open
+  neighbourhoods $X$ and $Y$ of the identity elements on each side such that the map induces a
+  homeomorphism from $X$ to $Y$. We choose $(\prod_i U_i)^\times$ and $\prod_i (U_i^\times)$.
+  Note that the former is open because of lemma~\ref{Submonoid.units_isOpen}.
+  The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
+\end{proof}
+```
 
 # Local matrix theory
 
@@ -315,6 +667,128 @@ to a finite-group calculation inside the chosen congruence subgroup, and then to
 read off the quotient parameter from the upper-right entry modulo `\alpha`.
 :::
 
+```tex "hecke_operator_project/local_theory/introduction"
+\section{Some local theory}
+
+We could work over a general nonarchimedean normed field but we still do not have them
+in mathlib, so we stick to the case of interest which is the completion of a number
+field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
+equipped with a discrete valuation, a ring of integers $\calO_v$ having a principal
+maximal ideal $(\varpi)$, and a finite residue field $k_v:=\calO_v/(\varpi)$.
+
+There is no formal Lean code for the lemmas in this section; I am slightly dragging my
+feet because it would seem more sensible to prove them in the right generality,
+and we don't have a definition of nonarchimedean local field yet.
+
+\begin{lemma}
+  \lean{NumberField.isOpenAdicCompletionIntegers}
+  \label{NumberField.isOpenAdicCompletionIntegers}
+  \leanok
+  $\calO_v$ is an open subring of $K_v$.
+\end{lemma}
+\begin{proof}
+  \leanok
+  Openness is already in mathlib.
+\end{proof}
+
+\begin{lemma}
+  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \leanok
+  $\calO_v$ is a compact subring of $K_v$.
+\end{lemma}
+\begin{proof}
+  \leanok
+  Compactness lies a little deeper because it
+  assumes that the residue field of $K_v$ is finite.
+\end{proof}
+
+\begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
+  \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
+  \label{M2.localFullLevel.isOpen}
+  \leanok
+\end{lemma}
+\begin{proof}
+  \leanok
+  \uses{NumberField.isOpenAdicCompletionIntegers}
+  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
+  follows because a product of compacts is compact and a product of opens is open.
+\end{proof}
+
+\begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
+  \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
+  \label{M2.localFullLevel.isCompact}
+  \leanok
+\end{lemma}
+\begin{proof}
+  \leanok
+  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
+  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
+  follows because a product of compacts is compact and a product of opens is open.
+\end{proof}
+
+\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
+  \label{nolean-compactopen-GL2}
+\end{lemma}
+\begin{proof}
+\uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
+  $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
+  results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
+\end{proof}
+
+Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
+field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
+with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
+and hence also compact and open.
+
+Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
+the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
+is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
+cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
+
+\begin{lemma}
+  \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
+\end{lemma}
+\begin{proof}
+  \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
+  $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
+  $M_2(K_v)$. It is compact and open as we just saw. Hence its units (also $U_v$)
+  are a subgroup of $GL_2(K_v)$, which is compact and open, again by
+  lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
+\end{proof}
+
+Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
+and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
+Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
+Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
+
+\begin{lemma}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
+  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
+  \leanok
+  The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
+  through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
+  where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
+\end{lemma}
+\begin{proof}
+  \leanok
+  We first manipulate the statement into a statement about finite groups.
+  We have $UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})$.
+  By the second isomorphism theorem this is true if
+  $U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)$. So when is an element of $U$
+  in $gUg^{-1}$? Equivalently, if $x\in U$, when is $g^{-1}xg\in U$? An explicit calculation
+  of matrices shows us that this is true iff $g=\begin{pmatrix} a&b\\c&d\end{pmatrix}$ with
+  $\alpha\mid b$. Define $U^\alpha$ to be this subgroup of~$U$. We have reduced the question
+  to showing that the matrices $h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}$
+  are a set of left coset representatives for the subgroup $U^\alpha$ of $U$.
+
+  It thus suffices to show that if $u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$
+  then $u\in h_tU^\alpha$ iff $b\in\calO_v$ reduces mod $\alpha$ to $t\in\calO_v/\alpha$.
+  We do this by computing $h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}$
+  and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
+\end{proof}
+```
+
 # Adelic groups
 
 The group of actual interest is the adelic unit group
@@ -336,6 +810,49 @@ products with restricted products of matrices, then applies
 {uses "restricted_product_units_homeomorphism"}[] to pass to units.
 :::
 
+```tex "hecke_operator_project/adelic_groups/introduction"
+\section{Adelic groups}
+
+We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
+using to define our Hecke operators. Let~$K$ be a number field, let~$D$ a quaternion algebra
+over~$K$ and let $\A_K^\infty$ be the finite adeles of~$K$; recall that this is a commutative
+topological ring, defined to be the restricted
+product of the commutative topological fields~$K_v$ as $v$ runs through the finite places
+of~$K$, with respect to the compact open subrings $\calO_v$.
+
+The group~$G$ we are interested in for the rest of this miniproject is the group
+$(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
+but the first thing we need to do is to find a way of talking about elements of the group.
+
+We will assume that there exists an $\A_K^\infty$-algebra isomorphism
+$D\otimes_K\A_K^\infty=M_2(\A_K^\infty)$ and we will fix such an isomorphism $r$
+(called a \emph{rigidification} in the Lean code). We give both of these $\A_K^\infty$-algebras
+the $\A_K^\infty$-module topology, which is a fancy way of saying the product topology
+(they are both free of rank 4 as $\A_K^\infty$-modules); the rigidification is then
+a homeomorphism (because all $\A_K^\infty$-module maps between modules with the $\A_K^\infty$-module
+topology are continuous).
+
+This means that our group~$G$ is isomorphic (both algebraically and topologically)
+to $GL_2(\A_K^\infty)$. Before we go any further,
+let say something about matrix rings over complete fields.
+
+\begin{theorem}
+  \lean{IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct}
+  \label{GL2.restrictedProduct}
+  \leanok
+  $G$ is isomorphic and homeomorphic
+  to the restricted product of $GL_2(K_v)$ with respect
+  to the compact open subgroups $GL_2(\calO_v)$.
+\end{theorem}
+\begin{proof}
+  \leanok
+  \uses{ContinuousMulEquiv.restrictedProductUnits,
+    Homeomorph.restrictedProductMatrix, ContinuousMulEquiv.restrictedProductMatrixUnits}
+  This follows from lemma~\ref{ContinuousMulEquiv.restrictedProductUnits}
+  and lemma~\ref{Homeomorph.restrictedProductMatrix}.
+\end{proof}
+```
+
 :::theorem "adelic_levels_from_local_data" (parent := "hecke_operator_project")
 Choosing compact open subgroups at finitely many places and the full level
 elsewhere produces a compact open adelic level subgroup.
@@ -354,6 +871,17 @@ chapter then checks compactness and openness factorwise and finally uses the
 open embedding of the product of full local levels into the adelic restricted
 product.
 :::
+
+```tex "hecke_operator_project/adelic_groups/levels"
+If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
+a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
+create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S$
+define $\tilde{\Gamma}_v=GL_2(\calO_v)$. Then $\prod_v\tilde{\Gamma}_v$ is a compact
+open subgroup of $\prod_vGL_2(\calO_v)$. It is compact subgroups of this form
+which we shall be using.
+
+\section{Automorphic forms}
+```
 
 # Automorphic forms
 

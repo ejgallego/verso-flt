@@ -7,14 +7,23 @@ repository root.
 
 ## Porting Policy
 
-The TeX blueprint remains the source of truth for the written mathematics. The
+The TeX blueprint remains the source of truth for the written mathematics, and
+the local chapter sources live in `FLT/blueprint/src/chapter/*.tex`. The
 porting goal in this repository is a faithful, as-near-word-for-word-as-
 practical translation from TeX/`leanblueprint` layout into Verso layout, not a
 substantive rewrite of the mathematical content.
 
+The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so
+when a chapter needs to carry raw TeX locally it should do so directly next to
+the relevant Verso node instead of being paraphrased away.
+
 When the TeX source records dependency edges with `\uses{...}`, the port should
 preserve those edges as Verso `{uses "..."}[]` references inside the relevant
 informal nodes or proofs so the dependency graph remains faithful too.
+
+The refreshed VersoBlueprint 4.28 compatibility branch is already synced into
+the local harness; follow the documented build and porting rules here rather
+than assuming any extra special directive.
 
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.

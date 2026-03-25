@@ -30,6 +30,16 @@ records the missing background stack before that material has been migrated into
 dedicated chapters or promoted to explicit assumptions.
 :::
 
+```tex "bestiary/chapter_opening"
+\chapter{Appendix: A collection of results which are needed in the proof.}\label{ch_bestiary}
+
+In this (temporary, unorganised) appendix we list a whole host of definitions and theorems which were known to humanity by the end of the 1980s and which we shall need. These definitions and theorems will find their way into more relevant sections of the blueprint once I have written more details. Note that some of these things are straightforward; others are probably multi-year research projects. The purpose of this chapter right now is simply to give the community (and possibly AIs) some kind of idea of the task we face. Note also that many of the \emph{definitions} here are yet to be formalised in Lean, and this needs to be done before we can start talking about formalising theorems.
+
+\section{Results from class field theory}
+
+We start with the local case. In fact we restrict to the $p$-adic case, but only for simplicity of exposition because it's all we'll need (and, to be frank, because I'm not 100 percent of what is true in the function field case).
+```
+
 # Class field theory
 
 The TeX appendix begins with the local case and, for simplicity, speaks only
@@ -55,6 +65,14 @@ the other to geometric Frobenius. The point of recording both is not pedantry;
 later local-global statements genuinely depend on the chosen normalization.
 :::
 
+```tex "bestiary/class_field_theory/maximal_unramified_extension"
+\begin{theorem}\label{maximal_unramified_extension_of_p-adic_field}\notready The maximal unramified extension $K^{un}$ in a given algebraic closure of $K$
+    is Galois over $K$ with Galois group ``canonically'' isomorphic to $\widehat{\Z}$ in two ways; one of these two isomorphisms identifies $1\in\widehat{\Z}$ with an arithmetic Frobenius (the endomorphism inducing $x\mapsto x^q$ on the residue field of $K^{un}$, where $q$ is the size of the residue field of $K$). The other identifies 1 with geometric Frobenius (defined to be the inverse of arithmetic Frobenius).
+\end{theorem}
+
+It is impossible to say which of the two canonical isomorphisms is ``the most canonical''; people working in different areas make different choices in order to locally minimise the number of minus signs in their results.
+```
+
 :::definition "local_weil_group_placeholder" (parent := "bestiary_appendix")
 The appendix records the local Weil group and local class field theory among
 the core background items still waiting for polished Lean-facing statements.
@@ -77,11 +95,77 @@ only needs the p-adic case and even that already carries most of the relevant
 phenomena.
 :::
 
+```tex "bestiary/class_field_theory/local_class_field_theory"
+As a result, the absolute Galois group of $K$ surjects onto $\widehat{\Z}$; its kernel is said to be the \emph{inertia subgroup} of this Galois group. Now pull back this surjection along the continuous map from $\Z$ (with its discrete topology) to $\widehat{\Z}$, in the category of topological groups. We end up with a group containing the inertia group as an open normal subgroup, and with quotient isomorphic to the integers.
+
+\begin{definition}\label{local_Weil_group}\uses{maximal_unramified_extension_of_p-adic_field}\notready The topological group described above is called the \emph{Weil group} of $K$.
+\end{definition}
+
+The following theorem is nontrivial.
+
+\begin{theorem}\label{local_class_field_theory}\uses{local_Weil_group}\notready If $K$ is a finite extension of $\Q_p$ then there are two ``canonical'' isomorphisms of topological abelian groups, between $K^\times$ and the abelianisation of the Weil group of $K$.
+\end{theorem}
+\begin{proof} This is the main theorem of local class field theory; see for example the relevant articles in~\cite{cf} or many other places.
+\end{proof}
+
+Note that Mar\'ia In\'es de Frutos Fern\'andez and Filippo Nuccio are working on a formalisation of the proof of this using Lubin--Tate formal groups.
+```
+
 :::theorem "local_galois_cohomology_package" (parent := "bestiary_appendix")
 The local cohomology package includes finiteness, cohomological dimension two,
 top-degree identifications, Poincare duality, and Euler-Poincare formulas.
 These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's Galois cohomology text {Informal.citep serreGalCoh}[] throughout this package.
 :::
+
+```tex "bestiary/class_field_theory/local_galois_cohomology"
+Now let $M$ be an abelian group (with the discrete topology) equipped with a continuous
+action of $G_K$, the Galois group $\GK$ where we fix an algebraic closure $\Kbar$ of $K$. Note that
+if one doesn't want to choose an algebraic closure of $K$ one can instead think of $M$ as being an
+etale sheaf of abelian groups on $\Spec(K)$.
+
+Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using continuous cocycles and continuous coboundaries, or just as a colimit of usual group cohomology over the finite quotients of this absolute Galois group (or as etale cohomology, if you prefer). Here are some of the facts we will need about cohomology in this situation. A nice summary is that cohomology of a local Galois group behaves like the cohomology of a compact connected 2-manifold. All the theorems below will need extensive planning.
+
+\begin{theorem}
+    \label{local_galois_coh_finite}
+    \notready
+    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ all finite.
+\end{theorem}
+\begin{proof}
+    This is Proposition~14 in section~5.2 of~\cite{serre-galcoh}.
+\end{proof}
+
+\begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
+  If $M$ is torsion then $H^i(G_K,M)=0$ if $i>2$.
+\end{theorem}
+\begin{proof} This follows from Proposition~15 in~section 5.3 of~\cite{serre-galcoh}.
+\end{proof}
+
+\begin{theorem} ["top degree"]
+    \label{local_galois_coh_top_degree}
+    \notready
+    $H^2(G_K,\mu_n)$ is ``canonically'' isomorphic to $\Z/n\Z$.
+\end{theorem}
+\begin{proof} This is also included in Lemma 2 of section 5.2 of \cite{serre-galcoh} (Serre just writes that the groups are equal; he clearly is not a Lean user. I can see no explanation in his book of this use of the equality symbol. When the statement of this ``theorem'' is formalised in Lean it may well actually be a definition, giving the map).
+\end{proof}
+
+\begin{theorem}\notready There is a ``canonical'' isomorphism $H^2(K,\mu_\infty)=\Q/\Z$.
+\end{theorem}
+\begin{proof}\notready
+This is in Theorem II.5.2 in~\cite{serre-galcoh}.
+\end{proof}
+
+\begin{theorem} ["Poincar\'e duality"]\label{local_galois_coh_poincare}\notready
+    If $\mu=\bigcup_{n\geq1}\mu_n$ and $M':=\Hom(M,\mu)$ is the dual of $M$ then for
+    $0\leq i\leq 2$ the cup product pairing $H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z$ is perfect.
+\end{theorem}
+\begin{proof}\notready This is Theorem 2 in section 5.2 in \cite{serre-galcoh}. Note again
+    the dubious (as far as Lean is concerned) use of the equality symbol.
+\end{proof}
+
+\begin{theorem} ["Euler-Poincar\'e characteristic"]\label{local_galois_coh_euler_poincare}\notready
+    If $h^i(M)$ denotes the order of $H^i(G_K,M)$ then $h^0(M)-h^1(M)+h^2(M)=0$.
+\end{theorem}
+```
 
 :::theorem "local_galois_cohomology_finiteness" (parent := "bestiary_appendix")
 For finite coefficients `M`, the local Galois cohomology groups `H^i(G_K,M)` are

@@ -26,6 +26,17 @@ collect various results which we will need along the way. Note that we no
 longer need to assume that $`\rho` comes from the $`\ell`-torsion in an
 elliptic curve.
 
+```tex "overview_intro"
+\chapter{An overview of the proof}\label{ch_overview}
+
+So far we have seen that, modulo Mazur's theorem (and various other things which will still take some work to formalise but which are much easier), Fermat's Last Theorem can be reduced
+to the statement that there is no prime $\ell\geq 5$ and hardly-ramified
+irreducible 2-dimensional Galois representation $\rho:\GQ\to\GL_2(\Z/\ell\Z)$.
+
+In this chapter we give an overview of our strategy for proving this, and collect
+various results which we will need along the way. Note that we no longer need to assume that $\rho$ comes from the $\ell$-torsion in an elliptic curve.
+```
+
 # Potential Modularity
 
 We will only speak about modularity for `2`-dimensional representations of the
@@ -59,6 +70,36 @@ The proof of this is very long, and uses a host of machinery. For example:
 
 Almost everything here dates back to the `1980`s or before. The exception is
 the modularity lifting theorem, which we now state explicitly.
+
+```tex "potential_modularity"
+\section{Potential modularity.}
+
+We will only speak about modularity for 2-dimensional representations of the
+absolute Galois group of a totally real field $F$ \emph{of even degree over} $\Q$.
+What we will mean by ``modular'' is ``associated to an automorphic representation of the
+units of the totally definite quaternion algebra over $F$ ramified at no finite places
+and at all infinite places''. Such a quaternion algebra only exists if $F$ has even degree,
+hence the restriction in our definition of modularity.
+We can furthermore even demand that the infinity type of the form is trivial (the analogue
+in this setting of classical weight 2 forms), as these are the only forms we shall need for FLT.
+
+Assume we have a hardly-ramified representation~$\rho$ as above. Let $K$
+be the number field corresponding to the kernel of~$\rho$. Our first claim
+is that there is some totally real field $F$ of even degree, Galois over $\Q$,
+unramified at $\ell$, and disjoint from $K$, such that $\rho|G_F$ is modular.
+The proof of this is very long, and uses a host of machinery. For example:
+\begin{itemize}
+    \item Moret--Bailly's result~\cite{moret-bailly} on points on curves with prescribed
+    local behaviour;
+    \item several nontrivial results in global class field theory;
+    \item the Jacquet--Langlands correspondence;
+    \item The assertion that irreducible 2-dimensional mod $p$ representations induced from a character are modular (this follows from converse theorems);
+    \item A modularity lifting theorem.
+\end{itemize}
+
+Almost everything here dates back to the 1980s or before.
+The exception is the modularity lifting theorem, which we now state explicitly.
+```
 :::
 
 # A Modularity Lifting Theorem
@@ -128,6 +169,36 @@ modular, this seems to need Jacquet--Langlands as well. In the minimal case,
 the argument is the usual Taylor--Wiles trick, using refinements due to Kisin
 and others.
 :::
+
+```tex "modularity_lifting"
+\section{A modularity lifting theorem}
+
+Suppose $\ell\geq5$ is a prime, that $F$ is a totally real field of even degree in which $\ell$
+is unramified, and that~$S$ is a finite set of finite places of~$F$ not dividing~$\ell$. Write
+$G_F$ for the absolute Galois group of~$F$.
+
+If $v\in S$ then let $F_v$ denote the completion of~$F$ at~$v$, fix an inclusion $\overline{F}\to\overline{F_v}$,
+let $\calO_v$ denote the integers of $F_v$ and $k(v)$ the residue field. Let $I_v\subset G_F$ denote the inertia
+subgroup at~$v$. Local class field theory (or a more elementary approach) gives a map $I_v\to\calO_{F_v}^\times$
+and hence a map $I_v\to k(v)^\times$. Let $J_v$ denote the kernel of this map.
+
+Let $R$ be a complete local Noetherian $\Z_\ell$-algebra with finite residue field of characteristic $\ell$.
+We will be interested in representations $\rho:G_F\to\GL_2(R)$ with the following four properties.
+\begin{itemize}
+    \item $\det(\rho)$ is the cyclotomic character;
+    \item $\rho$ is unramified outside $S\cup\{\ell\}$;
+    \item If $v\in S$ then $\rho(g)$ has trace equal to~2 for all $g\in J_v$;
+    \item If $v\mid\ell$ is a place of $F$ then $\rho$ is flat at~$v$.
+\end{itemize}
+
+In the last bullet point, ``flat'' means ``projective limit of representations arising from
+finite flat group schemes''. Let us use the lousy temporary notation ``$S$-good'' to denote
+representations with these four properties.
+
+Say $k$ is a finite extension of $\Z/\ell\Z$ and $\rhobar:G_F\to\GL_2(k)$ is continuous,
+absolutely irreducible when restricted to $F(\zeta_\ell)$, and $S$-good. One can check
+that the functor representing $S$-good lifts of $\rhobar$ is representable.
+```
 
 :::theorem "potential_modularity_auxiliary_curve" (parent := "overview_strategy")
 Given this modularity lifting theorem, the strategy to show potential
