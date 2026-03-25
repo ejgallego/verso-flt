@@ -733,7 +733,7 @@ The TeX chapter immediately notes that this ring is isomorphic to `ℤ^4` as an
 additive group, and that `\mathcal{O} \otimes_{\mathbf{Z}} \mathbf{R}` recovers
 the usual Hamilton quaternions.
 
-:::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program") (lean := "Hurwitz.starRing")
+:::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program")
 The Hurwitz quaternions carry the usual quaternionic conjugation, making them a
 star ring.
 This is defined on top of {uses "hurwitz_quaternions_form_ring"}[].

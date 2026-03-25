@@ -84,7 +84,6 @@ the following three properties:
 
 \begin{definition}
   \label{AutomorphicForm.GLn.IsSmooth}
-  \lean{AutomorphicForm.GLn.IsSmooth}
   A function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is \emph{smooth}
   if it has the following three properties.
 
@@ -154,7 +153,6 @@ $`O_n(\R)`.
 
 \begin{definition}
   \label{AutomorphicForm.GLn.Weight}
-  \lean{AutomorphicForm.GLn.Weight}
 
 The \emph{weight} of an automorphic form for $\GL_n/\Q$ can be thought of as a finite-dimensional
 continuous complex representation $\rho$ of a maximal compact subgroup of $\GL_n(\R)$,
