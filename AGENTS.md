@@ -37,6 +37,36 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Keep the existing FLT formalization files unchanged for blueprint-port work
   unless we are doing explicit rc6 compatibility work intended for the FLT fork.
 
+## Literal Translation Standard
+
+- The default deliverable for direct TeX-to-Verso chapter work is a literal
+  translation pass (`LT pass`), not an interpretive rewrite.
+- Preserve paragraph boundaries, sentence order, section order,
+  theorem/definition/lemma/corollary/proof order, and local claim order from
+  the TeX source unless a concrete Verso constraint forces a change.
+- Translate TeX layout into Verso layout with the smallest possible editorial
+  footprint. Do not smooth prose, summarize arguments, or add bridge text just
+  because it reads better in English.
+- Do not promote free prose into new `:::theorem`, `:::definition`, or
+  `:::proof` nodes unless the TeX source already has a corresponding formal
+  environment or labeled proof step that should stay graph-visible.
+- Do not add placeholder theorem interfaces, roadmap nodes, or semantic
+  scaffolding that goes beyond the TeX source. If the TeX chapter stops at a
+  forward pointer or sketch, the Verso port should stop there too.
+- Preserve TeX `\uses{...}` edges when they exist, but do not invent new
+  dependency edges merely to make the blueprint graph look nicer.
+- When non-literal material is genuinely unavoidable, keep it visibly separate
+  and label it as an editorial or harness note rather than blending it into the
+  translation.
+- If a source block cannot yet be translated cleanly, keep the source locally
+  in a labeled `tex` block instead of paraphrasing it into placeholder prose.
+- Treat semantic cleanup as a second phase (`Blueprint pass`) after the LT
+  pass. First port the TeX literally, then decide whether any extra blueprint
+  structure is warranted.
+- After each porting batch, explicitly record the deviations from literal
+  translation in the work summary: additions, omissions, reordered material,
+  invented nodes, and editorial notes.
+
 ## Build Harness
 
 - Prefer the focused target `nice lake build blueprint-gen`.
@@ -81,13 +111,17 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - Port TeX blueprint content into the root Verso chapters in this repository,
   not into `FLT/`.
-- Prefer faithful TeX-to-Verso translation over editorial rewriting. Preserve
-  theorem order, section order, and mathematical claims unless there is a clear
-  build, tooling, or project-structure reason not to.
+- Start with an LT pass: preserve paragraph boundaries, sentence order, section
+  order, theorem order, and mathematical claims unless there is a clear build,
+  tooling, or project-structure reason not to.
+- Do not add new blueprint structure unless the TeX source already justifies
+  it. In particular, do not turn plain prose into extra theorem or proof nodes
+  just to expose a dependency story.
 - Preserve TeX `\uses{...}` dependency edges as Verso `{uses "..."}[]`
   references whenever the target exists in the blueprint graph. Put these
-  references inside informal nodes or proofs, not in free prose, so they are
-  actually captured by the rendered dependency graph.
+  references inside the corresponding translated nodes or proofs, not in
+  unrelated free prose, so they are actually captured by the rendered
+  dependency graph.
 - When the source still needs to be shown verbatim, attach the raw TeX locally
   in a labeled `tex` block. The refreshed VersoBlueprint 4.28 branch supports
   this directly, so use it for source-backed notes instead of rewriting the
@@ -110,17 +144,21 @@ This repository is the integration layer for the FLT Verso blueprint.
 ## Autonomous Porting Checklist
 
 - Work from the TeX source chapter-by-chapter. Treat section order, theorem
-  order, and dependency structure as intentional.
+  order, paragraph boundaries, sentence order, and dependency structure as
+  intentional.
 - Prefer translating existing TeX material into Verso over inventing new
-  exposition. If explanatory glue is needed, keep it minimal and in service of
-  the source structure.
+  exposition. If explanatory glue is absolutely needed, keep it minimal,
+  visibly editorial, and in service of the source structure.
 - When the TeX source has a labeled theorem, definition, lemma, corollary, or
   proof step that still matters to the dependency story, prefer creating a
   corresponding Verso node rather than burying it in prose.
+- When the TeX source has only prose, keep it as prose. Do not promote that
+  prose into new theorem, definition, or proof nodes just because the resulting
+  graph would be cleaner.
 - When the TeX source has `\uses{...}`, preserve those dependencies as
   `{uses "..."}[]` inside the relevant theorem/definition/proof nodes so the
   graph remains faithful. Do not leave important `\uses` edges only in free
-  prose.
+  prose, and do not invent new ones without a source basis.
 - If a TeX chapter is only partially ported, continue with the next coherent
   section block rather than scattering small edits across unrelated chapters.
 - Keep Lean references conservative. Add `(lean := "...")` only when the import
@@ -130,6 +168,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If the source block is still open, prefer a local `tex` block carrying the
   raw TeX excerpt over a rewritten placeholder. That keeps the board and the
   chapter close to the TeX source of truth.
+- In the work summary for each batch, include a short deviation report listing
+  any non-literal changes that were introduced deliberately.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.
 - Keep the root build green. If a faithful Lean link would pull in rc6-broken
   imports, leave the chapter informal and note the dependency in prose instead

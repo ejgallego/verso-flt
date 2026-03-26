@@ -2,6 +2,7 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLT.Data.Hurwitz
+import FLT.Data.HurwitzRatHat
 import FLT.Data.QHat
 
 open Verso.Genre
@@ -17,53 +18,80 @@ the general definitions used later in the modularity-lifting story.
 
 # Introduction
 
-:::definition "quaternionic_modular_form_example" (parent := "automorphic_example_program")
-The chapter studies a concrete space of quaternionic modular forms, with the
-eventual claim that a specific weight-2 level-2 example is one-dimensional.
-:::
+The key ingredient in Wiles' proof of Fermat's Last Theorem is a modularity
+lifting theorem, sometimes called an $`R=T` theorem. For Wiles, the $`R` came
+from elliptic curves, the $`T` came from classical modular forms, and the fact
+that they're equal is basically the Shimura--Taniyama--Weil conjecture, now
+known as the Breuil--Conrad--Diamond--Taylor modularity theorem: any elliptic
+curve over the rationals is modular.
 
-:::proof "quaternionic_modular_form_example"
-The TeX chapter motivates this example through the role of `R = T`
-theorems in the proof of Fermat's Last Theorem. For Wiles, the `R` came from
-elliptic curves and the `T` came from classical modular forms. In the FLT
-project’s preferred route, the relevant `T` comes instead from quaternionic
-automorphic forms.
+At the heart of the proof we shall formalise is also an $`R=T` theorem,
+however the $`T` which we shall use will be associated not to classical modular
+forms, but to spaces of more general automorphic forms called quaternionic
+modular forms. Those of you who know something about classical modular forms
+might well know that the groups $`\SL_2(\R)` and $`\SL_2(\Z)` are intimately
+involved; these are the norm `1` units in the matrix rings $`M_2(\R)` and
+$`M_2(\Z)`. In the theory of quaternionic modular forms, the analogous groups
+are the norm `1` units in rings such as Hamilton's quaternions
+$`\R\oplus\R i\oplus\R j\oplus\R k`, and subrings such as
+$`\Z\oplus\Z i\oplus\Z j\oplus\Z k`.
 
-That shift is one reason the example matters. The chapter is not logically
-essential to the proof, but it is meant to prevent the general quaternionic
-theory from appearing out of nowhere. The explicit example serves as a test case
-for what infrastructure the later chapters should actually build.
+One of the main goals of the FLT project at the time of writing this sentence,
+is formalising the statement of the modularity lifting theorem which we shall
+use. So we are going to need to develop the theory of quaternionic modular
+forms, which is rather different to the theory of classical modular forms (for
+example, in the cases we need, the definition is completely algebraic; there
+are no holomorphic functions in sight, and the analogue of the upper half plane
+in the quaternionic theory is a finite set of points).
 
-The TeX version is also personal in tone here: it says the author first learned
-these objects by playing with explicit examples as a PhD student, and that this
-is why the blueprint pauses for a concrete worked example before launching into
-the totally real general theory.
-:::
+We could just launch into the general theory over totally real fields, which
+will be the generality which we'll need. But when I was a PhD student, I learnt
+about these objects by playing with explicit examples. So, whilst not logically
+necessary for the proof, I thought it would be fun, and perhaps also
+instructional, to compute a concrete example of a space of quaternionic modular
+forms. The process of constructing the example might even inform what kind of
+machinery we should be developing in general. Let's begin by discussing the
+quaternion algebra we shall use.
 
 # A quaternion algebra
 
-:::definition "hamilton_quaternion_algebra_over_q" (parent := "automorphic_example_program")
-The example starts with Hamilton's quaternion algebra
-$`\mathbf{Q} \oplus \mathbf{Q} i \oplus \mathbf{Q} j \oplus \mathbf{Q} k`$,
-viewed as a noncommutative analogue of `2 × 2` matrices over `ℚ`.
-:::
+Let's define $`D` to be the quaternion algebra
+$`\Q\oplus\Q i\oplus\Q j\oplus\Q k`. As a vector space, $`D` is `4`-dimensional
+over $`\Q` with $`[1,i,j,k]` giving a basis. It has a
+(non-commutative) ring structure, with multiplication satisfying the usual
+quaternion algebra relations $`i^2=j^2=k^2=ijk=-1`. You can think of $`D` as
+an analogue of `2 × 2` matrices with rational coefficients, hence its units
+$`D^\times` are an analogue of the group $`\GL_2(\Q)`.
 
-:::definition "hurwitz_quaternion_order" (parent := "automorphic_example_program")
-The example is built from Hamilton's quaternions over $`\mathbf{Q}`$ together
-with the Hurwitz order, which plays the role of an integral structure analogous
-to `GL₂(ℤ)`.
-:::
+We will also need an analogue of the group $`\GL_2(\Z)`, which will come from
+an integral structure on $`D`. We choose the Hurwitz order, namely the subring
+$`\calO:=\Z\oplus\Z i\oplus\Z j\oplus\Z \omega`, where
+$`\omega=\frac{-1+(i+j+k)}{2}`, a cube root of unity, as
+$`(i+j+k)^2=-3`. The simplest way to understand $`\calO` is that it's
+quaternions $`a+bi+cj+dk` where either $`a,b,c,d` are all integers or are all
+in $`\frac{1}{2}+\Z`.
 
-:::proof "hurwitz_quaternion_order"
-The old TeX chapter explains that the Hurwitz order is preferred over the more
-naive lattice `ℤ ⊕ ℤ i ⊕ ℤ j ⊕ ℤ k` because it is a maximal order and a
-Euclidean domain. That makes it the natural arithmetic input for a concrete
-automorphic-form computation.
-:::
+Note that $`\calO` is a maximal order and a Euclidean domain, which is why we
+prefer it over the more obvious sublattice
+$`\Z\oplus\Z i\oplus\Z j\oplus\Z k`.
+
+In this chapter, we are going to compute a complex vector space which could be
+called something like the "weight `2` level `2` modular forms for $`D^\times`".
+The main result will be that this space is `1`-dimensional.
+
+Note that mathlib has modular forms, but it doesn't have enough complex
+analysis to deduce that the space of modular forms of a given weight and level
+is finite-dimensional. If all the `sorry`s in this chapter are completed before
+mathlib gets the necessary complex analysis, then the first nonzero space of
+modular forms to be proved finite-dimensional in Lean will be a space of
+quaternionic modular forms.
+
+We will use a modern "adelic" definition of our modular forms, so the first
+thing we need to do is to talk about profinite completions.
 
 # Zhat
 
-:::definition "profinite_completion_zhat" (parent := "automorphic_example_program") (lean := "ZHat")
+:::definition "ZHat" (parent := "automorphic_example_program") (lean := "ZHat")
 The profinite completion $`\widehat{\mathbf{Z}}`$ is introduced as compatible
 residue classes modulo all positive integers.
 The chapter uses it as a low-level entry point to the adelic viewpoint.
@@ -86,13 +114,13 @@ becomes awkward: Hecke operators want prime ideals, not just principal positive
 integers. The adelic viewpoint fixes this, and `\widehat{Z}` is introduced as a
 low-level toy model for the finite adelic direction.
 
-:::theorem "zhat_is_a_ring" (parent := "automorphic_example_program") (lean := "ZHat.commRing")
+:::theorem "ZHat.commRing" (parent := "automorphic_example_program") (lean := "ZHat.commRing")
 The set of compatible residue-class collections forms a ring, naturally sitting
 inside the product of all `ℤ / Nℤ`.
-This is the ring structure on {uses "profinite_completion_zhat"}[].
+This is the ring structure on {uses "ZHat"}[].
 :::
 
-:::proof "zhat_is_a_ring"
+:::proof "ZHat.commRing"
 The point here is not depth but orientation: all ring operations are inherited
 componentwise, and compatibility with reduction maps is preserved by those same
 operations.
@@ -110,13 +138,13 @@ operations.
 \end{proof}
 ```
 
-:::theorem "zhat_nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial")
+:::theorem "ZHat.nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial")
 The elements `0` and `1` are distinct in $`\widehat{\mathbf{Z}}`$.
 This is an immediate consequence of the ring structure from
-{uses "zhat_is_a_ring"}[].
+{uses "ZHat.commRing"}[].
 :::
 
-:::proof "zhat_nontrivial"
+:::proof "ZHat.nontrivial"
 The TeX proof just evaluates both elements at `2`: their images in `ℤ/2ℤ` are
 different, so the compatible collections themselves are different.
 :::
@@ -137,16 +165,16 @@ different, so the compatible collections themselves are different.
 \end{proof}
 ```
 
-:::theorem "zhat_char_zero" (parent := "automorphic_example_program") (lean := "ZHat.charZero")
+:::theorem "ZHat.charZero" (parent := "automorphic_example_program") (lean := "ZHat.charZero")
 The natural map from the natural numbers into $`\widehat{\mathbf{Z}}`$ is
 injective.
 This amplifies the basic separation argument already visible in
-{uses "zhat_nontrivial"}[].
+{uses "ZHat.nontrivial"}[].
 :::
 
-:::proof "zhat_char_zero"
+:::proof "ZHat.charZero"
 The TeX chapter treats this as an immediate generalization of
-{uses "zhat_nontrivial"}[]: two different naturals can be separated by reducing
+{uses "ZHat.nontrivial"}[]: two different naturals can be separated by reducing
 modulo a suitable integer.
 :::
 
@@ -163,43 +191,43 @@ modulo a suitable integer.
 \end{proof}
 ```
 
-:::theorem "zhat_is_not_the_integers" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int")
-The profinite completion contains the image of the integers, but it is much
-larger than `ℤ`.
-:::
+Note that it follows easily that that the map from the integers to $`\Zhat` is
+injective.
 
-:::proof "zhat_is_not_the_integers"
-The TeX chapter immediately follows the ring construction with this warning.
-`ℤ` embeds into `\widehat{\mathbf{Z}}` by reduction modulo every positive
-integer, but the target has far more compatible residue-class collections than
-those coming from a single integer.
+But $`\Zhat` is much larger than $`\Z`; it has the same cardinality as the
+reals in fact. Let's write down an explicit example of an element of $`\Zhat`
+which isn't obviously in $`\Z`.
 
-That gap is not a pathology; it is exactly why the profinite completion is a
-useful finite-adelic toy model rather than just a verbose restatement of `ℤ`.
-:::
-
-:::definition "example_element_of_zhat" (parent := "automorphic_example_program") (lean := "ZHat.e")
+:::definition "ZHat.e" (parent := "automorphic_example_program") (lean := "ZHat.e")
 The TeX blueprint highlights the formal infinite sum
 $`0! + 1! + 2! + \cdots`$ as a concrete element of $`\widehat{\mathbf{Z}}`$
 that is not visibly an integer.
-The construction uses the ring object from {uses "zhat_is_a_ring"}[].
+The construction uses the ring object from {uses "ZHat.commRing"}[].
 :::
 
-:::proof "example_element_of_zhat"
+:::proof "ZHat.e"
 Modulo any positive integer `N`, the factorial series stabilizes after
 `(N-1)!`, because every subsequent term is divisible by `N`. So the sequence of
 partial factorial sums defines a compatible adelic-style object even though the
 naive infinite sum diverges in the ordinary real sense.
 :::
 
-:::theorem "factorial_element_not_integer" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int")
+:::theorem "ZHat.e_def" (parent := "automorphic_example_program") (lean := "ZHat.e_def")
+The collection `(e_N)_N` is an element of $`\widehat{\mathbf{Z}}`.
+:::
+
+:::proof "ZHat.e_def"
+This boils down to checking that `D! + (D+1)! + \cdots + (N-1)!` is a multiple of `D`.
+:::
+
+:::theorem "ZHat.e_not_in_Int" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int")
 The factorial-series element of $`\widehat{\mathbf{Z}}`$ is not in the image of
 `ℤ`.
 This is the nontriviality statement attached to
-{uses "example_element_of_zhat"}[].
+{uses "ZHat.e"}[].
 :::
 
-:::proof "factorial_element_not_integer"
+:::proof "ZHat.e_not_in_Int"
 The TeX argument is a neat size estimate. If the element were an ordinary
 integer `n`, then reducing modulo a suitable large factorial would force `n` to
 lie strictly between two distinct ordinary integers that represent the same
@@ -210,29 +238,29 @@ So the factorial example is not just a curiosity: it is the first explicit
 witness that `\widehat{\mathbf{Z}}` is genuinely larger than `ℤ`.
 :::
 
-:::theorem "zhat_torsionfree" (parent := "automorphic_example_program") (lean := "ZHat.torsionfree")
+:::theorem "ZHat.torsionfree" (parent := "automorphic_example_program") (lean := "ZHat.torsionfree")
 Multiplication by a positive integer is injective on $`\widehat{\mathbf{Z}}`.
 This is the torsion-freeness input later reused in the `\widehat{\mathbf{Q}}`
 discussion.
-The TeX proof uses {uses "zhat_is_a_ring"}[] and {uses "zhat_char_zero"}[].
+The TeX proof uses {uses "ZHat.commRing"}[] and {uses "ZHat.charZero"}[].
 :::
 
-:::proof "zhat_torsionfree"
+:::proof "ZHat.torsionfree"
 The TeX proof is coordinatewise. If `N z = 0` in `\widehat{\mathbf{Z}}`, then in
 particular the `(Nj)`-coordinate is annihilated by `N`, forcing the `j`-th
 coordinate to vanish after reducing modulo `j`. Since this works for every
 positive `j`, the whole compatible collection is zero.
 :::
 
-:::theorem "zhat_multiples_criterion" (parent := "automorphic_example_program") (lean := "ZHat.multiples")
+:::theorem "ZHat.multiples" (parent := "automorphic_example_program") (lean := "ZHat.multiples")
 An element of $`\widehat{\mathbf{Z}}`$ is divisible by `N` if and only if its
 `N`-th coordinate is zero.
 This is the divisibility criterion used repeatedly later in
-{uses "qhat_lowest_terms"}[] and {uses "qhat_additive_decomposition"}[].
-The TeX proof uses {uses "zhat_is_a_ring"}[].
+{uses "QHat.lowestTerms"}[] and {uses "QHat.rat_join_zHat"}[].
+The TeX proof uses {uses "ZHat.commRing"}[].
 :::
 
-:::proof "zhat_multiples_criterion"
+:::proof "ZHat.multiples"
 Necessity is immediate. For sufficiency, the TeX proof constructs the quotient
 coordinatewise by dividing the `(Nj)`-coordinate by `N`, using compatibility and
 the vanishing of the `N`-th coordinate to show that this makes sense.
@@ -259,161 +287,178 @@ generally identifies `F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` with the
 finite adeles of a number field `F`. The full adelic ring is obtained by also
 including the archimedean factor `F \otimes_{\mathbf{Q}} \mathbf{R}`.
 
-# Qhat And Tensor Products
+# Qhat and tensor products.
 
-:::definition "qhat_definition" (parent := "automorphic_example_program") (lean := "QHat")
-The finite-adelic toy model for `ℚ` is
-$`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`.
-This construction is built from {uses "profinite_completion_zhat"}[].
+The definition of $`\Qhat` is easy if you know about tensor products of
+additive abelian groups.
+
+:::definition "QHat" (parent := "automorphic_example_program") (lean := "QHat")
+The profinite completion $`\Qhat` of $`\Q` is the tensor product
+$`\Q\otimes_{\Z}\Zhat`, or $`\Qhat=\Q\otimes\Zhat` for short.
 :::
 
-:::proof "qhat_definition"
-This is the place where the example chapter starts meeting the later adele
-infrastructure. The chapter introduces `\widehat{\mathbf{Q}}` as a low-level
-route to finite adeles before the general restricted-product formalism is in
-place.
+# A crash course in tensor products
+
+We've defined $`\Qhat` to be $`\Q\otimes\Zhat`. Whatever does this mean? Well
+just to orient yourself, if $`A` and $`B` are additive abelian groups, then
+$`A\otimes B` is also an abelian group. And if $`A` and $`B` are commutative
+rings (as they are in our case), then $`A\otimes B` is also a commutative ring.
+
+Even if $`A` and $`B` are completely concrete commutative rings, their tensor
+product $`A\otimes B` might be incomprehensible. For example
+$`\bbC\otimes\bbC` is completely incomprehensible (note that we are tensoring
+over the integers). It is not like the product of groups or the disjoint union
+of two sets, where you have a completely explicit unambiguous formula for each
+element.
+
+In this sense, the theory of tensor products is a bit like the theory of
+continuous functions. Humanity started off studying concrete polynomial
+equations such as $`x^2+1` and then moved on to concrete analytic functions
+such as $`\log(x)` and $`\sin(x)`, but eventually the abstract concept of a
+continuous function from the reals to the reals was born. There is no "formula"
+for a general continuous function, and continuous functions such as
+$`e^{-1/x^2}` or $`|x|` have no power series. Even if there were a formula for
+a specific continuous function of interest, it is not clear in general how to
+make sense of the claim that it's the "best" formula. In other words, there is
+no "canonical form" for a general continuous function, and yet we prove things
+about them anyway. We shall adopt the same attitude for elements of
+$`A\otimes B`.
+
+The first thing to know about the tensor product $`A\otimes B` of two abelian
+groups $`A` and $`B` is a "constructor" for the type. In other words, how can
+we make elements $`A\otimes B`? Well, it turns out that given elements
+$`a\in A` and $`b\in B`, we can form the element $`a\otimes_t b\in A\otimes B`.
+
+Recall that the sum of all the factorials is an element $`e\in\Zhat`, and
+$`22/7` is certainly a rational number, so we can make the element
+$`\frac{22}{7}\otimes_te\in\Qhat`.
+
+This example is in the Lean code.
+
+Elements of the form $`a\otimes_t b\in A\otimes B` are known as pure tensors.
+In the literature, pure tensors are often written $`a\otimes b`, but we shall
+follow `mathlib`'s convention in reserving the $`\otimes` symbol for groups
+like $`A \otimes B`, and adorning it with a $`t` when using it on elements of
+the groups (or, as Lean calls them, terms, which explains the notation).
+
+Addition of pure tensors obeys the "distributivity" rules
+$`a\otimes_t b_1+a\otimes_t b_2=a\otimes_t(b_1+b_2)` and
+$`a_1\otimes_t b+a_2\otimes_t b=(a_1+a_2)\otimes_t b`, but there is no rule
+which simplifies a general sum $`a\otimes_t b + c\otimes_t d` into a pure
+tensor. Indeed, in general it is not the case that every element of a tensor
+product $`A\otimes B` is of the form $`a\otimes_t b`; there can be tensors
+which aren't pure. However every element of $`A\otimes B` is a finite sum of
+pure tensors, with the result that one can attempt to define additive maps from
+$`A\otimes B` by saying what they do on pure tensors, and then extending
+linearly.
+
+Another thing worth understanding is that just like how rational numbers can be
+written as quotients of integers in several ways (for example
+$`1/2=2/4=3/6=\cdots`), a general pure tensor in $`A\otimes B` can be
+represented as $`a\otimes_t b` in many ways. For example, in $`\Qhat` we have
+$`1\otimes_t 2=2\otimes_t 1`. A general rule for equality of pure tensors is
+that if $`a\in A` and $`b\in B` and $`z\in\Z`, then
+$`za\otimes_tb=a\otimes_tzb`; integers can move over the tensor symbol. But
+equality is hard: in general there may not be an algorithm to decide whether
+two pure tensors $`a\otimes_t b` and $`c\otimes_t d` are equal in
+$`A\otimes B`.
+
+A summary of the situation: if $`A` and $`B` are abelian groups, then every
+element of $`A\otimes B` can be written in the form
+$`\sum_{i=1}^Na_i\otimes_tb_i`. It's just that this representation is highly
+nonunique, and furthermore given explicit elements $`a_1,a_2\in A` and
+$`b_1,b_2\in B` it might be a hard problem to figure out if
+$`a_1\otimes_t b_1=a_2\otimes_t b_2`.
+
+For example, it turns out that $`(\Z/2\Z)\otimes(\Z/3\Z)=0` and so in this
+tensor product all the $`a\otimes_t b` are equal to each other and to
+$`0\otimes 0`.
+
+Having said all of that, one nice property of $`\Qhat` is that every tensor is
+pure; let's prove this now.
+
+:::theorem "QHat.canonicalForm" (parent := "automorphic_example_program") (lean := "QHat.canonicalForm")
+Every element of $`\Qhat:=\Q\otimes\Zhat` can be written as $`q\otimes_t z`
+with $`q\in\Q` and $`z\in\Zhat`. Furthermore one can even assume that
+$`q=\frac{1}{N}` for some positive integer $`N`.
 :::
 
-```tex "QHat"
-\begin{definition}
-    \label{QHat}
-    \lean{QHat}
-    \uses{ZHat}
-    \leanok
-    The profinite completion $\Qhat$ of $\Q$ is the tensor product $\Q\otimes_{\Z}\Zhat$,
-    or $\Qhat=\Q\otimes\Zhat$ for short.
-\end{definition}
-```
+:::proof "QHat.canonicalForm"
+A proof I would write on the board would look like the following. Take a
+general element of $`\Qhat`; we know it can be expressed as a finite sum
+$`\sum_i q_i\otimes_t z_i` with $`q_i\in\Q` and $`z_i\in\Zhat`. Now choose a
+large positive integer $`N`, the lowest common multiple of all the denominators
+showing up in the $`q_i`, and then rewrite
+$`\sum_i q_i\otimes_t z_i` as $`\sum_i \frac{n_i}{N}\otimes z_i` with
+$`n_i\in\Z`. Now using the fundamental fact that
+$`na\otimes_t b=a\otimes_t nb` for $`n\in\Z`, we can rewrite the sum as
+$`\sum_i \frac{1}{N}\otimes_t n_i z_i` which is equal to the pure tensor
+$`\frac{1}{N}\otimes(\sum_i n_i z_i)`.
 
-# A Crash Course In Tensor Products
-
-:::definition "tensor_product_crash_course" (parent := "automorphic_example_program")
-The tensor-product interlude is included only to explain how to build and
-manipulate elements of $`\widehat{\mathbf{Q}}`: pure tensors, finite sums of
-pure tensors, and the non-uniqueness of tensor expressions.
+In Lean I would prove this using `TensorProduct.induction_on`, which quickly
+reduces us to the claim that the sum of two pure tensors is pure, which we can
+prove using the above technique whilst avoiding the general theory of finite
+sums.
 :::
 
-:::proof "tensor_product_crash_course"
-The TeX chapter is unusually candid here. It does not try to give a grand
-categorical account of tensor products; it just explains the minimum needed to
-read the example. A general tensor need not have a canonical form, and equality
-between pure tensors can be subtle, but in `\widehat{\mathbf{Q}}` one gets a
-surprisingly concrete simplification.
+Be careful though: just because every element of $`\Qhat` can be written as
+$`q\otimes z`, this representation may not be unique. For example
+$`2\otimes 1=1\otimes 2`. However, writing $`\frac{1}{N}\otimes_t z` as
+$`z/N` does tempt us into the following definition.
+
+:::definition "QHat.IsCoprime" (parent := "automorphic_example_program") (lean := "QHat.IsCoprime")
+If $`N\in\N^+` and $`z\in\Zhat` then we say that $`N` and $`z` are coprime if
+$`z_N\in(\Z/N\Z)^\times`. We write $`z/N` as notation for the element
+$`\frac{1}{N}\otimes_tz`.
 :::
 
-:::theorem "qhat_canonical_form" (parent := "automorphic_example_program") (lean := "QHat.canonicalForm")
-Every element of $`\widehat{\mathbf{Q}}`$ can be written as a pure tensor
-$`q \otimes z`, and even in the form $`\frac{1}{N} \otimes z`.
-This is the first structural theorem about the tensor-product object from
-{uses "qhat_definition"}[] and {uses "zhat_is_a_ring"}[].
+:::theorem "QHat.lowestTerms" (parent := "automorphic_example_program") (lean := "QHat.lowestTerms")
+Every element of $`\Qhat` can be uniquely written as $`z/N` with $`z\in\Zhat`,
+$`N\in\N^+`, and with $`N` and $`z` coprime.
 :::
 
-:::proof "qhat_canonical_form"
-This is one of the nice surprises in the TeX chapter. A general tensor product
-does not admit such a simple normal form, but here one can clear denominators in
-a finite sum of pure tensors and move all integer factors across the tensor
-symbol. What remains is a single pure tensor with one rational denominator.
+:::proof "QHat.lowestTerms"
+Existence: by the previous lemma, an arbitrary element can be written as
+$`z/N`; let $`D` be the greatest common divisor of $`N` and $`z_N` (lifted to a
+natural). If $`D=1` then the fraction is by definition in lowest terms. However
+if $`1<D\mid N` then $`z_D` is the reduction of $`z_N` and is hence `0`. By
+lemma {uses "ZHat.multiples"}[] we deduce that $`z=Dy` is a multiple of $`D`,
+and hence $`z/N=\frac{1}{N}\otimes_tDy=\frac{1}{E}\otimes y`, where
+$`E=N/D`. Now if a natural divided both $`y_E` and $`E` then this natural would
+divide both $`z_N/D` and $`N/D`, contradicting the fact that $`D` is the
+greatest common divisor.
 
-So `\widehat{\mathbf{Q}}` is much more concrete than an arbitrary tensor
-product, even though it is still best viewed conceptually as a tensor product.
+Uniqueness: if $`z/N=w/M`, we deduce $`1\otimes_t Mz=1\otimes_t Nw`, and by
+injectivity of $`\Zhat\to\Qhat` we deduce that $`Mz=Nw=y`. In particular, if
+$`L` is the lowest common multiple of $`M` and $`N` then $`y_L` is a multiple
+of both $`M` and $`N` and is hence zero, so $`y=Lx` is a multiple of $`L` by
+{uses "ZHat.multiples"}[], and we deduce from torsionfreeness that
+$`z=(L/M)x` and $`w=(L/N)x`. If some prime divided $`L/M` then it would have to
+divide $`N` which means that $`z` is not in lowest terms; similarly if some
+prime divided $`L/N` then $`w/M` would not be in lowest terms. We deduce that
+$`L=M=N` and hence $`z=w` by torsionfreeness.
 :::
 
-```tex "QHat.canonicalForm"
-\begin{lemma}
-    \label{QHat.canonicalForm}
-    \lean{QHat.canonicalForm}
-    \uses{QHat,ZHat.commRing}
-    \leanok
-    Every element of $\Qhat:=\Q\otimes\Zhat$ can be written as $q\otimes_t z$ with $q\in\Q$ and $z\in\Zhat$.
-    Furthermore one can even assume that $q=\frac{1}{N}$ for some positive integer $N$.
-\end{lemma}
-\begin{proof} \leanok
-    A proof I would write on the board would look like the following. Take a general
-    element of $\Qhat$; we know it can be expressed as a finite sum
-    $\sum_i q_i\otimes_t z_i$ with $q_i\in\Q$ and $z_i\in\Zhat$. Now choose a large
-    positive integer $N$, the lowest common multiple of all the denominators showing up in the
-    $q_i$, and then rewrite $\sum_i q_i\otimes_t z_i$ as $\sum_i \frac{n_i}{N}\otimes z_i$ with
-    $n_i\in\Z$. Now using the fundamental fact that $na\otimes_t b=a\otimes_t nb$ for $n\in\Z$,
-    we can rewrite the sum as $\sum_i \frac{1}{N}\otimes_t n_i z_i$
-    which is equal to the pure tensor $\frac{1}{N}\otimes(\sum_i n_i z_i)$.
+If $`A` and $`B` are additive abelian groups then $`A\otimes B` is also an
+additive abelian group. However if $`A` and $`B` are commutative rings, then
+$`A\otimes B` also inherits the structure of a commutative ring, with
+$`0=0\otimes_t 0` and $`1=1\otimes_t 1`. Pure tensors multiply in the obvious
+way: the product of $`a_1\otimes_t b_1` and $`a_2\otimes_t b_2` is
+$`a_1a_2\otimes_t b_1b_2`. There are ring homomorphisms $`A\to A\otimes B` and
+$`B\to A\otimes B` sending $`a` to $`a\otimes_t 1` and $`b` to
+$`1\otimes_t b`. In general such maps are not injective, but in the case of
+$`\Qhat=\Q\otimes\Zhat` both maps from $`\Q` and $`\Zhat` are inclusions.
 
-    In Lean I would prove this using {\tt TensorProduct.induction\_on}, which quickly
-    reduces us to the claim that the sum of two pure tensors is pure, which we can prove
-    using the above technique whilst avoiding the general theory of finite sums.
-\end{proof}
-```
-
-```tex "QHat.IsCoprime"
-\begin{definition}
-    \label{QHat.IsCoprime}
-    \lean{QHat.IsCoprime}
-    \uses{ZHat.commRing}
-    \leanok
-    If $N\in\N^+$ and $z\in\Zhat$ then we say that $N$ and $z$ are \emph{coprime} if
-    $z_N\in(\Z/N\Z)^\times$. We write $z/N$ as notation
-    for the element $\frac{1}{N}\otimes_tz$.
-\end{definition}
-
-\begin{lemma}
-    \label{QHat.lowestTerms}
-    \lean{QHat.lowestTerms}
-    \uses{QHat.IsCoprime}
-    \leanok
-    Every element of $\Qhat$ can be uniquely written as $z/N$ with $z\in\Zhat$, $N\in\N^+$,
-    and with $N$ and $z$ coprime.
-\end{lemma}
-\begin{proof}
-    Existence: by the previous lemma, an arbitrary element can be written as $z/N$; let $D$
-    be the greatest common divisor of $N$ and $z_N$ (lifted to a natural). If $D=1$
-    then the fraction is by definition in lowest terms. However if $1<D\mid N$ then $z_D$
-    is the reduction of $z_N$ and is hence 0. By lemma~\ref{ZHat.multiples} we deduce that $z=Dy$
-    is a multiple of~$D$, and hence $z/N=\frac{1}{N}\otimes_tDy=\frac{1}{E}\otimes y$, where
-    $E=N/D$. Now if a natural divided both $y_E$ and $E$ then this natural would divide both $z_N/D$
-    and $N/D$, contradicting the fact that $D$ is the greatest common divisor.
-
-    Uniqueness: if $z/N=w/M$, we deduce $1\otimes_t Mz=1\otimes_t Nw$,
-    and by injectivity of $\Zhat\to\Qhat$ we deduce that $Mz=Nw=y$.
-    In particular, if $L$ is the lowest common multiple of $M$ and $N$ then $y_L$ is a multiple of both $M$ and $N$ and is
-    hence zero, so $y=Lx$ is a multiple of~$L$ by~\ref{ZHat.multiples}, and we deduce
-    from torsionfreeness that $z=(L/M)x$ and $w=(L/N)x$. If some prime divided $L/M$
-    then it would have to divide~$N$ which means that $z$ is not in lowest terms;
-    similarly if some prime divided $L/N$ then $w/M$ would not be in lowest terms.
-    We deduce that $L=M=N$ and hence $z=w$ by torsionfreeness.
-\end{proof}
-```
-
-:::definition "qhat_coprime_definition" (parent := "automorphic_example_program") (lean := "QHat.IsCoprime")
-If $`N \in \mathbf{N}^+`$ and $`z \in \widehat{\mathbf{Z}}`$ then `N` and `z`
-are called coprime when the `N`-th coordinate of `z` is a unit modulo `N`.
-This is the coprimality notion used in the lowest-terms theorem, and it depends
-on {uses "zhat_is_a_ring"}[].
+:::theorem "QHat.injective_rat" (parent := "automorphic_example_program") (lean := "QHat.injective_rat")
+The ring homomorphism $`\Q\to\Qhat` sending $`q` to $`q\otimes_t 1` is
+injective.
 :::
 
-:::theorem "qhat_lowest_terms" (parent := "automorphic_example_program") (lean := "QHat.lowestTerms")
-Every element of $`\widehat{\mathbf{Q}}`$ should admit a lowest-terms
-representation $`z/N`, where the `N`-th coordinate of `z` is a unit modulo `N`.
-This theorem depends on the coprime definition {uses "qhat_coprime_definition"}[]
-and on {uses "qhat_canonical_form"}[].
-:::
-
-:::proof "qhat_lowest_terms"
-The TeX argument combines {uses "qhat_canonical_form"}[] with
-{uses "zhat_multiples_criterion"}[]. If a common divisor survives in both the
-denominator and the relevant residue coordinate, one divides it out inside
-`\widehat{\mathbf{Z}}`; uniqueness is then proved by comparing two such
-representations through a common multiple and using torsionfreeness.
-:::
-
-:::theorem "qhat_rational_embedding_injective" (parent := "automorphic_example_program") (lean := "QHat.injective_rat")
-The natural map from `ℚ` into $`\widehat{\mathbf{Q}}`$ is injective.
-This is one of the two basic embedding results for the tensor-product model
-{uses "qhat_definition"}[] and {uses "zhat_is_a_ring"}[].
-:::
-
-:::proof "qhat_rational_embedding_injective"
-The TeX chapter proves this using flatness of `ℚ` over `ℤ`. Its practical role
-is to justify regarding ordinary rational numbers as honest elements of the
-finite-adelic toy model.
+:::proof "QHat.injective_rat"
+We have seen that the map from $`\Z` to $`\Zhat` is injective. Now $`\Q` is a
+flat $`\Z`-module, because it's torsion-free, so tensoring up we deduce that
+the map from $`\Q=\Q\otimes\Z` to $`\Qhat=\Q\otimes\Zhat` is also injective.
+There is no doubt a more elementary proof of this fact.
 :::
 
 ```tex "QHat.injective_rat"
@@ -434,17 +479,15 @@ finite-adelic toy model.
 \end{proof}
 ```
 
-:::theorem "qhat_zhat_embedding_injective" (parent := "automorphic_example_program") (lean := "QHat.injective_zHat")
-The natural map from $`\widehat{\mathbf{Z}}`$ into $`\widehat{\mathbf{Q}}`$ is
+:::theorem "QHat.injective_zHat" (parent := "automorphic_example_program") (lean := "QHat.injective_zHat")
+The ring homomorphism $`\Zhat\to\Qhat` sending $`z` to $`1\otimes_t z` is
 injective.
-This is the companion embedding statement, using the torsion-freeness package
-from {uses "zhat_torsionfree"}[] and the tensor-product model {uses "qhat_definition"}[].
 :::
 
-:::proof "qhat_zhat_embedding_injective"
-This is the companion to {uses "qhat_rational_embedding_injective"}[]. The TeX
-proof uses torsionfreeness of `\widehat{\mathbf{Z}}` to justify treating
-`\widehat{\mathbf{Z}}` as a genuine subring of `\widehat{\mathbf{Q}}`.
+:::proof "QHat.injective_zHat"
+The map from $`\Z` to $`\Q` is injective, and we have seen that $`\Zhat` is a
+torsion-free and thus flat $`\Z`-module, so the map from $`\Zhat` to
+$`\Qhat` is also injective.
 :::
 
 ```tex "QHat.injective_zHat"
@@ -463,86 +506,106 @@ proof uses torsionfreeness of `\widehat{\mathbf{Z}}` to justify treating
 \end{proof}
 ```
 
-# Additive Structure Of Qhat
+# Additive structure of Qhat.
 
-:::theorem "qhat_intersection_q_and_zhat" (parent := "automorphic_example_program") (lean := "QHat.rat_meet_zHat")
-Inside $`\widehat{\mathbf{Q}}`, the intersection of `ℚ` and
-$`\widehat{\mathbf{Z}}`$ is exactly `ℤ`.
-The TeX proof uses the lowest-terms package from {uses "qhat_lowest_terms"}[].
+Here we forget the ring structure on everything, and analyse $`\Qhat` as an
+additive abelian group, and in particular how the subgroups $`\Z`, $`\Q` and
+$`\Zhat` sit within it.
+
+The two results we prove in this section are that $`\Q\cap\Zhat=\Z` and that
+$`\Q+\Zhat=\Qhat`. Using lattice-theoretic notation we could write these
+results as $`\Q\sqcap\Zhat=\Z` and $`\Q\sqcup\Zhat=\Qhat`.
+
+:::theorem "QHat.rat_meet_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_meet_zHat")
+The intersection of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Z`.
 :::
 
-:::proof "qhat_intersection_q_and_zhat"
-Once lowest terms are available, the argument is short. A rational element of
-`\widehat{\mathbf{Z}}` has a fraction representation `z/N`, but also the obvious
-integral representation with denominator `1`; uniqueness of lowest terms forces
-`N = 1`.
+:::proof "QHat.rat_meet_zHat"
+Clearly $`\Z\subseteq\Q\cap\Zhat`. Now suppose that $`x\in\Q\cap\Zhat`.
+Because $`x` is rational we can write it as $`\frac{A}{B}\otimes_t1` for some
+fraction $`A/B` in lowest terms, and hence $`x=A/B` where now we regard
+$`A\in\Zhat` and note that $`A/B` is still in lowest terms. However
+$`x\in\Zhat` implies that $`x=x/1` is in lowest terms, so we deduce that
+$`B=1` and thus $`x=A\in\Z`.
 :::
 
-:::theorem "qhat_additive_decomposition" (parent := "automorphic_example_program") (lean := "QHat.rat_join_zHat")
-Every element of $`\widehat{\mathbf{Q}}`$ can be written additively as
-$`q + z` with `q ∈ ℚ` and $`z ∈ \widehat{\mathbf{Z}}`.
-This is the additive companion to {uses "qhat_intersection_q_and_zhat"}[].
-The TeX proof starts from {uses "qhat_lowest_terms"}[].
+:::theorem "QHat.rat_join_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_join_zHat")
+The sum of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Qhat`. More precisely, every
+element of $`\Qhat` can be written as $`q+z` with $`q\in\Q` and $`z\in\Zhat`,
+or more precisely as $`q\otimes_t 1+1\otimes_t z`.
 :::
 
-:::proof "qhat_additive_decomposition"
-The TeX proof again starts from {uses "qhat_lowest_terms"}[] and then a
-lowest-terms expression `z/N`. One lifts the
-`N`-th residue coordinate of `z` to an actual integer `t`, and then the
-difference `z - t` becomes divisible by `N` inside `\widehat{\mathbf{Z}}` by
-{uses "zhat_multiples_criterion"}[]. This rewrites `z/N` as a rational number
-plus an element of `\widehat{\mathbf{Z}}`.
-
-Conceptually, this explains how `ℚ` and `\widehat{\mathbf{Z}}` sit inside the
-finite adeles of `ℚ`, which is exactly the kind of bookkeeping the later
-quaternionic construction needs.
+:::proof "QHat.rat_join_zHat"
+Write $`x\in\Qhat` as $`x=z/N` in lowest terms. Lift $`z_N` to an integer
+$`t` and observe that $`(z-t)_N=0`, hence $`z-t=Ny` for some $`y\in\Zhat`. Now
+$`x=t/N+y\in\Q+\Zhat`.
 :::
 
-# Multiplicative Structure Of The Units Of Qhat
+# Multiplicative structure of the units of Qhat.
 
-:::theorem "qhat_units_intersection" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_meet_unitszHat")
-Inside the unit group of $`\widehat{\mathbf{Q}}`, the intersection of
-`ℚ^×` with $`\widehat{\mathbf{Z}}^×` is `ℤ^×`.
-This is the multiplicative analogue of
-{uses "qhat_intersection_q_and_zhat"}[].
+We now forget the additive structure on the commutative ring $`\Qhat` and
+consider the multiplicative structure of its group of units $`\Qhat^\times`
+(which I couldn't get into the section title). We have the obvious subgroups
+$`\Q^\times`, $`\Z^\times` and $`\Zhat^\times`.
+
+:::theorem "Qhat.unitsrat_meet_unitszHat" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_meet_unitszHat")
+The intersection of $`\Q^\times` and $`\Zhat^\times` in $`\Qhat^\times` is
+$`\Z^\times`.
 :::
 
-:::proof "qhat_units_intersection"
-The TeX chapter proves this by combining {uses "qhat_lowest_terms"}[] with the additive
-intersection statement: a unit that is both rational and integral must already
-be an ordinary integer, and unit conditions force that integer to be `±1`.
+:::proof "Qhat.unitsrat_meet_unitszHat"
+Clearly the intersection is contained within $`\Q\cap\Zhat=\Z`. If $`n\in\Z`
+is in $`\Zhat^\times` then $`n\not=0` and its inverse $`1/n=\pm1/|n|` is in
+lowest terms but also in $`\Zhat`, and hence $`|n|=1` by uniqueness of lowest
+term representation.
 :::
 
-:::theorem "qhat_units_factorization" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_join_unitszHat")
-Every unit of $`\widehat{\mathbf{Q}}`$ factors as a product of a rational unit
-and a unit of $`\widehat{\mathbf{Z}}`.
-The TeX proof explicitly uses {uses "qhat_canonical_form"}[] and the
-divisibility criterion {uses "zhat_multiples_criterion"}[].
+Note that by the previous lemma, this representation will be unique up to sign.
+
+:::theorem "QHat.unitsrat_join_unitszHat" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_join_unitszHat")
+The product of $`\Q^\times` and $`\Zhat^\times` in $`\Qhat^\times` is all of
+$`\Qhat^\times`. More precisely, every element of $`\Qhat^\times` can be
+written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 :::
 
-:::proof "qhat_units_factorization"
-This is the multiplicative counterpart to
-{uses "qhat_additive_decomposition"}[]. The TeX proof turns invertibility in
-`\widehat{\mathbf{Q}}` into a divisibility statement in `\widehat{\mathbf{Z}}`,
-then extracts a minimal positive integer generator of the corresponding ideal.
+:::proof "QHat.unitsrat_join_unitszHat"
+We already know that a general element of $`\Qhat^\times` can be written as
+$`x/N` with $`N` positive, so this reduces us to proving that a general element
+$`x\in\Zhat` which is invertible in $`\Qhat^\times` can be written as
+$`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 
-The TeX chapter notes that the resulting factorization is unique up to sign,
-because the intersection of `ℚ^×` and `\widehat{\mathbf{Z}}^×` is exactly
-`ℤ^×`.
+We know $`1/x` can be written in lowest terms as $`y/M`, and multiplying up we
+deduce that $`xy=M`, and hence $`x` divides a positive integer. If
+$`i:\Z\to\Zhat` denotes the inclusion, then we've just seen that the preimage of
+the principal ideal $`(x)`, namely, $`J:=i^{-1}(x\Zhat)` is nonzero, as it
+contains $`M`. Let $`g\in J` be the smallest positive integer; it's
+well-known that $`J=(g)`.
+
+I claim that it suffices to show that $`x\Zhat=g\Zhat`. Because knowing
+$`g=yx` and $`x=gz` for some $`y,z\in\Zhat` tells us that
+$`g(1-yz)=0`, and we know that multiplication by $`g` is injective, hence
+$`yz=1`, so $`z` is a unit and we have written $`x=gz` with
+$`g\in\Q^\times` and $`z\in\Zhat^\times`.
+
+It remains to prove the claim. By definition $`g\in J\subseteq x\Zhat` so this
+is one inclusion. For the other, it suffices to prove that $`x_g=0`. However if
+$`0<x_g<g` lifts $`x_g` to the naturals then I claim that $`x_g\in J`, for
+$`x_g-x` is a multiple of $`g` and hence of $`x`, and this contradicts
+minimality of $`g`.
 :::
 
 # The Hurwitz quaternions
 
-:::definition "hurwitz_quaternions_definition" (parent := "automorphic_example_program")
-The Hurwitz quaternions are the lattice
-$`\mathcal{O} = \mathbf{Z} \oplus \mathbf{Z}\omega \oplus \mathbf{Z}i \oplus \mathbf{Z}i\omega`
-inside Hamilton's quaternions.
-:::
-
-:::proof "hurwitz_quaternions_definition"
-The TeX chapter rewrites this in the more concrete coordinate form too: a
-quaternion `a + bi + cj + dk` is Hurwitz precisely when either all four
-coordinates are integers or all four lie in `\mathbf{Z} + \frac12`.
+-- TODO: Restore `(lean := "Hurwitz")` on this node once VersoBlueprint accepts
+-- inductive/structure external references.
+:::definition "Hurwitz" (parent := "automorphic_example_program")
+The Hurwitz quaternions are the set
+$`\calO := \Z\oplus\Z \omega\oplus\Z i\oplus\Z i\omega` (as an abstract
+abelian group or as a subgroup of the usual quaternions). Here
+$`\omega=\frac{-1+(i+j+k)}{2}` and note that $`(i+j+k)^2=-3`. We have
+$`\overline{\omega}=\omega^2=-(\omega+1)`. A general quaternion $`a+bi+cj+dk`
+is a Hurwitz quaternion if either $`a,b,c,d\in\Z` or
+$`a,b,c,d\in\Z+\frac{1}{2}`.
 :::
 
 ```tex "Hurwitz"
@@ -718,118 +781,113 @@ is the usual Hamilton quaternions.
 \end{remark}
 ```
 
-:::theorem "hurwitz_quaternions_form_ring" (parent := "automorphic_example_program")
+:::theorem "Hurwitz.ring" (parent := "automorphic_example_program") (lean := "Hurwitz.ring")
 The Hurwitz quaternions form a ring.
-This is the first algebraic consequence of
-{uses "hurwitz_quaternions_definition"}[].
 :::
 
-:::proof "hurwitz_quaternions_form_ring"
-This is presented in the TeX chapter as a straightforward algebra check once the
-definition of `\omega` and the quaternion multiplication rules are in place.
+:::proof "Hurwitz.ring"
+Follow your nose.
 :::
 
 The TeX chapter immediately notes that this ring is isomorphic to `ℤ^4` as an
 additive group, and that `\mathcal{O} \otimes_{\mathbf{Z}} \mathbf{R}` recovers
 the usual Hamilton quaternions.
 
-:::definition "hurwitz_quaternion_conjugation" (parent := "automorphic_example_program")
-The Hurwitz quaternions carry the usual quaternionic conjugation, making them a
-star ring.
-This is defined on top of {uses "hurwitz_quaternions_form_ring"}[].
+:::definition "Hurwitz.starRing" (parent := "automorphic_example_program") (lean := "Hurwitz.starRing")
+There's a conjugation map (which we'll call "star") from the Hurwitz
+quaternions to themselves, sending integers to themselves and purely imaginary
+elements like $`2\omega+1` to minus themselves. It satisfies $`(x^*)^*=x`,
+$`(xy)^*=y^*x^*` and $`(x+y)^*=x^*+y^*`. In particular, the Hurwitz quaternions
+are a "star ring" in the sense of mathlib.
 :::
 
-:::definition "hurwitz_quaternion_norm" (parent := "automorphic_example_program") (lean := "Hurwitz.norm")
-The Hurwitz quaternions carry an integer-valued norm extending the usual norm on
-Hamilton's quaternions.
-The subsequent norm lemmas all hang off this definition.
+:::definition "Hurwitz.norm" (parent := "automorphic_example_program") (lean := "Hurwitz.norm")
+The Hurwitz quaternions come equipped with an integer-valued norm, which is
+$`a^2+b^2+c^2+d^2` on $`a+bi+cj+dk` but needs to be modified a bit to deal with
+$`\omega`.
 :::
 
-:::theorem "hurwitz_norm_eq_mul_conj" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_mul_conj")
-For a Hurwitz quaternion `x`, the norm is `x \overline{x}`.
+:::theorem "Hurwitz.norm_eq_mul_conj" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_mul_conj")
+We have $`N(x)=x\overline{x}`.
 :::
 
-:::proof "hurwitz_norm_eq_mul_conj"
-This is the first norm computation in the TeX chapter. Once the conjugation map
-has been defined, the identity is a direct calculation.
+:::proof "Hurwitz.norm_eq_mul_conj"
+Easy calculation.
 :::
 
-:::theorem "hurwitz_norm_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_zero")
-The norm of `0` is `0`.
+:::theorem "Hurwitz.norm_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_zero")
+The norm of $`0` is $`0`.
 :::
 
-:::proof "hurwitz_norm_zero"
-The TeX proof is just a calculation from the definition of the norm.
+:::proof "Hurwitz.norm_zero"
+A calculation.
 :::
 
-:::theorem "hurwitz_norm_one" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_one")
-The norm of `1` is `1`.
+:::theorem "Hurwitz.norm_one" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_one")
+The norm of $`1` is $`1`.
 :::
 
-:::proof "hurwitz_norm_one"
-Again this is an immediate calculation from the defining formula.
+:::proof "Hurwitz.norm_one"
+A calculation.
 :::
 
-:::theorem "hurwitz_norm_multiplicative" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_mul")
+:::theorem "Hurwitz.norm_mul" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_mul")
 The norm of a product is the product of the norms.
 :::
 
-:::proof "hurwitz_norm_multiplicative"
-The TeX chapter treats this as another short calculation, now using the
-conjugation identity from {uses "hurwitz_norm_eq_mul_conj"}[].
+:::proof "Hurwitz.norm_mul"
+A calculation.
 :::
 
-:::theorem "hurwitz_norm_nonnegative" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg")
+:::theorem "Hurwitz.norm_nonneg" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg")
 The norm of a Hurwitz quaternion is nonnegative.
 :::
 
-:::proof "hurwitz_norm_nonnegative"
-The TeX proof is that the norm is a sum of rational squares.
+:::proof "Hurwitz.norm_nonneg"
+It's a sum of rational squares.
 :::
 
-:::theorem "hurwitz_norm_eq_zero_iff" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_zero")
-The norm of a Hurwitz quaternion is zero if and only if the quaternion itself is
-zero.
+:::theorem "Hurwitz.norm_eq_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_zero")
+The norm of an element is zero if and only if the element is zero.
 :::
 
-:::proof "hurwitz_norm_eq_zero_iff"
-Again the TeX chapter appeals to the fact that the norm is a sum of rational
-squares: such a sum vanishes only when every summand vanishes.
+:::proof "Hurwitz.norm_eq_zero"
+It's a sum of rational squares.
 :::
 
-:::theorem "hurwitz_exists_near" (parent := "automorphic_example_program") (lean := "Hurwitz.exists_near")
-Every real quaternion lies within norm `< 1` of some Hurwitz quaternion.
+:::theorem "Hurwitz.exists_near" (parent := "automorphic_example_program") (lean := "Hurwitz.exists_near")
+Given a "usual" quaternion $`a=x+yi+zj+wk` with $`x,y,z,w\in\R`, there exists a
+Hurwitz quaternion $`q` such that $`N(a-q)<1`.
 :::
 
-:::proof "hurwitz_exists_near"
-The TeX argument is a nearest-integer estimate on the four coordinates. The
-only subtle case is when all four coordinates are half-integers, in which case
-the nearest lattice point is obtained using the shifted Hurwitz lattice rather
-than the obvious integer one.
+:::proof "Hurwitz.exists_near"
+If $`[r]` denotes the nearest integer to the real number $`r`, then
+$`|r-[r]|\leq \frac{1}{2}`. Hence if
+$`q=[x]+[y]i+[z]j+[w]k` then $`N(a-q)=|x-[x]|^2+\cdots
+\leq \frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}\leq 1`, with strict
+inequality unless
+$`|x-[x]|=|y-[y]|=|z-[z]|=|w-[w]|=\frac{1}{2}`, in which case
+$`a\in\mathcal{O}` because $`a-\omega` has integer coordinates.
 :::
 
-:::theorem "hurwitz_quotient_remainder" (parent := "automorphic_example_program") (lean := "Hurwitz.quot_rem")
-Given Hurwitz quaternions `a` and nonzero `b`, there exist `q` and `r` with
-`a = qb + r` and `N(r) < N(b)`.
-This is the Euclidean-division statement built from
-{uses "hurwitz_exists_near"}[].
+:::theorem "Hurwitz.quot_rem" (parent := "automorphic_example_program") (lean := "Hurwitz.quot_rem")
+Given two Hurwitz quaternions $`a` and $`b` with $`b` nonzero, there exists
+$`q` and $`r` such that $`a=qb+r` and $`N(r)<N(b)`.
 :::
 
-:::proof "hurwitz_quotient_remainder"
-This is Euclidean division in the TeX chapter. One approximates `a/b` by a
-Hurwitz quaternion using {uses "hurwitz_exists_near"}[] and then multiplies back
-up to produce the remainder estimate.
+:::proof "Hurwitz.quot_rem"
+Let $`q` be the Hurwitz quaternion obtained by applying
+{uses "Hurwitz.exists_near"}[] to $`a/b := ab^{-1}`; then $`N(a/b-q)<1` and
+now everything follows after multiplying up.
 :::
 
-:::theorem "hurwitz_left_ideal_principal" (parent := "automorphic_example_program") (lean := "Hurwitz.left_ideal_princ")
-Every left ideal of the Hurwitz order is principal.
-This is the left-ideal consequence of {uses "hurwitz_quotient_remainder"}[].
+:::theorem "Hurwitz.left_ideal_princ" (parent := "automorphic_example_program") (lean := "Hurwitz.left_ideal_princ")
+All left ideals of $`\calO` are principal.
 :::
 
-:::proof "hurwitz_left_ideal_principal"
-The TeX proof is the standard Euclidean-domain argument: choose a nonzero
-element of minimal norm and apply
-{uses "hurwitz_quotient_remainder"}[].
+:::proof "Hurwitz.left_ideal_princ"
+If the ideal is `0`, use `0`. Otherwise, choose a nonzero element of smallest
+norm.
 :::
 
 The TeX chapter also remarks that all right ideals are principal too, because
@@ -897,47 +955,32 @@ particular choice of $D$ and $\calO$ the result is true.
 
 # Profinite completion of the Hurwitz quaternions
 
-:::definition "hurwitz_profinite_completion" (parent := "automorphic_example_program")
-The profinite completion `\widehat{\mathcal{O}}` of the Hurwitz order is
-`\mathcal{O} \otimes \widehat{\mathbf{Z}}`.
-This depends on {uses "hurwitz_quaternions_definition"}[] and
-{uses "profinite_completion_zhat"}[].
+We define $`\calOhat` to be $`\calO\otimes\Zhat`, so it's elements
+$`a+bi+cj+d\omega` with $`a,b,c,d\in\Zhat`. The basic thing we need is this:
+
+:::theorem "Hurwitz.surjective_pnat_quotient" (parent := "automorphic_example_program")
+If $`N` is a positive natural then the obvious map
+$`\calO\to\calOhat/N\calOhat` is surjective.
 :::
 
-The TeX chapter immediately rewrites elements of `\widehat{\mathcal{O}}` as
-formal quaternions `a + bi + cj + d\omega` with `a,b,c,d` in
-`\widehat{\mathbf{Z}}`.
-
-:::theorem "hurwitz_mod_n_surjective" (parent := "automorphic_example_program")
-For every positive integer `N`, the natural map
-`\mathcal{O} \to \widehat{\mathcal{O}} / N\widehat{\mathcal{O}}` is surjective.
-This is the profinite-completion analogue of the corresponding `\widehat{\mathbf Z}`
-surjectivity statement.
-It is built from {uses "hurwitz_profinite_completion"}[].
+:::proof "Hurwitz.surjective_pnat_quotient"
+This is just four copies of the surjection $`\Z\to\Zhat/N\Zhat`. Note that this
+latter map is surjective because $`\Z\to\Z/N\Z` is surjective, hence given
+$`z\in\Zhat` you can subtract an integer $`w` such that $`(z-w)_N=0`, so
+$`z-w` is a multiple of $`N`.
 :::
 
-:::proof "hurwitz_mod_n_surjective"
-The TeX chapter treats this as four copies of the corresponding statement for
-`\mathbf{Z} \to \widehat{\mathbf{Z}}/N\widehat{\mathbf{Z}}`.
+We define $`D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\oplus\Q j\oplus\Q k`.
+Finally, we define $`\widehat{D}:=D\otimes\Zhat`. Just as with $`\Qhat` we
+have
+
+:::theorem "HurwitzRatHat.canonicalForm" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.canonicalForm")
+Every element of $`\widehat{D}` can be written as $`z/N` with
+$`z\in\calOhat` and $`N\in\N^+`.
 :::
 
-:::definition "completed_rational_quaternion_algebra" (parent := "automorphic_example_program")
-The rational quaternion algebra `D` gives rise to its finite-adelic completion
-`\widehat{D} = D \otimes \widehat{\mathbf{Z}}`.
-This completion is the quaternionic analogue of the `\widehat{\mathbf{Q}}`
-construction from {uses "qhat_definition"}[].
-:::
-
-:::theorem "completed_quaternion_canonical_form" (parent := "automorphic_example_program")
-Every element of `\widehat{D}` can be written as `z/N` with
-`z \in \widehat{\mathcal{O}}` and `N` a positive integer.
-This is the quaternionic analogue of {uses "qhat_canonical_form"}[].
-It uses the completion setup from {uses "hurwitz_profinite_completion"}[].
-:::
-
-:::proof "completed_quaternion_canonical_form"
-The TeX chapter says this is proved exactly like the corresponding canonical-form
-statement for `\widehat{\mathbf{Q}}`.
+:::proof "HurwitzRatHat.canonicalForm"
+Same as the proof for $`\Qhat`.
 :::
 
 The TeX chapter then records the additive analogues of the corresponding
@@ -954,38 +997,52 @@ there are class-group-style obstructions, encoded by a noncommutative double
 coset space. The TeX chapter emphasizes that the Hamilton/Hurwitz example is
 special precisely because this obstruction vanishes here.
 
-:::theorem "completed_quaternion_units_factorization" (parent := "automorphic_example_program")
-Every unit of `\widehat{D}` can be written as a product of a unit from `D` and a
-unit from `\widehat{\mathcal{O}}`.
-This is the quaternionic analogue of {uses "qhat_units_factorization"}[].
-The key Hurwitz input is {uses "hurwitz_left_ideal_principal"}[].
+:::theorem "HurwitzRatHat.completed_units" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.completed_units")
+The group of units of $`\widehat{D}` is $`D^\times\calOhat^\times`. More
+precisely, every element of $`\widehat{D}^\times` can be written as a product
+$`\delta u` with $`\delta\in D^\times` and $`u\in\calOhat^\times`.
 :::
 
-:::proof "completed_quaternion_units_factorization"
-This is the final theorem in the remaining TeX tail. The proof repeats the
-lowest-terms style argument from `\widehat{\mathbf{Q}}`, but now with one-sided
-ideals in the Hurwitz order replacing principal ideals in `\widehat{\mathbf{Z}}`.
-The Euclidean argument for the Hurwitz order is exactly what makes the factorization work.
-:::
+:::proof "HurwitzRatHat.completed_units"
+Given an element $`x` of $`\widehat{D}^\times`, we can use
+{uses "HurwitzRatHat.canonicalForm"}[] to write it as $`z/N` with $`N` a
+positive integer and $`z\in\widehat{\calO}`. Note that $`N` is central and in
+$`D^\times`. Similarly, we can write $`x^{-1}` as $`y/M` with $`M` a positive
+integer and $`y\in\widehat{\calO}`. Then
+$`1=xx^{-1}=zy/NM` and so $`zy=NM=MN`, and $`1=x^{-1}x=yz/MN` so $`yz=MN` too.
+In particular $`y` both left and right divides a positive integer.
 
-# Target calculation
+Now consider the left ideal $`\widehat{\calO}y` generated by $`y`. We've just
+seen that this ideal has nontrivial intersection with $`\calO`, because it
+contains $`MN>0`. Hence its intersection with $`\calO` is a nonzero left ideal
+of $`\calO`, which is hence principal by
+{uses "Hurwitz.left_ideal_princ"}[]. Write it as $`\calO\alpha` with
+$`0\not=\alpha\in\calO`.
 
-:::theorem "one_dimensional_example_space" (parent := "automorphic_example_program")
-The target conclusion is that the chosen concrete space of quaternionic modular
-forms is one-dimensional.
-:::
+It suffices to show that $`\calOhat\alpha=\calOhat y`. For this would imply
+that $`u\alpha=y` and $`vy=\alpha` for some $`u,v\in\calOhat`, and thus
+$`(vu-1)\alpha=0` and $`(uv-1)y=0`, and both $`\alpha` and $`y` are left
+divisors of positive integers (the norm of $`\alpha`, and $`MN`
+respectively), so now using the fact that $`\calOhat` is $`\Z`-torsion-free
+(is the tensor product of torsion-free abelian groups torsion-free? That would
+be a cheap way of doing it. Otherwise use $`\calO=\Z^4`) we deduce that
+$`u` and $`v` are units, and thus
+$`x^{-1}=\frac{1}{M}u\alpha` so $`x=(M\alpha^{-1})v\in D^\times\calOhat^\times`.
 
-:::proof "one_dimensional_example_space"
-The old blueprint treats this chapter as both a worked example and a source of
-API pressure for the later quaternion-algebra and Hecke-operator chapters.
-It also makes a methodological point: if this example were completed before
-mathlib proves the finite-dimensionality of classical modular-form spaces, then
-the first modular-form finite-dimensionality theorem in Lean would be
-quaternionic rather than classical.
+What remains is this. We have $`y\in\calOhat` which left and right divides some
+positive integer. We've defined $`0\not=\alpha\in\calO` such that
+$`\calO\alpha` is the pullback of the abelian group $`\calOhat y` along the map
+$`\calO\to\calOhat`. We need to show that when we push this ideal $`\calO\alpha`
+forwards to $`\calOhat` we get $`\calOhat y` again. The fact that
+$`\calOhat\alpha\subseteq\calOhat y` is easy, because $`\alpha\in\calOhat y` by
+definition. So it remains to show that $`y\in\calOhat\alpha`.
 
-The enlarged Verso port now makes the chapter's preparatory role clearer too.
-Before one can even talk cleanly about adelic quaternionic level structures, one
-needs the toy finite-adelic algebra described by
-{uses "profinite_completion_zhat"}[] and {uses "qhat_definition"}[] as well as
-the concrete integral structure supplied by {uses "hurwitz_quaternion_order"}[].
+Let's define $`T` to be a positive integer which is both a left and right
+multiple of both $`y` and $`\alpha` (for example
+$`T=MN\alpha\overline{\alpha}` will do). Now note that we have an isomorphism
+$`\calO/T\calO=\calOhat/T\calOhat`, so we can choose some $`\beta\in\calO` such
+that $`\beta-y\in T\calOhat` is a multiple of $`T`. Next note that
+$`\beta\in y+\calOhat T\subset \calOhat y` is in
+$`\calOhat y\cap\calO=\calO\alpha`, meaning $`\beta=\gamma\alpha` for some
+$`\gamma\in\calO`. Hence $`y\in\beta+\calOhat T\subseteq\calOhat\alpha`.
 :::

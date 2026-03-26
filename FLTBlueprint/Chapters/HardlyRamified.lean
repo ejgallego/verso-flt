@@ -45,12 +45,6 @@ packages exactly how little ramification this representation has. Before giving
 that definition, the TeX chapter pauses to specify the coefficient rings over
 which the local conditions will be phrased.
 
-:::definition "coefficient_ring_definition" (parent := "hardly_ramified_program")
-A coefficient ring is a local pro-Artinian topological ring with finite residue
-field. Equivalently, it is a profinite local ring with finite residue field for
-which additive translates of open ideals form a basis for the topology.
-:::
-
 ```tex "coefficient_ring_definition"
 We say that a topological ring is \emph{pro-Artinian} if it is a projective
 limit of Artin local rings each equipped with the discrete topology, and if it
@@ -78,7 +72,7 @@ $`\mathbf{Z}_\ell`-algebra, we can talk about the `\ell`-adic cyclotomic
 character with values in that ring. We are now ready to define hardly ramified
 representations.
 
-:::definition "hardly_ramified_definition" (parent := "hardly_ramified_program")
+:::definition "hardly_ramified" (parent := "hardly_ramified_program")
 Let `R` be a coefficient ring with finite residue field of characteristic
 $`\ell \ge 3`, and let `V` be a finite free `R`-module of rank `2` equipped
 with the product topology. A continuous representation
@@ -111,7 +105,7 @@ the upper-triangular behavior at `2` reflects semistability there, and the
 finite-flat condition at `\ell` is what makes the representation visible to
 deformation theory as a geometric object rather than an arbitrary local system.
 
-:::theorem "frey_torsion_hardly_ramified" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_isHardlyRamified")
+:::theorem "Frey_curve_hardly_ramified" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_isHardlyRamified")
 The `\ell`-torsion representation in the Frey curve attached to a Frey package
 `(a,b,c,\ell)` is hardly ramified.
 It uses {uses "hardly_ramified"}[].
@@ -130,9 +124,9 @@ reducibility theorem below.
 \end{theorem}
 ```
 
-:::proof "frey_torsion_hardly_ramified"
+:::proof "Frey_curve_hardly_ramified"
 This theorem compresses the arithmetic of the Frey curve into the single
-definition {uses "hardly_ramified_definition"}[].
+definition {uses "hardly_ramified"}[].
 
 The general elliptic-curve input is classical: the torsion is two-dimensional
 and its determinant is cyclotomic, as explained in Silverman
@@ -145,10 +139,10 @@ required unramified one-dimensional quotient of order at most `2`, and at
 `\ell` the torsion is finite flat.
 
 In the current blueprint, those arithmetic ingredients are spelled out through
-{uses "elliptic_curve_torsion_determinant_cyclotomic"}[],
-{uses "frey_curve_unramified_away_from_two_and_l"}[],
-{uses "frey_curve_local_shape_at_two"}[], and
-{uses "frey_curve_flat_at_l"}[].
+{uses "Elliptic_curve_det_n_torsion"}[],
+{uses "frey_curve_unramified"}[],
+{uses "frey_curve_at_2"}[], and
+{uses "Frey_curve_mod_ell_rep_at_ell"}[].
 :::
 
 The TeX chapter inserts one important remark here: for hardly ramified mod
@@ -174,7 +168,7 @@ infrastructure.
 Given this theorem, the Wiles-side theorem from the reductions chapter is an
 easy corollary.
 
-:::theorem "frey_torsion_not_irreducible" (parent := "hardly_ramified_program")
+:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program")
 The Frey curve torsion representation is not irreducible.
 This is the direct Frey-curve specialization of
 {uses "hardly_ramified_reducible"}[], and the modularity-side endpoint used in
@@ -182,8 +176,8 @@ This is the direct Frey-curve specialization of
 {uses "no_frey_package"}[].
 :::
 
-:::proof "frey_torsion_not_irreducible"
-Combine {uses "frey_torsion_hardly_ramified"}[] with
+:::proof "Wiles_Frey_again"
+Combine {uses "Frey_curve_hardly_ramified"}[] with
 {uses "hardly_ramified_reducible"}[].
 :::
 
@@ -219,7 +213,7 @@ That is exactly the input needed to make the later modularity-lifting and
 potential-modularity machinery available.
 :::
 
-:::theorem "hardly_ramified_compatible_family" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_spreads_out" (parent := "hardly_ramified_program")
 A hardly ramified `\ell`-adic representation with irreducible reduction spreads
 out to a compatible family over a number field. In particular, one can choose a
 place `\lambda` above `\ell` recovering the original representation, and the
@@ -230,7 +224,7 @@ This is the theorem that makes it legal to move from the original prime
 `\ell` to a specialization at `3`.
 :::
 
-:::proof "hardly_ramified_compatible_family"
+:::proof "hardly_ramified_spreads_out"
 This is the gateway from one local deformation problem to a global family where
 the switch to `3` can be analyzed. The original Frey package singles out one
 prime, but the eventual contradiction is cleanest at `3`; a compatible family
@@ -240,15 +234,15 @@ The TeX theorem is more detailed, quantifying over the odd-characteristic
 finite places `\mu` of a number field `M` and requiring equality of Frobenius
 characteristic polynomials for the resulting `\mu`-adic representations away
 from the excluded primes. Inside the blueprint, that detailed statement is the
-precise form of the strategy already signaled by
-{uses "compatible_family_step"}[].
+precise form of the strategy already signaled in the overview chapter's
+discussion of compatible families and reduction at `3`.
 :::
 
 In particular, one can move from an irreducible hardly ramified mod `\ell`
 representation to a hardly ramified `3`-adic representation and hence to a
 hardly ramified mod `3` representation.
 
-:::theorem "hardly_ramified_mod_three" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_mod3_reducible" (parent := "hardly_ramified_program")
 If `k` is a finite field of characteristic `3` and
 $`\overline{\rho} : \GQ \to \GL_2(k)` is hardly ramified, then
 $`\overline{\rho}` is an extension of the cyclotomic character by the trivial
@@ -258,7 +252,7 @@ This is the almost-complete classification of the mod `3` case recorded in the
 TeX chapter.
 :::
 
-:::proof "hardly_ramified_mod_three"
+:::proof "hardly_ramified_mod3_reducible"
 This is the first place where the prime `3` becomes special rather than merely
 convenient. The local conditions are rigid enough in characteristic `3` that
 there is essentially no room for exotic irreducible behavior.
@@ -267,17 +261,17 @@ For the later contradiction, the key point is that the semisimplification is
 already the expected reducible object.
 :::
 
-:::theorem "hardly_ramified_three_adic" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_3adic_reducible" (parent := "hardly_ramified_program")
 If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has
 $`\rho_3^{ss} = 1 \oplus \chi_3`.
-It uses {uses "hardly_ramified"}[] and {uses "hardly_ramified_mod_three"}[].
+It uses {uses "hardly_ramified"}[] and {uses "hardly_ramified_mod3_reducible"}[].
 This is the `3`-adic classification theorem from which the final Frobenius
 constraints are read off.
 :::
 
-:::proof "hardly_ramified_three_adic"
+:::proof "hardly_ramified_3adic_reducible"
 The TeX chapter presents this as the easiest of the three deep inputs. It is
 the stage where the Fontaine-style discriminant argument enters: the mod `3`
 classification and the local flatness and tameness hypotheses force any
@@ -293,9 +287,9 @@ Poitou and Odlyzko {Informal.citep poitouOdlyzkoBounds}[].
 Assume for contradiction that a hardly ramified mod `\ell` representation
 $`\overline{\rho}` is irreducible. By {uses "hardly_ramified_lifts"}[],
 $`\overline{\rho}` lifts to a hardly ramified `\ell`-adic representation
-`\rho`. By {uses "hardly_ramified_compatible_family"}[], that lift belongs to a
+`\rho`. By {uses "hardly_ramified_spreads_out"}[], that lift belongs to a
 compatible family. Moving to the place above `3` and applying
-{uses "hardly_ramified_three_adic"}[] shows that for primes $`p \nmid 6\ell`
+{uses "hardly_ramified_3adic_reducible"}[] shows that for primes $`p \nmid 6\ell`
 the Frobenius characteristic polynomial is forced to be $`(X-p)(X-1)`.
 
 Compatibility carries the same characteristic polynomials back to the original

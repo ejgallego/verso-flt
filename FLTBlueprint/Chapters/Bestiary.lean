@@ -124,7 +124,10 @@ Note that Mar\'ia In\'es de Frutos Fern\'andez and Filippo Nuccio are working on
 :::theorem "local_galois_cohomology_package" (parent := "bestiary_appendix")
 The local cohomology package includes finiteness, cohomological dimension two,
 top-degree identifications, Poincaré duality, and Euler-Poincaré formulas.
-These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's *Galois Cohomology* text {Informal.citep serreGalCoh}[] throughout this package.
+These are exactly the kinds of local-cohomological inputs that surface in the
+local conditions leading up to {uses "modularity_lifting_theorem"}[]; the old
+appendix cites Serre's *Galois Cohomology* text
+{Informal.citep serreGalCoh}[] throughout this package.
 :::
 
 ```tex "bestiary/class_field_theory/local_galois_cohomology"
@@ -328,7 +331,8 @@ has no nontrivial smooth connected unipotent normal `k`-subgroup.
 :::proof "connected_reductive_group_placeholder"
 The point of the appendix is triage rather than completion: it marks the
 high-level objects that the project will eventually need to state precisely.
-They are later specialized in {uses "automorphic_form_general_notion"}[] and {uses "automorphic_form_for_gln"}[].
+They are later specialized in the modularity-lifting chapter and in
+{uses "automorphic_form_for_gln"}[].
 :::
 
 :::definition "automorphic_form_placeholder" (parent := "bestiary_appendix")

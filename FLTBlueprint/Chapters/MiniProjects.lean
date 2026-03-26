@@ -43,9 +43,9 @@ The large expository chapters are no longer just placeholders: the proof
 overview, the modularity-lifting interface, the quaternionic example chapter,
 and the `GL_n`/Langlands chapter now exist as substantial Verso chapters.
 This map records how the miniprojects feed those broader expository chapters
-such as {uses "potential_modularity_step"}[],
-{uses "automorphic_form_general_notion"}[],
-{uses "quaternionic_modular_form_example"}[], and
+such as {uses "modularity_lifting_theorem"}[],
+{uses "MatrixRing.isCentralSimple"}[],
+{uses "HurwitzRatHat.completed_units"}[], and
 {uses "automorphic_form_for_gln"}[].
 :::
 

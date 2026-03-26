@@ -13,6 +13,13 @@ porting goal in this repository is a faithful, as-near-word-for-word-as-
 practical translation from TeX/`leanblueprint` layout into Verso layout, not a
 substantive rewrite of the mathematical content.
 
+The harness now treats this as a literal-translation-first workflow. The first
+pass on a chapter should preserve paragraph boundaries, sentence order,
+section/theorem/proof order, and local claim order from the TeX source. New
+blueprint structure should only be introduced when the TeX source already has a
+corresponding formal item or when a clearly marked editorial note is
+unavoidable.
+
 The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so
 when a chapter needs to carry raw TeX locally it should do so directly next to
 the relevant Verso node instead of being paraphrased away.
@@ -28,7 +35,7 @@ than assuming any extra special directive.
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.
 
-For the current TeX-to-Verso fidelity snapshot inside the generated blueprint
+For the current TeX-to-Verso status snapshot inside the generated blueprint
 harness, see the `TeX To Verso Porting Status` chapter.
 
 ## Pages Artifact

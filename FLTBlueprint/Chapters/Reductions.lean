@@ -312,7 +312,7 @@ in Section `4.1` of {Informal.citep serreModularityConjecture}[].
 
 In the current port, the arithmetic bridge from Mazur's theorem to this
 Frey-specific irreducibility statement is isolated in
-{uses "reducible_frey_representation_conflicts_with_mazur"}[].
+{uses "Frey_curve_irreducible"}[].
 :::
 
 Note that in the first, pre-`2029` phase of the FLT project, we are not
@@ -332,9 +332,9 @@ The TeX chapter describes it as the main content of Wiles' magnum opus and
 omits the proof at this stage.
 
 In the current Verso port, the route to this theorem is made explicit through
-{uses "frey_torsion_hardly_ramified"}[],
+{uses "Frey_curve_hardly_ramified"}[],
 {uses "hardly_ramified_reducible"}[], and
-{uses "frey_torsion_not_irreducible"}[].
+{uses "Wiles_Frey_again"}[].
 :::
 
 :::theorem "no_frey_package" (parent := "first_reductions") (lean := "FreyPackage.false")
