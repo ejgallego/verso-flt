@@ -150,9 +150,13 @@ algebra over $`K`.
 We prove more generally that matrices with coefficients in `K` and indexed by
 an arbitrary nonempty finite type are a central simple algebra over `K`.
 
-They are clearly an algebra over `K`, with `K` embedded by scalar matrices.
-The centre contains `K`, and commuting with the matrix units forces any central
-matrix to be scalar.
+They are clearly an algebra over `K`, with `K` embedded via scalar matrices as
+usual; the injectivity of the map from `K` comes from nonemptiness of the
+finite index type. The centre clearly contains `K`. To show that it equals
+`K`, let `e(i,j)` be the matrix with a `1` in the `i`th row and `j`th column
+and zeros everywhere else. An element `Z = (Z_{s,t})` of the centre commutes
+with all matrices `e(i,j)` for `i \ne j`, and these equations immediately imply
+that `Z_{i,j} = 0` if `i \ne j` and that `Z_{i,i} = Z_{j,j}`.
 
 It remains to prove that any nonzero two-sided ideal is the whole matrix ring.
 Choose a nonzero matrix in the ideal and a nonzero entry of that matrix. The
