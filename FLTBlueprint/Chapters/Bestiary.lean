@@ -56,8 +56,10 @@ geometric Frobenius are stated there in terms of explicit maps to
 
 :::theorem "maximal_unramified_extension_placeholder" (parent := "bestiary_appendix")
 For a finite extension `K / ℚ_p`, the maximal unramified extension should be
-Galois with Galois group canonically identifiable with `\widehat{ℤ}` in the two
-normalizations corresponding to arithmetic and geometric Frobenius.
+Galois over `K` in a chosen algebraic closure, with Galois group canonically
+identifiable with `\widehat{ℤ}` in the two normalizations corresponding to
+arithmetic and geometric Frobenius. In the arithmetic normalization, `1`
+corresponds to the endomorphism inducing `x \mapsto x^q` on the residue field.
 :::
 
 :::proof "maximal_unramified_extension_placeholder"
@@ -213,9 +215,9 @@ and the full ring of adeles is the product of those two pieces.
 
 :::theorem "global_class_field_theory_placeholder" (parent := "bestiary_appendix")
 If `N` is a finite extension of `\Q`, then there are two "canonical"
-isomorphisms of topological groups between the component group of the ideles of
-`N` modulo principal ideles and the abelianized Galois group `\GN^{\ab}`; one
-sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global
+isomorphisms of topological groups between the profinite abelian groups
+`π_0(\A_N^\times/N^\times)` and `\GN^{\ab}`; one sends local uniformisers to
+arithmetic Frobenii and the other to geometric Frobenii; each of the global
 isomorphisms is compatible with the local isomorphisms above.
 This is the global continuation of {uses "local_class_field_theory_placeholder"}[].
 :::
