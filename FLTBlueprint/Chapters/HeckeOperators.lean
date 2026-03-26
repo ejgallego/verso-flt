@@ -3467,14 +3467,6 @@ let say something about matrix rings over complete fields.
   and lemma~\ref{Homeomorph.restrictedProductMatrix}.
 \end{proof}
 ```
-:::theorem "adelic_levels_from_local_data" (parent := "hecke_operator_project")
-If `S` is a finite set of finite places of `K`, and if for each `v \in S` one
-chooses a subgroup `Γ_v` of `GL₂(k_v)` then we saw in the previous section how to
-create a compact open subgroup `\tilde{Γ}_v` of `GL₂(K_v)`. For `v \notin S`
-define `\tilde{Γ}_v = GL₂(\mathcal{O}_v)`. Then `\prod_v\tilde{Γ}_v` is a compact
-open subgroup of `\prod_v GL₂(\mathcal{O}_v)`.
-:::
-
 ```tex "hecke_operator_project/adelic_groups/levels"
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
 a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
@@ -3485,9 +3477,12 @@ which we shall be using.
 
 \section{Automorphic forms}
 ```
-:::proof "adelic_levels_from_local_data"
-It is compact subgroups of this form which we shall be using.
-:::
+If `S` is a finite set of finite places of `K`, and for each `v \in S` we choose
+a subgroup `Γ_v` of `GL₂(k_v)` then we saw in the previous section how to create a
+compact open subgroup `\tilde{Γ}_v` of `GL₂(K_v)`. For `v \notin S` define
+`\tilde{Γ}_v = GL₂(\mathcal{O}_v)`. Then `\prod_v \tilde{Γ}_v` is a compact open
+subgroup of `\prod_v GL₂(\mathcal{O}_v)`. It is compact subgroups of this form
+which we shall be using.
 
 ```tex "hecke_operator_project/adelic_groups/levels/2"
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
@@ -3501,26 +3496,46 @@ which we shall be using.
 ```
 # Automorphic forms
 :::definition "automorphic_forms_for_hecke_setup" (parent := "hecke_operator_project")
-For the concrete Hecke theory, one fixes a totally real field `F`, a totally
-definite quaternion algebra `D/F`, and a coefficient group `R`, and lets
-`G = (D \otimes_F \A_F^\infty)^\times`. The ambient `R`-module `A` is the space
-of weight-2 quaternionic automorphic forms on `G`, with left action
-`(g • f)(x) := f(xg)`.
+We recall some of the definitions of spaces of automorphic forms, from the
+quaternion algebra project.
+
+We fix a totally real field $`F`$, a totally definite quaternion algebra
+$`D/F`$, and a coefficient additive abelian group $`R`$. Set
+$`G = (D \otimes_F \A_F^\infty)^\times`$ as in the previous section. Note that
+`G` naturally contains copies of `D^\times` and $`(\A_F^\infty)^\times`$. Recall from
+`TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm` that an
+`R`-valued weight `2` automorphic form is a function $`f : G \to R`$
+satisfying the following axioms:
+
+1. $`f(dg) = f(g)`$ for all $`d \in D^\times \subseteq (D \otimes_F \A_F^\infty)^\times`$.
+2. There exists a compact open subgroup `U`, the level of `f`, such that
+   $`f(gu) = f(g)`$ for all $`g \in G`$ and $`u \in U`$.
+3. $`f(gz) = f(g)`$ for all $`z \in (\A_F^\infty)^\times`$.
+
+It can be checked that the collection of all such forms is an additive abelian
+group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
+group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
+defined via $`(g \cdot f)(x) := f(xg)`$. Recall from
+`TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel` that a
+weight `2` automorphic form of level `U` is simply an element of the fixed
+points $`A^U`$. In other words, the forms of level `U` are the forms satisfying
+the three axioms defining an automorphic form but with the compact open subgroup
+in the second axiom being `U`.
 :::
 
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
 \section{Automorphic forms}
 
-We recall some of the definitions of spaces of automorphic forms, from
-the quaternion algebra project, section~\ref{Quat_alg_project}.
+We recall some of the definitions of spaces of automorphic forms, from the
+quaternion algebra project, section~\ref{Quat_alg_project}.
 
-We fix a totally real field~$F$, a
-totally definite quaternion algebra~$D/F$, and a coefficient (additive abelian) group~$R$.
-Set $G=(D\otimes_F\A_F^\infty)^\times$ as in the previous section. Note that $G$
+We fix a totally real field~$F$, a totally definite quaternion algebra~$D/F$,
+and a coefficient (additive abelian) group~$R$. Set
+$G=(D\otimes_F\A_F^\infty)^\times$ as in the previous section. Note that $G$
 naturally contains copies of $D^\times$ and $(\A_F^\infty)^\times$. Recall from
 definition~\ref{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
-that an $R$-valued weight~2 automorphic form
-is a function $f:G\to R$ satisfying the following axioms:
+that an $R$-valued weight~2 automorphic form is a function $f:G\to R$
+satisfying the following axioms:
 \begin{enumerate}
   \item $f(dg)=f(g)$ for all $d\in D^\times\subseteq(D\otimes_F\A_F^\times)$;
   \item There exists a compact open subgroup of~$U$ (the \emph{level} of~$f$)
@@ -3528,15 +3543,15 @@ is a function $f:G\to R$ satisfying the following axioms:
   \item $f(gz)=f(g)$ for all $z\in(\A_F^\infty)^\times$.
 \end{enumerate}
 
-It can be checked that the collection of all such forms is an additive abelian group,
-and if~$R$ is a ring then it is naturally an~$R$-module. Let's call this group~$A$ for short.
-Then~$A$ has a left action of $G$, with $g\cdot f$
+It can be checked that the collection of all such forms is an additive abelian
+group, and if~$R$ is a ring then it is naturally an~$R$-module. Let's call this
+group~$A$ for short. Then~$A$ has a left action of $G$, with $g\cdot f$
 defined via $(g\cdot f)(x):=f(xg)$. Recall from
 definition~\ref{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
-that a weight 2 automorphic form of level~$U$ is simply an element of the
-fixed points $A^U$. In other words, the forms of level~$U$ are the forms satisfying the three axioms
-defining an automorphic form but with the compact open subgroup in the second
-axiom being~$U$.
+that a weight 2 automorphic form of level~$U$ is simply an element of the fixed
+points $A^U$. In other words, the forms of level~$U$ are the forms satisfying
+the three axioms defining an automorphic form but with the compact open subgroup
+in the second axiom being~$U$.
 
 \section{Concrete Hecke operators}
 
@@ -3686,12 +3701,10 @@ The big theorem we want in this section is
 \end{theorem}
 ```
 # Concrete Hecke operators
-:::definition "t_v_hecke_operator" (parent := "hecke_operator_project")
 For a place `v` outside the bad set, choose a uniformizer `\varpi_v \in F_v`
 and let `g \in G` be the adelic element whose `v`-component is
 `diag(\varpi_v,1)` and whose other finite components are `1`. The operator
 `T_v : A^U \to A^U` is then the double-coset operator `[UgU]`.
-:::
 
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/3"
 \section{Automorphic forms}
@@ -3776,12 +3789,10 @@ The big theorem we want in this section is
   is a Noetherian commutative ring.
 \end{theorem}
 ```
-:::definition "u_valpha_hecke_operator" (parent := "hecke_operator_project")
 For a bad place `v` and a nonzero `\alpha \in \mathcal{O}_v`, let `g \in G`
 be the adelic element whose `v`-component is `diag(\alpha,1)` and whose other
 finite components are `1`. The operator `U_{v,\alpha}` is the double-coset
 operator `[UgU]`.
-:::
 
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/4"
 \section{Automorphic forms}
@@ -3950,14 +3961,8 @@ The big theorem we want in this section is
   is a Noetherian commutative ring.
 \end{theorem}
 ```
-:::theorem "concrete_hecke_action" (parent := "hecke_operator_project")
-Applying the abstract double-coset formalism to quaternionic automorphic forms
-produces the concrete Hecke operators that generate the Hecke algebra of
-interest in the chapter. The intended target space is
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"}[], and the concrete local
-operators are {uses "t_v_hecke_operator"}[] and
-{uses "u_valpha_hecke_operator"}[].
-:::
+The Hecke algebra of interest to us will be generated by the Hecke operators
+`T_v` for `v\notin S` and `U_{v,\alpha}` for `v\in S`.
 
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/6"
 \section{Automorphic forms}
@@ -4042,12 +4047,10 @@ The big theorem we want in this section is
   is a Noetherian commutative ring.
 \end{theorem}
 ```
-:::proof "concrete_hecke_action"
-The remaining work in the TeX chapter is local-to-global bookkeeping: understand
-restricted products, compact open unit groups, and the relevant matrix-group
-double cosets well enough that the abstract Hecke machinery can be applied to
-the quaternionic automorphic-form spaces.
-:::
+The big theorem we want in this section is that, if `R` is a Noetherian ring,
+then the subalgebra of the `R`-linear endomorphisms of `A^U` generated by the
+Hecke operators `T_v` for `v\notin S` and `U_{v,\alpha}` for `v\in S` is a
+Noetherian commutative ring.
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/7"
 \section{Automorphic forms}
 
@@ -4132,11 +4135,16 @@ The big theorem we want in this section is
 \end{theorem}
 ```
 # Analysis of the Hecke algebra
-:::theorem "hecke_operators_different_places_commute" (parent := "hecke_operator_project")
-Hecke operators supported at different finite places commute, because the chosen
-local representatives can be taken to have disjoint support in the adelic
-product.
-:::
+First we discuss commutativity of the Hecke operators. First, assume that
+`v \notin S`. Then `U = GL₂(\mathcal{O}_v) \times U'` where `U'` is a subgroup
+of the restricted product of `GL₂(F_w)` for `w \neq v`. We can use
+`RestrictedProduct.SubmonoidClass.isProductAt` to express this concept of being
+an internal direct product. If `g` is the element of `G` used to make `T_v` then
+`g` is also supported at `w`, so the double coset space `UgU` is just
+`(GL₂(\mathcal{O}_v) \begin{pmatrix}\varpi & 0 \\ 0 & 1\end{pmatrix}
+GL₂(\mathcal{O}_v)) \times U'` and in particular can be decomposed into single
+left `U`-cosets of the form `g_iU` where `g_i` is also supported at `v`. This is
+`RestrictedProduct.mem_coset_and_mulSupport_subset_of_isProductAt`.
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra"
 \section{Analysis of the Hecke algebra}
@@ -4174,17 +4182,30 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-modu
 so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
 and thus a Noetherian ring.
 ```
-:::proof "hecke_operators_different_places_commute"
-The TeX chapter reduces this to the abstract commutativity criterion
-{uses "abstract_hecke_operators_commute"}[]. Once the representatives are
-supported at disjoint places, they commute componentwise, so the abstract
-criterion applies immediately.
+Similarly if `v \in S`, if `0 \neq \alpha \in \mathcal{O}_v` and if
+`g_v = \begin{pmatrix}\alpha & 0 \\ 0 & 1\end{pmatrix}` and is `1` elsewhere,
+then the double coset space `UgU` can again be written as $`\coprod_i g_iU`$
+with the `g_i` supported only at `v`.
 
-The TeX proof is a little more concrete than that summary: for both the good
-operators `T_v` and the bad operators `U_{v,\alpha}`, one first chooses
-single-coset representatives supported only at the relevant place. Disjoint
-support is then exactly what forces commutativity.
-:::
+```tex "hecke_operator_project/analysis_of_hecke_algebra/2a"
+Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
+and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
+with the $g_i$ supported only at~$v$.
+```
+
+We deduce immediately from `AbstractHeckeOperator.comm` that two
+Hecke operators associated to different finite places of `F` commute. What
+remains is to check that `U_{α,v}` and `U_{β,v}` commute. In fact we claim
+more, namely that $`U_{α,v} U_{β,v} = U_{αβ,v}`$. This will suffice because
+$`αβ = βα`$.
+
+```tex "hecke_operator_project/analysis_of_hecke_algebra/2b"
+We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
+associated to different finite places of~$F$ commute.
+What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
+more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
+because $\alpha\beta=\beta\alpha$.
+```
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/2"
 \section{Analysis of the Hecke algebra}
@@ -4222,12 +4243,8 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-modu
 so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
 and thus a Noetherian ring.
 ```
-:::theorem "u_operators_same_place_multiply" (parent := "hecke_operator_project")
-At a fixed bad place `v`, the operators `U_{v,\alpha}` satisfy
-`U_{v,\alpha} U_{v,\beta} = U_{v,\alpha\beta}`.
-This is the same-place local relation coming from
-{uses "local_u_operator_double_coset_decomposition"}[].
-:::
+If `v\in S` and `\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq
+\begin{pmatrix}*&*\\0&*\end{pmatrix}` then `U_{α,v}U_{β,v}=U_{αβ,v}`.
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/3"
 \section{Analysis of the Hecke algebra}
@@ -4265,11 +4282,7 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-modu
 so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
 and thus a Noetherian ring.
 ```
-:::proof "u_operators_same_place_multiply"
-The TeX chapter derives this from the explicit local double-coset
-decomposition. That stronger multiplicative relation is the last local input
-needed for commutativity of the whole Hecke algebra.
-:::
+Follows easily from the explicit double coset decomposition proved above.
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/4"
 \section{Analysis of the Hecke algebra}
@@ -4307,14 +4320,11 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-modu
 so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
 and thus a Noetherian ring.
 ```
-:::theorem "hecke_algebra_noetherian_commutative_placeholder" (parent := "hecke_operator_project")
-The intended final output is a commutative Noetherian Hecke algebra generated by
-the operators `T_v` away from the bad set and the local `U_{v,\alpha}` operators
-at the bad places.
-This combines {uses "hecke_operators_different_places_commute"}[],
-{uses "u_operators_same_place_multiply"}[], and
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"}[].
-:::
+The reason that the Hecke algebra is Noetherian is that the main theorem of the
+Fujisaki miniproject immediately implies that `A^G` is a submodule of a finite
+free `R`-module and is hence Noetherian. Its endomorphism algebra is hence a
+Noetherian `R`-module, so the sub-`R`-algebra generated by the Hecke operators
+is also a Noetherian `R`-module and thus a Noetherian ring.
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/5"
 \section{Analysis of the Hecke algebra}
@@ -4352,15 +4362,6 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-modu
 so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
 and thus a Noetherian ring.
 ```
-:::proof "hecke_algebra_noetherian_commutative_placeholder"
-The TeX chapter only sketches this endpoint, but its logic is clear. The
-commutativity comes from the local and abstract commutation arguments already
-recorded above. For Noetherianity, the quaternion algebra miniproject supplies
-the relevant module of automorphic forms as a submodule of a finite free
-`R`-module; once that is in hand, its endomorphism algebra is a Noetherian
-`R`-module, and the Hecke subalgebra generated by the operators above is
-therefore a Noetherian ring.
-:::
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/6"
 \section{Analysis of the Hecke algebra}
 

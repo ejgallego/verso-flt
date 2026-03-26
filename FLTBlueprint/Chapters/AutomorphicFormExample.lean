@@ -171,9 +171,11 @@ to do is to talk about profinite completions.
 # Zhat
 
 :::definition "ZHat" (parent := "automorphic_example_program") (lean := "ZHat")
-The profinite completion $`\widehat{\mathbf{Z}}`$ is introduced as compatible
-residue classes modulo all positive integers.
-The chapter uses it as a low-level entry point to the adelic viewpoint.
+The profinite completion $`\Zhat`$ of $`\Z`$ is the set of all compatible
+collections $`c=(c_N)_N`$ of elements of $`\Z/N\Z`$ indexed by
+$`\N^+ := \{1,2,3,\ldots\}`$.
+A collection is said to be compatible if for all positive integers
+$`D \mid N`$, we have $`c_N`$ mod $`D`$ equals $`c_D`.
 :::
 
 ```tex "ZHat"
@@ -186,12 +188,19 @@ The chapter uses it as a low-level entry point to the adelic viewpoint.
 \end{definition}
 ```
 
-The TeX chapter motivates this detour historically. Classical automorphic forms
-are functions on symmetric spaces such as the upper half-plane, but when one
-works over number fields with nontrivial class group the classical approach
-becomes awkward: Hecke operators want prime ideals, not just principal positive
-integers. The adelic viewpoint fixes this, and `\widehat{Z}` is introduced as a
-low-level toy model for the finite adelic direction.
+Classically automorphic forms were defined as functions on symmetric spaces
+(like the upper half plane) which transformed well under the action of certain
+discrete groups (for example $`\SL_2(\Z)`). However such definitions became
+combinatorially problematic when generalised to number fields with nontrivial
+class group, because the classical theory needed a number $`p`$ to define
+the Hecke operator $`T_p`, and in the case where $`p` was a non-principal prime
+ideal in a number field, there was no appropriate number. One fix is to take
+disjoint unions of symmetric spaces indexed by the ideal class group of the
+field in question, but it is easier to work adelically, which is morally what
+we shall do. However we are able to avoid introducing the adeles explicitly; we
+can work instead with the conceptually simpler object $`\Zhat`, the profinite
+completion of $`\Z`. So what is $`\Zhat`? We offer a low-level definition of
+this object.
 
 ```tex "automorphic_example/zhat/historical_motivation"
 Classically automorphic forms were defined as functions on symmetric spaces (like the upper half
@@ -207,9 +216,7 @@ the profinite completion of $\Z$. So what is $\Zhat$? We offer a low-level defin
 ```
 
 :::theorem "ZHat.commRing" (parent := "automorphic_example_program") (lean := "ZHat.commRing")
-The set of compatible residue-class collections forms a ring, naturally sitting
-inside the product of all `ℤ / Nℤ`.
-This is the ring structure on {uses "ZHat"}[].
+$`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 :::
 
 ```tex "ZHat.commRing/theorem"
@@ -223,9 +230,7 @@ This is the ring structure on {uses "ZHat"}[].
 ```
 
 :::proof "ZHat.commRing"
-The point here is not depth but orientation: all ring operations are inherited
-componentwise, and compatibility with reduction maps is preserved by those same
-operations.
+Follow your nose.
 :::
 
 ```tex "ZHat.commRing"
@@ -241,9 +246,7 @@ operations.
 ```
 
 :::theorem "ZHat.nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial")
-The elements `0` and `1` are distinct in $`\widehat{\mathbf{Z}}`$.
-This is an immediate consequence of the ring structure from
-{uses "ZHat.commRing"}[].
+$`0\not=1` in $`\Zhat`$.
 :::
 
 ```tex "ZHat.nontrivial/theorem"
@@ -257,8 +260,9 @@ This is an immediate consequence of the ring structure from
 ```
 
 :::proof "ZHat.nontrivial"
-The TeX proof just evaluates both elements at `2`: their images in `ℤ/2ℤ` are
-different, so the compatible collections themselves are different.
+Recall that you can evaluate an element of $`\Zhat`$ at a positive integer.
+Evaluating $`0` at `2` gives $`0`, and evaluating $`1` at `2` gives $`1`, and
+these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 :::
 
 ```tex "ZHat.nontrivial"
@@ -278,10 +282,7 @@ different, so the compatible collections themselves are different.
 ```
 
 :::theorem "ZHat.charZero" (parent := "automorphic_example_program") (lean := "ZHat.charZero")
-The natural map from the natural numbers into $`\widehat{\mathbf{Z}}`$ is
-injective.
-This amplifies the basic separation argument already visible in
-{uses "ZHat.nontrivial"}[].
+The map from the naturals into $`\Zhat`$ sending $`n` to $`n` is injective.
 :::
 
 ```tex "ZHat.charZero/theorem"
@@ -294,9 +295,7 @@ This amplifies the basic separation argument already visible in
 ```
 
 :::proof "ZHat.charZero"
-The TeX chapter treats this as an immediate generalization of
-{uses "ZHat.nontrivial"}[]: two different naturals can be separated by reducing
-modulo a suitable integer.
+Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
 :::
 
 ```tex "ZHat.charZero"
@@ -319,9 +318,9 @@ injective.
 Note that it follows easily that that the map from the integers to $\Zhat$ is injective.
 ```
 
-But $`\Zhat` is much larger than $`\Z`; it has the same cardinality as the
-reals in fact. Let's write down an explicit example of an element of $`\Zhat`
-which isn't obviously in $`\Z`.
+But $`\Zhat$ is \emph{much} larger than $`\Z$; it has the same cardinality as
+the reals in fact. Let's write down an explicit example of an element of
+$`\Zhat` which isn't obviously in $`\Z`.
 
 ```tex "automorphic_example/zhat/not_just_z"
 But $\Zhat$
@@ -330,10 +329,14 @@ Let's write down an explicit example of an element of $\Zhat$ which isn't obviou
 ```
 
 :::definition "ZHat.e" (parent := "automorphic_example_program") (lean := "ZHat.e")
-The TeX blueprint highlights the formal infinite sum
-$`0! + 1! + 2! + \cdots`$ as a concrete element of $`\widehat{\mathbf{Z}}`$
-that is not visibly an integer.
-The construction uses the ring object from {uses "ZHat.commRing"}[].
+The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots`$ looks like it makes no sense at
+all; it is the sum of an infinite series of larger and larger positive numbers.
+However, the sum is finite modulo $`N` for every positive integer $`N`, because
+all the terms from $`N!` onwards are multiples of $`N` and thus are zero in
+$`\Z/N\Z`.
+Thus it makes sense to define $`e_N` to be the value of the finite sum modulo
+$`N`.
+Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
 :::
 
 ```tex "ZHat.e/theorem"
@@ -353,10 +356,14 @@ The construction uses the ring object from {uses "ZHat.commRing"}[].
 ```
 
 :::proof "ZHat.e"
-Modulo any positive integer `N`, the factorial series stabilizes after
-`(N-1)!`, because every subsequent term is divisible by `N`. So the sequence of
-partial factorial sums defines a compatible adelic-style object even though the
-naive infinite sum diverges in the ordinary real sense.
+The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots`$ looks like it makes no sense at
+all; it is the sum of an infinite series of larger and larger positive numbers.
+However, the sum is finite modulo $`N` for every positive integer $`N`, because
+all the terms from $`N!` onwards are multiples of $`N` and thus are zero in
+$`\Z/N\Z`.
+Thus it makes sense to define $`e_N` to be the value of the finite sum modulo
+$`N`.
+Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
 :::
 
 ```tex "ZHat.e/proof"
@@ -370,7 +377,7 @@ Explicitly, $e_N=0!+1!+\cdots+(N-1)!$ modulo $N$.
 ```
 
 :::theorem "ZHat.e_def" (parent := "automorphic_example_program") (lean := "ZHat.e_def")
-The collection `(e_N)_N` is an element of $`\widehat{\mathbf{Z}}`.
+The collection $`(e_N)_N` is an element of $`\Zhat`.
 :::
 
 ```tex "ZHat.e_def/theorem"
@@ -384,7 +391,8 @@ The collection `(e_N)_N` is an element of $`\widehat{\mathbf{Z}}`.
 ```
 
 :::proof "ZHat.e_def"
-This boils down to checking that `D! + (D+1)! + \cdots + (N-1)!` is a multiple of `D`.
+This boils down to checking that $`D!+(D+1)!+\cdots+(N-1)!` is a multiple of
+$`D`.
 :::
 
 ```tex "ZHat.e_def/proof"
@@ -395,10 +403,7 @@ This boils down to checking that `D! + (D+1)! + \cdots + (N-1)!` is a multiple o
 ```
 
 :::theorem "ZHat.e_not_in_Int" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int")
-The factorial-series element of $`\widehat{\mathbf{Z}}`$ is not in the image of
-`ℤ`.
-This is the nontriviality statement attached to
-{uses "ZHat.e"}[].
+The element $`(e_N)_N` of $`\Zhat`$ is not in $`\Z`.
 :::
 
 ```tex "ZHat.e_not_in_Int/theorem"
@@ -412,14 +417,17 @@ This is the nontriviality statement attached to
 ```
 
 :::proof "ZHat.e_not_in_Int"
-The TeX argument is a neat size estimate. If the element were an ordinary
-integer `n`, then reducing modulo a suitable large factorial would force `n` to
-lie strictly between two distinct ordinary integers that represent the same
-residue class, which is impossible. The same idea works for positive and
-negative `n`.
+First imagine that $`e=n` with $`n\in\Z`$ and $`0\leq n`. In this case, choose
+$`j` such that $`0!+1!+2!+\cdots+j!>n` and check also that the sum is less than
+$`(j+1)!`. Now set $`N=(j+1)!` and let's compare $`e_N` and $`n_N=n`. The trick
+is that $`e_N` must be $`0!+1!+\cdots+j!` mod $`N`, because all the terms
+beyond this are multiples not just of $`(j+1)` but of $`(j+1)!=N`. Thus mod
+$`N` we have $`0\leq n<e_N<N` so $`n\not=e`.
 
-So the factorial example is not just a curiosity: it is the first explicit
-witness that `\widehat{\mathbf{Z}}` is genuinely larger than `ℤ`.
+Now we deal with $`n=-t<0`; choose $`j` large such that
+$`(j+1)!-(0!+1!+\cdots+j!)>t` (possible because the sum is at most $`2\times
+j!`) and then set $`N=(j+1)!` and we have $`0 < e_N<N-t<N` so we cannot have
+$`e_N=-t` in $`\Z/N\Z`, so again $`e\not=n`.
 :::
 
 ```tex "ZHat.e_not_in_Int/proof"
@@ -440,10 +448,7 @@ witness that `\widehat{\mathbf{Z}}` is genuinely larger than `ℤ`.
 ```
 
 :::theorem "ZHat.torsionfree" (parent := "automorphic_example_program") (lean := "ZHat.torsionfree")
-Multiplication by a positive integer is injective on $`\widehat{\mathbf{Z}}`.
-This is the torsion-freeness input later reused in the `\widehat{\mathbf{Q}}`
-discussion.
-The TeX proof uses {uses "ZHat.commRing"}[] and {uses "ZHat.charZero"}[].
+If $`0<N` is an integer then multiplication by $`N` is injective on $`\Zhat`.
 :::
 
 ```tex "ZHat.torsionfree/theorem"
@@ -457,10 +462,13 @@ The TeX proof uses {uses "ZHat.commRing"}[] and {uses "ZHat.charZero"}[].
 ```
 
 :::proof "ZHat.torsionfree"
-The TeX proof is coordinatewise. If `N z = 0` in `\widehat{\mathbf{Z}}`, then in
-particular the `(Nj)`-coordinate is annihilated by `N`, forcing the `j`-th
-coordinate to vanish after reducing modulo `j`. Since this works for every
-positive `j`, the whole compatible collection is zero.
+Suppose that $`(z_i)_i\in\Zhat` and $`Nz=0`. This means that $`Nz_i=0\in\Z/i\Z`
+for all $`i`. Let us fix an arbitrary positive integer~$`j`; we need to prove
+that $`z_j=0\in\Z/j\Z`. Consider the element $`z_{Nj}\in\Z/Nj\Z`. By
+assumption, we have $`Nz_{Nj}=0`, meaning that if we lift $`z_{Nj}` to an
+integer, we have $`Nj\mid Nz_{Nj}`, and thus $`j\mid z_{Nj}`. Thus by the
+compatibility assumption on the $`z_i` we have that $`z_j\in\Z/j\Z` is the
+mod~$`j` reduction of $`z_{Nj}` and hence is zero.
 :::
 
 ```tex "ZHat.torsionfree/proof"
@@ -476,11 +484,8 @@ positive `j`, the whole compatible collection is zero.
 ```
 
 :::theorem "ZHat.multiples" (parent := "automorphic_example_program") (lean := "ZHat.multiples")
-An element of $`\widehat{\mathbf{Z}}`$ is divisible by `N` if and only if its
-`N`-th coordinate is zero.
-This is the divisibility criterion used repeatedly later in
-{uses "QHat.lowestTerms"}[] and {uses "QHat.rat_join_zHat"}[].
-The TeX proof uses {uses "ZHat.commRing"}[].
+The multiples of~$`N` in $`\Zhat` are precisely the compatible collections
+$`(z_i)_i\in\Zhat` with $`z_N=0`.
 :::
 
 ```tex "ZHat.multiples/theorem"
@@ -495,12 +500,14 @@ The TeX proof uses {uses "ZHat.commRing"}[].
 ```
 
 :::proof "ZHat.multiples"
-Necessity is immediate. For sufficiency, the TeX proof constructs the quotient
-coordinatewise by dividing the `(Nj)`-coordinate by `N`, using compatibility and
-the vanishing of the `N`-th coordinate to show that this makes sense.
-
-This criterion becomes a basic tool once the chapter moves from
-`\widehat{\mathbf{Z}}` to `\widehat{\mathbf{Q}}`.
+Clearly $`z_N=0` is a necessary condition to be a multiple of~$`N`. To see it
+is sufficient, take a general $`(z_i)\in\Zhat` such that $`z_N=0`, and now
+define a new element $`(y_j)_j` of $`\Zhat` by $`y_j=z_{Nj}/N`. Just to clarify
+what this means: $`z_{Nj}\in\Z/Nj\Z` reduces mod~$`N` to $`z_N=0` by the
+compatibility assumption, so it is in the subgroup $`N\Z/Nj\Z` of $`\Z/Nj\Z`,
+which is isomorphic (via "division by $`N`") to the group $`\Z/j\Z`; this is
+how we construct $`y_j`. It is easily checked that the $`y_j` are compatible
+and that $`Ny=z`.
 :::
 
 ```tex "ZHat.multiples/proof"

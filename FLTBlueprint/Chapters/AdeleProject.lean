@@ -256,41 +256,48 @@ then $\A_L=L\otimes_K\A_K$. This isn't a theorem though, this is actually a \emp
 the definition (that it's an isomorphism).
 ```
 
-The TeX chapter is also careful about the logical shape of this statement:
-`A_L = L ⊗_K A_K` is really a construction plus an isomorphism theorem, not just
-a bare equality.
+This isn't a theorem though, this is actually a definition of the map between
+the two objects and a theorem about the definition, that it is an isomorphism.
 ```tex "adele_project/lt-witness-222"
-The TeX chapter is also careful about the logical shape of this statement:
+The ``theorem'' we want is that if $L/K$ is a finite extension of number fields,
+then $\A_L=L\otimes_K\A_K$. This isn't a theorem though, this is actually a \emph{definition}
+(the map between the two objects) and a theorem about
+the definition (that it's an isomorphism).
 ```
 
 
-It also immediately splits the problem into finite and infinite parts, because
-the adele ring itself is the product of the finite adeles and the infinite
-adeles. So the real work is to prove the two corresponding base-change
-statements separately and then reassemble them.
+In fact the full claim is that it is both a homeomorphism and an $L$-algebra
+isomorphism. Before we can prove the theorem, we need to make the definition.
 ```tex "adele_project/lt-witness-226"
-It also immediately splits the problem into finite and infinite parts, because
+The goal in this subsection is to spell out the following argument: Assume that
+$L\otimes_KK_v\cong\prod_{w|v}L_w$
+algebraically and topologically for all $v$, with $B\otimes_AA_v$ identified with $\prod_{w|v}B_w$.
+Then $L\otimes_K\A_K^\infty\cong\A_L^\infty$, algebraically and topologically. Here
+the tensor products $L\otimes_K R$ (for $R$ a $K$-algebra with a topology) are all being
+given the $R$-module topology, which if we choose a basis for $L/K$ is just the product
+topology.
 ```
 
 
 ## Base Change For Nonarchimedean Completions
 
-As pointed out earlier in the TeX chapter, the finite-adelic theory works
-perfectly well for Dedekind domains, so the nonarchimedean discussion is first
-carried out in that generality. One fixes a Dedekind domain `A` with field of
-fractions `K`, then a finite separable extension `L/K` with integral closure
-`B`, and works place by place.
+As pointed out above, the theory of finite adeles works fine for Dedekind
+domains. So for the time being let `A` be a Dedekind domain. Recall that the
+height one spectrum of `A` is the nonzero prime ideals of `A`.
 ```tex "adele_project/lt-witness-233"
-As pointed out earlier in the TeX chapter, the finite-adelic theory works
+As pointed out above, the theory of finite adeles works fine for Dedekind domains.
+So for the time being let~$A$ be a Dedekind domain. Recall that the \emph{height one spectrum}
+of $A$ is the nonzero prime ideals of~$A$.
 ```
 
 
-The TeX chapter also pauses to note a mathlib convention: fields are regarded
-as Dedekind domains, so their height-one spectrum is empty. The author remarks
-that this is slightly awkward geometrically, but it is the literature-facing
-convention that the current API follows.
+Note that because we stick to the literature, rather than to common sense,
+fields are Dedekind domains in mathlib, and the height one spectrum of a field
+is empty.
 ```tex "adele_project/lt-witness-239"
-The TeX chapter also pauses to note a mathlib convention: fields are regarded
+Note that because we stick to the literature, rather than to common sense,
+fields are Dedekind domains in mathlib, and the
+height one spectrum of a field is empty.
 ```
 
 
@@ -313,11 +320,11 @@ the completion `K_v` to the completion `L_w`.
 ```
 
 
-The TeX chapter obtains this by completing the inclusion `K → L` with respect
-to the `v`-adic and `w`-adic topologies, so the first real input is the
-relation between the two valuations.
+It is defined by completing the inclusion `K → L` at the finite places `v` and
+`w` (which can be done because the previous lemma shows that the map is
+uniformly continuous for the `v`-adic and `w`-adic topologies).
 ```tex "adele_project/lt-witness-255"
-The TeX chapter obtains this by completing the inclusion `K → L` with respect
+The next lemma explains how these valuations are related.
 ```
 
 
@@ -331,9 +338,7 @@ The `v`-adic and `w`-adic valuations are related by the ramification index:
 
 
 :::proof "local_valuation_compatibility"
-This valuation identity is what makes the local completion map uniformly
-continuous, and therefore what allows the local part of base change to be
-defined at all.
+Standard (and formalized).
 :::
 
 ```tex "adele_project/base-change-valuation"
@@ -363,11 +368,8 @@ This is the topological sharpening of {uses "local_completion_map"}[] and
 
 
 :::proof "local_module_topology_for_completion"
-The TeX proof uses that `L_w` is finite-dimensional over `K_v`, so the module
-topology is the same as a product topology after choosing a basis. The
-`w`-adic topology also comes from a `K_v`-norm, and the standard theorem that
-all norms on a finite-dimensional vector space over a complete field are
-equivalent identifies the two topologies.
+Giving `L_w` the `K_v`-algebra structure coming from the natural map
+`K_v→L_w`, the `w`-adic topology on `L_w` is the `K_v`-module topology.
 :::
 
 ```tex "adele_project/base-change-local-topology"
@@ -387,10 +389,10 @@ equivalent identifies the two topologies.
 \end{proof}
 ```
 
-Because the local map `K_v → L_w` lies over `K → L`, the TeX chapter then views
-`L_w` as an `L ⊗_K K_v`-algebra before packaging all places `w | v` together.
+Because of the commutative diagram, we can view `L_w` as an
+`L⊗_KK_v`-algebra.
 ```tex "adele_project/lt-witness-317"
-Because the local map `K_v → L_w` lies over `K → L`, the TeX chapter then views
+Because of the commutative diagram
 ```
 
 
@@ -404,9 +406,8 @@ For a fixed finite place `v` of `K`, there are only finitely many places `w` of
 
 
 :::proof "finite_primes_above_v_are_finite"
-This is a standard Dedekind-domain fact, but the TeX chapter singles it out
-because the restricted-product reindexing later depends on finite fibres over
-the map `w ↦ v`.
+This is a standard fact about Dedekind domains. The key input is mathlib's
+theorem `primesOver_finite`.
 :::
 
 ```tex "adele_project/base-change-finite-fibres"
@@ -443,21 +444,16 @@ This is the local theorem behind {uses "local_completion_map"}[] and
 
 
 :::proof "nonarchimedean_base_change_local_decomposition"
-This is one of the key structural theorems in the TeX chapter. The local
-completion map {uses "local_completion_map"}[] is assembled over all `w | v`,
-and one proves that the resulting map is an algebraic isomorphism. At this
-stage the theorem is algebraic first, topological second.
-
-The TeX file is explicit that this is probably the hardest proof in the section
-to formalize. The proposed strategy there is dimension-theoretic: prove the map
-is surjective because its image is dense and closed, then compare the
-`K_v`-dimensions of the source and target. The source has dimension `[L : K]`,
-and the target has dimension `\sum_{w \mid v} e_w f_w`; one then reduces to the
-local field fact that an extension of complete discretely valued fields has
-degree `ef`.
-
-The later finite-adele base-change theorem is basically this statement applied
-simultaneously at every nonarchimedean place.
+My current proposal to formalize this is as follows. The map is surjective
+because the image is dense and closed; this has been formalized already. It is
+also a `K_v`-algebra homomorphism if we give `L_w` the obvious `K_v`-algebra
+structure. Thus we can conclude the result if we can prove that both spaces are
+finite-dimensional and have the same dimension. The `K_v`-dimension of
+`L⊗_KK_v` is equal to the `K`-dimension of `L`, which is `∑_{w|v} e_w f_w`
+using the standard notation that `e_w` is the ramification index of `w` and
+`f_w` the residue degree. So it suffices to prove that `[L_w:K_v]=e_wf_w`.
+We already have that `e_w` (defined globally) is equal to the local ramification
+index (defined as the factor by which the valuations differ on `K`).
 :::
 
 ```tex "adele_project/base-change-local-decomposition"
@@ -485,10 +481,10 @@ of places above `v`.
 
 
 :::proof "product_local_completion_module_topology"
-This is a finite product of `K_v`-modules, each of which has the `K_v`-module
-topology by {uses "local_module_topology_for_completion"}[]. The TeX chapter
-then appeals to the standard fact that finite products of modules with module
-topologies again carry the product/module topology.
+This is a finite product of `K_v`-modules each of which has the `K_v`-module
+topology by {uses "local_module_topology_for_completion"}[], and the product
+topology is the module topology for a finite product of modules each of which
+has the module topology.
 :::
 
 ```tex "adele_project/base-change-summary"
@@ -514,10 +510,9 @@ This is the topological sharpening of
 
 
 :::proof "nonarchimedean_base_change_local_homeomorphism"
-The TeX proof is short once the right topology has been identified on both
-sides: it is a `K_v`-linear algebra isomorphism between modules that both carry
-their `K_v`-module topology, and linear maps are automatically continuous for
-those topologies.
+Indeed, it is a `K_v`-algebra isomorphism between two modules each of which
+have the module topology, and any module map is automatically continuous for
+the module topologies.
 :::
 ```tex "adele_project/lt-witness-419"
 :::proof "nonarchimedean_base_change_local_homeomorphism"
@@ -526,8 +521,8 @@ those topologies.
 
 :::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
 The same local decomposition identifies the integral subring
-$`B \otimes_A A_v` with the product of the local integer rings
-$`\prod_{w \mid v} B_w`.
+$`B \otimes_A A_v`$ with the product of the local integer rings
+$`\prod_{w \mid v} B_w`$.
 This is the integral refinement of
 {uses "nonarchimedean_base_change_local_decomposition"}[].
 :::
@@ -537,86 +532,61 @@ This is the integral refinement of
 
 
 :::proof "nonarchimedean_integral_decomposition"
-The TeX chapter treats this as the crucial integral refinement of the previous
-theorem. Without it, one only knows the decomposition of the ambient local
-fields; with it, one can match the open compact subrings that define the
-restricted-product topology.
-
-The proof sketch in the TeX chapter now points to Matthew Jasper's argument:
-identify the closure of `A` in one completion and then in a finite product of
-completions, use Chinese remainder input to get the corresponding statement for
-`B`, and finally show that this closure is exactly the image of
-`B \otimes_A A_v`.
+Certainly the image of the integral elements are integral. The argument in the
+other direction is more delicate. My original plan was to follow
+Cassels--Froehlich, Cassels' article Global fields, section 12 lemma, p61,
+which proves it for all but finitely many primes, but a PR by Matthew Jasper
+gives another approach which works for all primes.
+Jasper's argument is to show that the closure of `A` in `K_v` is `A_v` for a
+valuation on a Dedekind domain, and then that the closure of `A` in
+$`\prod_{v \in S} K_v`$ is $`\prod_{v \in S} A_v`$ for `S` a finite set of valuations
+(using the Chinese remainder theorem). Applying this to `B` we get that the
+closure of `B` in $`\prod_{w \mid v} L_w`$ is $`\prod_{w \mid v} B_w`$. He then shows that this
+closure is the image of $`B \otimes_A \mathcal{O}_v`$ by showing that this image
+is closed because it's open), giving surjectivity; injectivity follows from the
+statement that $`L \otimes_K K_v = \prod_{w \mid v} L_w`$.
 :::
 ```tex "adele_project/lt-witness-434"
 :::proof "nonarchimedean_integral_decomposition"
 ```
 
 
-A summary of the local picture at this stage, exactly as in the TeX chapter:
-for each finite place `v`, the map
-$`L \otimes_K K_v \to \prod_{w \mid v} L_w`
-is both an algebraic and a topological isomorphism, and it matches the natural
-integral subrings `B \otimes_A A_v` and `\prod_{w \mid v} B_w`.
+For all finite places `v` of `A` we have shown that the natural map
+$`L \otimes_K K_v \to \prod_w L_w`$ is an isomorphism of `L`-algebras, and that if
+$`L \otimes_K K_v`$ has the `K_v`-module topology and each `L_w` has the valuation
+topology then this map is also a homeomorphism. Furthermore we have shown that
+there is an induced algebraic isomorphism $`B \otimes_A A_v \cong \prod_w B_w`$ on the subrings of
+the left and right hand sides.
 ```tex "adele_project/lt-witness-447"
 A summary of the local picture at this stage, exactly as in the TeX chapter:
 ```
 
 
-The finite adele ring is then the restricted product of the `K_v` with respect
-to the `A_v`, with a topology in which `\prod_v A_v` is open rather than merely
-closed in the full product. This is exactly why the next step is not just to
-tensor everything naively, but to show carefully that restricted products
-commute with the local finite-product decompositions.
-```tex "adele_project/lt-witness-453"
-The finite adele ring is then the restricted product of the `K_v` with respect
+Hence there is a natural `L`-algebra homomorphism
+$`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$.
+
+```tex "adele_project/lt-witness-463a"
+Hence there's a natural $L$-algebra homomorphism $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$.
 ```
 
-
-The TeX chapter now introduces an auxiliary restricted product `R`, namely the
-restricted product of the `B \otimes_A K_v` with respect to the
-`B \otimes_A A_v`. The strategy is:
+Our next goal in this section is the following two results. First the algebraic
+claim:
 ```tex "adele_project/lt-witness-459"
 The TeX chapter now introduces an auxiliary restricted product `R`, namely the
 ```
 
 
-- first compare `B \otimes_A \mathbf{A}_K^\infty` with this auxiliary ring `R`
-- then identify `R` with `\mathbf{A}_L^\infty` by relabelling places
-- finally pass from the integral tensor product to the field-level tensor
-  product `L \otimes_K \mathbf{A}_K^\infty`
-```tex "adele_project/lt-witness-463"
-- first compare `B \otimes_A \mathbf{A}_K^\infty` with this auxiliary ring `R`
-```
-
-
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
-The finite adele ring of `L` is algebraically isomorphic to
-$`L \otimes_K \mathbf{A}_K^\infty`.
-This is the finite-part algebraic precursor to {uses "adele_base_change"}[].
-The proof runs through {uses "finite_adele_base_change_integral"}[] and
-{uses "tensor_product_module_base_change"}[].
+This natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an isomorphism.
 :::
 ```tex "adele_project/lt-witness-468"
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 ```
 
 
-:::proof "finite_adele_base_change_algebraic"
-The TeX argument is a “put the local pieces together” theorem. One combines
-{uses "nonarchimedean_base_change_local_decomposition"}[],
-{uses "nonarchimedean_integral_decomposition"}[], and a relabelling of
-restricted products along the finite-fibre map on places. The result is an
-algebraic identification of the finite adeles after base change.
-:::
-```tex "adele_project/lt-witness-476"
-:::proof "finite_adele_base_change_algebraic"
-```
-
-
 :::theorem "tensor_product_module_base_change" (parent := "adele_project")
 If `M` is a `K`-module, then the canonical map
-$`B \otimes_A M \to L \otimes_K M` is an isomorphism.
+$`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 :::
 ```tex "adele_project/lt-witness-484"
 :::theorem "tensor_product_module_base_change" (parent := "adele_project")
@@ -624,35 +594,25 @@ $`B \otimes_A M \to L \otimes_K M` is an isomorphism.
 
 
 :::proof "tensor_product_module_base_change"
-The TeX chapter inserts this algebraic lemma into the nonarchimedean base-change
-subsection because the later restricted-product arguments repeatedly move
-between `A`-module and `K`-module tensor products. So this is one of the hidden
-algebraic engines underneath the finite-adele base-change theorem.
-
-Its proof in the TeX chapter factors the map through the basic algebraic
-identification `B \otimes_A K \cong L`, and then tensors that identification
-with the module `M`.
+We can factor this map as
+`B ⊗_A M ≅ B ⊗_A (K ⊗_K M) ≅ (B ⊗_A K) ⊗_K M → L ⊗_K M`,
+and we just showed that the latter map was an isomorphism.
 :::
 ```tex "adele_project/lt-witness-489"
 :::proof "tensor_product_module_base_change"
 ```
 
 
-The TeX chapter also inserts a finite-presentation detour at this point. The
-reason is that one wants tensor products to commute with products in exactly the
-range needed to compare the integral tensor product with the auxiliary
-restricted product `R`, and finite presentation is the hypothesis that makes
-that statement work cleanly.
+The reason we care about this is the following.
 ```tex "adele_project/lt-witness-500"
-The TeX chapter also inserts a finite-presentation detour at this point. The
+The reason we care about this is the following.
 ```
 
 
 :::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
-If `M` is a finitely presented module over a commutative ring `R`, then
-tensoring with `M` commutes with arbitrary products.
-This is one of the algebraic inputs behind the auxiliary restricted-product
-comparison in the TeX proof of finite-adele base change.
+If `R` is a commutative ring, if `M` is a finitely presented `R`-module and if
+`N_i` are a collection of `R`-modules, then the canonical map
+`M⊗_R∏_i N_i→∏_i(M⊗_R N_i)` is an isomorphism.
 :::
 ```tex "adele_project/lt-witness-506"
 :::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
@@ -660,11 +620,9 @@ comparison in the TeX proof of finite-adele base change.
 
 
 :::proof "tensor_product_commutes_with_products_for_finite_presentation"
-The TeX chapter first records that the integral closure `B` is finitely
-presented over `A`. It then appeals to the standard theorem that finitely
-presented modules commute with products under tensor product. In the finite free
-case this is straightforward; the general case is obtained by presenting `M`
-as a cokernel of a map between finite free modules.
+If `M` is finite and free then Maddy Crim has already formalized this in FLT.
+For the general case present `M` as `R^a→R^b→M→0` and use that tensor products
+and arbitrary products preserve surjections.
 :::
 ```tex "adele_project/lt-witness-513"
 :::proof "tensor_product_commutes_with_products_for_finite_presentation"
@@ -672,9 +630,11 @@ as a cokernel of a map between finite free modules.
 
 
 :::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
-If an index map has finite fibres and each factor over the target is identified
-with the product of the corresponding fibres over the source, then the two
-restricted products are naturally in bijection.
+Let `V` and `W` be index sets, and let `f:W→V` be a map with finite fibres. Let
+`X_v` be sets, with subsets `C_v`, let `Y_w` be sets with subsets `D_w`, and
+say for all `v ∈ V` we're given a bijection `X_v → ∏_{w | f(w) = v} Y_w`, identifying
+`C_v` with `∏_{w | f(w) = v} D_w`. Then there's an induced bijection between the
+restricted products `∏'_v(X_v,C_v)` and `∏'_w(Y_w,D_w)`.
 :::
 ```tex "adele_project/lt-witness-521"
 :::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
@@ -682,9 +642,8 @@ restricted products are naturally in bijection.
 
 
 :::proof "restricted_product_relabel_isomorphism"
-The TeX chapter introduces this abstract relabelling construction because the
-finite-adele base-change proof needs to reorganize a restricted product indexed
-by places of `K` into one indexed by places of `L`.
+This is a standard corollary of the previous theorem and the fact that tensor
+products commute with filtered colimits.
 :::
 ```tex "adele_project/lt-witness-527"
 :::proof "restricted_product_relabel_isomorphism"
@@ -692,11 +651,12 @@ by places of `K` into one indexed by places of `L`.
 
 
 :::theorem "restricted_product_relabel_homeomorphism" (parent := "adele_project")
-If the fibres are finite and the local identifications are homeomorphisms
-matching the chosen open subspaces, then the relabelling bijection of
-restricted products is also a homeomorphism.
-This is the topological refinement of
-{uses "restricted_product_relabel_isomorphism"}[].
+In the same setup as `RestrictedProduct.relabelIso`
+(`V, W` index sets, `f : W → V`, `C_v ⊆ X_v` and `D_w ⊆ Y_w`, bijections
+`b_v : X_v → ∏_{w | f(w) = v} Y_w` identifying `C_v` with `∏_{w | f(w) = v} D_w`), if all the
+`X_v` and `Y_w` are furthermore topological spaces, all the `C_v` and `D_w` are
+open, and all the `b_v` are homeomorphisms, then the induced
+map `∏'_v(X_v,C_v) → ∏'_w(Y_w,D_w)` is also a homeomorphism.
 :::
 ```tex "adele_project/lt-witness-533"
 :::theorem "restricted_product_relabel_homeomorphism" (parent := "adele_project")
@@ -704,10 +664,8 @@ This is the topological refinement of
 
 
 :::proof "restricted_product_relabel_homeomorphism"
-The TeX chapter treats this as the natural topological companion to the
-relabelling bijection. The point is that once the open compact pieces and the
-local finite products match homeomorphically, the restricted-product topology is
-transported correctly across the change of index set.
+I have only thought about the cofinite filter case, where this should follow
+easily from the definition of the topology.
 :::
 ```tex "adele_project/lt-witness-541"
 :::proof "restricted_product_relabel_homeomorphism"
@@ -715,10 +673,7 @@ transported correctly across the change of index set.
 
 
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
-At the integral level, one gets a `B`-algebra isomorphism
-$`B \otimes_A \mathbf{A}_K^\infty \cong \mathbf{A}_L^\infty`.
-This is the theorem behind {uses "restricted_product_relabel_isomorphism"}[]
-and {uses "tensor_product_commutes_with_products_for_finite_presentation"}[].
+The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra isomorphism.
 :::
 ```tex "adele_project/lt-witness-548"
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
@@ -726,19 +681,8 @@ and {uses "tensor_product_commutes_with_products_for_finite_presentation"}[].
 
 
 :::proof "finite_adele_base_change_integral"
-In the TeX chapter this is the immediate predecessor of
-{uses "finite_adele_base_change_algebraic"}[]. One first matches the integral
-restricted products place by place and only then passes to the field-level
-statement.
-
-This is also the point where the TeX file says “it is just a case of putting
-everything together” informally, while warning that formally there is quite a
-lot of bookkeeping hidden inside that phrase. More concretely, the proof factors
-through the auxiliary ring `R`: one first compares
-`B \otimes_A \mathbf{A}_K^\infty` with `R` using the finite-presentation tensor
-product input, and then identifies `R` with `\mathbf{A}_L^\infty` using the
-restricted-product relabelling argument and the local integral decomposition
-{uses "nonarchimedean_integral_decomposition"}[].
+This map factors through the auxiliary ring~`R` so the result follows from the
+previous two constructions.
 :::
 
 ```tex "adele_project/base-change-finite-relabel"

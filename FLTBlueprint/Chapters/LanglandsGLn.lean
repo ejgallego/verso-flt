@@ -8,7 +8,7 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
-#doc (Manual) "Automorphic Forms And The Langlands Conjectures" =>
+#doc (Manual) "Automorphic forms and the Langlands Conjectures" =>
 
 :::group "gln_langlands_program"
 This chapter came from discussions between Patrick, Mario and myself, all
@@ -26,16 +26,16 @@ Mathematics in Bonn. The ultimate goal is to formally state some version of the 
 reciprocity conjectures for $\GL_n$ over $\Q$.
 ```
 
-# Definition Of An Automorphic Form For GLn Over Q
+# Definition of an automorphic form for GLn over Q
 
 The global Langlands reciprocity conjectures relate automorphic forms to Galois
 representations. The statements for a general connected reductive group involve
 the construction of the Langlands dual group, and we do not have quite enough
-Lie algebra theory to push this definition through in general. However, if we
-restrict to the special case of the group $`\GL_n/\Q`, the dual group is just
+Lie algebra theory to push this definition through in general. However if we
+restrict the special case of the group $`\GL_n/\Q`, the dual group is just
 $`\GL_n(\bbC)` and several other technical obstructions are also removed. In
-this section we explain the definition of an automorphic form for the group
-$`\GL_n/\Q`, following the exposition by Borel and Jacquet in Corvallis
+this section we will explain the definition of an automorphic form for the
+group $`\GL_n/\Q`, following the exposition by Borel and Jacquet in Corvallis
 {Informal.citep corvallisAutomorphicForms}[].
 
 ```tex "ch07exampleGLn/definition_intro"
@@ -51,7 +51,7 @@ the exposition by Borel and Jacquet in Corvallis.
 # The Finite Adeles Of The Rationals
 
 Mathlib already has the definition of the finite adeles $`\A_{\Q}^f` of the
-rationals as a commutative $`\Q`-algebra, and the proof that they form a
+rationals as a commutative $`\Q`-algebra, and the proof that it's a
 topological ring.
 
 ```tex "ch07exampleGLn/finite_adeles"
@@ -121,10 +121,10 @@ Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 ```
 
-We define the following temporary size function $`s : \GL_n(\R) \to \R` by
-$`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}` denotes
-inverse-transpose. Note that $`s(M)` is always positive, and is large if $`M`
-has a very large or very small, in absolute value, eigenvalue.
+We define the following temporary ``size'' function $`s : \GL_n(\R) \to \R``
+by $`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}`
+denotes inverse-transpose. Note that $`s(M)` is always positive, and is large
+if $`M` has a very large or very small, in absolute value, eigenvalue.
 
 ```tex "ch07exampleGLn/slowly_increasing_intro"
 Automorphic representations satisfy a growth condition which we may as well
@@ -143,16 +143,6 @@ $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 :::
 
 ```tex "ch07exampleGLn/slowly_increasing_functions"
-\section{Slowly-increasing functions}
-
-Automorphic representations satisfy a growth condition which we may as well
-factor out into a separate definition.
-
-We define the following temporary size function $s : \GL_n(\R) \to \R$ by
-$s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})$, where $M^{-T}$ denotes
-inverse-transpose. Note that $s(M)$ is always positive, and is large if $M$
-has a very large or very small, in absolute value, eigenvalue.
-
 \begin{definition}
   \label{AutomorphicForm.GLn.IsSlowlyIncreasing}
   \lean{AutomorphicForm.GLn.IsSlowlyIncreasing}
@@ -176,8 +166,8 @@ don't think it makes any difference.
 :::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
 The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
 finite-dimensional continuous complex representation $`\rho` of a maximal
-compact subgroup of $`\GL_n(\R)`. Since these subgroups are all conjugate, it
-is convenient to choose one, and we choose $`O_n(\R)`.
+compact subgroup of $`\GL_n(\R)`, and it's convenient to choose one (they're
+all conjugate) so we choose $`O_n(\R)`.
 :::
 
 ```tex "ch07exampleGLn/weights_at_infinity"
