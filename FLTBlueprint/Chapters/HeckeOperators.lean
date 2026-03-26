@@ -209,10 +209,10 @@ this cover must thus be finite.
 \end{proof}
 ```
 :::theorem "abstract_hecke_operators_commute" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
-Under the expected commutation hypothesis on representatives, the abstract
-Hecke operators commute.
-This is the abstract commutativity criterion later used in
-{uses "hecke_operators_different_places_commute"}[].
+Say $`g,h\in G` and suppose we have $`UgU=\coprod_i g_iU`
+and $`UhU=\coprod_j h_j` and that $`g_ih_j=h_jg_i` for all `i,j`.
+Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
+acting on $`A^U` commute.
 :::
 ```tex "hecke_operator_project/abstract_theory/commutativity"
 \begin{lemma}
@@ -227,9 +227,9 @@ This is the abstract commutativity criterion later used in
 \end{lemma}
 ```
 :::proof "abstract_hecke_operators_commute"
-The TeX chapter simply expands both compositions into double sums and then
-swaps the order of multiplication using the commutation relation on the chosen
-representatives.
+We have $`[UgU][UhU]a=\sum_i g_i(\sum_j h_j a)=\sum_{i,j} g_i h_j a`
+and $`[UhU][UgU]a=\sum_j h_j\sum_i g_i a=\sum_{j,i} h_j g_i a` and these
+sums are equal because $`g_i h_j = h_j g_i`.
 :::
 ```tex "hecke_operator_project/abstract_theory/commutativity_proof"
 \begin{proof}
