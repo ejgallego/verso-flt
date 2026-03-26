@@ -134,8 +134,12 @@ chapter deliberately works in a low-level plane-cubic language here, because it
 is enough for the first Frey-curve calculations.
 
 :::definition "good_reduction_definition" (parent := "elliptic_frey_bridge")
-Good reduction means that an elliptic curve admits an integral model whose
-reduction modulo the maximal ideal is still smooth.
+Good reduction over a valuation ring `R` with maximal ideal `\mathfrak m`
+means that an elliptic curve over the fraction field of `R` admits a model
+with coefficients in `R` whose reduction modulo `\mathfrak m` is still
+smooth. For an elliptic curve over a number field `N` and a maximal ideal `P`
+of `\mathcal O_N`, good reduction at `P` means good reduction over
+`\mathcal O_{N,P}`.
 :::
 
 From this point on, the TeX chapter switches Frey-package notation from
@@ -143,8 +147,9 @@ From this point on, the TeX chapter switches Frey-package notation from
 same convention in the discussion below.
 
 :::theorem "frey_curve_good_reduction_away_from_abc" (parent := "elliptic_frey_bridge")
-For the Frey curve attached to a Frey package, any odd prime not dividing
-`abc` is a prime of good reduction. This is the notion of
+For the Frey curve `Y^2 = X(X-a^\ell)(X+b^\ell)` attached to a Frey package,
+any odd prime not dividing `abc` is a prime of good reduction. This is the
+notion of
 {uses "good_reduction_definition"}[].
 :::
 
@@ -164,9 +169,9 @@ The TeX chapter also introduces a working notion of finite flat group scheme,
 since later local conditions at `\ell` are phrased in those terms.
 
 :::definition "finite_flat_group_scheme_definition" (parent := "elliptic_frey_bridge")
-For the purposes of the FLT strategy, a finite flat group scheme over a ring is
-the algebro-geometric object that packages torsion in good or multiplicative
-integral models in a form compatible with local Galois representations.
+For the purposes of the FLT strategy, a finite flat group scheme over a
+commutative ring `R` is the spectrum of a commutative Hopf algebra `H/R` that
+is finite and flat as an `R`-module.
 :::
 
 The original TeX notes immediately remark that in the genuinely non-Noetherian
@@ -206,15 +211,17 @@ finite flat group scheme.
 
 :::definition "multiplicative_reduction_definition" (parent := "elliptic_frey_bridge")
 Multiplicative reduction means that the reduced cubic has an ordinary double
-point rather than remaining smooth.
+point rather than remaining smooth. In the local version over a valuation ring,
+the reduction is split if the two tangent lines at the double point are both
+defined over the residue field, and non-split otherwise.
 :::
 
 For elliptic curves over number fields, the corresponding local definition is
 obtained by passing to the localization at the prime in question.
 
 :::theorem "frey_curve_multiplicative_reduction_at_bad_prime" (parent := "elliptic_frey_bridge")
-If an odd prime divides `abc`, then the Frey curve has multiplicative reduction
-at that prime. This is the local reduction notion of
+If an odd prime divides `abc`, then the Frey curve has multiplicative
+reduction at that prime. This is the local reduction notion of
 {uses "multiplicative_reduction_definition"}[].
 :::
 
@@ -238,8 +245,9 @@ The Frey curve always has multiplicative reduction at `2`. This is again a
 :::proof "frey_curve_multiplicative_reduction_at_two"
 The TeX proof makes the explicit change of variables `X = 4X'` and
 `Y = 8Y' + 4X'`. Because `\ell \ge 5`, `b` is even, and `a \equiv 3 \pmod 4`,
-the transformed equation reduces modulo `2` to a cubic with an ordinary double
-point at `(0,0)`.
+the transformed equation reduces modulo `2` to `Y'^2 + X'Y' = X'^3 + cX'^2`
+for some `c \in \{0,1\}`, hence to a cubic with an ordinary double point at
+`(0,0)`.
 
 This is the special local place where the later hardly ramified package is
 forced to use a weaker semisimplified statement rather than complete
@@ -254,10 +262,12 @@ theorem. In the current blueprint, we record only the consequence actually used
 for torsion representations.
 
 :::theorem "tate_curve_local_torsion_shape" (parent := "elliptic_frey_bridge")
-For an elliptic curve with multiplicative reduction over a nonarchimedean local
-field, the Tate-curve description shows that torsion is controlled by an
-extension of a cyclotomic character by an unramified character of order at most
-`2`. This is the torsion-theoretic consequence of
+For an elliptic curve with multiplicative reduction over a complete
+nonarchimedean local field with perfect residue field, the Tate-curve
+description shows that for every `n` prime to the residue characteristic the
+`n`-torsion is an extension of an unramified character `\chi` with `\chi^2 = 1`
+by `\epsilon\chi`, where `\epsilon` is the cyclotomic character. This is the
+torsion-theoretic consequence of
 {uses "multiplicative_reduction_definition"}[].
 :::
 
@@ -273,7 +283,7 @@ unramifiedness away from `2` and `\ell`, the special semisimplified shape at
 
 :::theorem "frey_curve_j_invariant_formula" (parent := "elliptic_frey_bridge")
   (lean := "FreyCurve.j")
-The `j`-invariant of the Frey curve admits an explicit formula in terms of
+The `j`-invariant of the Frey curve is `2^8(C^2 - AB)^3/(A^2B^2C^2)`, where
 `A = a^\ell`, `B = b^\ell`, and `C = c^\ell`. This is the explicit formula for
 {uses "FreyCurve"}[].
 :::
@@ -287,8 +297,8 @@ forced by that `j`-invariant formula.
 
 :::theorem "frey_curve_j_bad_prime_valuation" (parent := "elliptic_frey_bridge")
   (lean := "FreyCurve.j_valuation_of_bad_prime")
-If an odd prime `p` divides `abc`, then the `p`-adic valuation of the
-Frey-curve `j`-invariant is a multiple of `\ell`. This is a direct valuation
+If `2 < p \mid abc`, then the `p`-adic valuation of the Frey-curve
+`j`-invariant is a multiple of `\ell`. This is a direct valuation
 consequence of {uses "frey_curve_j_invariant_formula"}[].
 :::
 
@@ -322,8 +332,9 @@ that, at these bad odd primes, the Tate parameter produces no extra
 :::
 
 :::theorem "frey_curve_local_shape_at_two" (parent := "elliptic_frey_bridge")
-At the prime `2`, the semisimplification of the Frey-curve `\ell`-torsion
-representation is unramified.
+At the prime `2`, the semisimplification of the restriction of the Frey-curve
+`\ell`-torsion representation to `\mathrm{Gal}(\overline{\mathbf Q}_2/\mathbf Q_2)`
+is unramified.
 This is the `2`-adic input used in {uses "frey_torsion_hardly_ramified"}[].
 :::
 

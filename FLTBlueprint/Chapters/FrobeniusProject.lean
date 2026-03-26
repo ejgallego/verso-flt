@@ -78,7 +78,7 @@ commutative ring `B`, and `A` denotes the subring of `G`-invariants.
 :::definition "decomposition_group_definition" (parent := "frobenius_project")
 Given a finite group `G` acting on a commutative ring `B`, a prime ideal `Q` of
 `B`, and the induced prime `P` of the invariant subring `A`, the decomposition
-group `D_Q` is the stabilizer of `Q` under the action of `G`.
+group `D_Q` is the subgroup of elements `g ∈ G` such that `g · Q = Q`.
 :::
 
 The TeX chapter is explicit that this is set-theoretic stabilization, not
@@ -171,8 +171,8 @@ the invariant subring. The first structural theorem is that `B/A` is integral.
 :::definition "group_action_characteristic_polynomial" (parent := "frobenius_project")
   (lean := "MulSemiringAction.charpoly")
 For an element `b` of the big ring, the characteristic polynomial attached to
-the finite group action is the finite product of the linear factors
-`X - g • b` as `g` ranges over `G`.
+the finite group action is the finite product
+`F_b(X) = ∏_{g ∈ G} (X - g • b)`.
 :::
 
 ```tex "MulSemiringAction.charpoly"
@@ -214,10 +214,9 @@ to a monic polynomial over `A`.
 
 :::proof "invariant_characteristic_polynomial_descends"
 {uses "group_action_characteristic_polynomial"}[]
-The coefficients of the polynomial are symmetric expressions in the orbit
-`{g • b}`, so acting by any element of `G` merely permutes the factors and
-fixes every coefficient. By the invariant-ring hypothesis, those fixed
-coefficients come from `A`.
+Acting by any element of `G` merely permutes the factors in
+`F_b(X) = ∏_{g ∈ G}(X - g • b)`, so every coefficient is `G`-invariant.
+By the invariant-ring hypothesis, those fixed coefficients come from `A`.
 :::
 
 ```tex "Algebra.IsInvariant.charpoly_mem_lifts"
@@ -267,7 +266,7 @@ number theory and starts looking like invariant theory.
 :::theorem "primes_over_same_prime_are_conjugate" (parent := "frobenius_project")
   (lean := "Algebra.IsInvariant.exists_smul_of_under_eq")
 Prime ideals of `B` lying above the same prime of `A` lie in one orbit of the
-group action.
+`G`-action, equivalently they have the same contraction to `A`.
 This is the transitivity statement that lets one compare different primes above
 the same base prime in the classical Frobenius setting.
 :::
@@ -292,12 +291,14 @@ already fixed by `Aut(L/K)`.
 :::
 
 :::proof "fixed_residue_class_fixed_by_stabilizer"
-The TeX proof constructs elements `a, b ∈ B` with a characteristic polynomial
-whose image in `L[X]` has the special form
+{uses "fixed_of_fixed1_aux1"}[]
+{uses "fixed_of_fixed1_aux2"}[]
+The TeX proof constructs elements `a, b ∈ B` so that the image of the
+characteristic polynomial in `L[X]` is exactly
 `(X - a b₀)^{|D_Q|} X^{|G|-|D_Q|}`.
-Viewed through `B[X]`, this polynomial reflects exactly the orbit of `Q`; viewed
-through `K[X]`, it shows that `ab₀` lies in `K`. Since `a` is nonzero modulo
-`Q`, the element `b₀` itself is fixed by `Aut(L/K)`.
+Viewed through `K[X]`, the same polynomial has coefficients in `K`, so
+`a b₀ ∈ K`. Since `a` is nonzero modulo `Q`, hence nonzero in `L`, the element
+`b₀` itself is fixed by `Aut(L/K)`.
 :::
 
 ```tex "fixed_of_fixed1_aux1"
@@ -437,9 +438,10 @@ fixed by `Aut(L/K)`.
 Because `(B/Q)/(A/P)` is algebraic by
 {uses "invariant_extension_integral"}[], the denominator-lifting theorem
 {uses "algebraic_fraction_denominator_lift"}[] lets one write any such element
-of `L` as `b/a` with `b ∈ B/Q` and `a ∈ A/P`. The numerator `b` is then fixed
-by `D_Q`, so {uses "fixed_residue_class_fixed_by_stabilizer"}[] shows it is
-fixed by `Aut(L/K)`, and hence the original fraction is fixed as well.
+of `L` as `b/a` with `b ∈ B/Q` and `a ∈ A/P ⊂ K`. The numerator `b` is then
+fixed by `D_Q`, so {uses "fixed_residue_class_fixed_by_stabilizer"}[] shows it
+is fixed by `Aut(L/K)`. Since the denominator already lies in `K`, the whole
+fraction is fixed as well.
 :::
 
 ```tex "fixed_of_fixed2"
@@ -453,8 +455,8 @@ fixed by `Aut(L/K)`, and hence the original fraction is fixed as well.
 \begin{proof}
   \uses{fixed_of_fixed1, Algebra.IsInvariant.isIntegral,
     IsAlgebraic.exists_smul_eq_mul}
-  Since $(B/Q)/(A/Q)$ is algebraic by~\ref{Algebra.IsInvariant.isIntegral},
-  ~\ref{IsAlgebraic.exists_smul_eq_mul} let's us write $x=b/a$ for $b \in B/Q$ and $a \in A/P$.
+  Since $(B/Q)/(A/P)$ is algebraic by~\ref{Algebra.IsInvariant.isIntegral},
+  ~\ref{IsAlgebraic.exists_smul_eq_mul} lets us write $x=b/a$ for $b \in B/Q$ and $a \in A/P$.
   Then $b$ is fixed by the stabilizer subgroup $D_Q$, and it suffices to show that
   $b$ is fixed by the automorphism group $\Aut(L/K)$.
   But this is exactly~\ref{fixed_of_fixed1}.

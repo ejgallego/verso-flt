@@ -166,10 +166,12 @@ should be a compact open subgroup.
 ```
 
 :::proof "adele_local_compactness"
-The finite adele part is a restricted product over compact open integer
-subgroups, and the infinite part is finite-dimensional real linear algebra.
-This is exactly why {uses "local_integer_ring_compact_open"}[] is the key local
-input in the TeX chapter.
+The full adele ring is the product of the finite and infinite adeles. The
+finite part is a restricted product over compact open integer rings, so
+mathlib's `RestrictedProduct.locallyCompactSpace_of_addGroup` applies once
+{uses "local_integer_ring_compact_open"}[] is available. The infinite part is a
+finite product of archimedean completions, hence a finite-dimensional real
+topological vector space and therefore locally compact.
 
 The chapter is explicit that this is now meant to be proved using the
 restricted-product topology rather than the older ad hoc topology from the
@@ -861,13 +863,15 @@ automatically a homeomorphism.
 :::
 
 :::proof "adele_base_change"
-The old blueprint splits this into finite and infinite pieces and develops the
-local completion maps place by place before assembling the global theorem.
-
-So {uses "adele_base_change"}[] is really the sum of
-{uses "finite_adele_base_change_algebraic"}[],
-{uses "finite_adele_base_change_topological"}[], and
-{uses "infinite_adele_base_change"}[].
+The TeX chapter splits the global statement into finite and infinite pieces.
+On the finite side, `\mathbf{A}_K^\infty` and `\mathbf{A}_L^\infty` are related
+by {uses "finite_adele_base_change_algebraic"}[] and
+{uses "finite_adele_base_change_topological"}[]. On the infinite side,
+`K_\infty` and `L_\infty` are related by {uses "infinite_adele_base_change"}[].
+Since `\mathbf{A}_K = \mathbf{A}_K^\infty \times K_\infty` and
+`\mathbf{A}_L = \mathbf{A}_L^\infty \times L_\infty`, these are exactly the
+pieces needed for the global algebraic and topological isomorphism
+`L \otimes_K \mathbf{A}_K \cong \mathbf{A}_L`.
 :::
 
 :::theorem "adele_base_change_module_topology" (parent := "adele_project")
@@ -879,9 +883,10 @@ map `\mathbf{A}_K -> \mathbf{A}_L`.
 :::proof "adele_base_change_module_topology"
 This is the short theorem the TeX chapter inserts just before the final
 discreteness and compactness section. Once {uses "adele_base_change"}[] is
-known, the claim is immediate: `\mathbf{A}_L` is homeomorphic to
-`L \otimes_K \mathbf{A}_K`, and the tensor-product side carries the
-`\mathbf{A}_K`-module topology by construction.
+known, `\mathbf{A}_L` is identified with `L \otimes_K \mathbf{A}_K` by a
+homeomorphism, and the tensor-product side carries the `\mathbf{A}_K`-module
+topology by construction. Transporting that topology across the identification
+gives the claimed `\mathbf{A}_K`-module topology on `\mathbf{A}_L`.
 :::
 
 ```tex "adele_project/base-change-infinite"
@@ -1243,9 +1248,9 @@ quotient topology) is compact. Here is a proposed proof.
 \end{theorem}
 \begin{proof}
   Use $\prod_p{\Z_p}\times(-1,1)$. Any rational $q$ in this set is a $p$-adic
-  integer for all primes $p$ and hence (writing it in lowest terms as $q=n/d$)
-  satisfies $p\nmid d$, meaning that $d=\pm1$ and thus $q\in\Z$. The fact
-  that $q\in(-1,1)$ implies $q=0$.
+  integer for all primes $p$ and hence, writing it in lowest terms as $q=n/d$,
+  has no prime divisor in the denominator. So $d=\pm1$, which forces
+  $q\in\Z$, and the interval condition $q\in(-1,1)$ then implies $q=0$.
 \end{proof}
 
 \begin{theorem}
@@ -1257,8 +1262,10 @@ quotient topology) is compact. Here is a proposed proof.
 \end{theorem}
 \begin{proof}
   By a previous result, we have $\A_K=K\otimes_{\Q}\A_{\Q}$.
-  Choose a basis of $K/\Q$; then $K$ can be identified with $\Q^n\subseteq(\A_{\Q})^n$
-  and the result follows from the previous theorem.
+  Choose a $\Q$-basis of $K$; then $K$ identifies with $\Q^n$ inside
+  $(\A_{\Q})^n$, and the open subset from the rational case may be taken
+  coordinatewise. This gives an open subset of $\A_K$ whose intersection with
+  $K$ is still $\{0\}$.
 \end{proof}
 
 \begin{theorem}
@@ -1286,10 +1293,11 @@ For compactness we follow the same approach.
   The space $\prod_p\Z_p\times[0,1]\subseteq\A_{\Q}$ is a product of compact spaces
   and is hence compact. I claim that it surjects onto $\A_{\Q}/\Q$. Indeed,
   if $a\in\A_{\Q}$ then for the finitely many prime numbers $p\in S$ such that $a_p\not\in\Z_p$
-  we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$, and
-  if $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$ then $a-q\in \prod_p\Z_p\times\R$.
-  Now just subtract $\lfloor a_{\infty}-q\rfloor$ to move into $\prod_p\Z_p\times[0,1)$
-  and we are done.
+  we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$.
+  If we set $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$, then
+  $a-q\in \prod_p\Z_p\times\R$. Subtracting $\lfloor a_{\infty}-q\rfloor$ moves
+  the archimedean coordinate into $[0,1)$, so every class in $\A_{\Q}/\Q$ has a
+  representative in the compact set.
 \end{proof}
 
 \begin{theorem}
@@ -1300,8 +1308,9 @@ For compactness we follow the same approach.
   The quotient $\A_K/K$ is compact.
 \end{theorem}
 \begin{proof}
-  We proceed as in the discreteness proof above, by reducing to $\Q$. As before, choosing
-  a $\Q$-basis of $K$ gives us $\A_K/K\cong(\A_{\Q}/\Q)^n$ so the result follows from
-  the previous theorem.
+  We proceed as in the discreteness proof above, by reducing to $\Q$. Choosing a
+  $\Q$-basis of $K$ identifies $K$ with $\Q^n$ and gives
+  $\A_K/K\cong(\A_{\Q}/\Q)^n$. Compactness then follows from the previous
+  theorem.
 \end{proof}
 ```
