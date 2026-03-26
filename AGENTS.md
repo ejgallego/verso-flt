@@ -127,6 +127,17 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Verso Blueprint math syntax is easy to get wrong: inline math is opened with
   `$`` and closed with a backtick, not with a trailing dollar sign. For display
   math, use `$$`` ... ``.
+- Keep Verso directive headers syntactically conservative. In practice, put the
+  full `:::definition` / `:::theorem` / `:::proof` header, including
+  `(parent := ...)` and `(lean := ...)`, on one physical line rather than
+  splitting the attachment options onto following lines.
+- Do not place raw TeX commands such as `\ref`, `\emph`, `\begin{...}`,
+  `\end{...}`, or TeX quote syntax directly in ordinary Verso prose blocks.
+  Keep them inside adjacent `tex` witness fences, or translate them into
+  parser-safe Verso/math/prose form first.
+- When a local edit looks harmless but introduces parser errors such as
+  `expected '![', '$$', '$', '[' or '[^'`, first suspect malformed directive
+  headers, raw TeX in prose, or brittle multiline inline-math spans.
 - Keep shared TeX macros in a dedicated Lean module so the project has one
   canonical `tex_prelude` definition rather than ad hoc per-file macros.
 - The shared prelude currently lives in

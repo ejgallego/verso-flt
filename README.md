@@ -75,6 +75,13 @@ definitions should be recoverable from the original blueprint prelude in
 `FLT/blueprint/src/macro/common.tex`, then ported intentionally into
 `FLTBlueprint/TeXPrelude.lean`.
 
+Two recurring Verso syntax pitfalls are worth keeping in mind during direct
+porting:
+- keep directive headers and attachment options on one line when possible
+- do not leave raw TeX commands like `\ref` or `\emph` in ordinary Verso prose;
+  either keep them in the local `tex` witness or translate them into parser-safe
+  Verso/math/prose form
+
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.
 

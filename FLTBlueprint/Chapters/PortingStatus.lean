@@ -35,6 +35,9 @@ porting notes did.
   same workflow
 - when the TeX source uses mathematical notation, the default LT move is to
   keep it as mathematical notation rather than demoting it into code spans
+- Verso syntax discipline matters for LT work: directive headers and attachment
+  options should stay syntactically conservative, and raw TeX commands should
+  not be left in ordinary Verso prose
 - earlier LT-pass labels are provisional only; they do not count as trusted LT
   certification without local source witnesses
 - each translated informal block should sit immediately next to a labeled
