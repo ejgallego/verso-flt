@@ -52,7 +52,7 @@ contain most of the background phenomena the FLT project eventually needs.
 Let `K` be such a finite extension of `ℚ_p`. The TeX appendix begins by fixing
 notation for the profinite completion `\widehat{ℤ}` because arithmetic and
 geometric Frobenius are stated there in terms of explicit maps to
-`\widehat{ℤ}`.
+`\widehat{ℤ}`. Concretely, `\widehat{ℤ} \cong \prod_p \mathbf Z_p`.
 
 :::theorem "maximal_unramified_extension_placeholder" (parent := "bestiary_appendix")
 For a finite extension `K / ℚ_p`, the maximal unramified extension should be
@@ -78,9 +78,10 @@ It is impossible to say which of the two canonical isomorphisms is ``the most ca
 :::definition "local_weil_group_placeholder" (parent := "bestiary_appendix")
 The appendix records the local Weil group and local class field theory among
 the core background items still waiting for polished Lean-facing statements.
-The Weil group is introduced by pulling back the surjection to
-`\widehat{ℤ}` from {uses "maximal_unramified_extension_placeholder"}[] along
-the discrete integers.
+The Weil group is introduced by pulling back the surjection
+`G_K \twoheadrightarrow \widehat{ℤ}` from
+{uses "maximal_unramified_extension_placeholder"}[] along the continuous map
+`ℤ \to \widehat{ℤ}` from the discrete integers.
 :::
 
 :::theorem "local_class_field_theory_placeholder" (parent := "bestiary_appendix")
@@ -170,27 +171,30 @@ This is in Theorem II.5.2 in~\cite{serre-galcoh}.
 ```
 
 :::theorem "local_galois_cohomology_finiteness" (parent := "bestiary_appendix")
-For finite coefficients `M`, the local Galois cohomology groups `H^i(G_K,M)` are
-finite.
+For finite coefficients `M`, the local Galois cohomology groups `H^i(G_K,M)`
+are finite for all `i`.
 :::
 
 :::theorem "local_galois_cohomology_dimension_two" (parent := "bestiary_appendix")
-For torsion coefficients, local Galois cohomology vanishes above degree `2`.
+For torsion coefficients, local Galois cohomology vanishes above degree `2`,
+so `H^i(G_K,M)=0` for `i>2`.
 :::
 
 :::theorem "local_galois_cohomology_top_degree" (parent := "bestiary_appendix")
-The top-degree group `H^2(G_K,\mu_n)` should be canonically identifiable with
+The top-degree group `H^2(G_K, \mu_n)` should be canonically identifiable with
 `\mathbf{Z}/n\mathbf{Z}`.
 :::
 
 :::theorem "local_galois_cohomology_poincare_duality" (parent := "bestiary_appendix")
-Local Galois cohomology should satisfy a Poincare-duality pairing between degree
-`i` and degree `2-i`.
+If `\mu = \bigcup_{n\geq 1}\mu_n` and `M' := \Hom(M,\mu)`, then for
+`0 \leq i \leq 2` the cup product pairing
+`H^i(G_K,M) \times H^{2-i}(G_K,M') \to H^2(G_K,\mu)=\Q/\Z`
+should be perfect.
 :::
 
 :::theorem "local_galois_cohomology_euler_characteristic" (parent := "bestiary_appendix")
-The local Galois cohomology groups satisfy an Euler-Poincare characteristic
-formula.
+If `h^i(M)` denotes the order of `H^i(G_K,M)`, then the Euler-Poincare
+characteristic formula should read `h^0(M)-h^1(M)+h^2(M)=0`.
 :::
 
 The appendix then explicitly summarizes the package by analogy: cohomology of a
@@ -202,10 +206,17 @@ lot of work in these statements. In a Lean-facing treatment many of the claimed
 equalities will have to become explicitly constructed maps or chosen
 identifications rather than informal appeals to canonicality.
 
+We now move onto the global case. If `N` is a number field, that is, a finite
+extension of `\Q`, then its finite adeles are obtained by tensoring `N` with
+`\widehat{\Z}`, its archimedean factor is obtained by tensoring `N` with `\R`,
+and the full ring of adeles is the product of those two pieces.
+
 :::theorem "global_class_field_theory_placeholder" (parent := "bestiary_appendix")
-Global class field theory should identify the connected components of
-`A_N^× / N^×` with the abelianized absolute Galois group of a number field `N`,
-compatibly with the local reciprocity maps.
+If `N` is a finite extension of `\Q`, then there are two "canonical"
+isomorphisms of topological groups between the component group of the ideles of
+`N` modulo principal ideles and the abelianized Galois group `\GN^{\ab}`; one
+sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global
+isomorphisms is compatible with the local isomorphisms above.
 This is the global continuation of {uses "local_class_field_theory_placeholder"}[].
 :::
 
@@ -217,9 +228,12 @@ behavior.
 :::
 
 :::theorem "skinner_wiles_cft_trick_placeholder" (parent := "bestiary_appendix")
-The appendix isolates a global class-field-theoretic construction that produces
-finite solvable extensions with prescribed local behavior and optional
-disjointness from an auxiliary field.
+Let `S` be a finite set of places of a number field `K`. For each `v \in S`
+let `L_v/K_v` be a finite Galois extension. Then there is a finite solvable
+Galois extension `L/K` such that if `w` is a place of `L` dividing `v \in S`,
+then `L_w/K_v` is isomorphic to `L_v/K_v` as a `K_v`-algebra. Moreover, if
+`K^{\avoid}/K` is any finite extension then we can choose `L` to be linearly
+disjoint from `K^{\avoid}`.
 This is recorded as a consequence of {uses "global_class_field_theory_placeholder"}[].
 :::
 

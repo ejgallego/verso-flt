@@ -584,10 +584,12 @@ for compactness.
 
 # Local matrix theory
 
-The local section of the TeX chapter specializes to completions `K_v` of number
-fields at finite places. The point is to manufacture the compact open
-subgroups and explicit double-coset decompositions that later define the local
-Hecke operators.
+The TeX source makes the local notation explicit: we work at a finite place
+`v` of a number field, with completion `K_v`, ring of integers `\mathcal{O}_v`,
+a chosen uniformizer `\varpi`, and residue field `k_v := \mathcal{O}_v/(\varpi)`.
+The point of the section is to manufacture the compact open subgroups and
+explicit double-coset decompositions that later define the local Hecke
+operators.
 
 The TeX chapter is candid that these local lemmas were not yet formalized in
 the right generality. It sticks to completions of number fields at finite
@@ -595,15 +597,18 @@ places, even though the natural long-term statements should be about general
 nonarchimedean local fields.
 
 :::theorem "local_integer_ring_open" (parent := "hecke_operator_project")
-The local integer ring `\mathcal{O}_v` is an open subring of `K_v`.
+The local integer ring `\mathcal{O}_v` inside `K_v` is an open subring of
+`K_v`.
 :::
 
 :::theorem "local_integer_ring_compact" (parent := "hecke_operator_project")
-The local integer ring `\mathcal{O}_v` is a compact subring of `K_v`.
+The local integer ring `\mathcal{O}_v` is a compact subring of `K_v`; the
+compactness comes from the finiteness of the residue field `k_v`.
 :::
 
 :::theorem "matrix_full_level_open" (parent := "hecke_operator_project")
-The matrix ring `M₂(\mathcal{O}_v)` is an open subring of `M₂(K_v)`.
+The matrix ring `M₂(\mathcal{O}_v) \cong \mathcal{O}_v^4` is an open subring
+of `M₂(K_v) \cong K_v^4`.
 :::
 
 :::theorem "matrix_full_level_compact" (parent := "hecke_operator_project")
@@ -611,8 +616,9 @@ The matrix ring `M₂(\mathcal{O}_v)` is a compact subring of `M₂(K_v)`.
 :::
 
 :::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project")
-For a nonarchimedean local field `K_v`, the subgroup `GL₂(\mathcal{O}_v)` is a
-compact open subgroup of `GL₂(K_v)`.
+The unit group `GL₂(\mathcal{O}_v)` is a compact open subgroup of
+`GL₂(K_v)`, obtained from the compact-open subring `M₂(\mathcal{O}_v)` by the
+general topology of units.
 This is obtained from {uses "matrix_full_level_open"}[],
 {uses "matrix_full_level_compact"}[],
 {uses "units_of_open_submonoid_open"}[], and
@@ -627,23 +633,27 @@ general topology of units in compact/open submonoids.
 :::
 
 :::definition "local_level_from_residue_subgroup" (parent := "hecke_operator_project")
-If `Γ_v` is a subgroup of `GL₂(k_v)`, its preimage in `GL₂(\mathcal{O}_v)` gives
-the local compact open subgroup used to define the corresponding local level.
+If `Γ_v \le GL₂(k_v)` is a subgroup of the residue-group `GL₂(k_v)`, its
+preimage in `GL₂(\mathcal{O}_v)` gives the local compact open subgroup used to
+define the corresponding local level.
 :::
 
 :::theorem "local_congruence_level_compact_open" (parent := "hecke_operator_project")
-If `Γ_v` is a subgroup of `GL₂(k_v)` for the finite residue field `k_v`, then
-its preimage in `GL₂(\mathcal{O}_v)` is again a compact open subgroup.
+If `Γ_v \le GL₂(k_v)` and `U_v` is its preimage in `M₂(\mathcal{O}_v)` under
+reduction modulo `\varpi`, then `U_v` is a finite union of cosets of
+`I := M₂(\varpi \mathcal{O}_v)`, hence compact and open. Its unit group is
+therefore a compact open subgroup of `GL₂(K_v)`.
 This upgrades {uses "local_level_from_residue_subgroup"}[] to a topological
 subgroup statement using {uses "units_of_open_submonoid_open"}[] and
 {uses "units_of_compact_submonoid_compact"}[].
 :::
 
 :::proof "local_congruence_level_compact_open"
-The TeX chapter constructs these subgroups by reduction modulo the maximal ideal.
-Because the residue field is finite, the preimage is a finite union of cosets of
-the compact open ideal `M₂(\varpi \mathcal{O}_v)`, and hence is itself compact
-and open.
+The TeX chapter constructs these subgroups by reduction modulo the maximal
+ideal. The kernel of `M₂(\mathcal{O}_v) \to M₂(k_v)` is
+`I = M₂(\varpi \mathcal{O}_v)`, and because `k_v` is finite the preimage of a
+subgroup of `M₂(k_v)` is a finite union of cosets of `I`. That is the compact
+open subgroup `U_v`.
 :::
 
 The TeX chapter then specializes to upper-triangular congruence-type local
@@ -651,20 +661,23 @@ subgroups in preparation for the explicit `U_{v,\alpha}` double-coset
 calculation.
 
 :::theorem "local_u_operator_double_coset_decomposition" (parent := "hecke_operator_project")
-For upper-triangular congruence-type local levels, the double coset of
-`diag(\alpha,1)` admits an explicit finite decomposition indexed by
-`\mathcal{O}_v / \alpha \mathcal{O}_v`.
+If `\begin{pmatrix}1&*\\0&1\end{pmatrix} \subseteq \Gamma_v \subseteq
+\begin{pmatrix}*&*\\0&*\end{pmatrix}`, choose `0 \neq \alpha \in \mathcal{O}_v`
+and set `g = \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}`. For the associated
+compact open subgroup `U`, the double coset `UgU` is the disjoint union of the
+left cosets `g_tU` indexed by `\mathcal{O}_v/\alpha\mathcal{O}_v`, where
+`g_t := \begin{pmatrix}\alpha&\tilde t\\0&1\end{pmatrix}` for any lift
+`\tilde t` of `t`.
 :::
 
 :::proof "local_u_operator_double_coset_decomposition"
-This is the concrete local combinatorics behind the `U_{v,\alpha}` operators in
-the TeX chapter. After conjugating by `diag(\alpha,1)`, the double-coset
-problem reduces to a finite quotient of the upper-right entry modulo `\alpha`.
-The resulting representatives are unipotent translates of the diagonal matrix.
-
-The TeX proof is explicit that the real work is first to reduce the statement
-to a finite-group calculation inside the chosen congruence subgroup, and then to
-read off the quotient parameter from the upper-right entry modulo `\alpha`.
+The TeX proof first rewrites the double-coset statement as a finite-quotient
+problem for `U^\alpha := \{u = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in U
+: \alpha \mid b\}`. Writing `h_t = \begin{pmatrix}1&\tilde t\\0&1\end{pmatrix}`,
+one computes
+`h_t^{-1}u = \begin{pmatrix} a-\tilde t c & b-\tilde t d \\ c & d \end{pmatrix}`,
+so the upper-right entry vanishes modulo `\alpha` exactly when `b mod \alpha`
+equals `t`. The `g_t` are therefore the coset representatives.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction"

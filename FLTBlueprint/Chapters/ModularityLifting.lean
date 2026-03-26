@@ -142,6 +142,24 @@ A central simple algebra over a field `K` is a nonzero `K`-algebra whose center
 is exactly `K` and which has no nontrivial two-sided ideals.
 :::
 
+:::theorem "central_simple_algebra_surjective_characterization" (parent := "modularity_lifting_program")
+The TeX draft also records an equivalent ring-theoretic formulation: every
+surjective ring homomorphism `$`D \twoheadrightarrow A`$` out of a central
+simple algebra `D` is either an isomorphism or the zero map to the zero ring.
+This version does not mention `K` explicitly, so it is often the more convenient
+statement when one wants to formalize the ideal-theoretic part of the definition.
+:::
+
+:::proof "central_simple_algebra_surjective_characterization"
+The point of the alternative formulation is that two-sided ideals are exactly
+the kernels of surjective ring homomorphisms. If `I` is a nontrivial two-sided
+ideal, then the quotient map `$`D \twoheadrightarrow D/I`$` is surjective and
+not an isomorphism. Conversely, if `f : D \twoheadrightarrow A` is surjective
+and not an isomorphism, then `ker f` is a nontrivial ideal of `D`, so it must be
+all of `D` if the target is the zero ring. This is the version the TeX chapter
+flags as more independent of the base field `K`.
+:::
+
 :::theorem "matrix_algebra_is_central_simple" (parent := "modularity_lifting_program")
 Matrix algebras are the basic examples of central simple algebras, and their
 base change behavior is the prototype for the quaternionic constructions used

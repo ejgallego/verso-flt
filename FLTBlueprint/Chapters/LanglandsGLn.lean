@@ -144,8 +144,8 @@ $`\{ M \mid s(M) \leq 1 \}` is compact, this may make no difference.
 :::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
 The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
 finite-dimensional continuous complex representation $`\rho` of a maximal
-compact subgroup of $`\GL_n(\R)`, and it is convenient to choose one. We choose
-$`O_n(\R)`.
+compact subgroup of $`\GL_n(\R)`. Since these subgroups are all conjugate, it
+is convenient to choose one, and we choose $`O_n(\R)`.
 :::
 
 ```tex "ch07exampleGLn/weights_at_infinity"
@@ -210,16 +210,17 @@ five conditions. This depends on {uses "smooth_gln_function"}[],
    $`u \in U`, $`x \in \GL_n(\A_{\Q}^f)`, and $`y \in \GL_n(\R)`.
 3. It has weight $`\rho`: there exists a continuous finite-dimensional
    irreducible complex representation $`\rho` of $`O_n(\R)` such that for every
-   $`(x,y) \in \GL_n(\A_{\Q})`, the set of functions $`k \mapsto f(x,yk)` spans
-   a finite-dimensional complex vector space isomorphic, as an
-   $`O_n(\R)`-representation, to a direct sum of copies of $`\rho`.
-4. It has an infinite level: there is an ideal $`I` of the centre $`Z_n`
-   described in the previous section, which has finite complex codimension, and
-   which annihilates the function $`y \mapsto f(x,y)` for all
-   $`x \in \GL_n(\A_{\Q}^f)`. This is a very fancy way of saying that the
-   function satisfies some natural differential equations. In the case of
-   modular forms, these are the Cauchy-Riemann equations, which is why modular
-   forms are holomorphic.
+   $`(x,y) \in \GL_n(\A_{\Q})`, the complex vector space spanned by the
+   functions $`k \mapsto f(x,yk)` is finite-dimensional and isomorphic, as an
+   $`O_n(\R)`-representation, to a direct sum $`\rho^{\oplus m}` of copies of
+   $`\rho`$ for some $`m`.
+4. It has an infinite level: there is an ideal $`I \subseteq Z_n` of the
+   centre $`Z_n` described in the previous section, with finite complex
+   codimension $`\dim_\C(Z_n/I) < \infty`, and $`I` annihilates the function
+   $`y \mapsto f(x,y)` for all $`x \in \GL_n(\A_{\Q}^f)`. This is a very fancy
+   way of saying that the function satisfies some natural differential
+   equations. In the case of modular forms, these are the Cauchy-Riemann
+   equations, which is why modular forms are holomorphic.
 5. It satisfies the growth condition: for every $`x \in \GL_n(\A_{\Q}^f)`, the
    function $`y \mapsto f(x,y)` on $`\GL_n(\R)` is slowly-increasing.
 :::
