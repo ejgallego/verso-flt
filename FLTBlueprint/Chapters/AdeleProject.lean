@@ -241,9 +241,10 @@ The TeX miniproject also records the project status here: Salvatore Mercuri had
 
 # Base change
 
-:::theorem "adele_base_change" (parent := "adele_project")
-For a finite extension $`L/K`$, the adele ring of $`L`$ should identify with
-$`L \otimes_K \mathbf{A}_K`$ as both an algebra and a topological space.
+:::theorem "adele_base_change" (parent := "adele_project") (lean := "NumberField.AdeleRing.baseChangeEquiv")
+If `K -> L` is a ring homomorphism between two number fields then there is a
+natural isomorphism, both topological and algebraic,
+$`L \otimes_K \A_K \cong \A_L`$.
 This is one of the basic background results for {uses "adelic_division_algebra_setup"}[] and {uses "haar_character_goal"}[].
 :::
 
@@ -927,32 +928,63 @@ we require.
 \end{proof}
 ```
 
-:::theorem "infinite_place_weak_approximation" (parent := "adele_project")
-For any finite set of infinite places, the diagonal embedding of a number field
-into the corresponding product of completions is dense.
+:::theorem "infinite_place_weak_approximation" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi")
+Let `S` be a set of infinite places of `K`. The image of `K` under the
+embedding $`K \hookrightarrow (K_v)_{v \in S}`$, $`k \mapsto (k)_v`$, is dense
+in the product topology.
 :::
 ```tex "adele_project/lt-witness-755"
-:::theorem "infinite_place_weak_approximation" (parent := "adele_project")
+\begin{theorem}
+  \label{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}
+  \lean{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}
+  \leanok
+  Let $S$ be a set of infinite places of $K$. The image of $K$ under the embedding
+  $K\hookrightarrow (K_v)_{v\in S}; k \mapsto (k)_v$ is dense in the product topology.
+\end{theorem}
 ```
 
 
 :::proof "infinite_place_weak_approximation"
-The TeX chapter uses this as the analytic input for infinite-adele base change.
-The proof is a version of weak approximation: construct elements that converge
-to `1` in one archimedean place and to `0` in the others, then linearly combine
-them to approximate any chosen tuple.
+Let $`(K, v)`$ denote `K` equipped with the topology induced by the infinite
+place `v`. It suffices to show that the image of `K` under the embedding
+$`K \hookrightarrow \prod_{v \mid \infty} (K, v)`$ is dense in the product
+topology. By a standard analytic argument, for each `v` it is possible to
+select a sequence $`(x_n^{(v)})_n`$ with the property that
+$`x_n^{(v)} \to 1`$ in `v`'s topology, while $`x_n^{(v)} \to 0`$ in any other
+infinite place's topology. Let $`(z_v)_v \in \prod_{v \mid \infty} (K, v)`$.
+For each `v`, the sequence
+$`y_n := \sum_{v \mid \infty} x_n^{(v)} z_v`$ in `K` converges to `z_v` in
+`v`'s topology, so the embedded image of `y_n` converges to $`(z_v)_v`$ in the
+product topology.
 :::
 ```tex "adele_project/lt-witness-760"
-:::proof "infinite_place_weak_approximation"
+\begin{proof}
+  Let $(K, v)$ denote $K$ equipped with the topology induced by the infinite place $v$.
+  It suffices to show that the image of $K$ under the embedding
+  $K\hookrightarrow \prod_{v\mid \infty}(K, v)$ is dense in the product topology.
+  By a standard analytic argument, for each $v$ it is possible to select a sequence $(x_n^{(v)})_n$
+  with the property that $x_n^{(v)} \to 1$ in $v$'s topology, while $x_n^{(v)} \to 0$ in any other
+  infinite place's topology.
+  Let $(z_v)_v \in \prod_{v\mid \infty}(K, v)$.
+  For each $v$, the sequence $y_n := \sum_{v\mid\infty} x_n^{(v)}z_v$ in $K$ converges to
+  $z_v$ in $v$'s topology.
+  So the embedded image of $y_n$ in $\prod_{v\mid \infty}(K, v)$ converges to $(z_v)_v$ in the
+  product topology.
+\end{proof}
 ```
 
 
-:::theorem "infinite_place_dimension_count" (parent := "adele_project")
-For a fixed infinite place `v` of `K`, the `K_v`-dimension of
-$`\prod_{w \mid v} L_w` matches the `K_v`-dimension of $`L \otimes_K K_v`.
+:::theorem "infinite_place_dimension_count" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct")
+For a fixed infinite place `v` of `K`, we have
+$`\dim_{K_v} \prod_{w \mid v} L_w = \dim_{K_v} L \otimes_K K_v`$.
 :::
 ```tex "adele_project/lt-witness-767"
-:::theorem "infinite_place_dimension_count" (parent := "adele_project")
+\begin{theorem}
+  \label{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}
+  \lean{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}
+  For a fixed infinite place $v$ of $K$, we have
+  $\text{dim}_{K_v} \prod_{w\mid v} L_w = \text{dim}_{K_v} L\otimes_K K_v$.
+\end{theorem}
 ```
 
 
@@ -966,28 +998,54 @@ by combining weak approximation with finite-dimensional linear algebra.
 ```
 
 
-:::definition "infinite_place_local_base_change_map" (parent := "adele_project")
-At a fixed infinite place `v` of `K`, there is a natural map
-$`L \otimes_K K_v \to \prod_{w \mid v} L_w`.
+:::definition "infinite_place_extension_map" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piExtension")
+Let `v` be an infinite place of `K`. There is a continuous `K`-algebra
+homomorphism $`K_v \to \prod_{w \mid v} L_w`$, whose restriction to `K`
+corresponds to the global embedding of `K` into $`(L_w)_w`$.
 :::
 ```tex "adele_project/lt-witness-778"
-:::definition "infinite_place_local_base_change_map" (parent := "adele_project")
+\begin{definition}
+  \label{NumberField.InfinitePlace.Completion.piExtension}
+  \lean{NumberField.InfinitePlace.Completion.piExtension}
+  \leanok
+  Let $v$ be an infinite place of $K$. There is a continuous $K$-algebra homomorphism
+  $K_v \to \prod_{w\mid v}L_w$, whose restriction to $K$ corresponds to the global embedding
+  of $K$ into $(L_w)_w$.
+\end{definition}
 ```
 
 
-:::proof "infinite_place_local_base_change_map"
-The TeX chapter builds this in two stages: first a map `K_v → ∏_{w|v} L_w`,
-then the induced `L`-linear map on the tensor product. This mirrors the
-nonarchimedean completion story as closely as possible.
+:::definition "infinite_place_local_base_change_map" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange")
+Let `v` be an infinite place of `K`. There is a natural `L`-algebra
+homomorphism $`L \otimes_K K_v \to \prod_{w \mid v} L_w`$, whose restriction to
+$`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
 :::
 ```tex "adele_project/lt-witness-783"
-:::proof "infinite_place_local_base_change_map"
+\begin{definition}
+  \label{NumberField.InfinitePlace.Completion.baseChange}
+  \lean{NumberField.InfinitePlace.Completion.baseChange}
+  \leanok
+  \uses{NumberField.InfinitePlace.Completion.piExtension}
+  Let $v$ be an infinite place of $K$. There is a natural $L$-algebra homomorphism
+  $L\otimes_K K_v \to \prod_{w\mid v}L_w$, whose restriction to $1\otimes_K K_v$ corresponds to
+  the map in~\ref{NumberField.InfinitePlace.Completion.piExtension}.
+\end{definition}
 ```
 
 
-:::theorem "infinite_place_local_base_change_surjective" (parent := "adele_project")
+:::proof "infinite_place_local_base_change_map"
+The map in {uses "infinite_place_extension_map"}[] can be lifted to an
+`L`-algebra homomorphism defined on $`L \otimes_K K_v`$.
+:::
+```tex "adele_project/lt-witness-786"
+The map in~\ref{NumberField.InfinitePlace.Completion.piExtension} can be lifted to an
+$L$-algebra homomorphism defined on $L\otimes_K K_v$.
+```
+
+
+:::theorem "infinite_place_local_base_change_surjective" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange_surjective")
 For a fixed infinite place `v` of `K`, the local infinite-place base-change map
-$`L \otimes_K K_v \to \prod_{w \mid v} L_w`
+$`L \otimes_K K_v \to \prod_{w \mid v} L_w`$
 is surjective.
 :::
 ```tex "adele_project/lt-witness-789"
@@ -1004,9 +1062,10 @@ is surjective.
 
 :::proof "infinite_place_local_base_change_surjective"
 Let $`(x_i)_i`$ be a `K_v`-basis of $`\prod_{w \mid v} L_w`$. By the density of
-`L` in $`\prod_{w \mid v} L_w`, we can find $`\alpha_i \in L`$ arbitrarily close
-to $`x_i`$ with respect to the sup norm when embedded globally in
-$`\prod_{w \mid v} L_w`. In particular, it is possible to choose such
+`L` in $`\prod_{w \mid v} L_w`$ from
+{uses "infinite_place_weak_approximation"}[], we can find $`\alpha_i \in L`$
+arbitrarily close to $`x_i`$ with respect to the sup norm when embedded
+globally in $`\prod_{w \mid v} L_w`. In particular, it is possible to choose such
 $`\alpha_i`$ so that the matrix representing the vector
 $`((\alpha_i)_{w \mid v})_i`$ in the basis $`(x_i)_i`$ has nonzero determinant.
 Since $`(\alpha_i)_{w \mid v}`$ is the image of $`1 \otimes \alpha_i`$ under
@@ -1029,9 +1088,9 @@ $`L \otimes_K K_v`$, and base change is surjective.
 ```
 
 
-:::theorem "infinite_place_local_base_change_injective" (parent := "adele_project")
+:::theorem "infinite_place_local_base_change_injective" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange_injective")
 For a fixed infinite place `v` of `K`, the local infinite-place base-change map
-$`L \otimes_K K_v \to \prod_{w \mid v} L_w`
+$`L \otimes_K K_v \to \prod_{w \mid v} L_w`$
 is injective.
 :::
 ```tex "adele_project/lt-witness-802"
@@ -1063,7 +1122,7 @@ sides have the same `K_v`-dimension by {uses "infinite_place_dimension_count"}[]
 ```
 
 
-:::theorem "infinite_place_local_module_topology" (parent := "adele_project")
+:::theorem "infinite_place_local_module_topology" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT")
 If `w \mid v` is an infinite place of `L` lying above an infinite place `v` of
 `K`, then `L_w` has the `K_v`-module topology.
 :::
@@ -1091,10 +1150,10 @@ Because `L_w` is a finite-dimensional normed `K_v`-vector space, there exists a
 ```
 
 
-:::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project")
+:::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$, whose restriction
-to $`1 \otimes_K K_v`$ corresponds to the map constructed above.
+to $`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
 :::
 ```tex "adele_project/lt-witness-826"
 \begin{theorem}
@@ -1113,12 +1172,13 @@ to $`1 \otimes_K K_v`$ corresponds to the map constructed above.
 
 
 :::proof "infinite_place_local_base_change_homeomorphism"
-The map constructed above is an `L`-algebra isomorphism by
+The map in {uses "infinite_place_local_base_change_map"}[] is an `L`-algebra isomorphism by
 {uses "infinite_place_local_base_change_surjective"}[] and
 {uses "infinite_place_local_base_change_injective"}[]. Every `K_v`-algebra
 isomorphism between two `K_v`-module topological spaces is a homeomorphism.
 Since this `L`-algebra isomorphism can equivalently be viewed as a
-`K_v`-algebra isomorphism, it is also a homeomorphism.
+`K_v`-algebra isomorphism, and since `L_w` has the `K_v`-module topology by
+{uses "infinite_place_local_module_topology"}[], it is also a homeomorphism.
 :::
 ```tex "adele_project/lt-witness-832"
 \begin{proof}
@@ -1133,10 +1193,154 @@ Since this `L`-algebra isomorphism can equivalently be viewed as a
 ```
 
 
-:::theorem "infinite_adele_base_change" (parent := "adele_project")
+:::theorem "infinite_place_local_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piEquiv")
+Let `v` be an infinite place of `K`. There is a natural `K_v`-linear
+homeomorphism $`K_v^{[L:K]} \cong \prod_{w \mid v} L_w`$.
+This is obtained from {uses "infinite_place_local_base_change_homeomorphism"}[].
+:::
+```tex "adele_project/lt-witness-837"
+\begin{theorem}
+  \label{NumberField.InfinitePlace.Completion.piEquiv}
+  \lean{NumberField.InfinitePlace.Completion.piEquiv}
+  \leanok
+  \uses{NumberField.InfinitePlace.Completion.baseChangeEquiv}
+  Let $v$ be an infinite place of $K$. There is a natural $K_v$-linear homeomorphism
+  $K_v^{[L:K]} \cong_{K_v} \prod_{w\mid v}L_w$.
+\end{theorem}
+```
+
+
+:::proof "infinite_place_local_power_homeomorphism"
+Compose the `K_v`-linear isomorphism $`K_v^{[L:K]} \cong \prod_{w \mid v} L_w`$
+with {uses "infinite_place_local_base_change_homeomorphism"}[] to get the
+isomorphism in the statement. Since both sides have the `K_v`-module topology,
+then this is also a homeomorphism.
+:::
+```tex "adele_project/lt-witness-843"
+\begin{proof}
+  Compose the $K_v$-linear isomorphism $K_v^{[L:K]} \cong \prod_{w\mid v}L_w$ with the $K_v$-linear
+  version of base change~\ref{NumberField.InfinitePlace.Completion.baseChangeEquiv} to get the
+  isomorphism in the statement.
+  Since both sides have the $K_v$-module topology, then this is also a homeomorphism.
+\end{proof}
+```
+
+
+:::theorem "infinite_adele_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.piEquiv")
+There is a natural `K_\infty`-linear homeomorphism
+$`K_\infty^{[L:K]} \cong L_\infty`$.
+This is assembled from {uses "infinite_place_local_power_homeomorphism"}[].
+:::
+```tex "adele_project/lt-witness-857"
+\begin{theorem}
+  \label{NumberField.InfiniteAdeleRing.piEquiv}
+  \lean{NumberField.InfiniteAdeleRing.piEquiv}
+  \leanok
+  \uses{NumberField.InfinitePlace.Completion.piEquiv}
+  There is a natural $K_{\infty}$-linear homeomorphism
+  $K_{\infty}^{[L:K]} \cong_{K_{\infty}} L_{\infty}$.
+\end{theorem}
+```
+
+
+:::proof "infinite_adele_power_homeomorphism"
+Using the isomorphisms
+{uses "infinite_place_local_power_homeomorphism"}[], we clearly have a
+bijection $`K_\infty^{[L:K]} \cong \prod_v \prod_{w \mid v} L_w \cong \prod_w L_w`.
+The `K_v`-linearity of each component isomorphism extends to
+`K_\infty`-linearity if the action of $`\prod_v K_v`$ on $`\prod_w L_w`$ is
+constant on the fibers of the restriction map on infinite places. In other
+words, if, for all $`x \in K_\infty`$ and $`y \in L_\infty`$, we have
+$`(x \cdot y)_w = x_{v_w} \cdot y_w`$, which is true by definition.
+:::
+```tex "adele_project/lt-witness-862"
+\begin{proof}
+  Using the isomorphisms $K_v^{[L:K]} \cong_{K_v} \prod_{w\mid v}L_w$ from
+  Theorem~\ref{NumberField.InfinitePlace.Completion.piEquiv}, we clearly have a bijection
+  $K_{\infty}^{[L:K]} \cong \prod_v\prod_{w \mid v} L_w \cong \prod_w L_w$.
+  The $K_v$-linearity of each component isomorphism extends to $K_{\infty}$-linearity if the
+  action of $\prod_v K_v$ on $\prod_w L_w$ is constant on the fibers of the restriction map on
+  infinite places.
+  In other words, if, for all $x \in K_{\infty}$ and $y \in L_{\infty}$, we have
+  $(x \cdot y)_w = x_{v_w} \cdot y_w$, which is true by definition.
+\end{proof}
+```
+
+
+:::theorem "infinite_adele_module_topology" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT")
+`L_\infty` has the `K_\infty`-module topology.
+This follows from {uses "infinite_adele_power_homeomorphism"}[].
+:::
+```tex "adele_project/lt-witness-876"
+\begin{theorem}
+  \label{NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT}
+  \lean{NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT}
+  \leanok
+  \uses{NumberField.InfiniteAdeleRing.piEquiv}
+  $L_{\infty}$ has the $K_{\infty}$-module topology.
+\end{theorem}
+```
+
+
+:::proof "infinite_adele_module_topology"
+Since `L_\infty` is homeomorphic to a finite product of `K_\infty` as a
+`K_\infty`-vector space, it has the `K_\infty`-module topology.
+:::
+```tex "adele_project/lt-witness-881"
+\begin{proof}
+  Since $L_{\infty}$ is homeomorphic to a finite product of $K_{\infty}$ as a $K_{\infty}$-vector
+  space, it has the $K_{\infty}$-module topology.
+\end{proof}
+```
+
+
+:::theorem "infinite_adele_base_change_algebraic" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv")
+There is a natural `L`-algebra isomorphism
+$`L \otimes_K K_\infty \cong L_\infty`$.
+This is assembled from {uses "infinite_place_local_base_change_homeomorphism"}[].
+:::
+```tex "adele_project/lt-witness-888"
+\begin{theorem}
+  \label{NumberField.InfiniteAdeleRing.baseChangeAlgEquiv}
+  \lean{NumberField.InfiniteAdeleRing.baseChangeAlgEquiv}
+  \leanok
+  \uses{NumberField.InfinitePlace.Completion.baseChangeEquiv}
+  There is a natural $L$-algebra isomorphism
+  $L \otimes_K K_{\infty} \cong_L L_{\infty}$.
+\end{theorem}
+```
+
+
+:::proof "infinite_adele_base_change_algebraic"
+This follows from the chain of isomorphisms
+$`L \otimes_K K_\infty \cong \prod_v (L \otimes_K K_v) \cong
+\prod_v \prod_{w \mid v} L_w \cong L_\infty`$. The first isomorphism is the
+standard `L`-algebra isomorphism
+$`L \otimes_K \prod_v K_v \cong \prod_v (L \otimes_K K_v)`$. The second
+isomorphism is given by the component `L`-algebra isomorphisms
+{uses "infinite_place_local_base_change_homeomorphism"}[].
+:::
+```tex "adele_project/lt-witness-894"
+\begin{proof}
+  This follows from the following chain of isomorphisms:
+  \[
+    L \otimes_K K_{\infty} \cong_L \prod_v (L \otimes_K K_v) \cong_L
+      \prod_v \prod_{w\mid v}L_w \cong_L L_{\infty} .
+  \]
+  The first isomorphism is the standard $L$-algebra isomorphism
+  $L \otimes_K \prod_v K_v \cong_L \prod_v (L \otimes_K K_v)$.
+  The second isomorphism is given by the component $L$-algebra isomorphisms
+  $L \otimes_K K_v \cong_L \prod_{w\mid v}L_w$ from
+  Theorem~\ref{NumberField.InfinitePlace.Completion.baseChangeEquiv}.
+\end{proof}
+```
+
+
+:::theorem "infinite_adele_base_change" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeEquiv")
 If `K -> L` is a ring homomorphism between two number fields, then there is a
 natural isomorphism, both topological and algebraic,
-$`L \otimes_K K_\infty \cong L_\infty`.
+$`L \otimes_K K_\infty \cong L_\infty`$.
+This upgrades {uses "infinite_adele_base_change_algebraic"}[].
 :::
 ```tex "adele_project/lt-witness-841"
 \begin{theorem}
@@ -1152,10 +1356,11 @@ $`L \otimes_K K_\infty \cong L_\infty`.
 
 
 :::proof "infinite_adele_base_change"
-Since both sides of the `L`-algebra isomorphism in the algebraic
-infinite-adele base-change construction have the `K_\infty`-module topology,
-and since the isomorphism can equivalently be viewed as a `K_\infty`-linear
-isomorphism, it is also a homeomorphism.
+Since both sides of {uses "infinite_adele_base_change_algebraic"}[] have the
+`K_\infty`-module topology, and since the isomorphism can equivalently be
+viewed as a `K_\infty`-linear isomorphism, it is also a homeomorphism.
+The `L_\infty` side has the `K_\infty`-module topology by
+{uses "infinite_adele_module_topology"}[].
 :::
 ```tex "adele_project/lt-witness-849"
 \begin{proof}
@@ -1168,7 +1373,8 @@ isomorphism, it is also a homeomorphism.
 
 
 :::proof "adele_base_change"
-Follows from the previous results.
+Follows from {uses "infinite_adele_base_change"}[] and
+{uses "finite_adele_base_change_algebraic"}[].
 :::
 ```tex "adele_project/lt-witness-865"
 \begin{proof}
@@ -1178,7 +1384,7 @@ Follows from the previous results.
 ```
 
 
-:::theorem "adele_base_change_module_topology" (parent := "adele_project")
+:::theorem "adele_base_change_module_topology" (parent := "adele_project") (lean := "NumberField.AdeleRing.instBaseChangeIsModuleTopology")
 If `K -> L` is a ring homomorphism between two number fields, then the topology
 on `\A_L` is the `\A_K`-module topology, where the module structure comes from
 the natural map `\A_K -> \A_L`.
@@ -1197,8 +1403,8 @@ the natural map `\A_K -> \A_L`.
 
 
 :::proof "adele_base_change_module_topology"
-Indeed `\A_L \cong L \otimes_K \A_K` is a homeomorphism, and the right hand
-side has the `\A_K`-module topology.
+Indeed {uses "adele_base_change"}[] identifies `\A_L` with
+`L \otimes_K \A_K`, and the right hand side has the `\A_K`-module topology.
 :::
 ```tex "adele_project/lt-witness-883"
 \begin{proof}
