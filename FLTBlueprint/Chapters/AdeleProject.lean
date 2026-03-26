@@ -570,14 +570,15 @@ Hence there's a natural $L$-algebra homomorphism $L\otimes_K\A_{A,K}^\infty\to\A
 ```
 
 Our next goal in this section is the following two results. First the algebraic
-claim:
+claim.
 ```tex "adele_project/lt-witness-459"
 The TeX chapter now introduces an auxiliary restricted product `R`, namely the
 ```
 
 
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
-This natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an isomorphism.
+The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
+isomorphism.
 :::
 ```tex "adele_project/lt-witness-468"
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
@@ -595,8 +596,9 @@ $`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 
 :::proof "tensor_product_module_base_change"
 We can factor this map as
-`B ⊗_A M ≅ B ⊗_A (K ⊗_K M) ≅ (B ⊗_A K) ⊗_K M → L ⊗_K M`,
-and we just showed that the latter map was an isomorphism.
+$`B \otimes_A M \cong B \otimes_A (K \otimes_K M) \cong
+(B \otimes_A K) \otimes_K M \to L \otimes_K M`$, and we just showed that the
+latter map was an isomorphism.
 :::
 ```tex "adele_project/lt-witness-489"
 :::proof "tensor_product_module_base_change"
@@ -621,8 +623,8 @@ If `R` is a commutative ring, if `M` is a finitely presented `R`-module and if
 
 :::proof "tensor_product_commutes_with_products_for_finite_presentation"
 If `M` is finite and free then Maddy Crim has already formalized this in FLT.
-For the general case present `M` as `R^a→R^b→M→0` and use that tensor products
-and arbitrary products preserve surjections.
+For the general case present `M` as $`R^a \to R^b \to M \to 0`$ and use that
+tensor products and arbitrary products preserve surjections.
 :::
 ```tex "adele_project/lt-witness-513"
 :::proof "tensor_product_commutes_with_products_for_finite_presentation"
@@ -632,8 +634,8 @@ and arbitrary products preserve surjections.
 :::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
 Let `V` and `W` be index sets, and let `f:W→V` be a map with finite fibres. Let
 `X_v` be sets, with subsets `C_v`, let `Y_w` be sets with subsets `D_w`, and
-say for all `v ∈ V` we're given a bijection `X_v → ∏_{w | f(w) = v} Y_w`, identifying
-`C_v` with `∏_{w | f(w) = v} D_w`. Then there's an induced bijection between the
+say for all `v ∈ V` we're given a bijection $`X_v \to \prod_{w \mid f(w)=v} Y_w`$,
+identifying `C_v` with $`\prod_{w:f(w)=v} D_w`$. Then there's an induced bijection between the
 restricted products `∏'_v(X_v,C_v)` and `∏'_w(Y_w,D_w)`.
 :::
 ```tex "adele_project/lt-witness-521"
@@ -673,7 +675,8 @@ easily from the definition of the topology.
 
 
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
-The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra isomorphism.
+The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra
+isomorphism.
 :::
 ```tex "adele_project/lt-witness-548"
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")

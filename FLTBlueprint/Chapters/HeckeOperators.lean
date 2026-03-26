@@ -716,9 +716,11 @@ for compactness.
 \end{proof}
 ```
 :::proof "units_of_open_submonoid_open"
-The proof in the TeX chapter embeds `Mˣ` in `M × M` by `g ↦ (g, g⁻¹)`. Under
-that embedding, `Uˣ` is exactly the intersection of `Mˣ` with the open set
-`U × U`.
+We have `U × U` is an open subset of `M × M`, and if we imagine `Mˣ`
+embedded in `M × M` as explained in the remark above, then the intersection of
+this subgroup with `U × U` is open in `Mˣ` and consists of the elements of
+`Mˣ` which are in `U` and whose inverse is also in `U`, which is easily checked
+to be the copy of `Uˣ` we're talking about.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/2"
@@ -945,13 +947,14 @@ for compactness.
 \end{proof}
 ```
 :::proof "units_of_compact_submonoid_compact"
-The same embedding argument works again. Hausdorffness makes `Mˣ` closed in
-`M × M`, so intersecting it with the compact subset `U × U` gives a compact
-space of units.
+First I claim that `Mˣ` embedded in `M × M` via `g ↦ (g, g⁻¹)` is a closed
+subset of `M × M`. Indeed, if `p : M × M → M` is `(a,b) ↦ ab` and
+`q : M × M → M` is `(a,b) ↦ ba`, then `p` and `q` are continuous,
+`Mˣ ⊆ M × M` is the intersection $`p^{-1}\{1\} \cap q^{-1}\{1\}`$, and `{1}`
+is closed because `M` is Hausdorff.
 
-The TeX chapter explicitly asks whether Hausdorffness is really necessary here.
-The current proof uses it exactly at the point where `{1}` has to be a closed
-subset of the ambient monoid.
+We have `U × U` is a compact subset of `M × M`, and so
+`Uˣ = Mˣ ∩ U × U` is a closed subspace of a compact space and is thus compact.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/4"
@@ -1178,8 +1181,7 @@ for compactness.
 \end{proof}
 ```
 :::proof "product_units_homeomorphism"
-The TeX chapter proves continuity in both directions directly from the induced
-topology on units and the universal property of products.
+We prove that the maps in both directions are continuous.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/6"
@@ -1292,11 +1294,9 @@ for compactness.
 \end{proof}
 ```
 :::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project")
-If `M_i` are topological monoids with open good submonoids `U_i`, then the
-units of the restricted product are naturally the restricted product of the
-unit groups.
-This combines {uses "product_units_homeomorphism"}[] with
-{uses "units_of_open_submonoid_open"}[].
+If `M_i` are a family of topological monoids equipped with open submonoids
+`U_i`, then the canonical map $`(\prod'_i M_i)^\times \to \prod'_i(M_i^\times)`$
+is a homeomorphism.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/7"
@@ -1409,15 +1409,15 @@ for compactness.
 \end{proof}
 ```
 :::proof "restricted_product_units_homeomorphism"
-The TeX chapter singles this out because it is exactly the statement one needs
-to pass from restricted products of local rings to restricted products of local
-matrix groups and their units. The openness of the `U_i` is what makes the
-restricted-product topology and the topology on units interact cleanly.
-
-The TeX proof there is deliberately indirect: it proves the map is a
-homeomorphism near the identity, using the open neighborhoods coming from the
-good submonoids, and then upgrades that local statement to a global
-homeomorphism of topological groups.
+I don't know a clean way of showing that the map from left to right is
+continuous, so here is a direct proof that the map is a homeomorphism. It is
+certainly an abstract group isomorphism between topological groups. So to prove
+that it is a homeomorphism it suffices to prove that it is a homeomorphism near
+the identity, or equivalently that there are open neighborhoods `X` and `Y` of
+the identity elements on each side such that the map induces a homeomorphism
+from `X` to `Y`. We choose $`(\prod_i U_i)^\times`$ and $`\prod_i(U_i^\times)`$.
+Note that the former is open because of `Submonoid.units_isOpen`. The result
+now follows from `ContinuousMulEquiv.piUnits`.
 :::
 ```tex "hecke_operator_project/restricted_products/units/8"
 \subsection{Units}
