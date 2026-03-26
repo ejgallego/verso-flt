@@ -15,6 +15,10 @@ Langlands conjectures for connected reductive groups over number fields.
 
 This is not imported right now.
 
+```tex "global_langlands_not_imported"
+This is not imported right now.
+```
+
 # Overview Of The Chapter
 
 In this section we discuss the problem of attempting to state the motivic global
@@ -59,12 +63,6 @@ An affine group scheme over $`R` is a group object in the category of affine
 schemes over $`R`.
 :::
 
-Equivalently, if $`G = \operatorname{Spec} A` is affine over $`R`, then a group
-structure on $`G` is encoded by a commutative Hopf `R`-algebra structure on
-`A`: a coproduct $`\Delta : A \to A \otimes_R A`, a counit $`\varepsilon : A
-\to R`, and an antipode $`S : A \to A`, satisfying the usual coassociativity,
-counit, and antipode identities.
-
 ```tex "affine_group_scheme_over_affine_base"
 \begin{definition}\label{affine_group_scheme_over_affine_base}\lean{???}
 
@@ -78,10 +76,6 @@ antipode $`S : A \to A`, subject to the usual coassociativity, counit, and
 antipode axioms. In the affine case, such a Hopf algebra is the coordinate ring
 of an affine group scheme.
 :::
-
-In the global Langlands setting one usually restricts attention to connected
-reductive groups over a number field: smooth affine group schemes whose
-geometric fibers are connected reductive algebraic groups.
 
 ```tex "Hopf_algebra"
 \begin{definition}\label{Hopf_algebra}\lean{TODO}% we have Hopf algebras in mathlib
