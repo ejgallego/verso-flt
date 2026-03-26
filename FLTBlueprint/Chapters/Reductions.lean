@@ -55,7 +55,8 @@ representation is both reducible and irreducible, the contradiction we seek.
 # Reduction To `n >= 5` And Prime
 
 :::theorem "FermatLastTheorem.of_odd_primes" (parent := "first_reductions") (lean := "FermatLastTheorem.of_odd_primes")
-Any counterexample to Fermat's Last Theorem can be reduced to one of odd prime exponent.
+If there is a counterexample to Fermat's Last Theorem, then there is a
+counterexample $`a^p+b^p=c^p`$ with `p` an odd prime.
 :::
 
 ```tex "FermatLastTheorem.of_odd_primes"
@@ -103,7 +104,7 @@ Euler proved Fermat's Last Theorem for $p=3$;
 ```
 
 :::theorem "fermatLastTheoremThree" (parent := "first_reductions") (lean := "fermatLastTheoremThree")
-Fermat's Last Theorem holds for exponent `3`.
+There are no solutions in positive integers to $`a^3+b^3=c^3`$.
 :::
 
 ```tex "fermatLastTheoremThree"
@@ -127,7 +128,8 @@ Mathematician conference held in Luminy in March `2024`.
 ```
 
 :::theorem "FermatLastTheorem.of_p_ge_5" (parent := "first_reductions") (lean := "FermatLastTheorem.of_p_ge_5")
-Any counterexample to Fermat's Last Theorem can be reduced to prime exponent at least `5`.
+If there is a counterexample to Fermat's Last Theorem, then there is a
+counterexample $`a^p+b^p=c^p`$ with `p` prime and $`p \ge 5`$.
 :::
 
 ```tex "FermatLastTheorem.of_p_ge_5"

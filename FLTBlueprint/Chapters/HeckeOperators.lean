@@ -600,8 +600,8 @@ coefficient space.
 \end{proof}
 ```
 :::theorem "units_of_open_submonoid_open" (parent := "hecke_operator_project")
-If `U` is an open submonoid of a topological monoid `M`, then `Uˣ` is naturally
-an open subgroup of `Mˣ`.
+If `M` is a topological monoid and `U` is an open submonoid, then the units
+`Uˣ` of `U` are naturally an open subgroup of `Mˣ`.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units"
@@ -831,8 +831,8 @@ for compactness.
 \end{proof}
 ```
 :::theorem "units_of_compact_submonoid_compact" (parent := "hecke_operator_project")
-If `U` is a compact submonoid of a Hausdorff topological monoid `M`, then `Uˣ`
-is a compact subgroup of `Mˣ`.
+If `M` is a Hausdorff topological monoid and `U` is a compact submonoid, then
+the units `Uˣ` of `U` are naturally a compact subgroup of `Mˣ`.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/3"
@@ -1065,8 +1065,8 @@ for compactness.
 \end{proof}
 ```
 :::theorem "product_units_homeomorphism" (parent := "hecke_operator_project")
-For a finite product of topological monoids, the units of the product are
-homeomorphic to the product of the unit groups.
+If `U_i` are topological monoids then the canonical group isomorphism
+`(\prod_i U_i)ˣ = \prod_i(U_iˣ)` is a homeomorphism.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/5"
@@ -1179,7 +1179,26 @@ for compactness.
 \end{proof}
 ```
 :::proof "product_units_homeomorphism"
-We prove that the maps in both directions are continuous.
+We prove that the maps in both directions are continuous. Let's start with the
+map from left to right.
+
+A map into a product is continuous when the maps to the factors are continuous.
+A map into the units of a monoid is continuous when the two projection maps to
+the monoid (the inclusion and the map `u \mapsto u^{-1}`) are continuous
+(because `Mˣ` has the topology induced from `M \times M`). This reduces us to
+checking that the maps `(\prod_i U_i)ˣ \to U_j` sending `(u_i)` to `u_j` resp
+`u_j^{-1}` are continuous. But the former map is the continuous inclusion
+`(\prod_i U_i)ˣ \to \prod_i U_i` followed by the continuous projection to `U_j`,
+and the latter map is the continuous inclusion `(\prod_i U_i)ˣ \to \prod_i U_i`
+sending `x` to `x^{-1}` followed by the projection.
+
+To go the other way: because the units have the induced topology it suffices to
+check that the two maps `\prod_i(U_iˣ) \to \prod_i U_i` sending `(u_i)` to
+`(u_i)` resp `(u_i^{-1})` are continuous. A map to a product is continuous
+when the induced maps to the factors are. A projection from a project is
+continuous, and the identity and inverse are continuous maps `U_jˣ \to U_j`, and
+the maps we're concerned with are composites of these maps and are hence
+continuous.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/6"
@@ -1293,8 +1312,8 @@ for compactness.
 ```
 :::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project")
 If `M_i` are a family of topological monoids equipped with open submonoids
-`U_i`, then the canonical map $`(\prod'_i M_i)^\times \to \prod'_i(M_i^\times)`$
-is a homeomorphism.
+`U_i`, then the canonical map `(\prod'_i M_i)ˣ \to \prod'_i(M_iˣ)` is a
+homeomorphism.
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/7"
@@ -1407,15 +1426,18 @@ for compactness.
 \end{proof}
 ```
 :::proof "restricted_product_units_homeomorphism"
+{uses "ContinuousMulEquiv.piUnits"}[]
+{uses "Submonoid.units_isOpen"}[]
 I don't know a clean way of showing that the map from left to right is
 continuous, so here is a direct proof that the map is a homeomorphism. It is
 certainly an abstract group isomorphism between topological groups. So to prove
 that it is a homeomorphism it suffices to prove that it is a homeomorphism near
-the identity, or equivalently that there are open neighborhoods `X` and `Y` of
+the identity, or equivalently that there are open neighbourhoods `X` and `Y` of
 the identity elements on each side such that the map induces a homeomorphism
-from `X` to `Y`. We choose $`(\prod_i U_i)^\times`$ and $`\prod_i(U_i^\times)`$.
-Note that the former is open because of `Submonoid.units_isOpen`. The result
-now follows from `ContinuousMulEquiv.piUnits`.
+from `X` to `Y`. We choose the units of `\prod_i U_i` and the product
+`\prod_i(U_iˣ)`. Note that the former is open because of
+`Submonoid.units_isOpen`. The result now follows from the previous lemma
+`ContinuousMulEquiv.piUnits`.
 :::
 ```tex "hecke_operator_project/restricted_products/units/8"
 \subsection{Units}
