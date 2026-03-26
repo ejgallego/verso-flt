@@ -47,9 +47,9 @@ these words hide a large amount of technical material.
 
 # Statement Of The Conjecture
 
-Let $`R` be a commutative base ring. It will often be a field, but we shall
-develop the theory in greater generality whenever doing so causes no extra
-work.
+Let $`R` be a commutative base ring; it will often be a field but we shall
+develop the theory in more generality when there is no extra effort needed to
+do.
 
 ```tex "global_langlands_statement"
 \section{Statement of the conjecture}
@@ -70,11 +70,7 @@ schemes over $`R`.
 ```
 
 :::definition "Hopf_algebra" (parent := "global_langlands_program")
-A Hopf `R`-algebra is a commutative `R`-algebra `A` equipped with a coproduct
-$`\Delta : A \to A \otimes_R A`, a counit $`\varepsilon : A \to R`, and an
-antipode $`S : A \to A`, subject to the usual coassociativity, counit, and
-antipode axioms. In the affine case, such a Hopf algebra is the coordinate ring
-of an affine group scheme.
+TODO: Connected and reductive.
 :::
 
 ```tex "Hopf_algebra"

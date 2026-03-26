@@ -335,7 +335,7 @@ then a Frey package exists.
 :::definition "FreyCurve" (parent := "first_reductions") (lean := "FreyPackage.freyCurve")
 {uses "FreyPackage"}[]
 Given a Frey package $`(a,b,c,p)`, the corresponding Frey curve is the elliptic
-curve over $`\Q` defined by the equation
+curve over $`\Q` (considered by Frey and, before him, Hellegouarch) defined by the equation
 $`Y^2 = X(X-a^p)(X+b^p)`.
 :::
 
@@ -363,8 +363,8 @@ Given a Frey package $`(a,b,c,p)` with corresponding Frey curve `E`, the mod
 `p` Galois representation $`\rho_{E,p}` attached to this package is the
 `2`-dimensional representation of $`\GQ` on `E(\Qbar)[p]` described above.
 Frey's observation is that this representation has some very surprising
-properties. We will make this more explicit in the next chapter. Here we show
-how those properties can be used to finish the job.
+properties. We will make this remark more explicit in the next chapter. Here we
+shall show how these properties can be used to finish the job.
 
 ```tex "FreyCurve/mod_p_representation"
 Given a Frey package $(a,b,c,p)$ with corresponding Frey curve $E$, the mod $p$ Galois
@@ -438,10 +438,10 @@ Proposition `6` in Section `4.1` of
 \end{proof}
 ```
 
-Note that in the first, pre-`2029` phase of the FLT project, we are not
-planning to formalize this result itself, because it was already known in the
-`1980`s. We will, however, have much more to say about the next theorem, which
-says the exact opposite.
+Note that in the first (pre-2029) phase of the FLT project, we will not be
+working on a formalization of this result, as it was known in the `1980`s. We
+will however be thinking a lot about the next result, which says the exact
+opposite.
 
 ```tex "Wiles_Frey/introduction"
 Note that in the first (pre-2029) phase of the FLT project, we will not be working on
