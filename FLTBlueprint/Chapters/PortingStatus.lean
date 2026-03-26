@@ -124,29 +124,28 @@ main remaining frontiers are:
 - the intentional frontier material in `GlobalLanglands.lean`
 :::
 
-# Future Plan
+# Comparison Tool
 
 :::definition "future_harness_plan" (parent := "porting_status")
-One planned harness improvement, after the source-pairing pass, is a
-literal-translation comparison tool, following a suggestion from David.
+A first harness draft of the literal-translation comparison tool now exists,
+following a suggestion from David.
 
-- the tool should take a `.lean` chapter file and the corresponding `.tex`
-  source file
-- it should compare translated blocks against the adjacent local `tex` witness
-  blocks rather than against a chapter only at coarse whole-file granularity
-- it should erase or normalize markup on both sides before comparing the
-  residual text
-- it should report standard text-distance or text-similarity metrics so the
-  harness can detect interpretive drift quantitatively rather than only by
-  manual review
+- the current script is `python3 scripts/check_lt_similarity.py`
+- it compares translated blocks against the adjacent local `tex` witness blocks
+  rather than against a chapter only at coarse whole-file granularity
+- it normalizes markup on both sides before comparing the residual text
+- it reports standard text-similarity heuristics so the harness can flag likely
+  drift quantitatively rather than only by manual review
+- future work is to tune the normalization and thresholds so the report is less
+  noisy on math-heavy chapters
 :::
 
 :::proof "future_harness_plan"
 The point of this tool is not to certify that a port is mathematically correct.
 Its role is narrower and harness-oriented: once each translated block has a
 local `tex` witness, strip Verso and TeX markup, compare the remaining text
-with ordinary distance measures such as edit distance or similar normalized
-scores, and use that report as one input to LT audits.
+with ordinary similarity measures, and use that report as one input to LT
+audits.
 
 That would give the project a cheap regression signal for chapter ports: when a
 translated block drifts too far from the TeX source in wording or ordering, the
@@ -161,6 +160,8 @@ The repository-level chapter audit is now split into two layers.
 - the stricter LT audit tracks whether each translated informal block has a
   local adjacent `tex` witness block, checked with
   `python3 scripts/check_lt_source_pairs.py`
+- the mechanical drift report compares each translated block to its adjacent
+  witness block with `python3 scripts/check_lt_similarity.py`
 
 That split matters because a chapter can look locally source-backed in the
 node-oriented task board while still failing the stricter block-pair LT

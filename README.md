@@ -48,6 +48,13 @@ For the current strict LT source-pair audit, run:
 python3 scripts/check_lt_source_pairs.py
 ```
 
+For the first draft of the block-level LT similarity report, following David's
+idea of using a mechanical drift signal, run:
+
+```bash
+python3 scripts/check_lt_similarity.py
+```
+
 For the current TeX-to-Verso status snapshot inside the generated blueprint
 harness, see the `TeX To Verso Porting Status` chapter.
 

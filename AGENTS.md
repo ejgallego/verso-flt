@@ -86,6 +86,9 @@ This repository is the integration layer for the FLT Verso blueprint.
   `python3 scripts/check_lt_source_pairs.py <chapter.lean>` after the edit and
   treat any reported block as unaudited until the adjacent `tex` witness is in
   place.
+- After the source-pair check is green, use
+  `python3 scripts/check_lt_similarity.py <chapter.lean>` to get the first
+  draft of the block-level mechanical drift report suggested by David.
 - Avoid issuing multiple `lean-beam sync` requests in parallel for the same
   project root. In this repository that sometimes trips a Beam/LSP worker exit
   with messages like `Cannot read LSP message: offset ... unexpected end of
@@ -186,6 +189,10 @@ This repository is the integration layer for the FLT Verso blueprint.
   chapter close to the TeX source of truth.
 - After a chapter edit batch, run `python3 scripts/check_lt_source_pairs.py`
   on the touched chapter files before treating the batch as LT-audited.
+- When the source-pair checker passes, run
+  `python3 scripts/check_lt_similarity.py` on the touched chapters and record
+  any obviously low-similarity blocks as follow-up LT audit work rather than
+  silently accepting them.
 - In the work summary for each batch, include a short deviation report listing
   any non-literal changes that were introduced deliberately.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.
