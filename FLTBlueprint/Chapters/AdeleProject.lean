@@ -581,16 +581,27 @@ The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
 isomorphism.
 :::
 ```tex "adele_project/lt-witness-468"
-:::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
+\begin{proof}
+  \proves{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
+  Follows immediately from theorem~\ref{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
+  and theorem~\ref{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}.
+\end{proof}
 ```
 
 
 :::theorem "tensor_product_module_base_change" (parent := "adele_project")
-If `M` is a `K`-module, then the canonical map
+If $`M`$ is any $`K`$-module then the canonical map
 $`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 :::
 ```tex "adele_project/lt-witness-484"
-:::theorem "tensor_product_module_base_change" (parent := "adele_project")
+\begin{corollary}
+  \label{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}
+  %%% \uses{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv} -- uncomment to break leanblueprint
+  \lean{IsDedekindDomain.linearEquivTensorProductModule}
+  \leanok
+  If $M$ is any $K$-module then the canonical map $B\otimes_A M\to L\otimes_K M$
+  is an isomorphism.
+\end{corollary}
 ```
 
 
@@ -601,7 +612,12 @@ $`B \otimes_A M \cong B \otimes_A (K \otimes_K M) \cong
 latter map was an isomorphism.
 :::
 ```tex "adele_project/lt-witness-489"
-:::proof "tensor_product_module_base_change"
+\begin{proof}
+  \leanok
+  We can factor this map as $B\otimes_AM\cong B\otimes_A(K\otimes_KM)\cong
+  (B\otimes_A K)\cong_KM\to L\otimes_KM$ and we just showed that the latter map was an
+  isomorphism.
+\end{proof}
 ```
 
 
@@ -612,22 +628,30 @@ The reason we care about this is the following.
 
 
 :::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
-If `R` is a commutative ring, if `M` is a finitely presented `R`-module and if
-`N_i` are a collection of `R`-modules, then the canonical map
-`M⊗_R∏_i N_i→∏_i(M⊗_R N_i)` is an isomorphism.
+If $`R`$ is a commutative ring, if $`M`$ is a finitely presented $`R`$-module
+and if $`N_i`$ are a collection of $`R`$-modules, then the canonical map
+$`M \otimes_R \prod_i N_i \to \prod_i (M \otimes_R N_i)`$ is an isomorphism.
 :::
 ```tex "adele_project/lt-witness-506"
-:::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
+\begin{theorem}
+  \label{pi_tensorProduct_of_finitePresentation}
+  If $R$ is a commutative ring, if $M$ is a finitely presented $R$-module
+  and if $N_i$ are a collection of $R$-modules, then the canonical map
+  $M\otimes_R\prod_i N_i\to\prod_i(M\otimes_R N_i)$ is an isomorphism.
+\end{theorem}
 ```
 
 
 :::proof "tensor_product_commutes_with_products_for_finite_presentation"
 If `M` is finite and free then Maddy Crim has already formalized this in FLT.
-For the general case present `M` as $`R^a \to R^b \to M \to 0`$ and use that
+For the general case present $`M`$ as $`R^a \to R^b \to M \to 0`$ and use that
 tensor products and arbitrary products preserve surjections.
 :::
 ```tex "adele_project/lt-witness-513"
-:::proof "tensor_product_commutes_with_products_for_finite_presentation"
+\begin{proof} If $M$ is finite and free then Maddy Crim has already formalized this
+  in FLT. For the general case present $M$ as $R^a\to R^b\to M\to 0$ and use that tensor
+  products and arbitrary products preserve surjections.
+\end{proof}
 ```
 
 
@@ -639,7 +663,14 @@ identifying `C_v` with $`\prod_{w:f(w)=v} D_w`$. Then there's an induced bijecti
 restricted products `∏'_v(X_v,C_v)` and `∏'_w(Y_w,D_w)`.
 :::
 ```tex "adele_project/lt-witness-521"
-:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
+\begin{definition}
+  \label{RestrictedProduct.relabelIso}
+  Let $V$ and $W$ be index sets, and let $f:W\to V$ be a map with finite fibres.
+  Let $X_v$ be sets, with subsets $C_v$, let $Y_w$ be sets with subsets $D_w$,
+  and say for all $v\in V$ we're given a bijection $X_v\to\prod_{w|f(w)=v}Y_w$,
+  identifying $C_v$ with $\prod_{w:f(w)=v}D_w$. Then there's an induced bijection between
+  the restricted products $\prod'_v(X_v,C_v)$ and $\prod'_w(Y_w,D_w)$.
+\end{definition}
 ```
 
 
@@ -648,7 +679,11 @@ This is a standard corollary of the previous theorem and the fact that tensor
 products commute with filtered colimits.
 :::
 ```tex "adele_project/lt-witness-527"
-:::proof "restricted_product_relabel_isomorphism"
+\begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
+  let $X_v$ be $B\otimes_A K_v$, let $C_v$ be $B\otimes_A A_v$, let $Y_w$ be $L_w$,
+  let $D_w$ be $B_w$ and the result follows from the previous definition, given
+  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}.
+\end{proof}
 ```
 
 
@@ -661,7 +696,14 @@ open, and all the `b_v` are homeomorphisms, then the induced
 map `∏'_v(X_v,C_v) → ∏'_w(Y_w,D_w)` is also a homeomorphism.
 :::
 ```tex "adele_project/lt-witness-533"
-:::theorem "restricted_product_relabel_homeomorphism" (parent := "adele_project")
+\begin{theorem} In the same setup as definition~\ref{RestrictedProduct.relabelIso}
+  ($V,W$ index sets, $f:W\to V$,
+  $C_v\subseteq X_v$ and $D_w\subseteq Y_w$, bijections $b_v:X_v\to\prod_{w:f(w)=v}Y_w$
+  identifying $C_v$ with $\prod_{w:f(w)=v}D_w$), if all the $X_v$ and $Y_w$ are furthermore
+  topological spaces, all the $C_v$ and $D_w$ are open, and all the $b_v$ are homeomorphisms,
+  then the induced
+  map $\prod'_v(X_v,C_v)\to\prod'_w(Y_w,D_w)$ is also a homeomorphism.
+\end{theorem}
 ```
 
 
@@ -670,7 +712,9 @@ I have only thought about the cofinite filter case, where this should follow
 easily from the definition of the topology.
 :::
 ```tex "adele_project/lt-witness-541"
-:::proof "restricted_product_relabel_homeomorphism"
+\begin{proof} I have only thought about the cofinite filter case, where this
+  should follow easily from the definition of the topology.
+\end{proof}
 ```
 
 
@@ -679,7 +723,14 @@ The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra
 isomorphism.
 :::
 ```tex "adele_project/lt-witness-548"
-:::theorem "finite_adele_base_change_integral" (parent := "adele_project")
+\begin{theorem}
+  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
+  \uses{RestrictedProduct.relabelIso,
+  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1,
+  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}
+  The natural map $B\otimes_A\A_K^\infty\to\A_L^\infty$ is a $B$-algebra
+  isomorphism.
+\end{theorem}
 ```
 
 
