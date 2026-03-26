@@ -1217,8 +1217,6 @@ minimality of $`g`.
 
 # The Hurwitz quaternions
 
--- TODO: Restore `(lean := "Hurwitz")` on this node once VersoBlueprint accepts
--- inductive/structure external references.
 :::definition "Hurwitz" (parent := "automorphic_example_program")
 The Hurwitz quaternions are the set
 $`\calO := \Z\oplus\Z \omega\oplus\Z i\oplus\Z i\omega` (as an abstract

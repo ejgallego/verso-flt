@@ -51,8 +51,7 @@ We give an overview of the results we need, citing the literature for proofs. Ev
  standard, and most of it dates back to the 1970s or before.
 ```
 
-:::theorem "WeierstrassCurve.n_torsion_card" (parent := "elliptic_frey_bridge")
-  (lean := "WeierstrassCurve.n_torsion_card")
+:::theorem "WeierstrassCurve.n_torsion_card" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_card")
 For an elliptic curve over a separably closed field of characteristic prime to
 `n`, the `n`-torsion has cardinality `n²`.
 :::
@@ -86,8 +85,7 @@ This theorem actually tells us the structure of the $n$-torsion, because of the 
 purely group-theoretic result:
 ```
 
-:::theorem "group_theory_lemma" (parent := "elliptic_frey_bridge")
-  (lean := "group_theory_lemma")
+:::theorem "group_theory_lemma" (parent := "elliptic_frey_bridge") (lean := "group_theory_lemma")
 If the `d`-torsion in an abelian group has size `d^r` for every divisor `d` of
 `n`, then the `n`-torsion is isomorphic to `(\mathbf{Z}/n\mathbf{Z})^r`.
 :::
@@ -115,8 +113,7 @@ apply our hypothesis firstly with `d = a_1` to deduce `t = r` and then with
 \end{proof}
 ```
 
-:::theorem "Elliptic_curve_n_torsion_2d" (parent := "elliptic_frey_bridge")
-  (lean := "WeierstrassCurve.n_torsion_dimension")
+:::theorem "Elliptic_curve_n_torsion_2d" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_dimension")
 For an elliptic curve over a field of characteristic prime to `n`, the
 `n`-torsion over a separable closure is a two-dimensional
 `\mathbf{Z}/n\mathbf{Z}` module.
@@ -599,8 +596,7 @@ Indeed, $E$ has good reduction at $p$, and hence $\rho$ is unramified at $p$
 by~\ref{good_reduction_implies_unramified}.
 ```
 
-:::theorem "Frey_curve_j" (parent := "elliptic_frey_bridge")
-  (lean := "FreyCurve.j")
+:::theorem "Frey_curve_j" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j")
 The `j`-invariant of the Frey curve is `2^8(C^2 - AB)^3/(A^2B^2C^2)`, where
 `A = a^\ell`, `B = b^\ell`, and `C = c^\ell`. This is the explicit formula for
 {uses "FreyCurve"}[].
@@ -622,8 +618,7 @@ Apply the explicit formula (presumably already in mathlib).
 \end{proof}
 ```
 
-:::theorem "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge")
-  (lean := "FreyCurve.j_valuation_of_bad_prime")
+:::theorem "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j_valuation_of_bad_prime")
 If `2 < p \mid abc`, then the `p`-adic valuation of the Frey-curve
 `j`-invariant is a multiple of `\ell`. This is a direct valuation
 consequence of {uses "Frey_curve_j"}[].

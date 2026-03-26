@@ -263,8 +263,7 @@ We start with a construction which is fundamental to everything,
 and which explains why we need $G$ to be finite.
 ```
 
-:::definition "group_action_characteristic_polynomial" (parent := "frobenius_project")
-  (lean := "MulSemiringAction.charpoly")
+:::definition "group_action_characteristic_polynomial" (parent := "frobenius_project") (lean := "MulSemiringAction.charpoly")
 For an element `b` of the big ring, the characteristic polynomial attached to
 the finite group action is the finite product
 `F_b(X) = ∏_{g ∈ G} (X - g • b)`.
@@ -300,8 +299,7 @@ Clearly `F_b` is a monic polynomial.
 Clearly $F_b$ is a monic polynomial.
 ```
 
-:::theorem "invariant_characteristic_polynomial_descends" (parent := "frobenius_project")
-  (lean := "Algebra.IsInvariant.charpoly_mem_lifts")
+:::theorem "invariant_characteristic_polynomial_descends" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.charpoly_mem_lifts")
 If the image of the base ring `A` in `B` is exactly the fixed-point ring of the
 action, then the characteristic polynomial of any `b ∈ B` descends from `B[X]`
 to a monic polynomial over `A`.
@@ -340,8 +338,7 @@ The coefficients of `F_b` are `G`-invariant, and thus lie in the image of `A`.
 \end{proof}
 ```
 
-:::theorem "invariant_extension_integral" (parent := "frobenius_project")
-  (lean := "Algebra.IsInvariant.isIntegral")
+:::theorem "invariant_extension_integral" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.isIntegral")
 `B/A` is integral.
 :::
 
@@ -377,8 +374,7 @@ Use `M_b`.
 \end{proof}
 ```
 
-:::theorem "primes_over_same_prime_are_conjugate" (parent := "frobenius_project")
-  (lean := "Algebra.IsInvariant.exists_smul_of_under_eq")
+:::theorem "primes_over_same_prime_are_conjugate" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.exists_smul_of_under_eq")
 If `Q` and `Q'` are two primes above `p`, then there is some `g ∈ G` such that
 `gQ = Q'`, and one can deduce from this that `Frob_Q` and `Frob_{Q'}` are
 conjugate. In particular if `G` is abelian then `Frob_Q` and `Frob_{Q'}` are

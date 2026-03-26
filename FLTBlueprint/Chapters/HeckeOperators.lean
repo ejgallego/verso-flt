@@ -116,8 +116,7 @@ all of our spaces which the operators act on will be $R$-modules.
 
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
-:::definition "abstract_hecke_operator" (parent := "hecke_operator_project")
-  (lean := "AbstractHeckeOperator.HeckeOperator")
+:::definition "abstract_hecke_operator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
 Assuming `UgV` is a finite union of cosets `g_iV`,
 we define `[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
@@ -209,8 +208,7 @@ this cover must thus be finite.
   this cover must thus be finite.
 \end{proof}
 ```
-:::theorem "abstract_hecke_operators_commute" (parent := "hecke_operator_project")
-  (lean := "AbstractHeckeOperator.comm")
+:::theorem "abstract_hecke_operators_commute" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
 Under the expected commutation hypothesis on representatives, the abstract
 Hecke operators commute.
 This is the abstract commutativity criterion later used in

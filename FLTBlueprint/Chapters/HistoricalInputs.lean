@@ -107,8 +107,7 @@ The assumption is recorded as a Lean axiom so the reduction chain can remain
 explicit while the full geometric proof stays outside the current phase.
 :::
 
-:::theorem "odlyzko_root_discriminant_bound"
-  (parent := "historical_inputs") (lean := "Odlyzko_statement")
+:::theorem "odlyzko_root_discriminant_bound" (parent := "historical_inputs") (lean := "Odlyzko_statement")
 Odlyzko-Poitou discriminant bounds rule out certain totally complex number
 fields with too-small root discriminant.
 In the planned FLT route, this is part of the $`3`$-adic contradiction after
