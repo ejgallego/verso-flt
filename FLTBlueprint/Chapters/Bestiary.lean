@@ -55,11 +55,13 @@ geometric Frobenius are stated there in terms of explicit maps to
 `\widehat{ℤ}`. Concretely, `\widehat{ℤ} \cong \prod_p \mathbf Z_p`.
 
 :::theorem "maximal_unramified_extension_placeholder" (parent := "bestiary_appendix")
-For a finite extension `K / ℚ_p`, the maximal unramified extension should be
-Galois over `K` in a chosen algebraic closure, with Galois group canonically
-identifiable with `\widehat{ℤ}` in the two normalizations corresponding to
-arithmetic and geometric Frobenius. In the arithmetic normalization, `1`
-corresponds to the endomorphism inducing `x \mapsto x^q` on the residue field.
+For a finite extension `K / ℚ_p`, the maximal unramified extension `K^un` in a
+chosen algebraic closure should be Galois over `K` with Galois group
+canonically identifiable with `\widehat{ℤ}` in two ways. One of these
+identifications sends `1` to arithmetic Frobenius, namely the endomorphism
+inducing `x \mapsto x^q` on the residue field of `K^un`, where `q` is the size
+of the residue field of `K`. The other sends `1` to geometric Frobenius, which
+is the inverse of arithmetic Frobenius.
 :::
 
 :::proof "maximal_unramified_extension_placeholder"
@@ -80,16 +82,19 @@ It is impossible to say which of the two canonical isomorphisms is ``the most ca
 :::definition "local_weil_group_placeholder" (parent := "bestiary_appendix")
 The appendix records the local Weil group and local class field theory among
 the core background items still waiting for polished Lean-facing statements.
-The Weil group is introduced by pulling back the surjection
-`G_K \twoheadrightarrow \widehat{ℤ}` from
-{uses "maximal_unramified_extension_placeholder"}[] along the continuous map
-`ℤ \to \widehat{ℤ}` from the discrete integers.
+The Weil group is the pullback of the surjection `G_K \twoheadrightarrow
+\widehat{ℤ}` from {uses "maximal_unramified_extension_placeholder"}[] along
+the continuous map `ℤ \to \widehat{ℤ}`. Equivalently, it is the topological
+group with inertia as an open normal subgroup and quotient isomorphic to the
+integers.
 :::
 
 :::theorem "local_class_field_theory_placeholder" (parent := "bestiary_appendix")
 Local class field theory is one of the major background theorems still waiting
-to be integrated into the main project narrative from this appendix.
-It is stated in the appendix as the reciprocity isomorphism attached to
+to be integrated into the main project narrative from this appendix. In the
+TeX source it is stated for finite extensions of `ℚ_p` as the reciprocity
+theorem giving two canonical isomorphisms of topological abelian groups
+between `K^\times` and the abelianization of the Weil group attached to
 {uses "local_weil_group_placeholder"}[].
 :::
 
@@ -118,8 +123,8 @@ Note that Mar\'ia In\'es de Frutos Fern\'andez and Filippo Nuccio are working on
 
 :::theorem "local_galois_cohomology_package" (parent := "bestiary_appendix")
 The local cohomology package includes finiteness, cohomological dimension two,
-top-degree identifications, Poincare duality, and Euler-Poincare formulas.
-These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's Galois cohomology text {Informal.citep serreGalCoh}[] throughout this package.
+top-degree identifications, Poincaré duality, and Euler-Poincaré formulas.
+These are exactly the inputs referenced abstractly by {uses "s_good_lift_condition"}[]; the old appendix cites Serre's *Galois Cohomology* text {Informal.citep serreGalCoh}[] throughout this package.
 :::
 
 ```tex "bestiary/class_field_theory/local_galois_cohomology"
@@ -133,14 +138,14 @@ Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using co
 \begin{theorem}
     \label{local_galois_coh_finite}
     \notready
-    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ all finite.
+    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ are all finite.
 \end{theorem}
 \begin{proof}
     This is Proposition~14 in section~5.2 of~\cite{serre-galcoh}.
 \end{proof}
 
 \begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
-  If $M$ is torsion then $H^i(G_K,M)=0$ if $i>2$.
+  If $M$ is torsion then $H^i(G_K,M)=0$ for $i>2$.
 \end{theorem}
 \begin{proof} This follows from Proposition~15 in~section 5.3 of~\cite{serre-galcoh}.
 \end{proof}
@@ -216,9 +221,9 @@ and the full ring of adeles is the product of those two pieces.
 :::theorem "global_class_field_theory_placeholder" (parent := "bestiary_appendix")
 If `N` is a finite extension of `\Q`, then there are two "canonical"
 isomorphisms of topological groups between the profinite abelian groups
-`π_0(\A_N^\times/N^\times)` and `\GN^{\ab}`; one sends local uniformisers to
-arithmetic Frobenii and the other to geometric Frobenii; each of the global
-isomorphisms is compatible with the local isomorphisms above.
+`π_0(\A_N^\times/N^\times)` and `\GN^{\ab}`. One sends local uniformisers to
+arithmetic Frobenii and the other to geometric Frobenii, and each global
+isomorphism is compatible with the local isomorphisms above.
 This is the global continuation of {uses "local_class_field_theory_placeholder"}[].
 :::
 
@@ -315,9 +320,9 @@ forms of `GL₂` over totally real fields. The appendix works in greater
 generality only to keep the long-term target visible.
 
 :::definition "connected_reductive_group_placeholder" (parent := "bestiary_appendix")
-The appendix also tracks the background definitions of connected reductive
-groups, Lie-group structures on real and complex points, and automorphic-form
-notions in generality well beyond the immediate FLT needs.
+An affine algebraic group `G` of finite type over a field `k` is said to be
+`connected` if it is connected as a scheme, and `reductive` if `G_{\overline{k}}`
+has no nontrivial smooth connected unipotent normal `k`-subgroup.
 :::
 
 :::proof "connected_reductive_group_placeholder"
@@ -327,11 +332,24 @@ They are later specialized in {uses "automorphic_form_general_notion"}[] and {us
 :::
 
 :::definition "automorphic_form_placeholder" (parent := "bestiary_appendix")
-The appendix’s fully general automorphic-form definition includes local
-constancy on the finite adelic side, smoothness on the archimedean side,
-left-invariance under rational points, finite-level conditions, infinitesimal
-character conditions, and a growth condition. The chapter is treating this as
-the package assembled from {uses "connected_reductive_group_placeholder"}[],
+An automorphic form is a function `\phi : G(\A_N) \to \bbC` satisfying the
+following conditions:
+
+- `\phi` is locally constant on `G(\A_N^f)` and `C^\infty` on `G(N_\infty)`;
+  equivalently, for every `g_\infty`, `\phi(-, g_\infty)` is locally constant,
+  and for every `g_f`, `\phi(g_f, -)` is smooth.
+- `\phi` is left-invariant under `G(N)`.
+- `\phi` is right-`U_\infty`-finite, meaning the space spanned by the
+  translates `x \mapsto \phi(xu)` as `u` varies over `U_\infty` is finite-dimensional.
+- `\phi` is right-`K_f`-finite, where `K_f` is one, or equivalently any,
+  compact open subgroup of `G(\A_N^f)`.
+- `\phi` is `\mathcal z`-finite, where `\mathcal z` is the center of the
+  universal enveloping algebra of the Lie algebra of `G(N_\infty)`.
+- For every `g_f`, the function `g_\infty \mapsto \phi(g_f g_\infty)` is
+  slowly increasing.
+
+The chapter is treating this as the package assembled from
+{uses "connected_reductive_group_placeholder"}[],
 {uses "lie_group_from_algebraic_group_placeholder"}[],
 {uses "slowly_increasing_well_defined_placeholder"}[], and
 {uses "affine_variety_point_topology_computation"}[].
@@ -339,14 +357,21 @@ the package assembled from {uses "connected_reductive_group_placeholder"}[],
 
 :::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix")
 The appendix also isolates the slowly-increasing growth condition used in the
-general definition of an automorphic form. This is the same growth condition
-formalized in the `GL_n/ℚ` development as {uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[].
+general definition of an automorphic form. A function `f : G(N_\infty) \to \bbC`
+is slowly increasing if there exists a norm `||-||_\rho` coming from a fixed
+finite-dimensional representation `\rho` with finite kernel and a
+`U_\infty`-invariant Hermitian form, together with constants `C > 0` and
+`n \geq 1`, such that `|f(x)| \leq C ||x||_\rho^n` for all `x`.
+This is the same growth condition formalized in the `GL_n/ℚ` development as
+{uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[].
 :::
 
 :::theorem "slowly_increasing_well_defined_placeholder" (parent := "bestiary_appendix")
 The slowly-increasing condition should be independent of the auxiliary choice
-of finite-dimensional representation used to define the norm at infinity. This
-depends on {uses "slowly_increasing_placeholder"}[].
+of finite-dimensional representation used to define the norm at infinity.
+Equivalently, if `\rho` and `\rho'` are two such choices, then the resulting
+norms are comparable up to a power. This depends on
+{uses "slowly_increasing_placeholder"}[].
 :::
 
 :::definition "cuspidal_automorphic_representation_placeholder" (parent := "bestiary_appendix")
@@ -359,8 +384,11 @@ decomposition of admissible representations. This sits on top of
 
 :::definition "automorphic_form_actions_placeholder" (parent := "bestiary_appendix")
 The spaces of automorphic forms and cusp forms should carry the natural
-`(G(\mathbf{A}_N^f)\times U_\infty,\mathfrak g)`-module structures coming from
-right translation and differential operators. This depends on
+`(G(\A_N^f)\times U_\infty,\mathfrak g)`-module structures coming from right
+translation and differential operators. The Lie algebra `\mathfrak g` of
+`G(N_\infty)` acts by differential operators, and the differential of the
+`U_\infty`-action agrees with the action of its Lie algebra viewed inside
+`\mathfrak g`. This depends on
 {uses "automorphic_form_placeholder"}[].
 :::
 
@@ -390,16 +418,26 @@ definition usable.
 
 :::definition "compatible_family_placeholder" (parent := "bestiary_appendix") (lean := "GaloisRepFamily.isCompatible")
 The appendix records the notion of a compatible family of Galois
-representations: a common coefficient field, a finite bad set, Frobenius
-polynomials away from that set, and ℓ-adic realizations compatible with those
-polynomials. In Lean this is tracked by {uses "GaloisRepFamily.isCompatible"}[]
-and the surrounding family structure `GaloisRepFamily`.
+representations: a common coefficient field, a finite bad set, a monic degree
+`d` polynomial `F_\mathfrak p(X) \in E[X]` for each finite place
+`{\mathfrak p} \notin S`, and for each prime `\ell` and embedding
+`E \to \Qlbar` a continuous representation
+`G_K \to \GL_d(\Qlbar)` unramified outside `S` and the primes above `\ell`,
+with Frobenius characteristic polynomials matching the prescribed
+`F_\mathfrak p(X)` away from `\ell`. In Lean this is tracked by
+{uses "GaloisRepFamily.isCompatible"}[] and the surrounding family structure
+`GaloisRepFamily`.
 :::
 
 :::theorem "automorphic_to_galois_representation_placeholder" (parent := "bestiary_appendix")
 One of the major missing theorem statements is the construction of compatible
 Galois representations from automorphic representations of an inner form of
-GL2 over a totally real field. This depends on {uses "compatible_family_placeholder"}[],
+`GL_2` over a totally real field, with reflex field `E`. The TeX source states
+this for automorphic representations that are weight `2` discrete series at
+every infinite place, with the bad set `S` given by the ramified places and
+the Frobenius polynomial at `\mathfrak p` given by the monic polynomial with
+roots the two Satake parameters. This depends on
+{uses "compatible_family_placeholder"}[],
 {uses "automorphic_representation_local_decomposition_placeholder"}[], and
 {uses "shimura_varieties_placeholder"}[].
 :::

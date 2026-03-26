@@ -59,9 +59,9 @@ Theorem to a computer. The computer is quite a challenging audience member --
 it will insist on being given all technical details of all arguments, and it
 will not accept proof by intimidation or by appeal to higher authority. Most
 mathematicians know humans who also behave in this manner. However, it is
-worse than this; the computer will only start filling in details of arguments
-by itself once the arguments are mathematically utterly obvious. Thus,
-currently, formalization can be a very time-consuming process.
+worse than this; in `2025` at least, the computer will only start filling in
+details of arguments by itself once the arguments are mathematically utterly
+obvious. Thus, currently, formalization can be a very time-consuming process.
 
 ```tex "flt-intro-lean-tex"
 Lean is an interactive theorem prover; it checks mathematical arguments with super-human accuracy.
@@ -150,10 +150,10 @@ well-defined goal, typically stated at the top of the chapter.
 
 After this chapter, you should next read the reductions chapter, which explains
 how to reduce FLT to two highly nontrivial statements about the `p`-torsion in
-a certain elliptic curve, the Frey curve. One of these statements was proved in
-the `1970`s by Mazur, and we shall not be concentrating on it until after the
-first phase is complete. The other is a theorem of Wiles, and this is what we
-will be concentrating on in the remainder of the blueprint.
+a certain elliptic curve (the Frey curve). One of these statements was proved
+in the `1970`s by Mazur, and we shall not be concentrating on it until after
+the first phase is complete. The other is a theorem of Wiles, and this is what
+we will be concentrating on in the remainder of the blueprint.
 
 # Remarks
 

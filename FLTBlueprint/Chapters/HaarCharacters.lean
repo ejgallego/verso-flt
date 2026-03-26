@@ -22,9 +22,9 @@ adelic algebras.
 # Goal
 
 :::definition "haar_character_goal" (parent := "haar_character_project")
-The main application is adelic: for a finite-dimensional algebra over a number
-field, the adelic units should lie in the kernel of the associated Haar
-character.
+The main application is adelic: if `B` is a finite-dimensional algebra over a
+number field `K`, then `B^\times` lies in the kernel of the Haar character of
+`B \otimes_K \A_K`.
 :::
 
 ```tex "haar_character_project/goal"
@@ -55,8 +55,10 @@ here is about getting the measure-theoretic interface exactly right.
 # Initial definitions
 
 :::definition "additive_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar")
-For a locally compact additive group and an additive automorphism, the Haar
-character measures the positive scalar by which Haar measure is rescaled.
+For a locally compact additive abelian group `A`, a regular Haar measure `μ`,
+and an additive homeomorphism `φ : A ≃ₜ+ A`, the Haar character `d_A(φ)` is
+the unique positive real such that `μ(X) = d_A(φ) (φ_* μ)(X)` for every Borel
+set `X`.
 :::
 
 ```tex "haar_character_project/additive_haar_character"
@@ -190,15 +192,15 @@ multiplicativity under composition.
 ```
 
 :::theorem "haar_character_preimage_formula" (parent := "haar_character_project")
-For a Borel set `X`, the Haar-character factor can be read off from the ratio
-between the measures of `X` and `φ⁻¹(X)`.
+If `X` is a Borel set, then `μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 This is the set-theoretic specialization of
 {uses "haar_character_pushforward_formula"}[].
 :::
 
 :::theorem "haar_character_integral_formula" (parent := "haar_character_project")
-For a measurable real-valued function, the Haar-character factor also controls
-how integrals transform under pushforward and pullback.
+If `f : A → ℝ` is Borel measurable, then
+`d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
+Equivalently, `d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^* μ)(x)`.
 This is the integral version of {uses "haar_character_pushforward_formula"}[].
 :::
 
@@ -213,8 +215,8 @@ drives the continuity proof on unit groups.
 :::
 
 :::theorem "haar_character_is_multiplicative" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
-The additive Haar-character construction is multiplicative under composition of
-homeomorphisms and equals `1` on the identity map.
+For additive homeomorphisms `φ` and `ψ`, one has
+`d_A(φ ∘ ψ) = d_A(φ) d_A(ψ)`, and the identity map has Haar character `1`.
 This combines {uses "haar_character_identity"}[] with the composition law from
 the additive Haar-character setup {uses "additive_haar_character"}[].
 :::
@@ -272,8 +274,8 @@ rotation. Rotations preserve area, while scaling by `r > 0` multiplies area by
 # Ring-level Haar characters
 
 :::definition "ring_level_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
-For a locally compact topological ring, the left Haar character is obtained by
-applying the additive theory to left multiplication by a unit.
+For a locally compact topological ring `R` and `u ∈ R^\times`, define
+`δ_R(u) = d_R(ℓ_u)`, where `ℓ_u(r) = ur`.
 This packages the additive setup for ring-level use via
 {uses "additive_haar_character"}[].
 :::
@@ -285,8 +287,8 @@ $R^\times\to\R^\times$ defined in the following way.
 ```
 
 :::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
-At the ring level, the Haar character controls how integrals change under left
-multiplication by units.
+If `f : R → ℝ` is Borel measurable and `u ∈ R^\times`, then
+`δ_R(u) ∫ f(ux) dμ(x) = ∫ f(x) dμ(x)`.
 This is the ring-theoretic specialization of
 {uses "haar_character_integral_formula"}[] and depends on
 {uses "ring_level_haar_character"}[].
@@ -310,8 +312,8 @@ This is the ring-theoretic specialization of
 ```
 
 :::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
-Likewise, the Haar character controls how the measure of a Borel set changes
-under multiplication by a unit.
+If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
+`μ(rX) = δ_R(r) μ(X)`.
 This is the ring-theoretic specialization of
 {uses "haar_character_preimage_formula"}[] and depends on
 {uses "ring_level_haar_character"}[].
@@ -334,8 +336,7 @@ This is the ring-theoretic specialization of
 ```
 
 :::theorem "ring_haar_character_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
-The Haar character on the unit group of a locally compact topological ring is a
-continuous group homomorphism.
+The function `δ_R : R^\times → ℝ_{>0}` is continuous.
 The TeX proof builds this directly from
 {uses "ring_haar_character_integral_formula"}[].
 :::
@@ -405,9 +406,11 @@ the index of `p\mathbf{Z}_p` inside `\mathbf{Z}_p`.
 # Algebras
 
 :::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
-For a finite free module over a locally compact field, the Haar character of an
-invertible linear map is the field-level Haar character applied to its
-determinant.
+Let `F` be a locally compact field and `V` a finite free `F`-module. Assume that
+there is an `F`-basis of `V` with respect to which `φ` is a product of
+elementary and diagonal matrices. Then
+`d_V(φ) = δ_F(det(φ))`, where `det(φ)` is the determinant of `φ` as an
+`F`-linear map.
 This is the linear-algebra counterpart to {uses "ring_level_haar_character"}[].
 :::
 
@@ -421,9 +424,9 @@ characters on finite-dimensional algebras.
 :::
 
 :::theorem "algebra_haar_character_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det")
-If `R` is a finite-dimensional algebra over a locally compact field `F`, then
-the ring-level Haar character of a unit `u` is obtained from the determinant of
-left multiplication by `u`.
+If `F` is a locally compact field, `R` is a finite-dimensional `F`-algebra,
+and `u ∈ R^\times`, then
+`δ_R(u) = δ_F(det(ℓ_u))`.
 This is the algebraic corollary of
 {uses "haar_character_linear_map_determinant_formula"}[].
 :::
@@ -500,8 +503,8 @@ an $F$-linear homeomorphism.
 # Left and right multiplication
 
 :::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project") (lean := "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight")
-For a finite-dimensional central simple algebra, left and right multiplication
-by a unit have the same Haar-character factor.
+For a central simple algebra `B` over a locally compact field `F` and
+`u ∈ B^\times`, one has `d_B(r_u) = δ_B(u)`.
 This combines the determinant comparison {uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[] with
 {uses "algebra_haar_character_determinant_formula"}[].
 :::
@@ -577,9 +580,11 @@ the same determinant.
 # Finite products
 
 :::theorem "product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_prodCongr")
-For a finite product of locally compact additive groups, the Haar character of a
-product automorphism is the product of the individual Haar characters.
-This is the finite-product analogue of {uses "haar_character_is_multiplicative"}[].
+If `A` and `B` are locally compact additive groups and `φ : A ≃ₜ+ A` and
+`ψ : B ≃ₜ+ B` are additive homeomorphisms, then
+`d_{A × B}(φ × ψ) = d_A(φ) d_B(ψ)`.
+Iterating gives the corresponding finite-product formula. This is the
+finite-product analogue of {uses "haar_character_is_multiplicative"}[].
 :::
 
 :::proof "product_haar_character_formula"
@@ -590,8 +595,8 @@ formula behind {uses "product_haar_character_formula"}[].
 :::
 
 :::theorem "product_ring_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
-For a finite product of locally compact topological rings, the ring-level Haar
-character is the product of the local ring-level Haar characters.
+If `R` and `S` are locally compact topological rings, then
+`δ_{R × S}(r, s) = δ_R(r) δ_S(s)`.
 This is the ring-theoretic specialization of {uses "product_haar_character_formula"}[].
 :::
 
@@ -821,9 +826,8 @@ stages, where the map becomes an ordinary finite product of continuous maps.
 :::
 
 :::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight")
-For a restricted product of locally compact groups with compact open reference
-subgroups, the Haar character of a restricted-product automorphism is the
-finite product of the local Haar characters.
+With `A`, `A_i`, `C_i`, `φ_i`, and `φ` defined as above, one has
+`δ_A(φ) = ∏_i δ_{A_i}(φ_i)`.
 This uses the compact-triviality input from
 {uses "compact_group_haar_character_trivial"}[] and the finite-product formula
 {uses "product_haar_character_formula"}[].
@@ -946,9 +950,9 @@ As a special case, if $R$ is the restricted product of a collection of topologic
 # Adeles
 
 :::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
-The key intended application is that adelic unit groups coming from
-finite-dimensional algebras over a number field land in the kernel of the Haar
-character.
+The key intended application is that if `B` is a finite-dimensional `K`-algebra,
+then `B^\times` lies in the kernel of the Haar character of
+`B \otimes_K \A_K`.
 This combines {uses "restricted_product_haar_character_formula"}[] and
 {uses "algebra_haar_character_determinant_formula"}[].
 :::
