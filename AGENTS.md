@@ -41,6 +41,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - The default deliverable for direct TeX-to-Verso chapter work is a literal
   translation pass (`LT pass`), not an interpretive rewrite.
+- Do not trust earlier LT-pass labels by themselves. Under the current
+  methodology, a chapter is not treated as LT-audited until each translated
+  informal block is paired with a local raw-TeX witness block.
 - Preserve paragraph boundaries, sentence order, section order,
   theorem/definition/lemma/corollary/proof order, and local claim order from
   the TeX source unless a concrete Verso constraint forces a change.
@@ -58,6 +61,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - When non-literal material is genuinely unavoidable, keep it visibly separate
   and label it as an editorial or harness note rather than blending it into the
   translation.
+- Each translated informal block should sit immediately next to a labeled
+  `tex` block carrying the corresponding TeX source. Prefer a one-block / one-
+  witness pairing; do not amortize one TeX block over several translated
+  blocks when finer pairing is possible.
 - If a source block cannot yet be translated cleanly, keep the source locally
   in a labeled `tex` block instead of paraphrasing it into placeholder prose.
 - Treat semantic cleanup as a second phase (`Blueprint pass`) after the LT
@@ -75,6 +82,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - For Lean-facing checks on edited blueprint modules, prefer `lean-beam`
   (`ensure`, `sync`, `hover`, `run-at`) over full rebuild loops whenever that is
   enough to validate the change.
+- For LT-facing checks on edited direct-port chapters, run
+  `python3 scripts/check_lt_source_pairs.py <chapter.lean>` after the edit and
+  treat any reported block as unaudited until the adjacent `tex` witness is in
+  place.
 - Avoid issuing multiple `lean-beam sync` requests in parallel for the same
   project root. In this repository that sometimes trips a Beam/LSP worker exit
   with messages like `Cannot read LSP message: offset ... unexpected end of
@@ -114,6 +125,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Start with an LT pass: preserve paragraph boundaries, sentence order, section
   order, theorem order, and mathematical claims unless there is a clear build,
   tooling, or project-structure reason not to.
+- Pair each translated informal block with an adjacent labeled `tex` block from
+  the source. This is now part of the LT pass itself, not an optional cleanup
+  step after the fact.
 - Do not add new blueprint structure unless the TeX source already justifies
   it. In particular, do not turn plain prose into extra theorem or proof nodes
   just to expose a dependency story.
@@ -146,6 +160,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Work from the TeX source chapter-by-chapter. Treat section order, theorem
   order, paragraph boundaries, sentence order, and dependency structure as
   intentional.
+- Treat a block as LT-complete only once its local Verso translation sits next
+  to a labeled `tex` witness block with the matching source excerpt.
 - Prefer translating existing TeX material into Verso over inventing new
   exposition. If explanatory glue is absolutely needed, keep it minimal,
   visibly editorial, and in service of the source structure.
@@ -168,6 +184,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If the source block is still open, prefer a local `tex` block carrying the
   raw TeX excerpt over a rewritten placeholder. That keeps the board and the
   chapter close to the TeX source of truth.
+- After a chapter edit batch, run `python3 scripts/check_lt_source_pairs.py`
+  on the touched chapter files before treating the batch as LT-audited.
 - In the work summary for each batch, include a short deviation report listing
   any non-literal changes that were introduced deliberately.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.

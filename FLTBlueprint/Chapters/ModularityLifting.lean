@@ -9,9 +9,12 @@ open Informal
 #doc (Manual) "Stating the modularity lifting theorems" =>
 
 :::group "modularity_lifting_program"
-This chapter corresponds to the TeX work-in-progress chapter devoted to stating
-the minimal and non-minimal modularity lifting theorems precisely.
+Stating the modularity lifting theorems.
 :::
+
+```tex "modularity_lifting_program/chapter"
+\chapter{Stating the modularity lifting theorems}
+```
 
 I think that a nice and accessible goal (which will maybe take a month or two)
 would be to state the modularity lifting theorems which we'll be formalising.
@@ -20,6 +23,15 @@ of the original Taylor--Wiles techniques, and the other is deduced from it
 using various more modern tricks which were developed later. This chapter
 (currently work in progress) will contain a detailed discussion of all the
 things involved in the statement of the theorem.
+
+```tex "modularity_lifting_program/introduction"
+I think that a nice and accessible goal (which will maybe take a month or two) would be to
+\emph{state} the modularity lifting theorems which we'll be formalising. There are in fact two;
+one (the "minimal case") is proved using an extension of the original Taylor--Wiles techniques,
+and the other is deduced from it using various more modern tricks which were developed later. This
+chapter (currently work in progress) will contain a detailed discussion of all the things
+involved in the statement of the theorem.
+```
 
 # Automorphic forms and analysis
 
@@ -33,6 +45,17 @@ $`G/k`. Here $`k` is a "global field" -- that is, a field which is either a
 finite extension of $`\Q` (a number field) or a finite extension of
 $`(\Z/p\Z)(T)` (a function field), and $`G` is a connected reductive group
 variety over $`k`.
+
+```tex "modularity_lifting_program/automorphic_forms_and_analysis_intro"
+Modular forms were historically the first nontrivial examples of automorphic forms, but by the
+1950s or so it was realised that they were special cases of a very general notion of an automorphic
+form, as were Dirichlet characters! Modular forms are holomorphic automorphic forms for the group
+$\GL_2/\Q$, and Dirichlet characters are automorphic forms for the group $\GL_1/\Q$. It's possible
+to make sense of the notion of an automorphic form for the group $G/k$. Here $k$ is
+a ``global field'' -- that is, a field which is either a finite extension of $\Q$ (a number field)
+or a finite extension of $(\Z/p\Z)(T)$ (a function field), and $G$ is a connected reductive
+group variety over $k$.
+```
 
 The reason that the definition of a modular form involves some analysis (they
 are holomorphic functions) is that if you quotient out the group $`\GL_2(\R)`
@@ -52,60 +75,145 @@ quaternions, a maximal compact subgroup would be the quaternions of norm `1`
 (homeomorphic to the `3`-sphere $`S^3`) and quotienting out $`\bbH^\times` by
 its centre $`\R^\times` and $`S^3` again just gives you `1` point.
 
+```tex "modularity_lifting_program/automorphic_forms_and_analysis_main"
+The reason that the definition of a modular form involves some analysis (they are holomorphic
+functions) is that if you quotient out the group $\GL_2(\R)$ by its centre and the maximal compact
+subgroup $O_2(\R)$, you get something which can be naturally identified with the upper half plane, a
+symmetric space with lots of interesting differential operators associated to it (for example a
+Casimir operator). However if you do the same thing with $\GL_1(\R)$ then you get a one point set,
+which is why a Dirichlet character is just a combinatorial object; it's a group homomorphism
+$(\Z/N\Z)^\times\to\bbC^\times$ where $N$ is some positive integer. It turns out that there are many
+other connected reductive groups where the associated symmetric space is 0-dimensional, and in these
+cases the definition of an automorphic form is again combinatorial. An example would be the group
+variety associated to the units of a totally definite quaternion algebra over a totally real field.
+In this case, the analogue of $\GL_2(\R)$ would be the units $\bbH^\times$ in the Hamilton
+quaternions, a maximal compact subgroup would be the quaternions of norm 1 (homeomorphic to the
+3-sphere $S^3$) and quotienting out $\bbH^\times$ by its centre $\R^\times$ and $S^3$ again just
+gives you 1 point.
+```
+
 Before we talk about quaternion algebras, let's talk about central simple
 algebras.
+
+```tex "modularity_lifting_program/before_quaternion_algebras"
+Before we talk about quaternion algebras, let's talk about central simple algebras.
+```
 
 # Central simple algebras
 
 Convention: in this section, fields are commutative, but algebras over a field
 may not be.
 
+```tex "modularity_lifting_program/central_simple_algebras_convention"
+Convention: in this section, fields are commutative, but algebras over a field may not be.
+```
+
 Recall that a central simple algebra over a field $`K` is a nonzero
 $`K`-algebra $`D` such that $`K` is the centre of $`D` and that $`D` has no
 nontrivial two-sided ideals.
+
+```tex "modularity_lifting_program/central_simple_algebras_definition_intro"
+Recall that a \emph{central simple algebra} over a field $K$ is a
+nonzero $K$-algebra $D$ such that $K$ is the
+centre of $D$ and that $D$ has no nontrivial two-sided ideals.
+```
 
 Another way of saying that $`D` has no nontrivial two-sided ideals: every
 surjective ring homomorphism $`D\twoheadrightarrow A` to any ring $`A` is
 either an isomorphism, or the zero map to the zero ring. Note that this latter
 condition has nothing to do with $`K`.
 
+```tex "modularity_lifting_program/central_simple_algebras_definition_note"
+Another way of saying that $D$ has no nontrivial two-sided ideals: every surjective ring
+homomorphism $D\twoheadrightarrow A$ to any ring~$A$ is either an isomorphism, or the zero map
+to the zero ring. Note that this latter condition
+has nothing to do with~$K$.
+```
+
 :::theorem "MatrixRing.isCentralSimple" (parent := "modularity_lifting_program")
 If $`n\geq1` then the $`n\times n` matrices $`M_n(K)` are a central simple
 algebra over $`K`.
 :::
 
+```tex "modularity_lifting_program/matrix_ring_is_central_simple"
+\begin{lemma}
+    \label{MatrixRing.isCentralSimple}
+    %\lean{MatrixRing.isCentralSimple}
+    %\uses{IsCentralSimple}
+    \discussion{47}
+    \leanok
+    If $n\geq1$ then the $n\times n$ matrices $M_n(K)$ are a central simple algebra over~$K$.
+\end{lemma}
+```
+
 :::proof "MatrixRing.isCentralSimple"
-We prove more generally that matrices with coefficients in $`K` and indexed by
-an arbitrary nonempty finite type are a central simple algebra over $`K`.
+We prove more generally that matrices with coefficients in `K` and indexed by
+an arbitrary nonempty finite type are a central simple algebra over `K`.
 
-They are clearly an algebra over $`K`, with $`K` embedded via scalar matrices
-as usual (the injectivity of the map from $`K` comes from nonemptiness of the
-finite index type). The centre clearly contains $`K`; to show that it equals
-$`K`, we argue as follows. Let $`e(i,j)` be the matrix with a `1` in the $`i`th
-row and $`j`th column, and zeros everywhere else. An element
-$`Z=(Z_{s,t})_{s,t}` of the centre commutes with all matrices $`e(i,j)` for
-$`i\not=j` and these equations immediately imply that $`Z_{i,j}=0` if $`i\not=j`
-and that $`Z_{i,i}=Z_{j,j}`.
+They are clearly an algebra over `K`, with `K` embedded by scalar matrices.
+The centre contains `K`, and commuting with the matrix units forces any central
+matrix to be scalar.
 
-It suffices to prove that any nonzero two-sided ideal $`I` is all of $`M_n(K)`.
-So say $`0\not=M\in I` and let's fix $`(i,j)` such that $`M_{i,j}\not=0`. One
-easily checks that
-$`M_{i,j} \mathrm{id} = \sum_{k}e(k,i)\times M\times e(j,k)\in I` (where
-$`\mathrm{id} \in M_n(K)` is the identity matrix). Therefore,
-$`\mathrm{id} \in I`, so $`I = M_n(K)`.
+It remains to prove that any nonzero two-sided ideal is the whole matrix ring.
+Choose a nonzero matrix in the ideal and a nonzero entry of that matrix. The
+usual matrix-unit computation then shows that a nonzero scalar multiple of the
+identity lies in the ideal, hence the identity itself lies in the ideal, so the
+ideal is all of `M_n(K)`.
 
-The definition also requires that the ring be non-zero, but this follows from
-the index type being nonempty.
+The nonzero condition in the definition follows from the index type being
+nonempty.
 :::
+
+```tex "modularity_lifting_program/matrix_ring_is_central_simple_proof"
+\begin{proof}\leanok
+We prove more generally that matrices with coefficients in~$K$ and indexed by an arbitrary nonempty
+finite type are a central simple algebra over~$K$.
+
+They are clearly an algebra over $K$, with $K$ embedded via scalar matrices as usual
+(the injectivity of the map from~$K$ comes from nonemptiness of the finite index type).
+The centre clearly contains $K$; to show that it
+equals~$K$, we argue as follows. Let $e(i,j)$ be the matrix with a 1 in the $i$th row and $j$th
+column, and zeros everywhere else. An element $Z=(Z_{s,t})_{s,t}$ of the centre commutes with
+all matrices $e(i,j)$ for $i\not=j$ and these equations immediately imply that $Z_{i,j}=0$ if
+$i\not=j$ and that $Z_{i,i}=Z_{j,j}$.
+
+It suffices to prove that any nonzero two-sided ideal~$I$ is all of $M_n(K)$.
+So say $0\not=M\in I$ and let's fix $(i,j)$ such that $M_{i,j}\not=0$. One easily checks that
+$M_{i,j} \mathrm{id} = \sum_{k}e(k,i)\times M\times e(j,k)\in I$ (where $\mathrm{id} \in M_n(K)$
+is the identity matrix). Therefore, $\mathrm{id} \in I$, so $I = M_n(K)$.
+
+The definition also requires that the ring be non-zero, but this follows from the index type being
+nonempty.
+\end{proof}
+```
 
 :::theorem "IsCentralSimple.baseChange" (parent := "modularity_lifting_program")
 If $`D` is a central simple algebra over $`K` and $`L/K` is a field extension,
 then $`L\otimes_KD` is a central simple algebra over $`L`.
 :::
 
+```tex "modularity_lifting_program/is_central_simple_base_change"
+\begin{lemma}
+    \label{IsCentralSimple.baseChange} % no Lean yet because Lean didn't seem to know L \otimes_K D was a ring
+    %\uses{IsCentralSimple}
+    If $D$ is a central simple algebra over~$K$ and $L/K$ is a field extension, then $L\otimes_KD$
+    is a central simple algebra over~$L$.
+\end{lemma}
+```
+
 :::proof "IsCentralSimple.baseChange"
 This is not too hard: it's lemma b of section `12.4` in Peirce's
 "Associative algebras".
 :::
 
+```tex "modularity_lifting_program/is_central_simple_base_change_proof"
+\begin{proof}
+    This is not too hard: it's lemma b of section 12.4 in Peirce's "Associative algebras".
+\end{proof}
+```
+
 Next: define trace and norm.
+
+```tex "modularity_lifting_program/next_define_trace_and_norm"
+Next: define trace and norm.
+```

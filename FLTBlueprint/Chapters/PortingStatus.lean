@@ -11,9 +11,9 @@ open Informal
 :::group "porting_status"
 This chapter records the current harness-level view of how far the Verso port
 has progressed relative to the TeX blueprint. The harness migration is largely
-done, and the remaining work is now mostly literal-translation auditing,
-rollback of interpretive drift where needed, and source-local cleanup rather
-than broad infrastructure.
+done, but the LT workflow is now being reset onto a stricter source-paired
+methodology. Earlier chapter-level LT-pass claims are not treated here as
+trusted certification.
 :::
 
 # Literal Translation Policy
@@ -24,8 +24,14 @@ porting notes did.
 
 - the default goal for a direct port is a literal translation pass, not a
   semantic reinterpretation
+- earlier LT-pass labels are provisional only; they do not count as trusted LT
+  certification without local source witnesses
+- each translated informal block should sit immediately next to a labeled
+  `tex` block carrying the corresponding TeX source excerpt
 - sentence order, paragraph order, section order, and
   theorem/definition/proof order from the TeX source are treated as intentional
+- one TeX witness block should not be amortized across several translated
+  blocks when finer pairing is possible
 - raw TeX blocks are preferred over paraphrased placeholder prose when a block
   cannot yet be translated cleanly
 - extra blueprint nodes, theorem interfaces, and dependency scaffolding should
@@ -36,57 +42,42 @@ porting notes did.
 # How To Read This Page
 
 :::definition "porting_status_legend" (parent := "porting_status")
-This tracker uses four status labels.
+This tracker now uses three status labels.
 
-- `literal translation pass completed`: the TeX chapter has had an explicit chapter-level pass preserving sentence order, paragraph order, section order, theorem order, and claim order modulo the layout translation into Verso
-- `structured port present`: the Verso chapter exists and covers the TeX topic substantially, but it has not yet been re-audited under the stricter literal-translation standard and may still contain interpretive restructuring
+- `source-paired LT audit required`: the Verso chapter exists, but it is not yet trusted as LT-certified under the current methodology because the chapter still needs block-by-block adjacent `tex` witnesses and/or a fresh audit under that standard
 - `intentional stub or frontier`: the Verso chapter is deliberately partial because the TeX source is itself still a stub, work in progress, or placeholder-heavy frontier
 - `harness-native`: the Verso chapter has no single TeX chapter counterpart and exists to support the harness or to expose project structure more clearly
 :::
 
-`literal translation pass completed` is a narrow harness claim. It says that
-the chapter has received an explicit LT audit relative to the TeX source. It is
-not a claim that the mathematics is fully formalized or that every placeholder
-has disappeared.
-
-Older harness notes sometimes used broader "fidelity" language that certified
-section order and dependency story without certifying literalness. That wording
-has been retired here because it overstates how close an interpretive port is
-to the TeX source.
+Direct-port chapters should now be read conservatively. Some chapters have had
+substantial rollback work already, but unless each translated informal block is
+paired locally with a `tex` witness and the source-pair audit passes, the
+harness does not treat the chapter as LT-audited.
 
 The TeX source of truth for these chapter trackers lives in
 `FLT/blueprint/src/chapter/*.tex`, together with the corresponding top-level
 chapter wrappers. The harness status pages summarize the local porting state;
 they do not replace the TeX source itself.
 
-The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so
-open source snippets can be attached locally in raw form when that is the
-cleanest way to keep the chapter close to the TeX source of truth. Many of the
-direct-port chapters now use that pattern for the remaining open blocks.
+The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, and
+the repository now treats them as the default LT witness format rather than as
+something reserved only for leftover or open source snippets.
 
 # Main Expository Chapters
 
 :::definition "main_expository_porting_status" (parent := "porting_status")
 The current chapter-by-chapter status for the main proof spine is:
 
-- `ch01introduction.tex` -> `Introduction.lean`: `structured port present`
-  Large parts of the chapter already stay close to the source and keep raw TeX nearby, but the chapter has not yet been re-certified chapter-wide under the LT audit standard.
-- `ch02reductions.tex` -> `Reductions.lean`: `structured port present`
-  The chapter currently has all `lean :=` targets resolved in the 4.28 baseline, but LT certification is still pending.
-- `ch03freyold.tex` -> `EllipticFrey.lean`: `literal translation pass completed`
-  The chapter has been re-audited against the TeX source, with the earlier English wrapper ids replaced by the source labels through both the arithmetic and irreducibility halves.
-- `ch03freyreduction.tex` -> `HardlyRamified.lean`: `literal translation pass completed`
-  The chapter has been re-audited against the TeX source, with the coefficient-ring prelude kept as source prose and the main theorem labels restored to the TeX naming.
-- `ch04overview.tex` -> `Overview.lean`: `literal translation pass completed`
-  The chapter has been re-audited against the TeX source and the earlier extra theorem/proof scaffolding around source prose has been removed.
-- `ch05automorphicformexample.tex` -> `AutomorphicFormExample.lean`: `literal translation pass completed`
-  The chapter has been re-audited against the TeX source, with the introductory and adelic wrapper scaffolding rolled back to the TeX section and label structure.
-- `ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`: `literal translation pass completed`
-  The TeX source itself is still a work in progress, but the current Verso chapter has been rolled back to the current draft instead of preserving the earlier extra statement-level scaffolding.
-- `ch07exampleGLn.tex` -> `LanglandsGLn.lean`: `structured port present`
+- `ch01introduction.tex` -> `Introduction.lean`: `source-paired LT audit required`
+- `ch02reductions.tex` -> `Reductions.lean`: `source-paired LT audit required`
+- `ch03freyold.tex` -> `EllipticFrey.lean`: `source-paired LT audit required`
+- `ch03freyreduction.tex` -> `HardlyRamified.lean`: `source-paired LT audit required`
+- `ch04overview.tex` -> `Overview.lean`: `source-paired LT audit required`
+- `ch05automorphicformexample.tex` -> `AutomorphicFormExample.lean`: `source-paired LT audit required`
+- `ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`: `source-paired LT audit required`
+- `ch07exampleGLn.tex` -> `LanglandsGLn.lean`: `source-paired LT audit required`
 - `global_langlands.tex` -> `GlobalLanglands.lean`: `intentional stub or frontier`
-- `chtopbestiary.tex` -> `Bestiary.lean`: `structured port present`
-  The appendix is still placeholder-heavy by design, but its current Verso chapter now follows the TeX appendix’s frontier-tracking role and section structure closely.
+- `chtopbestiary.tex` -> `Bestiary.lean`: `source-paired LT audit required`
 :::
 
 # Miniproject Chapters
@@ -94,21 +85,18 @@ The current chapter-by-chapter status for the main proof spine is:
 :::definition "miniproject_porting_status" (parent := "porting_status")
 The current miniproject-side status is:
 
-- `AdeleMiniproject.tex` -> `AdeleProject.lean`: `structured port present`
-- `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `structured port present`
-  This one is also a project success story, with the main theorem upstreamed to mathlib; the current Verso chapter now follows the TeX statement/proof strategy through the auxiliary fixed-field steps as well.
-- `FujisakiProject.tex` -> `FujisakiProject.lean`: `structured port present`
-  The chapter now covers the TeX goal/setup, the adelic compactness proof spine, and the two finite-adelic consequences stated at the end of the original miniproject.
-- `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `structured port present`
-- `HeckeOperatorProject.tex` -> `HeckeOperators.lean`: `structured port present`
-- `QuaternionAlgebraProject.tex` -> `QuaternionAlgebras.lean`: `structured port present`
+- `AdeleMiniproject.tex` -> `AdeleProject.lean`: `source-paired LT audit required`
+- `FrobeniusProject.tex` -> `FrobeniusProject.lean`: `source-paired LT audit required`
+- `FujisakiProject.tex` -> `FujisakiProject.lean`: `source-paired LT audit required`
+- `HaarCharacterProject.tex` -> `HaarCharacters.lean`: `source-paired LT audit required`
+- `HeckeOperatorProject.tex` -> `HeckeOperators.lean`: `source-paired LT audit required`
+- `QuaternionAlgebraProject.tex` -> `QuaternionAlgebras.lean`: `source-paired LT audit required`
 :::
 
-These chapters are generally further along than a bare stub but more uneven in
-how much explicit chapter-by-chapter LT auditing has been recorded in the
-harness so far. In the current baseline, they are mostly source-backed already;
-the main remaining work is literal-translation certification and local rollback
-of interpretive structure where that drifted from the source.
+These chapters are broadly ported already, but the current LT task is not to
+trust that coverage at face value. The work now is to make the source pairing
+local and explicit block by block, then use that structure as the basis for a
+mechanical accuracy audit.
 
 # Harness-Native Chapters
 
@@ -125,25 +113,27 @@ chapter.
 # Current Snapshot
 
 :::definition "porting_status_snapshot" (parent := "porting_status")
-At the moment, the core FLT proof spine from the introduction through the
-automorphic-form example is largely in place in Verso, but most direct-port
-chapters have not yet been re-certified under the LT audit standard. Most of
-the remaining work is chapter-by-chapter LT review, rollback of interpretive
-scaffolding where needed, and local source-block cleanup. The main remaining
-frontiers are:
+At the moment, the repository has broad Verso coverage of the direct-port
+chapters, but no direct-port chapter should be treated as LT-certified merely
+because of an earlier pass label. The current LT baseline is stricter: every
+translated informal block should carry an adjacent raw-TeX witness block. The
+main remaining frontiers are:
 
-- LT re-audits of existing direct-port chapters
+- source-pair completion across the direct-port chapters
+- block-level mechanical comparison once those source pairs are in place
 - the intentional frontier material in `GlobalLanglands.lean`
 :::
 
 # Future Plan
 
 :::definition "future_harness_plan" (parent := "porting_status")
-One planned harness improvement is a literal-translation comparison tool,
-following a suggestion from David.
+One planned harness improvement, after the source-pairing pass, is a
+literal-translation comparison tool, following a suggestion from David.
 
 - the tool should take a `.lean` chapter file and the corresponding `.tex`
   source file
+- it should compare translated blocks against the adjacent local `tex` witness
+  blocks rather than against a chapter only at coarse whole-file granularity
 - it should erase or normalize markup on both sides before comparing the
   residual text
 - it should report standard text-distance or text-similarity metrics so the
@@ -153,69 +143,76 @@ following a suggestion from David.
 
 :::proof "future_harness_plan"
 The point of this tool is not to certify that a port is mathematically correct.
-Its role is narrower and harness-oriented: after stripping Verso and TeX
-markup, compare the remaining text with ordinary distance measures such as edit
-distance or similar normalized scores, and use that report as one input to LT
-audits.
+Its role is narrower and harness-oriented: once each translated block has a
+local `tex` witness, strip Verso and TeX markup, compare the remaining text
+with ordinary distance measures such as edit distance or similar normalized
+scores, and use that report as one input to LT audits.
 
 That would give the project a cheap regression signal for chapter ports: when a
-chapter drifts too far from the TeX source in wording or ordering, the harness
-should be able to flag it automatically for re-audit.
+translated block drifts too far from the TeX source in wording or ordering, the
+harness should be able to flag it automatically for re-audit.
 :::
 
 :::definition "chapter_audit_todo_index" (parent := "porting_status")
-The repository-level chapter audit is now tracked as source-backed local TeX
-block tasks rather than as a stale exact-match checklist. Each item points at
-the corresponding TeX snippet in `FLT/blueprint/src/chapter/*.tex` and records
-the local Verso follow-up needed for that block. That reflects the current
-state well: the harness is mostly settled, and the remaining work is LT
-auditing, rollback of interpretive drift where needed, and local source
-preservation.
+The repository-level chapter audit is now split into two layers.
 
-When the right follow-up is to keep the source visible, attach the raw excerpt
-in a labeled `tex` block next to the local note or proof instead of rewriting
-it away.
+- `PortingTodo.md` tracks source markers, missing Lean targets, `\notready`
+  items, and unfinished proof sketches drawn from the TeX source.
+- the stricter LT audit tracks whether each translated informal block has a
+  local adjacent `tex` witness block, checked with
+  `python3 scripts/check_lt_source_pairs.py`
+
+That split matters because a chapter can look locally source-backed in the
+node-oriented task board while still failing the stricter block-pair LT
+methodology.
 
 Highlights from this audit:
 
-- `Introduction` remains among the cleanest source-backed chapter blocks.
-- `Reductions`, `FrobeniusProject`, `AdeleProject`, and most miniproject
-  chapters still need focused dependency `\uses` work at the block level.
+- most direct-port chapters still need systematic source-pair insertion around
+  free prose blocks
+- the node-oriented task board and the stricter LT audit answer different
+  questions and should not be conflated
 - `GlobalLanglands` still has placeholder `\lean` entries in the TeX source, so
-  the relevant local task is to track the frontier faithfully rather than force
-  exact `lean :=` matching.
+  the relevant local task there is frontier tracking rather than forced
+  attachment completeness
 :::
 
 :::definition "chapter_audit_todo_summary" (parent := "porting_status")
 Chapter-by-chapter tracker:
 
 - `Introduction` (`ch01introduction.tex` -> `Introduction.lean`)
-  Source-backed local TeX block tasks remain current, and the chapter-level
-  Verso structure is in good shape.
+  Source-paired LT audit required.
 - `Reductions` (`ch02reductions.tex` -> `Reductions.lean`)
-  The audit work here is still organized around the local TeX blocks rather
-  than a stale exact-declaration match.
+  Source-paired LT audit required.
 - `Elliptic-Frey` (`ch03freyold.tex` -> `EllipticFrey.lean`)
-  LT pass completed.
+  Source-paired LT audit required.
 - `Hardly Ramified` (`ch03freyreduction.tex` -> `HardlyRamified.lean`)
-  LT pass completed.
+  Source-paired LT audit required.
 - `Overview` (`ch04overview.tex` -> `Overview.lean`)
-  LT pass completed.
+  Source-paired LT audit required.
 - `Automorphic Form Example` (`ch05automorphicformexample.tex` -> `AutomorphicFormExample.lean`)
-  LT pass completed.
+  Source-paired LT audit required.
 - `Modularity Lifting` (`ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`)
-  LT pass completed.
+  Source-paired LT audit required.
 - `Langlands GLn` (`ch07exampleGLn.tex` -> `LanglandsGLn.lean`)
+  Source-paired LT audit required.
 - `Global Langlands` (`global_langlands.tex` -> `GlobalLanglands.lean`)
   The remaining tasks here are still frontier-tracking tasks tied to the local
   TeX source blocks.
 - `Frobenius Project` (`FrobeniusProject.tex` -> `FrobeniusProject.lean`)
+  Source-paired LT audit required.
 - `Adele Project` (`AdeleMiniproject.tex` -> `AdeleProject.lean`)
+  Source-paired LT audit required.
 - `Haar Characters` (`HaarCharacterProject.tex` -> `HaarCharacters.lean`)
+  Source-paired LT audit required.
 - `Fujisaki Project` (`FujisakiProject.tex` -> `FujisakiProject.lean`)
+  Source-paired LT audit required.
 - `Quaternion Algebras` (`QuaternionAlgebraProject.tex` -> `QuaternionAlgebras.lean`)
+  Source-paired LT audit required.
 - `Hecke Operators` (`HeckeOperatorProject.tex` -> `HeckeOperators.lean`)
+  Source-paired LT audit required.
 - `Bestiary` (`chtopbestiary.tex` -> `Bestiary.lean`)
+  Source-paired LT audit required.
 - `MiniProjects` (harness-native)
 - `Historical Inputs` (harness-native)
 - `Porting Status` (harness-native)

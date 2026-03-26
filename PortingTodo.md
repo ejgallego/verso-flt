@@ -4,6 +4,7 @@ Generated from `FLT/blueprint/src/chapter/*.tex` by `scripts/update_porting_todo
 
 This board is driven by source markers rather than stale cross-chapter match counts.
 The harness migration is largely done: most direct-port chapters now keep the remaining open source in local `tex` blocks, and the main work left is selective chapter fidelity rather than broad infrastructure.
+This board is not an LT certification report. Strict LT now also requires every translated informal block in the Verso chapter to sit next to a labeled `tex` witness block; check that separately with `python3 scripts/check_lt_source_pairs.py`.
 It treats `\leanok` and `\mathlibok` as closed, and surfaces explicit `\notready`,
 placeholder Lean targets, and unfinished proof sketches as open work.
 When a source block is still open, keep the raw TeX nearby in a labeled `tex` block instead of rewriting it into placeholder prose.

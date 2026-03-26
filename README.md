@@ -20,9 +20,16 @@ blueprint structure should only be introduced when the TeX source already has a
 corresponding formal item or when a clearly marked editorial note is
 unavoidable.
 
-The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so
-when a chapter needs to carry raw TeX locally it should do so directly next to
-the relevant Verso node instead of being paraphrased away.
+Previous LT-pass claims are not treated as trustworthy on their own. The
+current LT methodology is stricter: every translated informal block must sit
+immediately next to a labeled `tex` block carrying the corresponding source
+excerpt. A chapter is not LT-audited until that source pairing is in place
+throughout the chapter.
+
+The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, so the
+repository now uses them as the default LT witness format rather than only for
+leftover source snippets. Do not batch one TeX block across several translated
+blocks when a finer-grained pairing is possible.
 
 When the TeX source records dependency edges with `\uses{...}`, the port should
 preserve those edges as Verso `{uses "..."}[]` references inside the relevant
@@ -34,6 +41,12 @@ than assuming any extra special directive.
 
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.
+
+For the current strict LT source-pair audit, run:
+
+```bash
+python3 scripts/check_lt_source_pairs.py
+```
 
 For the current TeX-to-Verso status snapshot inside the generated blueprint
 harness, see the `TeX To Verso Porting Status` chapter.

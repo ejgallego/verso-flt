@@ -30,6 +30,8 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+set_option maxRecDepth 20000
+
 #doc (Manual) "Fermat's Last Theorem Blueprint" =>
 
 This repository is the Verso blueprint integration layer for the FLT project.

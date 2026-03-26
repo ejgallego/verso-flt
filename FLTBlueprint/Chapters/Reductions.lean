@@ -14,15 +14,22 @@ open Informal
 #doc (Manual) "First Reductions Of The Problem" =>
 
 :::group "first_reductions"
-This chapter reduces a hypothetical counterexample to Fermat's Last Theorem to
-two incompatible statements about the `p`-torsion Galois representation of the
-Frey curve.
+First reductions of the problem.
 :::
+
+```tex "first_reductions/chapter"
+\chapter{First reductions of the problem}\label{ch_reductions}
+```
 
 # Goal
 
 The goal of this chapter is to reduce Fermat's Last Theorem to one deep theorem
 of Mazur and one deep theorem of Wiles about a Galois representation.
+
+```tex "first_reductions/goal"
+The goal of this chapter is to reduce FLT to a deep theorem of Mazur and a deep theorem of Wiles
+about a Galois representation.
+```
 
 # Overview
 
@@ -35,11 +42,20 @@ elliptic curve, and finally, using two very deep and independent theorems, one
 due to Mazur and the other due to Wiles, we show that this representation is
 both reducible and irreducible, the contradiction we seek.
 
-# Reduction To `p >= 5` And Prime
+```tex "first_reductions/overview"
+The proof of Fermat's Last Theorem is by contradiction. We assume that we have a counterexample
+$a^n+b^n=c^n$, and manipulate it until it satisfies the axioms of a ``Frey package'', a basic
+concept which we will explain below. From the
+Frey package we build a Frey curve -- an elliptic curve defined over the rationals. We then look at
+a certain representation of a Galois group coming from this elliptic curve, and finally using two
+very deep and independent theorems (one due to Mazur, the other due to Wiles) we show that this
+representation is both reducible and irreducible, the contradiction we seek.
+```
 
-:::theorem "counterexample_reduces_to_odd_prime" (parent := "first_reductions") (lean := "FermatLastTheorem.of_odd_primes")
+# Reduction To `n >= 5` And Prime
+
+:::theorem "FermatLastTheorem.of_odd_primes" (parent := "first_reductions") (lean := "FermatLastTheorem.of_odd_primes")
 Any counterexample to Fermat's Last Theorem can be reduced to one of odd prime exponent.
-This is the first exponent-normalization step in the chapter.
 :::
 
 ```tex "FermatLastTheorem.of_odd_primes"
@@ -49,7 +65,7 @@ This is the first exponent-normalization step in the chapter.
 \end{lemma}
 ```
 
-:::proof "counterexample_reduces_to_odd_prime"
+:::proof "FermatLastTheorem.of_odd_primes"
 This proof is already in mathlib, but the TeX blueprint spells it out for
 completeness.
 
@@ -82,9 +98,12 @@ says that this is impossible.
 
 Euler proved Fermat's Last Theorem for `p = 3`.
 
-:::theorem "fermat_last_theorem_three" (parent := "first_reductions") (lean := "fermatLastTheoremThree")
+```tex "fermatLastTheoremThree/introduction"
+Euler proved Fermat's Last Theorem for $p=3$;
+```
+
+:::theorem "fermatLastTheoremThree" (parent := "first_reductions") (lean := "fermatLastTheoremThree")
 Fermat's Last Theorem holds for exponent `3`.
-This removes the only odd prime exponent below `5`.
 :::
 
 ```tex "fermatLastTheoremThree"
@@ -94,7 +113,7 @@ This removes the only odd prime exponent below `5`.
 \end{lemma}
 ```
 
-:::proof "fermat_last_theorem_three"
+:::proof "fermatLastTheoremThree"
 The proof in mathlib was formalized by a team from the Lean For the Curious
 Mathematician conference held in Luminy in March `2024`.
 :::
@@ -107,9 +126,8 @@ Mathematician conference held in Luminy in March `2024`.
 \end{proof}
 ```
 
-:::theorem "counterexample_reduces_to_p_ge_5" (parent := "first_reductions") (lean := "FermatLastTheorem.of_p_ge_5")
+:::theorem "FermatLastTheorem.of_p_ge_5" (parent := "first_reductions") (lean := "FermatLastTheorem.of_p_ge_5")
 Any counterexample to Fermat's Last Theorem can be reduced to prime exponent at least `5`.
-This is the final exponent reduction before Frey packages appear.
 :::
 
 ```tex "FermatLastTheorem.of_p_ge_5"
@@ -118,10 +136,8 @@ This is the final exponent reduction before Frey packages appear.
 \end{corollary}
 ```
 
-:::proof "counterexample_reduces_to_p_ge_5"
-This is exactly the corollary deduced in the TeX source from
-{uses "counterexample_reduces_to_odd_prime"}[] and
-{uses "fermat_last_theorem_three"}[].
+:::proof "FermatLastTheorem.of_p_ge_5"
+Follows from the previous two lemmas.
 :::
 
 ```tex "FermatLastTheorem.of_p_ge_5/proof"
@@ -133,7 +149,11 @@ This is exactly the corollary deduced in the TeX source from
 
 For convenience we make the following definition.
 
-:::definition "frey_package_data" (parent := "first_reductions")
+```tex "FreyPackage/introduction"
+For convenience we make the following definition.
+```
+
+:::definition "FreyPackage" (parent := "first_reductions")
 A Frey package $`(a,b,c,p)` is three nonzero pairwise-coprime integers `a`,
 `b`, and `c`, with $`a \equiv 3 \pmod 4` and $`b \equiv 0 \pmod 2`, together
 with a prime $`p \ge 5`, such that $`a^p+b^p=c^p`.
@@ -147,7 +167,11 @@ and a prime $p\geq5$, such that $a^p+b^p=c^p$.\end{definition}
 
 Our next reduction is as follows.
 
-:::theorem "prime_counterexample_yields_frey_package" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheorem_p_ge_5")
+```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5/introduction"
+Our next reduction is as follows:
+```
+
+:::theorem "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheorem_p_ge_5")
 If Fermat's Last Theorem is false for `p` prime and $`p \ge 5`, then there
 exists a Frey package.
 :::
@@ -162,10 +186,10 @@ exists a Frey package.
 \end{lemma}
 ```
 
-:::proof "prime_counterexample_yields_frey_package"
+:::proof "FreyPackage.of_not_FermatLastTheorem_p_ge_5"
 Suppose we have a counterexample $`a^p+b^p=c^p`; we now build a Frey package
 from this data, following the arithmetic normalization recorded in
-{uses "frey_package_data"}[].
+{uses "FreyPackage"}[].
 
 If the greatest common divisor of `a`, `b`, and `c` is `d`, then
 $`a^p+b^p=c^p` implies $`(a/d)^p+(b/d)^p=(c/d)^p`. Dividing through, we may
@@ -216,6 +240,15 @@ complex roots are distinct, and consider the equation $`E : Y^2 = f(X)`. This
 defines a curve in the `(X,Y)`-plane, and more precisely its projectivization
 is an elliptic curve over $`\Q`.
 
+```tex "galois_representations_and_elliptic_curves/elliptic_curve_over_q"
+To continue, we need some of the theory of elliptic curves over $\Q$. So let $f(X)$ denote any
+monic cubic polynomial with rational coefficients and whose three complex roots are distinct,
+and let us consider the equation $E:Y^2=f(X)$, which defines a curve in the $(X,Y)$ plane.
+This curve (or strictly speaking its projectivisation) is a so-called elliptic curve
+(or an elliptic curve over $\Q$ if we want to keep track of the field where the coefficients
+of $f(X)$ lie).
+```
+
 If $`E : Y^2 = f(X)` is an elliptic curve over $`\Q`, and if `K` is any field
 of characteristic zero, then `E(K)` denotes the set of solutions to
 $`y^2=f(x)` with $`x,y \in K`, together with a point at infinity. It is an
@@ -225,18 +258,44 @@ This group law is already in mathlib. It has the further property that three
 distinct points `P`, `Q`, and `R` of `E(K)` sum to zero if and only if they are
 collinear.
 
+```tex "galois_representations_and_elliptic_curves/points_and_group_law"
+If $E:Y^2=f(X)$ is an elliptic curve over $\Q$, and if $K$ is any characteristic zero field (and
+hence a $\Q$-algebra), then we write $E(K)$ for the set of solutions to $y^2=f(x)$ with $x,y\in K$,
+together with an additional ``point at infinity'' corresponding morally to $x=y=\infty$.
+It is an extraordinary fact,
+and not at all obvious, that $E(K)$ naturally has the structure of an additive abelian group,
+with the point at infinity being the zero element (the identity). Fortunately this fact is
+already in {\tt mathlib}. This additive group structure has
+the property that three distinct points $P,Q,R\in K^2$ which are in $E(K)$ will sum to zero
+if and only if they are collinear.
+```
+
 The group structure behaves well under change of field: if `E` is an elliptic
 curve over $`\Q` and `K -> L` is a homomorphism of characteristic-zero fields,
 then the induced map `E(K) -> E(L)` is a group homomorphism. If `K -> L` is an
 isomorphism, then the induced map is an isomorphism with inverse obtained from
 the inverse field map. This gives an action of the multiplicative group
 $`\Aut(K)` of automorphisms of `K` on `E(K)`, and hence on the `n`-torsion
-subgroup `E(K)[n]`.
+subgroup `E(K)[n]`. In particular, if $`\Qbar` denotes an algebraic closure of
+$`\Q` and $`\GQ` denotes the group of field automorphisms $`\Qbar \to \Qbar`,
+then for any elliptic curve `E` over $`\Q` we obtain an action of $`\GQ` on
+`E(\Qbar)` and hence on `E(\Qbar)[n]`.
 
-In particular, if $`\Qbar` denotes an algebraic closure of $`\Q` and $`\GQ`
-denotes the group of field automorphisms $`\Qbar \to \Qbar`, then for any
-elliptic curve `E` over $`\Q` we obtain an action of $`\GQ` on `E(\Qbar)` and
-hence on `E(\Qbar)[n]`.
+```tex "galois_representations_and_elliptic_curves/change_of_field"
+The group structure behaves well under change of field: if $E$ is an elliptic curve over $\Q$
+and if $K\to L$ is a homomorphism of
+characteristic zero fields then the induced map $E(K)\to E(L)$ is a group homomorphism.
+Thus if $f:K\to L$ is an isomorphism of characteristic zero fields, the induced map $E(K)\to E(L)$
+is an isomorphism of groups, with the inverse isomorphism being the map $E(L)\to E(K)$ induced
+by $f^{-1}$. This construction thus gives us an action of the multiplicative group $\Aut(K)$
+of automorphisms of the field $K$ on the additive abelian group $E(K)$, and hence also
+on the $n$-torsion of this group for any positive integer~$n$.
+In particular, if $\Qbar$ denotes an algebraic closure of the
+rationals (for example, the algebraic numbers in $\bbC$) and if $\GQ$ denotes the group of field
+isomorphisms $\Qbar\to\Qbar$, then for any elliptic curve $E$ over $\Q$ we have an action
+of $\GQ$ on the additive abelian group $E(\Qbar)$, and hence on its $n$-torsion subgroup
+$E(\Qbar)[n]$.
+```
 
 If furthermore `n = p` is prime, then `E(\Qbar)[p]` is naturally a vector space
 over $`\Z/p\Z`, and therefore it inherits the structure of a mod `p`
@@ -244,8 +303,20 @@ representation of $`\GQ`. This is the mod `p` Galois representation attached to
 the elliptic curve `E`, and it is well-known to be `2`-dimensional. We call it
 $`\rho_{E,p}`.
 
+```tex "galois_representations_and_elliptic_curves/mod_p_representation"
+If furthermore $n=p$ is prime, then $E(\Qbar)[p]$ is naturally a vector space over the
+field $\Z/p\Z$, and thus it inherits the structure of a mod $p$ representation of $\GQ$.
+This is the \emph{mod $p$ Galois representation} attached to the elliptic curve $E$.
+It is well-known to be 2-dimensional. We call this representation $\rho_{E,p}$.
+```
+
 In the next section we apply this theory to the elliptic curve coming from a
 counterexample to Fermat's Last Theorem.
+
+```tex "galois_representations_and_elliptic_curves/next_section"
+In the next section we apply this theory to an elliptic curve coming from a counterexample to
+Fermat's Last theorem.
+```
 
 # The Frey Curve
 
@@ -254,8 +325,15 @@ pairwise-coprime integers `a`, `b`, and `c` satisfying $`a^p+b^p=c^p` and the
 congruences $`a \equiv 3 \pmod 4` and $`b \equiv 0 \pmod 2`. We have shown
 above that if Fermat's Last Theorem is false, then a Frey package exists.
 
-:::definition "frey_curve_definition" (parent := "first_reductions") (lean := "FreyPackage.freyCurve")
-{uses "frey_package_data"}[]
+```tex "FreyCurve/introduction"
+Recall that a \emph{Frey package} $(a,b,c,p)$ is simply a prime $p\geq5$ and nonzero
+pairwise-coprime integers $a,b,c$ satisfying $a^p+b^p=c^p$ and satisfying the congruences
+$a\equiv3\pmod4$ and $b\equiv0\pmod2$. We have shown above that if Fermat's Last Theorem is false,
+then a Frey package exists.
+```
+
+:::definition "FreyCurve" (parent := "first_reductions") (lean := "FreyPackage.freyCurve")
+{uses "FreyPackage"}[]
 Given a Frey package $`(a,b,c,p)`, the corresponding Frey curve is the elliptic
 curve over $`\Q` defined by the equation
 $`Y^2 = X(X-a^p)(X+b^p)`.
@@ -276,6 +354,11 @@ $`Y^2 = X(X-a^p)(X+b^p)`.
 Note that the roots of the cubic $`X(X-a^p)(X+b^p)` are distinct because `a`,
 `b`, and `c` are nonzero and $`a^p+b^p=c^p`.
 
+```tex "FreyCurve/roots_are_distinct"
+Note that the roots of the cubic $X(X-a^p)(X+b^p)$ are distinct because $a,b,c$ are nonzero and
+$a^p+b^p=c^p$.
+```
+
 Given a Frey package $`(a,b,c,p)` with corresponding Frey curve `E`, the mod
 `p` Galois representation $`\rho_{E,p}` attached to this package is the
 `2`-dimensional representation of $`\GQ` on `E(\Qbar)[p]` described above.
@@ -283,88 +366,193 @@ Frey's observation is that this representation has some very surprising
 properties. We will make this more explicit in the next chapter. Here we show
 how those properties can be used to finish the job.
 
+```tex "FreyCurve/mod_p_representation"
+Given a Frey package $(a,b,c,p)$ with corresponding Frey curve $E$, the mod $p$ Galois
+representation $\rho_{E,p}$ associated to this package is the 2-dimensional representation of
+$\GQ$ on $E(\Qbar)[p]$ described above. Frey's observation is that this mod $p$ Galois
+representation has some very surprising properties. We will make this remark more explicit
+in the next chapter. Here we shall show how these properties can be used to finish the job.
+```
+
 # Reduction To Two Big Theorems
 
 Recall that a representation of a group `G` on a vector space `W` is said to be
 irreducible if there are precisely two `G`-stable subspaces of `W`, namely `0`
 and `W`. The representation is said to be reducible otherwise.
 
+```tex "reduction_to_two_big_theorems/irreducible_definition"
+Recall that a representation of a group $G$ on a vector space $W$ is said to be \emph{irreducible}
+if there are precisely two $G$-stable subspaces of $W$, namely $0$ and $W$.
+The representation is said to be \emph{reducible} otherwise.
+```
+
 Now let $`(a,b,c,p)` be a Frey package. Consider the mod `p` representation of
 $`\GQ` coming from the `p`-torsion in the Frey curve associated to the package,
 and call this representation $`\rho`. Is $`\rho` irreducible or not?
 
-:::theorem "mazur_frey_irreducible" (parent := "first_reductions") (lean := "Mazur_Frey")
-{uses "frey_curve_definition"}[]
-The mod `p` Galois representation attached to a Frey package is irreducible.
-This is the Mazur-side half of the contradiction.
+```tex "reduction_to_two_big_theorems/question"
+Now say $(a,b,c,p)$ is a Frey package.
+Consider the mod $p$ representation of $\GQ$ coming from the $p$-torsion in the Frey
+curve $Y^2=X(x-a^p)(X+b^p)$ associated to the package. Let's call this representation $\rho$,
+and we say that $\rho$ is the mod $p$ representation associated to the Frey package $(a,b,c,p)$.
+Is it irreducible or not?
+```
+
+:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey")
+{uses "FreyCurve"}[]
+If `\rho` is the mod `p` Galois representation associated to a Frey package
+`(a,b,c,p)` then `\rho` is irreducible.
 :::
 
-:::proof "mazur_frey_irreducible"
-This is the Frey-curve irreducibility theorem attached to
-{uses "frey_curve_definition"}[] and ultimately to Mazur's torsion bound
-{uses "mazur_torsion_bound"}[].
+```tex "Mazur_Frey"
+\begin{theorem}[Mazur]
+  \label{Mazur_Frey}
+  \lean{Mazur_Frey}
+  \uses{FreyCurve}
+  \leanok
+  If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
+  $\rho$ is irreducible.
+\end{theorem}
+```
 
-The TeX source explains that this follows from Mazur's profound theorem on
-torsion in elliptic curves over $`\Q`, cited in
-{Informal.citep mazurTorsion}[], together with a little more work specific to
-the Frey curve. A pre-1990 reference for the full argument is Proposition `6`
-in Section `4.1` of {Informal.citep serreModularityConjecture}[].
-
-In the current port, the arithmetic bridge from Mazur's theorem to this
-Frey-specific irreducibility statement is isolated in
-{uses "Frey_curve_irreducible"}[].
+:::proof "Mazur_Frey"
+This follows from a profound and long result of Mazur
+{Informal.citep mazurTorsion}[] from `1977`, namely the fact that the torsion
+subgroup of an elliptic curve over `\Q` can have size at most `16`. In fact
+there is still a little more work which needs to be done to deduce the theorem
+from Mazur's result. A pre-`1990` reference for the full proof of this claim is
+Proposition `6` in Section `4.1` of
+{Informal.citep serreModularityConjecture}[].
 :::
+
+```tex "Mazur_Frey/proof"
+\begin{proof}
+  \uses{Frey_curve_irreducible}
+  \notready
+  This follows from a profound and long result of Mazur \cite{mazur-torsion} from 1977,
+  namely the fact that the torsion subgroup of an elliptic curve over $\Q$ can have size at most~16.
+  In fact there is still a little more work which needs to be done to deduce the theorem from
+  Mazur's result. A pre-1990 reference for the full proof of this claim is Proposition~6
+  in~\S4.1 of~\cite{serreconj}.
+\end{proof}
+```
 
 Note that in the first, pre-`2029` phase of the FLT project, we are not
 planning to formalize this result itself, because it was already known in the
 `1980`s. We will, however, have much more to say about the next theorem, which
 says the exact opposite.
 
-:::theorem "wiles_frey_not_irreducible" (parent := "first_reductions") (lean := "Wiles_Frey")
-{uses "frey_curve_definition"}[]
-The mod `p` Galois representation attached to a Frey package is reducible.
-This is the Wiles-side half of the contradiction.
+```tex "Wiles_Frey/introduction"
+Note that in the first (pre-2029) phase of the FLT project, we will not be working on
+a formalization of this result, as it was known in the 1980s. We will however be thinking
+a lot about the next result, which says the exact opposite.
+```
+
+:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey")
+{uses "FreyCurve"}[]
+If `\rho` is the mod `p` Galois representation associated to a Frey package
+`(a,b,c,p)` then `\rho` is reducible.
 :::
 
-:::proof "wiles_frey_not_irreducible"
-This is the Wiles-side theorem attached to {uses "frey_curve_definition"}[].
-The TeX chapter describes it as the main content of Wiles' magnum opus and
-omits the proof at this stage.
+```tex "Wiles_Frey"
+\begin{theorem}[Wiles,Taylor--Wiles, Ribet,\ldots]
+  \label{Wiles_Frey}
+  \lean{Wiles_Frey}
+  \uses{FreyCurve}
+  \leanok
+  If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
+  $\rho$ is reducible.
+\end{theorem}
+```
 
-In the current Verso port, the route to this theorem is made explicit through
-{uses "Frey_curve_hardly_ramified"}[],
-{uses "hardly_ramified_reducible"}[], and
-{uses "Wiles_Frey_again"}[].
+:::proof "Wiles_Frey"
+This is the main content of Wiles' magnum opus. We omit the argument for now,
+although later on in this project we will have a lot to say about a proof of
+this.
 :::
 
-:::theorem "no_frey_package" (parent := "first_reductions") (lean := "FreyPackage.false")
-{uses "mazur_frey_irreducible"}[]
-{uses "wiles_frey_not_irreducible"}[]
+```tex "Wiles_Frey/proof"
+\begin{proof}
+%  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
+  This is the main content of Wiles' magnum opus.
+  We omit the argument for now, although later on in this project
+  we will have a lot to say about a proof of this.
+\end{proof}
+```
+
+:::theorem "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false")
+{uses "Mazur_Frey"}[]
+{uses "Wiles_Frey"}[]
 There is no Frey package.
 :::
 
-:::proof "no_frey_package"
-This follows immediately from {uses "mazur_frey_irreducible"}[] and
-{uses "wiles_frey_not_irreducible"}[] for the representation attached to
-{uses "frey_curve_definition"}[].
+```tex "FreyPackage.false"
+\begin{corollary}
+  \label{FreyPackage.false}
+  \lean{FreyPackage.false}
+  \uses{Mazur_Frey, Wiles_Frey}
+  \leanok
+  There is no Frey package.
+\end{corollary}
+```
+
+:::proof "FreyPackage.false"
+Follows immediately from the previous two theorems.
 :::
 
-We deduce the desired contradiction.
+```tex "FreyPackage.false/proof"
+\begin{proof}\leanok Follows immediately from the previous two
+  theorems~\ref{Mazur_Frey} and~\ref{Wiles_Frey}.
+\end{proof}
+```
 
-:::theorem "fermats_last_theorem_true" (parent := "first_reductions") (lean := "Wiles_Taylor_Wiles")
+We deduce.
+
+```tex "FLT/introduction"
+We deduce
+```
+
+:::theorem "FLT" (parent := "first_reductions") (lean := "Wiles_Taylor_Wiles")
 Fermat's Last Theorem is true. In other words, there are no positive integers
 `a`, `b`, and `c` and natural numbers `n >= 3` such that $`a^n+b^n=c^n`.
 :::
 
-:::proof "fermats_last_theorem_true"
+```tex "FLT"
+\begin{corollary}
+  \label{FLT}
+  \lean{Wiles_Taylor_Wiles}
+  \leanok
+  Fermat's Last Theorem is true. In other words, there are no positive integers $a,b,c$ and
+  natural $n\geq3$ such that $a^n+b^n=c^n$.
+\end{corollary}
+```
+
+:::proof "FLT"
 Assume there is a counterexample $`a^n+b^n=c^n`. By
-{uses "counterexample_reduces_to_p_ge_5"}[], we may assume that there is also a
+{uses "FermatLastTheorem.of_p_ge_5"}[], we may assume that there is also a
 counterexample of the form $`a^p+b^p=c^p`, where $`p` is prime and $`p \ge 5`.
 Then
-{uses "prime_counterexample_yields_frey_package"}[] produces a Frey package,
-contradicting {uses "no_frey_package"}[].
+{uses "FreyPackage.of_not_FermatLastTheorem_p_ge_5"}[] produces a Frey package,
+contradicting {uses "FreyPackage.false"}[].
 :::
 
+```tex "FLT/proof"
+\begin{proof}
+  \uses{FermatLastTheorem.of_p_ge_5, FreyPackage.false, FreyPackage.of_not_FermatLastTheorem_p_ge_5}
+  \leanok
+  Assume there is a there is a counterexample $a^n+b^n=c^n$.
+  By Corollary \ref{FermatLastTheorem.of_p_ge_5} we may assume that there is also a counterexample
+  $a^p+b^p=c^p$ with $p\geq 5$ and prime.
+  Then there is a Frey package $(a,b,c,p)$ by~\ref{FreyPackage.of_not_FermatLastTheorem_p_ge_5},
+  contradicting Corollary~\ref{FreyPackage.false}.
+\end{proof}
+```
+
 Because we are, for now at least, assuming Mazur's theorem, we now turn our
-attention to a proof of the Wiles-side theorem. The next chapter starts that
-reduction.
+attention to a proof of theorem `Wiles_Frey`. We start on this proof
+in the next chapter.
+
+```tex "Wiles_Frey/next_chapter"
+Because we are (for now at least) assuming Mazur's theorem, we now need to turn our attention
+to a proof of theorem~\ref{Wiles_Frey}. We start on this proof in Chapter~\ref{ch_freyreduction}.
+```

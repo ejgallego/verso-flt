@@ -22,6 +22,10 @@ The old TeX chapter is very explicit that this is both a mathematical and a
 library-design project. Some pieces already live in mathlib, some have been
 proved in external repos, and some still need to be formalized in a way that
 fits the existing restricted-product API cleanly.
+```tex "adele_project/lt-witness-21"
+The old TeX chapter is very explicit that this is both a mathematical and a
+```
+
 
 # Status
 
@@ -38,16 +42,28 @@ This is an active miniproject.
 ```
 
 The TeX chapter is unusually explicit about project status:
+```tex "adele_project/lt-witness-40"
+The TeX chapter is unusually explicit about project status:
+```
+
 
 - defining the adeles of a number field as a `K`-algebra is treated as done, and the corresponding construction is already in mathlib
 - local compactness was formalized first in Salvatore Mercuri's external adele-ring development, but still needed clean integration with mathlib's restricted-product API
 - base change and the discrete cocompact embedding were not yet formalized and were presented as the main remaining mathematical targets
 - a further meta-goal is to upstream as much of the finished infrastructure to mathlib as possible
+```tex "adele_project/lt-witness-42"
+- defining the adeles of a number field as a `K`-algebra is treated as done, and the corresponding construction is already in mathlib
+```
+
 
 The chapter is also explicit that finite adeles and full adeles sit at slightly
 different levels of generality. The finite adele construction works naturally
 for Dedekind domains, while the full adele ring uses archimedean places and so
 is genuinely number-field-specific.
+```tex "adele_project/lt-witness-47"
+The chapter is also explicit that finite adeles and full adeles sit at slightly
+```
+
 
 # Goals
 
@@ -56,6 +72,10 @@ The TeX blueprint lists four main targets: define the adeles, prove local
 compactness, prove base change along finite field extensions, and prove that
 the number field sits discretely with compact quotient.
 :::
+```tex "adele_project/lt-witness-54"
+:::definition "adele_ring_goals" (parent := "adele_project")
+```
+
 
 :::definition "adele_mathlib_goal" (parent := "adele_project")
 The TeX chapter also lists a fifth meta-goal: get the finished adele
@@ -84,17 +104,29 @@ The chapter also stresses a useful distinction. Finite adeles are algebraic
 objects and can be defined for general Dedekind domains. Full adeles are more
 arithmetic: they add the archimedean factor and use special properties of number
 fields.
+```tex "adele_project/lt-witness-83"
+The chapter also stresses a useful distinction. Finite adeles are algebraic
+```
+
 
 The TeX chapter begins the miniproject by spelling out “cheap” definitions
 before switching back to the literature and mathlib definitions. That contrast
 is important because it explains both what one morally wants the adeles to be
 and why the harness still follows the restricted-product implementation.
+```tex "adele_project/lt-witness-88"
+The TeX chapter begins the miniproject by spelling out “cheap” definitions
+```
+
 
 :::definition "finite_adeles_for_dedekind_domains" (parent := "adele_project")
 The finite-adele construction extends beyond number fields to general Dedekind
 domains by taking the restricted product of local fraction fields with respect
 to their local integer rings.
 :::
+```tex "adele_project/lt-witness-93"
+:::definition "finite_adeles_for_dedekind_domains" (parent := "adele_project")
+```
+
 
 :::proof "finite_adeles_for_dedekind_domains"
 The TeX chapter stresses this point because it affects API design. Many of the
@@ -104,28 +136,48 @@ generality, even though the final FLT application only needs number fields.
 That is why the current chapter oscillates between number-field language and the
 more general “Dedekind domain with field of fractions” setup.
 :::
+```tex "adele_project/lt-witness-99"
+:::proof "finite_adeles_for_dedekind_domains"
+```
+
 
 :::definition "cheap_finite_adele_definition" (parent := "adele_project")
 A cheap definition of the finite adeles of a number field `K` is
 $`K \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`$, equipped with the
 `$\widehat{\mathbf{Z}}`-module topology.
 :::
+```tex "adele_project/lt-witness-108"
+:::definition "cheap_finite_adele_definition" (parent := "adele_project")
+```
+
 
 :::definition "cheap_infinite_adele_definition" (parent := "adele_project")
 A cheap definition of the infinite adeles is `K ⊗_ℚ ℝ`, equipped with its
 finite-dimensional real vector-space topology.
 :::
+```tex "adele_project/lt-witness-114"
+:::definition "cheap_infinite_adele_definition" (parent := "adele_project")
+```
+
 
 :::definition "cheap_full_adele_definition" (parent := "adele_project")
 The cheap full adele ring is the product of the finite and infinite adeles,
 with the product topology.
 :::
+```tex "adele_project/lt-witness-119"
+:::definition "cheap_full_adele_definition" (parent := "adele_project")
+```
+
 
 :::definition "restricted_product_adele_definition" (parent := "adele_project")
 The literature and mathlib instead define finite adeles as the restricted
 product of the local completions `K_v` with respect to their compact open
 integer subrings.
 :::
+```tex "adele_project/lt-witness-124"
+:::definition "restricted_product_adele_definition" (parent := "adele_project")
+```
+
 
 :::proof "restricted_product_adele_definition"
 This is the definition the chapter chooses to follow, precisely because it is
@@ -137,6 +189,10 @@ cheap tensor-product definitions and the restricted-product definitions as
 different presentations of the same intended object rather than as competing
 mathematics.
 :::
+```tex "adele_project/lt-witness-130"
+:::proof "restricted_product_adele_definition"
+```
+
 
 # Local compactness
 
@@ -144,6 +200,10 @@ mathematics.
 The adeles of a number field should form a locally compact topological ring.
 This local compactness is one of the inputs needed by {uses "local_integer_ring_compact_open"}[].
 :::
+```tex "adele_project/lt-witness-143"
+:::theorem "adele_local_compactness" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
+```
+
 
 :::theorem "local_integer_ring_compact_open" (parent := "adele_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 For a nonarchimedean completion of a number field, the local integer ring
@@ -201,6 +261,10 @@ question for the blueprint was how to refactor that proof so it fits mathlib's
 restricted-product API cleanly. It also notes the specific local input one
 needs: for number fields, unlike a general Dedekind domain, the local integer
 rings are compact because the residue fields are finite.
+```tex "adele_project/lt-witness-198"
+The TeX miniproject also records the project status here: Salvatore Mercuri had
+```
+
 
 # Base change
 
@@ -222,11 +286,19 @@ the definition (that it's an isomorphism).
 The TeX chapter is also careful about the logical shape of this statement:
 `A_L = L ⊗_K A_K` is really a construction plus an isomorphism theorem, not just
 a bare equality.
+```tex "adele_project/lt-witness-222"
+The TeX chapter is also careful about the logical shape of this statement:
+```
+
 
 It also immediately splits the problem into finite and infinite parts, because
 the adele ring itself is the product of the finite adeles and the infinite
 adeles. So the real work is to prove the two corresponding base-change
 statements separately and then reassemble them.
+```tex "adele_project/lt-witness-226"
+It also immediately splits the problem into finite and infinite parts, because
+```
+
 
 ## Base Change For Nonarchimedean Completions
 
@@ -235,31 +307,55 @@ perfectly well for Dedekind domains, so the nonarchimedean discussion is first
 carried out in that generality. One fixes a Dedekind domain `A` with field of
 fractions `K`, then a finite separable extension `L/K` with integral closure
 `B`, and works place by place.
+```tex "adele_project/lt-witness-233"
+As pointed out earlier in the TeX chapter, the finite-adelic theory works
+```
+
 
 The TeX chapter also pauses to note a mathlib convention: fields are regarded
 as Dedekind domains, so their height-one spectrum is empty. The author remarks
 that this is slightly awkward geometrically, but it is the literature-facing
 convention that the current API follows.
+```tex "adele_project/lt-witness-239"
+The TeX chapter also pauses to note a mathlib convention: fields are regarded
+```
+
 
 :::definition "finite_adele_base_change_map" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
 Before proving finite-adele base change, one first defines the natural map
 $`\mathbf{A}_{A,K}^\infty \to \mathbf{A}_{B,L}^\infty` induced by the local maps
 on completions.
 :::
+```tex "adele_project/lt-witness-244"
+:::definition "finite_adele_base_change_map" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
+```
+
 
 :::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
 Given a finite extension `L/K` and places `w | v`, there is a natural map from
 the completion `K_v` to the completion `L_w`.
 :::
+```tex "adele_project/lt-witness-250"
+:::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+```
+
 
 The TeX chapter obtains this by completing the inclusion `K → L` with respect
 to the `v`-adic and `w`-adic topologies, so the first real input is the
 relation between the two valuations.
+```tex "adele_project/lt-witness-255"
+The TeX chapter obtains this by completing the inclusion `K → L` with respect
+```
+
 
 :::theorem "local_valuation_compatibility" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
 The `v`-adic and `w`-adic valuations are related by the ramification index:
 `e · w(i(k)) = v(k)` in additive-valuation normalization.
 :::
+```tex "adele_project/lt-witness-259"
+:::theorem "local_valuation_compatibility" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
+```
+
 
 :::proof "local_valuation_compatibility"
 This valuation identity is what makes the local completion map uniformly
@@ -288,6 +384,10 @@ the `K_v`-module topology.
 This is the topological sharpening of {uses "local_completion_map"}[] and
 {uses "local_valuation_compatibility"}[].
 :::
+```tex "adele_project/lt-witness-285"
+:::theorem "local_module_topology_for_completion" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
+```
+
 
 :::proof "local_module_topology_for_completion"
 The TeX proof uses that `L_w` is finite-dimensional over `K_v`, so the module
@@ -316,11 +416,19 @@ equivalent identifies the two topologies.
 
 Because the local map `K_v → L_w` lies over `K → L`, the TeX chapter then views
 `L_w` as an `L ⊗_K K_v`-algebra before packaging all places `w | v` together.
+```tex "adele_project/lt-witness-317"
+Because the local map `K_v → L_w` lies over `K → L`, the TeX chapter then views
+```
+
 
 :::theorem "finite_primes_above_v_are_finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
 For a fixed finite place `v` of `K`, there are only finitely many places `w` of
 `L` lying above it.
 :::
+```tex "adele_project/lt-witness-320"
+:::theorem "finite_primes_above_v_are_finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
+```
+
 
 :::proof "finite_primes_above_v_are_finite"
 This is a standard Dedekind-domain fact, but the TeX chapter singles it out
@@ -344,6 +452,10 @@ the map `w ↦ v`.
 
 The TeX chapter writes `w | v` for this finite set of places above `v`, and
 then takes the product of the local completion maps over all such `w`.
+```tex "adele_project/lt-witness-345"
+The TeX chapter writes `w | v` for this finite set of places above `v`, and
+```
+
 
 :::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
 For a fixed finite place `v` of `K`, the algebra
@@ -352,6 +464,10 @@ $`\prod_{w \mid v} L_w`.
 This is the local theorem behind {uses "local_completion_map"}[] and
 {uses "finite_primes_above_v_are_finite"}[].
 :::
+```tex "adele_project/lt-witness-348"
+:::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
+```
+
 
 :::proof "nonarchimedean_base_change_local_decomposition"
 This is one of the key structural theorems in the TeX chapter. The local
@@ -390,6 +506,10 @@ algebraic decomposition.
 It packages {uses "local_module_topology_for_completion"}[] over the finite set
 of places above `v`.
 :::
+```tex "adele_project/lt-witness-385"
+:::theorem "product_local_completion_module_topology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology")
+```
+
 
 :::proof "product_local_completion_module_topology"
 This is a finite product of `K_v`-modules, each of which has the `K_v`-module
@@ -415,6 +535,10 @@ is also a homeomorphism.
 This is the topological sharpening of
 {uses "nonarchimedean_base_change_local_decomposition"}[] and {uses "product_local_completion_module_topology"}[].
 :::
+```tex "adele_project/lt-witness-410"
+:::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv")
+```
+
 
 :::proof "nonarchimedean_base_change_local_homeomorphism"
 The TeX proof is short once the right topology has been identified on both
@@ -422,6 +546,10 @@ sides: it is a `K_v`-linear algebra isomorphism between modules that both carry
 their `K_v`-module topology, and linear maps are automatically continuous for
 those topologies.
 :::
+```tex "adele_project/lt-witness-419"
+:::proof "nonarchimedean_base_change_local_homeomorphism"
+```
+
 
 :::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
 The same local decomposition identifies the integral subring
@@ -430,6 +558,10 @@ $`\prod_{w \mid v} B_w`.
 This is the integral refinement of
 {uses "nonarchimedean_base_change_local_decomposition"}[].
 :::
+```tex "adele_project/lt-witness-426"
+:::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
+```
+
 
 :::proof "nonarchimedean_integral_decomposition"
 The TeX chapter treats this as the crucial integral refinement of the previous
@@ -443,27 +575,47 @@ completions, use Chinese remainder input to get the corresponding statement for
 `B`, and finally show that this closure is exactly the image of
 `B \otimes_A A_v`.
 :::
+```tex "adele_project/lt-witness-434"
+:::proof "nonarchimedean_integral_decomposition"
+```
+
 
 A summary of the local picture at this stage, exactly as in the TeX chapter:
 for each finite place `v`, the map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`
 is both an algebraic and a topological isomorphism, and it matches the natural
 integral subrings `B \otimes_A A_v` and `\prod_{w \mid v} B_w`.
+```tex "adele_project/lt-witness-447"
+A summary of the local picture at this stage, exactly as in the TeX chapter:
+```
+
 
 The finite adele ring is then the restricted product of the `K_v` with respect
 to the `A_v`, with a topology in which `\prod_v A_v` is open rather than merely
 closed in the full product. This is exactly why the next step is not just to
 tensor everything naively, but to show carefully that restricted products
 commute with the local finite-product decompositions.
+```tex "adele_project/lt-witness-453"
+The finite adele ring is then the restricted product of the `K_v` with respect
+```
+
 
 The TeX chapter now introduces an auxiliary restricted product `R`, namely the
 restricted product of the `B \otimes_A K_v` with respect to the
 `B \otimes_A A_v`. The strategy is:
+```tex "adele_project/lt-witness-459"
+The TeX chapter now introduces an auxiliary restricted product `R`, namely the
+```
+
 
 - first compare `B \otimes_A \mathbf{A}_K^\infty` with this auxiliary ring `R`
 - then identify `R` with `\mathbf{A}_L^\infty` by relabelling places
 - finally pass from the integral tensor product to the field-level tensor
   product `L \otimes_K \mathbf{A}_K^\infty`
+```tex "adele_project/lt-witness-463"
+- first compare `B \otimes_A \mathbf{A}_K^\infty` with this auxiliary ring `R`
+```
+
 
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 The finite adele ring of `L` is algebraically isomorphic to
@@ -472,6 +624,10 @@ This is the finite-part algebraic precursor to {uses "adele_base_change"}[].
 The proof runs through {uses "finite_adele_base_change_integral"}[] and
 {uses "tensor_product_module_base_change"}[].
 :::
+```tex "adele_project/lt-witness-468"
+:::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
+```
+
 
 :::proof "finite_adele_base_change_algebraic"
 The TeX argument is a “put the local pieces together” theorem. One combines
@@ -480,11 +636,19 @@ The TeX argument is a “put the local pieces together” theorem. One combines
 restricted products along the finite-fibre map on places. The result is an
 algebraic identification of the finite adeles after base change.
 :::
+```tex "adele_project/lt-witness-476"
+:::proof "finite_adele_base_change_algebraic"
+```
+
 
 :::theorem "tensor_product_module_base_change" (parent := "adele_project")
 If `M` is a `K`-module, then the canonical map
 $`B \otimes_A M \to L \otimes_K M` is an isomorphism.
 :::
+```tex "adele_project/lt-witness-484"
+:::theorem "tensor_product_module_base_change" (parent := "adele_project")
+```
+
 
 :::proof "tensor_product_module_base_change"
 The TeX chapter inserts this algebraic lemma into the nonarchimedean base-change
@@ -496,12 +660,20 @@ Its proof in the TeX chapter factors the map through the basic algebraic
 identification `B \otimes_A K \cong L`, and then tensors that identification
 with the module `M`.
 :::
+```tex "adele_project/lt-witness-489"
+:::proof "tensor_product_module_base_change"
+```
+
 
 The TeX chapter also inserts a finite-presentation detour at this point. The
 reason is that one wants tensor products to commute with products in exactly the
 range needed to compare the integral tensor product with the auxiliary
 restricted product `R`, and finite presentation is the hypothesis that makes
 that statement work cleanly.
+```tex "adele_project/lt-witness-500"
+The TeX chapter also inserts a finite-presentation detour at this point. The
+```
+
 
 :::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
 If `M` is a finitely presented module over a commutative ring `R`, then
@@ -509,6 +681,10 @@ tensoring with `M` commutes with arbitrary products.
 This is one of the algebraic inputs behind the auxiliary restricted-product
 comparison in the TeX proof of finite-adele base change.
 :::
+```tex "adele_project/lt-witness-506"
+:::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
+```
+
 
 :::proof "tensor_product_commutes_with_products_for_finite_presentation"
 The TeX chapter first records that the integral closure `B` is finitely
@@ -517,18 +693,30 @@ presented modules commute with products under tensor product. In the finite free
 case this is straightforward; the general case is obtained by presenting `M`
 as a cokernel of a map between finite free modules.
 :::
+```tex "adele_project/lt-witness-513"
+:::proof "tensor_product_commutes_with_products_for_finite_presentation"
+```
+
 
 :::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
 If an index map has finite fibres and each factor over the target is identified
 with the product of the corresponding fibres over the source, then the two
 restricted products are naturally in bijection.
 :::
+```tex "adele_project/lt-witness-521"
+:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
+```
+
 
 :::proof "restricted_product_relabel_isomorphism"
 The TeX chapter introduces this abstract relabelling construction because the
 finite-adele base-change proof needs to reorganize a restricted product indexed
 by places of `K` into one indexed by places of `L`.
 :::
+```tex "adele_project/lt-witness-527"
+:::proof "restricted_product_relabel_isomorphism"
+```
+
 
 :::theorem "restricted_product_relabel_homeomorphism" (parent := "adele_project")
 If the fibres are finite and the local identifications are homeomorphisms
@@ -537,6 +725,10 @@ restricted products is also a homeomorphism.
 This is the topological refinement of
 {uses "restricted_product_relabel_isomorphism"}[].
 :::
+```tex "adele_project/lt-witness-533"
+:::theorem "restricted_product_relabel_homeomorphism" (parent := "adele_project")
+```
+
 
 :::proof "restricted_product_relabel_homeomorphism"
 The TeX chapter treats this as the natural topological companion to the
@@ -544,6 +736,10 @@ relabelling bijection. The point is that once the open compact pieces and the
 local finite products match homeomorphically, the restricted-product topology is
 transported correctly across the change of index set.
 :::
+```tex "adele_project/lt-witness-541"
+:::proof "restricted_product_relabel_homeomorphism"
+```
+
 
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
 At the integral level, one gets a `B`-algebra isomorphism
@@ -551,6 +747,10 @@ $`B \otimes_A \mathbf{A}_K^\infty \cong \mathbf{A}_L^\infty`.
 This is the theorem behind {uses "restricted_product_relabel_isomorphism"}[]
 and {uses "tensor_product_commutes_with_products_for_finite_presentation"}[].
 :::
+```tex "adele_project/lt-witness-548"
+:::theorem "finite_adele_base_change_integral" (parent := "adele_project")
+```
+
 
 :::proof "finite_adele_base_change_integral"
 In the TeX chapter this is the immediate predecessor of
@@ -657,6 +857,10 @@ This is the topological companion to
 {uses "finite_adele_base_change_algebraic"}[].
 The local topological input is {uses "nonarchimedean_base_change_local_homeomorphism"}[].
 :::
+```tex "adele_project/lt-witness-653"
+:::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
+```
+
 
 :::proof "finite_adele_base_change_topological"
 The TeX chapter insists that this is a separate theorem, not a formality. The
@@ -756,6 +960,10 @@ we require.
 For any finite set of infinite places, the diagonal embedding of a number field
 into the corresponding product of completions is dense.
 :::
+```tex "adele_project/lt-witness-755"
+:::theorem "infinite_place_weak_approximation" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_weak_approximation"
 The TeX chapter uses this as the analytic input for infinite-adele base change.
@@ -763,34 +971,58 @@ The proof is a version of weak approximation: construct elements that converge
 to `1` in one archimedean place and to `0` in the others, then linearly combine
 them to approximate any chosen tuple.
 :::
+```tex "adele_project/lt-witness-760"
+:::proof "infinite_place_weak_approximation"
+```
+
 
 :::theorem "infinite_place_dimension_count" (parent := "adele_project")
 For a fixed infinite place `v` of `K`, the `K_v`-dimension of
 $`\prod_{w \mid v} L_w` matches the `K_v`-dimension of $`L \otimes_K K_v`.
 :::
+```tex "adele_project/lt-witness-767"
+:::theorem "infinite_place_dimension_count" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_dimension_count"
 The TeX chapter separates this dimension count from the actual map construction,
 because surjectivity of the infinite-place base-change map is ultimately proved
 by combining weak approximation with finite-dimensional linear algebra.
 :::
+```tex "adele_project/lt-witness-772"
+:::proof "infinite_place_dimension_count"
+```
+
 
 :::definition "infinite_place_local_base_change_map" (parent := "adele_project")
 At a fixed infinite place `v` of `K`, there is a natural map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`.
 :::
+```tex "adele_project/lt-witness-778"
+:::definition "infinite_place_local_base_change_map" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_local_base_change_map"
 The TeX chapter builds this in two stages: first a map `K_v → ∏_{w|v} L_w`,
 then the induced `L`-linear map on the tensor product. This mirrors the
 nonarchimedean completion story as closely as possible.
 :::
+```tex "adele_project/lt-witness-783"
+:::proof "infinite_place_local_base_change_map"
+```
+
 
 :::theorem "infinite_place_local_base_change_surjective" (parent := "adele_project")
 For a fixed infinite place `v` of `K`, the local infinite-place base-change map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`
 is surjective.
 :::
+```tex "adele_project/lt-witness-789"
+:::theorem "infinite_place_local_base_change_surjective" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_local_base_change_surjective"
 The TeX proof chooses a `K_v`-basis of `\prod_{w \mid v} L_w` and then uses
@@ -798,12 +1030,20 @@ The TeX proof chooses a `K_v`-basis of `\prod_{w \mid v} L_w` and then uses
 by elements of `L`. Choosing the approximations carefully makes the resulting
 matrix invertible, so the images of those elements span the target.
 :::
+```tex "adele_project/lt-witness-795"
+:::proof "infinite_place_local_base_change_surjective"
+```
+
 
 :::theorem "infinite_place_local_base_change_injective" (parent := "adele_project")
 For a fixed infinite place `v` of `K`, the local infinite-place base-change map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`
 is injective.
 :::
+```tex "adele_project/lt-witness-802"
+:::theorem "infinite_place_local_base_change_injective" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_local_base_change_injective"
 The TeX chapter observes that the map is `K_v`-linear. Once surjectivity is
@@ -811,23 +1051,39 @@ known from {uses "infinite_place_local_base_change_surjective"}[] and the
 dimensions agree by {uses "infinite_place_dimension_count"}[], injectivity
 follows immediately.
 :::
+```tex "adele_project/lt-witness-808"
+:::proof "infinite_place_local_base_change_injective"
+```
+
 
 :::theorem "infinite_place_local_module_topology" (parent := "adele_project")
 If `w \mid v` is an infinite place of `L` lying above an infinite place `v` of
 `K`, then `L_w` has the `K_v`-module topology.
 :::
+```tex "adele_project/lt-witness-815"
+:::theorem "infinite_place_local_module_topology" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_local_module_topology"
 The TeX proof is finite-dimensional linear algebra: `L_w` is a finite-dimensional
 normed `K_v`-vector space, so after choosing a basis it is linearly
 homeomorphic to a finite power of `K_v`.
 :::
+```tex "adele_project/lt-witness-820"
+:::proof "infinite_place_local_module_topology"
+```
+
 
 :::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project")
 For a fixed infinite place `v` of `K`, the local base-change map gives a
 homeomorphism
 $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`.
 :::
+```tex "adele_project/lt-witness-826"
+:::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project")
+```
+
 
 :::proof "infinite_place_local_base_change_homeomorphism"
 The TeX chapter first obtains the algebraic isomorphism from
@@ -837,6 +1093,10 @@ The TeX chapter first obtains the algebraic isomorphism from
 `K_v`-module topology, so the `K_v`-linear isomorphism is automatically a
 homeomorphism.
 :::
+```tex "adele_project/lt-witness-832"
+:::proof "infinite_place_local_base_change_homeomorphism"
+```
+
 
 :::theorem "infinite_adele_base_change" (parent := "adele_project")
 The infinite adele ring of `L` is isomorphic, both algebraically and
@@ -845,6 +1105,10 @@ This is assembled from {uses "infinite_place_weak_approximation"}[],
 {uses "infinite_place_dimension_count"}[], and
 {uses "infinite_place_local_base_change_homeomorphism"}[].
 :::
+```tex "adele_project/lt-witness-841"
+:::theorem "infinite_adele_base_change" (parent := "adele_project")
+```
+
 
 :::proof "infinite_adele_base_change"
 The TeX chapter mirrors the nonarchimedean story but with archimedean
@@ -861,6 +1125,10 @@ $`L \otimes_K K_\infty \cong L_\infty`
 carry their `K_\infty`-module topology, the final algebra isomorphism is
 automatically a homeomorphism.
 :::
+```tex "adele_project/lt-witness-849"
+:::proof "infinite_adele_base_change"
+```
+
 
 :::proof "adele_base_change"
 The TeX chapter splits the global statement into finite and infinite pieces.
@@ -873,12 +1141,20 @@ Since `\mathbf{A}_K = \mathbf{A}_K^\infty \times K_\infty` and
 pieces needed for the global algebraic and topological isomorphism
 `L \otimes_K \mathbf{A}_K \cong \mathbf{A}_L`.
 :::
+```tex "adele_project/lt-witness-865"
+:::proof "adele_base_change"
+```
+
 
 :::theorem "adele_base_change_module_topology" (parent := "adele_project")
 If `K -> L` is a finite extension of number fields, then the topology on
 `\mathbf{A}_L` is the `\mathbf{A}_K`-module topology coming from the natural
 map `\mathbf{A}_K -> \mathbf{A}_L`.
 :::
+```tex "adele_project/lt-witness-877"
+:::theorem "adele_base_change_module_topology" (parent := "adele_project")
+```
+
 
 :::proof "adele_base_change_module_topology"
 This is the short theorem the TeX chapter inserts just before the final
@@ -1149,11 +1425,19 @@ base-change machinery, the goal is to show that a number field embeds in its
 adeles as a discrete subgroup with compact quotient. The chapter presents this
 as a proposed proof, first reducing the statements to the rational case and
 then handling `\mathbf{A}_{\mathbf{Q}}` explicitly.
+```tex "adele_project/lt-witness-1147"
+The TeX chapter now changes viewpoint completely. After the local and global
+```
+
 
 :::theorem "rational_adele_zero_neighborhood" (parent := "adele_project")
 There is an open subset of the rational adeles whose intersection with `ℚ` is
 just `{0}`.
 :::
+```tex "adele_project/lt-witness-1153"
+:::theorem "rational_adele_zero_neighborhood" (parent := "adele_project")
+```
+
 
 :::proof "rational_adele_zero_neighborhood"
 The TeX chapter proves this using the explicit open set
@@ -1161,11 +1445,19 @@ The TeX chapter proves this using the explicit open set
 `p`-adic integer at every prime, hence an ordinary integer, and the archimedean
 condition then forces it to be `0`.
 :::
+```tex "adele_project/lt-witness-1158"
+:::proof "rational_adele_zero_neighborhood"
+```
+
 
 :::theorem "number_field_adele_zero_neighborhood" (parent := "adele_project")
 There is an open subset of the adeles of a number field whose intersection with
 the number field is just `{0}`.
 :::
+```tex "adele_project/lt-witness-1165"
+:::theorem "number_field_adele_zero_neighborhood" (parent := "adele_project")
+```
+
 
 :::proof "number_field_adele_zero_neighborhood"
 The TeX chapter reduces this to {uses "rational_adele_zero_neighborhood"}[] by
@@ -1176,20 +1468,36 @@ More concretely, once one identifies `\mathbf{A}_K` with a finite power of
 `\mathbf{A}_{\mathbf{Q}}` through a chosen `\mathbf{Q}`-basis of `K`, the claim
 reduces to the corresponding rational statement coordinatewise.
 :::
+```tex "adele_project/lt-witness-1170"
+:::proof "number_field_adele_zero_neighborhood"
+```
+
 
 :::theorem "number_field_adele_discrete_embedding" (parent := "adele_project")
 The additive subgroup `K` of `\mathbf{A}_K` is discrete.
 :::
+```tex "adele_project/lt-witness-1180"
+:::theorem "number_field_adele_discrete_embedding" (parent := "adele_project")
+```
+
 
 :::proof "number_field_adele_discrete_embedding"
 This is the immediate corollary of
 {uses "number_field_adele_zero_neighborhood"}[] in the TeX chapter: translate
 the zero-neighborhood by an element of `K`.
 :::
+```tex "adele_project/lt-witness-1184"
+:::proof "number_field_adele_discrete_embedding"
+```
+
 
 :::theorem "rational_adele_quotient_compact" (parent := "adele_project")
 The quotient `\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}` is compact.
 :::
+```tex "adele_project/lt-witness-1190"
+:::theorem "rational_adele_quotient_compact" (parent := "adele_project")
+```
+
 
 :::proof "rational_adele_quotient_compact"
 The TeX chapter gives an explicit compact fundamental-domain style argument
@@ -1199,6 +1507,10 @@ The point is that every rational adele can be translated into this compact set
 by first clearing the finitely many nonintegral `p`-adic coordinates with a
 rational number and then adjusting the archimedean coordinate by an integer.
 :::
+```tex "adele_project/lt-witness-1194"
+:::proof "rational_adele_quotient_compact"
+```
+
 
 :::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
 The embedding of a number field into its adeles should be discrete with compact
@@ -1207,6 +1519,10 @@ This global statement is assembled from
 {uses "number_field_adele_discrete_embedding"}[] and
 {uses "rational_adele_quotient_compact"}[].
 :::
+```tex "adele_project/lt-witness-1203"
+:::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
+```
+
 
 :::proof "adele_discrete_cocompact_embedding"
 In the TeX chapter this statement is positioned as the commutative prototype for
@@ -1220,11 +1536,19 @@ discreteness argument: after choosing a `\mathbf{Q}`-basis of `K`, the quotient
 `\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}`, so compactness descends from the
 rational case.
 :::
+```tex "adele_project/lt-witness-1211"
+:::proof "adele_discrete_cocompact_embedding"
+```
+
 
 :::theorem "commutative_compactness_prototype" (parent := "adele_project")
 The quotient $`K \backslash \mathbf{A}_K` is the commutative model for the later
 quotient compactness theorem in {uses "compact_quotient_for_division_algebra"}[].
 :::
+```tex "adele_project/lt-witness-1224"
+:::theorem "commutative_compactness_prototype" (parent := "adele_project")
+```
+
 
 :::proof "commutative_compactness_prototype"
 The TeX chapter is explicit about this motivational role. Before one studies

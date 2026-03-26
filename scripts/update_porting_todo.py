@@ -329,6 +329,11 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " source in local `tex` blocks, and the main work left is selective chapter fidelity rather"
         " than broad infrastructure."
     )
+    lines.append(
+        "This board is not an LT certification report. Strict LT now also requires every translated"
+        " informal block in the Verso chapter to sit next to a labeled `tex` witness block;"
+        " check that separately with `python3 scripts/check_lt_source_pairs.py`."
+    )
     lines.append("It treats `\\leanok` and `\\mathlibok` as closed, and surfaces explicit `\\notready`,")
     lines.append("placeholder Lean targets, and unfinished proof sketches as open work.")
     lines.append(

@@ -35,18 +35,7 @@ on this miniproject in the FLT repo. Below is a fairly
 detailed sketch of the argument used.
 ```
 
-The old LaTeX chapter explains why this was a satisfying surprise. The original
-project expectation was that Frobenius elements would need a specialized
-development for Dedekind domains or local/global fields. Instead, the eventual
-formalization followed a Bourbaki theorem pointed out by Joel Riou: once a
-finite group acts on a commutative ring and one passes to a prime ideal and its
-residue field, the Frobenius-surjectivity statement drops out in great
-generality.
-
-So the miniproject is a genuine success story of the FLT blueprint: it isolated
-an algebraic lemma, formalized it cleanly, and then upstreamed it to mathlib.
-
-```tex "Introduction and goal"
+```tex "Introduction and goal/section"
 \section{Introduction and goal}
 
 When this project started, I had thought that the existence of Frobenius elements was
@@ -66,14 +55,44 @@ general Dedekind-domain statement. The TeX chapter explains that Bourbaki's
 theorem is much broader than that: the only finiteness hypothesis is on the
 group action, not on the rings.
 
+```tex "Introduction and goal/main_paragraph"
+\section{Introduction and goal}
+
+When this project started, I had thought that the existence of Frobenius elements was
+specific to the theory of local and global fields, and a slightly more general result
+held for Dedekind domains. Then Joel Riou pointed out on the Lean Zulip
+an extremely general result from from Bourbaki's Commutative Algebra
+(Chapter V, Section 2, number 2, theorem 2, part (ii)). This beautiful
+result is surely what we want to see in mathlib. Before we state Bourbaki's
+theorem, let us set the scene.
+```
+
 The goal of the miniproject is therefore to formalize and upstream the
 surjectivity theorem for the stabilizer map. The classical Frobenius elements
 for arithmetic Galois extensions then appear as an easy corollary.
+
+```tex "Statement of the theorem/setup"
+\section{Statement of the theorem}
+
+The set-up throughout this project:
+$G$ is a finite group acting (via ring isomorphisms) on a commutative ring $B$,
+and $A$ is the subring of $G$-invariants.
+```
 
 # Statement Of The Theorem
 
 Throughout the chapter, a finite group `G` acts by ring automorphisms on a
 commutative ring `B`, and `A` denotes the subring of `G`-invariants.
+
+```tex "Statement of the theorem/decomposition_group"
+\section{Statement of the theorem}
+
+Say $Q$ is a prime ideal of $B$, whose pullback to $A$ is the prime ideal $P$.
+Note that $G$ naturally acts on the ideals of $B$. Let's define the
+\emph{decomposition group} $D_Q$ of $Q$ to be the subgroup of $G$ which
+stabilizes $Q$ (just to be clear: $g\in D_Q$ means
+$\{g\cdot q\, :\, q \in Q\}=Q$, not $\forall q\in Q, g\cdot q=q$).
+```
 
 :::definition "decomposition_group_definition" (parent := "frobenius_project")
 Given a finite group `G` acting on a commutative ring `B`, a prime ideal `Q` of
@@ -81,17 +100,44 @@ Given a finite group `G` acting on a commutative ring `B`, a prime ideal `Q` of
 group `D_Q` is the subgroup of elements `g ∈ G` such that `g · Q = Q`.
 :::
 
+```tex "Statement of the theorem/fraction_fields"
+Say $Q$ is a prime ideal of $B$, whose pullback to $A$ is the prime ideal $P$.
+Note that $G$ naturally acts on the ideals of $B$. Let's define the
+\emph{decomposition group} $D_Q$ of $Q$ to be the subgroup of $G$ which
+stabilizes $Q$ (just to be clear: $g\in D_Q$ means
+$\{g\cdot q\, :\, q \in Q\}=Q$, not $\forall q\in Q, g\cdot q=q$).
+```
+
 The TeX chapter is explicit that this is set-theoretic stabilization, not
 pointwise fixing of elements. From `Q` and `P` one forms the quotient domains
 `B/Q` and `A/P`, then their fraction fields `L` and `K`. Even if `L/K` is not
 finite or Galois, the group `Aut(L/K)` still makes sense, and that is enough
 for the argument.
 
+```tex "Statement of the theorem"
+Let $L$ be the field of fractions of the integral domain $B/Q$, and let $K$ be the
+field of fractions of the subring $A/P$. Then $L$ is naturally a $K$-algebra.
+In this generality $L/K$ may not even be finite or Galois, but we can still talk about
+$\Aut(L/K)$.
+```
+
 :::definition "stabilizer_hom_definition" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom")
 Given a finite group acting on a commutative ring, a prime of the big ring, and
 the induced residue-field extension, one gets a natural homomorphism from the
 decomposition group to the automorphism group of the residue-field extension.
 :::
+
+```tex "IsFractionRing.stabilizerHom"
+\begin{definition}
+  \label{IsFractionRing.stabilizerHom}
+  \lean{IsFractionRing.stabilizerHom}
+  Choose $g\in D_Q$. Then the action of $g$ on $B$ gives us an induced
+  $A/P$-algebra automorphism of $B/Q$ which extends to a $K$-algebra automorphism $\phi(g)$ of $L$.
+  This construction $g\mapsto \phi(g)$ defines a group homomorphism from $D_Q$
+  to $\Aut(L/K)$ (all the proofs implicit in the definition here are straightforward).
+  \mathlibok
+\end{definition}
+```
 
 :::proof "stabilizer_hom_definition"
 Choose `g ∈ D_Q`. Because `g` stabilizes `Q`, it acts on the quotient `B/Q`,
@@ -121,11 +167,6 @@ This is the abstract engine behind Frobenius elements in local and global
 Galois settings.
 :::
 
-The goal of the mini-project is to get exactly this theorem formalized and,
-ideally, into mathlib. The TeX chapter emphasizes how striking it is that one
-deduces finiteness of `Aut(L/K)` from nothing more than finiteness of the group
-`G` acting on `B`.
-
 ```tex "IsFractionRing.stabilizerHom_surjective"
 \begin{theorem}
   \label{IsFractionRing.stabilizerHom_surjective}
@@ -136,6 +177,20 @@ deduces finiteness of `Aut(L/K)` from nothing more than finiteness of the group
 \end{theorem}
 ```
 
+The goal of the mini-project is to get exactly this theorem formalized and,
+ideally, into mathlib. The TeX chapter emphasizes how striking it is that one
+deduces finiteness of `Aut(L/K)` from nothing more than finiteness of the group
+`G` acting on `B`.
+
+```tex "Examples/goal"
+The goal of this mini-project is to get this theorem formalised and ideally into mathlib.
+
+In particular, $\Aut(L/K)$ is finite
+as a corollary. What is so striking about this theorem to me is that the only finiteness hypothesis
+is on the group $G$ which acts; there are no finiteness or Noetherian
+hypotheses on the rings at all.
+```
+
 # Examples
 
 :::theorem "frobenius_elements_classical_corollary" (parent := "frobenius_project")
@@ -143,6 +198,12 @@ In the classical setting where `B` is the ring of integers of a finite Galois
 extension of number fields, the theorem above produces Frobenius elements for
 primes of `B` lying above a rational prime `p`.
 :::
+
+```tex "Examples/frobenius"
+As a trivial consequence we get Frobenius elements for finite Galois extensions in both
+the local and global field setting, as $\Aut(L/K)$ is just a Galois group of finite fields
+in these cases, so by surjectivity we can lift a Frobenius element.
+```
 
 :::proof "frobenius_elements_classical_corollary"
 In that arithmetic example, the residue-field extension is finite, so
@@ -157,16 +218,36 @@ it gives the stabilizer-to-residue-field surjection, and the user decides which
 generator of the finite field Galois group to lift.
 :::
 
+```tex "Examples/positive_characteristic"
+Even though $G$ is finite, it is possible in characteristic $p>0$ for the extension $L/K$ to be
+infinite (and mostly inseparable). The theorem implies that $\Aut(L/K)$ is always finite;
+what is actually happening is that $L/K$ is algebraic and normal, and its maximal separable
+subextension is finite of degree at most $|G|$. However, we can prove surjectivity directly
+without reference to this maximal separable subextension.
+```
+
 The TeX chapter also includes characteristic-`p` examples showing that the
 residue-field extension `L/K` need not be finite or separable in general, even
 though `Aut(L/K)` is always finite. The point of those examples is to justify
 why the proof is organized directly around the stabilizer map rather than
 through a naive finite-Galois-field picture.
 
+```tex "The extension $B/A$/setup"
+The precise set-up we'll work in is the following. We fix $G$ a finite group acting
+on $B$ a commutative ring, and we have another commutative ring $A$ such
+that $B$ is an $A$-algebra and the image of $A$ in $B$ is precisely the $G$-invariant
+elements of $B$. We don't ever need the map $A\to B$ to be injective so we don't assume this.
+```
+
 # The Extension B/A
 
 The precise setup used in the proof is that the image of `A` in `B` is exactly
 the invariant subring. The first structural theorem is that `B/A` is integral.
+
+```tex "The extension $B/A$/charpoly_intro"
+We start with a construction which is fundamental to everything,
+and which explains why we need $G$ to be finite.
+```
 
 :::definition "group_action_characteristic_polynomial" (parent := "frobenius_project")
   (lean := "MulSemiringAction.charpoly")
@@ -185,7 +266,7 @@ the finite group action is the finite product
 \end{definition}
 ```
 
-```tex "MulSemiringAction.monic_charpoly"
+```tex "MulSemiringAction.monic_charpoly/lemma"
 \begin{lemma}
   \label{MulSemiringAction.monic_charpoly}
   \lean{MulSemiringAction.monic_charpoly}
@@ -205,12 +286,30 @@ built by showing that every element of `B` satisfies such a monic polynomial
 with coefficients descending to the invariant ring. This is also the first
 place where finiteness of the acting group is genuinely essential.
 
+```tex "MulSemiringAction.monic_charpoly/comment"
+Clearly $F_b$ is a monic polynomial.
+```
+
 :::theorem "invariant_characteristic_polynomial_descends" (parent := "frobenius_project")
   (lean := "Algebra.IsInvariant.charpoly_mem_lifts")
 If the image of the base ring `A` in `B` is exactly the fixed-point ring of the
 action, then the characteristic polynomial of any `b ∈ B` descends from `B[X]`
 to a monic polynomial over `A`.
 :::
+
+```tex "Algebra.IsInvariant.charpoly_mem_lifts/restate"
+\begin{lemma}
+  \label{Algebra.IsInvariant.charpoly_mem_lifts}
+  \lean{Algebra.IsInvariant.charpoly_mem_lifts}
+  \uses{MulSemiringAction.charpoly}
+  \mathlibok
+  $F_b$ is the lift of some monic polynomial $M_b$ in $A[X]$.
+\end{lemma}
+\begin{proof}
+  \mathlibok
+  The coefficients of $F_b$ are $G$-invariant, and thus lie in the image of $A$.
+\end{proof}
+```
 
 :::proof "invariant_characteristic_polynomial_descends"
 {uses "group_action_characteristic_polynomial"}[]
@@ -239,6 +338,20 @@ Under the same invariant-ring hypothesis, the extension `B/A` is integral.
 This is the first structural theorem in the miniproject and it feeds directly
 into the later residue-field argument.
 :::
+
+```tex "Algebra.IsInvariant.isIntegral/restate"
+\begin{theorem}
+  \label{Algebra.IsInvariant.isIntegral}
+  \lean{Algebra.IsInvariant.isIntegral}
+  \mathlibok
+  $B/A$ is integral.
+\end{theorem}
+\begin{proof}
+  \uses{MulSemiringAction.monic_charpoly, Algebra.IsInvariant.charpoly_mem_lifts}
+  \mathlibok
+  Use $M_b$.
+\end{proof}
+```
 
 :::proof "invariant_extension_integral"
 This is the clean formal payoff of the characteristic-polynomial construction
@@ -271,12 +384,23 @@ This is the transitivity statement that lets one compare different primes above
 the same base prime in the classical Frobenius setting.
 :::
 
+```tex "The extension $(B/Q)/(A/P)/section"
+\section{The extension \texorpdfstring{$(B/Q)/(A/P)$}{(B/Q)/(A/P)}.}
+
+Note that $P$ and $Q$ are primes, so the quotients $A/P$ and $B/Q$ are integral domains.
+```
+
 :::proof "primes_over_same_prime_are_conjugate"
 The TeX chapter treats this orbit statement as part of the same invariant
 extension package. In the arithmetic examples, it is the formal reason that
 Frobenius elements attached to different primes above `p` are conjugate, and
 hence coincide when the ambient Galois group is abelian.
 :::
+
+```tex "The extension $(B/Q)/(A/P)/technical_intro"
+The following technical lemma constructs an element of $B$ with nice characteristic polynomial
+modulo $Q$.
+```
 
 # The Extension (B/Q)/(A/P)
 
@@ -285,10 +409,36 @@ has a controlled shape modulo `Q`, first in a bare orbit-sensitive form and
 then in a form adapted to an element already fixed by the decomposition group.
 Those technical lemmas feed the first real fixed-point proposition.
 
+```tex "The extension $(B/Q)/(A/P)/fixed_of_fixed1_aux1"
+\begin{lemma}
+  \label{fixed_of_fixed1_aux1}
+  \mathlibok
+  There exist elements $a,b \in B$, with $a \notin Q$ and $a$ in the image of $A$ such that
+  for all $g\in G$,
+  \begin{itemize}
+    \item If $g \cdot Q = Q$, then $g \cdot b \equiv a \pmod{Q}$.
+    \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
+  \end{itemize}
+\end{lemma}
+```
+
 :::theorem "fixed_residue_class_fixed_by_stabilizer" (parent := "frobenius_project")
 If an element of `B/Q` is fixed by the stabilizer subgroup `D_Q`, then it is
 already fixed by `Aut(L/K)`.
 :::
+
+```tex "fixed_of_fixed1_aux1/lemma"
+\begin{lemma}
+  \label{fixed_of_fixed1_aux1}
+  \mathlibok
+  There exist elements $a,b \in B$, with $a \notin Q$ and $a$ in the image of $A$ such that
+  for all $g\in G$,
+  \begin{itemize}
+    \item If $g \cdot Q = Q$, then $g \cdot b \equiv a \pmod{Q}$.
+    \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
+  \end{itemize}
+\end{lemma}
+```
 
 :::proof "fixed_residue_class_fixed_by_stabilizer"
 {uses "fixed_of_fixed1_aux1"}[]
@@ -301,7 +451,26 @@ Viewed through `K[X]`, the same polynomial has coefficients in `K`, so
 `b₀` itself is fixed by `Aut(L/K)`.
 :::
 
-```tex "fixed_of_fixed1_aux1"
+```tex "fixed_of_fixed1_aux1/proof"
+\begin{proof}
+  \uses{Algebra.IsInvariant.charpoly_mem_lifts}
+  The ideals $g \cdot Q \neq Q$ are not contained in $Q$.
+  Since $Q$ is a prime ideal, this implies that the intersection of all $g \cdot Q \neq Q$ is
+  still not contained in $Q$.
+  Then we can find an element $c \notin Q$ with $c \in g \cdot Q$ for all $g \cdot Q \neq Q$.
+  Let $F_c$ be the characteristic polynomial of $c$, and write $F_c(X) \equiv X^j R(X) \pmod{Q}$.
+  Let $a$ be the coefficient of $X^j$ in $F_c(X)$, and choose $R(X)$ so that $R(0) = a$.
+  Let $b = R(0) - R(c)$.
+  Note that $F_c(c) = 0$ and $c \not\equiv 0 \pmod{Q}$, so $R(c) \equiv 0 \pmod{Q}$.
+  Then $b \equiv a \pmod{Q}$, so $g \cdot b \equiv a \pmod{Q}$ whenever $g \cdot Q = Q$.
+  But if $g \cdot Q \neq Q$, then $c \equiv 0 \pmod {g \cdot Q}$.
+  Then $b \equiv 0 \pmod {g \cdot Q}$, so $g \cdot b \equiv 0 \pmod{Q}$
+  whenever $g \cdot Q \neq Q$.
+  \mathlibok
+\end{proof}
+```
+
+```tex "fixed_of_fixed1_aux1/restate"
 \begin{lemma}
   \label{fixed_of_fixed1_aux1}
   \mathlibok
@@ -379,10 +548,32 @@ Viewed through `K[X]`, the same polynomial has coefficients in `K`, so
 The final proof writes the stabilizer map as a composition
 `D_Q -> Aut(L/L^{D_Q}) -> Aut(L/K)`.
 
+```tex "The extension $L/K/section"
+\section{The extension \texorpdfstring{$L/K$}{L/K}.}
+
+Let $L^{D_Q}$ denote the fixed field of the action $D_Q$ on $L$.
+Our strategy for proving surjectivity of $D_Q \to \Aut(L/K)$ will be to write this map as the
+composition $D_Q \to \Aut(L/L^{D_Q}) \to \Aut(L/K)$.
+```
+
 :::theorem "fixed_field_galois_surjectivity" (parent := "frobenius_project")
 If a finite group `H` acts on a field `F`, then the natural map
 `H -> Aut(F/F^H)` is surjective.
 :::
+
+```tex "FixedPoints.toAlgAut_surjective/restate"
+\begin{theorem}
+  \label{FixedPoints.toAlgAut_surjective}
+  \lean{FixedPoints.toAlgAut_surjective}
+  Let $H$ be a finite group acting on a field $F$ by field automorphisms.
+  Then the map $H \to \Aut(F/F^H)$ is surjective.
+  \mathlibok
+\end{theorem}
+\begin{proof}
+  This is a general fact of Galois theory and was already in mathlib.
+  \mathlibok
+\end{proof}
+```
 
 :::proof "fixed_field_galois_surjectivity"
 The TeX chapter treats this as a standard fact from Galois theory. In the Lean
@@ -408,13 +599,33 @@ If `R/S` is an algebraic extension of integral domains, then any fraction
 `a/b` with `a, b ∈ R` can be rewritten as `c/d` with `c ∈ R` and `d ∈ S`.
 :::
 
+```tex "IsAlgebraic.exists_smul_eq_mul/lemma"
+\begin{lemma}
+  \label{IsAlgebraic.exists_smul_eq_mul}
+  \lean{IsAlgebraic.exists_smul_eq_mul}
+  \mathlibok
+  If $R/S$ is an algebraic extension of integral domains, then any fraction $a/b$ with $a,b\in R$
+  can be written as $c/d$ with $c\in R$ and $d\in S$.
+\end{lemma}
+\begin{proof}
+  If $f\in S[X]$ satisfies $f(b)=0$, then $f(0)\in S$ is a multiple of $b$.
+  If $f(0)=bx\in S$, then $a/b=(ax)/(bx)$ as desired.
+  \mathlibok
+\end{proof}
+```
+
 :::proof "algebraic_fraction_denominator_lift"
 The TeX proof uses an algebraic relation for `b` over `S`: if `f(b) = 0` for a
 polynomial `f ∈ S[X]`, then the constant term of `f` is divisible by `b`. That
 lets one clear the denominator using an element of the base domain.
 :::
 
-```tex "IsAlgebraic.exists_smul_eq_mul"
+```tex "The extension $L/K/denominator_intro"
+Now we upgrade this to elements of $L$ fixed by $D_Q$.
+The following lemma will allow us to lift the denominator from $B/Q$ to $A/P$.
+```
+
+```tex "IsAlgebraic.exists_smul_eq_mul/restate"
 \begin{lemma}
   \label{IsAlgebraic.exists_smul_eq_mul}
   \lean{IsAlgebraic.exists_smul_eq_mul}
@@ -433,6 +644,21 @@ lets one clear the denominator using an element of the base domain.
 If an element of `L` is fixed by the stabilizer subgroup `D_Q`, then it is
 fixed by `Aut(L/K)`.
 :::
+
+```tex "IsAlgebraic.exists_smul_eq_mul"
+\begin{lemma}
+  \label{IsAlgebraic.exists_smul_eq_mul}
+  \lean{IsAlgebraic.exists_smul_eq_mul}
+  \mathlibok
+  If $R/S$ is an algebraic extension of integral domains, then any fraction $a/b$ with $a,b\in R$
+  can be written as $c/d$ with $c\in R$ and $d\in S$.
+\end{lemma}
+\begin{proof}
+  If $f\in S[X]$ satisfies $f(b)=0$, then $f(0)\in S$ is a multiple of $b$.
+  If $f(0)=bx\in S$, then $a/b=(ax)/(bx)$ as desired.
+  \mathlibok
+\end{proof}
+```
 
 :::proof "fixed_fraction_field_element_fixed_by_stabilizer"
 Because `(B/Q)/(A/P)` is algebraic by

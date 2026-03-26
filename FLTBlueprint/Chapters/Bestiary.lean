@@ -9,103 +9,33 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
-#doc (Manual) "Appendix: A Collection Of Results Needed In The Proof" =>
+#doc (Manual) "Appendix: A collection of results which are needed in the proof." =>
 
 :::group "bestiary_appendix"
-The old TeX appendix is a holding area for major background results that were
-known before 1990 and will eventually migrate into more focused chapters.
+In this (temporary, unorganised) appendix we list a whole host of definitions
+and theorems which were known to humanity by the end of the 1980s and which we
+shall need. These definitions and theorems will find their way into more
+relevant sections of the blueprint once I have written more details. Note that
+some of these things are straightforward; others are probably multi-year
+research projects. The purpose of this chapter right now is simply to give the
+community (and possibly AIs) some kind of idea of the task we face. Note also
+that many of the definitions here are yet to be formalised in Lean, and this
+needs to be done before we can start talking about formalising theorems.
 :::
 
-This appendix is intentionally heterogeneous. Some items are straightforward to
-state but hard to prove. Others are not even easy to state cleanly in Lean yet
-because the necessary surrounding definitions are still missing. The role of the
-appendix is to make that frontier explicit.
+# Results from class field theory
 
-The TeX chapter is explicit that this appendix is temporary and unorganized. It
-is meant as a task map for the community rather than a polished mathematical
-text, and it repeatedly warns that several of the listed “definitions” are not
-yet formalized well enough even to begin theorem statements seriously.
-
-:::definition "appendix_role_definition" (parent := "bestiary_appendix")
-The appendix is project-management infrastructure: it is where the blueprint
-records the missing background stack before that material has been migrated into
-dedicated chapters or promoted to explicit assumptions.
-:::
-
-```tex "bestiary/chapter_opening"
-\chapter{Appendix: A collection of results which are needed in the proof.}\label{ch_bestiary}
-
-In this (temporary, unorganised) appendix we list a whole host of definitions and theorems which were known to humanity by the end of the 1980s and which we shall need. These definitions and theorems will find their way into more relevant sections of the blueprint once I have written more details. Note that some of these things are straightforward; others are probably multi-year research projects. The purpose of this chapter right now is simply to give the community (and possibly AIs) some kind of idea of the task we face. Note also that many of the \emph{definitions} here are yet to be formalised in Lean, and this needs to be done before we can start talking about formalising theorems.
-
-\section{Results from class field theory}
-
+```tex "bestiary/class_field_theory"
 We start with the local case. In fact we restrict to the $p$-adic case, but only for simplicity of exposition because it's all we'll need (and, to be frank, because I'm not 100 percent of what is true in the function field case).
-```
 
-# Class field theory
+Let $K$ be a finite extension of $\Q_p$. We write $\widehat{\Z}$ for the profinite completion of $\Z$; it is isomorphic to $\prod_p\Z_p$ where $\Z_p$ is the $p$-adic integers and the product is over all primes.
 
-The TeX appendix begins with the local case and, for simplicity, speaks only
-about finite extensions of `ℚ_p`. The point is not that the global theory is
-absent, but that local class field theory and local Galois cohomology already
-contain most of the background phenomena the FLT project eventually needs.
-
-Let `K` be such a finite extension of `ℚ_p`. The TeX appendix begins by fixing
-notation for the profinite completion `\widehat{ℤ}` because arithmetic and
-geometric Frobenius are stated there in terms of explicit maps to
-`\widehat{ℤ}`. Concretely, `\widehat{ℤ} \cong \prod_p \mathbf Z_p`.
-
-:::theorem "maximal_unramified_extension_placeholder" (parent := "bestiary_appendix")
-For a finite extension `K / ℚ_p`, the maximal unramified extension `K^un` in a
-chosen algebraic closure should be Galois over `K` with Galois group
-canonically identifiable with `\widehat{ℤ}` in two ways. One of these
-identifications sends `1` to arithmetic Frobenius, namely the endomorphism
-inducing `x \mapsto x^q` on the residue field of `K^un`, where `q` is the size
-of the residue field of `K`. The other sends `1` to geometric Frobenius, which
-is the inverse of arithmetic Frobenius.
-:::
-
-:::proof "maximal_unramified_extension_placeholder"
-The TeX appendix is explicit about the normalization issue here: there are two
-equally natural identifications, one sending `1` to arithmetic Frobenius and
-the other to geometric Frobenius. The point of recording both is not pedantry;
-later local-global statements genuinely depend on the chosen normalization.
-:::
-
-```tex "bestiary/class_field_theory/maximal_unramified_extension"
 \begin{theorem}\label{maximal_unramified_extension_of_p-adic_field}\notready The maximal unramified extension $K^{un}$ in a given algebraic closure of $K$
     is Galois over $K$ with Galois group ``canonically'' isomorphic to $\widehat{\Z}$ in two ways; one of these two isomorphisms identifies $1\in\widehat{\Z}$ with an arithmetic Frobenius (the endomorphism inducing $x\mapsto x^q$ on the residue field of $K^{un}$, where $q$ is the size of the residue field of $K$). The other identifies 1 with geometric Frobenius (defined to be the inverse of arithmetic Frobenius).
 \end{theorem}
 
 It is impossible to say which of the two canonical isomorphisms is ``the most canonical''; people working in different areas make different choices in order to locally minimise the number of minus signs in their results.
-```
 
-:::definition "local_weil_group_placeholder" (parent := "bestiary_appendix")
-The appendix records the local Weil group and local class field theory among
-the core background items still waiting for polished Lean-facing statements.
-The Weil group is the pullback of the surjection `G_K \twoheadrightarrow
-\widehat{ℤ}` from {uses "maximal_unramified_extension_placeholder"}[] along
-the continuous map `ℤ \to \widehat{ℤ}`. Equivalently, it is the topological
-group with inertia as an open normal subgroup and quotient isomorphic to the
-integers.
-:::
-
-:::theorem "local_class_field_theory_placeholder" (parent := "bestiary_appendix")
-Local class field theory is one of the major background theorems still waiting
-to be integrated into the main project narrative from this appendix. In the
-TeX source it is stated for finite extensions of `ℚ_p` as the reciprocity
-theorem giving two canonical isomorphisms of topological abelian groups
-between `K^\times` and the abelianization of the Weil group attached to
-{uses "local_weil_group_placeholder"}[].
-:::
-
-:::proof "local_class_field_theory_placeholder"
-In the TeX appendix this is stated for finite extensions of `ℚ_p`, not because
-the function-field case is irrelevant in principle, but because the FLT project
-only needs the p-adic case and even that already carries most of the relevant
-phenomena.
-:::
-
-```tex "bestiary/class_field_theory/local_class_field_theory"
 As a result, the absolute Galois group of $K$ surjects onto $\widehat{\Z}$; its kernel is said to be the \emph{inertia subgroup} of this Galois group. Now pull back this surjection along the continuous map from $\Z$ (with its discrete topology) to $\widehat{\Z}$, in the category of topological groups. We end up with a group containing the inertia group as an open normal subgroup, and with quotient isomorphic to the integers.
 
 \begin{definition}\label{local_Weil_group}\uses{maximal_unramified_extension_of_p-adic_field}\notready The topological group described above is called the \emph{Weil group} of $K$.
@@ -119,22 +49,8 @@ The following theorem is nontrivial.
 \end{proof}
 
 Note that Mar\'ia In\'es de Frutos Fern\'andez and Filippo Nuccio are working on a formalisation of the proof of this using Lubin--Tate formal groups.
-```
 
-:::theorem "local_galois_cohomology_package" (parent := "bestiary_appendix")
-The local cohomology package includes finiteness, cohomological dimension two,
-top-degree identifications, Poincaré duality, and Euler-Poincaré formulas.
-These are exactly the kinds of local-cohomological inputs that surface in the
-local conditions leading up to {uses "modularity_lifting_theorem"}[]; the old
-appendix cites Serre's *Galois Cohomology* text
-{Informal.citep serreGalCoh}[] throughout this package.
-:::
-
-```tex "bestiary/class_field_theory/local_galois_cohomology"
-Now let $M$ be an abelian group (with the discrete topology) equipped with a continuous
-action of $G_K$, the Galois group $\GK$ where we fix an algebraic closure $\Kbar$ of $K$. Note that
-if one doesn't want to choose an algebraic closure of $K$ one can instead think of $M$ as being an
-etale sheaf of abelian groups on $\Spec(K)$.
+Now let $M$ be an abelian group (with the discrete topology) equipped with a continuous action of $G_K$, the Galois group $\GK$ where we fix an algebraic closure $\Kbar$ of $K$. Note that if one doesn't want to choose an algebraic closure of $K$ one can instead think of $M$ as being an etale sheaf of abelian groups on $\Spec(K)$.
 
 Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using continuous cocycles and continuous coboundaries, or just as a colimit of usual group cohomology over the finite quotients of this absolute Galois group (or as etale cohomology, if you prefer). Here are some of the facts we will need about cohomology in this situation. A nice summary is that cohomology of a local Galois group behaves like the cohomology of a compact connected 2-manifold. All the theorems below will need extensive planning.
 
@@ -148,7 +64,7 @@ Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using co
 \end{proof}
 
 \begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
-  If $M$ is torsion then $H^i(G_K,M)=0$ for $i>2$.
+  If $M$ is torsion then $H^i(G_K,M)=0$ if $i>2$.
 \end{theorem}
 \begin{proof} This follows from Proposition~15 in~section 5.3 of~\cite{serre-galcoh}.
 \end{proof}
@@ -158,7 +74,7 @@ Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using co
     \notready
     $H^2(G_K,\mu_n)$ is ``canonically'' isomorphic to $\Z/n\Z$.
 \end{theorem}
-\begin{proof} This is also included in Lemma 2 of section 5.2 of \cite{serre-galcoh} (Serre just writes that the groups are equal; he clearly is not a Lean user. I can see no explanation in his book of this use of the equality symbol. When the statement of this ``theorem'' is formalised in Lean it may well actually be a definition, giving the map).
+\begin{proof} This is also included in Lemma 2 of section 5.2 of \cite{serre-galcoh} (Serre just writes that the groups are equal; he clearly is not a Lean user. I can see no explanation in his book of this use of the equality symbol. When the statement of this theorem is formalised in Lean it may well actually be a definition, giving the map).
 \end{proof}
 
 \begin{theorem}\notready There is a ``canonical'' isomorphism $H^2(K,\mu_\infty)=\Q/\Z$.
@@ -178,335 +94,335 @@ This is in Theorem II.5.2 in~\cite{serre-galcoh}.
 \begin{theorem} ["Euler-Poincar\'e characteristic"]\label{local_galois_coh_euler_poincare}\notready
     If $h^i(M)$ denotes the order of $H^i(G_K,M)$ then $h^0(M)-h^1(M)+h^2(M)=0$.
 \end{theorem}
+
+We now move onto the global case. If $N$ is a number field, that is, a finite extension of $\Q$, then let $\A_N^f:= N\otimes_{\Z}\widehat{\Z}$ denote the finite adeles of $N$ and let $N_\infty := N\otimes_{\Q}\R$ denote the product of the completions of $N$ at the infinite places, so $\A_N:=\A_N^f\times N_\infty$ is the ring of adeles of $N$.
+
+\begin{theorem}\label{global_class_field_theory}\uses{local_class_field_theory}\notready If $N$ is a finite extension of $\Q$ then there are two ``canonical'' isomorphisms of topological groups between the profinite abelian groups $\pi_0(\A_N^\times/N^\times)$ and $\GN^{\ab}$; one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above.
+\end{theorem}
+\begin{proof}\notready This is the main theorem of global class field theory; see for example Tate's article in~\cite{cf}.
+\end{proof}
+
+We need the following consequence:
+
+\begin{theorem}\label{Skinner_Wiles_CFT_trick}\uses{global_class_field_theory}\notready Let $S$ be a finite set of places of a number field $K$ . For each $v \in S$
+let $L_v/K_v$ be a finite Galois extension. Then there is a finite solvable Galois extension
+$L/K$ such that if $w$ is a place of $L$ dividing $v \in S$, then $L_w/K_v$ is isomorphic to $L_v/K_v$ as $K_v$-algebra. Moreover, if $K^{\avoid} /K$ is
+any finite extension then we can choose $L$ to be linearly disjoint from $K^{\avoid}$.
+\end{theorem}
+
+We also need Poitou-Tate duality; I'll refrain from writing it down for now, because we don't even have Galois cohomology in Lean yet (although we are very close to it).
 ```
 
-:::theorem "local_galois_cohomology_finiteness" (parent := "bestiary_appendix")
-For finite coefficients `M`, the local Galois cohomology groups `H^i(G_K,M)`
-are finite for all `i`.
+# Structures on the points of an affine variety.
+
+All rings and algebras in this section are commutative with a `1`, and all
+morphisms send `1` to `1`.
+
+```tex "bestiary/affine_variety_intro"
+All rings and algebras in this section are commutative with a 1, and all
+morphisms send 1 to 1.
+```
+
+Let `X = \Spec(A)` be an affine scheme of finite type over a field `K`. For
+example `X` could be an affine algebraic variety; in fact we shall only be
+interested in smooth affine varieties in the applications, but the initial
+definition and theorem are fine for all finite type schemes.
+
+```tex "bestiary/affine_variety_over_field"
+Let $X=\Spec(A)$ be an affine scheme of finite type over a field $K$. For
+example $X$ could be an affine algebraic variety; in fact we shall only be
+interested in smooth affine varieties in the applications, but the initial
+definition and theorem are fine for all finite type schemes.
+```
+
+If `R` is any `K`-algebra then one can talk about the `R`-points `X(R)` of `X`,
+which in this case naturally bijects with the `K`-algebra homomorphisms from
+`A` to `R`.
+
+```tex "bestiary/affine_variety_points"
+If $R$ is any $K$-algebra then one can talk about the $R$-points $X(R)$ of $X$,
+which in this case naturally bijects with the $K$-algebra homomorphisms from
+$A$ to $R$.
+```
+
+:::definition "topology_on_affine_variety_points" (parent := "bestiary_appendix")
+If `X` is an affine scheme of finite type over `K`, and if `R` is a `K`-algebra
+which is also a topological ring, then we define a topology on the `R`-points
+`X(R)` of `X` by embedding the `K`-algebra homomorphisms from `A` to `R` into
+the set-theoretic maps from `A` to `R` with its product topology, and giving it
+the subspace topology.
 :::
 
-:::theorem "local_galois_cohomology_dimension_two" (parent := "bestiary_appendix")
-For torsion coefficients, local Galois cohomology vanishes above degree `2`,
-so `H^i(G_K,M)=0` for `i>2`.
+```tex "bestiary/topology_on_affine_variety_points"
+\begin{definition}\label{topology_on_affine_variety_points} If $X$ is an affine
+scheme of finite type over $K$, and if $R$ is a $K$-algebra which is also a
+topological ring, then we define a topology on the $R$-points $X(R)$ of $X$ by
+embedding the $K$-algebra homomorphisms from $A$ to $R$ into the set-theoretic
+maps from $A$ to $R$ with its product topology, and giving it the subspace
+topology.
+\end{definition}
+```
+
+:::theorem "topology_on_affine_variety_computation" (parent := "bestiary_appendix")
+If `X` is as above and `X \to \mathbb{A}^n_K` is a closed immersion, then the
+induced map from `X(R)` with its topology as above to `R^n` is an embedding of
+topological spaces (that is, a homeomorphism onto its image).
+This uses {uses "topology_on_affine_variety_points"}[].
 :::
 
-:::theorem "local_galois_cohomology_top_degree" (parent := "bestiary_appendix")
-The top-degree group `H^2(G_K, \mu_n)` should be canonically identifiable with
-`\mathbf{Z}/n\mathbf{Z}`.
+```tex "bestiary/topology_on_affine_variety_computation"
+\begin{theorem}\label{topology_on_affine_variety_computation}\uses{topology_on_affine_variety_points}
+If $X$ is as above and $X\to\mathbb{A}^n_K$ is a closed immersion, then the
+induced map from $X(R)$ with its topology as above to $R^n$ is an embedding of
+topological spaces (that is, a homeomorphism onto its image).
+\end{theorem}
+```
+
+:::proof "topology_on_affine_variety_computation"
+See [Conrad's notes](https://math.stanford.edu/~conrad/papers/adelictop.pdf).
 :::
 
-:::theorem "local_galois_cohomology_poincare_duality" (parent := "bestiary_appendix")
-If `\mu = \bigcup_{n\geq 1}\mu_n` and `M' := \Hom(M,\mu)`, then for
-`0 \leq i \leq 2` the cup product pairing
-`H^i(G_K,M) \times H^{2-i}(G_K,M') \to H^2(G_K,\mu)=\Q/\Z`
-should be perfect.
+```tex "bestiary/topology_on_affine_variety_computation_proof"
+\begin{proof}
+See \href{https://math.stanford.edu/~conrad/papers/adelictop.pdf}{Conrad's
+notes}.
+\end{proof}
+```
+
+We now specialise to the smooth case. I want to make the following conjectural
+definition:
+
+```tex "bestiary/smooth_case_intro"
+We now specialise to the smooth case. I want to make the following conjectural
+``definition'':
+```
+
+:::definition "manifold_on_algebraic_variety_points" (parent := "bestiary_appendix")
+Let `K` be a field equipped with an isomorphism to the reals, complexes, or a
+finite extension of the `p`-adic numbers. Let `X` be a smooth affine algebraic
+variety over `K`. Then the points `X(K)` naturally inherit the structure of a
+manifold over `K`.
 :::
 
-:::theorem "local_galois_cohomology_euler_characteristic" (parent := "bestiary_appendix")
-If `h^i(M)` denotes the order of `H^i(G_K,M)`, then the Euler-Poincare
-characteristic formula should read `h^0(M)-h^1(M)+h^2(M)=0`.
+```tex "bestiary/manifold_on_algebraic_variety_points"
+\begin{definition}\label{manifold_on_algebraic_variety_points}\notready Let $K$
+be a field equipped with an isomorphism to the reals, complexes, or a finite
+extension of the $p$-adic numbers. Let $X$ be a smooth affine algebraic variety
+over $K$. Then the points $X(K)$ naturally inherit the structure of a manifold
+over $K$.
+\end{definition}
+```
+
+Probably this is fine for a broader class of fields `K`.
+
+```tex "bestiary/manifold_on_algebraic_variety_points_remark"
+\begin{remark}
+Probably this is fine for a broader class of fields $K$.
+\end{remark}
+```
+
+:::theorem "manifold_on_algebraic_variety_computation" (parent := "bestiary_appendix")
+If `X` is as in the previous definition and `X \to \mathbb{A}^n_K` is a closed
+immersion, then the induced map from `X(K)` with its manifold structure to
+`K^n` is an embedding of manifolds.
+This uses {uses "manifold_on_algebraic_variety_points"}[].
 :::
 
-The appendix then explicitly summarizes the package by analogy: cohomology of a
-local Galois group behaves like the cohomology of a compact connected
-2-manifold.
+```tex "bestiary/manifold_on_algebraic_variety_computation"
+\begin{theorem}\label{manifold_on_algebraic_variety_computation}\uses{manifold_on_algebraic_variety_points}\notready
+If $X$ is as in the previous definition and $X\to\mathbb{A}^n_K$ is a closed
+immersion, then the induced map from $X(K)$ with its manifold structure to
+$K^n$ is an embedding of manifolds.
+\end{theorem}
+```
 
-The TeX notes also remark, more than once, that the word “canonical” is doing a
-lot of work in these statements. In a Lean-facing treatment many of the claimed
-equalities will have to become explicitly constructed maps or chosen
-identifications rather than informal appeals to canonicality.
-
-We now move onto the global case. If `N` is a number field, that is, a finite
-extension of `\Q`, then its finite adeles are obtained by tensoring `N` with
-`\widehat{\Z}`, its archimedean factor is obtained by tensoring `N` with `\R`,
-and the full ring of adeles is the product of those two pieces.
-
-:::theorem "global_class_field_theory_placeholder" (parent := "bestiary_appendix")
-If `N` is a finite extension of `\Q`, then there are two "canonical"
-isomorphisms of topological groups between the profinite abelian groups
-`π_0(\A_N^\times/N^\times)` and `\GN^{\ab}`. One sends local uniformisers to
-arithmetic Frobenii and the other to geometric Frobenii, and each global
-isomorphism is compatible with the local isomorphisms above.
-This is the global continuation of {uses "local_class_field_theory_placeholder"}[].
+:::proof "manifold_on_algebraic_variety_computation"
+I'm assuming this is standard, if true.
 :::
 
-:::proof "global_class_field_theory_placeholder"
-This is the global backdrop for the local reciprocity package above and the
-Skinner--Wiles class-field-theory trick below. The appendix uses it to explain
-why the relevant solvable extensions can be constructed with prescribed local
-behavior.
+```tex "bestiary/manifold_on_algebraic_variety_computation_proof"
+\begin{proof}
+I'm assuming this is standard, if true.
+\end{proof}
+```
+
+:::corollary "lie_group_from_algebraic_group" (parent := "bestiary_appendix")
+If `G` is an affine algebraic group of finite type over `K=\R` or `K=\bbC`
+then `G(K)` is naturally a real or complex Lie group.
+This uses {uses "manifold_on_algebraic_variety_computation"}[].
 :::
 
-:::theorem "skinner_wiles_cft_trick_placeholder" (parent := "bestiary_appendix")
-Let `S` be a finite set of places of a number field `K`. For each `v \in S`
-let `L_v/K_v` be a finite Galois extension. Then there is a finite solvable
-Galois extension `L/K` such that if `w` is a place of `L` dividing `v \in S`,
-then `L_w/K_v` is isomorphic to `L_v/K_v` as a `K_v`-algebra. Moreover, if
-`K^{\avoid}/K` is any finite extension then we can choose `L` to be linearly
-disjoint from `K^{\avoid}`.
-This is recorded as a consequence of {uses "global_class_field_theory_placeholder"}[].
-:::
+```tex "bestiary/lie_group_from_algebraic_group"
+\begin{corollary}\label{lie_group_from_algebraic_group}\uses{manifold_on_algebraic_variety_computation}\notready
+If $G$ is an affine algebraic group of finite type over $K=\R$ or $K=\bbC$
+then $G(K)$ is naturally a real or complex Lie group.
+\end{corollary}
+```
 
-:::proof "skinner_wiles_cft_trick_placeholder"
-This is the background theorem later referenced in the modularity lifting story
-as the class-field-theory part of the Skinner--Wiles trick.
-:::
+The corollary, for sure, is true! And it's all we need. I have not yet made
+any serious effort to find a reference for the definition or independence,
+although there seem to be some ideas [here](https://leanprover.zulipchat.com/#narrow/stream/116395-maths/topic/top.20space.20.2F.20manifold.20structure.20on.20points.20of.20alg.20varieties/near/431812525).
+As a toy example, one can embed `\GL_n(\R)` into either `\R^{n^2+1}` via
+`M \mapsto (M,\det(M)^{-1})` or into `\R^{2n^2}` via `M \mapsto (M,M^{-1})`
+and the claim is that the two induced manifold structures are the same.
 
-:::theorem "poitou_tate_duality_placeholder" (parent := "bestiary_appendix")
-The project will also eventually need Poitou--Tate duality, but the appendix
-records it only at the level of dependencies because even the surrounding
-Galois-cohomology language is still being assembled. It depends on the local
-Galois-cohomology package summarized by {uses "local_galois_cohomology_package"}[].
-:::
+```tex "bestiary/lie_group_from_algebraic_group_remark"
+\begin{remark}
 
-# Structures on the points of an affine variety
+The corollary, for sure, is true! And it's all we need. I have not yet made any
+serious effort to find a reference for the definition or independence, although
+there seem to be some ideas \href{https://leanprover.zulipchat.com/#narrow/stream/116395-maths/topic/top.20space.20.2F.20manifold.20structure.20on.20points.20of.20alg.20varieties/near/431812525}{here}. As a toy example, one can embed $\GL_n(\R)$ into either $\R^{n^2+1}$ via
+$M\mapsto (M,\det(M)^{-1})$ or into $\R^{2n^2}$ via $M\mapsto (M,M^{-1})$ and
+the claim is that the two induced manifold structures are the same.
+\end{remark}
+```
 
-The TeX appendix now switches from class field theory to a different kind of
-background problem: how to put topological and manifold structures on points of
-algebraic varieties.
+# Algebraic groups.
 
-:::definition "topology_on_affine_variety_points_placeholder" (parent := "bestiary_appendix")
-If `X = Spec(A)` is affine of finite type over a field `K` and `R` is a
-topological `K`-algebra, then the `R`-points of `X` should inherit the subspace
-topology coming from the product topology on maps `A → R`.
-:::
+The concept of an affine algebraic group over a field `K` can be implemented in
+Lean as a commutative Hopf algebra over `K`, as a group object in the category
+of affine schemes over `K`, as a representable group functor on the category of
+affine schemes over `K`, or as a representable group functor on the category of
+schemes over `K` which is represented by an affine scheme. All of these are the
+same to mathematicians but different to Lean and some thought should go into
+which of these should be the actual definition, and which should be proved to
+be the same thing as the definition.
 
-:::theorem "affine_variety_point_topology_computation" (parent := "bestiary_appendix")
-When an affine variety is embedded as a closed subscheme of affine space, the
-point-set topology described above should agree with the induced subspace
-topology from the ambient finite-dimensional `R`-space.
-This is the first check on {uses "topology_on_affine_variety_points_placeholder"}[].
-:::
+```tex "bestiary/algebraic_group_definition_paragraph"
+The concept of an affine algebraic group over a field $K$ can be implemented in
+Lean as a commutative Hopf algebra over $K$, as a group object in the category
+of affine schemes over $K$, as a representable group functor on the category of
+affine schemes over $K$, or as a representable group functor on the category of
+schemes over $K$ which is represented by an affine scheme. All of these are the
+same to mathematicians but different to Lean and some thought should go into
+which of these should be the actual definition, and which should be proved to
+be the same thing as the definition.
+```
 
-:::proof "affine_variety_point_topology_computation"
-The appendix treats this as the key sanity check on the abstract definition of
-the topology on `X(R)`: once an affine scheme is concretely embedded in affine
-space, the formal topology should recover the one a working mathematician would
-write down by hand.
-:::
-
-:::definition "manifold_on_affine_variety_points_placeholder" (parent := "bestiary_appendix")
-For smooth affine varieties over `ℝ`, `ℂ`, or finite extensions of `ℚ_p`, the
-point set should carry a natural manifold structure. This is meant to build on
-the topology supplied by {uses "topology_on_affine_variety_points_placeholder"}[].
-:::
-
-:::theorem "lie_group_from_algebraic_group_placeholder" (parent := "bestiary_appendix")
-For affine algebraic groups over `ℝ` or `ℂ`, the real or complex points should
-form Lie groups. This is the concrete corollary of
-{uses "manifold_on_affine_variety_points_placeholder"}[].
-:::
-
-:::proof "lie_group_from_algebraic_group_placeholder"
-The TeX appendix treats this as the concrete corollary of the manifold
-construction on algebraic-variety points.
-:::
-
-:::proof "manifold_on_affine_variety_points_placeholder"
-The appendix presents this as the conjectural bridge from algebraic geometry to
-the analytic spaces on which automorphic forms live.
-:::
-
-The TeX appendix adds that the smooth case is the only one relevant in
-applications, and even then the right generality for the manifold statement is
-not yet settled.
-
-# Algebraic groups and automorphic forms
-
-Here the appendix becomes very candid: even stating the definitions correctly in
-Lean is expected to be a substantial project, and some of the draft
-generalizations may still contain imprecision.
-
-The TeX source is also frank that, for the actual FLT project, one only needs
-these definitions in much narrower settings: abelian algebraic groups and inner
-forms of `GL₂` over totally real fields. The appendix works in greater
-generality only to keep the long-term target visible.
-
-:::definition "connected_reductive_group_placeholder" (parent := "bestiary_appendix")
+:::definition "connected_reductive_group" (parent := "bestiary_appendix")
 An affine algebraic group `G` of finite type over a field `k` is said to be
-`connected` if it is connected as a scheme, and `reductive` if `G_{\overline{k}}`
+connected if it is connected as a scheme, and reductive if `G_{\overline{k}}`
 has no nontrivial smooth connected unipotent normal `k`-subgroup.
 :::
 
-:::proof "connected_reductive_group_placeholder"
-The point of the appendix is triage rather than completion: it marks the
-high-level objects that the project will eventually need to state precisely.
-They are later specialized in the modularity-lifting chapter and in
-{uses "automorphic_form_for_gln"}[].
-:::
+```tex "bestiary/connected_reductive_group"
+\begin{definition}\label{connected_reductive_group}\notready An affine algebraic
+group~$G$ of finite type over a field~$k$ is said to be \emph{connected} if it
+is connected as a scheme, and \emph{reductive} if $G_{\overline{k}}$ has no
+nontrivial smooth connected unipotent normal $k$-subgroup.
+\end{definition}
+```
 
-:::definition "automorphic_form_placeholder" (parent := "bestiary_appendix")
-An automorphic form is a function `\phi : G(\A_N) \to \bbC` satisfying the
-following conditions:
+# Automorphic forms and representations
 
-- `\phi` is locally constant on `G(\A_N^f)` and `C^\infty` on `G(N_\infty)`;
-  equivalently, for every `g_\infty`, `\phi(-, g_\infty)` is locally constant,
-  and for every `g_f`, `\phi(g_f, -)` is smooth.
-- `\phi` is left-invariant under `G(N)`.
-- `\phi` is right-`U_\infty`-finite, meaning the space spanned by the
-  translates `x \mapsto \phi(xu)` as `u` varies over `U_\infty` is finite-dimensional.
-- `\phi` is right-`K_f`-finite, where `K_f` is one, or equivalently any,
-  compact open subgroup of `G(\A_N^f)`.
-- `\phi` is `\mathcal z`-finite, where `\mathcal z` is the center of the
-  universal enveloping algebra of the Lie algebra of `G(N_\infty)`.
-- For every `g_f`, the function `g_\infty \mapsto \phi(g_f g_\infty)` is
-  slowly increasing.
+```tex "bestiary/automorphic_and_later"
+\section{Automorphic forms and representations}
 
-The chapter is treating this as the package assembled from
-{uses "connected_reductive_group_placeholder"}[],
-{uses "lie_group_from_algebraic_group_placeholder"}[],
-{uses "slowly_increasing_well_defined_placeholder"}[], and
-{uses "affine_variety_point_topology_computation"}[].
-:::
+This section needs a lot of work; I am just attempting to write down some approximation to the well-known definitions but in great generality (far greater than we need). Some definitions below are short on details; indeed there may even be errors or imprecisions right now (because we are working in more generality than I am used to). It will be a very interesting project to get these details down. One reference (which leaves a lot of exercises) is Borel-Casselman in \cite{corvallis1}. Even stating these definitions will be a big challenge in Lean; indeed one of the motivations of the project is that it forces us to write down all the below properly.
 
-:::definition "slowly_increasing_placeholder" (parent := "bestiary_appendix")
-The appendix also isolates the slowly-increasing growth condition used in the
-general definition of an automorphic form. A function `f : G(N_\infty) \to \bbC`
-is slowly increasing if there exists a norm `||-||_\rho` coming from a fixed
-finite-dimensional representation `\rho` with finite kernel and a
-`U_\infty`-invariant Hermitian form, together with constants `C > 0` and
-`n \geq 1`, such that `|f(x)| \leq C ||x||_\rho^n` for all `x`.
-This is the same growth condition formalized in the `GL_n/ℚ` development as
-{uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[].
-:::
+Let $G$ be a connected reductive group over a number field $N$.  We note
+that $G(\A_N^f)$ is a (locally profinite) topological space and $G(N_\infty)$ is a real Lie group;
+their product is $G(\A_N)$. If $g\in G(\A_N)$, write $g_f\in G(\A_N^f)$ for the finite part and $g_\infty\in G(N_\infty)$ for its infinite part.
 
-:::theorem "slowly_increasing_well_defined_placeholder" (parent := "bestiary_appendix")
-The slowly-increasing condition should be independent of the auxiliary choice
-of finite-dimensional representation used to define the norm at infinity.
-Equivalently, if `\rho` and `\rho'` are two such choices, then the resulting
-norms are comparable up to a power. This depends on
-{uses "slowly_increasing_placeholder"}[].
-:::
+For some reason, in the literature people seem to fix a choice of maximal compact subgroup $U_\infty$ of $G(N_\infty)$. I believe that all such subgroups are conjugate, and probably this gives some route between the different definitions coming from the different choices.
 
-:::definition "cuspidal_automorphic_representation_placeholder" (parent := "bestiary_appendix")
-The eventual automorphic-representation theory is meant to include cusp forms,
-their decomposition into irreducible pieces, and the local tensor-product
-decomposition of admissible representations. This sits on top of
-{uses "automorphic_form_actions_placeholder"}[] and
-{uses "automorphic_representation_local_decomposition_placeholder"}[].
-:::
+Example: if $G=\GL_2$ and $N=\Q$ then $N_\infty=\R$ and $G(N_\infty)$ is just $\GL_2(\R)$ with its usual Lie group structure and we can take $U_\infty$ to be $O_2(\R)$; $G(\A_N^f)$ is the restricted product of $\GL_2(\Q_p)$ over $\GL_2(\Z_p)$, for all primes $p$.
 
-:::definition "automorphic_form_actions_placeholder" (parent := "bestiary_appendix")
-The spaces of automorphic forms and cusp forms should carry the natural
-`(G(\A_N^f)\times U_\infty,\mathfrak g)`-module structures coming from right
-translation and differential operators. The Lie algebra `\mathfrak g` of
-`G(N_\infty)` acts by differential operators, and the differential of the
-`U_\infty`-action agrees with the action of its Lie algebra viewed inside
-`\mathfrak g`. This depends on
-{uses "automorphic_form_placeholder"}[].
-:::
+By assumption, $G(N_\infty)$ admits a finite-dimensional (algebraic) representation $\rho$ with finite kernel. Consider $\rho$ as taking values in $GL_N(\bbC)=\Aut_{\bbC}(V)$. Fix a hermitian sesquilinear form on $V$ which is $U_\infty$ invariant, and now define a norm $||g||_\rho$ on $G(N_\infty)$ by $$||g||_\rho=(\tr \rho(g)^*\rho(g))^{1/2},$$ where the asterisk denotes adjoint with respect to the sesquilinear form. According to the article by Borel--Jacquet in \cite{corvallis1} (p189), if $\rho'$ is another such choice then there exists a positive real $C$ and a positive integer $n$ such that $||g||_{\rho'}\leq C||g||_\rho^n$ for all $g\in G(N_\infty)$.
 
-:::theorem "automorphic_representation_local_decomposition_placeholder" (parent := "bestiary_appendix")
-An admissible automorphic representation should decompose as a restricted tensor
-product of local representations, unramified at almost all finite places. This
-is the representation-theoretic consequence of
-{uses "automorphic_form_actions_placeholder"}[].
-:::
+\begin{definition}\label{slowly_increasing}\notready A function $f : G(N_\infty)\to\bbC$ is \emph{slowly-increasing} if there exists some $C>0$
+    and $n\geq1$ such that $|f(x)\leq C||x||_\rho^n$.
+\end{definition}
 
-:::proof "automorphic_representation_local_decomposition_placeholder"
-This is the global representation-theoretic package behind later chapters such
-as {uses "automorphic_form_for_gln"}[]. The TeX appendix cites Flath's theorem
-for this decomposition and uses it to explain why restricted products appear so
-inevitably in automorphic representation theory.
-:::
+\begin{theorem}\label{slowly_increasing_well_defined}\uses{slowly_increasing}\notready This is independent of the choice of $\rho$ as above.
+\end{theorem}
+\begin{proof} Follows from the above.
+\end{proof}
 
-# Galois representations
+We can now give the definition of an automorphic form. For FLT we only need the definition for $G$ being either an abelian algebraic group, or an inner form of $GL(2)$, but we have chosen to work in full generality here.
 
-At this point the TeX appendix records that the compatible-family definition was
-already formalized modulo Frobenius elements. The surrounding Galois-side
-theorem remains a much more distant target.
+\begin{definition}\label{automorphic_form}\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}\notready An \emph{automorphic form} is a function $\phi:G(\A_N)\to\bbC$ satisfying the following conditions:
+    \begin{itemize}
+        \item $\phi$ is locally constant on $G(\A_N^f)$ and $C^\infty$ on $G(N_\infty)$. In other words, for every $g_\infty$, $\phi(-,g_\infty)$ is locally constant, and for every $g_f$, $\phi(g_f,-)$ is smooth.
+        \item $\phi$ is left-invariant under $G(N)$;
+        \item $\phi$ is right-$U_\infty$-finite (that is, the space spanned by $x\mapsto \phi(xu)$ as $u$ varies over $U_\infty$ is finite-dimensional);
+        \item $\phi$ is right $K_f$-finite, where $K_f$ is one (or equivalently all) compact open subgroups of $G(\A_N^f)$;
+        \item $\phi$ is $\mathcal{z}$-finite, where $\mathcal{z}$ is the centre of the universal enveloping algebra of the Lie algebra of $G(N_\infty)$, acting via differential operators. Equivalently $\phi$ is annihiliated by a finite index ideal of this centre, so morally $\phi$ satisfies lots of differential equations of a certain type;
+        \item For all $g_f$, the function $g_\infty\mapsto \phi(g_f g\infty)$ is slowly-increasing.
+    \end{itemize}
+\end{definition}
 
-The appendix specifically credits Ivan Farabella for the compatible-family
-definition and Jou Glasheen for the Frobenius existence input that makes such a
-definition usable.
+Automorphic forms form a typically infinite-dimensional vector space.
 
-:::definition "compatible_family_placeholder" (parent := "bestiary_appendix") (lean := "GaloisRepFamily.isCompatible")
-The appendix records the notion of a compatible family of Galois
-representations: a common coefficient field, a finite bad set, a monic degree
-`d` polynomial `F_\mathfrak p(X) \in E[X]` for each finite place
-`{\mathfrak p} \notin S`, and for each prime `\ell` and embedding
-`E \to \Qlbar` a continuous representation
-`G_K \to \GL_d(\Qlbar)` unramified outside `S` and the primes above `\ell`,
-with Frobenius characteristic polynomials matching the prescribed
-`F_\mathfrak p(X)` away from `\ell`. In Lean this is tracked by
-{uses "GaloisRepFamily.isCompatible"}[] and the surrounding family structure
-`GaloisRepFamily`.
-:::
+\begin{definition}\label{cuspidal_automorphic_form}\uses{automorphic_form}\notready An automorphic form is \emph{cuspidal} (or ``a cusp form'') if it furthermore satisfies $\int_{U(N)\backslash U(\A_N)}\phi(ux)du=0$, where $P$ runs through all the proper parabolic subgroups of $G$ defined over $N$ and $U$ is the unipotent radical of $P$, and the integral is with respect to the measure coming from Haar measure.
+\end{definition}
 
-:::theorem "automorphic_to_galois_representation_placeholder" (parent := "bestiary_appendix")
-One of the major missing theorem statements is the construction of compatible
-Galois representations from automorphic representations of an inner form of
-`GL_2` over a totally real field, with reflex field `E`. The TeX source states
-this for automorphic representations that are weight `2` discrete series at
-every infinite place, with the bad set `S` given by the ramified places and
-the Frobenius polynomial at `\mathfrak p` given by the monic polynomial with
-roots the two Satake parameters. This depends on
-{uses "compatible_family_placeholder"}[],
-{uses "automorphic_representation_local_decomposition_placeholder"}[], and
-{uses "shimura_varieties_placeholder"}[].
-:::
+The cuspidal automorphic forms form a complex subspace of the space of automorphic forms.
 
-:::proof "automorphic_to_galois_representation_placeholder"
-The appendix is very clear that this is far beyond the current Lean frontier.
-But it is also one of the decisive theorems for the FLT strategy, because it is
-the place where automorphic information is converted back into compatible
-families of Galois representations.
-:::
+\begin{definition}\label{automorphic_form_actions}\uses{automorphic_form}\notready The group $G(\A_N)$ acts on itself on the right, and this induces a left action of its subgroup $G(\A_N^f)\times U_\infty$ on the spaces of automorphic forms and cusp forms. The Lie algebra $\mathfrak{g}$ of $G(N_\infty)$ also acts, via differential operators. Furthermore the actions of $\mathfrak{g}$ and $U_\infty$ are compatible in the sense that the differential of the $U_\infty$ action is the action of its Lie algebra considered as a subalgebra of $\mathfrak{g}$. We say that the spaces are $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
+\end{definition}
 
-# Algebraic geometry
+\begin{theorem}\label{cuspidal_automorphic_form_decomposition}\uses{cuspidal_automorphic_form, automorphic_form_actions} The cusp forms decompose as a (typically infinite) direct sum of irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
+\end{theorem}
+\begin{definition}\label{cuspidal_automorphic_representation}\uses{cuspidal_automorphic_form_decomposition}\notready A cuspidal automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible summand of the space of cusp forms.
+\end{definition}
 
-The appendix becomes sharply concrete again here. It points out that the proof
-of Mazur's torsion theorem starts with algebraic-geometry language that Lean was
-still far from handling, and uses that as a benchmark for how much surrounding
-infrastructure is still missing.
+For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case.
 
-The TeX chapter is especially pointed here: at the time of writing, Lean's
-algebraic geometry could not even get through the first sentence of Mazur's
-paper, and it recommends that sentence itself as a natural first milestone for
-anyone who wants to formalize Mazur's theorem seriously.
+\begin{definition}\label{automorphic_representation}\uses{automorphic_form_actions}\notready An automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible subquotient of the space of automorphic forms.
+\end{definition}
 
-:::definition "shimura_varieties_placeholder" (parent := "bestiary_appendix")
-The project still needs precise Lean definitions of the compact Shimura curves
-and surfaces attached to suitable inner forms of GL2.
-:::
+Admissibility is a finiteness condition on an irreducible representation of $(G(\A_N^f)\times U_\infty,\mathfrak{g})$; automorphic representations are admissible, and this seems to boil down to theorems of Godement and Harish-Chandra in the general case.
 
-:::proof "shimura_varieties_placeholder"
-The appendix emphasizes that even stating the right Shimura-theoretic objects is
-nontrivial. They are not decorative geometry; they are the source of the Galois
-representations that later chapters want to attach to automorphic forms.
-:::
+\begin{theorem}\label{automorphic_representation_local_decomposition}\uses{automorphic_representation}\notready An irreducible admissible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module is a restricted tensor product of irreducible representations $\pi_v$ of $G(N_v)$ as $v$ runs through the finite places of $N$, tensored with a tensor product of irreducible $(\mathfrak{g}_v,U_{\infty,v})$-modules as $v$ runs through the infinite places of $N$. The representations $\pi_v$ are unramified for all but finitely many $v$.
+\end{theorem}
+\begin{proof} See Flath's article in~\cite{corvallis1}.
+\end{proof}
 
-:::theorem "moret_bailly_placeholder" (parent := "bestiary_appendix")
-Moret--Bailly's theorem on points with prescribed local behavior is one of the
-major geometric inputs still tracked from the appendix.
-:::
+As mentioned above, we only need all of this for abelian algebraic groups and for inner forms of $\GL_2$ over totally real fields, where everything can be made more concrete (and in particular where I can write down concrete definitions, although this still needs to be done). In particular, we don't strictly speaking need all of the above, we could just cheat and deal with $\GL_2(\R)$ and $\bbH^\times$ separately.
 
-:::proof "moret_bailly_placeholder"
-The TeX appendix presents this theorem as a key input to potential modularity;
-see {Informal.citep moretBailly1990}[].
-:::
+The theorems I need are: Jacquet-Langlands for inner forms of $\GL_2$ over totally real fields, and multiplicity 1 for these inner forms. We also need cyclic base change plus classification of image, all for totally definite quaternion algebras, and we need automorphic induction from $\GL_1(K)$ to $\GL_2(F)$ when $K/F$ is a degree 2 totally imaginary extension. There seems to be little point formalising the statements of the theorems if we cannot yet even formalise the definition of an automorphic representation properly.
 
-The theorem is recorded there with all of the local prescribed-behavior and
-linearly-disjointness data visible, precisely because that is the form needed
-later in potential modularity arguments.
+\section{Galois representations}
 
-# Algebra
+Ivan Farabella has formalised the definition of a compatible family of Galois representations, modulo the existence of Frobenius elements, which has been established by Jou Glasheen.
 
-The appendix closes with one deliberately elementary-looking but strategically
-useful classification theorem: finite subgroups of `PGL₂`.
+\begin{definition}\label{compatible_family}\discussion{23} Let $N$ be a number field. A \emph{compatible family of $d$-dimensional Galois representations over $N$} is a finite set of finite places $S$ of $N$, a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside `S` and the primes of `K` above `\ell`, such that `\rho(\Frob_\p)` has characteristic polynomial `P_\pi(X)` if `\pi` lies above a prime number `p\neq \ell` with `p\not\in S`.
+\end{definition}
 
-:::theorem "finite_subgroups_of_pgl2_placeholder" (parent := "bestiary_appendix")
-The appendix records the classification of finite subgroups of
-`PGL₂(\overline{𝔽}_p)` as a background algebraic input still to be stated
-cleanly.
-:::
+The big theorem, which again we are far from even stating right now, is
 
-:::proof "finite_subgroups_of_pgl2_placeholder"
-The appendix gives the usual list: cyclic, dihedral, `A₄`, `S₄`, `A₅`, and the
-finite groups of Lie type `PSL₂(k)` and `PGL₂(k)`. The point of keeping this in
-the appendix is not because the classification is obscure, but because the
-surrounding representation-theoretic infrastructure is still being assembled.
+\begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation `\pi` for an inner form of `\GL_2` over a totally real field and with reflex field~`E`, such that `\pi` is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to `\pi`, with `S` being the places at which `\pi` is ramified, and `F_{\p}(X)` being the monic polynomial with roots the two Satake parameters for `\pi` at `\p`.
+\end{theorem}
 
-The TeX appendix closes with the aside that this one should at least be easy to
-state, even if the surrounding project is not.
-:::
+\section{Algebraic geometry}
+
+We have already mentioned Mazur's Theorem on torsion subgroups of elliptic curves (theorem~\ref{mazur}).
+The proof of this is the main theorem of~\cite{mazur-torsion}, 150 pages of subtle arithmetic geometry involving the bad reduction of modular curves, exotic cohomology theories (etale and more), and the consequences of this for the Neron models of their Jacobians. After a beautiful introductory chapter containing a history and examples, the convention is established that throughout the paper, `N` will denote a prime number which is at least `5`. And then the first sentence of chapter 1 of the paper proper is ``Consider quasi-finite separated commutative group schemes of finite presentation over the base `S:=\Spec{\Z}` which are finite flat group schemes over `S':=\Spec(Z[1/N]).`'' At the time of writing (May 2024), Lean's algebraic geometry cannot get us through the first sentence of Mazur's proof, which occupies pages 43 to 172 of the paper (not including the appendix or references, that's just the proof). Anyone interested in formalising Mazur's paper should make a formalisation of its first sentence their first milestone.
+
+Talking of modular curves, we also need the existence of Shimura curves and surfaces over totally real fields~`F` (of degree greater than~2, so always compact). The curves are "modeles \'etranges" in the sense of Deligne, so we also need moduli spaces of unitary Shimura varieties over CM extensions. We need to decompose the first and second `\'etale` cohomology groups of these varieties into Galois representations, by understanding them in terms of automorphic representations.
+
+\begin{definition}\label{Shimura_varieties}\notready We need the definition of (the canonical model over `F` of) the Shimura curve attached to an inner form of `\GL_2` with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it's compact).
+\end{definition}
+
+We also need Moret-Bailly's theorem from~\cite{moretBailly1990}:
+
+\begin{theorem}\label{moret_bailly}\notready Let $K^{\avoid}/K$ be a Galois extension of number fields. Suppose also
+that $S$ is a finite set of places of $K$. For $v\in S$ let $L_v/K_v$ be a finite Galois extension.
+Suppose also that $T /K$ is a smooth, geometrically connected curve and that for each
+$v\in S$ we are given a nonempty, $\Gal(L_v/K_v)$-invariant, open subset $\Omega_v\subseteq (L_v)$.
+Then there is a finite Galois extension $L/K$ and a point $P \in T(L)$ such that
+\begin{itemize}
+\item $L/K$ is Galois and linearly disjoint from $K^{\avoid}$ over $K$;
+\item if $v\in S$ and $w$ is a prime of $L$ above $v$ then $L_w /K_v$ is isomorphic to $L_v/K_v$;
+\item and $P \in\Omega_v\subseteq T (L_v) \cong (L_w)$ via one such $K_v$-algebra morphism
+(this makes sense as $\Omega_v$ is $\Gal(L_v/K v)$-invariant).
+\end{itemize}
+\end{theorem}
+
+Note that we do not even have the definition of a curve over a field in Lean.
+
+\section{Algebra}
+
+We need the classification of finite subgroups of $\PGL_2(\overline{\F}_p)$. The answer is that they are all cyclic, dihedral, $A_4$, $S_4$, $A_5$, or isomorphic to $\PSL_2(k)$ or $\PGL_2(k)$ for some finite field of characteristic~`p`. This should at least be easy to state!
+```
