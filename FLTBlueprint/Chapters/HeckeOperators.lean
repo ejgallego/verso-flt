@@ -1528,13 +1528,23 @@ for compactness.
   The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
 \end{proof}
 ```
-# Local matrix theory
-The TeX source makes the local notation explicit: we work at a finite place
-`v` of a number field, with completion `K_v`, ring of integers `\mathcal{O}_v`,
-a chosen uniformizer `\varpi`, and residue field `k_v := \mathcal{O}_v/(\varpi)`.
-The point of the section is to manufacture the compact open subgroups and
-explicit double-coset decompositions that later define the local Hecke
-operators.
+We could work over a general nonarchimedean normed field but we still do not have them
+in mathlib, so we stick to the case of interest which is the completion of a number
+field `K` at a finite place `v`. Such a completion is a topological field `K_v`
+equipped with a discrete valuation, a ring of integers `\calO_v` having a principal
+maximal ideal `(\varpi)`, and a finite residue field `k_v := \calO_v/(\varpi)`.
+
+```tex "hecke_operator_project/local_theory/introduction/1"
+We could work over a general nonarchimedean normed field but we still do not have them
+in mathlib, so we stick to the case of interest which is the completion of a number
+field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
+equipped with a discrete valuation, a ring of integers $\calO_v$ having a principal
+maximal ideal $(\varpi)$, and a finite residue field $k_v:=\calO_v/(\varpi)$.
+```
+
+There is no formal Lean code for the lemmas in this section; it would seem more sensible
+to prove them in the right generality, and we don't have a definition of nonarchimedean
+local field yet.
 
 ```tex "hecke_operator_project/local_theory/introduction"
 \section{Some local theory}
@@ -1657,11 +1667,6 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-The TeX chapter is candid that these local lemmas were not yet formalized in
-the right generality. It sticks to completions of number fields at finite
-places, even though the natural long-term statements should be about general
-nonarchimedean local fields.
-
 ```tex "hecke_operator_project/local_theory/introduction/2"
 \section{Some local theory}
 
@@ -2932,9 +2937,6 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-The TeX chapter then specializes to upper-triangular congruence-type local
-subgroups in preparation for the explicit `U_{v,\alpha}` double-coset
-calculation.
 
 ```tex "hecke_operator_project/local_theory/introduction/12"
 \section{Some local theory}
@@ -3319,9 +3321,12 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 \end{proof}
 ```
 # Adelic groups
-The group of actual interest is the adelic unit group
-`(D \otimes_K \mathbf{A}_K^\infty)^×`, which is identified via a chosen
-rigidification with `GL₂(\mathbf{A}_K^\infty)`.
+We are finally ready to discuss the group `G` and the subgroups `U` which we will be
+using to define our Hecke operators. Let `K` be a number field, let `D` a quaternion algebra
+over `K` and let `A_K^\infty` be the finite adeles of `K`; recall that this is a commutative
+topological ring, defined to be the restricted
+product of the commutative topological fields `K_v` as `v` runs through the finite places
+of `K`, with respect to the compact open subrings `\calO_v`.
 
 ```tex "hecke_operator_project/adelic_groups/introduction"
 \section{Adelic groups}
@@ -3366,12 +3371,10 @@ let say something about matrix rings over complete fields.
 \end{proof}
 ```
 :::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project")
-After choosing the standard local full levels, `GL₂(\A_K^\infty)` is a
-restricted product of the local groups `GL₂(K_v)` with respect to the compact
-open subgroups `GL₂(\mathcal{O}_v)`.
-This is the adelic consequence of
-{uses "restricted_product_matrix_homeomorphism"}[] and
-{uses "restricted_product_units_homeomorphism"}[].
+`G` is isomorphic and homeomorphic to the restricted product of `GL₂(K_v)` with respect
+to the compact open subgroups `GL₂(\mathcal{O}_v)`.
+{uses "restricted_product_matrix_homeomorphism"}[]
+{uses "restricted_product_units_homeomorphism"}[]
 :::
 
 ```tex "hecke_operator_project/adelic_groups/introduction/2"
@@ -3417,11 +3420,11 @@ let say something about matrix rings over complete fields.
 \end{proof}
 ```
 :::proof "adelic_gl2_is_restricted_product"
-The TeX chapter treats this as one of those “obvious” adelic facts that still
-needs careful topological proof. One first identifies matrices over restricted
-products with restricted products of matrices, then applies
-{uses "restricted_product_units_homeomorphism"}[] to pass to units.
+{uses "ContinuousMulEquiv.restrictedProductUnits"}[]
+{uses "Homeomorph.restrictedProductMatrix"}[]
+This follows from the former lemma and the latter lemma.
 :::
+
 ```tex "hecke_operator_project/adelic_groups/introduction/3"
 \section{Adelic groups}
 
@@ -3466,10 +3469,10 @@ let say something about matrix rings over complete fields.
 ```
 :::theorem "adelic_levels_from_local_data" (parent := "hecke_operator_project")
 If `S` is a finite set of finite places of `K`, and if for each `v \in S` one
-chooses a subgroup `Γ_v \le GL₂(k_v)`, then taking the preimages `\tilde Γ_v`
-in `GL₂(\mathcal{O}_v)` for `v \in S` and setting `\tilde Γ_v = GL₂(\mathcal{O}_v)`
-for `v \notin S` produces a compact open subgroup `\prod_v \tilde Γ_v` of
-`GL₂(\A_K^\infty)`.
+chooses a subgroup `Γ_v` of `GL₂(k_v)` then we saw in the previous section how to
+create a compact open subgroup `\tilde{Γ}_v` of `GL₂(K_v)`. For `v \notin S`
+define `\tilde{Γ}_v = GL₂(\mathcal{O}_v)`. Then `\prod_v\tilde{Γ}_v` is a compact
+open subgroup of `\prod_v GL₂(\mathcal{O}_v)`.
 :::
 
 ```tex "hecke_operator_project/adelic_groups/levels"
@@ -3483,18 +3486,9 @@ which we shall be using.
 \section{Automorphic forms}
 ```
 :::proof "adelic_levels_from_local_data"
-This is the basic global construction used throughout the concrete theory. The
-TeX chapter emphasizes that levels of interest are almost always built in this
-way from finitely many exceptional local conditions.
-
-More concretely, one chooses for each bad place `v` a subgroup `Γ_v` of
-`GL₂(k_v)` of the upper-triangular type used in the local double-coset
-calculation, lets `U_{Δ_v}` be its preimage in `GL₂(\mathcal{O}_v)`, and takes
-full level `GL₂(\mathcal{O}_v)` away from the finite bad set `S`. The TeX
-chapter then checks compactness and openness factorwise and finally uses the
-open embedding of the product of full local levels into the adelic restricted
-product.
+It is compact subgroups of this form which we shall be using.
 :::
+
 ```tex "hecke_operator_project/adelic_groups/levels/2"
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
 a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
@@ -3872,9 +3866,6 @@ The big theorem we want in this section is
   is a Noetherian commutative ring.
 \end{theorem}
 ```
-The TeX chapter emphasizes that the Hecke algebra of interest is generated by
-the operators `T_v` for `v ∉ S` together with the operators `U_{v,\alpha}` for
-`v ∈ S`.
 
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/5"
 \section{Automorphic forms}

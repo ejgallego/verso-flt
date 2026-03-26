@@ -226,7 +226,7 @@ ring but we will not need this for the definition.
 
 :::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (parent := "quaternion_algebra_project")
   (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm")
-The space of $`R`-valued automorphic forms for $`D^\times` is the set of
+The space of $`R`-valued *automorphic forms* for $`D^\times` is the set of
 functions $`f : D_{\A^\infty}^\times \to R` satisfying the following axioms:
 
 - $`f(dg) = f(g)` for all $`d \in D^\times` and $`g \in D_{\A^\infty}^\times`
@@ -276,8 +276,8 @@ ring but we will not need this for the definition.
 ```
 
 Let $`S^D(R)` denote the set of automorphic forms for $`D^\times`. The space
-$`S^D(R)` is sometimes referred to as a space of quaternionic modular forms over
-$`R`. Three basic observations about $`S^D(R)` are as follows.
+$`S^D(R)` is sometimes referred to as a space of "quaternionic modular forms"
+over $`R`. Three basic observations about $`S^D(R)` are as follows.
 
 ```tex "quat_automorphic_forms_intro"
 Let $S^D(R)$ denote the set of automorphic forms for $D^\times$. The space $S^D(R)$ is sometimes referred to as a space of
@@ -410,7 +410,6 @@ much much harder to prove than the classical proof of finite-dimensionality.
   (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional")
 Let $`k` be a field. Then the space $`S^D(U;k)` is a finite-dimensional
 $`k`-vector space. This depends on
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"}[] and
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
 :::
 
@@ -424,16 +423,15 @@ $`k`-vector space. This depends on
 ```
 
 :::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"
-The finite-dimensionality theorem is an easy consequence of Fujisaki's lemma,
-proved in the Fujisaki miniproject. This uses
-{uses "compact_quotient_for_division_algebra"}[],
+The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
+proved in the Fujisaki miniproject.
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[], and
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"}[].
 Write $`(D \otimes_F \A_F^\infty)^\times`
 as a disjoint union of double cosets $`\coprod_i D^\times g_i U`. This open
 cover descends to a disjoint open cover of
 $`D^\times \backslash (D \otimes_F \A_F^\infty)^\times`, and this latter space
-is compact by {uses "compact_quotient_for_division_algebra"}[]. Hence the cover
+is compact by {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]. Hence the cover
 is finite; write the double coset representatives as $`g_1, g_2, \ldots, g_n`.
 
 We claim that the function $`S^D(U;k) \to k^n` sending $`f` to
@@ -446,8 +444,7 @@ $`g_i`. It suffices to prove that $`f_1(g) = f_2(g)` for all
 $`g \in (D \otimes_F \A_F^\infty)^\times`. So say
 $`g \in (D \otimes_F \A_F^\infty)^\times`, and write $`g = \delta g_i u` for
 $`\delta \in D^\times` and $`u \in U`. Then
-$`f_1(g) = f_1(\delta g_i u) = f_1(g_i)` by the definition of
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"}[], and similarly
+$`f_1(g) = f_1(\delta g_i u) = f_1(g_i)` by the definition of $`S^D(U;k)`, and similarly
 $`f_2(g) = f_2(g_i)`. Because $`f_1(g_i) = f_2(g_i)` by assumption, we deduce
 that $`f_1(g) = f_2(g)` as required.
 :::

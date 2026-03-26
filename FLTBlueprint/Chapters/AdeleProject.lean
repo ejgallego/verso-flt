@@ -1389,13 +1389,15 @@ $K_{\infty}$-linear isomorphism, it is also a homeomorphism.
 
 # Discreteness and compactness
 
-The TeX chapter now changes viewpoint completely. After the local and global
-base-change machinery, the goal is to show that a number field embeds in its
-adeles as a discrete subgroup with compact quotient. The chapter presents this
-as a proposed proof, first reducing the statements to the rational case and
-then handling `\mathbf{A}_{\mathbf{Q}}` explicitly.
+We need that if `K` is a number field then `K\subseteq\mathbb{A}_K` is discrete,
+and the quotient (with the quotient topology) is compact. Here is a proposed
+proof.
 ```tex "adele_project/lt-witness-1147"
-The TeX chapter now changes viewpoint completely. After the local and global
+\section{Discreteness and compactness}
+
+We need that if $K$ is a number field then
+$K\subseteq\mathbb{A}_K$ is discrete, and the quotient (with the
+quotient topology) is compact. Here is a proposed proof.
 ```
 
 
@@ -1404,18 +1406,28 @@ There is an open subset of the rational adeles whose intersection with `ℚ` is
 just `{0}`.
 :::
 ```tex "adele_project/lt-witness-1153"
-:::theorem "rational_adele_zero_neighborhood" (parent := "adele_project")
+\begin{theorem}
+  \lean{Rat.AdeleRing.zero_discrete}
+  \label{Rat.AdeleRing.zero_discrete}
+  \leanok
+  There's an open subset of $\A_{\Q}$ whose intersection with $\Q$ is $\{0\}$.
+\end{theorem}
 ```
 
 
 :::proof "rational_adele_zero_neighborhood"
-The TeX chapter proves this using the explicit open set
-`\prod_p \mathbf{Z}_p \times (-1,1)`. A rational number lying in that set is a
-`p`-adic integer at every prime, hence an ordinary integer, and the archimedean
-condition then forces it to be `0`.
+Use `\prod_p{\Z_p}\times(-1,1)`. Any rational `q` in this set is a `p`-adic
+integer for all primes `p` and hence, writing it in lowest terms as `q=n/d`,
+satisfies `p\nmid d`, meaning that `d=\pm1` and thus `q\in\Z`. The fact
+that `q\in(-1,1)` implies `q=0`.
 :::
 ```tex "adele_project/lt-witness-1158"
-:::proof "rational_adele_zero_neighborhood"
+\begin{proof}
+  Use $\prod_p{\Z_p}\times(-1,1)$. Any rational $q$ in this set is a $p$-adic
+  integer for all primes $p$ and hence (writing it in lowest terms as $q=n/d$)
+  satisfies $p\nmid d$, meaning that $d=\pm1$ and thus $q\in\Z$. The fact
+  that $q\in(-1,1)$ implies $q=0$.
+\end{proof}
 ```
 
 
@@ -1424,17 +1436,28 @@ There is an open subset of the adeles of a number field whose intersection with
 the number field is just `{0}`.
 :::
 ```tex "adele_project/lt-witness-1165"
-:::theorem "number_field_adele_zero_neighborhood" (parent := "adele_project")
+\begin{theorem}
+  \lean{NumberField.AdeleRing.zero_discrete}
+  \label{NumberField.AdeleRing.zero_discrete}
+  \uses{Rat.AdeleRing.zero_discrete,NumberField.AdeleRing.baseChangeEquiv}
+  \leanok
+  There's an open subset of $\A_{K}$ whose intersection with $K$ is $\{0\}$.
+\end{theorem}
 ```
 
 
 :::proof "number_field_adele_zero_neighborhood"
-By a previous result, we have `\mathbf{A}_K = K \otimes_{\Q} \mathbf{A}_{\Q}`.
-Choose a basis of `K/\Q`; then `K` can be identified with `\Q^n` inside
-`(\mathbf{A}_{\Q})^n`, and the result follows from the previous theorem.
+By a previous result, we have `\A_K=K\otimes_{\Q}\A_{\Q}`.
+Choose a basis of `K/\Q`; then `K` can be identified with `\Q^n\subseteq(\A_{\Q})^n`
+and the open subset from the rational case may be taken coordinatewise.
+This gives an open subset of `\A_K` whose intersection with `K` is still `{0}`.
 :::
 ```tex "adele_project/lt-witness-1170"
-:::proof "number_field_adele_zero_neighborhood"
+\begin{proof}
+  By a previous result, we have $\A_K=K\otimes_{\Q}\A_{\Q}$.
+  Choose a basis of $K/\Q$; then $K$ can be identified with $\Q^n\subseteq(\A_{\Q})^n$
+  and the result follows from the previous theorem.
+\end{proof}
 ```
 
 
@@ -1442,16 +1465,27 @@ Choose a basis of `K/\Q`; then `K` can be identified with `\Q^n` inside
 The additive subgroup `K` of `\mathbf{A}_K` is discrete.
 :::
 ```tex "adele_project/lt-witness-1180"
-:::theorem "number_field_adele_discrete_embedding" (parent := "adele_project")
+\begin{theorem}
+  \lean{NumberField.AdeleRing.discrete}
+  \label{NumberField.AdeleRing.discrete}
+  \uses{NumberField.AdeleRing.zero_discrete}
+  \leanok
+  The additive subgroup $K$ of $\A_K$ is discrete.
+\end{theorem}
 ```
 
 
 :::proof "number_field_adele_discrete_embedding"
-If `x \in K` and `U` is the open subset in the previous theorem, then
-`K \cap U = \{0\}` implies `K \cap (U + x) = \{x\}`, and `U + x` is open.
+If `x\in K` and `U` is the open subset in the previous lemma, then
+it's easily checked that `K\cap U=\{0\}` implies `K\cap (U+x)=\{x\}`,
+and `U+x` is open.
 :::
 ```tex "adele_project/lt-witness-1184"
-:::proof "number_field_adele_discrete_embedding"
+\begin{proof}
+  If $x\in K$ and $U$ is the open subset in the previous lemma, then
+  it's easily checked that $K\cap U=\{0\}$ implies $K\cap (U+x)=\{x\}$,
+  and $U+x$ is open.
+\end{proof}
 ```
 
 
@@ -1459,23 +1493,36 @@ If `x \in K` and `U` is the open subset in the previous theorem, then
 The quotient `\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}` is compact.
 :::
 ```tex "adele_project/lt-witness-1190"
-:::theorem "rational_adele_quotient_compact" (parent := "adele_project")
+\begin{theorem}
+  \lean{Rat.AdeleRing.cocompact}
+  \label{Rat.AdeleRing.cocompact}
+  \leanok
+  The quotient $\A_{\Q}/\Q$ is compact.
+\end{theorem}
 ```
 
 
 :::proof "rational_adele_quotient_compact"
-The space `\prod_p \mathbf{Z}_p \times [0,1]` is a product of compact spaces
-and is hence compact. It surjects onto `\mathbf{A}_{\Q}/\Q`: if
-`a \in \mathbf{A}_{\Q}` then for the finitely many primes `p` with
-`a_p \notin \mathbf{Z}_p` we have `a_p \in \frac{r_p}{p^{n_p}} + \mathbf{Z}_p`
-with `r_p/p^{n_p} \in \Q`. If we set `q = \sum_{p \in S}
-\frac{r_p}{p^{n_p}} \in \Q`, then `a-q \in \prod_p \mathbf{Z}_p \times \R`.
-Subtracting `\lfloor a_{\infty} - q\rfloor` moves the archimedean coordinate
-into `[0,1)`, so every class in `\mathbf{A}_{\Q}/\Q` has a representative in
-the compact set.
+The space `\prod_p\Z_p\times[0,1]` is a product of compact spaces
+and is hence compact. I claim that it surjects onto `\A_{\Q}/\Q`. Indeed,
+if `a\in\A_{\Q}` then for the finitely many prime numbers `p\in S` such that `a_p\not\in\Z_p`
+we have `a_p\in\frac{r_p}{p^{n_p}}+\Z_p` with `r_p/p^{n_p}\in\Q`.
+If we set `q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q`, then
+`a-q\in \prod_p\Z_p\times\R`. Subtracting `\lfloor a_{\infty}-q\rfloor` moves
+the archimedean coordinate into `\prod_p\Z_p\times[0,1)`, so every class in
+`\A_{\Q}/\Q` has a representative in the compact set.
 :::
 ```tex "adele_project/lt-witness-1194"
-:::proof "rational_adele_quotient_compact"
+\begin{proof}
+  The space $\prod_p\Z_p\times[0,1]\subseteq\A_{\Q}$ is a product of compact spaces
+  and is hence compact. I claim that it surjects onto $\A_{\Q}/\Q$. Indeed,
+  if $a\in\A_{\Q}$ then for the finitely many prime numbers $p\in S$ such that $a_p\not\in\Z_p$
+  we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$.
+  If we set $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$, then
+  $a-q\in \prod_p\Z_p\times\R$. Subtracting $\lfloor a_{\infty}-q\rfloor$ moves
+  the archimedean coordinate into $[0,1)$, so every class in $\A_{\Q}/\Q$ has a
+  representative in the compact set.
+\end{proof}
 ```
 
 
