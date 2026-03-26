@@ -18,41 +18,17 @@ adeles of a number field together with the local compactness and base-change
 results needed later in the project.
 :::
 
-The old TeX chapter is very explicit that this is both a mathematical and a
-library-design project. Some pieces already live in mathlib, some have been
-proved in external repos, and some still need to be formalized in a way that
-fits the existing restricted-product API cleanly.
-```tex "adele_project/lt-witness-21"
-The old TeX chapter is very explicit that this is both a mathematical and a
-```
-
 
 # Status
 
 :::definition "adele_project_status" (parent := "adele_project")
-This is still an active miniproject. The TeX chapter treats the existence of the
-adele ring as largely settled, while local compactness, base change, and the
-discrete cocompact embedding remain the real mathematical targets.
+This is an active miniproject.
 :::
 
 ```tex "adele_project/status"
 \section{Status}
 
 This is an active miniproject.
-```
-
-The TeX chapter is unusually explicit about project status:
-```tex "adele_project/lt-witness-40"
-The TeX chapter is unusually explicit about project status:
-```
-
-
-- defining the adeles of a number field as a `K`-algebra is treated as done, and the corresponding construction is already in mathlib
-- local compactness was formalized first in Salvatore Mercuri's external adele-ring development, but still needed clean integration with mathlib's restricted-product API
-- base change and the discrete cocompact embedding were not yet formalized and were presented as the main remaining mathematical targets
-- a further meta-goal is to upstream as much of the finished infrastructure to mathlib as possible
-```tex "adele_project/lt-witness-42"
-- defining the adeles of a number field as a `K`-algebra is treated as done, and the corresponding construction is already in mathlib
 ```
 
 
@@ -70,17 +46,14 @@ The chapter is also explicit that finite adeles and full adeles sit at slightly
 :::definition "adele_ring_goals" (parent := "adele_project")
 The TeX blueprint lists four main targets: define the adeles, prove local
 compactness, prove base change along finite field extensions, and prove that
-the number field sits discretely with compact quotient.
+the number field sits discretely with compact quotient. The chapter also lists a
+fifth meta-goal: get the finished adele infrastructure into mathlib once the
+core statements are formalized cleanly.
 :::
 ```tex "adele_project/lt-witness-54"
 :::definition "adele_ring_goals" (parent := "adele_project")
 ```
 
-
-:::definition "adele_mathlib_goal" (parent := "adele_project")
-The TeX chapter also lists a fifth meta-goal: get the finished adele
-infrastructure into mathlib once the core statements are formalized cleanly.
-:::
 
 ```tex "adele_project/goals"
 \section{The goal}
@@ -1157,12 +1130,8 @@ map `\mathbf{A}_K -> \mathbf{A}_L`.
 
 
 :::proof "adele_base_change_module_topology"
-This is the short theorem the TeX chapter inserts just before the final
-discreteness and compactness section. Once {uses "adele_base_change"}[] is
-known, `\mathbf{A}_L` is identified with `L \otimes_K \mathbf{A}_K` by a
-homeomorphism, and the tensor-product side carries the `\mathbf{A}_K`-module
-topology by construction. Transporting that topology across the identification
-gives the claimed `\mathbf{A}_K`-module topology on `\mathbf{A}_L`.
+Indeed `\mathbf{A}_L \cong L \otimes_K \mathbf{A}_K` is a homeomorphism, and
+the right-hand side has the `\mathbf{A}_K`-module topology.
 :::
 
 ```tex "adele_project/base-change-infinite"
@@ -1460,13 +1429,9 @@ the number field is just `{0}`.
 
 
 :::proof "number_field_adele_zero_neighborhood"
-The TeX chapter reduces this to {uses "rational_adele_zero_neighborhood"}[] by
-choosing a `\mathbf{Q}`-basis and using the base-change description of the
-adeles from {uses "adele_base_change"}[].
-
-More concretely, once one identifies `\mathbf{A}_K` with a finite power of
-`\mathbf{A}_{\mathbf{Q}}` through a chosen `\mathbf{Q}`-basis of `K`, the claim
-reduces to the corresponding rational statement coordinatewise.
+By a previous result, we have `\mathbf{A}_K = K \otimes_{\Q} \mathbf{A}_{\Q}`.
+Choose a basis of `K/\Q`; then `K` can be identified with `\Q^n` inside
+`(\mathbf{A}_{\Q})^n`, and the result follows from the previous theorem.
 :::
 ```tex "adele_project/lt-witness-1170"
 :::proof "number_field_adele_zero_neighborhood"
@@ -1482,9 +1447,8 @@ The additive subgroup `K` of `\mathbf{A}_K` is discrete.
 
 
 :::proof "number_field_adele_discrete_embedding"
-This is the immediate corollary of
-{uses "number_field_adele_zero_neighborhood"}[] in the TeX chapter: translate
-the zero-neighborhood by an element of `K`.
+If `x \in K` and `U` is the open subset in the previous theorem, then
+`K \cap U = \{0\}` implies `K \cap (U + x) = \{x\}`, and `U + x` is open.
 :::
 ```tex "adele_project/lt-witness-1184"
 :::proof "number_field_adele_discrete_embedding"
@@ -1500,62 +1464,20 @@ The quotient `\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}` is compact.
 
 
 :::proof "rational_adele_quotient_compact"
-The TeX chapter gives an explicit compact fundamental-domain style argument
-using `\prod_p \mathbf{Z}_p \times [0,1]`.
-
-The point is that every rational adele can be translated into this compact set
-by first clearing the finitely many nonintegral `p`-adic coordinates with a
-rational number and then adjusting the archimedean coordinate by an integer.
+The space `\prod_p \mathbf{Z}_p \times [0,1]` is a product of compact spaces
+and is hence compact. It surjects onto `\mathbf{A}_{\Q}/\Q`: if
+`a \in \mathbf{A}_{\Q}` then for the finitely many primes `p` with
+`a_p \notin \mathbf{Z}_p` we have `a_p \in \frac{r_p}{p^{n_p}} + \mathbf{Z}_p`
+with `r_p/p^{n_p} \in \Q`. If we set `q = \sum_{p \in S}
+\frac{r_p}{p^{n_p}} \in \Q`, then `a-q \in \prod_p \mathbf{Z}_p \times \R`.
+Subtracting `\lfloor a_{\infty} - q\rfloor` moves the archimedean coordinate
+into `[0,1)`, so every class in `\mathbf{A}_{\Q}/\Q` has a representative in
+the compact set.
 :::
 ```tex "adele_project/lt-witness-1194"
 :::proof "rational_adele_quotient_compact"
 ```
 
-
-:::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
-The embedding of a number field into its adeles should be discrete with compact
-quotient, echoing the commutative prototype behind {uses "fujisaki_lemma_goal"}[].
-This global statement is assembled from
-{uses "number_field_adele_discrete_embedding"}[] and
-{uses "rational_adele_quotient_compact"}[].
-:::
-```tex "adele_project/lt-witness-1203"
-:::theorem "adele_discrete_cocompact_embedding" (parent := "adele_project")
-```
-
-
-:::proof "adele_discrete_cocompact_embedding"
-In the TeX chapter this statement is positioned as the commutative prototype for
-the later division-algebra compactness theorem. The point is not just that `K`
-sits inside its adeles, but that the quotient carries genuine compactness
-content that later noncommutative arguments should imitate.
-
-The proof follows the same reduction-to-`\mathbf{Q}` pattern as the
-discreteness argument: after choosing a `\mathbf{Q}`-basis of `K`, the quotient
-`\mathbf{A}_K / K` is identified with a finite power of
-`\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}`, so compactness descends from the
-rational case.
-:::
-```tex "adele_project/lt-witness-1211"
-:::proof "adele_discrete_cocompact_embedding"
-```
-
-
-:::theorem "commutative_compactness_prototype" (parent := "adele_project")
-The quotient $`K \backslash \mathbf{A}_K` is the commutative model for the later
-quotient compactness theorem in {uses "compact_quotient_for_division_algebra"}[].
-:::
-```tex "adele_project/lt-witness-1224"
-:::theorem "commutative_compactness_prototype" (parent := "adele_project")
-```
-
-
-:::proof "commutative_compactness_prototype"
-The TeX chapter is explicit about this motivational role. Before one studies
-division algebras or norm-one adelic unit groups, one should understand the
-classical quotient of a number field inside its adeles. Fujisaki's lemma is then
-presented as the noncommutative analogue of exactly this compactness statement.
-:::
 
 ```tex "adele_project/discreteness-compactness"
 \section{Discreteness and compactness}

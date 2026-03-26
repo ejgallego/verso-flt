@@ -93,7 +93,7 @@ proof targets.
 Mazur's theorem bounds the size of the torsion subgroup of an elliptic curve
 over $`\\mathbf{Q}`.
 Within the FLT strategy, this is the key external input behind
-{uses "mazur_frey_irreducible"}[].
+{uses "Mazur_Frey"}[].
 :::
 
 :::proof "mazur_torsion_bound"

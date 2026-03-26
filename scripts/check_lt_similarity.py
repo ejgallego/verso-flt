@@ -181,6 +181,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Block-level LT similarity checker using adjacent tex witnesses. "
+            "LT is the canonical repository term; LF and TF are accepted aliases. "
             "This first draft follows David's suggestion to add a mechanical LT drift signal."
         )
     )

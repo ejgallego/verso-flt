@@ -13,26 +13,22 @@ open Informal
 This miniproject packages the abstract double-coset formalism and then applies
 it to spaces of automorphic forms.
 :::
-The TeX blueprint is explicit that this project has two layers. The abstract
-theory is pure algebra and already fully formalized. The concrete theory,
-however, still needs more local and adelic API before all proofs become
-sorry-free.
 
 ```tex "hecke_operator_project/abstract_theory/introduction"
 \section{The abstract theory}
 
 \subsection{Introduction}
 
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
+The set-up: we have a commutative ring $`R`, the coefficient ring, and
+all of our spaces which the operators act on will be $`R`-modules.
 
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+We have a group $`G` acting $`R`-linearly on an $`R`-module $`A`.
 ```
 # Status
 :::definition "hecke_operator_project_status" (parent := "hecke_operator_project")
-This remains an active miniproject. The abstract Hecke formalism is already in
-good shape, while the concrete adelic theory still depends on restricted-product
-and local matrix-group infrastructure.
+This is an active miniproject. The abstract theory is completely formalized;
+at the time of writing the concrete theory has no sorried definitions but it
+does have some sorried proofs.
 :::
 
 ```tex "hecke_operator_project/abstract_theory/introduction/2"
@@ -40,32 +36,16 @@ and local matrix-group infrastructure.
 
 \subsection{Introduction}
 
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
+The set-up: we have a commutative ring $`R`, the coefficient ring, and
+all of our spaces which the operators act on will be $`R`-modules.
 
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
-```
-The TeX chapter is slightly sharper about the current state: the abstract theory
-is described as completely formalized, while the concrete theory is said to
-have no sorried definitions but still some sorried proofs. So the point of the
-chapter is not to invent the formalism, but to finish the local and adelic API
-needed to make the concrete operators sorry-free.
-
-```tex "hecke_operator_project/abstract_theory/introduction/3"
-\section{The abstract theory}
-
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+We have a group $`G` acting $`R`-linearly on an $`R`-module $`A`.
 ```
 # Goal
-The purpose of the chapter is to obtain sorry-free Hecke operators on spaces of
-automorphic forms. These operators generate the Hecke algebras that supply the
-`T` side of the modularity lifting theorems, and so they sit directly on the
-critical path toward `R = T`.
+The goal of this project is to get sorry-free definitions of Hecke operators
+acting on spaces of automorphic forms. These Hecke operators generate
+Hecke algebras, which are the rings called $`T` in the modularity lifting theorems,
+or $`R=T` theorems, crucially introduced by Wiles in order to prove FLT.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/4"
 \section{The abstract theory}
@@ -77,11 +57,13 @@ all of our spaces which the operators act on will be $R$-modules.
 
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
-The TeX source is explicit that the project splits into two parts. The abstract
-theory is pure algebra and comparatively short. The concrete theory is where
-the real infrastructure burden sits, because the adelic groups of interest are
-restricted products and the local compact-open subgroups are matrix groups over
-local rings.
+The theory comes in two parts;
+the "abstract" theory, which is pure algebra, and the "concrete" theory
+where we apply the abstract constructions to produce endomorphisms of
+spaces of automorphic forms. The abstract theory is short (and completely formalized);
+the concrete theory still needs some work because to apply the theory to the
+adelic groups we care about we need to develop some more API around the theory
+of restricted products, and of compact open subgroups of matrix groups.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/5"
 \section{The abstract theory}
@@ -94,23 +76,19 @@ all of our spaces which the operators act on will be $R$-modules.
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
 # Abstract theory
-The setup in the TeX chapter is deliberately minimal:
+The set-up: we have a commutative ring $R$, the coefficient ring, and
+all of our spaces which the operators act on will be $R$-modules.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/6"
 \section{The abstract theory}
 
 \subsection{Introduction}
 
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
-- a commutative coefficient ring `R`
-- an `R`-module `A`
-- a group `G` acting `R`-linearly on `A`
-- subgroups `U` and `V` of `G`
-- an element `g : G`
+We have subgroups $`U` and $`V` of $`G`.
+We will be particularly interested in the $`R`-modules $`A^U` and $`A^V`
+of invariant elements.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/7"
 \section{The abstract theory}
@@ -122,9 +100,11 @@ all of our spaces which the operators act on will be $R$-modules.
 
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
-The key finiteness hypothesis is that the double coset `UgV` is a finite union
-of single left cosets `g_iV`. Under that hypothesis one gets an operator from
-the `V`-fixed points to the `U`-fixed points.
+Given an element `g ∈ G`, then under a certain finiteness hypothesis
+we will be able to define an `R`-linear map `T_g` or `[UgV]`
+from `A^V` to `A^U`. The finiteness hypothesis is that the
+double coset `UgV` can be written as a finite union of single
+cosets `g_iV`.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/8"
 \section{The abstract theory}
@@ -138,10 +118,9 @@ We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
 :::definition "abstract_hecke_operator" (parent := "hecke_operator_project")
   (lean := "AbstractHeckeOperator.HeckeOperator")
-Given a group action on an $`R`$-module and a finite decomposition of a double
-coset, one defines the Hecke operator by summing translates over the chosen
-single-coset representatives. This is the abstract engine behind the concrete
-operator story in {uses "concrete_hecke_action"}[].
+Assuming `UgV` is a finite union of cosets `g_iV`,
+we define `[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
+to $`\sum_i g_i a`.
 :::
 ```tex "hecke_operator_project/abstract_theory/introduction/9"
 \section{The abstract theory}
@@ -154,10 +133,8 @@ all of our spaces which the operators act on will be $R$-modules.
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
 :::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project")
-The operator is independent of the chosen representatives, lands in the desired
-invariant submodule, and is $`R`$-linear.
-This is the formal heart of the abstract theory section of the old chapter.
-It is the theorem-level packaging of {uses "abstract_hecke_operator"}[].
+This function is well-defined (that is, independent of the
+choice of `g_i`), has image in `A^U` and is `R`-linear.
 :::
 ```tex "hecke_operator_project/abstract_theory/hecke_operator"
 \begin{definition}
@@ -179,11 +156,13 @@ It is the theorem-level packaging of {uses "abstract_hecke_operator"}[].
 \end{lemma}
 ```
 :::proof "abstract_hecke_operator_well_defined"
-The TeX proof is the expected one. Replacing a representative `g_i` with
-`g_i v` for `v ∈ V` does not change `g_i • a` because `a` is `V`-invariant. The
-image lands in `A^U` because left multiplication by an element of `U` permutes
-the relevant cosets. Finally, linearity is inherited from the linearity of the
-group action.
+Well-definedness is because if we change `g_i` to `g'_i := g_i v`
+for some `v ∈ V` then `g_i a = g'_i a` because `a ∈ A^V`.
+
+The image lands in `A^U` because left multiplication by `u`
+fixes `UgV` and hence permutes the cosets `g_iV`.
+
+Finally `R`-linearity is because the `G`-action is `R`-linear.
 :::
 ```tex "hecke_operator_project/abstract_theory/hecke_operator_proof"
 \begin{proof}
@@ -198,12 +177,9 @@ group action.
 \end{proof}
 ```
 :::theorem "finite_double_coset_criterion" (parent := "hecke_operator_project")
-In a topological group, compactness and openness hypotheses imply the required
-double-coset finiteness automatically, and this is the bridge from the abstract
-Hecke formalism to spaces such as
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"}[].
-The corresponding Lean theorem exists in the concrete Hecke file, but that path
-still sits behind the quaternionic rc6 compatibility work.
+The finiteness hypothesis that the decomposition `UgV = \coprod_i g_iV` is
+into a finite union is necessary for the theory to work. If `G` is a topological
+group then here is a criterion which gives the finiteness hypothesis for free.
 :::
 ```tex "hecke_operator_project/abstract_theory/finite_double_coset"
 The finiteness hypothesis that the decomposition $UgV=\coprod_i g_iV$ is
@@ -221,10 +197,9 @@ group then here is a criterion which gives the finiteness hypothesis for free.
 \end{lemma}
 ```
 :::proof "finite_double_coset_criterion"
-The TeX proof is the standard compactness argument: a double coset `UgV` is a
-compact subset when `U` and `V` are compact, and a decomposition into left
-`V`-cosets is an open cover when `V` is open. Compactness then forces only
-finitely many cosets.
+The subset `UgV` of `G` is a continuous image of the compact set `U × V`
+and is hence compact, and it is covered by the disjoint left cosets `g_iV`;
+this cover must thus be finite.
 :::
 ```tex "hecke_operator_project/abstract_theory/finite_double_coset_proof"
 \begin{proof}

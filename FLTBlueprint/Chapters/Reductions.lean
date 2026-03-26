@@ -416,6 +416,7 @@ If `\rho` is the mod `p` Galois representation associated to a Frey package
 ```
 
 :::proof "Mazur_Frey"
+{uses "Frey_curve_irreducible"}[]
 This follows from a profound and long result of Mazur
 {Informal.citep mazurTorsion}[] from `1977`, namely the fact that the torsion
 subgroup of an elliptic curve over `\Q` can have size at most `16`. In fact

@@ -74,8 +74,9 @@ The core output is the general surjectivity theorem
 :::definition "quaternion_algebras_miniproject" (parent := "legacy_blueprint_map")
 The quaternion algebra mini-project supplies the concrete automorphic spaces
 used in the totally definite setting adopted by the FLT strategy.
-Its central nodes are {uses "weight_two_quaternionic_forms"}[] and
-{uses "finite_dimensional_quaternionic_forms"}[].
+Its central nodes are
+{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[] and
+{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"}[].
 :::
 
 :::definition "hecke_operators_miniproject" (parent := "legacy_blueprint_map")
@@ -106,7 +107,7 @@ The chain runs through
 {uses "adele_ring_goals"}[],
 {uses "haar_character_goal"}[],
 {uses "compact_quotient_for_division_algebra"}[],
-{uses "weight_two_quaternionic_forms"}[], and
+{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[], and
 {uses "concrete_hecke_action"}[].
 
 These chapters are mathematically distinct, but in the project graph they form

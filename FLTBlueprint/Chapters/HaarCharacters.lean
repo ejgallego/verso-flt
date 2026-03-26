@@ -42,27 +42,26 @@ KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave duri
 of this material.
 ```
 
-The TeX chapter is explicit that “Haar character” is project terminology rather
-than standard textbook terminology. The point is to package the multiplicative
-behavior of additive Haar measure on a locally compact ring in a way that is
-easy to reuse later for adelic algebras.
+`Haar character` is a name I've made up to describe a certain character of
+the units of a locally compact topological ring. The main result we need here is
+that if `B` is a finite-dimensional algebra over a number field `K`, then
+`B^\times` is in the kernel of the Haar character of `B \otimes_K \A_K`, where
+`\A_K` is the ring of adeles of `K`. Most if not all of this should probably be
+in mathlib.
 
 ```tex "haar_character_project/lt_goal_terminology"
 ``Haar character'' is a name I've made up to describe a certain character of the units of a locally compact topological ring.
 ```
 
-It also records the project's historical provenance: this material was refined
-with substantial outside input during blueprint development, precisely because
-the eventual application to adeles and division algebras needs a dependable
-measure-theoretic API rather than ad hoc local computations.
+KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave
+during the preparation of this material.
 
 ```tex "haar_character_project/lt_goal_provenance"
 KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave during the preparation of this material.
 ```
 
-The TeX chapter even pauses to thank Sebastien Gouezel explicitly for help in
-preparing this material, which is a good indication of how much of the work
-here is about getting the measure-theoretic interface exactly right.
+The chapter thanks Sebastien Gou\"ezel for the help he gave during the
+preparation of this material.
 
 ```tex "haar_character_project/lt_goal_context"
 The goal of this miniproject is to develop the theory (i.e., the basic API) of Haar characters.
@@ -100,18 +99,15 @@ and hence also a Haar measure on $A.$ It must thus differ from
 $\mu$ by a positive scalar factor, which we call $d_A(\phi)$.
 ```
 
-The TeX chapter is careful about normalization here: one could equally well
-record the inverse scale factor. The project fixes the convention that
-`μ(X) = d_A(φ) (φ_* μ)(X)`, so multiplication by `2` on `ℝ` has Haar character
-`2` rather than `1/2`.
+There is a choice of normalization here between `d_A(\phi)` and
+`d_A(\phi)^{-1}`, so let us be more precise.
 
 ```tex "haar_character_project/lt_normalization"
 There is a choice of normalization here between $d_A(\phi)$ and $d_A(\phi)^{-1}$, so let us be more precise.
 ```
 
-It also notes that mathlib packages a preferred Haar measure, while the actual
-mathematics is independent of that choice. In the Lean code, the multiplicative
-version is primary and the additive statements are obtained by `to_additive`.
+Strictly speaking our definition of `d_A(\phi)` depends on the choice of
+regular Haar measure `\mu`.
 
 ```tex "haar_character_project/lt_mathlib_haar_measure"
 Strictly speaking our definition of $d_A(\phi)$ depends on the choice of regular Haar measure $\mu$.
@@ -131,8 +127,8 @@ $d_A(\phi)$ is independent of choice of regular Haar measure.
 ```
 
 :::proof "haar_character_independent_of_measure"
-The proof is the usual uniqueness-of-Haar-measure argument: changing the Haar
-measure by a positive scalar cancels on both sides of the defining relation.
+If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and the
+`λ`s on each side of `μ'(X) = d_A(\phi)(\phi_* μ')(X)` cancel.
 :::
 
 ```tex "haar_character_project/independent_of_measure"
@@ -162,8 +158,7 @@ If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)(\phi_*\mu) = \mu.$
 ```
 
 :::proof "haar_character_pushforward_formula"
-The TeX chapter presents this as the direct reformulation of the definition once
-independence of Haar measure has been established.
+This is a restatement of the previous result.
 :::
 
 ```tex "haar_character_project/pushforward_formula"
@@ -192,9 +187,8 @@ If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)\mu = \phi^*\mu.$
 ```
 
 :::proof "haar_character_pullback_formula"
-The TeX chapter treats this as the immediate companion to the pushforward
-formula: once one knows what happens to `φ_* μ`, the pullback `φ^* μ` follows by
-applying the same statement to the inverse map.
+This follows from the pushforward formula applied to the regular Haar measure
+`\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
 :::
 
 ```tex "haar_character_project/pullback_formula"
@@ -222,8 +216,7 @@ $d_A(id)=1.$
 ```
 
 :::proof "haar_character_identity"
-The TeX chapter records this as an immediate formal consequence before proving
-multiplicativity under composition.
+`d_A(id)=1`.
 :::
 
 ```tex "haar_character_project/identity"
@@ -263,13 +256,7 @@ If $f:A\to\R$ is a Borel measurable function then $d_A(\phi)\int f(x)d\phi_*\mu(
 ```
 
 :::proof "haar_character_integral_formula"
-The TeX chapter emphasizes that these integral identities are simply the
-measure-scaling identities rewritten through the definition of integration.
-
-It also remarks that if one has a measurable function with positive finite
-integral, then the Haar character can be read off from the ratio of the two
-integrals before and after pushforward. This viewpoint is exactly what later
-drives the continuity proof on unit groups.
+This is a restatement of the previous result.
 :::
 
 ```tex "haar_character_project/lt_integral_proof"
@@ -288,9 +275,11 @@ $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
 ```
 
 :::proof "haar_character_is_multiplicative"
-This is the point where the TeX chapter notes that the construction is really a
-group homomorphism into the positive reals. The identity case is recorded in
-{uses "haar_character_identity"}[].
+Here's one way: it suffices to prove that
+`d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu = d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu`
+(because there exists a compact set with positive finite measure) and using
+the pushforward formula and the fact that `(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`
+one can simplify both sides to `\mu`.
 :::
 
 ```tex "haar_character_project/multiplicative"
@@ -325,10 +314,7 @@ If $R=\R$ then $\delta_R(u)=|u|$.
 ```
 
 :::proof "real_haar_character_formula"
-Take Lebesgue measure and evaluate on the interval `[0,1]`. Multiplication by a
-positive scalar stretches the interval by that factor, while multiplication by a
-negative scalar only adds an orientation reversal, so the scale factor is
-always the absolute value.
+Take `\mu` to be Lebesgue measure and `X=[0,1]`.
 :::
 
 ```tex "haar_character_project/lt_real_proof"
@@ -344,9 +330,8 @@ If $R=\bbC$ then $\delta_R(u)=|u|^2$.
 ```
 
 :::proof "complex_haar_character_formula"
-The TeX proof decomposes multiplication into a positive real dilation and a
-rotation. Rotations preserve area, while scaling by `r > 0` multiplies area by
-`r²`, so the resulting Haar character is the square of the complex norm.
+Multiplication by a positive real `r` sends a unit square to a square of area
+`r^2 = |r|^2`.
 :::
 
 ```tex "haar_character_project/lt_complex_proof"
@@ -428,12 +413,11 @@ The function $\delta_R:R^\times\to\R_{>0}$ is continuous.
 ```
 
 :::proof "ring_haar_character_continuous"
-The TeX chapter derives continuity from the integral formula. One fixes a
-compactly supported continuous function with nonzero integral and then rewrites
-the Haar character as a ratio of two continuous integrals depending on the unit.
-
-So continuity is not an extra miracle; it is built into the same measure-scaling
-formalism used everywhere else in the chapter.
+Fix a Haar measure `\mu` on `R` and a continuous real-valued function `f` on
+`R` with compact support and such that `\int f(x) d\mu(x) \neq 0`. Then
+`r \mapsto \int f(rx) d\mu(x)` is continuous, and so is
+`u \mapsto (\int f(ux) d\mu(x))/(\int f(x) d\mu(x))`. Hence `δ_R^{-1}` is
+continuous, and thus `δ_R` is too.
 :::
 
 ```tex "haar_character_project/ring_continuous"
@@ -470,10 +454,7 @@ If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
 ```
 
 :::proof "padic_haar_character_formula"
-The dedicated p-adic chapter in the FLT fork computes the Haar character
-explicitly and then deduces the standard volume-scaling formulas.
-The corresponding Lean declarations exist, but importing that rc6 path still
-needs FLT-fork compatibility work before we can attach them here.
+Normalise Haar measure so that `μ(\Z_p)=1`.
 :::
 
 ```tex "haar_character_project/lt_padic_proof"
@@ -489,16 +470,15 @@ If $R=\Z_p$ then the Haar character is constantly $1$ on the unit group.
 ```
 
 :::proof "padic_integer_haar_character_formula"
-This is the integral counterpart to {uses "padic_haar_character_formula"}[].
+This is the integral counterpart to the p-adic formula.
 :::
 
 ```tex "haar_character_project/lt_padic_integer_proof"
-This is the integral counterpart to lemma~\ref{MeasureTheory.ringHaarChar_padic}.
+This is the integral counterpart to the p-adic formula.
 ```
 
 The TeX chapter also remarks here that for a finite extension of `ℚ_p`, the
-same computation gives the normalized nonarchimedean norm. It leaves that
-statement informal because the right local-field interface was not yet settled.
+same computation gives the normalized nonarchimedean norm.
 
 ```tex "haar_character_project/lt_padic_remark"
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
@@ -529,12 +509,7 @@ Assume that there's an $F$-basis for $V$ such that $\phi$ is a product of elemen
 ```
 
 :::proof "haar_character_linear_map_determinant_formula"
-The TeX chapter reduces this to explicit matrix calculations, using that an
-invertible matrix can be decomposed into diagonal and transvection pieces. One
-checks the formula directly on those generators and then multiplies the answers.
-
-This is the bridge from additive Haar theory on groups to ring-theoretic Haar
-characters on finite-dimensional algebras.
+The proof is a generalization of `Real.map_matrix_volume_pi_eq_smul_volume_pi`.
 :::
 
 ```tex "haar_character_project/lt_linear_map_determinant_proof"
@@ -554,10 +529,7 @@ If $u\in R^\times$ then $\delta_R(u)=\delta_F(\det(\ell_u))$.
 ```
 
 :::proof "algebra_haar_character_determinant_formula"
-This is the immediate algebraic application of
-{uses "haar_character_linear_map_determinant_formula"}[]: left multiplication
-by a unit is an invertible `F`-linear map on the underlying finite-dimensional
-`F`-vector space, so the determinant formula applies.
+Follows immediately from the preceding lemma.
 :::
 
 ```tex "haar_character_project/lt_algebra_determinant_proof"

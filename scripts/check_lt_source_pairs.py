@@ -166,7 +166,10 @@ def audit_file(path: Path) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Check that every translated informal block has an adjacent tex source block."
+        description=(
+            "Check that every translated informal block has an adjacent tex source block. "
+            "LT is the canonical repository term; LF and TF are accepted aliases."
+        )
     )
     parser.add_argument(
         "paths",

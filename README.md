@@ -13,12 +13,23 @@ porting goal in this repository is a faithful, as-near-word-for-word-as-
 practical translation from TeX/`leanblueprint` layout into Verso layout, not a
 substantive rewrite of the mathematical content.
 
-The harness now treats this as a literal-translation-first workflow. The first
-pass on a chapter should preserve paragraph boundaries, sentence order,
+The repository uses `LT` as the canonical term for this workflow, but `LF`
+(`LaTeX Fidelity` / `Literal Fidelity`) and `TF` (`Translation Faithfulness`)
+are accepted aliases meaning the same thing. The first pass is a translation
+effort, not a writing-improvement effort: translate the TeX source into Verso
+as faithfully as possible, but do not rewrite the source just because the prose
+could be smoothed, clarified, or modernized. Editorial improvement is a
+separate follow-up effort to be requested explicitly.
+
+The harness now treats this as an LT-first workflow. The first pass on a
+chapter should preserve paragraph boundaries, sentence order,
 section/theorem/proof order, and local claim order from the TeX source. New
 blueprint structure should only be introduced when the TeX source already has a
 corresponding formal item or when a clearly marked editorial note is
 unavoidable.
+
+Users may say `LT`, `LF`, or `TF`; in this repository they all refer to the
+same translation-faithfulness workflow.
 
 Previous LT-pass claims are not treated as trustworthy on their own. The
 current LT methodology is stricter: every translated informal block must sit
@@ -38,6 +49,19 @@ informal nodes or proofs so the dependency graph remains faithful too.
 The refreshed VersoBlueprint 4.28 compatibility branch is already synced into
 the local harness; follow the documented build and porting rules here rather
 than assuming any extra special directive.
+
+When missing labels, dependency edges, or completion metadata are unclear, do
+not guess. Check the old blueprint harness inputs in
+`FLT/blueprint/src/web.tex`, `FLT/blueprint/src/plastex.cfg`,
+`FLT/blueprint/notes_on_how_blueprint_works.txt`, and the TeX sources
+themselves. If that still leaves ambiguity, treat regeneration or inspection of
+the old blueprint graph / metadata artifacts as harness follow-up work.
+
+For math-heavy ports, KaTeX linting in `verso-blueprint` is one of the fastest
+ways to catch bad syntax and missing macros. In most cases the needed macro
+definitions should be recoverable from the original blueprint prelude in
+`FLT/blueprint/src/macro/common.tex`, then ported intentionally into
+`FLTBlueprint/TeXPrelude.lean`.
 
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.

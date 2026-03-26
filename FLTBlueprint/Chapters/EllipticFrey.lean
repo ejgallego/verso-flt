@@ -255,8 +255,8 @@ if the extension $L/N$ is unramified at $P$ (or in other words, if the factoriza
 of $P\calO_L$ into prime ideals is squarefree).
 ```
 
-The TeX chapter also introduces a working notion of finite flat group scheme,
-since later local conditions at `\ell` are phrased in those terms.
+At some point we will need a theory of finite flat group schemes over an affine
+base. Here is a working definition.
 
 ```tex "finite_flat_group_scheme/introduction"
 At some point we will need a theory of finite flat group schemes over an affine base. Here
@@ -284,15 +284,16 @@ and enables you to reduce to the Noetherian case in general.
 (Probably this is not the correct definition in the non-Noetherian case; one should instead ask for locally free, which is equivalent in the Noetherian case and enables you to reduce to the Noetherian case in general)
 ```
 
-Some basic consequences of good reduction are then recorded.
+Some facts we will need are:
 
 ```tex "good_reduction/consequences"
 Some facts we will need are:
 ```
 
 :::theorem "good_reduction_implies_unramified" (parent := "elliptic_frey_bridge")
-For primes away from `\ell`, good reduction implies that elliptic-curve torsion
-is unramified.
+If `E` is an elliptic curve over a number field `N` and `E` has good reduction
+at a maximal ideal `P` of `\mathcal O_N`, and if furthermore `n \notin P`,
+then the Galois representation on the `n`-torsion of `E` is unramified.
 :::
 
 ```tex "good_reduction_implies_unramified"
@@ -304,8 +305,8 @@ is unramified.
 
 :::proof "good_reduction_implies_unramified"
 One approach would be by showing that the `n`-torsion in the integral model of
-`E` over `\mathcal O_{N,P}` is an etale finite flat group scheme. There might be
-simpler approaches however. It's worth looking to see what Silverman does.
+`E` over `\mathcal O_{N,P}` is an etale finite flat group scheme. There might
+be simpler approaches however. It's worth looking to see what Silverman does.
 :::
 
 ```tex "good_reduction_implies_unramified/proof"
@@ -316,8 +317,10 @@ simpler approaches however. It's worth looking to see what Silverman does.
 ```
 
 :::theorem "good_reduction_implies_flat" (parent := "elliptic_frey_bridge")
-At a prime above `p`, good reduction implies that the `p`-torsion comes from a
-finite flat group scheme on the local integral model. This packages
+If `E` is an elliptic curve over a number field `N` and `E` has good reduction
+at a maximal ideal `P` of `\mathcal O_N` containing the prime number `p`,
+then the Galois representation on the `p`-torsion of `E` comes from a finite
+flat group scheme over `\mathcal O_{N,P}`. This packages
 {uses "finite_flat_group_scheme"}[].
 :::
 
@@ -357,8 +360,10 @@ defined over the residue field, and non-split otherwise.
 \end{definition}
 ```
 
-For elliptic curves over number fields, the corresponding local definition is
-obtained by passing to the localization at the prime in question.
+If `E` is an elliptic curve over a number field `N` and `P` is a maximal ideal
+of its integer ring `\mathcal O_N`, then one says that `E` has multiplicative
+reduction at `P` if `E` has multiplicative reduction over the localization
+`\mathcal O_{N,P}`.
 
 ```tex "EllipticCurve.MultiplicativeReduction/number_field"
   If $E$ is an elliptic curve
@@ -396,8 +401,8 @@ dividing `abc`, and they are all multiplicative.
 \end{proof}
 ```
 
-The TeX chapter notes that one can also characterize when this reduction is
-split, but that the split/non-split distinction is not needed at this stage.
+If the third root reduces mod `p` to `y \ne x`, then the reduction is split
+multiplicative iff `x-y` is a square mod `p`. We shall not need this fact.
 
 ```tex "Frey_curve_mult_reduction/split_remark"
 \begin{remark} If the third root reduces mod $p$ to $y\not=x$, then the reduction
@@ -446,9 +451,9 @@ In particular, the Frey curve associated to a Frey package is \emph{semistable} 
  multiplicative reduction at all primes.
 ```
 
-The main local input for multiplicative reduction is Tate's uniformization
-theorem. In the current blueprint, we record only the consequence actually used
-for torsion representations.
+The main thing we need about elliptic curves with multiplicative reduction over
+nonarchimedean local fields is the uniformisation theorem, originally due to
+Tate.
 
 ```tex "Tate_curve_uniformisation/introduction"
 The main thing we need about elliptic curves with multiplicative reduction over nonarchimedean
@@ -560,7 +565,7 @@ deep theorems, we will be able to prove that all hardly ramified representations
 forms. We shall come back to these ideas later.
 ```
 
-# The $\ell$-Torsion In The Frey Curve Is Hardly Ramified.
+# The ℓ-Torsion In The Frey Curve Is Hardly Ramified.
 
 Let `(a,b,c,\ell)` be a Frey package, with associated Frey curve `E` and mod
 `\ell` Galois representation `\rho = E[\ell]`. We now work through a proof that
@@ -607,10 +612,7 @@ The `j`-invariant of the Frey curve is `2^8(C^2 - AB)^3/(A^2B^2C^2)`, where
 ```
 
 :::proof "Frey_curve_j"
-The TeX chapter writes this formula down because it makes the bad-prime
-analysis completely explicit. Once the valuation of `j` can be read off
-directly, the Tate parameter `q` is no longer mysterious: its valuation is
-forced by that `j`-invariant formula.
+Apply the explicit formula (presumably already in mathlib).
 :::
 
 ```tex "Frey_curve_j/proof"
@@ -637,12 +639,10 @@ consequence of {uses "Frey_curve_j"}[].
 ```
 
 :::proof "FreyCurve.j_valuation_of_bad_prime"
-The TeX proof is a direct valuation computation from the explicit
-`j`-invariant formula. At a bad odd prime dividing `abc`, the numerator stays a
-unit while the denominator contributes a valuation divisible by `\ell`.
-
-This is the key numerical input that upgrades the Tate-curve description into
-actual unramifiedness at those odd bad primes.
+Indeed `p` does not divide `2^8` as `p>2`, and (using the notation of the
+previous theorem) `p` does not divide `C^2-AB` either, because it divides
+precisely one of `A`, `B` and `C`. Hence `v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
+=-2\ell v_p(abc)` is a multiple of `\ell`.
 :::
 
 ```tex "FreyCurve.j_valuation_of_bad_prime/proof"
@@ -665,16 +665,7 @@ This is the main ramification input later used in
 ```
 
 :::proof "frey_curve_unramified"
-There are two cases. If `p` does not divide `abc`, use
-{uses "Frey_curve_good_reduction"}[] together with
-{uses "good_reduction_implies_unramified"}[]. If `p` is an odd divisor
-of `abc`, use {uses "Frey_curve_mult_reduction"}[] and the Tate-curve analysis
-from {uses "multiplicative_reduction_torsion"}[].
-
-The TeX chapter also tracks the `p`-adic valuation of the `j`-invariant to show
-that, at these bad odd primes, the Tate parameter produces no extra
-`\ell`-adic ramification; this is exactly the role of
-{uses "FreyCurve.j_valuation_of_bad_prime"}[].
+Follows from {uses "Frey_curve_good"}[] and {uses "Frey_curve_unram"}[].
 :::
 
 ```tex "frey_curve_unramified/proof"
@@ -707,11 +698,11 @@ This is the `2`-adic input used in {uses "Frey_curve_hardly_ramified"}[].
 ```
 
 :::proof "frey_curve_at_2"
-Apply {uses "Frey_curve_mult_reduction_at_two"}[] and then the Tate-curve
-description {uses "multiplicative_reduction_torsion"}[]. After the
-unramified quadratic twist needed to split multiplicative reduction, the local
-representation is an extension of the trivial character by the cyclotomic
-character, so its semisimplification is unramified.
+After a quadratic twist to make the curve have split multiplicative
+reduction, the theory of the Tate curve shows us that `\rho` is an extension
+of the trivial character by the cyclotomic character. Hence the
+semisimplification of this representation is the direct sum of two
+unramified characters and is hence unramified.
 :::
 
 ```tex "frey_curve_at_2/proof"
@@ -736,18 +727,19 @@ This is the local-flatness input used in {uses "Frey_curve_hardly_ramified"}[].
 ```
 
 :::proof "Frey_curve_mod_ell_rep_at_ell"
-The TeX chapter splits into the same two cases that appear throughout the local
-theory. If the Frey curve has good reduction at `\ell`, then its `\ell`-torsion
-is finite flat on the integral model
-{uses "good_reduction_implies_flat"}[]. If it has multiplicative reduction, the
-Tate-curve description again shows that the relevant extension is finite flat
-{uses "multiplicative_reduction_torsion"}[].
-
-So the `\ell`-adic local condition in the definition of hardly ramified is not
-an auxiliary hypothesis invented for convenience; it is genuinely one of the
-local properties of the Frey curve. The TeX chapter points to Edixhoven and
-Katz--Mazur for this local finite-flat input
-{Informal.citep edix}[] {Informal.citep katzMazurArithmeticModuli}[].
+{uses "good_reduction_implies_flat"}[]
+{uses "multiplicative_reduction_torsion"}[]
+The Frey curve either has good reduction at `\ell` (case 1 of FLT) or
+multiplicative reduction at `\ell` (case 2 of FLT). In the first case the
+`\ell`-torsion is finite and flat at `\ell` by the former theorem.
+In the second case the theory of the Tate curve shows that the `\ell`-torsion
+is (up to quadratic twist) an extension of the trivial character by the
+cyclotomic character corresponding (via Hilbert 90) to the `\ell`th power of
+an `\ell`-adic unit. This extension is known to be finite and flat; see for
+example Proposition `8.2` of {Informal.citep edixWeightInSerreConjectures}[].
+Note that the proof there uses fppf cohomology, although one can write down a
+much more elementary proof using arguments in
+{Informal.citep katzMazurArithmeticModuli}[].
 :::
 
 ```tex "Frey_curve_mod_ell_rep_at_ell/proof"
@@ -785,11 +777,14 @@ package is hardly ramified.
 ```
 
 :::proof "frey_curve_hardly_ramified"
-This follows by combining
-{uses "Elliptic_curve_det_n_torsion"}[],
-{uses "frey_curve_unramified"}[],
-{uses "frey_curve_at_2"}[], and
-{uses "Frey_curve_mod_ell_rep_at_ell"}[].
+{uses "Elliptic_curve_det_n_torsion"}[]
+{uses "frey_curve_unramified"}[]
+{uses "frey_curve_at_2"}[]
+{uses "Frey_curve_mod_ell_rep_at_ell"}[]
+This follows from the results above. The fact that `\ell\geq 5` follows from
+the definition of a Frey package. The first condition is the determinant
+statement, and the second is `frey_curve_unramified`. The third condition is
+`frey_curve_at_2`, and the fourth is `Frey_curve_mod_ell_rep_at_ell`.
 :::
 
 ```tex "frey_curve_hardly_ramified/proof"
@@ -824,9 +819,9 @@ size at most `16`.
 ```
 
 :::proof "mazur"
-This is the main theorem of {Informal.citep mazurTorsion}[]. Formalising this
-result will be a highly non-trivial project; note that this theorem is used in
-all known proofs of FLT, so there seems to be no way around it.
+This is the main theorem of {Informal.citep mazurTorsion}[]. Formalising this result will
+be a highly non-trivial project; note that this theorem is used in all known
+proofs of FLT, so there seems to be no way around it.
 :::
 
 ```tex "mazur/proof"
@@ -870,10 +865,13 @@ If the Frey-curve `\ell`-torsion representation were reducible with characters
 ```
 
 :::proof "Frey_characters_are_unramified"
-Away from `2` and `\ell`, this follows from
-{uses "frey_curve_unramified"}[]. At `2`, use
-{uses "frey_curve_at_2"}[] to see that the semisimplification is
-already unramified.
+{uses "frey_curve_unramified"}[]
+{uses "frey_curve_at_2"}[]
+We have seen in `frey_curve_unramified` that `\rho` is unramified
+at all primes `p\not=2,\ell`, so the characters `\alpha` and `\beta` are
+unramified at all such primes. If `p=2` then the semisimplification of the
+restriction of `\rho` to `\Gal(\Qbar_2/\Q_2)` is unramified by
+`frey_curve_at_2`, so `\alpha` and `\beta` are unramified at `2`.
 :::
 
 ```tex "Frey_characters_are_unramified/proof"
@@ -896,13 +894,18 @@ also unramified at `\ell`.
 ```
 
 :::proof "Frey_characters_at_ell"
-In the multiplicative-reduction case, this follows immediately from
-{uses "multiplicative_reduction_torsion"}[]. In the good-reduction case, the
-`\ell`-torsion is finite flat at `\ell` by {uses "Frey_curve_mod_ell_rep_at_ell"}[], and
-the local theory of ordinary and supersingular reduction forces one character
-to be unramified.
-
-This is the last local input needed before Minkowski's theorem can be applied.
+{uses "multiplicative_reduction_torsion"}[]
+{uses "Frey_curve_mod_ell_rep_at_ell"}[]
+In the multiplicative case this follows immediately from the theory of the
+Tate curve. In the good reduction case, the `\ell`-torsion is finite and flat
+at `\ell` by `Frey_curve_mod_ell_rep_at_ell`, so we now need to
+understand what such representations look like. If the reduction is
+supersingular, then `\rho` is necessarily irreducible, contradicting our
+assumption. If however the reduction is ordinary, then the theory of the
+canonical subgroup shows that the `\ell`-torsion is an extension of an
+unramified character by an unramified twist of the cyclotomic character (see
+Proposition `11` on p273 of
+{Informal.citep serreGaloisPointsEllipticCurves}[]).
 :::
 
 ```tex "Frey_characters_at_ell/proof"
@@ -927,10 +930,9 @@ resulting one-dimensional characters would have to be trivial.
 ```
 
 :::proof "Frey_characters_trivial"
-By {uses "Frey_characters_are_unramified"}[] and
-{uses "Frey_characters_at_ell"}[], one of the characters is
-unramified everywhere. A one-dimensional character unramified everywhere cuts
-out a number field unramified everywhere, so Minkowski forces it to be trivial.
+The previous two theorems show that one of `\alpha` and `\beta` is a
+character unramified at all primes, and hence cuts out an extension unramified
+at all primes, so by Minkowski's theorem this character is trivial.
 :::
 
 ```tex "Frey_characters_trivial/proof"
@@ -961,8 +963,7 @@ one-dimensional quotient.
 ```
 
 :::proof "Frey_curve_reducible_structure"
-This is the representation-theoretic reformulation of
-{uses "Frey_characters_trivial"}[].
+Follows from the above.
 :::
 
 ```tex "Frey_curve_reducible_structure/proof"
@@ -988,8 +989,8 @@ submodule, then the Frey curve has a rational point of order `\ell`.
 ```
 
 :::proof "Frey_curve_trivial_submodule"
-A trivial subrepresentation is exactly a Galois-stable line inside `E[\ell]`,
-and that line corresponds to a rational torsion point of order `\ell`.
+Indeed, the trivial 1-dimensional submodule is a Galois-invariant subgroup of
+`E[\ell]`, so it corresponds to a Galois-stable point of order `\ell`.
 :::
 
 ```tex "Frey_curve_trivial_submodule/proof"
@@ -1009,10 +1010,9 @@ one-dimensional subrepresentation.
 ```
 
 :::proof "Frey_curve_no_trivial_submodule"
-By {uses "Frey_curve_trivial_submodule"}[], a trivial submodule
-would give a rational point of order `\ell`. The Frey curve already has three
-points of order `2`, so the torsion subgroup would have order at least
-`4\ell \ge 20`, contradicting {uses "mazur"}[].
+We have just seen that in this case, the Frey curve has a point of order
+`\ell`. It also has three points of order 2, meaning that its torsion subgroup
+has order at least `4\ell\geq 20`, contradicting Mazur's theorem.
 :::
 
 ```tex "Frey_curve_no_trivial_submodule/proof"

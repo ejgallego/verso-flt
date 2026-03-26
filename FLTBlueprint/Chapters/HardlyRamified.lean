@@ -193,24 +193,20 @@ The `\ell`-torsion representation in the Frey curve attached to a Frey package
 ```
 
 :::proof "Frey_curve_hardly_ramified"
-This theorem compresses the arithmetic of the Frey curve into the single
-definition {uses "hardly_ramified"}[].
-
-The general elliptic-curve input is classical: the torsion is two-dimensional
-and its determinant is cyclotomic, as explained in Silverman
-{Informal.citep silvermanArithmeticEllipticCurves}[]. The Frey-specific work is
-in the local conditions. The TeX chapter points to Serre's discussion of the
-Frey curve and Serre's conjecture {Informal.citep serreModularityConjecture}[]
-for the remaining facts: away from `2` and `\ell` the representation is
-unramified, at `2` semistability and the Tate-curve analysis produce the
-required unramified one-dimensional quotient of order at most `2`, and at
-`\ell` the torsion is finite flat.
-
-In the current blueprint, those arithmetic ingredients are spelled out through
-{uses "Elliptic_curve_det_n_torsion"}[],
-{uses "frey_curve_unramified"}[],
-{uses "frey_curve_at_2"}[], and
-{uses "Frey_curve_mod_ell_rep_at_ell"}[].
+This was well-known in the 1980s. A proof sketch is as follows.
+First note that `\ell \ge 5 > 3` by definition of a Frey package. Let `\rho`
+denote the Galois representation on the `\ell`-torsion of the Frey curve.
+The fact that `\rho` is `2`-dimensional is Corollary~III.6.4(b) of
+{Informal.citep silvermanArithmeticEllipticCurves}[], and the fact that its
+determinant is cyclotomic is Proposition~III.8.3 of the same reference. These
+results hold for elliptic curves in general. The remaining claims are specific
+to the Frey curve and lie deeper. The fact that `\rho` is unramified outside
+`2\ell` is a consequence of `(4.1.12)` and `(4.1.13)` of
+{Informal.citep serreModularityConjecture}[]. The fact that `\rho` at `2` has
+an unramified `1`-dimensional quotient of order at most `2` follows from the
+fact that the Frey curve is semistable at `2` and the theory of the Tate
+curve. Finally, the claim that `\rho` is flat at `\ell` is Proposition~5 and
+`(4.1.13)` of {Informal.citep serreModularityConjecture}[].
 :::
 
 ```tex "Frey_curve_hardly_ramified/proof"
@@ -277,7 +273,8 @@ Serre's conjecture. Given this result, we can deduce Theorem~\ref{Wiles_Frey}
 ```
 
 :::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program")
-The Frey curve torsion representation is not irreducible.
+If `\overline{\rho}` is the mod `p` Galois representation associated to a
+Frey package `(a,b,c,p)` then `\overline{\rho}` is reducible.
 :::
 
 ```tex "Wiles_Frey_again"
@@ -293,8 +290,8 @@ The Frey curve torsion representation is not irreducible.
 :::proof "Wiles_Frey_again"
 {uses "Frey_curve_hardly_ramified"}[]
 {uses "hardly_ramified_reducible"}[]
-Combine {uses "Frey_curve_hardly_ramified"}[] with
-{uses "hardly_ramified_reducible"}[].
+Indeed, `\rho` is hardly ramified by the former theorem and thus reducible by
+the latter.
 :::
 
 ```tex "Wiles_Frey_again/proof"
@@ -305,18 +302,18 @@ Combine {uses "Frey_curve_hardly_ramified"}[] with
 \end{proof}
 ```
 
-Our job of reducing FLT to theorems from the `1980`s is therefore reduced to
-proving the general hardly ramified reducibility theorem stated above.
+Our job of reducing FLT to theorems of the `1980`s is hence reduced to proving
+`hardly_ramified_reducible`.
 
 ```tex "hardly_ramified_reducible/transition"
 Our job of reducing FLT to theorems of the 1980s is hence reduced to proving
 Theorem~\ref{hardly_ramified_reducible}.
 ```
 
-# Hardly Ramified Mod p Representations Are Reducible
+# Hardly Ramified Mod `p` Representations Are Reducible
 
-The TeX chapter now states three theorems from which that general reducibility
-theorem easily follows.
+In this section we will state three theorems, from which
+`hardly_ramified_reducible` easily follows.
 
 ```tex "hardly_ramified_mod_p_reducible/introduction"
 In this section we will state three theorems, from which Theorem~\ref{hardly_ramified_reducible}
@@ -379,11 +376,13 @@ not made a definition of a hardly ramified 2-adic representation).
 
 :::theorem "hardly_ramified_spreads_out" (parent := "hardly_ramified_program")
 {uses "hardly_ramified"}[]
-A hardly ramified `\ell`-adic representation with irreducible reduction spreads
-out to a compatible family over a number field. In particular, one can choose a
-place `\lambda` above `\ell` recovering the original representation, and the
-Frobenius characteristic polynomials agree across the family away from the
-finitely many excluded primes.
+If `\ell \ge 3` is prime, `K` is a finite extension of `\Q_\ell` with
+integers `\mathcal{O}` and if `\rho : \GQ \to \GL_2(\mathcal{O})` is a hardly
+ramified representation whose reduction is irreducible, then there exists a
+number field `M` and, for each finite place `\mu` of `M` of characteristic
+prime to `2`, with completion `M_\mu` having integer ring `R_\mu`, a hardly
+ramified semisimple representation `\rho_\mu : \GQ \to \GL_2(R_\mu)` (by which
+we mean the generic fibre is semisimple), with the following properties:
 :::
 
 ```tex "hardly_ramified_spreads_out"
@@ -421,8 +420,8 @@ Omitted for now. TODO.
 \end{proof}
 ```
 
-In particular, one can move from an irreducible hardly ramified mod `\ell`
-representation to a hardly ramified `3`-adic representation and hence to a
+In particular, we can "move" from an irreducible hardly ramified mod `\ell`
+representation to a hardly ramified `3`-adic representation, and hence to a
 hardly ramified mod `3` representation.
 
 ```tex "hardly_ramified_mod3_reducible/transition"
@@ -430,8 +429,8 @@ In particular, we can ``move'' from an irreducible hardly ramified mod $\ell$ re
 to a hardly ramified 3-adic representation, and hence to a hardly ramified mod 3 representation.
 ```
 
-However, we can essentially completely classify the hardly ramified mod `3`
-Galois representations:
+And we can use this to essentially completely classify the hardly ramified
+`3`-adic Galois representations:
 
 ```tex "hardly_ramified_mod3_reducible/introduction"
 However, we can essentially completely classify the hardly ramified mod 3 Galois representations:

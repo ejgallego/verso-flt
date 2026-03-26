@@ -39,8 +39,12 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 ## Literal Translation Standard
 
-- The default deliverable for direct TeX-to-Verso chapter work is a literal
-  translation pass (`LT pass`), not an interpretive rewrite.
+- The default deliverable for direct TeX-to-Verso chapter work is an LT pass.
+  `LT` is the canonical repository term, but `LF` (`LaTeX Fidelity` /
+  `Literal Fidelity`) and `TF` (`Translation Faithfulness`) are accepted
+  aliases meaning the same workflow: translate the TeX source into Verso as
+  faithfully as possible, without rewriting the source just because the prose
+  could be made smoother or better.
 - Do not trust earlier LT-pass labels by themselves. Under the current
   methodology, a chapter is not treated as LT-audited until each translated
   informal block is paired with a local raw-TeX witness block.
@@ -50,6 +54,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Translate TeX layout into Verso layout with the smallest possible editorial
   footprint. Do not smooth prose, summarize arguments, or add bridge text just
   because it reads better in English.
+- Do not improve the source text during LT work. If a sentence is awkward in
+  the TeX source, keep the awkwardness unless a concrete translation or build
+  constraint forces a visible editorial note.
 - Do not promote free prose into new `:::theorem`, `:::definition`, or
   `:::proof` nodes unless the TeX source already has a corresponding formal
   environment or labeled proof step that should stay graph-visible.
@@ -78,6 +85,12 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - Prefer the focused target `nice lake build blueprint-gen`.
 - The site-generation smoke test is `bash ./scripts/ci-pages.sh`.
+- When port metadata is unclear, consult the original blueprint harness inputs
+  in `FLT/blueprint/src/web.tex`, `FLT/blueprint/src/plastex.cfg`,
+  `FLT/blueprint/notes_on_how_blueprint_works.txt`, and the old TeX chapter
+  source. If needed, treat regeneration or inspection of the old blueprint
+  dependency graph / metadata artifacts as a harness follow-up task rather than
+  guessing missing labels, status, or dependency edges from memory.
 - Fetch the mathlib cache before long verification runs.
 - For Lean-facing checks on edited blueprint modules, prefer `lean-beam`
   (`ensure`, `sync`, `hover`, `run-at`) over full rebuild loops whenever that is
@@ -106,8 +119,13 @@ This repository is the integration layer for the FLT Verso blueprint.
   `tex_prelude` declarations across chapter files.
 - Reuse the old TeX blueprint macro vocabulary where practical, but keep the
   prelude small and intentional.
-- The KaTeX linter is available through `verso-blueprint`, so math additions
-  should be written with KaTeX compatibility in mind.
+- The KaTeX linter is available through `verso-blueprint`, and it is a major
+  aid when porting math-heavy text. Use it aggressively to catch bad syntax and
+  missing macros early.
+- Even so, most required macro definitions should usually be inferable from the
+  original blueprint prelude in `FLT/blueprint/src/macro/common.tex`. Check the
+  old prelude first, then encode the needed subset intentionally in
+  `FLTBlueprint/TeXPrelude.lean`.
 - When porting math-heavy text, prefer simple incremental edits and validate the
   edited module with Beam immediately after saving.
 - In practice, after a real Lean edit, save the file and run `lean-beam sync`

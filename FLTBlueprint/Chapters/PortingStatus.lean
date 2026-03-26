@@ -12,8 +12,10 @@ open Informal
 This chapter records the current harness-level view of how far the Verso port
 has progressed relative to the TeX blueprint. The harness migration is largely
 done, but the LT workflow is now being reset onto a stricter source-paired
-methodology. Earlier chapter-level LT-pass claims are not treated here as
-trusted certification.
+methodology. `LT` is the canonical repository term, while `LF` (`LaTeX
+Fidelity` / `Literal Fidelity`) and `TF` (`Translation Faithfulness`) are
+accepted aliases for the same workflow. Earlier chapter-level LT-pass claims
+are not treated here as trusted certification.
 :::
 
 # Literal Translation Policy
@@ -22,8 +24,15 @@ trusted certification.
 This tracker now uses a stricter literal-translation policy than some earlier
 porting notes did.
 
-- the default goal for a direct port is a literal translation pass, not a
-  semantic reinterpretation
+- `LT` is the canonical term in this tracker
+- `LF` and `TF` are accepted aliases for the same translation-faithfulness
+  workflow
+- the default goal for a direct port is an LT pass, not a semantic
+  reinterpretation
+- LT work translates the TeX source into Verso but does not improve or smooth
+  the source prose just because it could be written better
+- users may say `LT`, `LF`, or `TF`; in this repository they all refer to the
+  same workflow
 - earlier LT-pass labels are provisional only; they do not count as trusted LT
   certification without local source witnesses
 - each translated informal block should sit immediately next to a labeled
@@ -62,6 +71,12 @@ they do not replace the TeX source itself.
 The refreshed VersoBlueprint 4.28 branch supports labeled `tex` blocks, and
 the repository now treats them as the default LT witness format rather than as
 something reserved only for leftover or open source snippets.
+
+When chapter metadata, dependency edges, or completion status are unclear, the
+harness should consult the original blueprint inputs in
+`FLT/blueprint/src/web.tex`, `FLT/blueprint/src/plastex.cfg`,
+`FLT/blueprint/notes_on_how_blueprint_works.txt`, and the TeX chapter sources
+before inferring anything from memory.
 
 # Main Expository Chapters
 
@@ -119,8 +134,12 @@ because of an earlier pass label. The current LT baseline is stricter: every
 translated informal block should carry an adjacent raw-TeX witness block. The
 main remaining frontiers are:
 
-- source-pair completion across the direct-port chapters
-- block-level mechanical comparison once those source pairs are in place
+- block-level LT re-audit in chapters whose wording has drifted materially from
+  the TeX source even after local source pairing
+- metadata recovery for missing Lean attachments, `\uses` edges, and completion
+  markers still recorded in `PortingTodo.md`
+- KaTeX-facing cleanup for math-heavy chapters, especially where old TeX macro
+  expectations still need to be encoded explicitly in the local prelude
 - the intentional frontier material in `GlobalLanglands.lean`
 :::
 
@@ -138,6 +157,12 @@ following a suggestion from David.
   drift quantitatively rather than only by manual review
 - future work is to tune the normalization and thresholds so the report is less
   noisy on math-heavy chapters
+- future work is to expose better pointers to the old blueprint metadata path,
+  including the original harness inputs and, when needed, regenerated graph /
+  metadata artifacts from the TeX-side blueprint
+- future work is to surface KaTeX-lint guidance more directly during math-heavy
+  ports, while still treating the old TeX prelude as the primary source for
+  which macros need to exist locally
 :::
 
 :::proof "future_harness_plan"
@@ -169,8 +194,9 @@ methodology.
 
 Highlights from this audit:
 
-- most direct-port chapters still need systematic source-pair insertion around
-  free prose blocks
+- the direct-port chapter set now passes the strict source-pair audit, so the
+  remaining LT work is no longer broad witness insertion but selective
+  re-audit of low-similarity or over-editorialized passages
 - the node-oriented task board and the stricter LT audit answer different
   questions and should not be conflated
 - `GlobalLanglands` still has placeholder `\lean` entries in the TeX source, so
