@@ -441,12 +441,14 @@ Then `b₀` is fixed by `Aut(L/K)`.
 :::proof "fixed_residue_class_fixed_by_stabilizer"
 {uses "fixed_of_fixed1_aux1"}[]
 {uses "fixed_of_fixed1_aux2"}[]
-The TeX proof constructs elements `a, b ∈ B` so that the image of the
-characteristic polynomial in `L[X]` is exactly
-`(X - a b₀)^{|D_Q|} X^{|G|-|D_Q|}`.
-Viewed through `K[X]`, the same polynomial has coefficients in `K`, so
-`a b₀ ∈ K`. Since `a` is nonzero modulo `Q`, hence nonzero in `L`, the element
-`b₀` itself is fixed by `Aut(L/K)`.
+Let `a, b ∈ B` be the elements from `fixed_of_fixed1_aux2`. Let `M_b ∈ A[X]`
+be the characteristic polynomial of `b`. We can map `M_b` to `L[X]` in two
+different ways: via `B[X]` and via `K[X]`. Going via `B[X]` tells us that the
+image of `M_b(X)` in `L[X]` is exactly
+$`(X - a b_0)^{|D_Q|} X^{|G|-|D_Q|}`$. But going via `K[X]` tells us that this
+image lies in `K[X]`, so we must have $`a b_0 \in K`$. Then $`a b_0`$ is fixed
+by `Aut(L/K)`, and `a` is nonzero in `L` because `a ∉ Q`, so `b_0` is fixed by
+`Aut(L/K)`.
 :::
 
 ```tex "fixed_of_fixed1_aux1/proof"

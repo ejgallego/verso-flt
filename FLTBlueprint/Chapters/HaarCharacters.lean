@@ -684,12 +684,17 @@ the same determinant.
 
 # Finite products
 
+Here are two facts which we will need about products.
+
+```tex "haar_character_project/finite_products_intro"
+Here are two facts which we will need about products.
+```
+
 :::theorem "product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_prodCongr")
-If `A` and `B` are locally compact additive groups and `φ : A ≃ₜ+ A` and
-`ψ : B ≃ₜ+ B` are additive homeomorphisms, then
+If `(A, +)` and `(B, +)` are locally compact topological abelian groups, and if
+`φ : A → A` and `ψ : B → B` are additive homeomorphisms, then
+`φ × ψ : A × B → A × B` is an additive homeomorphism and
 `d_{A × B}(φ × ψ) = d_A(φ) d_B(ψ)`.
-Iterating gives the corresponding finite-product formula. This is the
-finite-product analogue of {uses "haar_character_is_multiplicative"}[].
 :::
 
 ```tex "haar_character_project/lt_product_formula"
@@ -697,7 +702,7 @@ If $(A,+)$ and $(B,+)$ are locally compact topological abelian groups, and if $\
 ```
 
 :::proof "product_haar_character_formula"
-First prove this for two factors, then iterate.
+$`d_{A\times B}(\phi\times\psi)=d_A(\phi)d_B(\psi)`$.
 :::
 
 ```tex "haar_character_project/lt_product_formula_proof"
@@ -706,7 +711,7 @@ d_{A\times B}(\phi\times\psi)=d_A(\phi)d_B(\psi).
 
 :::theorem "product_ring_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
 If `R` and `S` are locally compact topological rings, then
-$`\delta_{R\times S}(r,s)=\delta_R(r)\delta_S(s)`$.
+`δ_{R × S}(r, s) = δ_R(r) × δ_S(s)`.
 :::
 
 ```tex "haar_character_project/lt_product_ring_formula"
@@ -830,8 +835,8 @@ Again this is because the image of compact is compact and the image of open is o
 ```
 
 :::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project") (lean := "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace")
-If an additive automorphism acts on a compact additive group, then its Haar
-character is `1`.
+If `A` is a compact topological additive group and `φ : A → A` is an additive
+isomorphism, then `d_A(φ) = 1`.
 :::
 
 ```tex "haar_character_project/lt_compact_group_trivial"
@@ -839,20 +844,20 @@ Say $A$ is a compact topological additive group and $\phi:A\to A$ is an additive
 ```
 
 :::proof "compact_group_haar_character_trivial"
-{uses "haar_character_pullback_formula"}[]
-We have $`d_A(\phi)\mu(A)=\mu(A)`$.
+{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
+We have `d_A(\phi)\mu(A)=\mu(A)`, and `\mu(A)` is positive and finite because
+`A` is open and compact.
 :::
 
 ```tex "haar_character_project/lt_compact_group_trivial_proof"
-We have $d_A(\phi)\mu(A)=\mu(A)$.
+We have $d_A(\phi)\mu(A)=\mu(A)$ from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_preimage} and $\mu(A)$ is positive and finite because $A$ is open and compact.
 ```
 
 :::theorem "open_embedding_preserves_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding")
-If an additive automorphism on a locally compact group is intertwined with one
-on a larger group through an open embedding, then the two Haar characters
-agree.
-This is the open-embedding transfer principle for
-{uses "additive_haar_character"}[].
+If `f : A → B` is a group homomorphism and open embedding between locally
+compact topological additive groups and if `α : A → A` and `β : B → B` are
+additive homeomorphisms such that the square commutes
+(i.e., `f ∘ α = β ∘ f`), then `d_A(α) = d_B(β)`.
 :::
 
 ```tex "haar_character_project/lt_open_embedding_preserves_haar_character"
@@ -860,15 +865,17 @@ If $f:A\to B$ is a group homomorphism and open embedding between locally compact
 ```
 
 :::proof "open_embedding_preserves_haar_character"
-The TeX proof pulls back Haar measure along the open embedding and compares the
-resulting integral identities on the smaller and larger groups. The pullback is
-a regular Haar measure by
-{uses "open_embedding_pullback_is_haar_measure"}[] and
-{uses "open_embedding_pullback_regular_measure"}[].
-
-This is a transfer principle: once one knows the Haar character in an ambient
-group, one can sometimes read off the character on an open embedded subgroup for
-free.
+Choose a regular Haar measure `μ_B` on `B`. The pullback `μ_A := f^* μ_B` is
+also a regular Haar measure by {uses "open_embedding_pullback_is_haar_measure"}[]
+and {uses "open_embedding_pullback_regular_measure"}[].
+Now fix a continuous compactly-supported function `g` on `A` with
+`0 < ∫ g(a) dμ(a) < ∞`. Then `d_A(α) ∫ g(a) dμ_A(a) = ∫ g(a) d(α^* μ_A)(a)`
+by {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"}[].
+This equals `∫ g(a) d(α^* f^* μ_B)(a)` by definition, which is
+`∫ g(a) d(f^* β^* μ_B)(a)` because pullback of pullback is pullback.
+This equals `d_B(β) ∫ g(a) d(f^* μ_B)(a)` by
+{uses "MeasureTheory.addEquivAddHaarChar_comap"}[], which is
+`d_B(β) ∫ g(a) dμ_A(a)` by definition, and so `d_A(α) = d_B(β)` as required.
 :::
 
 ```tex "haar_character_project/measure_theoretic_preliminaries"
