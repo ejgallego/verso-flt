@@ -18,7 +18,8 @@ numbers with $`n \geq 3`, then $`a^n + b^n \ne c^n`. It is thus the claim that a
 family of Diophantine equations, $`a^3+b^3=c^3`, $`a^4+b^4=c^4`, and so on, has
 no positive integer solutions. Diophantus was a Greek mathematician who lived
 around `1800` years ago, and he would have been able to understand the
-statement of the theorem.
+statement of the theorem (he knew about positive integers, addition and
+multiplication).
 
 ```tex "flt-intro-statement-tex"
 Fermat's Last Theorem is the statement that if $a,b,c,n$ are positive whole numbers with $n\geq 3$,
@@ -42,12 +43,25 @@ go broadly in the same direction, using elliptic curves and modular forms.
 
 Lean is an interactive theorem prover; it checks mathematical arguments with
 super-human accuracy. Explaining a proof of Fermat's Last Theorem to Lean is in
-some sense like explaining the proof to Diophantus. For example, the proof
+some sense like explaining the proof to Diophantus; for example, the proof
 starts by observing that before we go any further it is convenient to first
 invent or discover zero and negative numbers, and one can point explicitly at
 places in Lean's source code where these things happen. However, we will adopt
 a more efficient approach: we will assume all of the theorems both in core Lean
 and in its mathematics library `mathlib`, and proceed from there.
+
+To give some idea of what this entails: `mathlib` at the time of writing
+contains most of an undergraduate mathematics degree and parts of several
+relevant Masters level courses (for example, the definitions and basic
+properties of elliptic curves and modular forms are in `mathlib`). Thus our
+task can be likened to teaching a graduate level course on Fermat's Last
+Theorem to a computer. The computer is quite a challenging audience member --
+it will insist on being given all technical details of all arguments, and it
+will not accept proof by intimidation or by appeal to higher authority. Most
+mathematicians know humans who also behave in this manner. However, it is
+worse than this; the computer will only start filling in details of arguments
+by itself once the arguments are mathematically utterly obvious. Thus,
+currently, formalization can be a very time-consuming process.
 
 ```tex "flt-intro-lean-tex"
 Lean is an interactive theorem prover; it checks mathematical arguments with super-human accuracy.
@@ -67,22 +81,11 @@ and \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberThe
 are in {\tt mathlib}). Thus our task can be likened to teaching a graduate level course on
 Fermat's Last Theorem to a computer. The computer is quite a challenging audience member -- it
 will insist on being given all technical details of all arguments, and it will not accept proof by
-intimidation or by appeal to higher authority. Most mathematicians know humans who also behave
-in this manner. However, it is worse than this; in 2025 at least, the computer will only start filling
-in details of arguments by itself once the arguments are mathematically utterly obvious.
-Thus, currently, formalization can be a very time-consuming process.
+intimidation or by appeal to higher authority. Most mathematicians know humans who also behave in
+this manner. However, it is worse than this; the computer will only start filling in details of
+arguments by itself once the arguments are mathematically utterly obvious. Thus, currently,
+formalization can be a very time-consuming process.
 ```
-
-To give some idea of what this entails: `mathlib` at the time of writing
-contains most of an undergraduate mathematics degree and parts of several
-relevant Masters level courses. Thus our task can be likened to teaching a
-graduate level course on Fermat's Last Theorem to a computer. The computer is
-quite a challenging audience member: it will insist on being given all
-technical details of all arguments, and it will not accept proof by
-intimidation or by appeal to higher authority. In `2025`, at least, the
-computer will only start filling in details of arguments by itself once the
-arguments are mathematically utterly obvious. Thus, currently, formalization
-can be a very time-consuming process.
 
 # Which Proof Is Being Formalised?
 

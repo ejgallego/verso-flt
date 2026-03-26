@@ -12,7 +12,7 @@ open Informal
 #doc (Manual) "An Overview Of The Proof" =>
 
 :::group "overview_strategy"
-This chapter gives a sketch overview of the strategy for ruling out hardly
+This chapter gives a sketch of the strategy for ruling out hardly
 ramified irreducible two-dimensional Galois representations and hence finishing
 the FLT argument after the first reductions.
 :::
@@ -25,7 +25,7 @@ $`\rho : \GQ \to \GL_2(\Z/\ell\Z)`.
 
 In this chapter we give an overview of our strategy for proving this, and
 collect various results which we will need along the way. Note that we no
-longer need to assume that $`\rho` comes from the $`\ell`-torsion in an
+longer need to assume that $`\rho` comes from the $`\ell`-torsion of an
 elliptic curve.
 
 ```tex "overview_intro"
@@ -56,6 +56,9 @@ Assume we have a hardly-ramified representation $`\rho` as above. Let $`K` be
 the number field corresponding to the kernel of $`\rho`. Then there is some
 totally real field $`F` of even degree, Galois over $`\Q`, unramified at
 $`\ell`, and disjoint from $`K`, such that $`\rho|G_F` is modular.
+This step uses {uses "moret_bailly_placeholder"}[],
+{uses "global_class_field_theory_placeholder"}[], and
+{uses "modularity_lifting_theorem"}[].
 :::
 
 :::proof "potential_modularity_step"
@@ -139,7 +142,7 @@ Say $`k` is a finite extension of $`\Z/\ell\Z` and
 $`\rhobar : G_F \to \GL_2(k)` is continuous, absolutely irreducible when
 restricted to $`F(\zeta_\ell)`, and `S`-good. Then one can check that the
 functor representing `S`-good lifts of $`\rhobar` is representable.
-It uses {uses "s_good_lift_condition"}[].
+This representability statement uses {uses "s_good_lift_condition"}[].
 :::
 
 :::proof "s_good_deformation_problem"
@@ -153,7 +156,7 @@ If $`\rhobar` is modular of level $`\Gamma_1(S)` and
 $`\rho : G_F \to \GL_2(\calO)` is an `S`-good lift of $`\rhobar` to $`\calO`,
 the integers of a finite extension of $`\Q_\ell`, then $`\rho` is also modular
 of level $`\Gamma_1(S)`.
-It uses {uses "s_good_deformation_problem"}[],
+This theorem uses {uses "s_good_deformation_problem"}[],
 {uses "local_galois_cohomology_package"}[],
 {uses "skinner_wiles_cft_trick_placeholder"}[], and
 {uses "moret_bailly_placeholder"}[].
