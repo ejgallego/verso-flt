@@ -225,26 +225,23 @@ In that arithmetic example, the residue-field extension is finite, so
 by a Frobenius automorphism. Surjectivity of
 {uses "stabilizer_hom_surjective"}[] lifts that residue-field Frobenius back to
 an element of the decomposition group.
-
-The TeX chapter also uses this point to explain the arithmetic-versus-geometric
-Frobenius normalization issue. The formal theorem is neutral about that choice:
-it gives the stabilizer-to-residue-field surjection, and the user decides which
-generator of the finite field Galois group to lift.
 :::
 
 ```tex "Examples/positive_characteristic"
-Even though $G$ is finite, it is possible in characteristic $p>0$ for the extension $L/K$ to be
-infinite (and mostly inseparable). The theorem implies that $\Aut(L/K)$ is always finite;
-what is actually happening is that $L/K$ is algebraic and normal, and its maximal separable
-subextension is finite of degree at most $|G|$. However, we can prove surjectivity directly
-without reference to this maximal separable subextension.
+Even though $G$ is finite, it is possible in characteristic $p>0$ for the
+extension $L/K$ to be infinite (and mostly inseparable). The theorem implies
+that $\Aut(L/K)$ is always finite; what is actually happening is that $L/K$ is
+algebraic and normal, and its maximal separable subextension is finite of degree
+at most $|G|$. However, we can prove surjectivity directly without reference to
+this maximal separable subextension.
 ```
 
-The TeX chapter also includes characteristic-`p` examples showing that the
-residue-field extension `L/K` need not be finite or separable in general, even
-though `Aut(L/K)` is always finite. The point of those examples is to justify
-why the proof is organized directly around the stabilizer map rather than
-through a naive finite-Galois-field picture.
+Even though `G` is finite, it is possible in characteristic `p>0` for the
+extension `L/K` to be infinite (and mostly inseparable). The theorem implies
+that `Aut(L/K)` is always finite; what is actually happening is that `L/K` is
+algebraic and normal, and its maximal separable subextension is finite of degree
+at most `|G|`. However, we can prove surjectivity directly without reference to
+this maximal separable subextension.
 
 ```tex "The extension $B/A$/setup"
 The precise set-up we'll work in is the following. We fix $G$ a finite group acting
@@ -255,8 +252,11 @@ elements of $B$. We don't ever need the map $A\to B$ to be injective so we don't
 
 # The Extension B/A
 
-The precise setup used in the proof is that the image of `A` in `B` is exactly
-the invariant subring. The first structural theorem is that `B/A` is integral.
+The precise set-up we'll work in is the following. We fix `G` a finite group
+acting on `B` a commutative ring, and we have another commutative ring `A`
+such that `B` is an `A`-algebra and the image of `A` in `B` is precisely the
+`G`-invariant elements of `B`. We don't ever need the map `A → B` to be
+injective so we don't assume this.
 
 ```tex "The extension $B/A$/charpoly_intro"
 We start with a construction which is fundamental to everything,
@@ -543,8 +543,9 @@ Viewed through `K[X]`, the same polynomial has coefficients in `K`, so
 
 # The Extension L/K
 
-The final proof writes the stabilizer map as a composition
-`D_Q -> Aut(L/L^{D_Q}) -> Aut(L/K)`.
+Let `L^{D_Q}` denote the fixed field of the action `D_Q` on `L`.
+Our strategy for proving surjectivity of `D_Q -> Aut(L/K)` will be to write
+this map as the composition `D_Q -> Aut(L/L^{D_Q}) -> Aut(L/K)`.
 
 ```tex "The extension $L/K/section"
 \section{The extension \texorpdfstring{$L/K$}{L/K}.}
@@ -684,10 +685,13 @@ group `Aut(L/K)`. But this is exactly the preceding result.
 ```
 
 :::proof "stabilizer_hom_surjective"
-The map `D_Q -> Aut(L/L^{D_Q})` is surjective by the finite-group Galois
-theorem. For surjectivity of `Aut(L/L^{D_Q}) -> Aut(L/K)`, let `σ` be a field
+{uses "FixedPoints.toAlgAut_surjective"}[]
+{uses "fixed_of_fixed2"}[]
+The map `D_Q -> Aut(L/L^{D_Q})` is surjective by
+`FixedPoints.toAlgAut_surjective`. For surjectivity of
+`Aut(L/L^{D_Q}) -> Aut(L/K)`, let `σ` be a field
 automorphism of `L` fixing `K` pointwise. We must show that `σ` automatically
-fixes `L^{D_Q}` pointwise. But this is exactly the preceding result. Thus, the
+fixes `L^{D_Q}` pointwise. But this is exactly `fixed_of_fixed2`. Thus, the
 composition `D_Q -> Aut(L/L^{D_Q}) -> Aut(L/K)` is surjective.
 :::
 
