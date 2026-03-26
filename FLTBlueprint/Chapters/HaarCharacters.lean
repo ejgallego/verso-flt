@@ -306,7 +306,7 @@ one can simplify both sides to `\mu`.
 # Examples
 
 :::theorem "real_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_real")
-For the additive group of `ℝ`, the Haar character is the usual absolute value.
+If $`R=\R`$ then $`\delta_R(u)=|u|`$.
 :::
 
 ```tex "haar_character_project/lt_real_formula"
@@ -314,7 +314,9 @@ If $R=\R$ then $\delta_R(u)=|u|$.
 ```
 
 :::proof "real_haar_character_formula"
-Take `\mu` to be Lebesgue measure and `X=[0,1]`.
+Take `\mu` to be Lebesgue measure and `X = [0,1]`. We have
+`δ(u) = \mu(uX)`. If `u > 0` then `u[0,1] = [0,u]`, which has measure
+`u = |u|`, and if `u < 0` then `u[0,1] = [u,0]`, which has measure `-u = |u|`.
 :::
 
 ```tex "haar_character_project/lt_real_proof"
@@ -322,7 +324,7 @@ Take $\mu$ to be Lebesgue measure and $X=[0,1]$.
 ```
 
 :::theorem "complex_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_complex")
-For the additive group of `ℂ`, the Haar character is $`|z|^2`.
+If $`R=\bbC`$ then $`\delta_R(u)=|u|^2`$.
 :::
 
 ```tex "haar_character_project/lt_complex_formula"
@@ -331,7 +333,8 @@ If $R=\bbC$ then $\delta_R(u)=|u|^2$.
 
 :::proof "complex_haar_character_formula"
 Multiplication by a positive real `r` sends a unit square to a square of area
-`r^2 = |r|^2`.
+`r^2 = |r|^2`. Multiplication by `e^{i\theta}` is a rotation and thus does not
+change area. The general case follows.
 :::
 
 ```tex "haar_character_project/lt_complex_proof"
@@ -694,10 +697,7 @@ If $(A,+)$ and $(B,+)$ are locally compact topological abelian groups, and if $\
 ```
 
 :::proof "product_haar_character_formula"
-The TeX chapter first handles binary products and then iterates. At the level of
-measures this is exactly what one expects: product Haar measure scales by the
-product of the coordinatewise scaling factors. This is the additive-product
-formula behind {uses "product_haar_character_formula"}[].
+First prove this for two factors, then iterate.
 :::
 
 ```tex "haar_character_project/lt_product_formula_proof"
@@ -706,8 +706,7 @@ d_{A\times B}(\phi\times\psi)=d_A(\phi)d_B(\psi).
 
 :::theorem "product_ring_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
 If `R` and `S` are locally compact topological rings, then
-`δ_{R × S}(r, s) = δ_R(r) δ_S(s)`.
-This is the ring-theoretic specialization of {uses "product_haar_character_formula"}[].
+$`\delta_{R\times S}(r,s)=\delta_R(r)\delta_S(s)`$.
 :::
 
 ```tex "haar_character_project/lt_product_ring_formula"
@@ -715,9 +714,7 @@ If $R$ and $S$ are locally compact topological rings, then $\delta_{R\times S}(r
 ```
 
 :::proof "product_ring_haar_character_formula"
-The TeX chapter states this first for additive groups, then for rings as the
-immediate specialization to multiplication-by-units. The additive product
-formula is the source of {uses "product_haar_character_formula"}[].
+Follows immediately from {uses "product_haar_character_formula"}[].
 :::
 
 ```tex "haar_character_project/finite_products"
@@ -842,10 +839,8 @@ Say $A$ is a compact topological additive group and $\phi:A\to A$ is an additive
 ```
 
 :::proof "compact_group_haar_character_trivial"
-The TeX proof is the short measure argument: the whole compact group has finite,
-positive Haar measure, and that total measure is unchanged by the automorphism.
-The proof passes through the preimage formula
-{uses "haar_character_pullback_formula"}[].
+{uses "haar_character_pullback_formula"}[]
+We have $`d_A(\phi)\mu(A)=\mu(A)`$.
 :::
 
 ```tex "haar_character_project/lt_compact_group_trivial_proof"
