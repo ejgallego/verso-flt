@@ -238,7 +238,7 @@ the real Lie algebra on the smooth complex-valued functions on $`\GL_n(\R)`.
 This depends on {uses "instLieAlgebraAction"}[].
 :::
 
-```tex "ch07exampleGLn/complex_lie_algebra_action"
+```tex "ch07exampleGLn/complex_lie_algebra_action/2"
 \begin{definition}
   \label{instComplexLieAlgebraAction}
   \uses{instLieAlgebraAction}

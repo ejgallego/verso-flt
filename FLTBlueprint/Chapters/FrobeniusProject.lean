@@ -149,7 +149,7 @@ straightforward. The real substance is not defining the map, but proving that it
 hits every automorphism.
 :::
 
-```tex "IsFractionRing.stabilizerHom"
+```tex "IsFractionRing.stabilizerHom/2"
 \begin{definition}
   \label{IsFractionRing.stabilizerHom}
   \lean{IsFractionRing.stabilizerHom}

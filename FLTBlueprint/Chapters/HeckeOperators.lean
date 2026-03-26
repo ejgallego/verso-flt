@@ -35,7 +35,7 @@ good shape, while the concrete adelic theory still depends on restricted-product
 and local matrix-group infrastructure.
 :::
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/2"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -51,7 +51,7 @@ have no sorried definitions but still some sorried proofs. So the point of the
 chapter is not to invent the formalism, but to finish the local and adelic API
 needed to make the concrete operators sorry-free.
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/3"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -67,7 +67,7 @@ automorphic forms. These operators generate the Hecke algebras that supply the
 `T` side of the modularity lifting theorems, and so they sit directly on the
 critical path toward `R = T`.
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/4"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -83,7 +83,7 @@ the real infrastructure burden sits, because the adelic groups of interest are
 restricted products and the local compact-open subgroups are matrix groups over
 local rings.
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/5"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -96,7 +96,7 @@ We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 # Abstract theory
 The setup in the TeX chapter is deliberately minimal:
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/6"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -112,7 +112,7 @@ We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 - subgroups `U` and `V` of `G`
 - an element `g : G`
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/7"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -126,7 +126,7 @@ The key finiteness hypothesis is that the double coset `UgV` is a finite union
 of single left cosets `g_iV`. Under that hypothesis one gets an operator from
 the `V`-fixed points to the `U`-fixed points.
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/8"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -143,7 +143,7 @@ coset, one defines the Hecke operator by summing translates over the chosen
 single-coset representatives. This is the abstract engine behind the concrete
 operator story in {uses "concrete_hecke_action"}[].
 :::
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex "hecke_operator_project/abstract_theory/introduction/9"
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -298,7 +298,7 @@ products, and even statements that sound tautological, such as
 `GL_2(A_F)` being a restricted product of `GL_2(F_v)`, need careful
 topological justification.
 
-```tex "hecke_operator_project/restricted_products/introduction"
+```tex "hecke_operator_project/restricted_products/introduction/2"
 \section{Restricted products}
 
 In the concrete example of Hecke operators which we care about, the invariants $A^G$
@@ -320,7 +320,7 @@ The TeX source then proceeds in a very specific order: products, units, local
 matrix theory, adelic groups, automorphic forms, and only then the concrete
 Hecke operators. The Verso chapter follows that same order here.
 
-```tex "hecke_operator_project/restricted_products/introduction"
+```tex "hecke_operator_project/restricted_products/introduction/3"
 \section{Restricted products}
 
 In the concrete example of Hecke operators which we care about, the invariants $A^G$
@@ -342,7 +342,7 @@ the restricted product looks something like $\prod{}^{r} i,[X\ i, Y\ i]$.
 The restricted product is the subset of the full product consisting of tuples
 that lie in designated good subspaces for all but finitely many indices.
 :::
-```tex "hecke_operator_project/restricted_products/introduction"
+```tex "hecke_operator_project/restricted_products/introduction/4"
 \section{Restricted products}
 
 In the concrete example of Hecke operators which we care about, the invariants $A^G$
@@ -497,7 +497,7 @@ The TeX notes even remark that this may fail without the openness hypothesis,
 because filtered colimits and binary products do not commute well in general in
 the category of topological spaces.
 :::
-```tex "hecke_operator_project/restricted_products/products"
+```tex "hecke_operator_project/restricted_products/products/2"
 \subsection{Products}
 
 Here are some basic facts we need about restricted products.
@@ -611,7 +611,7 @@ This is the immediate matrix-valued corollary of the finite-product theorem,
 since an `n × n` matrix space is just a finite product of copies of the
 coefficient space.
 :::
-```tex "hecke_operator_project/restricted_products/matrix"
+```tex "hecke_operator_project/restricted_products/matrix/2"
 \begin{corollary}
   \label{Homeomorph.restrictedProductMatrix}
   \lean{Homeomorph.restrictedProductMatrix}
@@ -746,7 +746,7 @@ that embedding, `Uˣ` is exactly the intersection of `Mˣ` with the open set
 `U × U`.
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/2"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -860,7 +860,7 @@ If `U` is a compact submonoid of a Hausdorff topological monoid `M`, then `Uˣ`
 is a compact subgroup of `Mˣ`.
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/3"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -979,7 +979,7 @@ The current proof uses it exactly at the point where `{1}` has to be a closed
 subset of the ambient monoid.
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/4"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -1093,7 +1093,7 @@ For a finite product of topological monoids, the units of the product are
 homeomorphic to the product of the unit groups.
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/5"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -1207,7 +1207,7 @@ The TeX chapter proves continuity in both directions directly from the induced
 topology on units and the universal property of products.
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/6"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -1324,7 +1324,7 @@ This combines {uses "product_units_homeomorphism"}[] with
 {uses "units_of_open_submonoid_open"}[].
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/7"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -1444,7 +1444,7 @@ homeomorphism near the identity, using the open neighborhoods coming from the
 good submonoids, and then upgrades that local statement to a global
 homeomorphism of topological groups.
 :::
-```tex "hecke_operator_project/restricted_products/units"
+```tex "hecke_operator_project/restricted_products/units/8"
 \subsection{Units}
 
 We now want to move from matrices to invertible matrices whilst keeping track of topology,
@@ -1687,7 +1687,7 @@ the right generality. It sticks to completions of number fields at finite
 places, even though the natural long-term statements should be about general
 nonarchimedean local fields.
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/2"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -1813,7 +1813,7 @@ The local integer ring `\mathcal{O}_v` inside `K_v` is an open subring of
 `K_v`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/3"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -1939,7 +1939,7 @@ The local integer ring `\mathcal{O}_v` is a compact subring of `K_v`; the
 compactness comes from the finiteness of the residue field `k_v`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/4"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2065,7 +2065,7 @@ The matrix ring `M₂(\mathcal{O}_v) \cong \mathcal{O}_v^4` is an open subring
 of `M₂(K_v) \cong K_v^4`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/5"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2190,7 +2190,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 The matrix ring `M₂(\mathcal{O}_v)` is a compact subring of `M₂(K_v)`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/6"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2321,7 +2321,7 @@ This is obtained from {uses "matrix_full_level_open"}[],
 {uses "units_of_compact_submonoid_compact"}[].
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/7"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2449,7 +2449,7 @@ open subring of `M₂(K_v)`, the compact-open statement for units follows from t
 general topology of units in compact/open submonoids.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/8"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2576,7 +2576,7 @@ preimage in `GL₂(\mathcal{O}_v)` gives the local compact open subgroup used to
 define the corresponding local level.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/9"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2707,7 +2707,7 @@ subgroup statement using {uses "units_of_open_submonoid_open"}[] and
 {uses "units_of_compact_submonoid_compact"}[].
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/10"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2836,7 +2836,7 @@ subgroup of `M₂(k_v)` is a finite union of cosets of `I`. That is the compact
 open subgroup `U_v`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/11"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -2961,7 +2961,7 @@ The TeX chapter then specializes to upper-triangular congruence-type local
 subgroups in preparation for the explicit `U_{v,\alpha}` double-coset
 calculation.
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/12"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -3092,7 +3092,7 @@ left cosets `g_tU` indexed by `\mathcal{O}_v/\alpha\mathcal{O}_v`, where
 `\tilde t` of `t`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/13"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -3222,7 +3222,7 @@ one computes
 so the upper-right entry vanishes modulo `\alpha` exactly when `b mod \alpha`
 equals `t`. The `g_t` are therefore the coset representatives.
 :::
-```tex "hecke_operator_project/local_theory/introduction"
+```tex "hecke_operator_project/local_theory/introduction/14"
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -3399,7 +3399,7 @@ This is the adelic consequence of
 {uses "restricted_product_units_homeomorphism"}[].
 :::
 
-```tex "hecke_operator_project/adelic_groups/introduction"
+```tex "hecke_operator_project/adelic_groups/introduction/2"
 \section{Adelic groups}
 
 We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
@@ -3447,7 +3447,7 @@ needs careful topological proof. One first identifies matrices over restricted
 products with restricted products of matrices, then applies
 {uses "restricted_product_units_homeomorphism"}[] to pass to units.
 :::
-```tex "hecke_operator_project/adelic_groups/introduction"
+```tex "hecke_operator_project/adelic_groups/introduction/3"
 \section{Adelic groups}
 
 We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
@@ -3520,7 +3520,7 @@ chapter then checks compactness and openness factorwise and finally uses the
 open embedding of the product of full local levels into the adelic restricted
 product.
 :::
-```tex "hecke_operator_project/adelic_groups/levels"
+```tex "hecke_operator_project/adelic_groups/levels/2"
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
 a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
 create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S$
@@ -3633,7 +3633,7 @@ It also spells out the left action of `G` on this ambient space `A` by the rule
 formalism is applied.
 :::
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
+```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/2"
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from
@@ -3724,7 +3724,7 @@ and let `g \in G` be the adelic element whose `v`-component is
 `T_v : A^U \to A^U` is then the double-coset operator `[UgU]`.
 :::
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
+```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/3"
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from
@@ -3814,7 +3814,7 @@ finite components are `1`. The operator `U_{v,\alpha}` is the double-coset
 operator `[UgU]`.
 :::
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
+```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/4"
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from
@@ -3901,7 +3901,7 @@ The TeX chapter emphasizes that the Hecke algebra of interest is generated by
 the operators `T_v` for `v ∉ S` together with the operators `U_{v,\alpha}` for
 `v ∈ S`.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
+```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/5"
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from
@@ -3993,7 +3993,7 @@ operators are {uses "t_v_hecke_operator"}[] and
 {uses "u_valpha_hecke_operator"}[].
 :::
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
+```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/6"
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from
@@ -4082,7 +4082,7 @@ restricted products, compact open unit groups, and the relevant matrix-group
 double cosets well enough that the abstract Hecke machinery can be applied to
 the quaternionic automorphic-form spaces.
 :::
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators"
+```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/7"
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from
@@ -4220,7 +4220,7 @@ single-coset representatives supported only at the relevant place. Disjoint
 support is then exactly what forces commutativity.
 :::
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra"
+```tex "hecke_operator_project/analysis_of_hecke_algebra/2"
 \section{Analysis of the Hecke algebra}
 
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
@@ -4263,7 +4263,7 @@ This is the same-place local relation coming from
 {uses "local_u_operator_double_coset_decomposition"}[].
 :::
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra"
+```tex "hecke_operator_project/analysis_of_hecke_algebra/3"
 \section{Analysis of the Hecke algebra}
 
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
@@ -4305,7 +4305,7 @@ decomposition. That stronger multiplicative relation is the last local input
 needed for commutativity of the whole Hecke algebra.
 :::
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra"
+```tex "hecke_operator_project/analysis_of_hecke_algebra/4"
 \section{Analysis of the Hecke algebra}
 
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
@@ -4350,7 +4350,7 @@ This combines {uses "hecke_operators_different_places_commute"}[],
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"}[].
 :::
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra"
+```tex "hecke_operator_project/analysis_of_hecke_algebra/5"
 \section{Analysis of the Hecke algebra}
 
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
@@ -4395,7 +4395,7 @@ the relevant module of automorphic forms as a submodule of a finite free
 `R`-module, and the Hecke subalgebra generated by the operators above is
 therefore a Noetherian ring.
 :::
-```tex "hecke_operator_project/analysis_of_hecke_algebra"
+```tex "hecke_operator_project/analysis_of_hecke_algebra/6"
 \section{Analysis of the Hecke algebra}
 
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
