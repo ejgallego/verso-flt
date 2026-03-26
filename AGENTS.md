@@ -57,6 +57,12 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Do not improve the source text during LT work. If a sentence is awkward in
   the TeX source, keep the awkwardness unless a concrete translation or build
   constraint forces a visible editorial note.
+- When the TeX source uses mathematical notation, keep it as mathematical
+  notation in the Verso port where practical. Do not routinely demote variables,
+  formulas, congruences, maps, or algebraic expressions from TeX math into code
+  spans just because code formatting is easier to type. Reserve code spans for
+  Lean identifiers, file names, API names, literal syntax, or other genuinely
+  code-like material.
 - Do not promote free prose into new `:::theorem`, `:::definition`, or
   `:::proof` nodes unless the TeX source already has a corresponding formal
   environment or labeled proof step that should stay graph-visible.
@@ -65,6 +71,15 @@ This repository is the integration layer for the FLT Verso blueprint.
   forward pointer or sketch, the Verso port should stop there too.
 - Preserve TeX `\uses{...}` edges when they exist, but do not invent new
   dependency edges merely to make the blueprint graph look nicer.
+- Metadata fidelity is about preserving the source's intended blueprint
+  semantics, not about copying TeX syntax mechanically. If the TeX source splits
+  one dependency awkwardly across `\uses{...}` and prose `\ref{...}` because of
+  old blueprint limitations, it is acceptable to consolidate that into a single
+  source-grounded Verso `{uses "..."}[]` in the relevant node or proof, so long
+  as this does not invent a new mathematical dependency.
+- Conversely, do not promote every prose `\ref{...}` into a `{uses "..."}[]`.
+  Only do so when the reference is clearly carrying dependency meaning rather
+  than merely helping the prose read naturally.
 - When non-literal material is genuinely unavoidable, keep it visibly separate
   and label it as an editorial or harness note rather than blending it into the
   translation.

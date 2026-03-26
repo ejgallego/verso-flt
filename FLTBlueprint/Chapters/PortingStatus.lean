@@ -33,6 +33,8 @@ porting notes did.
   the source prose just because it could be written better
 - users may say `LT`, `LF`, or `TF`; in this repository they all refer to the
   same workflow
+- when the TeX source uses mathematical notation, the default LT move is to
+  keep it as mathematical notation rather than demoting it into code spans
 - earlier LT-pass labels are provisional only; they do not count as trusted LT
   certification without local source witnesses
 - each translated informal block should sit immediately next to a labeled
@@ -46,6 +48,10 @@ porting notes did.
 - extra blueprint nodes, theorem interfaces, and dependency scaffolding should
   not be invented unless the TeX source already warrants them or they are
   marked clearly as editorial harness notes
+- metadata fidelity means preserving the source's intended dependency semantics,
+  not copying TeX syntax mechanically; when the old blueprint splits one real
+  dependency awkwardly across `\uses{...}` and prose `\ref{...}`, the Verso port
+  may consolidate that into one source-grounded `{uses "..."}[]`
 :::
 
 # How To Read This Page

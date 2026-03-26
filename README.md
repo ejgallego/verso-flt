@@ -28,6 +28,12 @@ blueprint structure should only be introduced when the TeX source already has a
 corresponding formal item or when a clearly marked editorial note is
 unavoidable.
 
+When the TeX source uses mathematical notation, the default is to keep it as
+mathematical notation in Verso too. Variables, formulas, congruences, and maps
+should not routinely be rewritten as code spans just because that is
+convenient; code spans are for Lean names, APIs, file paths, literal syntax,
+and other genuinely code-like material.
+
 Users may say `LT`, `LF`, or `TF`; in this repository they all refer to the
 same translation-faithfulness workflow.
 
@@ -45,6 +51,12 @@ blocks when a finer-grained pairing is possible.
 When the TeX source records dependency edges with `\uses{...}`, the port should
 preserve those edges as Verso `{uses "..."}[]` references inside the relevant
 informal nodes or proofs so the dependency graph remains faithful too.
+This is semantic fidelity, not TeX-syntax literalism: if the old blueprint
+expresses one intended dependency awkwardly through a mix of `\uses{...}` and
+prose `\ref{...}`, the Verso port may consolidate that into one source-grounded
+`{uses "..."}[]` in the relevant node or proof. But prose references that are
+not carrying real dependency content should remain prose references rather than
+being promoted automatically into graph edges.
 
 The refreshed VersoBlueprint 4.28 compatibility branch is already synced into
 the local harness; follow the documented build and porting rules here rather
