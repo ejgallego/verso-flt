@@ -103,6 +103,7 @@ idea of using a mechanical drift signal, run:
 
 ```bash
 python3 scripts/check_lt_similarity.py
+python3 scripts/check_lt_similarity.py --verbose
 ```
 
 The similarity report now also surfaces metadata drift heuristics:
@@ -110,6 +111,8 @@ The similarity report now also surfaces metadata drift heuristics:
 - missing / extra `\lean{...}` vs `(lean := "...")`
 - TeX `\ref{...}` labels that are still only weak reference hints rather than
   mirrored explicit dependency metadata
+- default output is summary-first for humans; `--verbose` restores the detailed
+  per-block dump for agents and tool debugging
 
 For regression checks on the LT similarity tool itself, run:
 

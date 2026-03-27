@@ -98,6 +98,11 @@ def main() -> int:
         action="store_true",
         help="Also run the full pages smoke test at the end.",
     )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Pass through verbose per-block LT similarity output instead of the summary view.",
+    )
     args = parser.parse_args()
 
     overall_ok = True
@@ -123,6 +128,7 @@ def main() -> int:
                 str(args.top),
                 "--warn-below",
                 str(args.warn_below),
+                *([] if not args.verbose else ["--verbose"]),
             ],
         )
         print_step(similarity_result)

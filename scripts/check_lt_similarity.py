@@ -272,7 +272,13 @@ def score_pair(block: Block, tex: Block) -> PairScore:
     )
 
 
-def summarize_file(path: Path, scores: list[PairScore], warn_below: float, top: int) -> list[str]:
+def summarize_file(
+    path: Path,
+    scores: list[PairScore],
+    warn_below: float,
+    top: int,
+    verbose: bool,
+) -> list[str]:
     primary_values = [score.primary_ratio for score in scores]
     low = [score for score in scores if score.primary_ratio < warn_below]
     low.sort(key=lambda score: (score.primary_ratio, score.sequence_ratio, score.block.start_line))
@@ -284,6 +290,32 @@ def summarize_file(path: Path, scores: list[PairScore], warn_below: float, top: 
         f"median={statistics.median(primary_values):.3f} min={min(primary_values):.3f} "
         f"warn_below={warn_below:.2f} low={len(low)} metadata_mismatch={len(metadata_mismatches)}"
     ]
+
+    if not verbose:
+        if low:
+            lines.append("- LT-focus:")
+            for score in low[: min(3, top)]:
+                kind = "prose" if score.block.kind == "prose" else "node"
+                lines.append(
+                    f"  line {score.block.start_line} {kind}: tok={score.token_ratio:.3f} "
+                    f"text={score.block.preview()}"
+                )
+        if metadata_mismatches:
+            lines.append("- metadata-focus:")
+            for score in metadata_mismatches[: min(3, top)]:
+                kind = "prose" if score.block.kind == "prose" else "node"
+                strong_ref_count = len(score.strong_ref_candidates)
+                env_ref_count = len(score.env_ref_hints)
+                lines.append(
+                    f"  line {score.block.start_line} {kind}: "
+                    f"diffs={score.metadata_diff_count} "
+                    f"missing_uses={len(score.missing_uses)} "
+                    f"missing_lean={len(score.missing_lean)} "
+                    f"strong_refs={strong_ref_count} "
+                    f"env_ref_hints={env_ref_count} "
+                    f"text={score.block.preview()}"
+                )
+        return lines
 
     for score in low[:top]:
         kind = "prose" if score.block.kind == "prose" else "node"
@@ -375,6 +407,11 @@ def main() -> int:
         default=20,
         help="Maximum number of low-similarity blocks to print per file.",
     )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Show the detailed per-block drift and metadata dump. Default output is summary-first.",
+    )
     args = parser.parse_args()
 
     root = args.root.resolve()
@@ -404,7 +441,7 @@ def main() -> int:
             continue
         any_scores = True
 
-        for line in summarize_file(path, scores, args.warn_below, args.top):
+        for line in summarize_file(path, scores, args.warn_below, args.top, args.verbose):
             print(line)
 
         if args.fail_below is not None and any(score.primary_ratio < args.fail_below for score in scores):

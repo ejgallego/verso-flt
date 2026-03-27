@@ -77,6 +77,11 @@ This repository is the integration layer for the FLT Verso blueprint.
   old blueprint limitations, it is acceptable to consolidate that into a single
   source-grounded Verso `{uses "..."}[]` in the relevant node or proof, so long
   as this does not invent a new mathematical dependency.
+- Treat metadata cleanup as a second phase of LT rather than as a substitute for
+  LT. In particular, do not do metadata-only cleanup on a block that is not yet
+  source-localized with an adjacent witness. First make the text LT/source-
+  paired, then tighten `(lean := "...")`, `{uses "..."}[]`, and related
+  metadata on that localized block.
 - Conversely, do not promote every prose `\ref{...}` into a `{uses "..."}[]`.
   Only do so when the reference is clearly carrying dependency meaning rather
   than merely helping the prose read naturally.
@@ -118,7 +123,8 @@ This repository is the integration layer for the FLT Verso blueprint.
   `python3 scripts/check_lt_similarity.py <chapter.lean>` to get the first
   draft of the block-level mechanical drift report suggested by David. This now
   includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`, and
-  TeX `\ref{...}` / `\uses{...}` mismatches.
+  TeX `\ref{...}` / `\uses{...}` mismatches. The default output is human-
+  oriented summary; use `--verbose` when an agent needs the full per-block dump.
 - When changing the LT similarity tooling itself, run
   `python3 scripts/test_check_lt_similarity.py` before relying on the updated
   scores for porting decisions.
@@ -215,6 +221,10 @@ This repository is the integration layer for the FLT Verso blueprint.
   in a labeled `tex` block. The refreshed VersoBlueprint 4.28 branch supports
   this directly, so use it for source-backed notes instead of rewriting the
   passage into placeholder prose.
+- Treat metadata-only upgrades as blocked until the surrounding block is LT-
+  complete and source-local. The hard precondition for `(lean := "...")` /
+  `{uses "..."}[]` cleanup is that the corresponding text already has its local
+  witness pairing in place.
 - For each blueprint node, prefer attaching the real FLT declaration with
   `(lean := "...")`.
 - Before adding a Lean reference, check that the needed FLT module chain can be
@@ -239,6 +249,8 @@ This repository is the integration layer for the FLT Verso blueprint.
   disjoint chapter or file lanes. Keep one worker per file as the normal rule.
 - Treat a block as LT-complete only once its local Verso translation sits next
   to a labeled `tex` witness block with the matching source excerpt.
+- Do not treat metadata cleanup by itself as LT completion. Metadata upgrades
+  belong on blocks that are already source-paired and textually localized.
 - Prefer translating existing TeX material into Verso over inventing new
   exposition. If explanatory glue is absolutely needed, keep it minimal,
   visibly editorial, and in service of the source structure.

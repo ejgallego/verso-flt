@@ -193,6 +193,74 @@ Delta epsilon zeta.
             )
             self.assertEqual(result.returncode, 1, msg=result.stdout + result.stderr)
 
+    def test_cli_default_is_summary_first(self) -> None:
+        content = """#doc (Manual) "Demo" =>
+
+:::theorem "demo" (lean := "Demo.foo")
+Alpha {uses "foo"}[].
+:::
+```tex "demo/theorem"
+\\begin{theorem}
+\\lean{Demo.bar}
+\\uses{bar}
+Alpha.
+\\end{theorem}
+```
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "Demo.lean"
+            path.write_text(content, encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT_DIR / "check_lt_similarity.py"),
+                    str(path),
+                    "--top",
+                    "3",
+                ],
+                cwd=SCRIPT_DIR.parent,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, msg=result.stdout + result.stderr)
+            self.assertIn("- metadata-focus:", result.stdout)
+            self.assertNotIn("missing_uses=['bar']", result.stdout)
+
+    def test_cli_verbose_shows_detailed_metadata(self) -> None:
+        content = """#doc (Manual) "Demo" =>
+
+:::theorem "demo" (lean := "Demo.foo")
+Alpha {uses "foo"}[].
+:::
+```tex "demo/theorem"
+\\begin{theorem}
+\\lean{Demo.bar}
+\\uses{bar}
+Alpha.
+\\end{theorem}
+```
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "Demo.lean"
+            path.write_text(content, encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT_DIR / "check_lt_similarity.py"),
+                    str(path),
+                    "--top",
+                    "3",
+                    "--verbose",
+                ],
+                cwd=SCRIPT_DIR.parent,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, msg=result.stdout + result.stderr)
+            self.assertIn("missing_uses=['bar']", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()
