@@ -1815,124 +1815,21 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/3"
-\section{Some local theory}
-
-We could work over a general nonarchimedean normed field but we still do not have them
-in mathlib, so we stick to the case of interest which is the completion of a number
-field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
-equipped with a discrete valuation, a ring of integers $\calO_v$ having a principal
-maximal ideal $(\varpi)$, and a finite residue field $k_v:=\calO_v/(\varpi)$.
-
-There is no formal Lean code for the lemmas in this section; I am slightly dragging my
-feet because it would seem more sensible to prove them in the right generality,
-and we don't have a definition of nonarchimedean local field yet.
-
 \begin{lemma}
   \lean{NumberField.isOpenAdicCompletionIntegers}
   \label{NumberField.isOpenAdicCompletionIntegers}
   \leanok
   $\calO_v$ is an open subring of $K_v$.
 \end{lemma}
+```
+
+:::proof "local_integer_ring_open"
+Openness is already in mathlib.
+:::
+```tex "hecke_operator_project/local_theory/introduction/3-proof"
 \begin{proof}
   \leanok
   Openness is already in mathlib.
-\end{proof}
-
-\begin{lemma}
-  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \leanok
-  $\calO_v$ is a compact subring of $K_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Compactness lies a little deeper because it
-  assumes that the residue field of $K_v$ is finite.
-\end{proof}
-
-\begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
-  \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
-  \label{M2.localFullLevel.isOpen}
-  \leanok
-\end{lemma}
-\begin{proof}
-  \leanok
-  \uses{NumberField.isOpenAdicCompletionIntegers}
-  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
-  follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
-  \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
-  \label{M2.localFullLevel.isCompact}
-  \leanok
-\end{lemma}
-\begin{proof}
-  \leanok
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
-  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
-  follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
-  \label{nolean-compactopen-GL2}
-\end{lemma}
-\begin{proof}
-\uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
-  results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
-field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
-with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
-and hence also compact and open.
-
-Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
-the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
-is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
-cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
-
-\begin{lemma}
-  \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
-\end{lemma}
-\begin{proof}
-  \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
-  $M_2(K_v)$. It is compact and open as we just saw. Hence its units (also $U_v$)
-  are a subgroup of $GL_2(K_v)$, which is compact and open, again by
-  lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
-Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
-Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
-
-\begin{lemma}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
-  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
-  \leanok
-  The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
-  through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
-  where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  We first manipulate the statement into a statement about finite groups.
-  We have $UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})$.
-  By the second isomorphism theorem this is true if
-  $U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)$. So when is an element of $U$
-  in $gUg^{-1}$? Equivalently, if $x\in U$, when is $g^{-1}xg\in U$? An explicit calculation
-  of matrices shows us that this is true iff $g=\begin{pmatrix} a&b\\c&d\end{pmatrix}$ with
-  $\alpha\mid b$. Define $U^\alpha$ to be this subgroup of~$U$. We have reduced the question
-  to showing that the matrices $h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}$
-  are a set of left coset representatives for the subgroup $U^\alpha$ of $U$.
-
-  It thus suffices to show that if $u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$
-  then $u\in h_tU^\alpha$ iff $b\in\calO_v$ reduces mod $\alpha$ to $t\in\calO_v/\alpha$.
-  We do this by computing $h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}$
-  and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
 :::theorem "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
@@ -1941,124 +1838,23 @@ compactness comes from the finiteness of the residue field `k_v`.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/4"
-\section{Some local theory}
-
-We could work over a general nonarchimedean normed field but we still do not have them
-in mathlib, so we stick to the case of interest which is the completion of a number
-field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
-equipped with a discrete valuation, a ring of integers $\calO_v$ having a principal
-maximal ideal $(\varpi)$, and a finite residue field $k_v:=\calO_v/(\varpi)$.
-
-There is no formal Lean code for the lemmas in this section; I am slightly dragging my
-feet because it would seem more sensible to prove them in the right generality,
-and we don't have a definition of nonarchimedean local field yet.
-
-\begin{lemma}
-  \lean{NumberField.isOpenAdicCompletionIntegers}
-  \label{NumberField.isOpenAdicCompletionIntegers}
-  \leanok
-  $\calO_v$ is an open subring of $K_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Openness is already in mathlib.
-\end{proof}
-
 \begin{lemma}
   \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
   \label{NumberField.instCompactSpaceAdicCompletionIntegers}
   \leanok
   $\calO_v$ is a compact subring of $K_v$.
 \end{lemma}
+```
+
+:::proof "local_integer_ring_compact"
+Compactness lies a little deeper because it assumes that the residue field of
+`K_v` is finite.
+:::
+```tex "hecke_operator_project/local_theory/introduction/4-proof"
 \begin{proof}
   \leanok
   Compactness lies a little deeper because it
   assumes that the residue field of $K_v$ is finite.
-\end{proof}
-
-\begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
-  \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
-  \label{M2.localFullLevel.isOpen}
-  \leanok
-\end{lemma}
-\begin{proof}
-  \leanok
-  \uses{NumberField.isOpenAdicCompletionIntegers}
-  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
-  follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
-  \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
-  \label{M2.localFullLevel.isCompact}
-  \leanok
-\end{lemma}
-\begin{proof}
-  \leanok
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
-  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
-  follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
-  \label{nolean-compactopen-GL2}
-\end{lemma}
-\begin{proof}
-\uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
-  results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
-field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
-with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
-and hence also compact and open.
-
-Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
-the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
-is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
-cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
-
-\begin{lemma}
-  \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
-\end{lemma}
-\begin{proof}
-  \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
-  $M_2(K_v)$. It is compact and open as we just saw. Hence its units (also $U_v$)
-  are a subgroup of $GL_2(K_v)$, which is compact and open, again by
-  lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
-Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
-Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
-
-\begin{lemma}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
-  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
-  \leanok
-  The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
-  through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
-  where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  We first manipulate the statement into a statement about finite groups.
-  We have $UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})$.
-  By the second isomorphism theorem this is true if
-  $U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)$. So when is an element of $U$
-  in $gUg^{-1}$? Equivalently, if $x\in U$, when is $g^{-1}xg\in U$? An explicit calculation
-  of matrices shows us that this is true iff $g=\begin{pmatrix} a&b\\c&d\end{pmatrix}$ with
-  $\alpha\mid b$. Define $U^\alpha$ to be this subgroup of~$U$. We have reduced the question
-  to showing that the matrices $h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}$
-  are a set of left coset representatives for the subgroup $U^\alpha$ of $U$.
-
-  It thus suffices to show that if $u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$
-  then $u\in h_tU^\alpha$ iff $b\in\calO_v$ reduces mod $\alpha$ to $t\in\calO_v/\alpha$.
-  We do this by computing $h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}$
-  and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
 :::theorem "matrix_full_level_open" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
@@ -2067,124 +1863,24 @@ This is the matrix-level form of {uses "local_integer_ring_open"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/5"
-\section{Some local theory}
-
-We could work over a general nonarchimedean normed field but we still do not have them
-in mathlib, so we stick to the case of interest which is the completion of a number
-field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
-equipped with a discrete valuation, a ring of integers $\calO_v$ having a principal
-maximal ideal $(\varpi)$, and a finite residue field $k_v:=\calO_v/(\varpi)$.
-
-There is no formal Lean code for the lemmas in this section; I am slightly dragging my
-feet because it would seem more sensible to prove them in the right generality,
-and we don't have a definition of nonarchimedean local field yet.
-
-\begin{lemma}
-  \lean{NumberField.isOpenAdicCompletionIntegers}
-  \label{NumberField.isOpenAdicCompletionIntegers}
-  \leanok
-  $\calO_v$ is an open subring of $K_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Openness is already in mathlib.
-\end{proof}
-
-\begin{lemma}
-  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \leanok
-  $\calO_v$ is a compact subring of $K_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Compactness lies a little deeper because it
-  assumes that the residue field of $K_v$ is finite.
-\end{proof}
-
 \begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
   \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
   \label{M2.localFullLevel.isOpen}
   \leanok
 \end{lemma}
+```
+
+:::proof "matrix_full_level_open"
+Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
+follows from {uses "local_integer_ring_open"}[] because a product of opens is
+open.
+:::
+```tex "hecke_operator_project/local_theory/introduction/5-proof"
 \begin{proof}
   \leanok
   \uses{NumberField.isOpenAdicCompletionIntegers}
   Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
   follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
-  \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
-  \label{M2.localFullLevel.isCompact}
-  \leanok
-\end{lemma}
-\begin{proof}
-  \leanok
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
-  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
-  follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
-  \label{nolean-compactopen-GL2}
-\end{lemma}
-\begin{proof}
-\uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
-  results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
-field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
-with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
-and hence also compact and open.
-
-Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
-the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
-is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
-cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
-
-\begin{lemma}
-  \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
-\end{lemma}
-\begin{proof}
-  \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
-  $M_2(K_v)$. It is compact and open as we just saw. Hence its units (also $U_v$)
-  are a subgroup of $GL_2(K_v)$, which is compact and open, again by
-  lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
-Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
-Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
-
-\begin{lemma}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
-  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
-  \leanok
-  The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
-  through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
-  where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  We first manipulate the statement into a statement about finite groups.
-  We have $UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})$.
-  By the second isomorphism theorem this is true if
-  $U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)$. So when is an element of $U$
-  in $gUg^{-1}$? Equivalently, if $x\in U$, when is $g^{-1}xg\in U$? An explicit calculation
-  of matrices shows us that this is true iff $g=\begin{pmatrix} a&b\\c&d\end{pmatrix}$ with
-  $\alpha\mid b$. Define $U^\alpha$ to be this subgroup of~$U$. We have reduced the question
-  to showing that the matrices $h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}$
-  are a set of left coset representatives for the subgroup $U^\alpha$ of $U$.
-
-  It thus suffices to show that if $u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$
-  then $u\in h_tU^\alpha$ iff $b\in\calO_v$ reduces mod $\alpha$ to $t\in\calO_v/\alpha$.
-  We do this by computing $h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}$
-  and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
 :::theorem "matrix_full_level_compact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
@@ -2193,124 +1889,24 @@ This is the matrix-level form of {uses "local_integer_ring_compact"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/6"
-\section{Some local theory}
-
-We could work over a general nonarchimedean normed field but we still do not have them
-in mathlib, so we stick to the case of interest which is the completion of a number
-field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
-equipped with a discrete valuation, a ring of integers $\calO_v$ having a principal
-maximal ideal $(\varpi)$, and a finite residue field $k_v:=\calO_v/(\varpi)$.
-
-There is no formal Lean code for the lemmas in this section; I am slightly dragging my
-feet because it would seem more sensible to prove them in the right generality,
-and we don't have a definition of nonarchimedean local field yet.
-
-\begin{lemma}
-  \lean{NumberField.isOpenAdicCompletionIntegers}
-  \label{NumberField.isOpenAdicCompletionIntegers}
-  \leanok
-  $\calO_v$ is an open subring of $K_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Openness is already in mathlib.
-\end{proof}
-
-\begin{lemma}
-  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \leanok
-  $\calO_v$ is a compact subring of $K_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Compactness lies a little deeper because it
-  assumes that the residue field of $K_v$ is finite.
-\end{proof}
-
-\begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
-  \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
-  \label{M2.localFullLevel.isOpen}
-  \leanok
-\end{lemma}
-\begin{proof}
-  \leanok
-  \uses{NumberField.isOpenAdicCompletionIntegers}
-  Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
-  follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
 \begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
   \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
   \label{M2.localFullLevel.isCompact}
   \leanok
 \end{lemma}
+```
+
+:::proof "matrix_full_level_compact"
+Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
+follows from {uses "local_integer_ring_compact"}[] because a product of
+compacts is compact.
+:::
+```tex "hecke_operator_project/local_theory/introduction/6-proof"
 \begin{proof}
   \leanok
   \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
   Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
   follows because a product of compacts is compact and a product of opens is open.
-\end{proof}
-
-\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
-  \label{nolean-compactopen-GL2}
-\end{lemma}
-\begin{proof}
-\uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
-  results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
-field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
-with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
-and hence also compact and open.
-
-Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
-the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
-is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
-cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
-
-\begin{lemma}
-  \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
-\end{lemma}
-\begin{proof}
-  \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
-  $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
-  $M_2(K_v)$. It is compact and open as we just saw. Hence its units (also $U_v$)
-  are a subgroup of $GL_2(K_v)$, which is compact and open, again by
-  lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
-\end{proof}
-
-Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
-Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
-Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
-
-\begin{lemma}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
-  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
-  \leanok
-  The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
-  through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
-  where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  We first manipulate the statement into a statement about finite groups.
-  We have $UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})$.
-  By the second isomorphism theorem this is true if
-  $U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)$. So when is an element of $U$
-  in $gUg^{-1}$? Equivalently, if $x\in U$, when is $g^{-1}xg\in U$? An explicit calculation
-  of matrices shows us that this is true iff $g=\begin{pmatrix} a&b\\c&d\end{pmatrix}$ with
-  $\alpha\mid b$. Define $U^\alpha$ to be this subgroup of~$U$. We have reduced the question
-  to showing that the matrices $h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}$
-  are a set of left coset representatives for the subgroup $U^\alpha$ of $U$.
-
-  It thus suffices to show that if $u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$
-  then $u\in h_tU^\alpha$ iff $b\in\calO_v$ reduces mod $\alpha$ to $t\in\calO_v/\alpha$.
-  We do this by computing $h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}$
-  and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
 :::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project")
