@@ -98,6 +98,12 @@ idea of using a mechanical drift signal, run:
 python3 scripts/check_lt_similarity.py
 ```
 
+The similarity report now also surfaces metadata drift heuristics:
+- missing / extra `\uses{...}` vs `{uses "..."}[]`
+- missing / extra `\lean{...}` vs `(lean := "...")`
+- TeX `\ref{...}` labels that are still only weak reference hints rather than
+  mirrored explicit dependency metadata
+
 For regression checks on the LT similarity tool itself, run:
 
 ```bash

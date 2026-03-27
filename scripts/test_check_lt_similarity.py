@@ -39,6 +39,39 @@ Alpha Beta and Gamma.
         score = score_pair(verso, tex)
         self.assertGreaterEqual(score.token_ratio, 0.99)
 
+    def test_multiple_uses_and_comma_separated_metadata_are_extracted(self) -> None:
+        verso = verso_block(
+            'Alpha {uses "foo"}[] and {uses "bar"}[].',
+            header=':::theorem "demo" (lean := "Baz.qux, Demo.quux")',
+        )
+        tex = tex_block(
+            r"""
+\lean{Baz.qux, Demo.quux}
+\uses{foo, bar}
+Alpha.
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.verso_uses, {"foo", "bar"})
+        self.assertEqual(score.tex_uses, {"foo", "bar"})
+        self.assertEqual(score.verso_lean, {"Baz.qux", "Demo.quux"})
+        self.assertEqual(score.tex_lean, {"Baz.qux", "Demo.quux"})
+        self.assertEqual(score.metadata_diff_count, 0)
+
+    def test_refs_are_reported_as_hints_not_uses(self) -> None:
+        verso = verso_block("Alpha.")
+        tex = tex_block(
+            r"""
+\uses{foo}
+By theorem~\ref{bar} and theorem~\ref{baz}.
+Alpha.
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.tex_uses, {"foo"})
+        self.assertEqual(score.tex_refs, {"bar", "baz"})
+        self.assertEqual(score.unresolved_ref_hints, {"bar", "baz"})
+
     def test_unrelated_pair_scores_low(self) -> None:
         verso = verso_block("alpha beta gamma")
         tex = tex_block("delta epsilon zeta")

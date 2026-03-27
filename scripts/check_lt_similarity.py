@@ -23,18 +23,54 @@ class PairScore:
     length_ratio: float
     verso_text: str
     tex_text: str
+    verso_uses: set[str]
+    tex_uses: set[str]
+    verso_lean: set[str]
+    tex_lean: set[str]
+    tex_refs: set[str]
 
     @property
     def primary_ratio(self) -> float:
         return self.token_ratio
 
+    @property
+    def missing_uses(self) -> set[str]:
+        return self.tex_uses - self.verso_uses
+
+    @property
+    def extra_uses(self) -> set[str]:
+        return self.verso_uses - self.tex_uses
+
+    @property
+    def missing_lean(self) -> set[str]:
+        return self.tex_lean - self.verso_lean
+
+    @property
+    def extra_lean(self) -> set[str]:
+        return self.verso_lean - self.tex_lean
+
+    @property
+    def unresolved_ref_hints(self) -> set[str]:
+        return self.tex_refs - self.tex_uses - self.tex_lean - self.verso_uses
+
+    @property
+    def metadata_diff_count(self) -> int:
+        return (
+            len(self.missing_uses)
+            + len(self.extra_uses)
+            + len(self.missing_lean)
+            + len(self.extra_lean)
+        )
+
 
 MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 USES_RE = re.compile(r'\{uses "[^"]+"\}\[\]')
+USES_CAPTURE_RE = re.compile(r'\{uses "([^"]+)"\}\[\]')
 CITE_RE = re.compile(r"\{[^{}]*cite[^{}]*\}\[\]")
 INLINE_TAG_RE = re.compile(r"\{[^{}]+\}\[\]")
 TEX_COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 TEX_META_RE = re.compile(r"\\(label|lean|uses|discussion|proves)\{[^{}]*\}")
+TEX_REF_RE = re.compile(r"\\ref\{[^{}]*\}")
 TEX_FLAGS_RE = re.compile(r"\\(leanok|mathlibok|notready)\b")
 TEX_BEGIN_END_RE = re.compile(r"\\(begin|end)\{[^{}]*\}(?:\[[^\]]*\])?")
 TEX_ITEM_RE = re.compile(r"\\item\b")
@@ -42,6 +78,10 @@ TEX_HREF_RE = re.compile(r"\\href\{[^{}]*\}\{([^{}]*)\}")
 TEX_TEXORPDF_RE = re.compile(r"\\texorpdfstring\{([^{}]*)\}\{([^{}]*)\}")
 TEX_SIMPLE_CMD_ARG_RE = re.compile(r"\\[A-Za-z]+\*?(?:\[[^\]]*\])?\{([^{}]*)\}")
 TEX_SIMPLE_CMD_RE = re.compile(r"\\([A-Za-z]+)")
+TEX_USES_CAPTURE_RE = re.compile(r"\\uses\{([^{}]*)\}")
+TEX_LEAN_CAPTURE_RE = re.compile(r"\\lean\{([^{}]*)\}")
+TEX_REF_CAPTURE_RE = re.compile(r"\\ref\{([^{}]*)\}")
+VERSO_LEAN_CAPTURE_RE = re.compile(r'lean := "([^"]+)"')
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 
 
@@ -88,6 +128,7 @@ def normalize_tex(text: str) -> str:
     text = "\n".join(stripped_lines)
     text = TEX_HREF_RE.sub(r" \1 ", text)
     text = TEX_TEXORPDF_RE.sub(r" \1 ", text)
+    text = TEX_REF_RE.sub(" ", text)
     text = TEX_META_RE.sub(" ", text)
     text = TEX_FLAGS_RE.sub(" ", text)
     text = TEX_BEGIN_END_RE.sub(" ", text)
@@ -141,9 +182,51 @@ def length_ratio(left: str, right: str) -> float:
     return min(len(left), len(right)) / max(len(left), len(right))
 
 
+def split_csv_items(value: str) -> set[str]:
+    return {item.strip() for item in value.split(",") if item.strip()}
+
+
+def strip_tex_comments(text: str) -> str:
+    return "\n".join(TEX_COMMENT_RE.sub("", line) for line in text.splitlines())
+
+
+def extract_verso_uses(text: str) -> set[str]:
+    return {match.group(1).strip() for match in USES_CAPTURE_RE.finditer(text)}
+
+
+def extract_verso_lean(header: str) -> set[str]:
+    items: set[str] = set()
+    for match in VERSO_LEAN_CAPTURE_RE.finditer(header):
+        items |= split_csv_items(match.group(1))
+    return items
+
+
+def extract_tex_uses(text: str) -> set[str]:
+    stripped = strip_tex_comments(text)
+    items: set[str] = set()
+    for match in TEX_USES_CAPTURE_RE.finditer(stripped):
+        items |= split_csv_items(match.group(1))
+    return items
+
+
+def extract_tex_lean(text: str) -> set[str]:
+    stripped = strip_tex_comments(text)
+    items: set[str] = set()
+    for match in TEX_LEAN_CAPTURE_RE.finditer(stripped):
+        items |= split_csv_items(match.group(1))
+    return items
+
+
+def extract_tex_refs(text: str) -> set[str]:
+    stripped = strip_tex_comments(text)
+    return {match.group(1).strip() for match in TEX_REF_CAPTURE_RE.finditer(stripped)}
+
+
 def score_pair(block: Block, tex: Block) -> PairScore:
-    verso_text = normalize_verso(block_body(block))
-    tex_text = normalize_tex(block_body(tex))
+    verso_body = block_body(block)
+    tex_body = block_body(tex)
+    verso_text = normalize_verso(verso_body)
+    tex_text = normalize_tex(tex_body)
     return PairScore(
         block=block,
         tex=tex,
@@ -152,6 +235,11 @@ def score_pair(block: Block, tex: Block) -> PairScore:
         length_ratio=length_ratio(verso_text, tex_text),
         verso_text=verso_text,
         tex_text=tex_text,
+        verso_uses=extract_verso_uses(verso_body),
+        tex_uses=extract_tex_uses(tex_body),
+        verso_lean=extract_verso_lean(block.header),
+        tex_lean=extract_tex_lean(tex_body),
+        tex_refs=extract_tex_refs(tex_body),
     )
 
 
@@ -159,19 +247,33 @@ def summarize_file(path: Path, scores: list[PairScore], warn_below: float, top: 
     primary_values = [score.primary_ratio for score in scores]
     low = [score for score in scores if score.primary_ratio < warn_below]
     low.sort(key=lambda score: (score.primary_ratio, score.sequence_ratio, score.block.start_line))
+    metadata_mismatches = [score for score in scores if score.metadata_diff_count > 0]
+    metadata_mismatches.sort(key=lambda score: (-score.metadata_diff_count, score.block.start_line))
 
     lines = [
         f"{path}: pairs={len(scores)} avg={statistics.mean(primary_values):.3f} "
         f"median={statistics.median(primary_values):.3f} min={min(primary_values):.3f} "
-        f"warn_below={warn_below:.2f} low={len(low)}"
+        f"warn_below={warn_below:.2f} low={len(low)} metadata_mismatch={len(metadata_mismatches)}"
     ]
 
     for score in low[:top]:
         kind = "prose" if score.block.kind == "prose" else "node"
+        metadata_bits: list[str] = []
+        if score.missing_uses:
+            metadata_bits.append(f"missing_uses={sorted(score.missing_uses)}")
+        if score.extra_uses:
+            metadata_bits.append(f"extra_uses={sorted(score.extra_uses)}")
+        if score.missing_lean:
+            metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
+        if score.extra_lean:
+            metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
+        if score.unresolved_ref_hints:
+            metadata_bits.append(f"ref_hints={sorted(score.unresolved_ref_hints)}")
+        metadata_suffix = f" {'; '.join(metadata_bits)}" if metadata_bits else ""
         lines.append(
             f"- line {score.block.start_line} {kind}: seq={score.sequence_ratio:.3f} "
             f"tok={score.token_ratio:.3f} len={score.length_ratio:.3f} "
-            f"text={score.block.preview()}"
+            f"text={score.block.preview()}{metadata_suffix}"
         )
 
     return lines

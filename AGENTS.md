@@ -116,7 +116,9 @@ This repository is the integration layer for the FLT Verso blueprint.
   place.
 - After the source-pair check is green, use
   `python3 scripts/check_lt_similarity.py <chapter.lean>` to get the first
-  draft of the block-level mechanical drift report suggested by David.
+  draft of the block-level mechanical drift report suggested by David. This now
+  includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`, and
+  TeX `\ref{...}` / `\uses{...}` mismatches.
 - When changing the LT similarity tooling itself, run
   `python3 scripts/test_check_lt_similarity.py` before relying on the updated
   scores for porting decisions.
