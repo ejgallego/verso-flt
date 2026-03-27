@@ -98,6 +98,12 @@ python3 scripts/lt_audit.py FLTBlueprint/Chapters/HeckeOperators.lean
 python3 scripts/lt_audit.py FLTBlueprint/Chapters/AdeleProject.lean --pages
 ```
 
+For a compact project-status snapshot, run:
+
+```bash
+python3 scripts/status_lt.py FLTBlueprint/Chapters/HeckeOperators.lean FLTBlueprint/Chapters/AdeleProject.lean
+```
+
 For the first draft of the block-level LT similarity report, following David's
 idea of using a mechanical drift signal, run:
 
