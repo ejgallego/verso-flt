@@ -2,6 +2,8 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Abstract
+import FLT.NumberField.Completion.Finite
+import FLT.QuaternionAlgebra.NumberField
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -1808,9 +1810,8 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-:::theorem "local_integer_ring_open" (parent := "hecke_operator_project")
-The local integer ring `\mathcal{O}_v` inside `K_v` is an open subring of
-`K_v`.
+:::theorem "local_integer_ring_open" (parent := "hecke_operator_project") (lean := "NumberField.isOpenAdicCompletionIntegers")
+`\calO_v` is an open subring of `K_v`.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/3"
@@ -1934,8 +1935,8 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-:::theorem "local_integer_ring_compact" (parent := "hecke_operator_project")
-The local integer ring `\mathcal{O}_v` is a compact subring of `K_v`; the
+:::theorem "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+`\calO_v` is a compact subring of `K_v`; the
 compactness comes from the finiteness of the residue field `k_v`.
 :::
 
@@ -2060,9 +2061,9 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-:::theorem "matrix_full_level_open" (parent := "hecke_operator_project")
-The matrix ring `M₂(\mathcal{O}_v) \cong \mathcal{O}_v^4` is an open subring
-of `M₂(K_v) \cong K_v^4`.
+:::theorem "matrix_full_level_open" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
+`M_2(\calO_v)` is an open subring of `M_2(K_v)`.
+This is the matrix-level form of {uses "local_integer_ring_open"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/5"
@@ -2186,8 +2187,9 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-:::theorem "matrix_full_level_compact" (parent := "hecke_operator_project")
-The matrix ring `M₂(\mathcal{O}_v)` is a compact subring of `M₂(K_v)`.
+:::theorem "matrix_full_level_compact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
+`M_2(\calO_v)` is a compact subring of `M_2(K_v)`.
+This is the matrix-level form of {uses "local_integer_ring_compact"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/6"
@@ -2312,9 +2314,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 \end{proof}
 ```
 :::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project")
-The unit group `GL₂(\mathcal{O}_v)` is a compact open subgroup of
-`GL₂(K_v)`, obtained from the compact-open subring `M₂(\mathcal{O}_v)` by the
-general topology of units.
+`GL_2(\calO_v)` is a compact open subgroup of `GL_2(K_v)`.
 This is obtained from {uses "matrix_full_level_open"}[],
 {uses "matrix_full_level_compact"}[],
 {uses "units_of_open_submonoid_open"}[], and
