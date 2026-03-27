@@ -665,7 +665,7 @@ coefficient space.
   Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}.
 \end{proof}
 ```
-:::theorem "units_of_open_submonoid_open" (parent := "hecke_operator_project")
+:::theorem "units_of_open_submonoid_open" (parent := "hecke_operator_project") (lean := "Submonoid.units_isOpen")
 If `M` is a topological monoid and `U` is an open submonoid, then the units
 `Uˣ` of `U` are naturally an open subgroup of `Mˣ`.
 :::
@@ -896,7 +896,7 @@ for compactness.
   The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
 \end{proof}
 ```
-:::theorem "units_of_compact_submonoid_compact" (parent := "hecke_operator_project")
+:::theorem "units_of_compact_submonoid_compact" (parent := "hecke_operator_project") (lean := "Submonoid.units_isCompact")
 If `M` is a Hausdorff topological monoid and `U` is a compact submonoid, then
 the units `Uˣ` of `U` are naturally a compact subgroup of `Mˣ`.
 :::
@@ -1130,9 +1130,11 @@ for compactness.
   The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
 \end{proof}
 ```
-:::theorem "product_units_homeomorphism" (parent := "hecke_operator_project")
+:::theorem "product_units_homeomorphism" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.piUnits")
 If `U_i` are topological monoids then the canonical group isomorphism
 `(\prod_i U_i)ˣ = \prod_i(U_iˣ)` is a homeomorphism.
+This is the componentwise-units homeomorphism used later in
+{uses "restricted_product_units_homeomorphism"}[].
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/5"
@@ -1376,10 +1378,12 @@ for compactness.
   The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
 \end{proof}
 ```
-:::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project")
+:::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.restrictedProductUnits")
 If `M_i` are a family of topological monoids equipped with open submonoids
 `U_i`, then the canonical map `(\prod'_i M_i)ˣ \to \prod'_i(M_iˣ)` is a
 homeomorphism.
+This is obtained from {uses "product_units_homeomorphism"}[] and
+{uses "units_of_open_submonoid_open"}[].
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/7"
