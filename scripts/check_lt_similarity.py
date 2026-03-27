@@ -28,6 +28,7 @@ class PairScore:
     verso_lean: set[str]
     tex_lean: set[str]
     tex_refs: set[str]
+    tex_env_kind: str | None
 
     @property
     def primary_ratio(self) -> float:
@@ -60,7 +61,27 @@ class PairScore:
             + len(self.extra_uses)
             + len(self.missing_lean)
             + len(self.extra_lean)
+            + (2 * len(self.strong_ref_candidates))
+            + len(self.env_ref_hints)
         )
+
+    @property
+    def strong_ref_candidates(self) -> set[str]:
+        if self.tex_env_kind in {"theorem", "lemma", "corollary", "definition", "proof"} and self.tex_uses:
+            return self.unresolved_ref_hints
+        return set()
+
+    @property
+    def env_ref_hints(self) -> set[str]:
+        if self.tex_env_kind in {"theorem", "lemma", "corollary", "definition", "proof"} and not self.tex_uses:
+            return self.unresolved_ref_hints
+        return set()
+
+    @property
+    def soft_ref_hints(self) -> set[str]:
+        if self.tex_env_kind in {"theorem", "lemma", "corollary", "definition", "proof"}:
+            return set()
+        return self.unresolved_ref_hints
 
 
 MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]+\)")
@@ -81,6 +102,7 @@ TEX_SIMPLE_CMD_RE = re.compile(r"\\([A-Za-z]+)")
 TEX_USES_CAPTURE_RE = re.compile(r"\\uses\{([^{}]*)\}")
 TEX_LEAN_CAPTURE_RE = re.compile(r"\\lean\{([^{}]*)\}")
 TEX_REF_CAPTURE_RE = re.compile(r"\\ref\{([^{}]*)\}")
+TEX_ENV_CAPTURE_RE = re.compile(r"\\begin\{(theorem|lemma|corollary|definition|proof|remark)\}")
 VERSO_LEAN_CAPTURE_RE = re.compile(r'lean := "([^"]+)"')
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 
@@ -222,6 +244,12 @@ def extract_tex_refs(text: str) -> set[str]:
     return {match.group(1).strip() for match in TEX_REF_CAPTURE_RE.finditer(stripped)}
 
 
+def extract_tex_env_kind(text: str) -> str | None:
+    stripped = strip_tex_comments(text)
+    match = TEX_ENV_CAPTURE_RE.search(stripped)
+    return match.group(1) if match else None
+
+
 def score_pair(block: Block, tex: Block) -> PairScore:
     verso_body = block_body(block)
     tex_body = block_body(tex)
@@ -240,6 +268,7 @@ def score_pair(block: Block, tex: Block) -> PairScore:
         verso_lean=extract_verso_lean(block.header),
         tex_lean=extract_tex_lean(tex_body),
         tex_refs=extract_tex_refs(tex_body),
+        tex_env_kind=extract_tex_env_kind(tex_body),
     )
 
 
@@ -267,14 +296,43 @@ def summarize_file(path: Path, scores: list[PairScore], warn_below: float, top: 
             metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
         if score.extra_lean:
             metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
-        if score.unresolved_ref_hints:
-            metadata_bits.append(f"ref_hints={sorted(score.unresolved_ref_hints)}")
+        if score.strong_ref_candidates:
+            metadata_bits.append(f"strong_refs={sorted(score.strong_ref_candidates)}")
+        if score.env_ref_hints:
+            metadata_bits.append(f"env_ref_hints={sorted(score.env_ref_hints)}")
+        if score.soft_ref_hints:
+            metadata_bits.append(f"soft_ref_hints={sorted(score.soft_ref_hints)}")
         metadata_suffix = f" {'; '.join(metadata_bits)}" if metadata_bits else ""
         lines.append(
             f"- line {score.block.start_line} {kind}: seq={score.sequence_ratio:.3f} "
             f"tok={score.token_ratio:.3f} len={score.length_ratio:.3f} "
             f"text={score.block.preview()}{metadata_suffix}"
         )
+
+    if metadata_mismatches:
+        lines.append("- metadata-focus:")
+        for score in metadata_mismatches[: min(5, top)]:
+            kind = "prose" if score.block.kind == "prose" else "node"
+            metadata_bits: list[str] = []
+            if score.missing_uses:
+                metadata_bits.append(f"missing_uses={sorted(score.missing_uses)}")
+            if score.extra_uses:
+                metadata_bits.append(f"extra_uses={sorted(score.extra_uses)}")
+            if score.missing_lean:
+                metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
+            if score.extra_lean:
+                metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
+            if score.strong_ref_candidates:
+                metadata_bits.append(f"strong_refs={sorted(score.strong_ref_candidates)}")
+            if score.env_ref_hints:
+                metadata_bits.append(f"env_ref_hints={sorted(score.env_ref_hints)}")
+            if score.soft_ref_hints:
+                metadata_bits.append(f"soft_ref_hints={sorted(score.soft_ref_hints)}")
+            lines.append(
+                f"  line {score.block.start_line} {kind}: "
+                + "; ".join(metadata_bits)
+                + f" text={score.block.preview()}"
+            )
 
     return lines
 

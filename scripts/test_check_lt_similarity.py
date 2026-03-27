@@ -70,7 +70,37 @@ Alpha.
         score = score_pair(verso, tex)
         self.assertEqual(score.tex_uses, {"foo"})
         self.assertEqual(score.tex_refs, {"bar", "baz"})
-        self.assertEqual(score.unresolved_ref_hints, {"bar", "baz"})
+        self.assertEqual(score.strong_ref_candidates, set())
+        self.assertEqual(score.soft_ref_hints, {"bar", "baz"})
+
+    def test_env_refs_with_uses_are_strong_candidates(self) -> None:
+        verso = verso_block('Alpha {uses "foo"}[].')
+        tex = tex_block(
+            r"""
+\begin{proof}
+\uses{foo}
+By theorem~\ref{bar}.
+\end{proof}
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.tex_env_kind, "proof")
+        self.assertEqual(score.strong_ref_candidates, {"bar"})
+        self.assertGreaterEqual(score.metadata_diff_count, 2)
+
+    def test_env_refs_without_uses_are_medium_hints(self) -> None:
+        verso = verso_block("Alpha.")
+        tex = tex_block(
+            r"""
+\begin{proof}
+By theorem~\ref{bar}.
+\end{proof}
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.tex_env_kind, "proof")
+        self.assertEqual(score.env_ref_hints, {"bar"})
+        self.assertEqual(score.strong_ref_candidates, set())
 
     def test_unrelated_pair_scores_low(self) -> None:
         verso = verso_block("alpha beta gamma")
