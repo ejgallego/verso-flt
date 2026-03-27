@@ -2072,7 +2072,7 @@ let say something about matrix rings over complete fields.
   and lemma~\ref{Homeomorph.restrictedProductMatrix}.
 \end{proof}
 ```
-:::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project")
+:::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct")
 `G` is isomorphic and homeomorphic to the restricted product of `GL₂(K_v)` with respect
 to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 {uses "restricted_product_matrix_homeomorphism"}[]
@@ -2080,31 +2080,6 @@ to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 :::
 
 ```tex "hecke_operator_project/adelic_groups/introduction/2"
-\section{Adelic groups}
-
-We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
-using to define our Hecke operators. Let~$K$ be a number field, let~$D$ a quaternion algebra
-over~$K$ and let $\A_K^\infty$ be the finite adeles of~$K$; recall that this is a commutative
-topological ring, defined to be the restricted
-product of the commutative topological fields~$K_v$ as $v$ runs through the finite places
-of~$K$, with respect to the compact open subrings $\calO_v$.
-
-The group~$G$ we are interested in for the rest of this miniproject is the group
-$(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
-but the first thing we need to do is to find a way of talking about elements of the group.
-
-We will assume that there exists an $\A_K^\infty$-algebra isomorphism
-$D\otimes_K\A_K^\infty=M_2(\A_K^\infty)$ and we will fix such an isomorphism $r$
-(called a \emph{rigidification} in the Lean code). We give both of these $\A_K^\infty$-algebras
-the $\A_K^\infty$-module topology, which is a fancy way of saying the product topology
-(they are both free of rank 4 as $\A_K^\infty$-modules); the rigidification is then
-a homeomorphism (because all $\A_K^\infty$-module maps between modules with the $\A_K^\infty$-module
-topology are continuous).
-
-This means that our group~$G$ is isomorphic (both algebraically and topologically)
-to $GL_2(\A_K^\infty)$. Before we go any further,
-let say something about matrix rings over complete fields.
-
 \begin{theorem}
   \lean{IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct}
   \label{GL2.restrictedProduct}
@@ -2113,13 +2088,6 @@ let say something about matrix rings over complete fields.
   to the restricted product of $GL_2(K_v)$ with respect
   to the compact open subgroups $GL_2(\calO_v)$.
 \end{theorem}
-\begin{proof}
-  \leanok
-  \uses{ContinuousMulEquiv.restrictedProductUnits,
-    Homeomorph.restrictedProductMatrix, ContinuousMulEquiv.restrictedProductMatrixUnits}
-  This follows from lemma~\ref{ContinuousMulEquiv.restrictedProductUnits}
-  and lemma~\ref{Homeomorph.restrictedProductMatrix}.
-\end{proof}
 ```
 :::proof "adelic_gl2_is_restricted_product"
 {uses "ContinuousMulEquiv.restrictedProductUnits"}[]
@@ -2128,39 +2096,6 @@ This follows from the former lemma and the latter lemma.
 :::
 
 ```tex "hecke_operator_project/adelic_groups/introduction/3"
-\section{Adelic groups}
-
-We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
-using to define our Hecke operators. Let~$K$ be a number field, let~$D$ a quaternion algebra
-over~$K$ and let $\A_K^\infty$ be the finite adeles of~$K$; recall that this is a commutative
-topological ring, defined to be the restricted
-product of the commutative topological fields~$K_v$ as $v$ runs through the finite places
-of~$K$, with respect to the compact open subrings $\calO_v$.
-
-The group~$G$ we are interested in for the rest of this miniproject is the group
-$(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
-but the first thing we need to do is to find a way of talking about elements of the group.
-
-We will assume that there exists an $\A_K^\infty$-algebra isomorphism
-$D\otimes_K\A_K^\infty=M_2(\A_K^\infty)$ and we will fix such an isomorphism $r$
-(called a \emph{rigidification} in the Lean code). We give both of these $\A_K^\infty$-algebras
-the $\A_K^\infty$-module topology, which is a fancy way of saying the product topology
-(they are both free of rank 4 as $\A_K^\infty$-modules); the rigidification is then
-a homeomorphism (because all $\A_K^\infty$-module maps between modules with the $\A_K^\infty$-module
-topology are continuous).
-
-This means that our group~$G$ is isomorphic (both algebraically and topologically)
-to $GL_2(\A_K^\infty)$. Before we go any further,
-let say something about matrix rings over complete fields.
-
-\begin{theorem}
-  \lean{IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct}
-  \label{GL2.restrictedProduct}
-  \leanok
-  $G$ is isomorphic and homeomorphic
-  to the restricted product of $GL_2(K_v)$ with respect
-  to the compact open subgroups $GL_2(\calO_v)$.
-\end{theorem}
 \begin{proof}
   \leanok
   \uses{ContinuousMulEquiv.restrictedProductUnits,
