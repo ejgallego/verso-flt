@@ -91,6 +91,13 @@ For the current strict LT source-pair audit, run:
 python3 scripts/check_lt_source_pairs.py
 ```
 
+For a human-friendly combined LT audit on one or more chapters, run:
+
+```bash
+python3 scripts/lt_audit.py FLTBlueprint/Chapters/HeckeOperators.lean
+python3 scripts/lt_audit.py FLTBlueprint/Chapters/AdeleProject.lean --pages
+```
+
 For the first draft of the block-level LT similarity report, following David's
 idea of using a mechanical drift signal, run:
 
