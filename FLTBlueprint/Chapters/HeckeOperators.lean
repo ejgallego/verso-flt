@@ -372,8 +372,77 @@ $GL_2(\mathbb{A}_F)$ is obviously topologically a restricted product of
 $GL_2(F_v)$ with respect to $GL_2(\mathcal{O}_v)$. We now spend some time justifying
 this claim, which is a little more intricate than it sounds.
 ```
-:::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project")
+:::theorem "restricted_product_binary_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductProd")
+If `A_i` is a family of topological spaces equipped with open subsets `B_i`,
+and `C_i` is a family of topological spaces equipped with open subsets `D_i`,
+and `A_i × C_i` is equipped with the open subset `B_i × D_i`, then the natural
+bijection
+$`\prod'_i(A_i \times C_i)= (\prod'_i A_i) \times (\prod'_i B_i)`$
+is a homeomorphism.
+:::
+
+```tex "hecke_operator_project/restricted_products/products/binary"
+\begin{lemma}
+  \lean{Homeomorph.restrictedProductProd}
+  \label{Homeomorph.restrictedProductProd}
+  \leanok
+  \discussion{568}
+  If $A_i$ is a family of topological spaces equipped with open
+  subsets $B_i$, and if $C_i$ is a family of topological spaces equipped
+  with open subsets $D_i$, and if we equip $A_i\times C_i$ with the open
+  subset $B_i\times D_i$, then the natural bijection
+  $\prod'_i(A_i\times C_i)=\left(\prod'_iA_i\right)\times\left(\prod'_iB_i\right)$
+  is a homeomorphism.
+\end{lemma}
+```
+
+:::proof "restricted_product_binary_homeomorphism"
+We need to check continuity in both directions. The easy direction uses
+`RestrictedProduct.continuous_dom`; the harder direction uses
+`RestrictedProduct.continuous_dom_prod`, where the openness of `B_i` and `D_i`
+is essential. The finite-stage map then factors through the expected
+restricted-product domain, and the comparison map is a homeomorphism because
+products commute with products in the usual way.
+:::
+```tex "hecke_operator_project/restricted_products/products/binary-proof"
+\begin{remark} This may well not be true if $B_i$ and $D_i$ are not open, because
+  filtered colimits and binary products do not appear in general to commute
+  in the category of topological spaces. I don't know an explicit counterexample though.
+\end{remark}
+\begin{proof}
+  \leanok
+  \proves{Homeomorph.restrictedProductProd}
+  We need to check continuity in both directions. The easy way is
+  continuity of the map from the restricted product to the map from the binary
+  product; the lemma {\tt RestrictedProduct.continuous\_dom} in mathlib
+  tells us that a map from a restricted product is continuous when its restriction
+  to $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$
+  is continuous for all finite $S\subseteq I$; the universal property of the binary
+  product tells us that the map into the binary product is continuous iff the maps into
+  the factors are continuous, but the map into $\prod'_iX_i$ is a product of the
+  natural maps from $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$
+  to $\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)$
+  and the inclusion, and both are known to be continuous (an arbitrary product of continuous
+  maps is continuous, and the other claim is in the restricted product API in mathlib).
+
+  The harder direction is the other way, because we are working against both universal
+  properties. The trick is {\tt RestrictedProduct.continuous\_dom\_prod} in mathlib
+  (this is where we assume $B_i$ and $D_i$ are open), which tells us that a map out of
+  a binary product of restricted products is continuous when its restriction to
+  $\left(\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)\right)\times
+  \left(\left(\prod_{i\in S}C_i\right)\times\left(\prod_{i\notin S}D_i\right)\right)$
+  is, for all finite $S$ (note that the $S$ in the mathlib lemma is actually our $I-S$).
+  The map from this to the restricted product factors through
+  $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$;
+  the first map is a homeomorphism (use the fact that $\prod_iX_i\times Y_i$ is homeomorphic
+  to $\left(\prod_iX_i\right)\times\left(\prod_iY_i\right)$), and the second is continuous
+  by definition of the topology on a restricted product.
+\end{proof}
+```
+
+:::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
 Restricted products with respect to open subspaces commute with finite products.
+This is obtained from {uses "restricted_product_binary_homeomorphism"}[].
 :::
 
 ```tex "hecke_operator_project/restricted_products/products"
@@ -464,13 +533,8 @@ Here are some basic facts we need about restricted products.
 \end{proof}
 ```
 :::proof "restricted_product_product_homeomorphism"
-The TeX chapter proves this first for binary products and then for finite
-products by induction. The openness hypothesis is emphasized because the
-restricted-product topology behaves much better under products in that case.
-
-The TeX notes even remark that this may fail without the openness hypothesis,
-because filtered colimits and binary products do not commute well in general in
-the category of topological spaces.
+Induction on the size of the finite set, using
+{uses "restricted_product_binary_homeomorphism"}[] to get started.
 :::
 ```tex "hecke_operator_project/restricted_products/products/2"
 \subsection{Products}
