@@ -122,6 +122,29 @@ This repository is the integration layer for the FLT Verso blueprint.
   with messages like `Cannot read LSP message: offset ... unexpected end of
   input`. Use one-module-at-a-time Beam sync as the stable path for now.
 
+## Sub-Agent Coordination
+
+- Prefer sub-agent coordination by default when the task cleanly splits into
+  disjoint lanes. In practice this repository benefits from one worker per
+  file or per chapter, with disjoint write sets.
+- Good default parallel lanes are chapter-local LT cleanup, source-pair /
+  similarity auditing, and metadata-focused `(lean := "...")` / `{uses "..."}[]`
+  audits on files that another worker is not editing.
+- Keep each delegated lane narrow and checkpointable. A worker should usually
+  own exactly one chapter file, carry that file to a green local validation
+  point, and then stop.
+- Do not use sub-agents to create overlapping edits in the same chapter unless
+  the split is extremely clear and one side is read-only.
+- Parallelize editing work freely across disjoint chapters, but serialize
+  repository-level validation whenever the checks are known to be fragile.
+- In particular, do not run multiple `lean-beam sync` requests in parallel for
+  the same repo root. If several workers edit Lean files, merge the edits and
+  then do one-module-at-a-time Beam validation.
+- When a lane is metadata-oriented rather than prose-oriented, prefer using it
+  to improve graph connectedness: restore missing labeled intermediate nodes,
+  attach resolvable Lean declarations, and move important source-grounded
+  dependencies into the relevant theorem / definition / proof nodes.
+
 ## Math Porting
 
 - Verso Blueprint math syntax is easy to get wrong: inline math is opened with
@@ -207,6 +230,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Work from the TeX source chapter-by-chapter. Treat section order, theorem
   order, paragraph boundaries, sentence order, and dependency structure as
   intentional.
+- Prefer sub-agent coordination by default when a batch naturally splits into
+  disjoint chapter or file lanes. Keep one worker per file as the normal rule.
 - Treat a block as LT-complete only once its local Verso translation sits next
   to a labeled `tex` witness block with the matching source excerpt.
 - Prefer translating existing TeX material into Verso over inventing new
