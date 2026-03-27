@@ -117,6 +117,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 - After the source-pair check is green, use
   `python3 scripts/check_lt_similarity.py <chapter.lean>` to get the first
   draft of the block-level mechanical drift report suggested by David.
+- When changing the LT similarity tooling itself, run
+  `python3 scripts/test_check_lt_similarity.py` before relying on the updated
+  scores for porting decisions.
 - Avoid issuing multiple `lean-beam sync` requests in parallel for the same
   project root. In this repository that sometimes trips a Beam/LSP worker exit
   with messages like `Cannot read LSP message: offset ... unexpected end of

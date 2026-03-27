@@ -98,6 +98,12 @@ idea of using a mechanical drift signal, run:
 python3 scripts/check_lt_similarity.py
 ```
 
+For regression checks on the LT similarity tool itself, run:
+
+```bash
+python3 scripts/test_check_lt_similarity.py
+```
+
 For the current TeX-to-Verso status snapshot inside the generated blueprint
 harness, see the `TeX To Verso Porting Status` chapter.
 
