@@ -762,59 +762,6 @@ This is the componentwise-units homeomorphism used later in
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/5"
-\subsection{Units}
-
-We now want to move from matrices to invertible matrices whilst keeping track of topology,
-so we need to understand units of topological monoids. Openness of the subobject was
-crucial in the above arguments, so we need the next lemma before we can get anywhere.
-
-\begin{lemma}
-  \lean{Submonoid.units_isOpen}
-  \label{Submonoid.units_isOpen}
-  \leanok
-  \discussion{587}
-  If $M$ is a topological monoid and $U$ is an open submonoid, then
-  the units $U^\times$ of $U$ are naturally an open subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
-  it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
-  topology from the product. This makes it into a topological group.
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isOpen}
-  We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
-  embedded in $M\times M$ as explained in the remark above, then the intersection
-  of this subgroup with $U\times U$ is open in $M^\times$ and consists of the elements
-  of $M^\times$ which are in $U$ and whose inverse is also in $U$, which is easily
-  checked to be the copy of $U^\times$ we're talking about.
-\end{proof}
-
-Later on, compactness will be key for us, so we record the analogous result
-for compactness.
-
-\begin{lemma}
-  \lean{Submonoid.units_isCompact}
-  \label{Submonoid.units_isCompact}
-  \leanok
-  \discussion{588}
-  If $M$ is a Hausdorff topological monoid and $U$ is a compact submonoid,
-  then the units $U^\times$ of $U$ are naturally a compact subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Is Hausdorffness necessary?
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isCompact}
-  First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
-  is a closed subset of $M\times M$. Indeed, if $p:M\times M\to M$ is $(a,b)\mapsto ab$
-  and $q:M\times M\to M$ is $(a,b)\mapsto ba$, then $p$ and $q$ are continuous,
-  $M^\times\subseteq M\times M$ is the intersection
-  $p^{-1}\{1\}\cap q^{-1}\{1\}$, and $\{1\}$ is closed because $M$ is Hausdorff.
-
-  We have $U\times U$ is a compact subset of $M\times M$, and so
-  $U^\times=M^\times\cap U\times U$ is a closed subspace of a compact space
-  and is thus compact.
-\end{proof}
-
 \begin{lemma}
   \lean{ContinuousMulEquiv.piUnits}
   \label{ContinuousMulEquiv.piUnits}
@@ -823,52 +770,6 @@ for compactness.
   If $U_i$ are topological monoids then the canonical
   group isomorphism $(\prod_i U_i)^\times=\prod_i(U_i^\times)$ is a homeomorphism.
 \end{lemma}
-\begin{proof}
-  \leanok
-  We prove that the maps in both directions are continuous. Let's start
-  with the map from left to right.
-
-  A map into a product is continuous when the maps to the factors
-  are continuous. A map into the units of a monoid is continuous when the
-  two projection maps to the monoid (the inclusion and the map $u\mapsto u^{-1}$)
-  are continuous (because $M^\times$ has the topology induced from $M\times M$).
-  This reduces us to checking that the maps $(\prod_i U_i)^\times\to U_j$
-  sending $(u_i)$ to $u_j$ resp $u_j^{-1}$ are continuous. But the former map
-  is the continuous inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ followed
-  by the continuous projection to $U_j$, and the latter map is the continuous
-  inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ sending $x$ to $x^{-1}$
-  followed by the projection.
-
-  To go the other way: because the units have the induced topology it suffices
-  to check that the two maps $\prod_i(U_i^\times)\to\prod_i U_i$
-  sending $(u_i)$ to $(u_i)$ resp $(u_i^{-1})$ are continuous. A map
-  to a product is continuous when the induced maps to the factors are.
-  A projection from a project is continuous, and the identity and inverse are
-  continuous maps $U_j^\times\to U_j$, and the maps we're concerned with are composites
-  of these maps and are hence continuous.
-\end{proof}
-
-\begin{theorem}
-  \lean{ContinuousMulEquiv.restrictedProductUnits}
-  \label{ContinuousMulEquiv.restrictedProductUnits}
-  \leanok
-  \discussion{582}
-  If $M_i$ are a family of topological monoids equipped with open
-  submonoids $U_i$, then the canonical map $(\prod'_iM_i)^\times\to\prod'_i(M_i^\times)$
-  is a homeomorphism.
-\end{theorem}
-\begin{proof}
-  \leanok
-  \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
-  I don't know a clean way of showing that the map from left to right is continuous,
-  so here is a ``direct'' proof that the map is a homeomorphism. It is certainly an abstract group
-  isomorphism between topological groups. So to prove that it is a homeomorphism it suffices
-  to prove that it is a homeomorphism near the identity, or equivalently that there are open
-  neighbourhoods $X$ and $Y$ of the identity elements on each side such that the map induces a
-  homeomorphism from $X$ to $Y$. We choose $(\prod_i U_i)^\times$ and $\prod_i (U_i^\times)$.
-  Note that the former is open because of lemma~\ref{Submonoid.units_isOpen}.
-  The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
-\end{proof}
 ```
 :::proof "product_units_homeomorphism"
 We prove that the maps in both directions are continuous. Let's start with the
@@ -893,68 +794,7 @@ the maps we're concerned with are composites of these maps and are hence
 continuous.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/6"
-\subsection{Units}
-
-We now want to move from matrices to invertible matrices whilst keeping track of topology,
-so we need to understand units of topological monoids. Openness of the subobject was
-crucial in the above arguments, so we need the next lemma before we can get anywhere.
-
-\begin{lemma}
-  \lean{Submonoid.units_isOpen}
-  \label{Submonoid.units_isOpen}
-  \leanok
-  \discussion{587}
-  If $M$ is a topological monoid and $U$ is an open submonoid, then
-  the units $U^\times$ of $U$ are naturally an open subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
-  it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
-  topology from the product. This makes it into a topological group.
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isOpen}
-  We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
-  embedded in $M\times M$ as explained in the remark above, then the intersection
-  of this subgroup with $U\times U$ is open in $M^\times$ and consists of the elements
-  of $M^\times$ which are in $U$ and whose inverse is also in $U$, which is easily
-  checked to be the copy of $U^\times$ we're talking about.
-\end{proof}
-
-Later on, compactness will be key for us, so we record the analogous result
-for compactness.
-
-\begin{lemma}
-  \lean{Submonoid.units_isCompact}
-  \label{Submonoid.units_isCompact}
-  \leanok
-  \discussion{588}
-  If $M$ is a Hausdorff topological monoid and $U$ is a compact submonoid,
-  then the units $U^\times$ of $U$ are naturally a compact subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Is Hausdorffness necessary?
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isCompact}
-  First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
-  is a closed subset of $M\times M$. Indeed, if $p:M\times M\to M$ is $(a,b)\mapsto ab$
-  and $q:M\times M\to M$ is $(a,b)\mapsto ba$, then $p$ and $q$ are continuous,
-  $M^\times\subseteq M\times M$ is the intersection
-  $p^{-1}\{1\}\cap q^{-1}\{1\}$, and $\{1\}$ is closed because $M$ is Hausdorff.
-
-  We have $U\times U$ is a compact subset of $M\times M$, and so
-  $U^\times=M^\times\cap U\times U$ is a closed subspace of a compact space
-  and is thus compact.
-\end{proof}
-
-\begin{lemma}
-  \lean{ContinuousMulEquiv.piUnits}
-  \label{ContinuousMulEquiv.piUnits}
-  \leanok
-  \discussion{581}
-  If $U_i$ are topological monoids then the canonical
-  group isomorphism $(\prod_i U_i)^\times=\prod_i(U_i^\times)$ is a homeomorphism.
-\end{lemma}
+```tex "hecke_operator_project/restricted_products/units/product-proof"
 \begin{proof}
   \leanok
   We prove that the maps in both directions are continuous. Let's start
@@ -978,28 +818,6 @@ for compactness.
   A projection from a project is continuous, and the identity and inverse are
   continuous maps $U_j^\times\to U_j$, and the maps we're concerned with are composites
   of these maps and are hence continuous.
-\end{proof}
-
-\begin{theorem}
-  \lean{ContinuousMulEquiv.restrictedProductUnits}
-  \label{ContinuousMulEquiv.restrictedProductUnits}
-  \leanok
-  \discussion{582}
-  If $M_i$ are a family of topological monoids equipped with open
-  submonoids $U_i$, then the canonical map $(\prod'_iM_i)^\times\to\prod'_i(M_i^\times)$
-  is a homeomorphism.
-\end{theorem}
-\begin{proof}
-  \leanok
-  \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
-  I don't know a clean way of showing that the map from left to right is continuous,
-  so here is a ``direct'' proof that the map is a homeomorphism. It is certainly an abstract group
-  isomorphism between topological groups. So to prove that it is a homeomorphism it suffices
-  to prove that it is a homeomorphism near the identity, or equivalently that there are open
-  neighbourhoods $X$ and $Y$ of the identity elements on each side such that the map induces a
-  homeomorphism from $X$ to $Y$. We choose $(\prod_i U_i)^\times$ and $\prod_i (U_i^\times)$.
-  Note that the former is open because of lemma~\ref{Submonoid.units_isOpen}.
-  The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
 \end{proof}
 ```
 :::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.restrictedProductUnits")
@@ -1011,92 +829,6 @@ This is obtained from {uses "product_units_homeomorphism"}[] and
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/7"
-\subsection{Units}
-
-We now want to move from matrices to invertible matrices whilst keeping track of topology,
-so we need to understand units of topological monoids. Openness of the subobject was
-crucial in the above arguments, so we need the next lemma before we can get anywhere.
-
-\begin{lemma}
-  \lean{Submonoid.units_isOpen}
-  \label{Submonoid.units_isOpen}
-  \leanok
-  \discussion{587}
-  If $M$ is a topological monoid and $U$ is an open submonoid, then
-  the units $U^\times$ of $U$ are naturally an open subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
-  it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
-  topology from the product. This makes it into a topological group.
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isOpen}
-  We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
-  embedded in $M\times M$ as explained in the remark above, then the intersection
-  of this subgroup with $U\times U$ is open in $M^\times$ and consists of the elements
-  of $M^\times$ which are in $U$ and whose inverse is also in $U$, which is easily
-  checked to be the copy of $U^\times$ we're talking about.
-\end{proof}
-
-Later on, compactness will be key for us, so we record the analogous result
-for compactness.
-
-\begin{lemma}
-  \lean{Submonoid.units_isCompact}
-  \label{Submonoid.units_isCompact}
-  \leanok
-  \discussion{588}
-  If $M$ is a Hausdorff topological monoid and $U$ is a compact submonoid,
-  then the units $U^\times$ of $U$ are naturally a compact subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Is Hausdorffness necessary?
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isCompact}
-  First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
-  is a closed subset of $M\times M$. Indeed, if $p:M\times M\to M$ is $(a,b)\mapsto ab$
-  and $q:M\times M\to M$ is $(a,b)\mapsto ba$, then $p$ and $q$ are continuous,
-  $M^\times\subseteq M\times M$ is the intersection
-  $p^{-1}\{1\}\cap q^{-1}\{1\}$, and $\{1\}$ is closed because $M$ is Hausdorff.
-
-  We have $U\times U$ is a compact subset of $M\times M$, and so
-  $U^\times=M^\times\cap U\times U$ is a closed subspace of a compact space
-  and is thus compact.
-\end{proof}
-
-\begin{lemma}
-  \lean{ContinuousMulEquiv.piUnits}
-  \label{ContinuousMulEquiv.piUnits}
-  \leanok
-  \discussion{581}
-  If $U_i$ are topological monoids then the canonical
-  group isomorphism $(\prod_i U_i)^\times=\prod_i(U_i^\times)$ is a homeomorphism.
-\end{lemma}
-\begin{proof}
-  \leanok
-  We prove that the maps in both directions are continuous. Let's start
-  with the map from left to right.
-
-  A map into a product is continuous when the maps to the factors
-  are continuous. A map into the units of a monoid is continuous when the
-  two projection maps to the monoid (the inclusion and the map $u\mapsto u^{-1}$)
-  are continuous (because $M^\times$ has the topology induced from $M\times M$).
-  This reduces us to checking that the maps $(\prod_i U_i)^\times\to U_j$
-  sending $(u_i)$ to $u_j$ resp $u_j^{-1}$ are continuous. But the former map
-  is the continuous inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ followed
-  by the continuous projection to $U_j$, and the latter map is the continuous
-  inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ sending $x$ to $x^{-1}$
-  followed by the projection.
-
-  To go the other way: because the units have the induced topology it suffices
-  to check that the two maps $\prod_i(U_i^\times)\to\prod_i U_i$
-  sending $(u_i)$ to $(u_i)$ resp $(u_i^{-1})$ are continuous. A map
-  to a product is continuous when the induced maps to the factors are.
-  A projection from a project is continuous, and the identity and inverse are
-  continuous maps $U_j^\times\to U_j$, and the maps we're concerned with are composites
-  of these maps and are hence continuous.
-\end{proof}
-
 \begin{theorem}
   \lean{ContinuousMulEquiv.restrictedProductUnits}
   \label{ContinuousMulEquiv.restrictedProductUnits}
@@ -1106,18 +838,6 @@ for compactness.
   submonoids $U_i$, then the canonical map $(\prod'_iM_i)^\times\to\prod'_i(M_i^\times)$
   is a homeomorphism.
 \end{theorem}
-\begin{proof}
-  \leanok
-  \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
-  I don't know a clean way of showing that the map from left to right is continuous,
-  so here is a ``direct'' proof that the map is a homeomorphism. It is certainly an abstract group
-  isomorphism between topological groups. So to prove that it is a homeomorphism it suffices
-  to prove that it is a homeomorphism near the identity, or equivalently that there are open
-  neighbourhoods $X$ and $Y$ of the identity elements on each side such that the map induces a
-  homeomorphism from $X$ to $Y$. We choose $(\prod_i U_i)^\times$ and $\prod_i (U_i^\times)$.
-  Note that the former is open because of lemma~\ref{Submonoid.units_isOpen}.
-  The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}.
-\end{proof}
 ```
 :::proof "restricted_product_units_homeomorphism"
 {uses "ContinuousMulEquiv.piUnits"}[]
@@ -1133,102 +853,7 @@ from `X` to `Y`. We choose the units of `\prod_i U_i` and the product
 `Submonoid.units_isOpen`. The result now follows from the previous lemma
 `ContinuousMulEquiv.piUnits`.
 :::
-```tex "hecke_operator_project/restricted_products/units/8"
-\subsection{Units}
-
-We now want to move from matrices to invertible matrices whilst keeping track of topology,
-so we need to understand units of topological monoids. Openness of the subobject was
-crucial in the above arguments, so we need the next lemma before we can get anywhere.
-
-\begin{lemma}
-  \lean{Submonoid.units_isOpen}
-  \label{Submonoid.units_isOpen}
-  \leanok
-  \discussion{587}
-  If $M$ is a topological monoid and $U$ is an open submonoid, then
-  the units $U^\times$ of $U$ are naturally an open subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
-  it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
-  topology from the product. This makes it into a topological group.
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isOpen}
-  We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
-  embedded in $M\times M$ as explained in the remark above, then the intersection
-  of this subgroup with $U\times U$ is open in $M^\times$ and consists of the elements
-  of $M^\times$ which are in $U$ and whose inverse is also in $U$, which is easily
-  checked to be the copy of $U^\times$ we're talking about.
-\end{proof}
-
-Later on, compactness will be key for us, so we record the analogous result
-for compactness.
-
-\begin{lemma}
-  \lean{Submonoid.units_isCompact}
-  \label{Submonoid.units_isCompact}
-  \leanok
-  \discussion{588}
-  If $M$ is a Hausdorff topological monoid and $U$ is a compact submonoid,
-  then the units $U^\times$ of $U$ are naturally a compact subgroup of $M^\times$.
-\end{lemma}
-\begin{remark} Is Hausdorffness necessary?
-\end{remark}
-\begin{proof}
-  \proves{Submonoid.units_isCompact}
-  First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
-  is a closed subset of $M\times M$. Indeed, if $p:M\times M\to M$ is $(a,b)\mapsto ab$
-  and $q:M\times M\to M$ is $(a,b)\mapsto ba$, then $p$ and $q$ are continuous,
-  $M^\times\subseteq M\times M$ is the intersection
-  $p^{-1}\{1\}\cap q^{-1}\{1\}$, and $\{1\}$ is closed because $M$ is Hausdorff.
-
-  We have $U\times U$ is a compact subset of $M\times M$, and so
-  $U^\times=M^\times\cap U\times U$ is a closed subspace of a compact space
-  and is thus compact.
-\end{proof}
-
-\begin{lemma}
-  \lean{ContinuousMulEquiv.piUnits}
-  \label{ContinuousMulEquiv.piUnits}
-  \leanok
-  \discussion{581}
-  If $U_i$ are topological monoids then the canonical
-  group isomorphism $(\prod_i U_i)^\times=\prod_i(U_i^\times)$ is a homeomorphism.
-\end{lemma}
-\begin{proof}
-  \leanok
-  We prove that the maps in both directions are continuous. Let's start
-  with the map from left to right.
-
-  A map into a product is continuous when the maps to the factors
-  are continuous. A map into the units of a monoid is continuous when the
-  two projection maps to the monoid (the inclusion and the map $u\mapsto u^{-1}$)
-  are continuous (because $M^\times$ has the topology induced from $M\times M$).
-  This reduces us to checking that the maps $(\prod_i U_i)^\times\to U_j$
-  sending $(u_i)$ to $u_j$ resp $u_j^{-1}$ are continuous. But the former map
-  is the continuous inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ followed
-  by the continuous projection to $U_j$, and the latter map is the continuous
-  inclusion $(\prod_i U_i)^\times\to\prod_i U_i$ sending $x$ to $x^{-1}$
-  followed by the projection.
-
-  To go the other way: because the units have the induced topology it suffices
-  to check that the two maps $\prod_i(U_i^\times)\to\prod_i U_i$
-  sending $(u_i)$ to $(u_i)$ resp $(u_i^{-1})$ are continuous. A map
-  to a product is continuous when the induced maps to the factors are.
-  A projection from a project is continuous, and the identity and inverse are
-  continuous maps $U_j^\times\to U_j$, and the maps we're concerned with are composites
-  of these maps and are hence continuous.
-\end{proof}
-
-\begin{theorem}
-  \lean{ContinuousMulEquiv.restrictedProductUnits}
-  \label{ContinuousMulEquiv.restrictedProductUnits}
-  \leanok
-  \discussion{582}
-  If $M_i$ are a family of topological monoids equipped with open
-  submonoids $U_i$, then the canonical map $(\prod'_iM_i)^\times\to\prod'_i(M_i^\times)$
-  is a homeomorphism.
-\end{theorem}
+```tex "hecke_operator_project/restricted_products/units/restricted-proof"
 \begin{proof}
   \leanok
   \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
