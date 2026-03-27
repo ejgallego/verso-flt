@@ -500,23 +500,33 @@ relabelling of places.
 :::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv")
 If `L \otimes_K K_v` is given the `K_v`-module topology, then the local
 algebraic isomorphism
-$`L \otimes_K K_v \cong \prod_{w \mid v} L_w`
+$`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$
 is also a homeomorphism.
 This is the topological sharpening of
-{uses "nonarchimedean_base_change_local_decomposition"}[] and {uses "product_local_completion_module_topology"}[].
+{uses "nonarchimedean_base_change_local_decomposition"}[] and
+{uses "product_local_completion_module_topology"}[].
 :::
 ```tex "adele_project/lt-witness-410"
-:::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv")
+\begin{theorem}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv}
+  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv}
+  \uses{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
+  If we give $L\otimes_KK_v$ the $K_v$-module topology then the $L$-algebra isomorphism
+  $L\otimes_K K_v\cong\prod_{w|v}L_w$ is also a homeomorphism.
+\end{theorem}
 ```
 
 
 :::proof "nonarchimedean_base_change_local_homeomorphism"
-Indeed, it is a `K_v`-algebra isomorphism between two modules each of which
-have the module topology, and any module map is automatically continuous for
-the module topologies.
+Indeed, it is a `K_v`-algebra isomorphism between two modules each of which has
+the module topology, and any module map is automatically continuous for the
+module topologies.
 :::
 ```tex "adele_project/lt-witness-419"
-:::proof "nonarchimedean_base_change_local_homeomorphism"
+\begin{proof} Indeed, is a $K_v$-algebra isomorphism between two modules each of which
+  have the module topology, and any module map is automorphically continuous for the
+  module topologies.
+\end{proof}
 ```
 
 
@@ -528,7 +538,15 @@ This is the integral refinement of
 {uses "nonarchimedean_base_change_local_decomposition"}[].
 :::
 ```tex "adele_project/lt-witness-426"
-:::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
+\begin{theorem}
+  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
+  \leanok
+  The isomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ induces an isomorphism
+  $B\otimes_AA_v\to \prod_{w|v}B_w$
+  for all $v$ in the height one spectrum of $A$.
+\end{theorem}
 ```
 
 
@@ -548,7 +566,22 @@ is closed because it's open), giving surjectivity; injectivity follows from the
 statement that $`L \otimes_K K_v = \prod_{w \mid v} L_w`$.
 :::
 ```tex "adele_project/lt-witness-434"
-:::proof "nonarchimedean_integral_decomposition"
+\begin{proof}
+  \leanok
+  Certainly the image of the integral elements are integral. The argument in the other
+  direction is more delicate. My original plan was to follow Cassels--Froehlich,
+  Cassels' article ``Global fields'', section 12 lemma, p61, which proves it for
+  all but finitely many primes, but \href{https://github.com/ImperialCollegeLondon/FLT/pull/400}
+  {a PR by Matthew Jasper} gives another approach which works for all primes.
+  Jasper's argument is to show that the closure of $A$ in $K_v$ is $A_v$
+  for a valuation on a Dedekind domain, and then that the closure of $A$ in $\prod_{v\in S}K_v$
+  is $\prod_{v\in S}A_v$ for $S$ a finite set of valuations (using the Chinese
+  remainder theorem). Applying this to $B$ we get that the closure of $B$ in $\prod_{w|v}L_w$
+  is $\prod_{w|v}B_w$. He then shows that this closure is the image of
+  $B\otimes_A\mathcal{O}_v$ (by showing that this image is closed because it's open),
+  giving surjectivity; injectivity follows from the statement
+  that $L\otimes_KK_v=\prod_{w|v}L_w$.
+\end{proof}
 ```
 
 
@@ -580,13 +613,23 @@ The TeX chapter now introduces an auxiliary restricted product `R`, namely the
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
 isomorphism.
+This is obtained from {uses "nonarchimedean_integral_decomposition"}[],
+{uses "restricted_product_relabel_isomorphism"}[],
+{uses "finite_adele_base_change_integral"}[], and
+{uses "tensor_product_module_base_change"}[].
 :::
 ```tex "adele_project/lt-witness-468"
-\begin{proof}
-  \proves{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
-  Follows immediately from theorem~\ref{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
-  and theorem~\ref{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}.
-\end{proof}
+\begin{theorem}
+  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
+  \lean{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral,
+    RestrictedProduct.relabelIso,
+    IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv,
+    IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}
+  \leanok
+  \discussion{243}
+  This natural map $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is an isomorphism.
+\end{theorem}
 ```
 
 
