@@ -366,30 +366,13 @@ We let `E` denote any compact set satisfying the hypothesis of the previous lemm
 :::
 
 ```tex "fujisaki_first_proof_raw"
-\section{The proof}
-
-We prove the theorem via a series of lemmas.
-
-\begin{lemma}
-  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
-  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
+\begin{definition}
+  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.E}
+  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.E}
+  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
   \leanok
-  There's a compact subset $E$ of $D_{\A}$
-  with the property that for all $x\in D_{\A}^{(1)}$,
-  the obvious map $xE\to D\backslash D_{\A}$ is not injective.
-\end{lemma}
-
-\begin{proof}
-  \leanok
-  We know that if we pick a $\Q$-basis for $D$
-  of size $d$ then this identifies $D$ with $\Q^d$,
-  $D_{\A}$ with $\A_{\Q}^d$, and $D\backslash D_{\A}$ with
-  $(\Q\backslash\A_{\Q})^d$. Now $\Q$ is discrete in $\A_{\Q}$
-  by theorem~\ref{NumberField.AdeleRing.discrete}, and the quotient
-  $\Q\backslash \A_{\Q}$ is compact by theorem~\ref{Rat.AdeleRing.cocompact}.
-  Hence $D$ is discrete in $D_{\A}$
-  and the quotient $D\backslash D_{\A}$ is compact.
-\end{proof}
+  We let $E$ denote any compact set satisfying the hypothesis of the previous lemma.
+\end{definition}
 ```
 
 :::definition "difference_set_x_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
@@ -413,23 +396,6 @@ Define `Y = X · X`, the product of the difference set with itself.
 :::
 
 ```tex "product_set_y_for_fujisaki_raw"
-\begin{definition}
-  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
-  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
-  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.X}
-  \leanok
-Define $Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}$.
-\end{definition}
-```
-
-:::proof "product_set_y_for_fujisaki"
-The TeX proof immediately takes these closures under subtraction and
-multiplication because later steps need one set capturing additive
-collisions and another capturing multiplicative combinations of those
-collisions.
-:::
-
-```tex "product_set_y_for_fujisaki_proof_raw"
 \begin{definition}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
@@ -740,16 +706,28 @@ $`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
 \end{definition}
 ```
 
-:::proof "compact_constraint_set_c"
-{uses "finite_intersection_set_t_finite"}[]
-{uses "difference_set_x_for_fujisaki"}[]
-
-The TeX proof introduces `C` only after all previous compact and finiteness
-lemmas are in place. The point is to create one compact set that simultaneously
-controls an adelic element and its inverse.
+:::theorem "compact_constraint_set_c_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact")
+{uses "compact_constraint_set_c"}[]
+The set `C` is compact.
 :::
 
-```tex "compact_constraint_set_c_proof_raw"
+```tex "compact_constraint_set_c_compact_raw"
+\begin{lemma}
+  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
+  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
+  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.C,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite,
+    NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact}
+  \leanok
+  $C$ is compact.
+\end{lemma}
+```
+
+:::proof "compact_constraint_set_c_compact"
+`X` is compact and `T` is finite.
+:::
+
+```tex "compact_constraint_set_c_compact_proof_raw"
 \begin{proof}
   \leanok
   $X$ is compact and $T$ is finite.
@@ -828,23 +806,17 @@ chapter and the input needed by the quaternion algebra miniproject.
 ```
 
 :::proof "compact_quotient_for_division_algebra"
-The proof now has a clear internal graph:
-{uses "large_compact_set_mod_d_exists"}[],
-{uses "difference_set_x_for_fujisaki"}[],
-{uses "product_set_y_for_fujisaki"}[],
-{uses "difference_and_product_sets_compact"}[],
-{uses "difference_set_meets_d_units"}[],
-{uses "finite_intersection_set_t_finite"}[],
-{uses "compact_constraint_set_c"}[], and
-{uses "antidiagonal_hits_compact_constraint_set"}[].
+{uses "compact_constraint_set_c_compact"}[]
+{uses "antidiagonal_hits_compact_constraint_set"}[]
+Indeed, if `M` is the preimage of `C` under the inclusion
+`D_A^{(1)} \to D_A \times D_A` sending `ν` to `(ν, ν⁻¹)`, then `M` is a
+closed subspace of a compact space so it's compact (note that `δ_{D_A}` is
+continuous, by {uses "MeasureTheory.ringHaarChar_continuous"}[], so
+`D_A^{(1)}` is a closed subset of `D_A^\times` which is itself a closed subset
+of `D_A \times D_A`).
 
-The final step is topological. The compact set `C` controls the antidiagonal
-image of a representative `ν` of every class in `D^× \ D_A^{(1)}`. Taking the
-preimage of `C` under the map `ν ↦ (ν, ν⁻¹)` gives a compact set surjecting onto
-the quotient. Therefore the quotient itself is compact.
-
-This is exactly the compactness input used later in
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"}[].
+{uses "antidiagonal_hits_compact_constraint_set"}[] shows that `M` surjects onto
+`D^\times \backslash D_A^{(1)}` which is thus also compact.
 :::
 
 ```tex "compact_quotient_for_division_algebra_proof_raw"
@@ -999,28 +971,6 @@ is compact.
   \leanok
   $D^\times\backslash(D\otimes_K\A_K^\infty)^\times$ is compact.
 \end{theorem}
-\begin{proof}
-  \uses{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
-  \leanok
-There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
-  $D^\times\backslash (D\otimes_K \A_K^\infty)^\times$. We claim that it's
-  surjective. Granted this claim, we are home, because if we put the quotient
-  topology on $D^\times\backslash (D\otimes_K \A_K^\infty)^\times$ coming from
-  $(D\otimes_K \A_K^\infty)^\times$ then it's readily verified that $\alpha$
-  is continuous, and the continuous image of a compact space is compact.
-
-  As for surjectivity: say $x\in (D\otimes_K \A_K^\infty)^\times$. We need to extend
-  $x$ to an element $(x,y)\in (D\otimes_K \A_K^\infty)^\times\times(D\otimes_K K_\infty)^\times$
-  which is in the kernel of $\delta_{D_{\A}}$. Because $\delta_{D_{\A}}(x,1)$ is some positive
-  real number, it will suffice to show that if $r$ is any positive real number then we can
-  find $y\in (D\otimes_K \A_K^\infty)^\times=(D\otimes_{\Q}\R)^\times$ with $\delta_{D_{\A}}(1,y)=r$,
-  or equivalently (setting $D_{\R}=D\otimes_{\Q}\R$) that $\delta_{D_{\R}}(y)=r$.
-  But $D\not=0$ as it is a division algebra,and hence $\Q\subseteq D$, meaning
-  $\R\subseteq D_{\R}$, and if
-  $x\in\R^\times\subseteq D_{\R}^\times$ then $\delta(x)=|x|^d$ with $d=\dim_{\Q}(D)$,
-  as multiplication by $x$ is just scaling by a factor of $x$ on $D_{\R}\cong\R^d$.
-  In particular we can set $x=y^{1/d}$.
-\end{proof}
 ```
 
 :::proof "finite_adele_units_cocompact_for_division_algebra"
