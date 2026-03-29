@@ -1254,8 +1254,8 @@ follows from {uses "units_of_open_submonoid_open"}[] and
 ```
 :::definition "local_level_from_residue_subgroup" (parent := "hecke_operator_project")
 If `Γ_v \le GL₂(k_v)` is a subgroup of the residue-group `GL₂(k_v)`, its
-preimage in `GL₂(\mathcal{O}_v)` gives the local compact open subgroup used to
-define the corresponding local level.
+preimage `U_v` in `M₂(\mathcal{O}_v)` under reduction modulo `\varpi` gives the
+local compact open subgroup used to define the corresponding local level.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/9"
@@ -2075,8 +2075,8 @@ let say something about matrix rings over complete fields.
 :::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct")
 `G` is isomorphic and homeomorphic to the restricted product of `GL₂(K_v)` with respect
 to the compact open subgroups `GL₂(\mathcal{O}_v)`.
-{uses "restricted_product_matrix_homeomorphism"}[]
 {uses "restricted_product_units_homeomorphism"}[]
+{uses "restricted_product_matrix_homeomorphism"}[]
 :::
 
 ```tex "hecke_operator_project/adelic_groups/introduction/2"
@@ -2090,8 +2090,9 @@ to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 \end{theorem}
 ```
 :::proof "adelic_gl2_is_restricted_product"
-{uses "ContinuousMulEquiv.restrictedProductUnits"}[]
-{uses "Homeomorph.restrictedProductMatrix"}[]
+{uses "restricted_product_units_homeomorphism"}[]
+{uses "restricted_product_matrix_homeomorphism"}[]
+{uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[]
 This follows from the former lemma and the latter lemma.
 :::
 
