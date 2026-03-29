@@ -970,12 +970,30 @@ products.
 \begin{proof} I have only thought about the cofinite filter case, where this
   should follow easily from the definition of the topology.
 \end{proof}
+```
 
+:::theorem "finite_adele_auxiliary_ring_homeomorphism" (parent := "adele_project")
+$`\mathbb{\A_L^\infty}`$ is homeomorphic to
+$`\prod_v(B\otimes_AK_v,B\otimes_AA_v)`$.
+{uses "restricted_product_relabel_homeomorphism"}[]
+:::
+
+```tex "adele_project/lt-witness-653c"
 \begin{corollary} $\mathbb{\A_L^\infty}$ is homeomorphic to $\prod_v(B\otimes_AK_v,B\otimes_AA_v)$.
 \end{corollary}
+```
+
+:::proof "finite_adele_auxiliary_ring_homeomorphism"
+Follows from the previous theorem with `X_v=B\otimes_AK_v`, `D_w=L_w`, etc.
+{uses "nonarchimedean_integral_decomposition"}[]
+:::
+
+```tex "adele_project/lt-witness-653d"
 \begin{proof} Follows from the previous theorem with $X_v=B\otimes_AK_v$ $D_w=L_w$ etc.
 \end{proof}
+```
 
+```tex "adele_project/base-change-finite-topology/continued"
 Recall that if $$R$$ is a commutative ring, and two $$R$$-modules both have the $$R$$-module
 topology, then any $$R$$-linear morphism between them is automatically continuous. We know
 that $\A_L^\infty$ is $\A_K^\infty$-linearly isomorphic to $L\otimes_K\A_K^\infty$ and our claim is that
