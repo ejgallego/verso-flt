@@ -633,7 +633,7 @@ This is obtained from {uses "nonarchimedean_integral_decomposition"}[],
 ```
 
 
-:::theorem "tensor_product_module_base_change" (parent := "adele_project")
+:::theorem "tensor_product_module_base_change" (parent := "adele_project") (lean := "IsDedekindDomain.linearEquivTensorProductModule")
 If $`M`$ is any $`K`$-module then the canonical map
 $`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 :::
@@ -719,8 +719,10 @@ restricted products `∏'_v(X_v,C_v)` and `∏'_w(Y_w,D_w)`.
 
 
 :::proof "restricted_product_relabel_isomorphism"
-This is a standard corollary of the previous theorem and the fact that tensor
-products commute with filtered colimits.
+Let `V` be the finite places of `K` and `W` the finite places of `L`, let
+`X_v` be `B \otimes_A K_v`, let `C_v` be `B \otimes_A A_v`, let `Y_w` be
+`L_w`, let `D_w` be `B_w`, and the result follows from the previous
+definition, given {uses "nonarchimedean_integral_decomposition"}[].
 :::
 ```tex "adele_project/lt-witness-527"
 \begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
@@ -765,6 +767,7 @@ easily from the definition of the topology.
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
 The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra
 isomorphism.
+{uses "restricted_product_relabel_isomorphism"}[]
 :::
 ```tex "adele_project/lt-witness-548"
 \begin{theorem}
@@ -865,33 +868,45 @@ we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$
 \end{proof}
 ```
 
-:::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
-The same finite-adele base-change map is also a homeomorphism when the source is
-given the module topology and the target the restricted-product topology.
-This is the topological companion to
-{uses "finite_adele_base_change_algebraic"}[].
-The local topological input is {uses "nonarchimedean_base_change_local_homeomorphism"}[].
-:::
-```tex "adele_project/lt-witness-653"
-:::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
+Now $`L \otimes_K \A_{A,K}^\infty`$ is an $`\A_{A,K}^\infty`$-module and hence can
+be given the $`\A_{A,K}^\infty`$-module topology. We also claim
+```tex "adele_project/lt-witness-653a"
+Now $L\otimes_K\A_{A,K}^\infty$ is an $\A_{A,K}^\infty$-module and hence can be given
+the $\A_{A,K}^\infty$-module topology. We also claim
 ```
 
-
-:::proof "finite_adele_base_change_topological"
-The TeX chapter insists that this is a separate theorem, not a formality. The
-key issue is that the restricted-product topology is not the naive subspace
-topology from the full product, so one must check carefully that the local
-homeomorphisms from
-{uses "nonarchimedean_base_change_local_homeomorphism"}[] respect the chosen
-open compact subrings and that restricted products commute with finite products
-in the required way.
-
-The TeX proof then adds one more module-topology observation: after identifying
-each `B \otimes_A A_v` with a finite power of `A_v`, the restricted product of
-those finite powers has the expected module topology because restricted products
-commute with finite products. This is the last step that turns the algebraic
-finite-adele base-change isomorphism into a homeomorphism.
+:::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
+The induced $`L`$-algebra morphism
+$`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is a topological isomorphism.
+{uses "nonarchimedean_integral_decomposition"}[]
 :::
+```tex "adele_project/lt-witness-653"
+\begin{theorem}
+  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
+  \lean{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
+  \leanok
+The induced $L$-algebra morphism
+  $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is a topological isomorphism.
+\end{theorem}
+```
+
+Informally, the proofs are simple: componentwise we know that
+$`L \otimes_K K_v`$ is isomorphic both algebraically and topologically to
+$`\prod_{w \mid v} L_w`$, and that this isomorphism sends the open set
+$`B \otimes_A A_v`$ homeomorphically onto $`\prod_{w \mid v} B_w`$, so now
+it's "just a case of putting everything together". Formally, we really need to
+spell this out, as there is a lot going on. We do this in the next subsection.
+```tex "adele_project/lt-witness-653b"
+Informally, the proofs are simple: componentwise we know
+that $L\otimes_KK_v$ is isomorphic both algebraically and
+topologically to $\prod_{w|v}L_w$, and that this isomorphism
+sends the open set $B\otimes_AA_v$ homeomorphically onto
+$\prod_{w|v}B_w$, so now it's ``just a case of putting everything
+together''. Formally, we really need to spell this out, as there is a lot
+going on. We do this in the
+next subsection.
+```
 
 ```tex "adele_project/base-change-finite-topology"
 \begin{definition} If $X_v$ and $Y_v$ are families of topological spaces indexed by $v\in V$,
