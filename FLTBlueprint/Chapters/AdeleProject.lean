@@ -764,10 +764,104 @@ easily from the definition of the topology.
 ```
 
 
+:::theorem "finite_prime_product_tensor_isomorphism" (parent := "adele_project")
+If `S` is a finite set of nonzero primes of `A` then the natural map
+$`B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
+(\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))`$
+is an isomorphism.
+:::
+```tex "adele_project/lt-witness-548a"
+\begin{corollary}
+  \label{IsDedekindDomain.pi_tensorProduct}
+  \uses{IsDedekindDomain.AKLB.finitePresentation,pi_tensorProduct_of_finitePresentation}
+  If $S$ is a finite set of nonzero primes of $A$ then the natural map
+  $B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
+  (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))$
+  is an isomorphism.
+\end{corollary}
+```
+
+:::proof "finite_prime_product_tensor_isomorphism"
+Follows from the previous two theorems.
+:::
+```tex "adele_project/lt-witness-548b"
+\begin{proof} Follows from the previous two theorems.
+\end{proof}
+```
+
+Recall that $`\A_K^\infty`$ is the finite adeles of `K`, defined as the
+restricted product of the `K_v` with respect to the `A_v`, where `v` runs
+through the nonzero primes of `A`. Let `R` denote the restricted product of
+the `B\otimes_A K_v` with respect to the `B\otimes_A A_v`.
+```tex "adele_project/lt-witness-548c"
+Recall that $\A_K^\infty$ is the finite adeles of $K$,
+defined as the restricted product of the $K_v$ with respect to the $A_v$,
+where $v$ runs through the nonzero primes of $A$. Let $R$ denote the restricted
+product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$.
+```
+
+:::theorem "finite_adele_tensor_product_auxiliary_ring" (parent := "adele_project")
+The natural map $`B\otimes_A\A_K^\infty\to R`$ is a `B`-algebra isomorphism.
+:::
+```tex "adele_project/lt-witness-548d"
+\begin{corollary}
+  \label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1}
+  \uses{IsDedekindDomain.pi_tensorProduct}
+  The natural map $B\otimes_A\A_K^\infty\to R$ is a $B$-algebra isomorphism.
+\end{corollary}
+```
+
+:::proof "finite_adele_tensor_product_auxiliary_ring"
+This follows from the previous corollary and the fact that tensor products
+commute with filtered colimits.
+:::
+```tex "adele_project/lt-witness-548e"
+\begin{proof} This follows from the previous corollary and the fact that
+  tensor products commute with filtered colimits.
+\end{proof}
+```
+
+:::theorem "auxiliary_ring_identifies_with_extension_finite_adeles" (parent := "adele_project")
+The ring `R` introduced above, the restricted product of the
+`B\otimes_A K_v` with respect to the `B\otimes_A A_v`, is isomorphic to
+$`\mathbb{A}_L`$.
+{uses "restricted_product_relabel_isomorphism"}[]
+:::
+```tex "adele_project/lt-witness-548f"
+\begin{corollary}
+  \label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}
+  \uses{RestrictedProduct.relabelIso}
+  The ring $R$ introduced above (the restricted
+  product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$)
+  is isomorphic to $\mathbb{A}_L$.
+\end{corollary}
+```
+
+:::proof "auxiliary_ring_identifies_with_extension_finite_adeles"
+Let `V` be the finite places of `K` and `W` the finite places of `L`, let
+`X_v` be `B\otimes_A K_v`, let `C_v` be `B\otimes_A A_v`, let `Y_w` be `L_w`,
+let `D_w` be `B_w`, and the result follows from the previous definition, given
+{uses "nonarchimedean_integral_decomposition"}[].
+:::
+```tex "adele_project/lt-witness-548g"
+\begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
+  let $X_v$ be $B\otimes_A K_v$, let $C_v$ be $B\otimes_A A_v$, let $Y_w$ be $L_w$,
+  let $D_w$ be $B_w$ and the result follows from the previous definition, given
+  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}.
+\end{proof}
+```
+
+From this, we can deduce the theorem we claimed earlier:
+```tex "adele_project/lt-witness-548h"
+From this, we can deduce the theorem we claimed earlier:
+```
+
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
 The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra
 isomorphism.
-{uses "restricted_product_relabel_isomorphism"}[]
+This is built from
+{uses "finite_adele_tensor_product_auxiliary_ring"}[] and
+{uses "auxiliary_ring_identifies_with_extension_finite_adeles"}[].
 :::
 ```tex "adele_project/lt-witness-548"
 \begin{theorem}
@@ -780,84 +874,23 @@ isomorphism.
 \end{theorem}
 ```
 
-
 :::proof "finite_adele_base_change_integral"
 This map factors through the auxiliary ring~`R` so the result follows from the
 previous two constructions.
 :::
-
-```tex "adele_project/base-change-finite-relabel"
-\begin{corollary}
-  \label{IsDedekindDomain.pi_tensorProduct}
-  \uses{IsDedekindDomain.AKLB.finitePresentation,pi_tensorProduct_of_finitePresentation}
-  If $S$ is a finite set of nonzero primes of $A$ then the natural map
-  $B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
-  (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))$
-  is an isomorphism.
-\end{corollary}
-\begin{proof} Follows from the previous two theorems.
-\end{proof}
-
-Recall that $\A_K^\infty$ is the finite adeles of $K$,
-defined as the restricted product of the $K_v$ with respect to the $A_v$,
-where $v$ runs through the nonzero primes of $A$. Let $R$ denote the restricted
-product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$.
-
-\begin{corollary}
-  \label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1}
-  \uses{IsDedekindDomain.pi_tensorProduct}
-  The natural map $B\otimes_A\A_K^\infty\to R$ is a $B$-algebra isomorphism.
-\end{corollary}
-\begin{proof} This follows from the previous corollary and the fact that
-  tensor products commute with filtered colimits.
-\end{proof}
-
-Recall from earlier in this section that if $v$ is a finite place of $A$ then the natural map from
-$B\otimes_A K_v$ to $L\otimes_KK_v$ is an isomorphism, and recall from the previous section
-that the natural map from $L\otimes_KK_v$ to $\prod_{w|v}L_w$ was also an isomorphism.
-This isomorphism sends $B\otimes_A A_v$ to $\prod_{w|v}B_w$ (I thank Matthew Jasper for
-pointing out to me that this statement was true at all primes, not just at unramified primes).
-Finally, the set of $w$ of $B$ dividing a fixed place $v$ of $A$ is finite.
-Let's now formalize the abstract statement which we need. Rather than following the
-notation for restricted product in the literature and writing $\A_K^\infty=\prod'_vK_v$
-with the $\mathcal{O}_v$ implicit, we will write $\prod'_v(K_v,\mathcal{O}_v)$ in the below.
-
-\begin{definition}
-  \label{RestrictedProduct.relabelIso}
-  Let $V$ and $W$ be index sets, and let $f:W\to V$ be a map with finite fibres.
-  Let $X_v$ be sets, with subsets $C_v$, let $Y_w$ be sets with subsets $D_w$,
-  and say for all $v\in V$ we're given a bijection $X_v\to\prod_{w|f(w)=v}Y_w$,
-  identifying $C_v$ with $\prod_{w:f(w)=v}D_w$. Then there's an induced bijection between
-  the restricted products $\prod'_v(X_v,C_v)$ and $\prod'_w(Y_w,D_w)$.
-\end{definition}
-
-\begin{corollary}
-  \label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}
-  \uses{RestrictedProduct.relabelIso}
-  The ring $R$ introduced above (the restricted
-  product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$)
-  is isomorphic to $\mathbb{A}_L$.
-\end{corollary}
-\begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
-  let $X_v$ be $B\otimes_A K_v$, let $C_v$ be $B\otimes_A A_v$, let $Y_w$ be $L_w$,
-  let $D_w$ be $B_w$ and the result follows from the previous definition, given
-  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}.
-\end{proof}
-From this, we can deduce the theorem we claimed earlier:
-
-\begin{theorem}
-  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
-  \uses{RestrictedProduct.relabelIso,
-  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1,
-  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}
-  The natural map $B\otimes_A\A_K^\infty\to\A_L^\infty$ is a $B$-algebra
-  isomorphism.
-\end{theorem}
+```tex "adele_project/lt-witness-548i"
 \begin{proof}
   This map factors through the auxiliary ring~$R$ so the result follows
   from the previous two constructions.
 \end{proof}
+```
 
+:::proof "finite_adele_base_change_algebraic"
+Follows immediately from
+{uses "finite_adele_base_change_integral"}[] and
+{uses "tensor_product_module_base_change"}[].
+:::
+```tex "adele_project/lt-witness-548j"
 Because this map factors through the isomorphism $B\otimes_A\A_K^\infty\to L\otimes_K\A_K^\infty$
 we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$ is an algebraic
   isomorphism.
