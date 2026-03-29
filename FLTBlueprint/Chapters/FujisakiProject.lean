@@ -536,109 +536,6 @@ symmetry for central simple algebras to pass from left multiplication by
 \end{proof}
 ```
 
-:::theorem "difference_and_product_sets_compact" (parent := "fujisaki_project")
-Both `X` and `Y` are compact subsets of the adelic algebra.
-This packages {uses "difference_set_x_compact_for_fujisaki"}[] and
-{uses "product_set_y_compact_for_fujisaki"}[].
-:::
-
-```tex "difference_and_product_sets_compact_raw"
-\begin{lemma}
-  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact}
-  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact}
-  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.X}
-  \leanok
-  $X$ is a compact subset of $D_{\A}$.
-\end{lemma}
-\begin{lemma}
-  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact}
-  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact}
-  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
-  \leanok
-  $Y$ is a compact subset of $D_{\A}$.
-\end{lemma}
-```
-
-:::proof "difference_and_product_sets_compact"
-{uses "difference_set_x_compact_for_fujisaki"}[]
-{uses "product_set_y_compact_for_fujisaki"}[]
-
-Each set is the continuous image of a compact product: `X` comes from `E × E`
-under subtraction, and `Y` comes from `X × X` under multiplication.
-:::
-
-```tex "difference_and_product_sets_compact_proof_raw"
-\begin{proof}
-  \leanok
-  It's the continuous image of the compact set~$E\times E$.
-\end{proof}
-\begin{proof}
-  \leanok
-  It's the continuous image of the compact set~$X\times X$.
-\end{proof}
-```
-
-:::theorem "difference_set_meets_d_units" (parent := "fujisaki_project")
-For every $`\beta \in D_A^{(1)}`, the translate `βX` meets `D^×`, and likewise
-`Xβ⁻¹` meets `D^×`.
-:::
-
-```tex "difference_set_meets_d_units_raw"
-\begin{lemma}
-  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel}
-  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel}
-  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.X, NumberField.AdeleRing.DivisionAlgebra.Aux.E}
-  % TODO I used E in the statement of the lemma here
-  \leanok
-  If $\beta\in D_{\A}^{(1)}$ then
-$\beta X\cap D^\times\not=\emptyset$.
-\end{lemma}
-\begin{lemma}
-  \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'}
-  \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'}
-  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.X}
-  \leanok
-  Similarly, if $\beta\in D_{\A}^{(1)}$ then
-  $X\beta^{-1}\cap D^\times\not=\emptyset$.
-\end{lemma}
-```
-
-:::proof "difference_set_meets_d_units"
-{uses "difference_set_meets_d_units_left_for_fujisaki"}[]
-{uses "difference_set_meets_d_units_right_for_fujisaki"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-{uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
-The two directions are the left- and right-multiplication versions of the same
-argument. On the left one uses the failure of injectivity of `βE`; on the
-right one uses the same failure for `Eβ⁻¹`, after invoking the compatibility of
-left and right Haar characters.
-:::
-
-```tex "difference_set_meets_d_units_proof_raw"
-\begin{proof}
-  \leanok
-Indeed by lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE},
-the map $\beta E\to D\backslash D_{\A}$
-isn't injective, so there are distinct
-$\beta e_1,\beta e_2\in \beta E$ with $e_i\in E$ and
-$\beta e_1-\beta e_2=b\in D$.
-Now $b\not=0$ and $D$ is a division algebra, so $b\in D^\times$.
-And $e_1-e_2\in X$ so $b=\beta(e_1-e_2)\in \beta X$, so we're done.
-\end{proof}
-\begin{proof}
-  \leanok
-  % TODO does this make the lines dottted? I used E in the proof here
-  % TODO does \uses a theorem from another project mess up the colouring?
-  \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.E, NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
-  Indeed, $\beta^{-1}\in D_{\A}^{(1)}$, and so left multiplication by $\beta^{-1}$
-  doesn't change Haar measure on $D_{\A}$, so neither does right multiplication
-  (by theorem~\ref{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}).
-  So the same argument works: $E\beta^{-1}\to D\backslash D_{\A}$ is not
-  injective so choose $e_1\beta^{-1}\not=e_2\beta^{-1}$ with difference $b\in D$
-  and then $(e_1-e_2)\beta^{-1}\in D-{0}=D^\times$.
-\end{proof}
-```
-
 :::definition "finite_intersection_set_t" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T")
 {uses "product_set_y_for_fujisaki"}[]
 Let `T = Y ∩ D^×`.
@@ -670,7 +567,7 @@ The set `T` is finite.
 
 :::proof "finite_intersection_set_t_finite"
 {uses "finite_intersection_set_t"}[]
-{uses "difference_and_product_sets_compact"}[]
+{uses "product_set_y_compact_for_fujisaki"}[]
 
 The TeX proof uses only general topology. `Y` is compact, `D` is a discrete
 additive subgroup of `D_A`, hence closed, so `Y ∩ D` is compact and discrete and
@@ -736,8 +633,9 @@ The set `C` is compact.
 ```
 
 :::theorem "antidiagonal_hits_compact_constraint_set" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C")
-{uses "difference_set_meets_d_units"}[]
 {uses "compact_constraint_set_c"}[]
+{uses "difference_set_meets_d_units_left_for_fujisaki"}[]
+{uses "difference_set_meets_d_units_right_for_fujisaki"}[]
 For every $`\beta \in D_A^{(1)}`, there exist `b ∈ D^×` and `ν ∈ D_A^{(1)}`
 such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 :::
@@ -754,7 +652,6 @@ such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 ```
 
 :::proof "antidiagonal_hits_compact_constraint_set"
-{uses "difference_set_meets_d_units"}[]
 {uses "compact_constraint_set_c"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
