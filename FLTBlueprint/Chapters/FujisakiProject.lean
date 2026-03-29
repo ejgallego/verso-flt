@@ -538,6 +538,8 @@ symmetry for central simple algebras to pass from left multiplication by
 
 :::theorem "difference_and_product_sets_compact" (parent := "fujisaki_project")
 Both `X` and `Y` are compact subsets of the adelic algebra.
+This packages {uses "difference_set_x_compact_for_fujisaki"}[] and
+{uses "product_set_y_compact_for_fujisaki"}[].
 :::
 
 ```tex "difference_and_product_sets_compact_raw"
@@ -604,13 +606,12 @@ $\beta X\cap D^\times\not=\emptyset$.
 :::proof "difference_set_meets_d_units"
 {uses "difference_set_meets_d_units_left_for_fujisaki"}[]
 {uses "difference_set_meets_d_units_right_for_fujisaki"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
+{uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
 The two directions are the left- and right-multiplication versions of the same
-compactness argument: one starts from the failure of injectivity of `βE`, the
-other uses the corresponding right-multiplication symmetry.
-
-The TeX chapter repeats the same argument on the right using the compatibility
-of left and right Haar characters, which is why the Haar-character chapter had
-to prove {uses "central_simple_algebra_left_right_same_haar"}[] first.
+argument. On the left one uses the failure of injectivity of `βE`; on the
+right one uses the same failure for `Eβ⁻¹`, after invoking the compatibility of
+left and right Haar characters.
 :::
 
 ```tex "difference_set_meets_d_units_proof_raw"
@@ -755,13 +756,23 @@ such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 :::proof "antidiagonal_hits_compact_constraint_set"
 {uses "difference_set_meets_d_units"}[]
 {uses "compact_constraint_set_c"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[]
 
-This is the heart of the TeX argument. Using
-{uses "difference_set_meets_d_units"}[] twice, one writes `βx₁ = b₁` and
-`x₂β⁻¹ = b₂` with `x_i ∈ X` and `b_i ∈ D^×`. Multiplying those equations shows
-that `x₂x₁` lands in the finite set `T`, so `x₁⁻¹` belongs to `T^{-1}X`. Setting
-`ν = x₁⁻¹` produces a factorization `β = bν` with controlled antidiagonal point
-`(ν, ν⁻¹)`.
+By {uses "difference_set_meets_d_units_left_for_fujisaki"}[] and
+{uses "difference_set_meets_d_units_right_for_fujisaki"}[] we can write
+`βx₁ = b₁` and `x₂β⁻¹ = b₂` with `b_i ∈ D^×` and `x_i ∈ X`. Note that
+`β ∈ D_A^{(1)}` and `b_i ∈ D^× \subseteq D_A^{(1)}` by
+{uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[], so
+`x_i ∈ D_A^{(1)}` as well. In
+particular `x_i ∈ D_A^×`, so `x₁⁻¹` makes sense.
+
+Multiplying the equations defining the `x_i` and `b_i`, we deduce that
+`x₂x₁ = b₂b₁ ∈ Y ∩ D^× = T`; call this element `t`. Then
+`x₁⁻¹ = t⁻¹x₂ ∈ T⁻¹X`, and `x₁ ∈ X`, so if we set `ν = x₁⁻¹` and `b = b₁`
+then `β = bν` and `(ν, ν⁻¹) ∈ C = (T⁻¹X) × X`.
 :::
 
 ```tex "antidiagonal_hits_compact_constraint_set_proof_raw"
