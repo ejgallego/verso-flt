@@ -165,9 +165,9 @@ generality).
 ```
 
 :::definition "division_algebra_hypothesis_for_fujisaki" (parent := "fujisaki_project")
-The final compactness theorem is stated for division algebras, not just arbitrary
-central simple algebras, because nonzero elements then form a genuine group and
-the difference set arguments in the proof land inside `D^×`.
+Some central simple algebras `B` are division algebras, meaning that they are
+division rings, or equivalently that every nonzero `b ∈ B` has a two-sided
+inverse.
 :::
 
 ```tex "division_algebra_hypothesis_raw"
@@ -179,10 +179,10 @@ of a nonzero $x+yi+zj+tk$ is $(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)$.
 ```
 
 :::proof "division_algebra_hypothesis_for_fujisaki"
-This distinction matters in the proof. Several steps start by producing a
-nonzero element of `D` from adelic intersections and then immediately
-reinterpret it as a unit. That shortcut is available only because the theorem is
-specialized to division algebras.
+However `2 × 2` matrices over a field `K`, whilst being a central simple
+algebra over `K`, are never a division algebra, because a nonzero matrix with
+determinant zero such as
+$`\begin{pmatrix}1&0\\0&0\end{pmatrix}`$ has no inverse.
 :::
 
 ```tex "division_algebra_hypothesis_proof_raw"
@@ -859,8 +859,7 @@ There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
 \end{proof}
 ```
 
-The TeX chapter closes by recording two useful consequences of Fujisaki's
-lemma, both for the finite adelic unit group.
+We note here some useful consequences.
 
 ```tex "useful_consequences_raw"
 We note here some useful consequences.
@@ -882,12 +881,32 @@ is compact.
 ```
 
 :::proof "finite_adele_units_cocompact_for_division_algebra"
-The TeX proof constructs a natural map from the compact quotient
-{uses "compact_quotient_for_division_algebra"}[] to the finite-adelic unit
-quotient and proves that this map is surjective. The key point is that any
-finite-adelic unit can be extended by a suitable archimedean unit to land in
-the Haar-character kernel; the archimedean correction is possible because
-scalars in `\mathbf{R}^\times` scale Haar measure by an explicit positive power.
+{uses "compact_quotient_for_division_algebra"}[]
+There's a natural map `α` from
+`D^\times \backslash D_A^{(1)}` to
+`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that
+it's surjective. Granted this claim, we are home, because if we put the
+quotient topology on
+`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times` coming from
+`(D \otimes_K \mathbf{A}_K^\infty)^\times` then it's readily verified that `α`
+is continuous, and the continuous image of a compact space is compact.
+
+As for surjectivity: say
+`x ∈ (D \otimes_K \mathbf{A}_K^\infty)^\times`. We need to extend `x` to an
+element
+`(x,y) ∈ (D \otimes_K \mathbf{A}_K^\infty)^\times × (D \otimes_K K_\infty)^\times`
+which is in the kernel of `δ_{D_A}`. Because `δ_{D_A}(x,1)` is some positive
+real number, it will suffice to show that if `r` is any positive real number
+then we can find
+`y ∈ (D \otimes_K \mathbf{A}_K^\infty)^\times = (D \otimes_\mathbf{Q} \mathbf{R})^\times`
+with `δ_{D_A}(1,y)=r`, or equivalently, setting
+`D_\mathbf{R} = D \otimes_\mathbf{Q} \mathbf{R}`, that `δ_{D_\mathbf{R}}(y)=r`.
+But `D ≠ 0` as it is a division algebra, and hence
+`\mathbf{Q} \subseteq D`, meaning `\mathbf{R} \subseteq D_\mathbf{R}`, and if
+`x ∈ \mathbf{R}^\times \subseteq D_\mathbf{R}^\times` then
+`δ(x)=|x|^d` with `d = \dim_\mathbf{Q}(D)`, as multiplication by `x` is just
+scaling by a factor of `x` on `D_\mathbf{R}\cong\mathbf{R}^d`. In particular
+we can set `x=y^{1/d}`.
 :::
 
 ```tex "finite_adele_units_cocompact_proof_raw"
