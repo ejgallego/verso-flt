@@ -109,21 +109,7 @@ Assuming `UgV` is a finite union of cosets `g_iV`,
 we define `[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
 :::
-```tex "hecke_operator_project/abstract_theory/introduction/9"
-\section{The abstract theory}
-
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
-```
-:::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
-This function is well-defined (that is, independent of the
-choice of `g_i`), has image in `A^U` and is `R`-linear.
-:::
-```tex "hecke_operator_project/abstract_theory/hecke_operator"
+```tex "hecke_operator_project/abstract_theory/hecke_operator/definition"
 \begin{definition}
   \lean{AbstractHeckeOperator.HeckeOperator_toFun}
   \label{AbstractHeckeOperator.HeckeOperator_toFun}
@@ -132,7 +118,12 @@ choice of `g_i`), has image in `A^U` and is `R`-linear.
   we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
   to $\sum_i g_ia.$
 \end{definition}
-
+```
+:::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
+This function is well-defined (that is, independent of the
+choice of `g_i`), has image in `A^U` and is `R`-linear.
+:::
+```tex "hecke_operator_project/abstract_theory/hecke_operator/lemma"
 \begin{lemma}
   \lean{AbstractHeckeOperator.HeckeOperator}
   \label{AbstractHeckeOperator.HeckeOperator}
@@ -395,7 +386,7 @@ Restricted products with respect to open subspaces commute with finite products.
 This is obtained from {uses "restricted_product_binary_homeomorphism"}[].
 :::
 
-```tex "hecke_operator_project/restricted_products/products"
+```tex "hecke_operator_project/restricted_products/products/theorem"
 \begin{corollary}
   \lean{Homeomorph.restrictedProductPi}
   \label{Homeomorph.restrictedProductPi}
@@ -407,19 +398,13 @@ This is obtained from {uses "restricted_product_binary_homeomorphism"}[].
   then the obvious bijection $\prod'_i(\prod_j X_{ji})=\prod_j\left(\prod'_i X_{ji}\right)$
   is a homeomorphism.
 \end{corollary}
-\begin{proof}
-  \leanok
-  \uses{Homeomorph.restrictedProductProd}
-  Induction on the size of the finite set, using lemma~\ref{Homeomorph.restrictedProductProd}
-  to get you started.
-\end{proof}
 ```
 :::proof "restricted_product_product_homeomorphism"
 Induction on the size of the finite set, using
 {uses "restricted_product_binary_homeomorphism"}[] and
 {uses "Homeomorph.restrictedProductProd"}[] to get started.
 :::
-```tex "hecke_operator_project/restricted_products/products/2"
+```tex "hecke_operator_project/restricted_products/products/proof"
 \begin{proof}
   \leanok
   \uses{Homeomorph.restrictedProductProd}
@@ -432,7 +417,7 @@ If $`X_i`$ are topological spaces and the $`Y_i`$ are open subspaces, then the
 obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::
 
-```tex "hecke_operator_project/restricted_products/matrix"
+```tex "hecke_operator_project/restricted_products/matrix/theorem"
 \begin{corollary}
   \label{Homeomorph.restrictedProductMatrix}
   \lean{Homeomorph.restrictedProductMatrix}
@@ -441,24 +426,11 @@ obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
   If $X_i$ are topological spaces and the $Y_i$ are open subspaces,
   then the obvious map $M_n(\prod'_iX_i)=\prod'_iM_n(X_i)$ is a homeomorphism.
 \end{corollary}
-\begin{proof}
-  \leanok
-  \uses{Homeomorph.restrictedProductPi}
-  Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}.
-\end{proof}
 ```
 :::proof "restricted_product_matrix_homeomorphism"
 Immediate from the previous corollary.
 :::
-```tex "hecke_operator_project/restricted_products/matrix/2"
-\begin{corollary}
-  \label{Homeomorph.restrictedProductMatrix}
-  \lean{Homeomorph.restrictedProductMatrix}
-  \leanok
-  \discussion{571}
-  If $X_i$ are topological spaces and the $Y_i$ are open subspaces,
-  then the obvious map $M_n(\prod'_iX_i)=\prod'_iM_n(X_i)$ is a homeomorphism.
-\end{corollary}
+```tex "hecke_operator_project/restricted_products/matrix/proof"
 \begin{proof}
   \leanok
   \uses{Homeomorph.restrictedProductPi}
