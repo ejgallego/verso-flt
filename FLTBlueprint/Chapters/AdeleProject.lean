@@ -615,6 +615,10 @@ The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
 isomorphism.
 This is obtained from {uses "finite_adele_base_change_integral"}[] and
 {uses "tensor_product_module_base_change"}[].
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[]
+{uses "RestrictedProduct.relabelIso"}[]
+{uses "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"}[]
+{uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[]
 :::
 ```tex "adele_project/lt-witness-468"
 \begin{theorem}
@@ -1265,6 +1269,10 @@ This is built from {uses "infinite_place_local_base_change_map"}[],
 {uses "infinite_place_local_base_change_surjective"}[],
 {uses "infinite_place_local_base_change_injective"}[], and
 {uses "infinite_place_local_module_topology"}[].
+{uses "NumberField.InfinitePlace.Completion.baseChange"}[]
+{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
+{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
+{uses "NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT"}[]
 :::
 ```tex "adele_project/lt-witness-826"
 \begin{theorem}
