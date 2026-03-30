@@ -339,12 +339,20 @@ is a homeomorphism.
 ```
 
 :::proof "restricted_product_binary_homeomorphism"
-We need to check continuity in both directions. The easy direction uses
-`RestrictedProduct.continuous_dom`; the harder direction uses
-`RestrictedProduct.continuous_dom_prod`, where the openness of `B_i` and `D_i`
-is essential. The finite-stage map then factors through the expected
-restricted-product domain, and the comparison map is a homeomorphism because
-products commute with products in the usual way.
+We need to check continuity in both directions. The easy way is continuity of
+the map from the restricted product to the map from the binary product; the
+lemma `RestrictedProduct.continuous_dom` in mathlib tells us that a map from a
+restricted product is continuous when its restriction to the finite-stage
+domain is continuous for all finite `S ⊆ I`. The universal property of the
+binary product tells us that the map into the binary product is continuous if
+and only if the maps into the factors are continuous.
+
+The harder direction is the other way, because we are working against both
+universal properties. The trick is `RestrictedProduct.continuous_dom_prod` in
+mathlib, which is where we assume `B_i` and `D_i` are open. The map from the
+finite-stage domain to the restricted product then factors through the expected
+restricted-product stage; the first map is a homeomorphism, and the second is
+continuous by definition of the topology on a restricted product.
 :::
 ```tex "hecke_operator_project/restricted_products/products/binary-proof"
 \begin{remark} This may well not be true if $B_i$ and $D_i$ are not open, because
@@ -384,6 +392,10 @@ products commute with products in the usual way.
 
 :::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
 Restricted products with respect to open subspaces commute with finite products.
+In other words, if `j` runs through a finite set `J` and `i` runs through an
+arbitrary set `I`, and if `X_{ji}` are topological spaces equipped with open
+subspaces `Y_{ji}`, then the obvious bijection
+$`\prod'_i(\prod_j X_{ji})=\prod_j(\prod'_i X_{ji})`$ is a homeomorphism.
 :::
 
 ```tex "hecke_operator_project/restricted_products/products/theorem"
