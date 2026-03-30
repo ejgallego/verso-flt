@@ -190,24 +190,32 @@ locally compact.
 \end{proof}
 ```
 
-The TeX miniproject also records the project status here: Salvatore Mercuri had
-already formalized local compactness in an external adele-ring repo, and the
-question for the blueprint was how to refactor that proof so it fits mathlib's
-restricted-product API cleanly. It also notes the specific local input one
-needs: for number fields, unlike a general Dedekind domain, the local integer
-rings are compact because the residue fields are finite.
+As mentioned above, Salvatore Mercuri was the first to give a complete
+formalization of the proof that the adele ring is locally compact as a
+topological space. His work proved the result using the ad hoc topology on the
+adeles which we initially had. Since then, adeles have been refactored to have
+the direct limit topology and mathlib has
+`RestrictedProduct.locallyCompactSpace_of_addGroup`, the result that a
+restricted product of topological additive groups `K_v` over compact open
+subgroups `A_v` is locally compact.
 ```tex "adele_project/lt-witness-198"
-The TeX miniproject also records the project status here: Salvatore Mercuri had
+As mentioned above, Salvatore Mercuri was the first to give a complete formalisation of the proof
+that the adele ring is locally compact as a topological space. His work is in
+\href{https://github.com/smmercuri/adele-ring_locally-compact}{his own repo} and proved the
+result using the ``ad hoc'' topology on the adeles which we initially had. Since then,
+adeles have been refactored to have the direct limit topology and mathlib has
+\href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Algebra/RestrictedProduct.html\#RestrictedProduct.locallyCompactSpace_of_addGroup}
+{\tt RestrictedProduct.locallyCompactSpace\_of\_addGroup}, the result
+that a restricted product of topological additive groups $K_v$ over compact open
+subgroups $A_v$ is locally compact.
 ```
 
 
 # Base change
 
 :::theorem "adele_base_change" (parent := "adele_project") (lean := "NumberField.AdeleRing.baseChangeEquiv")
-If `K -> L` is a ring homomorphism between two number fields then there is a
-natural isomorphism, both topological and algebraic,
-$`L \otimes_K \A_K \cong \A_L`$.
-This is one of the basic background results for {uses "adelic_division_algebra_setup"}[] and {uses "haar_character_goal"}[].
+If $`L/K`$ is a finite extension of number fields then
+$`\A_L=L\otimes_K\A_K`$.
 :::
 
 ```tex "adele_project/base-change"
@@ -232,13 +240,9 @@ the definition (that it's an isomorphism).
 In fact the full claim is that it is both a homeomorphism and an $L$-algebra
 isomorphism. Before we can prove the theorem, we need to make the definition.
 ```tex "adele_project/lt-witness-226"
-The goal in this subsection is to spell out the following argument: Assume that
-$L\otimes_KK_v\cong\prod_{w|v}L_w$
-algebraically and topologically for all $v$, with $B\otimes_AA_v$ identified with $\prod_{w|v}B_w$.
-Then $L\otimes_K\A_K^\infty\cong\A_L^\infty$, algebraically and topologically. Here
-the tensor products $L\otimes_K R$ (for $R$ a $K$-algebra with a topology) are all being
-given the $R$-module topology, which if we choose a basis for $L/K$ is just the product
-topology.
+In fact the full claim is that it is both a homeomorphism
+and an $L$-algebra isomorphism. Before we can prove the theorem, we need to make the
+definition.
 ```
 
 
@@ -583,7 +587,7 @@ statement that $`L \otimes_K K_v = \prod_{w \mid v} L_w`$.
 ```
 
 
-For all finite places `v` of `A` we have shown that the natural map
+A summary of what we have so far: for all finite places `v` of `A` we have shown that the natural map
 $`L \otimes_K K_v \to \prod_w L_w`$ is an isomorphism of `L`-algebras, and that if
 $`L \otimes_K K_v`$ has the `K_v`-module topology and each `L_w` has the valuation
 topology then this map is also a homeomorphism. Furthermore we have shown that
@@ -1106,16 +1110,6 @@ $`\dim_{K_v} \prod_{w \mid v} L_w = \dim_{K_v} L \otimes_K K_v`$.
   For a fixed infinite place $v$ of $K$, we have
   $\text{dim}_{K_v} \prod_{w\mid v} L_w = \text{dim}_{K_v} L\otimes_K K_v$.
 \end{theorem}
-```
-
-
-:::proof "infinite_place_dimension_count"
-The TeX chapter separates this dimension count from the actual map construction,
-because surjectivity of the infinite-place base-change map is ultimately proved
-by combining weak approximation with finite-dimensional linear algebra.
-:::
-```tex "adele_project/lt-witness-772"
-:::proof "infinite_place_dimension_count"
 ```
 
 
