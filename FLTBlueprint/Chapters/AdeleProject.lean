@@ -913,7 +913,9 @@ the $\A_{A,K}^\infty$-module topology. We also claim
 :::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
 The induced $`L`$-algebra morphism
 $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is a topological isomorphism.
-{uses "nonarchimedean_integral_decomposition"}[]
+This is the topological companion to
+{uses "finite_adele_base_change_algebraic"}[] and uses
+{uses "finite_adele_auxiliary_ring_homeomorphism"}[].
 :::
 ```tex "adele_project/lt-witness-653"
 \begin{theorem}
