@@ -607,6 +607,8 @@ $`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
 :::theorem "compact_constraint_set_c_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact")
 {uses "compact_constraint_set_c"}[]
 The set `C` is compact.
+This is obtained from {uses "finite_intersection_set_t_finite"}[] and
+{uses "difference_set_x_compact_for_fujisaki"}[].
 :::
 
 ```tex "compact_constraint_set_c_compact_raw"
@@ -700,6 +702,8 @@ then `β = bν` and `(ν, ν⁻¹) ∈ C = (T⁻¹X) × X`.
 :::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
 The compactness theorem for the adelic quotient is the final output of the
 chapter and the input needed by the quaternion algebra miniproject.
+This is obtained from {uses "compact_constraint_set_c_compact"}[] and
+{uses "antidiagonal_hits_compact_constraint_set"}[].
 :::
 
 ```tex "compact_quotient_for_division_algebra_raw"
