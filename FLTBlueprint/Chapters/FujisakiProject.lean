@@ -63,10 +63,13 @@ by the norm-one units in an adelic division algebra.
 
 # Initial definitions
 
-The TeX chapter begins by reviewing the algebraic input. A central simple
-algebra over a field has center exactly the base field and no nontrivial
-two-sided ideals. Quaternion algebras are the four-dimensional examples, and
-division algebras are the cases in which every nonzero element is invertible.
+Let `K` be a field. A central simple `K`-algebra is a `K`-algebra `B` not
+necessarily commutative with centre `K` such that `B` has exactly two two-sided
+ideals, namely `{0}` and `B`. We will be concerned only with central simple
+`K`-algebras which are finite-dimensional as `K`-vector spaces, and when `K` is
+clear we will just refer to them as central simple algebras. We remark that a
+`4`-dimensional central simple algebra is called a quaternion algebra; we will
+have more to say about these later on.
 
 ```tex "fujisaki_initial_definitions_p1_raw"
 Let $K$ be a field. A \emph{central simple $K$-algebra} is a $K$-algebra~$B$ (not necessarily
@@ -78,12 +81,9 @@ when $K$ is clear we will just refer to them as central simple algebras. We rema
 more to say about these later on.
 ```
 
-It then stresses that matrix algebras are the basic examples, that central
-simple algebras behave well under base change, and that over algebraically
-closed fields matrix algebras are essentially the only finite-dimensional
-examples. The point is not just classification: it is to prepare the reader for
-why the adelic algebra attached to a division algebra still has enough linear
-structure for a compactness argument.
+Matrix algebras `M_n(K)` are examples of finite-dimensional central simple
+`K`-algebras. If `K = ℂ` or more generally if `K` is algebraically closed, then
+matrix algebras are the only finite-dimensional examples up to isomorphism.
 
 ```tex "fujisaki_initial_definitions_p2_raw"
 Matrix algebras $M_n(K)$ are examples of finite-dimensional central simple $K$-algebras.
@@ -92,10 +92,14 @@ then matrix algebras are the only finite-dimensional examples
 up to isomorphism.
 ```
 
-The TeX chapter is concrete here. It mentions Hamilton's quaternions over `ℝ`
-as the motivating division-algebra example, contrasts them with matrix algebras
-that are central simple but never division rings, and notes that quaternion
-algebras over a general field play the same formal role later in the project.
+There are other examples over the reals: for example Hamilton's quaternions
+`ℍ := ℝ ⊕ ℝ i ⊕ ℝ j ⊕ ℝ k` with the usual rules `i^2 = j^2 = k^2 = -1`,
+`ij = -ji = k` and so on are an example of a central simple `ℝ`-algebra, and
+matrix algebras over `ℍ` are other central simple `ℝ`-algebras. For a general
+field `K` one can make an analogue of Hamilton's quaternions
+`K ⊕ Ki ⊕ Kj ⊕ Kk` with the same multiplication rules to describe the
+multiplication, and if the characteristic of `K` is not `2` then this is a
+quaternion algebra which may or may not be isomorphic to `M_2(K)`.
 
 ```tex "fujisaki_initial_definitions_p3_raw"
 There are other examples over the reals: for example Hamilton's quaternions
@@ -608,10 +612,9 @@ then `β = bν` and `(ν, ν⁻¹) ∈ C = (T⁻¹X) × X`.
 ```
 
 :::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
-The compactness theorem for the adelic quotient is the final output of the
-chapter and the input needed by the quaternion algebra miniproject.
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"}[]
+If `D` is a division algebra then the quotient
+`D^× \backslash D_A^{(1)}` with its quotient topology coming from
+`D_A^{(1)}` is compact.
 :::
 
 ```tex "compact_quotient_for_division_algebra_raw"
