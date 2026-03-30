@@ -251,14 +251,13 @@ $`D \backslash D_A`.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"
-After choosing a `\mathbf{Q}`-basis of `D`, one identifies `D_A` with a finite
-power of `\mathbf{A}_{\mathbf{Q}}`,
-so the quotient `D \backslash D_A` inherits compactness from
-`ℚ \backslash \mathbf{A}_{\mathbf{Q}}`.
-
-One then chooses a compact set whose Haar measure is larger than the measure of
-the quotient. Any translate of that set must then intersect two points mapping
-to the same quotient class.
+We know that if we pick a $`\Q`$-basis for $`D`$ of size $`d`$ then this
+identifies $`D`$ with $`\Q^d`$, $`D_{\A}`$ with $`\A_{\Q}^d`$, and
+$`D\backslash D_{\A}`$ with $`(\Q\backslash\A_{\Q})^d`$. Now $`\Q`$ is
+discrete in $`\A_{\Q}`$ by {uses "NumberField.AdeleRing.discrete"}[], and the
+quotient $`\Q\backslash \A_{\Q}`$ is compact by
+{uses "Rat.AdeleRing.cocompact"}[]. Hence $`D`$ is discrete in $`D_{\A}`$ and
+the quotient $`D\backslash D_{\A}`$ is compact.
 :::
 
 ```tex "large_compact_set_mod_d_exists_proof_raw"
@@ -376,6 +375,7 @@ The TeX chapter records this as the continuous image of the compact set
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 If $`\beta\in D_{\A}^{(1)}`$ then $`\beta X\cap D^\times\not=\emptyset`$.
 :::
 
@@ -392,11 +392,12 @@ $\beta X\cap D^\times\not=\emptyset$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-The TeX proof says that if `βE` fails to inject into the quotient, then two
-distinct points of `βE` differ by a nonzero element of `D`, and because `D` is
-a division algebra that difference lies in `D^×`. Since the original points
-differ by an element of `X`, the translate `βX` meets `D^×`.
+Indeed by {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[], the
+map $`\beta E\to D\backslash D_{\A}`$ is not injective, so there are distinct
+$`\beta e_1,\beta e_2\in \beta E`$ with $`e_i\in E`$ and
+$`\beta e_1-\beta e_2=b\in D`$. Now $`b\not=0`$ and $`D`$ is a division
+algebra, so $`b\in D^\times`$. And $`e_1-e_2\in X`$ so
+$`b=\beta(e_1-e_2)\in \beta X`$, so we are done.
 :::
 
 ```tex "difference_set_meets_d_units_left_for_fujisaki_proof_raw"
@@ -430,11 +431,12 @@ $`X\beta^{-1}\cap D^\times\not=\emptyset`$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
-The right-multiplication argument is the same after using the Haar-measure
-symmetry for central simple algebras to pass from left multiplication by
-`β⁻¹` to right multiplication.
+Indeed, $`\beta^{-1}\in D_{\A}^{(1)}`$, and so left multiplication by
+$`\beta^{-1}`$ does not change Haar measure on $`D_{\A}`$, so neither does
+right multiplication by
+{uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[].
+So the same argument works.
 :::
 
 ```tex "difference_set_meets_d_units_right_for_fujisaki_proof_raw"
@@ -796,7 +798,7 @@ is compact.
 ```
 
 :::proof "finite_adele_units_cocompact_for_division_algebra"
-{uses "compact_quotient_for_division_algebra"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[]
 There's a natural map `α` from
 `D^\times \backslash D_A^{(1)}` to
 `D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that
