@@ -120,6 +120,7 @@ to $`\sum_i g_i a`.
 \end{definition}
 ```
 :::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
+{uses "AbstractHeckeOperator.HeckeOperator_toFun"}[]
 This function is well-defined (that is, independent of the
 choice of `g_i`), has image in `A^U` and is `R`-linear.
 :::
@@ -383,7 +384,6 @@ products commute with products in the usual way.
 
 :::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
 Restricted products with respect to open subspaces commute with finite products.
-This is obtained from {uses "restricted_product_binary_homeomorphism"}[].
 :::
 
 ```tex "hecke_operator_project/restricted_products/products/theorem"
@@ -401,7 +401,6 @@ This is obtained from {uses "restricted_product_binary_homeomorphism"}[].
 ```
 :::proof "restricted_product_product_homeomorphism"
 Induction on the size of the finite set, using
-{uses "restricted_product_binary_homeomorphism"}[] and
 {uses "Homeomorph.restrictedProductProd"}[] to get started.
 :::
 ```tex "hecke_operator_project/restricted_products/products/proof"
@@ -412,7 +411,7 @@ Induction on the size of the finite set, using
   to get you started.
 \end{proof}
 ```
-:::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project")
+:::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductMatrix")
 If $`X_i`$ are topological spaces and the $`Y_i`$ are open subspaces, then the
 obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::
@@ -428,7 +427,7 @@ obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 \end{corollary}
 ```
 :::proof "restricted_product_matrix_homeomorphism"
-Immediate from the previous corollary.
+Immediate from {uses "Homeomorph.restrictedProductPi"}[].
 :::
 ```tex "hecke_operator_project/restricted_products/matrix/proof"
 \begin{proof}
@@ -596,8 +595,6 @@ continuous.
 If `M_i` are a family of topological monoids equipped with open submonoids
 `U_i`, then the canonical map `(\prod'_i M_i)ˣ \to \prod'_i(M_iˣ)` is a
 homeomorphism.
-This is obtained from {uses "product_units_homeomorphism"}[] and
-{uses "units_of_open_submonoid_open"}[].
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/7"
@@ -845,8 +842,8 @@ This is the matrix-level form of {uses "local_integer_ring_open"}[].
 
 :::proof "matrix_full_level_open"
 Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
-follows from {uses "local_integer_ring_open"}[] because a product of opens is
-open.
+follows from {uses "NumberField.isOpenAdicCompletionIntegers"}[] because a
+product of compacts is compact and a product of opens is open.
 :::
 ```tex "hecke_operator_project/local_theory/introduction/5-proof"
 \begin{proof}
@@ -871,8 +868,8 @@ This is the matrix-level form of {uses "local_integer_ring_compact"}[].
 
 :::proof "matrix_full_level_compact"
 Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
-follows from {uses "local_integer_ring_compact"}[] because a product of
-compacts is compact.
+follows from {uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
+because a product of compacts is compact and a product of opens is open.
 :::
 ```tex "hecke_operator_project/local_theory/introduction/6-proof"
 \begin{proof}
@@ -1028,7 +1025,7 @@ topological ring, defined to be the restricted
 product of the commutative topological fields `K_v` as `v` runs through the finite places
 of `K`, with respect to the compact open subrings `\calO_v`.
 
-```tex "hecke_operator_project/adelic_groups/introduction"
+```tex "hecke_operator_project/adelic_groups/introduction/1"
 \section{Adelic groups}
 
 We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
@@ -1037,11 +1034,26 @@ over~$K$ and let $\A_K^\infty$ be the finite adeles of~$K$; recall that this is 
 topological ring, defined to be the restricted
 product of the commutative topological fields~$K_v$ as $v$ runs through the finite places
 of~$K$, with respect to the compact open subrings $\calO_v$.
+```
 
 The group~$G$ we are interested in for the rest of this miniproject is the group
 $(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
 but the first thing we need to do is to find a way of talking about elements of the group.
+```tex "hecke_operator_project/adelic_groups/introduction/2a"
+The group~$G$ we are interested in for the rest of this miniproject is the group
+$(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
+but the first thing we need to do is to find a way of talking about elements of the group.
+```
 
+We will assume that there exists an $`\A_K^\infty`$-algebra isomorphism
+$`D\otimes_K\A_K^\infty=M_2(\A_K^\infty)`$ and we will fix such an
+isomorphism `r`, called a rigidification in the Lean code. We give both of
+these $`\A_K^\infty`$-algebras the $`\A_K^\infty`$-module topology, which is a
+fancy way of saying the product topology. They are both free of rank `4` as
+$`\A_K^\infty`$-modules, and the rigidification is then a homeomorphism because
+all $`\A_K^\infty`$-module maps between modules with the
+$`\A_K^\infty`$-module topology are continuous.
+```tex "hecke_operator_project/adelic_groups/introduction/2b"
 We will assume that there exists an $\A_K^\infty$-algebra isomorphism
 $D\otimes_K\A_K^\infty=M_2(\A_K^\infty)$ and we will fix such an isomorphism $r$
 (called a \emph{rigidification} in the Lean code). We give both of these $\A_K^\infty$-algebras
@@ -1049,32 +1061,19 @@ the $\A_K^\infty$-module topology, which is a fancy way of saying the product to
 (they are both free of rank 4 as $\A_K^\infty$-modules); the rigidification is then
 a homeomorphism (because all $\A_K^\infty$-module maps between modules with the $\A_K^\infty$-module
 topology are continuous).
+```
 
 This means that our group~$G$ is isomorphic (both algebraically and topologically)
 to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
-
-\begin{theorem}
-  \lean{IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct}
-  \label{GL2.restrictedProduct}
-  \leanok
-  $G$ is isomorphic and homeomorphic
-  to the restricted product of $GL_2(K_v)$ with respect
-  to the compact open subgroups $GL_2(\calO_v)$.
-\end{theorem}
-\begin{proof}
-  \leanok
-  \uses{ContinuousMulEquiv.restrictedProductUnits,
-    Homeomorph.restrictedProductMatrix, ContinuousMulEquiv.restrictedProductMatrixUnits}
-  This follows from lemma~\ref{ContinuousMulEquiv.restrictedProductUnits}
-  and lemma~\ref{Homeomorph.restrictedProductMatrix}.
-\end{proof}
+```tex "hecke_operator_project/adelic_groups/introduction/2c"
+This means that our group~$G$ is isomorphic (both algebraically and topologically)
+to $GL_2(\A_K^\infty)$. Before we go any further,
+let say something about matrix rings over complete fields.
 ```
 :::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct")
 `G` is isomorphic and homeomorphic to the restricted product of `GL₂(K_v)` with respect
 to the compact open subgroups `GL₂(\mathcal{O}_v)`.
-{uses "restricted_product_units_homeomorphism"}[]
-{uses "restricted_product_matrix_homeomorphism"}[]
 :::
 
 ```tex "hecke_operator_project/adelic_groups/introduction/2"
@@ -1088,8 +1087,6 @@ to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 \end{theorem}
 ```
 :::proof "adelic_gl2_is_restricted_product"
-{uses "restricted_product_units_homeomorphism"}[]
-{uses "restricted_product_matrix_homeomorphism"}[]
 {uses "ContinuousMulEquiv.restrictedProductUnits"}[]
 {uses "Homeomorph.restrictedProductMatrix"}[]
 {uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[]
