@@ -97,6 +97,24 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Treat semantic cleanup as a second phase (`Blueprint pass`) after the LT
   pass. First port the TeX literally, then decide whether any extra blueprint
   structure is warranted.
+- Treat low LT similarity scores as a triage signal, not as a license to
+  rewrite freely. In practice, classify a bad score before editing:
+  oversized/misaligned witness, metadata drift on an otherwise faithful block,
+  or genuinely bad translation.
+- If the main problem is an oversized or amortized witness block, first shrink
+  or split the local `tex` witness to the exact source span that the adjacent
+  Verso block is translating. Do this before rewriting good prose just to
+  satisfy the metric.
+- If the main problem is metadata drift on a source-localized block, keep the
+  text and tighten `(lean := "...")`, `{uses "..."}[]`, and related links
+  rather than replacing the prose.
+- If a translated block merges several source items, introduces convenience
+  summary scaffolding, or otherwise obscures the source structure, prefer
+  deleting or demoting that summary block and restoring the real source-grounded
+  intermediate nodes.
+- If a translated block is materially misleading, structurally non-literal, or
+  cannot be paired cleanly to a local source witness, replace it with a local
+  `tex` witness and retranslate later rather than preserving a bad paraphrase.
 - After each porting batch, explicitly record the deviations from literal
   translation in the work summary: additions, omissions, reordered material,
   invented nodes, and editorial notes.
@@ -279,6 +297,12 @@ This repository is the integration layer for the FLT Verso blueprint.
   `python3 scripts/check_lt_similarity.py` on the touched chapters and record
   any obviously low-similarity blocks as follow-up LT audit work rather than
   silently accepting them.
+- When triaging an obviously low-similarity block, prefer this order:
+  1. shrink/split the witness,
+  2. remove invented summary structure,
+  3. restore missing source-grounded nodes,
+  4. only then rewrite the translated prose,
+  5. if none of that yields a trustworthy LT block, fall back to raw `tex`.
 - In the work summary for each batch, include a short deviation report listing
   any non-literal changes that were introduced deliberately.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.
