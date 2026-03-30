@@ -613,9 +613,7 @@ The TeX chapter now introduces an auxiliary restricted product `R`, namely the
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
 isomorphism.
-This is obtained from {uses "nonarchimedean_integral_decomposition"}[],
-{uses "restricted_product_relabel_isomorphism"}[],
-{uses "finite_adele_base_change_integral"}[], and
+This is obtained from {uses "finite_adele_base_change_integral"}[] and
 {uses "tensor_product_module_base_change"}[].
 :::
 ```tex "adele_project/lt-witness-468"
@@ -1263,6 +1261,10 @@ Because `L_w` is a finite-dimensional normed `K_v`-vector space, there exists a
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$, whose restriction
 to $`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
+This is built from {uses "infinite_place_local_base_change_map"}[],
+{uses "infinite_place_local_base_change_surjective"}[],
+{uses "infinite_place_local_base_change_injective"}[], and
+{uses "infinite_place_local_module_topology"}[].
 :::
 ```tex "adele_project/lt-witness-826"
 \begin{theorem}
