@@ -964,7 +964,7 @@ compacts is compact.
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
 ```
-:::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project")
+:::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.GL2.localFullLevel")
 `GL_2(\calO_v)` is a compact open subgroup of `GL_2(K_v)`.
 This is obtained from {uses "matrix_full_level_open"}[],
 {uses "matrix_full_level_compact"}[],
@@ -978,6 +978,8 @@ This is obtained from {uses "matrix_full_level_open"}[],
 \end{lemma}
 ```
 :::proof "local_gl2_full_level_compact_open"
+{uses "Submonoid.units_isOpen"}[]
+{uses "Submonoid.units_isCompact"}[]
 `K_v` is known to be Hausdorff, so `M_2(K_v)` is Hausdorff, and the result
 follows from {uses "units_of_open_submonoid_open"}[] and
 {uses "units_of_compact_submonoid_compact"}[].
@@ -1023,6 +1025,8 @@ subgroup statement using {uses "units_of_open_submonoid_open"}[] and
 \end{lemma}
 ```
 :::proof "local_congruence_level_compact_open"
+{uses "Submonoid.units_isOpen"}[]
+{uses "Submonoid.units_isCompact"}[]
 `Γ_v` is a group and hence its preimage `U_v` is a subgroup of the monoid
 `M₂(K_v)`. It is compact and open as we just saw. Hence its units (also `U_v`)
 are a subgroup of `GL₂(K_v)`, which is compact and open, again by
