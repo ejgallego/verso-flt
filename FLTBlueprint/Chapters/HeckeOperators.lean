@@ -242,14 +242,15 @@ sums are equal because $`g_i h_j = h_j g_i`.
 \end{proof}
 ```
 # Concrete theory
-:::definition "restricted_product_api_pressure" (parent := "hecke_operator_project")
-To instantiate the abstract theory adelically, the blueprint needs a robust API
-for restricted products, compact open subgroups, and matrix groups over local
-rings. This is the point of contact with {uses "adele_base_change"}[] and
-{uses "adele_local_compactness"}[].
-:::
+In the concrete example of Hecke operators which we care about, the invariants
+$`A^G`$ will be spaces of quaternionic automorphic forms by definition. We do
+not need to worry about the definition of $`A`$ in this project at all.
+However we will need to do various computations with the specific groups
+$`G`$ which we are interested in, and they are restricted products. So we now
+develop some theory for restricted products, starting by recalling the
+definition.
 
-```tex "hecke_operator_project/restricted_products/introduction"
+```tex "hecke_operator_project/restricted_products/introduction/1"
 \section{Restricted products}
 
 In the concrete example of Hecke operators which we care about, the invariants $A^G$
@@ -259,31 +260,16 @@ project at all. However we will need to do various computations with the
 specific groups $G$ which we are interested in, and they are restricted products.
 So we now develop some theory for restricted products,
 starting by recalling the definition.
-
-If $I$ is an index set, if $X_i$ are sets indexed by $i\in I$ and if $Y_i$
-are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
-to be the subset of the full product $\prod_i X_i$ consisting of those
-tuples $(x_i)$ such that $x_i\in Y_i$ for all but finitely many~$i$. We suppress
-the $Y_i$ from the notation in this document, although in Lean we cannot do this and
-the restricted product looks something like $\prod{}^{r} i,[X\ i, Y\ i]$.
 ```
-The TeX chapter explains why the concrete theory is not just a routine
-instantiation. In the adelic setting, the ambient groups are restricted
-products, and even statements that sound tautological, such as
-`GL_2(A_F)` being a restricted product of `GL_2(F_v)`, need careful
-topological justification.
+If $`I`$ is an index set, if $`X_i`$ are sets indexed by $`i\in I`$ and if
+$`Y_i`$ are subsets, then the restricted product $`\prod'_iX_i`$ is defined to
+be the subset of the full product $`\prod_i X_i`$ consisting of those tuples
+$`(x_i)`$ such that $`x_i\in Y_i`$ for all but finitely many $`i`$. We suppress
+the $`Y_i`$ from the notation in this document, although in Lean we cannot do
+this and the restricted product looks something like
+$`\prod{}^{r} i,[X\ i, Y\ i]`$.
 
 ```tex "hecke_operator_project/restricted_products/introduction/2"
-\section{Restricted products}
-
-In the concrete example of Hecke operators which we care about, the invariants $A^G$
-will be spaces of quaternionic automorphic
-forms (by definition). We do not need to worry about the definition of $A$ in this
-project at all. However we will need to do various computations with the
-specific groups $G$ which we are interested in, and they are restricted products.
-So we now develop some theory for restricted products,
-starting by recalling the definition.
-
 If $I$ is an index set, if $X_i$ are sets indexed by $i\in I$ and if $Y_i$
 are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
 to be the subset of the full product $\prod_i X_i$ consisting of those
@@ -291,67 +277,35 @@ tuples $(x_i)$ such that $x_i\in Y_i$ for all but finitely many~$i$. We suppress
 the $Y_i$ from the notation in this document, although in Lean we cannot do this and
 the restricted product looks something like $\prod{}^{r} i,[X\ i, Y\ i]$.
 ```
-The TeX source then proceeds in a very specific order: products, units, local
-matrix theory, adelic groups, automorphic forms, and only then the concrete
-Hecke operators. The Verso chapter follows that same order here.
+It is straightforward to check that if the $`X_i`$ are groups or rings or
+$`R`$-modules, and the $`Y_i`$ are subgroups or subrings or submodules, then
+the restricted product is a group, ring or $`R`$-module. Indeed the structure
+is inherited via the inclusion $`\prod'_iX_i\subseteq\prod_iX_i`$ and the fact
+that arbitrary products of groups, rings, and modules are groups, rings, and
+modules.
 
-```tex "hecke_operator_project/restricted_products/introduction/3"
-\section{Restricted products}
-
-In the concrete example of Hecke operators which we care about, the invariants $A^G$
-will be spaces of quaternionic automorphic
-forms (by definition). We do not need to worry about the definition of $A$ in this
-project at all. However we will need to do various computations with the
-specific groups $G$ which we are interested in, and they are restricted products.
-So we now develop some theory for restricted products,
-starting by recalling the definition.
-
-If $I$ is an index set, if $X_i$ are sets indexed by $i\in I$ and if $Y_i$
-are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
-to be the subset of the full product $\prod_i X_i$ consisting of those
-tuples $(x_i)$ such that $x_i\in Y_i$ for all but finitely many~$i$. We suppress
-the $Y_i$ from the notation in this document, although in Lean we cannot do this and
-the restricted product looks something like $\prod{}^{r} i,[X\ i, Y\ i]$.
-```
-:::definition "restricted_product_definition" (parent := "hecke_operator_project")
-The restricted product is the subset of the full product consisting of tuples
-that lie in designated good subspaces for all but finitely many indices.
-:::
-```tex "hecke_operator_project/restricted_products/introduction/4"
-\section{Restricted products}
-
-In the concrete example of Hecke operators which we care about, the invariants $A^G$
-will be spaces of quaternionic automorphic
-forms (by definition). We do not need to worry about the definition of $A$ in this
-project at all. However we will need to do various computations with the
-specific groups $G$ which we are interested in, and they are restricted products.
-So we now develop some theory for restricted products,
-starting by recalling the definition.
-
-If $I$ is an index set, if $X_i$ are sets indexed by $i\in I$ and if $Y_i$
-are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
-to be the subset of the full product $\prod_i X_i$ consisting of those
-tuples $(x_i)$ such that $x_i\in Y_i$ for all but finitely many~$i$. We suppress
-the $Y_i$ from the notation in this document, although in Lean we cannot do this and
-the restricted product looks something like $\prod{}^{r} i,[X\ i, Y\ i]$.
-```
-:::proof "restricted_product_definition"
-The chapter emphasizes that while group/ring/module structure is inherited
-componentwise, the topology is not the subspace topology from the full product.
-Instead, it is defined so that finite products of bad factors and good factors
-away from a finite set assemble continuously.
-
-The TeX chapter also stresses a subtle point that matters later: the natural map
-from the restricted product into the full product is continuous, but is not in
-general a topological embedding.
-:::
-```tex "hecke_operator_project/restricted_products/topology"
+```tex "hecke_operator_project/restricted_products/topology/1"
 It is straightforward to check that if the $X_i$ are groups or rings or $R$-modules,
 and the $Y_i$ are subgroups or subrings or submodules, then the restricted product
 is a group, ring or $R$-module; indeed the structure is inherited via the
 inclusion $\prod'_iX_i\subseteq\prod_iX_i$ (and the fact that arbitrary products
 of groups/rings/modules are groups/rings/modules).
+```
 
+More subtle is the theory of topological space structures. If the $`X_i`$ are
+topological spaces then we do not give $`\prod'_iX_i`$ the subspace topology
+coming from the product topology on $`\prod_iX_i`$; instead we give it the
+finest topology making all of the natural maps
+$`\prod_{i\in S}X_i\times\prod_{i\notin S}Y_i\to \prod'_iX_i`$ continuous, as
+$`S`$ runs through all finite subsets of $`I`$. Here the product of $`X_i`$s
+and $`Y_i`$s has the product topology. For example if all of the $`Y_i`$ are
+open then one can check that $`\prod_iY_i`$ is an open subset of
+$`\prod'_iX_i`$, whereas it is not of the form
+$`\left(\prod'_iX_i\right)\cap U`$ for any open subset $`U`$ of $`\prod_iX_i`$
+in general; the map from $`\prod'_iX_i`$ to $`\prod_iX_i`$ is continuous but is
+not in general an embedding.
+
+```tex "hecke_operator_project/restricted_products/topology/2"
 More subtle is the theory of topological space structures. If the $X_i$
 are topological spaces then we do \emph{not} give $\prod'_iX_i$ the subspace
 topology coming from the product topology on $\prod_iX_i$; instead we give
@@ -364,7 +318,17 @@ $\prod'_iX_i$ (this is {\tt RestrictedProduct.isOpen\_forall\_mem} in mathlib),
 whereas it is not of the form $\left(\prod'_iX_i\right)\cap U$ for any open subset~$U$
 of $\prod_iX_i$ in general; the map from $\prod'_i X_i$ to $\prod_i X_i$ is continuous
 but is not in general an embedding.
+```
 
+If you have seen automorphic forms before, then here is an obvious-sounding
+claim: because the adeles $`\mathbb{A}_F`$ of a number field are a restricted
+product of completions $`F_v`$ with respect to the integer rings
+$`\mathcal{O}_v`$, then $`GL_2(\mathbb{A}_F)`$ is obviously topologically a
+restricted product of $`GL_2(F_v)`$ with respect to
+$`GL_2(\mathcal{O}_v)`$. We now spend some time justifying this claim, which is
+a little more intricate than it sounds.
+
+```tex "hecke_operator_project/restricted_products/topology/3"
 If you've seen automorphic forms before, then here is an obvious-sounding claim:
 because the adeles $\mathbb{A}_F$ of a number field are a restricted product of
 completions $F_v$ with respect to the integer rings $\mathcal{O}_v$, then
@@ -478,10 +442,8 @@ Induction on the size of the finite set, using
 \end{proof}
 ```
 :::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project")
-Matrices over a restricted product identify homeomorphically with the
-restricted product of the corresponding matrix spaces.
-This is the matrix-valued companion to
-{uses "restricted_product_product_homeomorphism"}[].
+If $`X_i`$ are topological spaces and the $`Y_i`$ are open subspaces, then the
+obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::
 
 ```tex "hecke_operator_project/restricted_products/matrix"
@@ -500,9 +462,7 @@ This is the matrix-valued companion to
 \end{proof}
 ```
 :::proof "restricted_product_matrix_homeomorphism"
-This is the immediate matrix-valued corollary of the finite-product theorem,
-since an `n × n` matrix space is just a finite product of copies of the
-coefficient space.
+Immediate from the previous corollary.
 :::
 ```tex "hecke_operator_project/restricted_products/matrix/2"
 \begin{corollary}
@@ -974,11 +934,9 @@ compacts is compact.
 \end{lemma}
 ```
 :::proof "local_gl2_full_level_compact_open"
-`K_v` is known to be Hausdorff, so `M_2(K_v)` is Hausdorff, and the result
-follows from {uses "units_of_open_submonoid_open"}[] and
-{uses "units_of_compact_submonoid_compact"}[], applied to the open and compact
-submonoid $`M_2(\calO_v)`$ coming from {uses "matrix_full_level_open"}[] and
-{uses "matrix_full_level_compact"}[].
+`K_v` is known to be Hausdorff, so `M_2(K_v)` is Hausdorff and the result
+follows from {uses "Submonoid.units_isOpen"}[] and
+{uses "Submonoid.units_isCompact"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/8"
@@ -1028,11 +986,10 @@ reduction modulo `\varpi`, then `U_v` is a compact open subgroup of
 ```
 :::proof "local_congruence_level_compact_open"
 `Γ_v` is a group and hence its preimage `U_v` is a subgroup of the monoid
-`M₂(K_v)`. It is compact and open as explained in
-{uses "local_level_from_residue_subgroup"}[]. Hence its units (also `U_v`) are
-a subgroup of `GL₂(K_v)`, which is compact and open, again by
-{uses "units_of_open_submonoid_open"}[] and
-{uses "units_of_compact_submonoid_compact"}[].
+`M₂(K_v)`. It is compact and open as we just saw. Hence its units (also
+`U_v`) are a subgroup of `GL₂(K_v)`, which is compact and open, again by
+{uses "Submonoid.units_isOpen"}[] and
+{uses "Submonoid.units_isCompact"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/11"
