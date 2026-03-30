@@ -114,11 +114,13 @@ then this is a quaternion algebra (which may or may not be isomorphic to $M_2(K)
 generality).
 ```
 
-:::definition "division_algebra_hypothesis_for_fujisaki" (parent := "fujisaki_project")
-Some central simple algebras `B` are division algebras, meaning that they are
-division rings, or equivalently that every nonzero `b ∈ B` has a two-sided
-inverse.
-:::
+Some central simple algebras $`B`$ are division algebras, meaning that they are
+division rings, or equivalently that every nonzero $`b\in B`$ has a two-sided
+inverse. For example Hamilton's quaternions are a division algebra over
+$`\R`$, because
+$`(x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2`$, so the inverse of a nonzero
+$`x+yi+zj+tk`$ is
+$`(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)`$.
 
 ```tex "division_algebra_hypothesis_raw"
 Some central simple algebras~$B$ are \emph{division algebras}, meaning that they are division
@@ -128,12 +130,10 @@ because $(x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2$, so the inverse
 of a nonzero $x+yi+zj+tk$ is $(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)$.
 ```
 
-:::proof "division_algebra_hypothesis_for_fujisaki"
-However `2 × 2` matrices over a field `K`, whilst being a central simple
-algebra over `K`, are never a division algebra, because a nonzero matrix with
-determinant zero such as
+However $`2\times 2`$ matrices over a field $`K`$, whilst being a central
+simple algebra over $`K`$, are never a division algebra, because a nonzero
+matrix with determinant zero such as
 $`\begin{pmatrix}1&0\\0&0\end{pmatrix}`$ has no inverse.
-:::
 
 ```tex "division_algebra_hypothesis_proof_raw"
 However $2\times 2$ matrices over a field~$K$, whilst being a central simple algebra
@@ -292,7 +292,7 @@ We let `E` denote any compact set satisfying the hypothesis of the previous lemm
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-From the compact set `E`, define the difference set `X = E - E`.
+Define $`X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}`$.
 :::
 
 ```tex "difference_set_x_for_fujisaki_raw"
@@ -307,7 +307,7 @@ Define $X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}$.
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-Define `Y = X · X`, the product of the difference set with itself.
+Define $`Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}`$.
 :::
 
 ```tex "product_set_y_for_fujisaki_raw"
@@ -322,7 +322,7 @@ Define $Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}$.
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-The set `X` is compact.
+$`X`$ is a compact subset of $`D_{\A}`$.
 :::
 
 ```tex "difference_set_x_compact_for_fujisaki_raw"
@@ -349,7 +349,7 @@ The TeX chapter records this as the continuous image of the compact set
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
-The set `Y` is compact.
+$`Y`$ is a compact subset of $`D_{\A}`$.
 :::
 
 ```tex "product_set_y_compact_for_fujisaki_raw"
@@ -376,7 +376,7 @@ The TeX chapter records this as the continuous image of the compact set
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-For every $`\beta \in D_A^{(1)}`, the translate `βX` meets `D^×`.
+If $`\beta\in D_{\A}^{(1)}`$ then $`\beta X\cap D^\times\not=\emptyset`$.
 :::
 
 ```tex "difference_set_meets_d_units_left_for_fujisaki_raw"
@@ -414,7 +414,8 @@ And $e_1-e_2\in X$ so $b=\beta(e_1-e_2)\in \beta X$, so we're done.
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-Similarly, `Xβ⁻¹` meets `D^×` for every $`\beta \in D_A^{(1)}`.
+Similarly, if $`\beta\in D_{\A}^{(1)}`$ then
+$`X\beta^{-1}\cap D^\times\not=\emptyset`$.
 :::
 
 ```tex "difference_set_meets_d_units_right_for_fujisaki_raw"
@@ -612,9 +613,9 @@ then `β = bν` and `(ν, ν⁻¹) ∈ C = (T⁻¹X) × X`.
 ```
 
 :::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
-If `D` is a division algebra then the quotient
-`D^× \backslash D_A^{(1)}` with its quotient topology coming from
-`D_A^{(1)}` is compact.
+If $`D`$ is a division algebra then the quotient
+$`D^\times\backslash D_{\A}^{(1)}`$ with its quotient topology coming from
+$`D_{\A}^{(1)}`$ is compact.
 :::
 
 ```tex "compact_quotient_for_division_algebra_raw"
