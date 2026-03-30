@@ -22,9 +22,12 @@ There is an idelic compactness statement which encapsulates both finiteness of t
 group of a number field and Dirichlet's units theorem about the rank of the unit group.
 ```
 
-The TeX chapter treats this as a noncommutative analogue of very classical
-compactness results in algebraic number theory: class-group finiteness and
-Dirichlet's theorem on units.
+In fact there is even a noncommutative version of this statement. In John
+Voight's book {Informal.citep voightBook}[] this is Main Theorem `27.6.14(a)`
+and Voight calls it Fujisaki's lemma. I know nothing of the history but I'm
+happy to adopt this name. In the quaternion algebra miniproject we will use
+this compactness result to prove finite-dimensionality of a space of
+quaternionic modular forms.
 
 ```tex "fujisaki_goal_para_raw"
 In fact there is even a noncommutative version of this statement. In John Voight's
@@ -34,64 +37,9 @@ miniproject we will use this compactness result to prove finite-dimensionality o
 space of quaternionic modular forms.
 ```
 
-It also treats this as a genuinely adelic theorem rather than a purely
-algebraic one. The input is a division algebra `D/K`, but the compactness lives
-on a quotient of the norm-one part of the adelic unit group `D_A^×`.
-
-```tex "fujisaki_goal_para2_raw"
-In the quaternion algebra miniproject we will use this compactness result to prove finite-dimensionality of a
-space of quaternionic modular forms.
-```
-
-# Goal
-
-:::theorem "fujisaki_lemma_goal" (parent := "fujisaki_project")
-For a finite-dimensional central simple algebra over a number field, the
-quotient of the norm-one adelic units by the global units should be compact.
-This is the compactness statement later used in
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"}[].
-:::
-
-```tex "fujisaki_lemma_goal_raw"
-There is an idelic compactness statement which encapsulates both finiteness of the class
-group of a number field and Dirichlet's units theorem about the rank of the unit group.
-In fact there is even a noncommutative version of this statement. In John Voight's
-book~\cite{voightbook} this is Main Theorem 27.6.14(a) and Voight calls it Fujisaki’s lemma.
-I know nothing of the history but I'm happy to adopt this name. In the quaternion algebra
-miniproject we will use this compactness result to prove finite-dimensionality of a
-space of quaternionic modular forms.
-```
-
-:::proof "fujisaki_lemma_goal"
-The old blueprint highlights this as the noncommutative compactness statement
-that simultaneously generalizes class-group finiteness and Dirichlet's unit
-theorem; it explicitly follows Voight's presentation {Informal.citep voightBook}[]
-and the commutative prototype {uses "commutative_prototype_for_fujisaki"}[].
-:::
-
-```tex "fujisaki_lemma_goal_proof_raw"
-The TeX chapter treats this as a genuinely adelic theorem rather than a purely
-algebraic one. The input is a division algebra `D/K`, but the compactness lives
-on a quotient of the norm-one part of the adelic unit group `D_A^×`.
-```
-
-```tex "fujisaki_goal_raw"
-\section{The goal}
-
-There is an idelic compactness statement which encapsulates both finiteness of the class
-group of a number field and Dirichlet's units theorem about the rank of the unit group.
-In fact there is even a noncommutative version of this statement. In John Voight's
-book~\cite{voightbook} this is Main Theorem 27.6.14(a) and Voight calls it Fujisaki’s lemma.
-I know nothing of the history but I'm happy to adopt this name. In the quaternion algebra
-miniproject we will use this compactness result to prove finite-dimensionality of a
-space of quaternionic modular forms.
-```
-
-:::theorem "commutative_prototype_for_fujisaki" (parent := "fujisaki_project")
 The compact quotient theorem for a division algebra is meant to be the
 noncommutative analogue of the classical compactness of
 $`K \backslash \mathbf{A}_K`.
-:::
 
 ```tex "commutative_prototype_raw"
 The compact quotient theorem for a division algebra is meant to be the
@@ -99,17 +47,15 @@ noncommutative analogue of the classical compactness of
 $`K \backslash \mathbf{A}_K`.
 ```
 
-:::proof "commutative_prototype_for_fujisaki"
 The TeX chapter uses this analogy repeatedly. The quotient
-{uses "adele_discrete_cocompact_embedding"}[] is the model case: a global field
+$`K \backslash \mathbf{A}_K`$ is the model case: a global field
 embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
 for the same style of compactness after replacing the commutative additive group
 by the norm-one units in an adelic division algebra.
-:::
 
 ```tex "commutative_prototype_proof_raw"
 The TeX chapter uses this analogy repeatedly. The quotient
-{uses "adele_discrete_cocompact_embedding"}[] is the model case: a global field
+$`K \backslash \mathbf{A}_K`$ is the model case: a global field
 embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
 for the same style of compactness after replacing the commutative additive group
 by the norm-one units in an adelic division algebra.
@@ -221,8 +167,18 @@ generality).
 # Enter the adeles
 
 :::definition "adelic_division_algebra_setup" (parent := "fujisaki_project")
-The argument studies the adelic algebra $`D \otimes_K \mathbf{A}_K`$ together
-with the Haar-character kernel inside its unit group, using {uses "adele_base_change"}[] and the API goal recorded in {uses "haar_character_goal"}[].
+Let $`K`$ be a number field and let $`D/K`$ be a finite-dimensional central
+simple $`K`$-algebra (later on $`D`$ will be a division algebra, hence the
+name, but we do not need this yet). Then $`D_{\A}:=D\otimes_K\A_K`$ is an
+$`\A_K`$-algebra which is free of finite rank, and if we give $`D_{\A}`$ the
+$`\A_K`$-module topology then it is a topological ring. Furthermore
+$`D_{\A}`$ is free of finite rank over the locally compact topological ring
+$`\A_K`$ and is thus also locally compact. So by the theory of Haar characters
+there is a canonical character
+$`\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}`$ measuring how left multiplication
+by an element of $`D_{\A}^\times`$ changes the additive Haar measure on
+$`D_{\A}`$. Let $`D_{\A}^{(1)}`$ denote the kernel of $`\delta_{D_{\A}}`$, and
+give it the subspace topology coming from $`D_{\A}^\times`.
 :::
 
 ```tex "adelic_division_algebra_setup_raw"
@@ -239,58 +195,14 @@ measure on $D_{\A}$. Let $D_{\A}^{(1)}$ denote the kernel of $\delta_{D_{\A}}$,
 and give it the subspace topology coming from $D_{\A}^\times$.
 ```
 
-The TeX chapter explains why the Haar-character package is exactly the right
-input here. Once `D_A := D ⊗_K A_K` is viewed as a finite `A_K`-algebra with the
-module topology, it becomes a locally compact topological ring, and the kernel
-of its Haar character gives the norm-one part of the adelic unit group.
-
-```tex "adelic_division_algebra_setup_p1_raw"
-Let $K$ be a number field and let $D/K$ be a finite-dimensional central simple $K$-algebra
-(later on $D$ will be a division algebra (hence the name) but we do not need this yet).
-Then $D_{\A}:=D\otimes_K\A_K$ is an $\A_K$-algebra which
-is free of finite rank, and if we give $D_{\A}$ the $\A_K$-module topology then it is
-a topological ring (by results in mathlib).
-```
-
-At that point the project’s compactness statement is a genuine quotient-space
-claim about `Dˣ \ D_A^{(1)}`. The chapter is careful to note that this is a
-subspace of the full unit group, equipped with the quotient topology coming from
-the Haar-character kernel.
-
-```tex "adelic_division_algebra_setup_p2_raw"
-Furthermore $D_{\A}$ is free of finite
-rank over the locally compact topological ring $\A_K$ and is thus also
-locally compact. So by the theory of Haar characters (see Chapter~\ref{Haar_char_project})
-there is a canonical character $\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}$ measuring
-how left multiplication by an element of $D_{\A}^\times$ changes the additive Haar
-measure on $D_{\A}$. Let $D_{\A}^{(1)}$ denote the kernel of $\delta_{D_{\A}}$,
-and give it the subspace topology coming from $D_{\A}^\times$.
-```
-
-:::theorem "adelic_module_topologies_coincide" (parent := "fujisaki_project")
-If a finite-dimensional `K`-algebra is tensored with the adeles, the resulting
-`A_K`-module topology agrees with the `A_{\mathbf{Q}}`-module topology coming
-from scalar restriction.
-:::
+One can furthermore check that if $`R`$ is a finite $`K`$-algebra then the
+$`\A_K`$-module topologies and $`\A_{\Q}`$-module topologies on $`R_{\A}`$
+coincide. Indeed, the topology on $`\A_K`$ is the $`\A_{\Q}`$-module topology,
+as $`\A_K=\A_{\Q}\otimes_{\Q}K`$ as topological $`\A_{\Q}`$-algebras, where the
+right hand side has the $`\A_{\Q}`$-module topology by definition.
 
 ```tex "adelic_module_topologies_coincide_raw"
 One can furthermore check that if $R$ is a finite $K$-algebra then the $\A_K$-module topologies and $\A_{\Q}$-module
-topologies on $R_{\A}$ coincide. Indeed, the topology on $\A_K$
-is the $\A_{\Q}$-module topology, as
-$\A_K=\A_{\Q}\otimes_{\Q}K$ as topological $\A_{\Q}$-algebras, where the right hand side
-has the $\A_{\Q}$-module topology by definition.
-```
-
-:::proof "adelic_module_topologies_coincide"
-The TeX chapter pauses to note this because `D_A` is often viewed both as
-`D \otimes_K A_K` and as a finite module over `A_{\mathbf{Q}}` via a choice of
-`K/\mathbf{Q}`-structure. The point is that no ambiguity of topology is being
-introduced when switching between those viewpoints.
-:::
-
-```tex "adelic_module_topologies_coincide_proof_raw"
-One can
-furthermore check that if $R$ is a finite $K$-algebra then the $\A_K$-module topologies and $\A_{\Q}$-module
 topologies on $R_{\A}$ coincide. Indeed, the topology on $\A_K$
 is the $\A_{\Q}$-module topology, as
 $\A_K=\A_{\Q}\otimes_{\Q}K$ as topological $\A_{\Q}$-algebras, where the right hand side
@@ -317,7 +229,7 @@ has the $\A_{\Q}$-module topology by definition.
 
 # The proof
 
-:::theorem "large_compact_set_mod_d_exists" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE")
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE")
 There is a compact subset `E ⊆ D_A` such that for every
 $`\beta \in D_A^{(1)}`, the translated set `βE` cannot inject into the quotient
 $`D \backslash D_A`.
@@ -334,10 +246,9 @@ $`D \backslash D_A`.
 \end{lemma}
 ```
 
-:::proof "large_compact_set_mod_d_exists"
-The TeX proof begins with the commutative comparison from
-{uses "commutative_prototype_for_fujisaki"}[]. After choosing a `\mathbf{Q}`-basis
-of `D`, one identifies `D_A` with a finite power of `\mathbf{A}_{\mathbf{Q}}`,
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"
+After choosing a `\mathbf{Q}`-basis of `D`, one identifies `D_A` with a finite
+power of `\mathbf{A}_{\mathbf{Q}}`,
 so the quotient `D \backslash D_A` inherits compactness from
 `ℚ \backslash \mathbf{A}_{\mathbf{Q}}`.
 
@@ -360,8 +271,8 @@ to the same quotient class.
 \end{proof}
 ```
 
-:::definition "compact_set_e_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.E")
-{uses "large_compact_set_mod_d_exists"}[]
+:::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.E" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.E")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[]
 We let `E` denote any compact set satisfying the hypothesis of the previous lemma.
 :::
 
@@ -375,8 +286,8 @@ We let `E` denote any compact set satisfying the hypothesis of the previous lemm
 \end{definition}
 ```
 
-:::definition "difference_set_x_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
-{uses "compact_set_e_for_fujisaki"}[]
+:::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 From the compact set `E`, define the difference set `X = E - E`.
 :::
 
@@ -390,8 +301,8 @@ Define $X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}$.
 \end{definition}
 ```
 
-:::definition "product_set_y_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y")
-{uses "difference_set_x_for_fujisaki"}[]
+:::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
 Define `Y = X · X`, the product of the difference set with itself.
 :::
 
@@ -405,8 +316,8 @@ Define $Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}$.
 \end{definition}
 ```
 
-:::theorem "difference_set_x_compact_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact")
-{uses "difference_set_x_for_fujisaki"}[]
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
 The set `X` is compact.
 :::
 
@@ -420,7 +331,7 @@ The set `X` is compact.
 \end{lemma}
 ```
 
-:::proof "difference_set_x_compact_for_fujisaki"
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"
 The TeX chapter records this as the continuous image of the compact set
 `E × E` under subtraction.
 :::
@@ -432,8 +343,8 @@ The TeX chapter records this as the continuous image of the compact set
 \end{proof}
 ```
 
-:::theorem "product_set_y_compact_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact")
-{uses "product_set_y_for_fujisaki"}[]
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
 The set `Y` is compact.
 :::
 
@@ -447,7 +358,7 @@ The set `Y` is compact.
 \end{lemma}
 ```
 
-:::proof "product_set_y_compact_for_fujisaki"
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"
 The TeX chapter records this as the continuous image of the compact set
 `X × X` under multiplication.
 :::
@@ -459,8 +370,8 @@ The TeX chapter records this as the continuous image of the compact set
 \end{proof}
 ```
 
-:::theorem "difference_set_meets_d_units_left_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
-{uses "difference_set_x_for_fujisaki"}[]
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
 For every $`\beta \in D_A^{(1)}`, the translate `βX` meets `D^×`.
 :::
 
@@ -476,8 +387,8 @@ $\beta X\cap D^\times\not=\emptyset$.
 \end{lemma}
 ```
 
-:::proof "difference_set_meets_d_units_left_for_fujisaki"
-{uses "compact_set_e_for_fujisaki"}[]
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 The TeX proof says that if `βE` fails to inject into the quotient, then two
 distinct points of `βE` differ by a nonzero element of `D`, and because `D` is
 a division algebra that difference lies in `D^×`. Since the original points
@@ -497,8 +408,8 @@ And $e_1-e_2\in X$ so $b=\beta(e_1-e_2)\in \beta X$, so we're done.
 \end{proof}
 ```
 
-:::theorem "difference_set_meets_d_units_right_for_fujisaki" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'")
-{uses "difference_set_x_for_fujisaki"}[]
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
 Similarly, `Xβ⁻¹` meets `D^×` for every $`\beta \in D_A^{(1)}`.
 :::
 
@@ -513,8 +424,8 @@ Similarly, `Xβ⁻¹` meets `D^×` for every $`\beta \in D_A^{(1)}`.
 \end{lemma}
 ```
 
-:::proof "difference_set_meets_d_units_right_for_fujisaki"
-{uses "compact_set_e_for_fujisaki"}[]
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
 The right-multiplication argument is the same after using the Haar-measure
 symmetry for central simple algebras to pass from left multiplication by
@@ -536,8 +447,8 @@ symmetry for central simple algebras to pass from left multiplication by
 \end{proof}
 ```
 
-:::definition "finite_intersection_set_t" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T")
-{uses "product_set_y_for_fujisaki"}[]
+:::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.T" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
 Let `T = Y ∩ D^×`.
 :::
 
@@ -551,7 +462,7 @@ Let `T = Y ∩ D^×`.
 \end{definition}
 ```
 
-:::theorem "finite_intersection_set_t_finite" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite")
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite")
 The set `T` is finite.
 :::
 
@@ -565,9 +476,9 @@ The set `T` is finite.
 \end{lemma}
 ```
 
-:::proof "finite_intersection_set_t_finite"
-{uses "finite_intersection_set_t"}[]
-{uses "product_set_y_compact_for_fujisaki"}[]
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"}[]
 
 The TeX proof uses only general topology. `Y` is compact, `D` is a discrete
 additive subgroup of `D_A`, hence closed, so `Y ∩ D` is compact and discrete and
@@ -586,9 +497,9 @@ therefore finite. Since `T ⊆ Y ∩ D`, the set `T` is finite as well.
 \end{proof}
 ```
 
-:::definition "compact_constraint_set_c" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C")
-{uses "finite_intersection_set_t"}[]
-{uses "difference_set_x_for_fujisaki"}[]
+:::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.C" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
 Define the compact constraint set
 $`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
 :::
@@ -604,11 +515,11 @@ $`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
 \end{definition}
 ```
 
-:::theorem "compact_constraint_set_c_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact")
-{uses "compact_constraint_set_c"}[]
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
 The set `C` is compact.
-This is obtained from {uses "finite_intersection_set_t_finite"}[] and
-{uses "difference_set_x_compact_for_fujisaki"}[].
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"}[]
 :::
 
 ```tex "compact_constraint_set_c_compact_raw"
@@ -623,7 +534,7 @@ This is obtained from {uses "finite_intersection_set_t_finite"}[] and
 \end{lemma}
 ```
 
-:::proof "compact_constraint_set_c_compact"
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"
 `X` is compact and `T` is finite.
 :::
 
@@ -634,10 +545,8 @@ This is obtained from {uses "finite_intersection_set_t_finite"}[] and
 \end{proof}
 ```
 
-:::theorem "antidiagonal_hits_compact_constraint_set" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C")
-{uses "compact_constraint_set_c"}[]
-{uses "difference_set_meets_d_units_left_for_fujisaki"}[]
-{uses "difference_set_meets_d_units_right_for_fujisaki"}[]
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
 For every $`\beta \in D_A^{(1)}`, there exist `b ∈ D^×` and `ν ∈ D_A^{(1)}`
 such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 :::
@@ -653,15 +562,14 @@ such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 \end{lemma}
 ```
 
-:::proof "antidiagonal_hits_compact_constraint_set"
-{uses "compact_constraint_set_c"}[]
+:::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[]
 
-By {uses "difference_set_meets_d_units_left_for_fujisaki"}[] and
-{uses "difference_set_meets_d_units_right_for_fujisaki"}[] we can write
+By {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[] and
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[] we can write
 `βx₁ = b₁` and `x₂β⁻¹ = b₂` with `b_i ∈ D^×` and `x_i ∈ X`. Note that
 `β ∈ D_A^{(1)}` and `b_i ∈ D^× \subseteq D_A^{(1)}` by
 {uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[], so
@@ -702,8 +610,8 @@ then `β = bν` and `(ν, ν⁻¹) ∈ C = (T⁻¹X) × X`.
 :::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
 The compactness theorem for the adelic quotient is the final output of the
 chapter and the input needed by the quaternion algebra miniproject.
-This is obtained from {uses "compact_constraint_set_c_compact"}[] and
-{uses "antidiagonal_hits_compact_constraint_set"}[].
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"}[]
 :::
 
 ```tex "compact_quotient_for_division_algebra_raw"
@@ -718,8 +626,7 @@ This is obtained from {uses "compact_constraint_set_c_compact"}[] and
 ```
 
 :::proof "compact_quotient_for_division_algebra"
-{uses "compact_constraint_set_c_compact"}[]
-{uses "antidiagonal_hits_compact_constraint_set"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[]
 Indeed, if `M` is the preimage of `C` under the inclusion
 `D_A^{(1)} \to D_A \times D_A` sending `ν` to `(ν, ν⁻¹)`, then `M` is a
 closed subspace of a compact space so it's compact (note that `δ_{D_A}` is
@@ -727,7 +634,7 @@ continuous, by {uses "MeasureTheory.ringHaarChar_continuous"}[], so
 `D_A^{(1)}` is a closed subset of `D_A^\times` which is itself a closed subset
 of `D_A \times D_A`).
 
-{uses "antidiagonal_hits_compact_constraint_set"}[] shows that `M` surjects onto
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"}[] shows that `M` surjects onto
 `D^\times \backslash D_A^{(1)}` which is thus also compact.
 :::
 
