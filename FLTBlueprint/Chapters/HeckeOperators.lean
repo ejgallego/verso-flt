@@ -27,21 +27,16 @@ all of our spaces which the operators act on will be $`R`-modules.
 We have a group $`G` acting $`R`-linearly on an $`R`-module $`A`.
 ```
 # Status
-:::definition "hecke_operator_project_status" (parent := "hecke_operator_project")
 This is an active miniproject. The abstract theory is completely formalized;
 at the time of writing the concrete theory has no sorried definitions but it
 does have some sorried proofs.
-:::
 
 ```tex "hecke_operator_project/abstract_theory/introduction/2"
-\section{The abstract theory}
+\section{Status}
 
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $`R`, the coefficient ring, and
-all of our spaces which the operators act on will be $`R`-modules.
-
-We have a group $`G` acting $`R`-linearly on an $`R`-module $`A`.
+This is an active miniproject. The abstract theory is completely formalized;
+at the time of writing the concrete theory has no sorried definitions
+but it does have some sorried proofs.
 ```
 # Goal
 The goal of this project is to get sorry-free definitions of Hecke operators
@@ -50,14 +45,12 @@ Hecke algebras, which are the rings called $`T` in the modularity lifting theore
 or $`R=T` theorems, crucially introduced by Wiles in order to prove FLT.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/4"
-\section{The abstract theory}
+\section{The goal}
 
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+The goal of this project is to get sorry-free definitions of Hecke operators
+acting on spaces of automorphic forms. These Hecke operators generate
+Hecke algebras, which are the rings called $T$ in the modularity lifting theorems,
+or $R=T$ theorems, crucially introduced by Wiles in order to prove FLT.
 ```
 The theory comes in two parts;
 the "abstract" theory, which is pure algebra, and the "concrete" theory
@@ -68,24 +61,25 @@ adelic groups we care about we need to develop some more API around the theory
 of restricted products, and of compact open subgroups of matrix groups.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/5"
-\section{The abstract theory}
-
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+The theory comes in two parts;
+the ``abstract'' theory, which is pure algebra, and the ``concrete'' theory
+where we apply the abstract constructions to produce endomorphisms of
+spaces of automorphic forms. The abstract theory is short (and completely formalized);
+the concrete theory still needs some work because to apply the theory to the
+adelic groups we care about we need to develop some more API around the theory
+of restricted products, and of compact open subgroups of matrix groups.
 ```
 # Abstract theory
 The set-up: we have a commutative ring $R$, the coefficient ring, and
 all of our spaces which the operators act on will be $R$-modules.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/6"
-\section{The abstract theory}
+The set-up: we have a commutative ring $R$, the coefficient ring, and
+all of our spaces which the operators act on will be $R$-modules.
+```
+We have a group $`G`$ acting $`R`$-linearly on an $`R`$-module $`A`.
 
-\subsection{Introduction}
-
+```tex "hecke_operator_project/abstract_theory/introduction/6b"
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
 We have subgroups $`U` and $`V` of $`G`.
@@ -93,14 +87,9 @@ We will be particularly interested in the $`R`-modules $`A^U` and $`A^V`
 of invariant elements.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/7"
-\section{The abstract theory}
-
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+We have subgroups $U$ and $V$ of $G$.
+We will be particularly interested in the $R$-modules $A^U$ and $A^V$
+of invariant elements.
 ```
 Given an element `g ∈ G`, then under a certain finiteness hypothesis
 we will be able to define an `R`-linear map `T_g` or `[UgV]`
@@ -109,16 +98,13 @@ double coset `UgV` can be written as a finite union of single
 cosets `g_iV`.
 
 ```tex "hecke_operator_project/abstract_theory/introduction/8"
-\section{The abstract theory}
-
-\subsection{Introduction}
-
-The set-up: we have a commutative ring $R$, the coefficient ring, and
-all of our spaces which the operators act on will be $R$-modules.
-
-We have a group $G$ acting $R$-linearly on an $R$-module $A$.
+Given an element $g\in G$, then under a certain finiteness hypothesis
+we will be able to define an $R$-linear map $T_g$ or $[UgV]$
+from $A^V$ to $A^U$. The finiteness hypothesis is that the
+double coset $UgV$ can be written as a \emph{finite} union of single
+cosets $g_iV$.
 ```
-:::definition "abstract_hecke_operator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
+:::definition "abstract_hecke_operator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator_toFun")
 Assuming `UgV` is a finite union of cosets `g_iV`,
 we define `[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
@@ -133,7 +119,7 @@ all of our spaces which the operators act on will be $R$-modules.
 
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
-:::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project")
+:::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
 This function is well-defined (that is, independent of the
 choice of `g_i`), has image in `A^U` and is `R`-linear.
 :::
