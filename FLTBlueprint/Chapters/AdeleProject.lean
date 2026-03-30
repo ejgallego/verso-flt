@@ -621,8 +621,6 @@ Our next goal in this section is the following two results. First the algebraic 
 :::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
 isomorphism.
-This is obtained from {uses "finite_adele_base_change_integral"}[] and
-{uses "tensor_product_module_base_change"}[].
 {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[]
 {uses "RestrictedProduct.relabelIso"}[]
 {uses "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"}[]
@@ -925,9 +923,7 @@ the $\A_{A,K}^\infty$-module topology. We also claim
 :::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
 The induced $`L`$-algebra morphism
 $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is a topological isomorphism.
-This is the topological companion to
-{uses "finite_adele_base_change_algebraic"}[] and uses
-{uses "finite_adele_auxiliary_ring_homeomorphism"}[].
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[]
 :::
 ```tex "adele_project/lt-witness-653"
 \begin{theorem}
@@ -1292,14 +1288,12 @@ to $`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
 
 
 :::proof "infinite_place_local_base_change_homeomorphism"
-The map in {uses "NumberField.InfinitePlace.Completion.baseChange"}[] is an
-`L`-algebra isomorphism by
-{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[] and
-{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]. Every
-`K_v`-algebra isomorphism between two `K_v`-module topological spaces is a
-homeomorphism. Since the `L`-algebra isomorphism of
-{uses "NumberField.InfinitePlace.Completion.baseChange"}[] can equivalently be
-viewed as a `K_v`-algebra isomorphism, it is also a homeomorphism.
+The map in `NumberField.InfinitePlace.Completion.baseChange` is an `L`-algebra
+isomorphism by the surjectivity and injectivity theorems. Every `K_v`-algebra
+isomorphism between two `K_v`-module topological spaces is a homeomorphism.
+Since the `L`-algebra isomorphism of
+`NumberField.InfinitePlace.Completion.baseChange` can equivalently be viewed as
+a `K_v`-algebra isomorphism, it is also a homeomorphism.
 :::
 ```tex "adele_project/lt-witness-832"
 \begin{proof}
