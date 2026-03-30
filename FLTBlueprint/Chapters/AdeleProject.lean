@@ -1221,8 +1221,9 @@ is injective.
 :::proof "infinite_place_local_base_change_injective"
 The `L`-algebra map $`L \otimes_K K_v \to \prod_{w \mid v} L_w`$ can
 equivalently be thought of as `K_v`-linear, which is injective, because it is
-surjective by {uses "infinite_place_local_base_change_surjective"}[], and both
-sides have the same `K_v`-dimension by {uses "infinite_place_dimension_count"}[].
+surjective by {uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[],
+and both sides have the same `K_v`-dimension by
+{uses "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct"}[].
 :::
 ```tex "adele_project/lt-witness-808"
 \begin{proof}
@@ -1267,10 +1268,6 @@ Because `L_w` is a finite-dimensional normed `K_v`-vector space, there exists a
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$, whose restriction
 to $`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
-This is built from {uses "infinite_place_local_base_change_map"}[],
-{uses "infinite_place_local_base_change_surjective"}[],
-{uses "infinite_place_local_base_change_injective"}[], and
-{uses "infinite_place_local_module_topology"}[].
 {uses "NumberField.InfinitePlace.Completion.baseChange"}[]
 {uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
 {uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
@@ -1293,13 +1290,14 @@ This is built from {uses "infinite_place_local_base_change_map"}[],
 
 
 :::proof "infinite_place_local_base_change_homeomorphism"
-The map in {uses "infinite_place_local_base_change_map"}[] is an `L`-algebra isomorphism by
-{uses "infinite_place_local_base_change_surjective"}[] and
-{uses "infinite_place_local_base_change_injective"}[]. Every `K_v`-algebra
-isomorphism between two `K_v`-module topological spaces is a homeomorphism.
-Since this `L`-algebra isomorphism can equivalently be viewed as a
-`K_v`-algebra isomorphism, and since `L_w` has the `K_v`-module topology by
-{uses "infinite_place_local_module_topology"}[], it is also a homeomorphism.
+The map in {uses "NumberField.InfinitePlace.Completion.baseChange"}[] is an
+`L`-algebra isomorphism by
+{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[] and
+{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]. Every
+`K_v`-algebra isomorphism between two `K_v`-module topological spaces is a
+homeomorphism. Since the `L`-algebra isomorphism of
+{uses "NumberField.InfinitePlace.Completion.baseChange"}[] can equivalently be
+viewed as a `K_v`-algebra isomorphism, it is also a homeomorphism.
 :::
 ```tex "adele_project/lt-witness-832"
 \begin{proof}
