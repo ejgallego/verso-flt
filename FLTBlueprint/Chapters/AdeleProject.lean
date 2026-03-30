@@ -21,9 +21,7 @@ results needed later in the project.
 
 # Status
 
-:::definition "adele_project_status" (parent := "adele_project")
 This is an active miniproject.
-:::
 
 ```tex "adele_project/status"
 \section{Status}
@@ -32,34 +30,25 @@ This is an active miniproject.
 ```
 
 
-The chapter is also explicit that finite adeles and full adeles sit at slightly
-different levels of generality. The finite adele construction works naturally
-for Dedekind domains, while the full adele ring uses archimedean places and so
-is genuinely number-field-specific.
-```tex "adele_project/lt-witness-47"
-The chapter is also explicit that finite adeles and full adeles sit at slightly
-```
-
-
 # Goals
-
-:::definition "adele_ring_goals" (parent := "adele_project")
-The TeX blueprint lists four main targets: define the adeles, prove local
-compactness, prove base change along finite field extensions, and prove that
-the number field sits discretely with compact quotient. The chapter also lists a
-fifth meta-goal: get the finished adele infrastructure into mathlib once the
-core statements are formalized cleanly.
-:::
-```tex "adele_project/lt-witness-54"
-:::definition "adele_ring_goals" (parent := "adele_project")
-```
-
-
-```tex "adele_project/goals"
-\section{The goal}
 
 There are several goals to this miniproject.
 
+```tex "adele_project/goals/intro"
+There are several goals to this miniproject.
+```
+
+1. Define the adeles $`\A_K`$ of a number field $`K`$ and give them the
+   structure of a $`K`$-algebra.
+2. Prove that $`\A_K`$ is a locally compact topological ring.
+3. Base change: show that if $`L/K`$ is a finite extension of number fields
+   then the natural map $`L\otimes_K\A_K\to\A_L`$ is an isomorphism, both
+   algebraic and topological.
+4. Prove that $`K \subseteq \A_K`$ is a discrete subgroup and the quotient is
+   compact.
+5. Get this stuff into mathlib.
+
+```tex "adele_project/goals/list"
 \begin{enumerate}
   \item Define the adeles $\A_K$ of a number field~$K$ and
     give them the structure of a $K$-algebra;
@@ -73,108 +62,98 @@ There are several goals to this miniproject.
 \end{enumerate}
 ```
 
-The chapter also stresses a useful distinction. Finite adeles are algebraic
-objects and can be defined for general Dedekind domains. Full adeles are more
-arithmetic: they add the archimedean factor and use special properties of number
-fields.
-```tex "adele_project/lt-witness-83"
-The chapter also stresses a useful distinction. Finite adeles are algebraic
+We briefly go through the basic definitions. Let $`K`$ be a number field. Let
+$`\Zhat=\projlim_{N\geq1}(\Z/N\Z)`$ be the profinite completion of $`\Z`$,
+equipped with the projective limit topology.
+```tex "adele_project/basic-definitions/1"
+We briefly go through the basic definitions. Let $K$ be a number field.
+Let $\Zhat=\projlim_{N\geq1}(\Z/N\Z)$ be the profinite completion of $\Z$,
+equipped with the projective limit topology.
 ```
 
-
-The TeX chapter begins the miniproject by spelling out “cheap” definitions
-before switching back to the literature and mathlib definitions. That contrast
-is important because it explains both what one morally wants the adeles to be
-and why the harness still follows the restricted-product implementation.
-```tex "adele_project/lt-witness-88"
-The TeX chapter begins the miniproject by spelling out “cheap” definitions
+A cheap definition of the finite adeles $`\A_K^\infty`$ of $`K`$ is
+$`K\otimes_{\Z}\Zhat`$, equipped with the $`\Zhat`$-module topology.
+```tex "adele_project/basic-definitions/2"
+A cheap definition of the finite adeles $\A_K^\infty$ of $K$ is $K\otimes_{\Z}\Zhat$,
+equipped with the $\Zhat$-module topology.
 ```
 
-
-:::definition "finite_adeles_for_dedekind_domains" (parent := "adele_project")
-The finite-adele construction extends beyond number fields to general Dedekind
-domains by taking the restricted product of local fraction fields with respect
-to their local integer rings.
-:::
-```tex "adele_project/lt-witness-93"
-:::definition "finite_adeles_for_dedekind_domains" (parent := "adele_project")
+A cheap definition of the infinite adeles $`K_\infty`$ is $`K\otimes_{\Q}\R`$
+with the $`\R`$-module topology. This is a finite-dimensional $`\R`$-vector
+space, so this is just the usual topology on $`\R^n`.
+```tex "adele_project/basic-definitions/3"
+A cheap definition of the infinite adeles
+$K_\infty$ of $K$ is $K\otimes_{\Q}\R$ with the $\R$-module topology (this is a
+finite-dimensional $\R$-vector space so this is just the usual topology on $\R^n$).
 ```
 
-
-:::proof "finite_adeles_for_dedekind_domains"
-The TeX chapter stresses this point because it affects API design. Many of the
-local and finite-adelic constructions should be developed at Dedekind-domain
-generality, even though the final FLT application only needs number fields.
-
-That is why the current chapter oscillates between number-field language and the
-more general “Dedekind domain with field of fractions” setup.
-:::
-```tex "adele_project/lt-witness-99"
-:::proof "finite_adeles_for_dedekind_domains"
+A cheap definition of the adeles of $`K`$ is
+$`\A_K^\infty\times K_\infty`$ with the product topology. This is a
+commutative topological ring.
+```tex "adele_project/basic-definitions/4"
+A cheap definition of the adeles of $K$ is $\A_K^\infty\times K_\infty$ with
+the product topology. This is a commutative topological ring.
 ```
 
-
-:::definition "cheap_finite_adele_definition" (parent := "adele_project")
-A cheap definition of the finite adeles of a number field `K` is
-$`K \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`$, equipped with the
-`$\widehat{\mathbf{Z}}`-module topology.
-:::
-```tex "adele_project/lt-witness-108"
-:::definition "cheap_finite_adele_definition" (parent := "adele_project")
+However in the literature (and in mathlib) we see different definitions. The
+finite adeles of $`K`$ are usually defined in the books as the so-called
+restricted product $`\prod'_{\mathfrak{p}}K_{\mathfrak{p}}`$ over the
+completions $`K_{\mathfrak{p}}`$ of $`K`$ at all maximal ideals
+$`\mathfrak{p}\subseteq\mathcal{O}_K`$ of the integers of $`K`$. Here the
+restricted product is the subset of $`\prod_{\mathfrak{p}}K_{\mathfrak{p}}`$
+consisting of elements which are in the integers $`\mathcal{O}_{K,\mathfrak{p}}`$
+of $`K_{\mathfrak{p}}`$ for all but finitely many $`\mathfrak{p}`$. This is the
+definition given in mathlib. Mathlib also has the proof that they are a
+topological ring; furthermore the construction of the finite adeles in mathlib
+works for any Dedekind domain. The adeles are an arithmetic object, but the
+finite adeles are an algebraic object.
+```tex "adele_project/basic-definitions/5"
+However in the literature (and in mathlib) we see different definitions.
+The finite adeles of $K$ are usually defined in the books
+as the so-called restricted product $\prod'_{\mathfrak{p}}K_{\mathfrak{p}}$ over the completions
+$K_{\mathfrak{p}}$ of $K$ at all maximal ideals $\mathfrak{p}\subseteq\mathcal{O}_K$ of the
+integers of $K$. Here the restricted product is the subset of $\prod_{\mathfrak{p}}K_{\mathfrak{p}}$
+consisting of elements which are in the integers $\mathcal{O}_{K,\mathfrak{p}}$ of
+$K_{\mathfrak{p}}$ for all but finitely many $\mathfrak{p}$. This is the definition given in
+mathlib. Mathlib also has the proof that they're a topological ring;
+furthermore the construction of the finite adeles in mathlib works for any
+Dedekind domain (this was pointed out to me by Mar\'ia In\'es
+de Frutos Fern\'andez; the adeles
+are an arithmetic object, but the finite adeles are an algebraic object).
 ```
 
-
-:::definition "cheap_infinite_adele_definition" (parent := "adele_project")
-A cheap definition of the infinite adeles is `K ⊗_ℚ ℝ`, equipped with its
-finite-dimensional real vector-space topology.
-:::
-```tex "adele_project/lt-witness-114"
-:::definition "cheap_infinite_adele_definition" (parent := "adele_project")
+Similarly the infinite adeles of a number field $`K`$ are usually defined as
+$`\prod_v K_v`$, the product running over the archimedean completions of $`K`$,
+and this is the mathlib definition.
+```tex "adele_project/basic-definitions/6"
+Similarly the infinite adeles of a number field~$K$
+are usually defined as $\prod_v K_v$,
+the product running over the archimedean completions of~$K$, and this is
+the mathlib definition.
 ```
 
-
-:::definition "cheap_full_adele_definition" (parent := "adele_project")
-The cheap full adele ring is the product of the finite and infinite adeles,
-with the product topology.
-:::
-```tex "adele_project/lt-witness-119"
-:::definition "cheap_full_adele_definition" (parent := "adele_project")
-```
-
-
-:::definition "restricted_product_adele_definition" (parent := "adele_project")
-The literature and mathlib instead define finite adeles as the restricted
-product of the local completions `K_v` with respect to their compact open
-integer subrings.
-:::
-```tex "adele_project/lt-witness-124"
-:::definition "restricted_product_adele_definition" (parent := "adele_project")
-```
-
-
-:::proof "restricted_product_adele_definition"
-This is the definition the chapter chooses to follow, precisely because it is
-already the mathlib-facing one and generalizes well to the Dedekind-domain API.
-
-The TeX chapter also stresses that mathlib's full adele ring is the product of
-the finite adeles with the archimedean completions, so one should think of the
-cheap tensor-product definitions and the restricted-product definitions as
-different presentations of the same intended object rather than as competing
-mathematics.
-:::
-```tex "adele_project/lt-witness-130"
-:::proof "restricted_product_adele_definition"
+The adeles of a number field $`K`$ are the product of the finite and infinite
+adeles, and mathlib knows that they are a $`K`$-algebra and a topological ring.
+```tex "adele_project/basic-definitions/7"
+The adeles of a number field $K$ are the product of the finite and infinite
+adeles, and mathlib knows that they're a $K$-algebra and a topological ring.
 ```
 
 
 # Local compactness
 
 :::theorem "adele_local_compactness" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
-The adeles of a number field should form a locally compact topological ring.
-This local compactness is one of the inputs needed by {uses "local_integer_ring_compact_open"}[].
+The adeles of a number field are locally compact.
 :::
-```tex "adele_project/lt-witness-143"
-:::theorem "adele_local_compactness" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
+```tex "adele_project/local-compactness-adele-ring/theorem"
+\begin{theorem}
+  \lean{NumberField.AdeleRing.locallyCompactSpace}
+  \label{NumberField.AdeleRing.locallyCompactSpace}
+  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \discussion{253}
+  \leanok
+  The adeles of a number field are locally compact.
+\end{theorem}
 ```
 
 
@@ -199,29 +178,12 @@ should be a compact open subgroup.
 ```
 
 :::proof "adele_local_compactness"
-The full adele ring is the product of the finite and infinite adeles. The
-finite part is a restricted product over compact open integer rings, so
-mathlib's `RestrictedProduct.locallyCompactSpace_of_addGroup` applies once
-{uses "local_integer_ring_compact_open"}[] is available. The infinite part is a
-finite product of archimedean completions, hence a finite-dimensional real
-topological vector space and therefore locally compact.
-
-The chapter is explicit that this is now meant to be proved using the
-restricted-product topology rather than the older ad hoc topology from the
-first external adele formalization. That is why the local compactness theorem
-for restricted products in mathlib is the real harness-facing endpoint here.
+The adeles of a number field are a product of the finite adeles and the
+infinite adeles so it suffices to prove that the finite and infinite adeles are
+locally compact.
 :::
 
-```tex "adele_project/local-compactness-adele-ring"
-Once we have this, the above result from mathlib gives us
-\begin{theorem}
-  \lean{NumberField.AdeleRing.locallyCompactSpace}
-  \label{NumberField.AdeleRing.locallyCompactSpace}
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \discussion{253}
-  \leanok
-  The adeles of a number field are locally compact.
-\end{theorem}
+```tex "adele_project/local-compactness-adele-ring/proof"
 \begin{proof}
   The adeles of a number field are a product of the finite adeles and the infinite adeles
   so it suffices to prove that the finite and infinite adeles are locally compact.
@@ -312,37 +274,12 @@ on completions.
 ```
 
 
-:::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
-Given a finite extension `L/K` and places `w | v`, there is a natural map from
-the completion `K_v` to the completion `L_w`.
-:::
-```tex "adele_project/lt-witness-250"
-:::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
-```
-
-
-It is defined by completing the inclusion `K → L` at the finite places `v` and
-`w` (which can be done because the previous lemma shows that the map is
-uniformly continuous for the `v`-adic and `w`-adic topologies).
-```tex "adele_project/lt-witness-255"
-The next lemma explains how these valuations are related.
-```
-
-
 :::theorem "local_valuation_compatibility" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
-The `v`-adic and `w`-adic valuations are related by the ramification index:
-`e · w(i(k)) = v(k)` in additive-valuation normalization.
+If $`i:K\to L`$ denotes the inclusion then for $`k\in K`$ we have
+$`e\times w(i(k))=v(k)`$, where $`e`$ is the ramification index of $`w/v`$
+(recall that valuations here are written additively, unlike in mathlib).
 :::
-```tex "adele_project/lt-witness-259"
-:::theorem "local_valuation_compatibility" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
-```
-
-
-:::proof "local_valuation_compatibility"
-Standard (and formalized).
-:::
-
-```tex "adele_project/base-change-valuation"
+```tex "adele_project/base-change-valuation/theorem"
 \begin{lemma}
   \label{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
   \lean{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
@@ -351,29 +288,46 @@ Standard (and formalized).
   $e\times w(i(k))=v(k)$, where $e$ is the ramification index of $w/v$
   (recall that valuations here are written additively, unlike in mathlib).
 \end{lemma}
+```
+
+
+:::proof "local_valuation_compatibility"
+Standard (and formalized).
+:::
+
+```tex "adele_project/base-change-valuation/proof"
 \begin{proof}
   \leanok
   Standard (and formalized).
 \end{proof}
 ```
 
-:::theorem "local_module_topology_for_completion" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
-After base change to a local completion, the topology on `L_w` should agree with
-the `K_v`-module topology.
-This is the topological sharpening of {uses "local_completion_map"}[] and
-{uses "local_valuation_compatibility"}[].
+:::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+There's a natural ring map $`K_v\to L_w`$ extending the map $`K\to L`$. It is
+defined by completing the inclusion $`K\to L`$ at the finite places $`v`$ and
+$`w`$ (which can be done because the previous lemma shows that the map is
+uniformly continuous for the $`v`$-adic and $`w`$-adic topologies).
 :::
-```tex "adele_project/lt-witness-285"
-:::theorem "local_module_topology_for_completion" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
+```tex "adele_project/base-change-local-map"
+\begin{definition}
+  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \uses{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
+  \leanok
+  There's a natural ring map $K_v\to L_w$ extending the map $K\to L$.
+  It is defined by completing
+  the inclusion $K\to L$ at the finite places $v$ and $w$ (which can be done
+  because the previous lemma shows that the map is uniformly continuous for the $v$-adic
+  and $w$-adic topologies).
+\end{definition}
 ```
 
-
-:::proof "local_module_topology_for_completion"
-Giving `L_w` the `K_v`-algebra structure coming from the natural map
-`K_v→L_w`, the `w`-adic topology on `L_w` is the `K_v`-module topology.
+:::theorem "local_module_topology_for_completion" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
+Giving $`L_w`$ the $`K_v`$-algebra structure coming from the natural map
+$`K_v\to L_w`$, the $`w`$-adic topology on $`L_w`$ is the $`K_v`$-module
+topology.
 :::
-
-```tex "adele_project/base-change-local-topology"
+```tex "adele_project/base-change-local-topology/theorem"
 \begin{theorem}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
   \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
@@ -383,6 +337,16 @@ Giving `L_w` the `K_v`-algebra structure coming from the natural map
   Giving $L_w$ the $K_v$-algebra structure coming from the natural map $K_v\to L_w$,
   the $w$-adic topology on $L_w$ is the $K_v$-module topology.
 \end{theorem}
+```
+
+
+:::proof "local_module_topology_for_completion"
+Any basis for $`L`$ as a $`K`$-vector space spans $`L_w`$ as a $`K_v`$-module,
+so $`L_w`$ is finite-dimensional over $`K_v`$ and the module topology is the
+same as the product topology.
+:::
+
+```tex "adele_project/base-change-local-topology/proof"
 \begin{proof}
   Any basis for $L$ as a $K$-vector space spans $L_w$ as a $K_v$-module, so $L_w$ is
   finite-dimensional over $K_v$ and the module topology is the same as the product
@@ -431,16 +395,36 @@ then takes the product of the local completion maps over all such `w`.
 The TeX chapter writes `w | v` for this finite set of places above `v`, and
 ```
 
+:::definition "product_local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'")
+The product of the maps $`K_v\to L_w`$ for $`w|v`$ is a natural ring map
+$`K_v\to\prod_{w|v}L_w`$ lying over $`K\to L`$.
+:::
+```tex "adele_project/base-change-product-local-map"
+\begin{definition}
+  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \leanok
+  The product of the maps $K_v\to L_w$ for $w|v$ is a natural ring map $K_v\to\prod_{w|v}L_w$
+  lying over $K\to L$.
+\end{definition}
+```
+
 
 :::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
-For a fixed finite place `v` of `K`, the algebra
-$`L \otimes_K K_v` decomposes as the finite product of the completions
-$`\prod_{w \mid v} L_w`.
-This is the local theorem behind {uses "local_completion_map"}[] and
-{uses "finite_primes_above_v_are_finite"}[].
+The induced $`L`$-algebra homomorphism
+$`L\otimes_KK_v\to\prod_{w|v}L_w`$ is an isomorphism of rings.
 :::
-```tex "adele_project/lt-witness-348"
-:::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
+```tex "adele_project/base-change-local-decomposition/theorem"
+\begin{theorem}
+  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom',
+  IsDedekindDomain.HeightOneSpectrum.Extension.finite}
+  \leanok
+  The induced $L$-algebra homomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ is an
+  isomorphism of rings.
+\end{theorem}
 ```
 
 
@@ -457,44 +441,63 @@ We already have that `e_w` (defined globally) is equal to the local ramification
 index (defined as the factor by which the valuations differ on `K`).
 :::
 
-```tex "adele_project/base-change-local-decomposition"
-\begin{theorem}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
-  \leanok
-  The product of the maps $K_v\to L_w$ for $w|v$ is a natural ring map $K_v\to\prod_{w|v}L_w$
-  lying over $K\to L$.
-\end{theorem}
+```tex "adele_project/base-change-local-decomposition/proof"
+\begin{proof}
+
+  My current proposal to formalize this is as follows. The map is surjective
+  because the image is dense and closed; this has been formalized already.
+  It is also a $K_v$-algebra homomorphism if we give $L_w$ the obvious $K_v$-algebra
+  structure. Thus we can conclude the result if we can prove that both spaces are
+  finite-dimensional and have the same dimension. The $K_v$-dimension of $L\otimes_KK_v$
+  is equal to the $K$-dimension of $L$, which is $\sum_{w|v}e_wf_w$ using the standard
+  notation that $e_w$ is the ramification index of $w$ and $f_w$ the residue degree
+  (this result is in mathlib). So it suffices to prove that $[L_w:K_v]=e_wf_w$.
+  We already have that $e_w$ (defined globally) is equal to the local ramification
+  index (defined as the factor by which the valuations differ on $K$). So what is left
+  is to prove that (i) the residue field extension induced by $L_w/K_v$ has degree is equal to the
+  globally-defined $f_w$, (ii) an extension of local fields has degree $ef$. Now (i) sounds
+  straightforward given what we have (the map from $A$ to $\mathcal{O}_v$ has kernel $v$ and
+  dense image) and (ii) is true for any complete discretely-valued field; I am not suggesting
+  we formalize the following proof, but at least it represents a rigorous justification:
+  A field complete with respect to a discrete valuation is \emph{stable} in the sense
+  of the book by Bosch-G\"{u}ntzer-Remmert (Prop 3.6.2.1), so every finite extension of such a field
+  is cartesian (def 3.6.1.1) and thus $ef=n$ (Prop 3.6.2.4, (iii) implies (ii)). Note
+  that if you weaken the hypotheses too much then there are counterexamples; it's possible
+  to have $ef<n$ and BGR goes into details.
+
+\end{proof}
 ```
 
 :::theorem "product_local_completion_module_topology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology")
-For fixed `v`, the product topology on $`\prod_{w \mid v} L_w` is the
-`K_v`-module topology.
-This packages the finite-product topological step immediately after the local
-algebraic decomposition.
-It packages {uses "local_module_topology_for_completion"}[] over the finite set
-of places above `v`.
+For $`v`$ fixed, the product topology on $`\prod_{w|v}L_w`$ is the
+$`K_v`$-module topology.
 :::
-```tex "adele_project/lt-witness-385"
-:::theorem "product_local_completion_module_topology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology")
+```tex "adele_project/base-change-product-topology/theorem"
+\begin{theorem}
+  \label{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
+  \lean{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
+  \leanok
+  For $v$ fixed, the product topology on $\prod_{w|v}L_w$ is the $K_v$-module
+  topology.
+\end{theorem}
 ```
 
 
 :::proof "product_local_completion_module_topology"
 This is a finite product of `K_v`-modules each of which has the `K_v`-module
-topology by {uses "local_module_topology_for_completion"}[], and the product
-topology is the module topology for a finite product of modules each of which
-has the module topology.
+topology, and the product topology is the module topology for a finite product
+of modules each of which has the module topology.
 :::
 
-```tex "adele_project/base-change-summary"
-The adeles of a number field $K$ are the product of the finite and infinite
-adeles, and mathlib knows that they're a $K$-algebra and a topological ring.
-
-The finite adele ring of $L$ is then obtained by comparing the restricted
-products place by place, first through the local decompositions and then by a
-relabelling of places.
+```tex "adele_project/base-change-product-topology/proof"
+\begin{proof}
+  \leanok
+  This is a finite product of $K_v$-modules each of which has the $K_v$-module topology
+  by~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology},
+  and the product topology is the module topology for a finite product of modules each of which
+  has the module topology (this is in mathlib).
+\end{proof}
 ```
 
 :::theorem "nonarchimedean_base_change_local_homeomorphism" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv")
@@ -502,9 +505,6 @@ If `L \otimes_K K_v` is given the `K_v`-module topology, then the local
 algebraic isomorphism
 $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$
 is also a homeomorphism.
-This is the topological sharpening of
-{uses "nonarchimedean_base_change_local_decomposition"}[] and
-{uses "product_local_completion_module_topology"}[].
 :::
 ```tex "adele_project/lt-witness-410"
 \begin{theorem}
@@ -534,8 +534,6 @@ module topologies.
 The same local decomposition identifies the integral subring
 $`B \otimes_A A_v`$ with the product of the local integer rings
 $`\prod_{w \mid v} B_w`$.
-This is the integral refinement of
-{uses "nonarchimedean_base_change_local_decomposition"}[].
 :::
 ```tex "adele_project/lt-witness-426"
 \begin{theorem}
@@ -592,7 +590,13 @@ topology then this map is also a homeomorphism. Furthermore we have shown that
 there is an induced algebraic isomorphism $`B \otimes_A A_v \cong \prod_w B_w`$ on the subrings of
 the left and right hand sides.
 ```tex "adele_project/lt-witness-447"
-A summary of the local picture at this stage, exactly as in the TeX chapter:
+A summary of what we have so far: for all finite places $v$ of $A$
+we have shown that the natural map $L\otimes_KK_v\to\prod_wL_w$
+is an isomorphism of $L$-algebras, and that if $L\otimes_KK_v$ has
+the $K_v$-module topology and each $L_w$ has the valuation topology
+then this map is also a homeomorphism. Furthermore we have shown
+that there is an induced algebraic isomorphism $B\otimes_AA_v\equiv\prod_w B_w$
+on the subrings of the left and right hand sides.
 ```
 
 
@@ -606,7 +610,7 @@ Hence there's a natural $L$-algebra homomorphism $L\otimes_K\A_{A,K}^\infty\to\A
 Our next goal in this section is the following two results. First the algebraic
 claim.
 ```tex "adele_project/lt-witness-459"
-The TeX chapter now introduces an auxiliary restricted product `R`, namely the
+Our next goal in this section is the following two results. First the algebraic claim:
 ```
 
 
@@ -861,9 +865,6 @@ From this, we can deduce the theorem we claimed earlier:
 :::theorem "finite_adele_base_change_integral" (parent := "adele_project")
 The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra
 isomorphism.
-This is built from
-{uses "finite_adele_tensor_product_auxiliary_ring"}[] and
-{uses "auxiliary_ring_identifies_with_extension_finite_adeles"}[].
 :::
 ```tex "adele_project/lt-witness-548"
 \begin{theorem}
@@ -887,15 +888,22 @@ previous two constructions.
 \end{proof}
 ```
 
+Because this map factors through the isomorphism
+$`B\otimes_A\A_K^\infty\to L\otimes_K\A_K^\infty`$ we can finally deduce that
+the natural map $`L\otimes_K\A_K^\infty\to\A_L^\infty`$ is an algebraic
+isomorphism.
+```tex "adele_project/lt-witness-548j/intro"
+Because this map factors through the isomorphism $B\otimes_A\A_K^\infty\to L\otimes_K\A_K^\infty$
+we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$ is an algebraic
+  isomorphism.
+```
+
 :::proof "finite_adele_base_change_algebraic"
 Follows immediately from
 {uses "finite_adele_base_change_integral"}[] and
 {uses "tensor_product_module_base_change"}[].
 :::
-```tex "adele_project/lt-witness-548j"
-Because this map factors through the isomorphism $B\otimes_A\A_K^\infty\to L\otimes_K\A_K^\infty$
-we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$ is an algebraic
-  isomorphism.
+```tex "adele_project/lt-witness-548j/proof"
 \begin{proof}
   \proves{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
   Follows immediately from theorem~\ref{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
