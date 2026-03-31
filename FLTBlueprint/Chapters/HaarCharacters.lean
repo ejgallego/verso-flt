@@ -14,15 +14,6 @@ This miniproject develops the API around how additive Haar measure changes under
 linear automorphisms, especially on locally compact topological rings.
 :::
 
-The old TeX chapter frames this as infrastructure rather than a single isolated
-theorem. The point is to build a reusable measure-theoretic package that can be
-applied uniformly to local fields, finite products, restricted products, and
-adelic algebras.
-
-```tex "haar_character_project/lt_intro"
-The old TeX chapter frames this as infrastructure rather than a single isolated theorem.
-```
-
 # Goal
 
 :::definition "haar_character_goal" (parent := "haar_character_project")
@@ -44,17 +35,6 @@ compact topological ring.
 
 KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave during the preparation
 of this material.
-```
-
-`Haar character` is a name I've made up to describe a certain character of
-the units of a locally compact topological ring. The main result we need here is
-that if `B` is a finite-dimensional algebra over a number field `K`, then
-`B^\times` is in the kernel of the Haar character of `B \otimes_K \A_K`, where
-`\A_K` is the ring of adeles of `K`. Most if not all of this should probably be
-in mathlib.
-
-```tex "haar_character_project/lt_goal_terminology"
-``Haar character'' is a name I've made up to describe a certain character of the units of a locally compact topological ring.
 ```
 
 # Initial definitions
@@ -109,7 +89,6 @@ If $A$ is a locally compact topological additive abelian group, if $\mu$ is a re
 
 :::theorem "haar_character_independent_of_measure" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
 This scaling factor is independent of the chosen regular Haar measure.
-This is the first lemma attached to {uses "additive_haar_character"}[].
 :::
 
 ```tex "haar_character_project/lt_independent_of_measure"
@@ -140,7 +119,6 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 :::theorem "haar_character_pushforward_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
 For any regular Haar measure `μ`, one has
 $`d_A(\phi) (\phi_* \mu) = \mu`.
-This is the direct restatement of {uses "haar_character_independent_of_measure"}[].
 :::
 
 ```tex "haar_character_project/lt_pushforward_formula"
@@ -237,7 +215,6 @@ If $X$ is a Borel set then $\mu(X)=d_A(\phi)\mu(\phi^{-1}X)$.
 If `f : A → ℝ` is Borel measurable, then
 `d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 Equivalently, `d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^* μ)(x)`.
-This is the integral version of {uses "haar_character_pushforward_formula"}[].
 :::
 
 ```tex "haar_character_project/lt_integral_formula"
@@ -470,13 +447,14 @@ field.
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
 ```
 
-Normalize Haar measure so that $`\mu(\mathbf{Z}_p)=1`$. If `u` is a `p`-adic
-unit then $`u\mathbf{Z}_p=\mathbf{Z}_p`$ so multiplication by `u` does not
-change Haar measure. If however `u = p` then $`u\mathbf{Z}_p`$ has index `p`
-in $`\mathbf{Z}_p`, and because $`\mu(i+p\mathbf{Z}_p)=\mu(p\mathbf{Z}_p)`$ we
-have $`\mu(\mathbf{Z}_p)=p\mu(p\mathbf{Z}_p)`$ and thus
-$`\delta(p)=p^{-1}`$. These elements generate $`\mathbf{Q}_p^\times`, and two
-characters which agree on generators of a group must agree on the group.
+Normalize Haar measure so that $`\mu(\mathbf{Z}_p)=1`$.
+If `u` is a `p`-adic unit then $`u\mathbf{Z}_p=\mathbf{Z}_p`$ so multiplication
+by `u` does not change Haar measure. If however `u = p` then
+$`u\mathbf{Z}_p`$ has index `p` in $`\mathbf{Z}_p`$, and because
+$`\mu(i+p\mathbf{Z}_p)=\mu(p\mathbf{Z}_p)`$ we have
+$`\mu(\mathbf{Z}_p)=p\mu(p\mathbf{Z}_p)`$ and thus $`\delta(p)=p^{-1}`$.
+These elements generate $`\mathbf{Q}_p^\times`, and two characters which agree
+on generators of a group must agree on the group.
 
 ```tex "haar_character_project/lt_padic_calculation"
 Normalise Haar measure so that $\mu(\Z_p)=1$.
@@ -592,8 +570,6 @@ an $F$-linear homeomorphism.
 :::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project") (lean := "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight")
 For a central simple algebra `B` over a locally compact field `F` and
 `u ∈ B^\times`, one has `d_B(r_u) = δ_B(u)`.
-This combines the determinant comparison {uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[] with
-{uses "algebra_haar_character_determinant_formula"}[].
 :::
 
 ```tex "haar_character_project/lt_left_right_same_haar"
@@ -998,8 +974,7 @@ If the $A_i$ and $B_i$ are topological spaces and the $\phi_i$ are continuous fu
 :::proof "restricted_product_maps_continuous"
 We use the universal property `RestrictedProduct.continuous_dom` of the
 topology in mathlib to reduce to the claim that for all finite `S`, the induced
-map
-`A_S:=\prod_{i\in S}A_i\times\prod_{i\notin S}C_i\to B` is continuous.
+map `A_S:=\prod_{i\in S}A_i\times\prod_{i\notin S}C_i\to B` is continuous.
 Because the inclusion `A_S\to A_T` is continuous for `S\subseteq T`, we are
 reduced to checking this claim for `S` sufficiently large that it contains all
 of the `i` for which `\phi(C_i)\not=D_i`. For such `S`, this map factors as
