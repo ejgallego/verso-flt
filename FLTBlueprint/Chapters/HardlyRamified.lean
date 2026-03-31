@@ -1,5 +1,10 @@
 import FLTBlueprint.Citations
+import FLT.Basic.Reductions
+import FLT.GaloisRepresentation.HardlyRamified.Family
 import FLT.GaloisRepresentation.HardlyRamified.Frey
+import FLT.GaloisRepresentation.HardlyRamified.Lift
+import FLT.GaloisRepresentation.HardlyRamified.ModThree
+import FLT.GaloisRepresentation.HardlyRamified.Threeadic
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -91,14 +96,37 @@ Let us call such rings ``coefficient rings'' for now.
 ```
 
 We make some remarks to orient the reader.
-- Any complete local Noetherian ring with finite residue field is a coefficient ring when equipped with its maximal-ideal-adic topology.
-- In particular, finite fields and integer rings of finite extensions of $`\Q_p` are coefficient rings.
-- If `R` is a coefficient ring, then `R` is the projective limit of the finite local rings `R / I` as `I` ranges over the open ideals of `R`.
-- The TeX chapter also highlights non-Noetherian examples built from square-zero variables `\varepsilon_i`; these are useful because they make representability statements easier to formulate.
-- The category of coefficient rings is equivalent to the pro-category of the category of finite local rings.
-- A coefficient ring is pseudocompact in Grothendieck's sense, although pseudocompact local rings are more general because they may have infinite residue field.
-- If `R` has residue characteristic `\ell`, then there is a unique continuous map $`\mathbf{Z}_\ell \to R`, so coefficient rings of characteristic `\ell` naturally carry `\ell`-adic cyclotomic characters.
-- For deformation theory it is often convenient to fix the integer ring $`\mathcal{O}` in a finite extension of $`\Q_\ell` and work with coefficient `\mathcal{O}`-algebras rather than arbitrary coefficient rings.
+- Any complete local Noetherian ring with finite residue field is a coefficient
+  ring, if the ring is equipped with the $`\m`$-adic topology where $`\m`$ is
+  the maximal ideal. In this case, all powers of $`\m`$ are open.
+- In particular finite fields, and integer rings of finite extensions of
+  $`\Q_p`$, are coefficient rings.
+- If $`R`$ is a coefficient ring then $`R`$ is isomorphic to the projective
+  limit of the finite rings $`R/I`$ as $`I`$ runs over the open ideals of
+  $`R`$.
+- A non-Noetherian example of a coefficient ring is the projective limit over
+  $`n`$ of the rings
+  $`\Z/p\Z[\varepsilon_1,\ldots,\varepsilon_n]/(\forall i,j,\varepsilon_i\varepsilon_j=0)`$;
+  these rings are convenient to include as coefficient rings for technical
+  reasons; they make representability theorems easier.
+- The category of coefficient rings is equivalent to the pro-category of the
+  category of finite local rings.
+- A coefficient ring is pseudocompact in the sense of Grothendieck. A
+  pseudocompact local ring is however a more general concept as such a thing
+  may have an infinite residue field and would thus not be profinite.
+- If $`R`$ is a coefficient ring with residue field of characteristic $`\ell`$,
+  then there is a unique continuous map $`\Z_\ell\to R`$. Indeed, it suffices
+  to prove that there is a unique continuous map $`\Z_\ell\to R/I`$ for each
+  open ideal $`I`$, but $`R/I`$ is a finite local ring with residue field of
+  characteristic $`\ell`$. $`R/I`$ is hence Artinian, so some power of the
+  maximal ideal is zero by Nakayama. This means that $`\ell^N=0`$ for some
+  sufficiently large $`N`$, and hence $`R/I`$ is a $`\Z/\ell^N\Z`$-algebra and
+  thus admits admits a unique map from $`\Z_\ell`$.
+- It will be more convenient to fix once and for all the integer
+  $`\mathcal{O}`$ in a finite extension of $`\Q_\ell`$ and consider coefficient
+  $`\mathcal{O}`$-algebras, namely coefficient rings $`R`$ equipped with a
+  continuous map $`\mathcal{O}\to R`$ which is a local homomorphism inducing an
+  isomorphism on residue fields.
 
 ```tex "coefficient_ring_remarks"
 \begin{remark} We make some remarks to orient the reader.
@@ -146,15 +174,24 @@ We are now ready to define hardly ramified representations.
 ```
 
 :::definition "hardly_ramified" (parent := "hardly_ramified_program")
-Let `R` be a coefficient ring with finite residue field of characteristic
-$`\ell \ge 3`, and let `V` be a finite free `R`-module of rank `2` equipped
+Let $`R`$ be a coefficient ring with finite residue field of characteristic
+$`\ell\geq3`$. Let $`V`$ be a finite free $`R`$-module of rank `2`, equipped
 with the product topology. A continuous representation
-$`\rho : \GQ \to \GL_R(V)` is hardly ramified if it satisfies four conditions:
+$`\rho:\GQ\to \GL_R(V)`$ is said to be hardly ramified if it satisfies the
+following four conditions:
 
-- `\det(\rho)` is the cyclotomic character
-- `\rho` is unramified outside $`2\ell`
-- at $`2` there is a $`G_{\mathbf{Q}_2}`-stable short exact sequence $`0 \to R \to V \to R \to 0` whose quotient character is unramified and has square trivial
-- at $`\ell`, for every open ideal `I` of `R`, the finite-image representation obtained from `\rho` modulo `I` comes from a finite flat group scheme
+- $`\det(\rho):\GQ\to R^\times`$ is the cyclotomic character.
+- $`\rho`$ is unramified outside $`2\ell`$.
+- The restriction of $`\rho`$ to $`\Gal(\Qbar_2/\Q_2)`$ is reducible. More
+  precisely, there is a short exact sequence
+  $`0\to R\to V\to R\to 0`$ which is stable under the action of
+  $`\Gal(\Qbar_2/\Q_2)`$, and the Galois action on the 1-dimensional quotient
+  is an unramified representation of $`\Gal(\Qbar_2/\Q_2)`$ whose square is
+  trivial.
+- The restriction of $`\rho`$ to $`\GQl`$ is flat, by which we mean that for
+  all open ideals $`I`$ of $`R`$, the finite-image representation
+  $`\rho`$ mod $`I:\GQl\to \GL_{R/I}(V/I)`$ comes from a finite flat group
+  scheme.
 :::
 
 ```tex "hardly_ramified_definition"
@@ -166,6 +203,17 @@ $`\rho : \GQ \to \GL_R(V)` is hardly ramified if it satisfies four conditions:
   Let $V$ be a finite free $R$-module of rank~2, equipped with the product topology. A
   continuous representation $\rho: \GQ\to \GL_R(V)$ is said to be \emph{hardly ramified} if it
   satisfies the following four conditions:
+  \begin{enumerate}
+  \item $\det(\rho):\GQ\to R^\times$ is the cyclotomic character;
+  \item $\rho$ is unramified outside $2\ell$;
+  \item The restriction of $\rho$ to $\Gal(\Qbar_2/\Q_2)$ is reducible (more precisely,
+  there is a short exact sequence $0\to R\to V\to R\to 0$ which is stable
+  under the action of $\Gal(\Qbar_2/\Q_2)$) and the Galois action on the 1-dimensional
+  quotient is an unramified representation of $\Gal(\Qbar_2/\Q_2)$ whose square is trivial;
+  \item The restriction of $\rho$ to $\GQl$ is flat, by which we mean that for all open
+  ideals $I$ of $R$, the (finite image) representation $\rho$ mod $I:\GQl\to \GL_{R/I}(V/I)$
+  comes from a finite flat group scheme.
+  \end{enumerate}
 \end{definition}
 ```
 
@@ -227,12 +275,10 @@ curve. Finally, the claim that `\rho` is flat at `\ell` is Proposition~5 and
 \end{proof}
 ```
 
-The TeX chapter inserts one important remark here: for hardly ramified mod
-`\ell` representations, irreducible and absolutely irreducible are the same.
-Because `\ell \ge 3` and the determinant is cyclotomic, complex conjugation
-already has two distinct eigenvalues defined over the ground field. So the
-later deformation-theoretic statements are not hiding any extra
-absolutely-irreducible hypothesis.
+Note that irreducibility and absolute irreducibility for hardly ramified mod
+`\ell` representations are the same, because our assumptions that
+$`\ell\geq3`$ and that the determinant is cyclotomic imply that the image of
+complex conjugation has distinct eigenvalues defined over the ground field.
 
 ```tex "hardly_ramified_absolute_irreducibility"
 Note that irreducibility and absolute irreducibility for hardly ramified mod $\ell$ representations
@@ -257,12 +303,12 @@ is hardly ramified, then `\rho` is reducible.
 \end{theorem}
 ```
 
-The TeX chapter stresses that this is a consequence of Serre's conjecture,
-now a theorem of Khare and Wintenberger
-{Informal.citep khareWintenbergerII}[], but that the blueprint isolates a route
-to this special case using the project's preferred modularity-lifting
-infrastructure. Given this theorem, the Wiles-side theorem from the reductions
-chapter is an easy corollary.
+Note that this (deep) claim is a consequence of Serre's conjecture
+{Informal.citep serreModularityConjecture}[], now a theorem of Khare and
+Wintenberger {Informal.citep khareWintenbergerII}[], and indeed we shall use
+methods introduced by Khare and Wintenberger to prove this special case of
+Serre's conjecture. Given this result, we can deduce theorem `Wiles_Frey`
+(which we restate here) easily:
 
 ```tex "hardly_ramified_reducible/introduction"
 Note that this (deep) claim is a consequence of Serre's conjecture~\cite{serreconj},
@@ -272,7 +318,7 @@ Serre's conjecture. Given this result, we can deduce Theorem~\ref{Wiles_Frey}
 (which we restate here) easily:
 ```
 
-:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program")
+:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program") (lean := "Wiles_Frey")
 If `\overline{\rho}` is the mod `p` Galois representation associated to a
 Frey package `(a,b,c,p)` then `\overline{\rho}` is reducible.
 :::
@@ -328,15 +374,15 @@ Firstly, we claim that
 an irreducible hardly ramified mod $\ell$ representation lifts to an $\ell$-adic representation.
 ```
 
-:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.lifts")
 {uses "hardly_ramified"}[]
 If `\ell \ge 3` is prime and
 $`\overline{\rho} : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
 is hardly ramified and irreducible, then there exists a finite extension
-$`K / \Q_\ell` with integer ring $`\mathcal{O}` and a hardly ramified
-$`\ell`-adic representation
+$`K / \Q_\ell` with integer ring $`\mathcal{O}` and maximal ideal
+$`\mathfrak{m}` and a hardly ramified representation
 $`\rho : \GQ \to \GL_2(\mathcal{O})`
-whose reduction is isomorphic to $`\overline{\rho}`.
+whose reduction modulo $`\mathfrak{m}`$ is isomorphic to $`\overline{\rho}`.
 :::
 
 ```tex "hardly_ramified_lifts"
@@ -374,7 +420,7 @@ family of hardly ramified $q$-adic representations for all odd primes $q$ (note 
 not made a definition of a hardly ramified 2-adic representation).
 ```
 
-:::theorem "hardly_ramified_spreads_out" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_spreads_out" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mem_isCompatible")
 {uses "hardly_ramified"}[]
 If `\ell \ge 3` is prime, `K` is a finite extension of `\Q_\ell` with
 integers `\mathcal{O}` and if `\rho : \GQ \to \GL_2(\mathcal{O})` is a hardly
@@ -383,6 +429,15 @@ number field `M` and, for each finite place `\mu` of `M` of characteristic
 prime to `2`, with completion `M_\mu` having integer ring `R_\mu`, a hardly
 ramified semisimple representation `\rho_\mu : \GQ \to \GL_2(R_\mu)` (by which
 we mean the generic fibre is semisimple), with the following properties:
+
+- There is some $`\lambda\mid\ell`$ of $`M`$ such that $`\rho_\lambda\cong\rho`$,
+  the isomorphism happening over some appropriate local field containing a copy
+  of $`M_\lambda`$ and a copy of $`K`$
+- If $`\mu_1`$ and $`\mu_2`$ are two finite places of $`M`$ with odd residue
+  characteristics $`m_1`$ and $`m_2`$, and if $`p\nmid 2m_1m_2`$ is prime,
+  then $`\rho_{\mu_1}`$ and $`\rho_{\mu_2}`$ are both unramified at $`p`$ and
+  the characteristic polynomials $`\rho_{\mu_1}(\Frob_p)`$ and
+  $`\rho_{\mu_2}(\Frob_p)`$ lie in $`M[X]`$ and are equal
 :::
 
 ```tex "hardly_ramified_spreads_out"
@@ -429,14 +484,14 @@ In particular, we can ``move'' from an irreducible hardly ramified mod $\ell$ re
 to a hardly ramified 3-adic representation, and hence to a hardly ramified mod 3 representation.
 ```
 
-And we can use this to essentially completely classify the hardly ramified
-`3`-adic Galois representations:
+However, we can essentially completely classify the hardly ramified mod `3`
+Galois representations:
 
 ```tex "hardly_ramified_mod3_reducible/introduction"
 However, we can essentially completely classify the hardly ramified mod 3 Galois representations:
 ```
 
-:::theorem "hardly_ramified_mod3_reducible" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_mod3_reducible" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mod_three")
 {uses "hardly_ramified"}[]
 If `k` is a finite field of characteristic `3` and
 $`\overline{\rho} : \GQ \to \GL_2(k)` is hardly ramified, then
@@ -474,13 +529,14 @@ And we can use this to essentially completely classify the hardly ramified 3-adi
 representations:
 ```
 
-:::theorem "hardly_ramified_3adic_reducible" (parent := "hardly_ramified_program")
+:::theorem "hardly_ramified_3adic_reducible" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.three_adic")
 {uses "hardly_ramified"}[]
 {uses "hardly_ramified_mod3_reducible"}[]
 If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has
-$`\rho_3^{ss} = 1 \oplus \chi_3`.
+$`\rho_3^{ss} = 1 \oplus \chi_3` where $`1`$ is the trivial character and
+$`\chi_3`$ is the `3`-adic cyclotomic character.
 :::
 
 ```tex "hardly_ramified_3adic_reducible"
@@ -506,8 +562,10 @@ Omitted for now. TODO.
 \end{proof}
 ```
 
-The theorem `hardly_ramified_reducible` is an easy consequence of these
-theorems, as we now show.
+Theorem `hardly_ramified_reducible` (if $`\ell\geq 3`$ is a prime and
+$`\overline{\rho}:\GQ\to\GL_2(\Z/\ell\Z)`$ is hardly ramified, then
+$`\overline{\rho}`$ is reducible) is an easy consequence of these theorems, as
+we now show.
 
 ```tex "hardly_ramified_reducible/proof_introduction"
 Theorem~\ref{hardly_ramified_reducible} (if $\ell\geq 3$ is a prime and
@@ -517,20 +575,25 @@ as we now show.
 ```
 
 :::proof "hardly_ramified_reducible"
-Assume for contradiction that a hardly ramified mod `\ell` representation
-$`\overline{\rho}` is irreducible. By {uses "hardly_ramified_lifts"}[],
-$`\overline{\rho}` lifts to a hardly ramified `\ell`-adic representation
-`\rho`. By {uses "hardly_ramified_spreads_out"}[], that lift belongs to a
-compatible family. Moving to the place above `3` and applying
-{uses "hardly_ramified_3adic_reducible"}[] shows that for primes $`p \nmid 6\ell`
-the Frobenius characteristic polynomial is forced to be $`(X-p)(X-1)`.
-
-Compatibility carries the same characteristic polynomials back to the original
-`\ell`-adic representation and hence to $`\overline{\rho}`. By the Chebotarev
-density theorem, $`\overline{\rho}` and $`1 \oplus \chi_\ell` have the same
-characteristic polynomials everywhere, and Brauer--Nesbitt then forces
-$`\overline{\rho}` to be reducible. That contradicts the assumption of
-irreducibility.
+{uses "hardly_ramified_lifts"}[]
+{uses "hardly_ramified_spreads_out"}[]
+{uses "hardly_ramified_3adic_reducible"}[]
+Assume for a contradiction that $`\overline{\rho}`$ is irreducible. By theorem
+`hardly_ramified_lifts`, $`\overline{\rho}`$ lifts to a hardly ramified
+`\ell`-adic representation $`\rho`$. By theorem
+`hardly_ramified_spreads_out`, $`\rho`$ is part of a compatible family of
+`q`-adic Galois representations. By theorem
+`hardly_ramified_3adic_reducible`, any `3`-adic member $`\rho_3`$ of this
+family has semisimplification $`1\oplus\chi_3`$ and in particular for
+$`p\nmid 6`$ we have that the characteristic polynomial of
+$`\rho_3(\Frob_p)`$ is $`(X-p)(X-1)`$. By compatibility of the family we deduce
+that for $`p\nmid 6\ell`$ the characteristic polynomial of $`\rho(\Frob_p)`$
+is $`(X-p)(X-1)`$, and thus the characteristic polynomial of
+$`\overline{\rho}(\Frob_p)`$ is $`(X-p)(X-1)`$. By the Chebotarev density
+theorem, $`\overline{\rho}`$ and $`1\oplus\chi`$ have the same characteristic
+polynomials everywhere (here $`\chi`$ is the mod `\ell` cyclotomic character).
+Thus by the Brauer-Nesbitt theorem, $`\overline{\rho}`$ is reducible, the
+contradiction we seek.
 :::
 
 ```tex "hardly_ramified_reducible/proof"
