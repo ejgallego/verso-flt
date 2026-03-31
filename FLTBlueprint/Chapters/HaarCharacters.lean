@@ -26,9 +26,13 @@ The old TeX chapter frames this as infrastructure rather than a single isolated 
 # Goal
 
 :::definition "haar_character_goal" (parent := "haar_character_project")
-The main application is adelic: if `B` is a finite-dimensional algebra over a
-number field `K`, then `B^\times` lies in the kernel of the Haar character of
-`B \otimes_K \A_K`.
+The goal of this miniproject is to develop the theory, that is, the basic API,
+of Haar characters. `Haar character` is a name I've made up to describe a
+certain character of the units of a locally compact topological ring. The main
+result we need here is that if `B` is a finite-dimensional algebra over a
+number field `K`, then `B^\times` is in the kernel of the Haar character of
+`B\otimes_K\A_K`, where `\A_K` is the ring of adeles of `K`. Most if not all
+of this should probably be in mathlib.
 :::
 
 ```tex "haar_character_project/goal"
@@ -51,20 +55,6 @@ in mathlib.
 
 ```tex "haar_character_project/lt_goal_terminology"
 ``Haar character'' is a name I've made up to describe a certain character of the units of a locally compact topological ring.
-```
-
-KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave
-during the preparation of this material.
-
-```tex "haar_character_project/lt_goal_provenance"
-KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave during the preparation of this material.
-```
-
-The chapter thanks Sebastien Gou\"ezel for the help he gave during the
-preparation of this material.
-
-```tex "haar_character_project/lt_goal_context"
-The goal of this miniproject is to develop the theory (i.e., the basic API) of Haar characters.
 ```
 
 # Initial definitions
@@ -177,9 +167,8 @@ This is a restatement of the previous result.
 ```
 
 :::theorem "haar_character_pullback_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
-Pulling Haar measure back along an additive homeomorphism scales the measure by
-the same Haar-character factor.
-This is the pullback companion to {uses "haar_character_pushforward_formula"}[].
+If `μ` is any regular Haar measure on `A` then
+`d_A(φ)μ = \phi^*μ`.
 :::
 
 ```tex "haar_character_project/lt_pullback_formula"
@@ -208,7 +197,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 ```
 
 :::theorem "haar_character_identity" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
-The Haar character of the identity automorphism is `1`.
+`d_A(id)=1`.
 :::
 
 ```tex "haar_character_project/lt_identity_formula"
@@ -264,10 +253,7 @@ This is a restatement of the previous result.
 ```
 
 :::theorem "haar_character_is_multiplicative" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
-For additive homeomorphisms `φ` and `ψ`, one has
-`d_A(φ ∘ ψ) = d_A(φ) d_A(ψ)`, and the identity map has Haar character `1`.
-This combines {uses "haar_character_identity"}[] with the composition law from
-the additive Haar-character setup {uses "additive_haar_character"}[].
+`d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
 :::
 
 ```tex "haar_character_project/lt_multiplicative_formula"
@@ -278,8 +264,9 @@ $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
 Here's one way: it suffices to prove that
 `d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu = d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu`
 (because there exists a compact set with positive finite measure) and using
-the pushforward formula and the fact that `(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`
-one can simplify both sides to `\mu`.
+{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[] and the fact that
+`(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to
+`μ`.
 :::
 
 ```tex "haar_character_project/multiplicative"
@@ -359,9 +346,6 @@ $R^\times\to\R^\times$ defined in the following way.
 :::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
 If `f : R → ℝ` is Borel measurable and `u ∈ R^\times`, then
 `δ_R(u) ∫ f(ux) dμ(x) = ∫ f(x) dμ(x)`.
-This is the ring-theoretic specialization of
-{uses "haar_character_integral_formula"}[] and depends on
-{uses "ring_level_haar_character"}[].
 :::
 
 ```tex "haar_character_project/ring_integral"
@@ -384,9 +368,6 @@ This is the ring-theoretic specialization of
 :::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
 If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
 `μ(rX) = δ_R(r) μ(X)`.
-This is the ring-theoretic specialization of
-{uses "haar_character_preimage_formula"}[] and depends on
-{uses "ring_level_haar_character"}[].
 :::
 
 ```tex "haar_character_project/ring_volume"
@@ -487,10 +468,13 @@ same computation gives the normalized nonarchimedean norm.
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
 ```
 
-At the level of the TeX proof, the `\mathbf{Q}_p` calculation is completely
-concrete: normalize Haar measure by `μ(\mathbf{Z}_p) = 1`, check that units
-preserve `\mathbf{Z}_p`, and compute the effect of multiplication by `p` using
-the index of `p\mathbf{Z}_p` inside `\mathbf{Z}_p`.
+Normalize Haar measure so that $`\mu(\mathbf{Z}_p)=1`$. If `u` is a `p`-adic
+unit then $`u\mathbf{Z}_p=\mathbf{Z}_p`$ so multiplication by `u` does not
+change Haar measure. If however `u = p` then $`u\mathbf{Z}_p`$ has index `p`
+in $`\mathbf{Z}_p`, and because $`\mu(i+p\mathbf{Z}_p)=\mu(p\mathbf{Z}_p)`$ we
+have $`\mu(\mathbf{Z}_p)=p\mu(p\mathbf{Z}_p)`$ and thus
+$`\delta(p)=p^{-1}`$. These elements generate $`\mathbf{Q}_p^\times`, and two
+characters which agree on generators of a group must agree on the group.
 
 ```tex "haar_character_project/lt_padic_calculation"
 Normalise Haar measure so that $\mu(\Z_p)=1$.
@@ -615,14 +599,25 @@ If $B$ is a central simple algebra over a locally compact field $F$, and if $u\i
 ```
 
 :::proof "central_simple_algebra_left_right_same_haar"
-The TeX chapter proves that left and right multiplication have the same
-determinant in a central simple algebra by base-changing to an algebraic closure
-and identifying the algebra with a matrix algebra. Once the determinants agree,
-the Haar-character factors agree as well.
-
-This symmetry is exactly what is needed later when quotient arguments in
-division algebras mix left and right multiplication.
+If `\ell_u` and `r_u` denote left and right multiplication by `u` on `B`, then
+we have seen in
+`MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det` that
+`d_B(r_u)=\delta_F(\det(r_u))`. `IsSimpleRing.mulLeft_det_eq_mulRight_det`
+tells us that this is `\delta_F(\det(\ell_u))`, and this is `\delta_B(u)` again
+by `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det`.
 :::
+
+```tex "haar_character_project/lt_left_right_same_haar_proof"
+\begin{proof}
+  \leanok
+  \uses{IsSimpleRing.mulLeft_det_eq_mulRight_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
+  If $\ell_u$ and $r_u$ denote left and right multiplication by $u$ on $B$, then we have
+  seen in lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} that $d_B(r_u)=\delta_F(\det(r_u))$.
+  Lemma~\ref{IsSimpleRing.mulLeft_det_eq_mulRight_det} tells
+  us that this is $\delta_F(\det(\ell_u))$ and this is $\delta_B(u)$ again by
+  corollary~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}.
+\end{proof}
+```
 
 ```tex "haar_character_project/left_right_multiplication"
 If $R$ is a locally compact topological ring, and if multiplication on $R$ is not commutative,
@@ -719,8 +714,16 @@ If $R$ and $S$ are locally compact topological rings, then $\delta_{R\times S}(r
 ```
 
 :::proof "product_ring_haar_character_formula"
-Follows immediately from {uses "product_haar_character_formula"}[].
+Follows immediately from
+{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[].
 :::
+
+```tex "haar_character_project/lt_product_ring_formula_proof"
+\begin{proof}
+  \leanok
+  Follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}.
+\end{proof}
+```
 
 ```tex "haar_character_project/finite_products"
 \begin{lemma}
@@ -866,8 +869,9 @@ If $f:A\to B$ is a group homomorphism and open embedding between locally compact
 
 :::proof "open_embedding_preserves_haar_character"
 Choose a regular Haar measure `μ_B` on `B`. The pullback `μ_A := f^* μ_B` is
-also a regular Haar measure by {uses "open_embedding_pullback_is_haar_measure"}[]
-and {uses "open_embedding_pullback_regular_measure"}[].
+also a regular Haar measure by
+{uses "Topology.IsOpenEmbedding.isHaarMeasure_comap"}[] and
+{uses "Topology.IsOpenEmbedding.regular_comap"}[].
 Now fix a continuous compactly-supported function `g` on `A` with
 `0 < ∫ g(a) dμ(a) < ∞`. Then `d_A(α) ∫ g(a) dμ_A(a) = ∫ g(a) d(α^* μ_A)(a)`
 by {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"}[].
@@ -877,6 +881,28 @@ This equals `d_B(β) ∫ g(a) d(f^* μ_B)(a)` by
 {uses "MeasureTheory.addEquivAddHaarChar_comap"}[], which is
 `d_B(β) ∫ g(a) dμ_A(a)` by definition, and so `d_A(α) = d_B(β)` as required.
 :::
+
+```tex "haar_character_project/lt_open_embedding_preserves_haar_character_proof"
+\begin{proof}
+  \uses{Topology.IsOpenEmbedding.isHaarMeasure_comap,
+    Topology.IsOpenEmbedding.regular_comap,
+    MeasureTheory.addEquivAddHaarChar_smul_integral_comap}
+  \leanok
+  Choose a regular Haar measure $\mu_B$ on $B$. We just saw
+  in lemmas~\ref{Topology.IsOpenEmbedding.isHaarMeasure_comap}
+  and~\ref{Topology.IsOpenEmbedding.regular_comap} that its pullback
+  $\mu_A:=f^*\mu_B$ to $A$ is also a regular Haar
+  measure. Now fix a continuous compactly-supported function $g$ on $A$ with
+  $0<\int g(a)d\mu(a)<\infty$. Then $d_A(\alpha)\int g(a)d\mu_A(a)=\int g(a)d(\alpha^*\mu_A)(a)$
+  by lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_integral_comap}.
+  This equals $\int g(a)d(\alpha^* f^*\mu_B)(a)$ by definition,
+  which is $\int g(a)d(f^*\beta^*\mu_B)(a)$ because pullback of pullback is pullback.
+  This equals $d_B(\beta)\int g(a) d(f^*\mu_B)(a)$ by
+  corollary~\ref{MeasureTheory.addEquivAddHaarChar_comap}
+  which is $d_B(\beta)\int g(a)d\mu_A(a)$ by definition,
+  and so $d_A(\alpha)=d_B(\beta)$ as required.
+\end{proof}
+```
 
 ```tex "haar_character_project/measure_theoretic_preliminaries"
 \begin{lemma}
@@ -990,19 +1016,46 @@ With $A$, $A_i$, $C_i$, $\phi_i$, $\phi$ defined as above, we have $\delta_A(\ph
 ```
 
 :::proof "restricted_product_haar_character_formula"
-This is one of the chapter's key technical payoffs. Because the reference
-subgroups are compact and open, any automorphism that preserves them has local
-Haar character `1` there. So only finitely many places contribute, and the
-global Haar character becomes a finite product of local terms.
+Assume `φ_i(C_i)=C_i` for all `i\not\in S`, a finite set, and work in the
+open subgroup `U:=\prod_{i\in S}A_i\times\prod_{i\not\in S}C_i`. Then `φ`
+induces an automorphism `φ_S` of `U`, and
+{uses "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding"}[]
+tells us that `δ(\phi)=δ_U(\phi_S)`.
 
-The TeX chapter also records the technical caveat that one wants a countable
-index set and second-countable factors so that the product sigma algebra agrees
-with the Borel sigma algebra on the restricted product. That is the level of
-generality needed for the adelic applications.
-
-That is precisely the mechanism that later makes adelic Haar-character
-computations tractable.
+Next note that `φ_S` can be written as a product of automorphisms of
+`\prod_{i\not\in S}C_i` and `\prod_{i\in S}A_i`, so by
+{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[] we have
+`δ(\phi)=δ(\prod_{i\not\in S}\phi_i|_{C_i})\times\delta(\prod_{i\in S}\phi_i)`.
+Because `\prod_{i\notin S}C_i` is a compact group, the first term is `1` by
+{uses "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"}[]. Finally
+{uses "MeasureTheory.addEquivAddHaarChar_piCongrRight"}[] gives the second
+term as `\prod_{i\in S}\delta(\phi_i)`.
 :::
+
+```tex "haar_character_project/lt_restricted_product_formula_proof_full"
+\begin{proof}
+  \leanok
+  \uses{
+  MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding,
+  MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace,
+  MeasureTheory.addEquivAddHaarChar_piCongrRight,Continuous.restrictedProduct_congrRight,
+  MeasureTheory.addEquivAddHaarChar_prodCongr}
+  Assume $\phi_i(C_i)=C_i$ for all $i\not\in S$, a finite set, and work in the
+  open subgroup $U:=\prod_{i\in S}A_i\times\prod_{i\not\in S}C_i$. Then $\phi$ induces
+  an automorphism $\phi_S$ of this open subgroup $U$ of $A$, and in particular
+  lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding} tells us
+  that $\delta(\phi)=\delta_U(\phi_S)$.
+  Next note that $\phi_S:U\to U$ can be written as a product of the automorphisms
+  $\prod_{i\not\in S}\phi_i|_{C_i}$ of $\prod_{i\not\in S}C_i$ and
+  $\prod_{i\in S}\phi_i$ of $\prod_{i\in S}A_i$, so by lemma~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}
+  we have $\delta(\phi)=\delta(\prod_{i\not\in S}\phi_i|_{C_i})\times\delta(\prod_{i\in S}\phi_i).$
+  Because $\prod_{i\not\in S}C_i$ is a compact
+  group we must have $\delta(\phi_{i\not\in S}\phi_i|_{C_i})=1$
+  by lemma~\ref{MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace}. Finally
+  $\delta(\prod_{i\in S}\phi_i)=\prod_{i\in S}\delta(\phi_i)$ by
+  lemma~\ref{MeasureTheory.addEquivAddHaarChar_piCongrRight} and we are home.
+\end{proof}
+```
 
 ```tex "haar_character_project/lt_restricted_product_formula_proof"
 Assume $\phi_i(C_i)=C_i$ for all $i\not\in S$, a finite set, and work in the open subgroup $U:=\prod_{i\in S}A_i\times\prod_{i\notin S}C_i$.
@@ -1122,21 +1175,17 @@ If $B$ is a finite-dimensional $K$-algebra, then $B^\times$ lies in the kernel o
 ```
 
 :::proof "adelic_units_in_kernel_of_haar_character"
-This is the culmination of the TeX chapter. For an algebra `B_A = B ⊗_K A_K`,
-the adelic ring decomposes into local factors. At the finite places, the global
-Haar character is the restricted-product product of the local ones by
-{uses "restricted_product_haar_character_formula"}[]. At the infinite places,
-the character is controlled by determinants via
-{uses "algebra_haar_character_determinant_formula"}[].
-
-The TeX chapter proves a series of intermediate product-formula statements over
-`\mathbf{Q}` and over finite-dimensional `\mathbf{Q}`-vector spaces, then uses a
-module-topology lemma for adele extensions to pass cleanly between
-`B \otimes_K \mathbf{A}_K` and `B \otimes_{\mathbf{Q}} \mathbf{A}_{\mathbf{Q}}`.
-The local determinant computations then cancel globally, forcing the units of
-the original algebra to land in the kernel. That is exactly the API input used
-by {uses "adelic_division_algebra_setup"}[] in the Fujisaki chapter.
+Follows immediately from
+{uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[].
 :::
+
+```tex "haar_character_project/lt_adelic_units_kernel_proof"
+\begin{proof}
+  \uses{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
+  \leanok
+  Follows immediately from the previous theorem.
+\end{proof}
+```
 
 ```tex "haar_character_project/adeles"
 \begin{corollary}
