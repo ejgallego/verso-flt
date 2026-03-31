@@ -1356,7 +1356,7 @@ then this is also a homeomorphism.
 :::theorem "infinite_adele_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.piEquiv")
 There is a natural `K_\infty`-linear homeomorphism
 $`K_\infty^{[L:K]} \cong L_\infty`$.
-This is assembled from {uses "infinite_place_local_power_homeomorphism"}[].
+This is assembled from {uses "NumberField.InfinitePlace.Completion.piEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-857"
 \begin{theorem}
@@ -1372,7 +1372,7 @@ This is assembled from {uses "infinite_place_local_power_homeomorphism"}[].
 
 :::proof "infinite_adele_power_homeomorphism"
 Using the isomorphisms
-{uses "infinite_place_local_power_homeomorphism"}[], we clearly have a
+{uses "NumberField.InfinitePlace.Completion.piEquiv"}[], we clearly have a
 bijection $`K_\infty^{[L:K]} \cong \prod_v \prod_{w \mid v} L_w \cong \prod_w L_w`.
 The `K_v`-linearity of each component isomorphism extends to
 `K_\infty`-linearity if the action of $`\prod_v K_v`$ on $`\prod_w L_w`$ is
@@ -1396,7 +1396,7 @@ $`(x \cdot y)_w = x_{v_w} \cdot y_w`$, which is true by definition.
 
 :::theorem "infinite_adele_module_topology" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT")
 `L_\infty` has the `K_\infty`-module topology.
-This follows from {uses "infinite_adele_power_homeomorphism"}[].
+This follows from {uses "NumberField.InfiniteAdeleRing.piEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-876"
 \begin{theorem}

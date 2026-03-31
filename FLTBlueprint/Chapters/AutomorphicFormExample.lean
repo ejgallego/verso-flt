@@ -216,6 +216,7 @@ the profinite completion of $\Z$. So what is $\Zhat$? We offer a low-level defin
 ```
 
 :::theorem "ZHat.commRing" (parent := "automorphic_example_program") (lean := "ZHat.commRing")
+{uses "ZHat"}[]
 $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 :::
 
@@ -233,14 +234,7 @@ $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 Follow your nose.
 :::
 
-```tex "ZHat.commRing"
-\begin{lemma}
-    \label{ZHat.commRing}
-    \lean{ZHat.commRing}
-    \uses{ZHat}
-    \leanok
-    $\Zhat$ is a subring of $\prod_{N\geq1}(Z/N\Z)$ and in particular is a ring.
-\end{lemma}
+```tex "ZHat.commRing/proof"
 \begin{proof} \leanok Follow your nose.
 \end{proof}
 ```
@@ -298,13 +292,7 @@ The map from the naturals into $`\Zhat`$ sending $`n` to $`n` is injective.
 Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
 :::
 
-```tex "ZHat.charZero"
-\begin{lemma}
-    \label{ZHat.charZero}
-    \lean{ZHat.charZero}
-    \leanok
-    The map from the naturals into $\Zhat$ sending $n$ to $n$ is injective.
-\end{lemma}
+```tex "ZHat.charZero/proof"
 \begin{proof}
     \leanok
     Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
@@ -924,6 +912,8 @@ $\Qhat=\Q\otimes\Zhat$ both maps from $\Q$ and $\Zhat$ are inclusions.
 ```
 
 :::theorem "QHat.injective_rat" (parent := "automorphic_example_program") (lean := "QHat.injective_rat")
+{uses "QHat"}[]
+{uses "ZHat.commRing"}[]
 The ring homomorphism $`\Q\to\Qhat` sending $`q` to $`q\otimes_t 1` is
 injective.
 :::
@@ -946,15 +936,7 @@ the map from $`\Q=\Q\otimes\Z` to $`\Qhat=\Q\otimes\Zhat` is also injective.
 There is no doubt a more elementary proof of this fact.
 :::
 
-```tex "QHat.injective_rat"
-\begin{lemma}
-    \label{QHat.injective_rat}
-    \lean{QHat.injective_rat}
-    \uses{QHat,ZHat.commRing}
-    \leanok
-    The ring homomorphism $\Q\to\Qhat$ sending $q$ to $q\otimes_t 1$
-    is injective.
-\end{lemma}
+```tex "QHat.injective_rat/proof"
 \begin{proof} \leanok
     We have seen that the map from $\Z$ to $\Zhat$ is
     injective. Now $\Q$ is a flat $\Z$-module, because it's
@@ -965,6 +947,8 @@ There is no doubt a more elementary proof of this fact.
 ```
 
 :::theorem "QHat.injective_zHat" (parent := "automorphic_example_program") (lean := "QHat.injective_zHat")
+{uses "QHat"}[]
+{uses "ZHat.torsionfree"}[]
 The ring homomorphism $`\Zhat\to\Qhat` sending $`z` to $`1\otimes_t z` is
 injective.
 :::
@@ -986,15 +970,7 @@ torsion-free and thus flat $`\Z`-module, so the map from $`\Zhat` to
 $`\Qhat` is also injective.
 :::
 
-```tex "QHat.injective_zHat"
-\begin{lemma}
-    \label{QHat.injective_zHat}
-    \lean{QHat.injective_zHat}
-    \uses{QHat, ZHat.torsionfree}
-    \leanok
-    The ring homomorphism $\Zhat\to\Qhat$ sending
-    $z$ to $1\otimes_t z$ is injective.
-\end{lemma}
+```tex "QHat.injective_zHat/proof"
 \begin{proof} \leanok
     The map from $\Z$ to $\Q$ is injective, and we have seen
     that $\Zhat$ is a torsion-free and thus flat $\Z$-module,
