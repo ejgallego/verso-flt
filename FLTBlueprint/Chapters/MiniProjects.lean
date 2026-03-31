@@ -67,7 +67,7 @@ payoff is {uses "adelic_units_in_kernel_of_haar_character"}[].
 The Frobenius mini-project tracks the algebra needed to state Frobenius
 elements cleanly in the settings used by the Galois side of the proof.
 The core output is the general surjectivity theorem
-{uses "stabilizer_hom_surjective"}[], with arithmetic consequences recorded in
+{uses "IsFractionRing.stabilizerHom_surjective"}[], with arithmetic consequences recorded in
 {uses "frobenius_elements_classical_corollary"}[].
 :::
 
@@ -123,7 +123,7 @@ compatible families and Frobenius characteristic polynomials.
 :::proof "galois_side_miniproject_cluster"
 This workstream is more independent than the adelic cluster, which is why it
 was able to mature quickly and be upstreamed. Its formal theorem
-{uses "stabilizer_hom_surjective"}[] does not rely on the whole FLT setup, but
+{uses "IsFractionRing.stabilizerHom_surjective"}[] does not rely on the whole FLT setup, but
 it feeds naturally into the later representation-theoretic chapters whenever
 Frobenius elements need to be chosen or compared.
 :::
