@@ -234,9 +234,8 @@ has the $\A_{\Q}$-module topology by definition.
 # The proof
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE")
-There is a compact subset `E ⊆ D_A` such that for every
-$`\beta \in D_A^{(1)}`, the translated set `βE` cannot inject into the quotient
-$`D \backslash D_A`.
+There's a compact subset $`E`$ of $`D_A`$ with the property that for all
+$`x\in D_A^{(1)}`$, the obvious map $`xE\to D\backslash D_A`$ is not injective.
 :::
 
 ```tex "large_compact_set_mod_d_exists_raw"
@@ -254,10 +253,19 @@ $`D \backslash D_A`.
 We know that if we pick a $`\Q`$-basis for $`D`$ of size $`d`$ then this
 identifies $`D`$ with $`\Q^d`$, $`D_{\A}`$ with $`\A_{\Q}^d`$, and
 $`D\backslash D_{\A}`$ with $`(\Q\backslash\A_{\Q})^d`$. Now $`\Q`$ is
-discrete in $`\A_{\Q}`$ by {uses "NumberField.AdeleRing.discrete"}[], and the
-quotient $`\Q\backslash \A_{\Q}`$ is compact by
-{uses "Rat.AdeleRing.cocompact"}[]. Hence $`D`$ is discrete in $`D_{\A}`$ and
-the quotient $`D\backslash D_{\A}`$ is compact.
+discrete in $`\A_{\Q}`$ by theorem `NumberField.AdeleRing.discrete`, and the
+quotient $`\Q\backslash \A_{\Q}`$ is compact by theorem
+`Rat.AdeleRing.cocompact`. Hence $`D`$ is discrete in $`D_{\A}`$ and the
+quotient $`D\backslash D_{\A}`$ is compact.
+
+Fix a Haar measure $`\mu`$ on $`D_{\A}`$ and push it forward to
+$`D\backslash D_{\A}`$; by compactness this quotient has finite and positive
+measure, say $`m\in\R_{>0}`$. Choose any compact $`E\subseteq D_{\A}`$ with
+measure $`>m`$ (for example, choose a $`\Z`$-lattice $`L\cong\Z^d`$ in
+$`D\cong\Q^d`$, define $`E_f:=\prod_p L_p\in D\otimes_{\Q}\A_{\Q}^\infty`$, and
+define $`E_{\infty}\subseteq D\otimes_{\Q}\R\cong\R^n`$ to be a huge closed
+ball, large enough to ensure the measure of $`E:=E_f\times E_{\infty}`$ is
+bigger than $`m`$). Then $`\mu(xE)=\mu(E)>m`$ so the map can't be injective.
 :::
 
 ```tex "large_compact_set_mod_d_exists_proof_raw"
@@ -335,8 +343,7 @@ $`X`$ is a compact subset of $`D_{\A}`$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"
-The TeX chapter records this as the continuous image of the compact set
-`E × E` under subtraction.
+It's the continuous image of the compact set $`E\times E`$.
 :::
 
 ```tex "difference_set_x_compact_for_fujisaki_proof_raw"
@@ -362,8 +369,7 @@ $`Y`$ is a compact subset of $`D_{\A}`$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"
-The TeX chapter records this as the continuous image of the compact set
-`X × X` under multiplication.
+It's the continuous image of the compact set $`X\times X`$.
 :::
 
 ```tex "product_set_y_compact_for_fujisaki_proof_raw"
@@ -431,12 +437,15 @@ $`X\beta^{-1}\cap D^\times\not=\emptyset`$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
 Indeed, $`\beta^{-1}\in D_{\A}^{(1)}`$, and so left multiplication by
 $`\beta^{-1}`$ does not change Haar measure on $`D_{\A}`$, so neither does
-right multiplication by
-{uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[].
-So the same argument works.
+right multiplication (by theorem
+`NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul`).
+So the same argument works: $`E\beta^{-1}\to D\backslash D_{\A}`$ is not
+injective so choose $`e_1\beta^{-1}\not=e_2\beta^{-1}`$ with difference
+$`b\in D`$ and then $`(e_1-e_2)\beta^{-1}\in D-\{0\}=D^\times`$.
 :::
 
 ```tex "difference_set_meets_d_units_right_for_fujisaki_proof_raw"
@@ -470,6 +479,7 @@ Let `T = Y ∩ D^×`.
 ```
 
 :::theorem "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite")
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
 The set `T` is finite.
 :::
 
@@ -484,12 +494,11 @@ The set `T` is finite.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"}[]
-
-The TeX proof uses only general topology. `Y` is compact, `D` is a discrete
-additive subgroup of `D_A`, hence closed, so `Y ∩ D` is compact and discrete and
-therefore finite. Since `T ⊆ Y ∩ D`, the set `T` is finite as well.
+It suffices to prove that $`Y\cap D`$ is finite. But
+$`D\subseteq D_{\A}`$ is a discrete additive subgroup, and hence closed. And
+$`Y\subseteq D_{\A}`$ is compact. So $`D\cap Y`$ is compact and discrete, so
+finite.
 :::
 
 ```tex "finite_intersection_set_t_finite_proof_raw"
@@ -575,18 +584,22 @@ such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[]
 
-By {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[] and
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[] we can write
-`βx₁ = b₁` and `x₂β⁻¹ = b₂` with `b_i ∈ D^×` and `x_i ∈ X`. Note that
-`β ∈ D_A^{(1)}` and `b_i ∈ D^× \subseteq D_A^{(1)}` by
-{uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[], so
-`x_i ∈ D_A^{(1)}` as well. In
-particular `x_i ∈ D_A^×`, so `x₁⁻¹` makes sense.
+By lemma `NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel`,
+$`\beta X\cap D^\times\not=\emptyset`$, and lemma
+`NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'`,
+$`X\beta^{-1}\cap D^\times\not=\emptyset`$, so we can write
+$`\beta x_1=b_1`$ and $`x_2\beta^{-1}=b_2`$ with $`b_i\in D^\times`$ and
+$`x_i\in X`$. Note that $`\beta\in D_{\A}^{(1)}`$ and
+$`b_i\in D^{\times}\subseteq D_{\A}^{(1)}`$ by corollary
+`NumberField.AdeleRing.units_mem_ringHaarCharacter_ker`, so $`x_i\in D_{\A}^{(1)}`$
+as well. In particular $`x_i\in D_{\A}^\times`$ so $`x_1^{-1}`$ makes sense.
 
-Multiplying the equations defining the `x_i` and `b_i`, we deduce that
-`x₂x₁ = b₂b₁ ∈ Y ∩ D^× = T`; call this element `t`. Then
-`x₁⁻¹ = t⁻¹x₂ ∈ T⁻¹X`, and `x₁ ∈ X`, so if we set `ν = x₁⁻¹` and `b = b₁`
-then `β = bν` and `(ν, ν⁻¹) ∈ C = (T⁻¹X) × X`.
+Multiplying the equations defining the $`x_i`$ and $`b_i`$ we deduce that
+$`x_2x_1=b_2b_1\in Y\cap D^\times=T`$ (recall that $`Y=X.X`$ and
+$`T=Y\cap D^\times`$ is finite); call this element $`t`$. Then
+$`x_1^{-1}=t^{-1}x_2\in T^{-1}.X`$, and $`x_1\in X`$, so if we set
+$`\nu=x_1^{-1}\in D_{\A}^{(1)}`$ and $`b=b_1\in D^\times`$ then we have
+$`\beta=b\nu`$ and $`(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X`$. We are done!
 :::
 
 ```tex "antidiagonal_hits_compact_constraint_set_proof_raw"
@@ -782,7 +795,7 @@ We note here some useful consequences.
 We note here some useful consequences.
 ```
 
-:::theorem "finite_adele_units_cocompact_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact")
+:::theorem "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact")
 The quotient
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`
 is compact.
@@ -797,7 +810,7 @@ is compact.
 \end{theorem}
 ```
 
-:::proof "finite_adele_units_cocompact_for_division_algebra"
+:::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"
 {uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[]
 There's a natural map `α` from
 `D^\times \backslash D_A^{(1)}` to
@@ -851,7 +864,8 @@ There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
 \end{proof}
 ```
 
-:::theorem "finite_double_coset_for_open_subgroup" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset")
+:::theorem "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset")
+{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]
 If `U` is an open subgroup of
 $`(D \otimes_K \mathbf{A}_K^\infty)^\times`, then the double coset space
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times / U`
@@ -869,12 +883,12 @@ is finite.
 \end{theorem}
 ```
 
-:::proof "finite_double_coset_for_open_subgroup"
-The TeX chapter observes that the double cosets define a disjoint open cover of
-the compact quotient from
-{uses "finite_adele_units_cocompact_for_division_algebra"}[]. A compact space
-cannot admit an infinite disjoint open cover, so only finitely many double
-cosets occur.
+:::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"
+The double cosets give a disjoint open cover of
+$`(D\otimes_K \A_K^\infty)`$ which descends to a disjoint open cover of the
+quotient space $`D^\times\backslash(D\otimes_K \A_K^\infty)^\times`$. However
+this space is compact by theorem
+`NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact`.
 :::
 
 ```tex "finite_double_coset_proof_raw"
