@@ -16,7 +16,6 @@ linear automorphisms, especially on locally compact topological rings.
 
 # Goal
 
-:::definition "haar_character_goal" (parent := "haar_character_project")
 The goal of this miniproject is to develop the theory, that is, the basic API,
 of Haar characters. `Haar character` is a name I've made up to describe a
 certain character of the units of a locally compact topological ring. The main
@@ -24,20 +23,46 @@ result we need here is that if `B` is a finite-dimensional algebra over a
 number field `K`, then `B^\times` is in the kernel of the Haar character of
 `B\otimes_K\A_K`, where `\A_K` is the ring of adeles of `K`. Most if not all
 of this should probably be in mathlib.
-:::
 
 ```tex "haar_character_project/goal"
 \section{The goal}
 
 The goal of this miniproject is to develop the theory (i.e., the basic API) of Haar characters.
 ``Haar character'' is a name I've made up to describe a certain character of the units of a locally
-compact topological ring.
+compact topological ring. The main result we need here is that if $B$ is a finite-dimensional
+algebra over a number field~$K$, then $B^\times$ is in the kernel of the Haar character
+of $B\otimes_K\A_K$, where $\A_K$ is the ring of adeles of~$K$. Most if not all of this
+should probably be in mathlib.
+```
 
+KMB would like to heartily thank Sebastien Gouezel for the help he gave during
+the preparation of this material.
+
+```tex "haar_character_project/goal_thanks"
 KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave during the preparation
 of this material.
 ```
 
 # Initial definitions
+
+Let $`A`$ be a locally compact topological additive abelian group. There's then
+a regular additive Haar measure $`\mu`$ on $`A`$, unique up to a positive
+scalar factor. If `φ : (A, +) ≃ (A, +)` is a homeomorphism and an additive
+automorphism of `A`, then we can push forward `μ` along `φ` to get a second
+measure `φ_* μ` on `A`, with the property that
+`(φ_* μ)(X) = μ(φ^{-1} X)` for any Borel subset `X` of `A`.
+
+```tex "haar_character_project/initial_definitions_intro"
+\section{Initial definitions}
+
+\subsection{Scaling Haar measure on a group}
+
+Let $A$ be a locally compact topological additive abelian group. There's then a regular additive
+Haar measure $\mu$ on $A$, unique up to a positive scalar factor. If $\phi:(A,+)\cong(A,+)$ is a
+homeomorphism and an additive automorphism of $A$, then we can push forward $\mu$
+along $\phi$ to get a second measure $\phi_*\mu$ on $A$, with the property that
+$(\phi_*\mu)(X)=\mu(\phi^{-1}X)$ for any Borel subset $X$ of $A$.
+```
 
 :::definition "additive_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar")
 For a locally compact additive abelian group `A`, a regular Haar measure `μ`,
@@ -47,21 +72,20 @@ set `X`.
 :::
 
 ```tex "haar_character_project/additive_haar_character"
-\section{Initial definitions}
-
-\subsection{Scaling Haar measure on a group}
-
-Let $A$ be a locally compact topological additive abelian group. There's then a regular additive
-Haar measure $\mu$ on $A$, unique up to a positive scalar factor. If $\phi:(A,+)\cong(A,+)$ is a
-homeomorphism and an additive automorphism of $A$, then we can push forward $\mu$
-along $\phi$ to get a second measure $\phi_*\mu$ on $A$.
+\begin{definition}
+  \label{MeasureTheory.addEquivAddHaarChar}
+  \lean{MeasureTheory.addEquivAddHaarChar}
+  \leanok
+  If $A$ is a locally compact topological additive abelian group,
+  if $\mu$ is a regular Haar measure on $A$, and if $\phi:A\to A$ is an
+  additive homeomorphism, then we let $d_A(\phi)$ denote the unique positive
+  real number such that $\mu(X)=d_A(\phi)(\phi_*\mu)(X)$ for any Borel set~$X$.
+\end{definition}
 ```
 
-More concretely, if `μ` is a regular Haar measure on an additive locally compact
-group `A` and `φ : A ≃ₜ+ A` is an additive homeomorphism, then the pushforward
-`φ_* μ` is again a Haar measure. So it differs from `μ` by a unique positive
-scalar, and the Haar-character construction is just the systematic way of
-recording that scalar.
+Now `φ_* μ` is a translation-invariant and regular measure, and hence also a
+Haar measure on `A`. It must thus differ from `μ` by a positive scalar factor,
+which we call `d_A(φ)`.
 
 ```tex "haar_character_project/lt_pushforward_haar_measure"
 Now $\phi_*\mu$ is a translation-invariant and regular measure,
@@ -76,15 +100,37 @@ There is a choice of normalization here between `d_A(\phi)` and
 There is a choice of normalization here between $d_A(\phi)$ and $d_A(\phi)^{-1}$, so let us be more precise.
 ```
 
-Strictly speaking our definition of `d_A(\phi)` depends on the choice of
-regular Haar measure `\mu`.
+To give an example, if `φ` is multiplication by `2` on the real numbers, if
+`X = [0,1]`, and if `μ` is Lebesgue measure on the Borel subsets of `\R`, we
+have that `φ_* μ(X) = μ(φ^{-1}(X)) = μ([0,1/2]) = 1/2`, so
+`1 = d_A(\phi)/2`, meaning that `d_A(\phi) = 2`. Similarly if `φ` is
+multiplication by `-2` and `X = [0,1]` then `φ^{-1}(X) = [-1/2,0]`, which
+again has measure `1/2`, so `d_A(\phi)` is `2` again.
 
-```tex "haar_character_project/lt_mathlib_haar_measure"
-Strictly speaking our definition of $d_A(\phi)$ depends on the choice of regular Haar measure $\mu$.
+```tex "haar_character_project/lt_additive_example"
+To give an example, if $\phi$ is multiplication by $2$ on the real numbers,
+if $X=[0,1]$, and if $\mu$ is Lebesgue measure on the Borel subsets of $\R$,
+we have that $\phi_*\mu(X)=\mu(\phi^{-1}(X))=\mu([0,1/2])=1/2$,
+so $1=d_A(\phi)/2$ meaning that $d_A(\phi)=2$. Similarly if $\phi$ is multiplication
+by $-2$ and $X=[0,1]$ then $\phi^{-1}(X)=[-1/2,0]$ which again has measure $1/2$,
+so $d_A(\phi)$ is 2 again.
 ```
 
-```tex "haar_character_project/lt_additive_definition"
-If $A$ is a locally compact topological additive abelian group, if $\mu$ is a regular Haar measure on $A$, and if $\phi:A\to A$ is an additive homeomorphism, then we let $d_A(\phi)$ denote the unique positive real number such that $\mu(X)=d_A(\phi)(\phi_*\mu)(X)$ for any Borel set~$X$.
+Strictly speaking our definition of `d_A(φ)` depends on the choice of regular
+Haar measure `\mu`. Note that `mathlib` offers a fixed Borel regular Haar
+measure `MeasureTheory.Measure.haar` on any locally compact topological group,
+and the actual definition of `d_A` in the code uses this definition. Note also
+that the code defines everything for multiplicative groups and uses
+`@[to_additive]` to deduce the corresponding results for additive groups.
+
+```tex "haar_character_project/lt_mathlib_haar_measure"
+Strictly speaking our definition of $d_A(\phi)$ depends on the choice of regular Haar
+measure $\mu$. Note that {\tt mathlib} offers a fixed Borel regular Haar measure
+{\tt MeasureTheory.Measure.haar} on any locally compact topological group
+and the actual definition of $d_A$ in the code uses this definition.
+Note also that the code defines everything for multiplicative groups
+and uses {\tt @[to\_additive]} to deduce the corresponding results
+for additive groups.
 ```
 
 :::theorem "haar_character_independent_of_measure" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
@@ -126,6 +172,8 @@ If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)(\phi_*\mu) = \mu.$
 ```
 
 :::proof "haar_character_pushforward_formula"
+{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
+
 This is a restatement of the previous result.
 :::
 
@@ -154,6 +202,8 @@ If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)\mu = \phi^*\mu.$
 ```
 
 :::proof "haar_character_pullback_formula"
+{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+
 This follows from the pushforward formula applied to the regular Haar measure
 `\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
 :::
@@ -203,8 +253,6 @@ $d_A(id)=1.$
 
 :::theorem "haar_character_preimage_formula" (parent := "haar_character_project")
 If `X` is a Borel set, then `μ(X) = d_A(φ) μ(φ⁻¹(X))`.
-This is the set-theoretic specialization of
-{uses "haar_character_pushforward_formula"}[].
 :::
 
 ```tex "haar_character_project/lt_preimage_formula"
@@ -238,12 +286,13 @@ $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
 ```
 
 :::proof "haar_character_is_multiplicative"
+{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
+
 Here's one way: it suffices to prove that
 `d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu = d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu`
-(because there exists a compact set with positive finite measure) and using
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[] and the fact that
-`(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to
-`μ`.
+(because there exists a compact set with positive finite measure), and using
+lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
+`(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to `μ`.
 :::
 
 ```tex "haar_character_project/multiplicative"
@@ -284,7 +333,13 @@ Take `\mu` to be Lebesgue measure and `X = [0,1]`. We have
 :::
 
 ```tex "haar_character_project/lt_real_proof"
-Take $\mu$ to be Lebesgue measure and $X=[0,1]$.
+\begin{proof}
+  \uses{MeasureTheory.ringHaarChar_mul_volume}
+  \leanok
+  Take $\mu$ to be Lebesgue measure and $X=[0,1]$.
+We have $\delta(u)=\mu(uX)$. If $u>0$ then $u[0,1]=[0,u]$ which has measure $u=|u|$,
+and if $u<0$ then $u*[0,1]=[u,0]$ which has measure $-u=|u|$.
+\end{proof}
 ```
 
 :::theorem "complex_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_complex")
@@ -302,20 +357,46 @@ change area. The general case follows.
 :::
 
 ```tex "haar_character_project/lt_complex_proof"
-Multiplication by a positive real $r$ sends a unit square to a square of area $r^2=|r|^2$.
+\begin{proof}
+  \uses{MeasureTheory.ringHaarChar_mul_volume}
+  \leanok
+  Multiplication by a positive real $r$ sends a unit square to a square of area $r^2=|r|^2$.
+  Multiplication by $e^{i\theta}$ is a rotation and thus does not change area.
+  The general case follows.
+\end{proof}
 ```
 
 # Ring-level Haar characters
 
+Now let $`R`$ be a locally compact topological ring. The Haar character of
+`R`, or more precisely the left Haar character of `R`, is a group homomorphism
+`R^\times \to \R^\times` defined in the following way. If `u ∈ R^\times` then
+left multiplication by `u`, namely the map `\ell_u : (R,+) → (R,+)` defined by
+`\ell_u(r) = ur`, is a homeomorphism and an additive automorphism of `(R,+)`,
+so the preceding theory applies to `\ell_u`.
+
+```tex "haar_character_project/ring_level_intro"
+Now let $R$ be a locally compact topological ring. The \emph{Haar character} of $R$,
+or more precisely the \emph{left Haar character} of $R$, is a group homomorphism
+$R^\times\to\R^\times$ defined in the following way. If $u\in R^\times$ then left multiplication
+by $u$, namely the map $\ell_u:(R,+)\to(R,+)$ defined by $\ell_u(r)=ur$, is a homeomorphism and
+an additive automorphism of $(R,+)$, so the preceding theory applies to $\ell_u$.
+```
+
 :::definition "ring_level_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
-For a locally compact topological ring `R` and `u ∈ R^\times`, define
-`δ_R(u) = d_R(ℓ_u)`, where `ℓ_u(r) = ur`.
+We define `δ_R(u)`, or just `δ(u)` when the ring `R` is clear, to be
+`d_R(ℓ_u)`.
 :::
 
 ```tex "haar_character_project/ring_level"
-Now let $R$ be a locally compact topological ring. The \emph{Haar character} of $R$,
-or more precisely the \emph{left Haar character} of $R$, is a group homomorphism
-$R^\times\to\R^\times$ defined in the following way.
+\begin{definition}
+  \label{MeasureTheory.ringHaarChar}
+  \lean{MeasureTheory.ringHaarChar}
+  \uses{MeasureTheory.addEquivAddHaarChar,MeasureTheory.addEquivAddHaarChar_refl,
+  MeasureTheory.addEquivAddHaarChar_trans}
+  \leanok
+  We define $\delta_R(u)$ (or just $\delta(u)$ when the ring $R$ is clear) to be $d_R(\ell_u)$.
+\end{definition}
 ```
 
 :::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
@@ -403,8 +484,8 @@ continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
 \end{proof}
 ```
 
-:::theorem "padic_haar_character_formula" (parent := "haar_character_project")
-For $`\mathbf{Q}_p`$, the Haar character agrees with the usual p-adic norm.
+:::theorem "padic_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_padic")
+If $`R=\Q_p`$ then $`\delta_R(u)=|u|_p`$, the usual $`p`$-adic norm.
 :::
 
 ```tex "haar_character_project/lt_padic_formula"
@@ -412,27 +493,25 @@ If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
 ```
 
 :::proof "padic_haar_character_formula"
-Normalise Haar measure so that `μ(\Z_p)=1`.
+Normalize Haar measure so that `μ(\Z_p)=1`. If `u` is a `p`-adic unit then
+`u\Z_p=\Z_p` so multiplication by `u` does not change Haar measure. If however
+`u = p` then `u\Z_p` has index `p` in `\Z_p`, and because
+`μ(i+p\Z_p)=μ(p\Z_p)` we have that `μ(\Z_p)=pμ(p\Z_p)` and thus
+`δ(p)=p^{-1}`. These elements generate `\Q_p^\times`, and two characters
+which agree on generators of a group must agree on the group.
 :::
 
 ```tex "haar_character_project/lt_padic_proof"
-Normalise Haar measure so that $\mu(\Z_p)=1$.
-```
-
-:::theorem "padic_integer_haar_character_formula" (parent := "haar_character_project")
-For $`\mathbf{Z}_p`$, the Haar character is constantly $`1`$ on the unit group.
-:::
-
-```tex "haar_character_project/lt_padic_integer_formula"
-If $R=\Z_p$ then the Haar character is constantly $1$ on the unit group.
-```
-
-:::proof "padic_integer_haar_character_formula"
-This is the integral counterpart to the p-adic formula.
-:::
-
-```tex "haar_character_project/lt_padic_integer_proof"
-This is the integral counterpart to the p-adic formula.
+\begin{proof}
+  \uses{MeasureTheory.ringHaarChar_mul_volume}
+  \leanok
+  Normalise Haar measure so that $\mu(\Z_p)=1$.
+  If $u$ is a $p$-adic unit then $u\Z_p=\Z_p$ so multiplication by $u$ didn't change
+  Haar measure. If however $u=p$ then $u\Z_p$ has index $p$ in $\Z_p$ and, because
+  $\mu(i+p\Z_p)=\mu(p\Z_p)$ we have that $\mu(\Z_p)=p\mu(p\Z_p)$ and thus $\delta(p)=p^{-1}$.
+  These elements generate $\Q_p^\times$ and two characters which agree on generators
+  of a group must agree on the group.
+\end{proof}
 ```
 
 If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$ is the norm on
@@ -447,29 +526,28 @@ field.
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
 ```
 
-Normalize Haar measure so that $`\mu(\mathbf{Z}_p)=1`$.
-If `u` is a `p`-adic unit then $`u\mathbf{Z}_p=\mathbf{Z}_p`$ so multiplication
-by `u` does not change Haar measure. If however `u = p` then
-$`u\mathbf{Z}_p`$ has index `p` in $`\mathbf{Z}_p`$, and because
-$`\mu(i+p\mathbf{Z}_p)=\mu(p\mathbf{Z}_p)`$ we have
-$`\mu(\mathbf{Z}_p)=p\mu(p\mathbf{Z}_p)`$ and thus $`\delta(p)=p^{-1}`$.
-These elements generate $`\mathbf{Q}_p^\times`, and two characters which agree
-on generators of a group must agree on the group.
-
-```tex "haar_character_project/lt_padic_calculation"
-\begin{proof}
-  \uses{MeasureTheory.ringHaarChar_mul_volume}
-  \leanok
-  Normalise Haar measure so that $\mu(\Z_p)=1$.
-  If $u$ is a $p$-adic unit then $u\Z_p=\Z_p$ so multiplication by $u$ didn't change
-  Haar measure. If however $u=p$ then $u\Z_p$ has index $p$ in $\Z_p$ and, because
-  $\mu(i+p\Z_p)=\mu(p\Z_p)$ we have that $\mu(\Z_p)=p\mu(p\Z_p)$ and thus $\delta(p)=p^{-1}$.
-  These elements generate $\Q_p^\times$ and two characters which agree on generators
-  of a group must agree on the group.
-\end{proof}
-```
-
 # Algebras
+
+Say $`F`$ is a locally compact topological ring, for example `\R`, `\bbC`,
+`\Q_p`, or the adeles of a number field, `V` is a finite free `F`-module, and
+`φ : V → V` is an invertible `F`-linear map. Then `V` with its module topology
+(which is the product topology if one picks a basis) is a locally compact
+topological abelian group, and `φ` is additive. One can check that linearity
+implies continuity, this is `IsModuleTopology.continuous_of_linearMap` in
+`mathlib`, so in fact `φ` is a homeomorphism and our theory applies. The
+following lemma gives a formula for the scale factor `d_V(φ)`.
+
+```tex "haar_character_project/algebras_intro"
+  Say $F$ is a locally compact topological ring (for example $\R$ or $\bbC$ or $\Q_p$,
+  or the adeles of a number field), $V$
+  is a finite free $F$-module, and $\phi:V\to V$ is an invertible $F$-linear map.
+  Then $V$ with its module topology (which is the product topology if one picks a basis)
+  is a locally compact topological abelian group, and $\phi$ is additive.
+  One can check that linearity implies continuity (this is
+  {\tt IsModuleTopology.continuous\_of\_linearMap} in mathlib),
+  so in fact $\phi$ is a homeomorphism
+  and our theory applies. The following lemma gives a formula for the scale factor $d_V(\phi)$.
+```
 
 :::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
 Let `F` be a locally compact field and `V` a finite free `F`-module. Assume that
@@ -477,31 +555,84 @@ there is an `F`-basis of `V` with respect to which `φ` is a product of
 elementary and diagonal matrices. Then
 `d_V(φ) = δ_F(det(φ))`, where `det(φ)` is the determinant of `φ` as an
 `F`-linear map.
-This is the linear-algebra counterpart to {uses "ring_level_haar_character"}[].
 :::
 
 ```tex "haar_character_project/lt_linear_map_determinant_formula"
-Assume that there's an $F$-basis for $V$ such that $\phi$ is a product of elementary and diagonal matrices.
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
+    MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc}
+  \lean{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
+    MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc}
+  \uses{MeasureTheory.ringHaarChar}
+  \leanok
+  \discussion{517}
+  Assume that there's an $F$-basis for $V$ such that $\phi$ is a product of elementary
+  and diagonal matrices (note that this is automatic if $F$ is a field and mathlib
+  has this). Then
+  $d_V(\phi)=\delta_F(\det(\phi))$, where $\det(\phi)\in F$ is the determinant of
+  $\phi$ as an $F$-linear map.
+\end{lemma}
 ```
 
 :::proof "haar_character_linear_map_determinant_formula"
-The proof is a generalization of `Real.map_matrix_volume_pi_eq_smul_volume_pi`.
+The proof is a generalization of
+`Real.map_matrix_volume_pi_eq_smul_volume_pi`, which crucially uses the
+induction principle
+`Matrix.diagonal_transvection_induction_of_det_ne_zero`. One checks it
+explicitly for diagonal matrices and for matrices which are the identity except
+that one off-diagonal entry is non-zero.
+
+Note: we assume that `F` is second countable, but it should not be necessary.
 :::
 
 ```tex "haar_character_project/lt_linear_map_determinant_proof"
-The proof is a generalization of \href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.html\#Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi}{\tt Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi}.
+\begin{proof}
+\uses{MeasureTheory.addEquivAddHaarChar}
+\leanok
+The proof is a generalization of
+\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.html\#Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi}
+{\tt Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi},
+which crucially uses the induction principle
+\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/LinearAlgebra/Matrix/Transvection.html\#Matrix.diagonal\_transvection\_induction\_of\_det\_ne\_zero}
+{\tt Matrix.diagonal\_transvection\_induction\_of\_det\_ne\_zero}.
+One checks it explicitly for diagonal matrices and for matrices which are the identity
+except that one off-diagonal entry is non-zero.
+
+Note: we assume that $F$ is second countable
+(but it shouldn't be necessary).
+\end{proof}
+```
+
+Now say $`F`$ is a locally compact topological field, and that `R` is a
+possibly noncommutative `F`-algebra. Recall that this means that `F` lies in
+the center of `R`, unless `R = 0`. Assume that `R` is finite-dimensional as an
+`F`-vector space. Then if we give `R` the `F`-module topology, which is just
+the product topology if we pick a basis, it is known that `R` becomes a
+topological ring. Now say `u ∈ R^\times`, and recall that `\ell_u : R → R` is
+left multiplication by `u`. Then `\ell_u` is easily checked to be an `F`-linear
+homeomorphism.
+
+```tex "haar_character_project/algebras_corollary_intro"
+Now say $F$ is a locally compact topological field, and that $R$ is a (possibly
+non-commutative) $F$-algebra. Recall that this means that ($R=0$ or) $F$ lies in the centre of $R$.
+Assume that $R$ is finite-dimensional as an $F$-vector space. Then if we give $R$ the
+$F$-module topology (which is just the product topology if we pick a basis) then it is known
+that $R$ becomes a topological ring. Now say $u\in R^\times$, and
+recall $\ell_u:R\to R$ is left multiplication by $u$. Then $\ell_u$ is easily checked to be
+an $F$-linear homeomorphism.
 ```
 
 :::theorem "algebra_haar_character_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det")
-If `F` is a locally compact field, `R` is a finite-dimensional `F`-algebra,
-and `u ∈ R^\times`, then
-`δ_R(u) = δ_F(det(ℓ_u))`.
-This is the algebraic corollary of
-{uses "haar_character_linear_map_determinant_formula"}[].
+If `u ∈ R^\times` then `δ_R(u) = δ_F(det(ℓ_u))`.
 :::
 
 ```tex "haar_character_project/lt_algebra_determinant_formula"
-If $u\in R^\times$ then $\delta_R(u)=\delta_F(\det(\ell_u))$.
+\begin{corollary}
+  \label{MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det}
+  \lean{MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det}
+  \leanok
+  If $u\in R^\times$ then $\delta_R(u)=\delta_F(\det(\ell_u))$.
+\end{corollary}
 ```
 
 :::proof "algebra_haar_character_determinant_formula"
@@ -787,12 +918,21 @@ Follows immediately from
 # Some measure-theoretic preliminaries
 
 :::theorem "open_embedding_pullback_is_haar_measure" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.isHaarMeasure_comap")
-If a locally compact topological group embeds openly into another, then pulling
-back a Haar measure along that open embedding again gives a Haar measure.
+Let `A` and `B` be locally compact topological groups, and let `f : A → B` be
+both a group homomorphism and an open embedding. The pullback along `f` of a
+Haar measure on `B` is a Haar measure on `A`.
 :::
 
 ```tex "haar_character_project/lt_open_embedding_haar_measure"
-The pullback along $f$ of a Haar measure on $B$ is a Haar measure on $A$.
+\begin{lemma}
+  \label{Topology.IsOpenEmbedding.isHaarMeasure_comap}
+  \lean{Topology.IsOpenEmbedding.isHaarMeasure_comap}
+  \leanok
+  \discussion{507}
+  Let $A$ and $B$ be locally compact topological groups
+  and let $f:A\to B$ be both a group homomorphism and open embedding.
+  The pullback along $f$ of a Haar measure on $B$ is a Haar measure on $A$.
+\end{lemma}
 ```
 
 :::proof "open_embedding_pullback_is_haar_measure"
@@ -806,12 +946,19 @@ Translation-invariance is easy, compact sets are finite because continuous image
 ```
 
 :::theorem "open_embedding_pullback_regular_measure" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.regular_comap")
-Pulling a regular Borel measure back along an open embedding again gives a
-regular Borel measure.
+The pullback of a regular Borel measure along an open embedding is a regular
+Borel measure.
 :::
 
 ```tex "haar_character_project/lt_open_embedding_regular"
-The pullback of a regular Borel measure along an open embedding is a regular Borel measure.
+\begin{lemma}
+  \label{Topology.IsOpenEmbedding.regular_comap}
+  \lean{Topology.IsOpenEmbedding.regular_comap}
+  \leanok
+  \discussion{513}
+  The pullback of a regular Borel measure along an open
+  embedding is a regular Borel measure.
+\end{lemma}
 ```
 
 :::proof "open_embedding_pullback_regular_measure"
@@ -825,12 +972,19 @@ Again this is because the image of compact is compact and the image of open is o
 ```
 
 :::theorem "compact_group_haar_character_trivial" (parent := "haar_character_project") (lean := "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace")
-If `A` is a compact topological additive group and `φ : A → A` is an additive
-isomorphism, then `d_A(φ) = 1`.
+Say `A` is a compact topological additive group and `φ : A → A` is an additive
+isomorphism. Then `d_A(φ)=1`.
 :::
 
 ```tex "haar_character_project/lt_compact_group_trivial"
-Say $A$ is a compact topological additive group and $\phi:A\to A$ is an additive isomorphism.
+\begin{lemma}
+  \label{MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace}
+  \lean{MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace}
+  \leanok
+  \discussion{532}
+  Say $A$ is a compact topological additive group and $\phi:A\to A$ is an additive isomorphism.
+Then $d_A(\phi)=1.$
+\end{lemma}
 ```
 
 :::proof "compact_group_haar_character_trivial"
@@ -851,7 +1005,16 @@ additive homeomorphisms such that the square commutes
 :::
 
 ```tex "haar_character_project/lt_open_embedding_preserves_haar_character"
-If $f:A\to B$ is a group homomorphism and open embedding between locally compact topological additive groups and if $\alpha:A\to A$ and $\beta:B\to B$ are additive homeomorphisms such that the square commutes then $d_A(\alpha)=d_B(\beta)$.
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding}
+  \lean{MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding}
+  \leanok
+  \discussion{551}
+  If $f:A\to B$ is a group homomorphism and open embedding between locally compact
+  topological additive groups and if $\alpha:A\to A$ and $\beta:B\to B$ are additive
+  homeomorphisms such that the square commutes (i.e., $f\circ\alpha=\beta\circ f$)
+  then $d_A(\alpha)=d_B(\beta)$.
+\end{lemma}
 ```
 
 :::proof "open_embedding_preserves_haar_character"
@@ -971,13 +1134,48 @@ Then $d_A(\phi)=1.$
 
 # Restricted products
 
+Now say $`A = \prod'_i A_i`$ is the restricted product of a collection of types
+`A_i` with respect to the subsets `C_i`. Recall that this is the subset of
+`∏_i A_i` consisting of those elements whose `i`th coordinate lies in `C_i`
+for all but finitely many `i`. Say `B = \prod'_i B_i` is the restricted
+product of types `B_i` over the same index set, with respect to subsets `D_i`.
+Say `φ_i : A_i → B_i` are functions with the property that
+`φ_i(C_i) ⊆ D_i` for all but finitely many `i`. It is easily checked that the
+`φ_i` induce a function `φ := \prod'_i φ_i : A → B`. It is also easily checked
+that if all the `A_i` and `B_i` are groups or rings or `R`-modules, the `C_i`
+and `D_i` are subgroups or subrings or submodules, and the `φ_i` are group or
+ring or module homomorphisms, then `φ` is a group or ring or module
+homomorphism. However topological facts lie a little deeper.
+
+```tex "haar_character_project/restricted_products_intro"
+Now say $A=\prod'_i A_i$ is the restricted product of a collection of types $A_i$
+  with respect to the subsets $C_i$. Recall that this is the subset of $\prod_i A_i$
+  consisting of y Say $B=\prod'_i B_i$ is the restricted
+  product of types $B_i$ over the same index set, with respect to
+  subsets $D_i$. Say $\phi_i:A_i\to B_i$ are functions
+  with the property that $\phi_i(C_i)\subseteq D_i$ for all but finitely many $i$.
+It is easily checked that the $\phi_i$ induce a function $\phi:=\prod'_i\phi_i:A\to B$. It is also easily
+checked that if all the $A_i$ and $B_i$ are groups or rings or $R$-modules, the $C_i$ and $D_i$
+are subgroups or subrings or submodules,
+and the $\phi_i$ are group or ring or module homomorphisms, then $\phi$ is a group or ring or
+module homomorphism. However topological facts lie a little deeper.
+```
+
 :::theorem "restricted_product_maps_continuous" (parent := "haar_character_project") (lean := "Continuous.restrictedProduct_congrRight")
-If one has compatible continuous maps on the factors of a restricted product,
-then the induced map on the restricted product is continuous.
+If the `A_i` and `B_i` are topological spaces and the `φ_i` are continuous
+functions, then the restricted product `φ = \prod'_i φ_i` is a continuous
+function.
 :::
 
 ```tex "haar_character_project/lt_restricted_product_continuous"
-If the $A_i$ and $B_i$ are topological spaces and the $\phi_i$ are continuous functions, then the restricted product $\phi = \prod'_i\phi_i$ is a continuous function.
+\begin{lemma}
+  \lean{Continuous.restrictedProduct_congrRight}
+  \label{Continuous.restrictedProduct_congrRight}
+  \leanok
+  \discussion{531}
+  If the $A_i$ and $B_i$ are topological spaces and the $\phi_i$ are continuous functions,
+  then the restricted product $\phi = \prod'_i\phi_i$ is a continuous function.
+\end{lemma}
 ```
 
 :::proof "restricted_product_maps_continuous"
@@ -1005,16 +1203,79 @@ of the `i` for which `\phi(C_i)\not=D_i`. For such `S`, this map factors as
 \end{proof}
 ```
 
+We now focus on the case that `B_i = A_i` are locally compact groups,
+`D_i = C_i` are compact open subgroups, and `φ_i : A_i → A_i` are group
+isomorphisms and homeomorphisms sending `C_i` onto `C_i` for all but finitely
+many `i`. Then the restricted product `A := \prod' A_i` of the `A_i` with
+respect to the `C_i` is also a locally compact topological group, and the
+restricted product `φ = \prod' φ_i` of the `φ_i` is a group isomorphism and
+homeomorphism, so we can ask how `d_A(φ)` compares to the `d_{A_i}(φ_i)`.
+First note that `d_{A_i}(φ_i) = 1` for all the `i` such that
+`φ_i(C_i) = C_i`, as `d_{A_i}(φ_i)` can be computed as
+`μ(φ_i(C_i))/μ(C_i)` and `μ(C_i)` is guaranteed to have positive finite
+measure as it is open and compact. Hence the product `\prod_i d_{A_i}(φ_i)` is
+a finite product, in the sense that all but finitely many terms are `1`. The
+following theorem shows that the value of this product is `d(φ)`.
+
+```tex "haar_character_project/restricted_products_transition"
+We now focus on the case that $B_i=A_i$ are locally compact groups, $D_i=C_i$ are compact
+open subgroups, and $\phi_i:A_i\to A_i$ are group isomorphisms and homeomorphisms sending
+$C_i$ onto $C_i$ for all but finitely many $i$. Then the restricted product $A:=\prod'A_i$
+of the $A_i$ with respect to the $C_i$ is also a locally compact topological group, and the
+restricted product $\phi=\prod'\phi_i$ of the $\phi_i$ is a group isomorphism and homeomorphism,
+so we can ask how $d_A(\phi)$ compares to the $d_{A_i}(\phi_i)$.
+
+First note that $d_{A_i}(\phi_i)=1$ for all the $i$ such that $\phi_i(C_i)=C_i$, as
+$d_{A_i}(\phi_i)$ can be computed as $\mu(\phi_i(C_i))/\mu(C_i)$ and $\mu(C_i)$ is
+guaranteed to have positive finite measure as it is open and compact. Hence the product
+$\prod_id_{A_i}\phi_i$ is a finite product, in the sense that all but finitely many terms are 1.
+The following theorem shows that the value of this product is $d(\phi)$.
+```
+
 :::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight")
 With `A`, `A_i`, `C_i`, `φ_i`, and `φ` defined as above, one has
 `δ_A(φ) = ∏_i δ_{A_i}(φ_i)`.
-This uses the compact-triviality input from
-{uses "compact_group_haar_character_trivial"}[] and the finite-product formula
-{uses "product_haar_character_formula"}[].
 :::
 
 ```tex "haar_character_project/lt_restricted_product_formula"
-With $A$, $A_i$, $C_i$, $\phi_i$, $\phi$ defined as above, we have $\delta_A(\phi)=\prod_i\delta_{A_i}(\phi_i)$.
+\begin{theorem}
+  \label{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
+  \lean{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
+  \leanok
+  \discussion{552}
+  With $A$, $A_i$, $C_i$, $\phi_i$, $\phi$ defined as above, we have
+  $\delta_A(\phi)=\prod_i\delta_{A_i}(\phi_i)$.
+\end{theorem}
+```
+
+In the Lean file we make the additional assumption that the index set over
+which we're taking the product is countable, and that the `A_i` are second
+countable. This is because in this proof we make use of an infinite product
+`\prod_{i\notin S} C_i` of topological spaces equipped with Haar measure, so
+each topological space gets equipped with the Borel sigma algebra. `mathlib`
+then gives the product a canonical product sigma algebra which, in the case
+where the index set is uncountable, may not be the Borel sigma algebra.
+However we also want to use Haar measure on the product, so we need the
+canonical sigma algebra on this product to be the Borel sigma algebra. Rather
+than taking the trouble to locally turn off this product sigma algebra
+construction in FLT, we simply restrict to a countable index set and add
+second countability assumptions, because then the product is a Borel sigma
+algebra and this is all we need in our applications to adeles.
+
+```tex "haar_character_project/lt_restricted_product_remark"
+\begin{remark} In the Lean file we make the additional assumption that the index set over
+  which we're taking the product, is countable, and that the $A_i$ are second countable.
+  This is because in this proof we make use
+  of an infinite product $\prod_{i\notin S}C_i$ of topological spaces equipped with Haar measure,
+  so each topological space gets equipped with the Borel sigma algebra.
+  Mathlib then gives the product a canonical product sigma algebra which, in the case where the
+  index set is uncountable, may not be the Borel sigma algebra. However we also want to use Haar
+  measure on the product so we need the ``canonical'' sigma algebra on this product to be the
+  Borel sigma algebra. Rather than taking the trouble
+  to locally turn off this product sigma algebra construction in FLT, we simply restrict to a
+  countable index set and add second countability assumptions, because then the product is a
+  Borel sigma algebra and this is all we need in our applications to adeles.
+\end{remark}
 ```
 
 :::proof "restricted_product_haar_character_formula"
@@ -1165,15 +1426,19 @@ As a special case, if $R$ is the restricted product of a collection of topologic
 # Adeles
 
 :::theorem "adelic_units_in_kernel_of_haar_character" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
-The key intended application is that if `B` is a finite-dimensional `K`-algebra,
-then `B^\times` lies in the kernel of the Haar character of
-`B \otimes_K \A_K`.
-This combines {uses "restricted_product_haar_character_formula"}[] and
-{uses "algebra_haar_character_determinant_formula"}[].
+If `B` is a finite-dimensional `\Q`-algebra, if `B_{\A}` denotes the ring
+`B \otimes_{\Q} \A_{\Q}`, and if `b ∈ B^\times`, then `δ_{B_{\A}}(b)=1`.
 :::
 
 ```tex "haar_character_project/lt_adelic_units_kernel"
-If $B$ is a finite-dimensional $K$-algebra, then $B^\times$ lies in the kernel of the Haar character of $B\otimes_K\A_K$.
+\begin{corollary}
+    \label{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}
+    \lean{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}
+    \leanok
+    If $B$ is a finite-dimensional $\Q$-algebra (for example a number field, or a quaternion algebra over a number field),
+    if $B_{\A}$ denotes the ring $B\otimes_{\Q}\A_{\Q}$, and if $b\in B^\times$,
+    then $\delta_{B_{\A}}(b)=1$.
+  \end{corollary}
 ```
 
 :::proof "adelic_units_in_kernel_of_haar_character"
