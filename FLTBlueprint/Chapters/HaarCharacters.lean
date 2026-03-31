@@ -133,15 +133,16 @@ and uses {\tt @[to\_additive]} to deduce the corresponding results
 for additive groups.
 ```
 
-:::theorem "haar_character_independent_of_measure" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
-This scaling factor is independent of the chosen regular Haar measure.
+:::theorem "MeasureTheory.addEquivAddHaarChar_eq" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
+$`d_A(\phi)`$ is independent of choice of regular Haar measure.
 :::
 
 ```tex "haar_character_project/lt_independent_of_measure"
 $d_A(\phi)$ is independent of choice of regular Haar measure.
 ```
 
-:::proof "haar_character_independent_of_measure"
+:::proof "MeasureTheory.addEquivAddHaarChar_eq"
 If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and the
 `λ`s on each side of `μ'(X) = d_A(\phi)(\phi_* μ')(X)` cancel.
 :::
@@ -162,18 +163,18 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 \end{proof}
 ```
 
-:::theorem "haar_character_pushforward_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
-For any regular Haar measure `μ`, one has
-$`d_A(\phi) (\phi_* \mu) = \mu`.
+:::theorem "MeasureTheory.addEquivAddHaarChar_smul_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
+{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
+If `μ` is any regular Haar measure on `A` then
+$`d_A(\phi)(\phi_*\mu) = \mu.`$
 :::
 
 ```tex "haar_character_project/lt_pushforward_formula"
 If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)(\phi_*\mu) = \mu.$
 ```
 
-:::proof "haar_character_pushforward_formula"
+:::proof "MeasureTheory.addEquivAddHaarChar_smul_map"
 {uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
-
 This is a restatement of the previous result.
 :::
 
@@ -192,7 +193,8 @@ This is a restatement of the previous result.
 \end{proof}
 ```
 
-:::theorem "haar_character_pullback_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
+:::theorem "MeasureTheory.addEquivAddHaarChar_comap" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
+{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
 If `μ` is any regular Haar measure on `A` then
 `d_A(φ)μ = \phi^*μ`.
 :::
@@ -201,9 +203,8 @@ If `μ` is any regular Haar measure on `A` then
 If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)\mu = \phi^*\mu.$
 ```
 
-:::proof "haar_character_pullback_formula"
+:::proof "MeasureTheory.addEquivAddHaarChar_comap"
 {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
-
 This follows from the pushforward formula applied to the regular Haar measure
 `\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
 :::
@@ -224,7 +225,8 @@ This follows from the pushforward formula applied to the regular Haar measure
 \end{proof}
 ```
 
-:::theorem "haar_character_identity" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
+:::theorem "MeasureTheory.addEquivAddHaarChar_refl" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
 `d_A(id)=1`.
 :::
 
@@ -232,7 +234,8 @@ This follows from the pushforward formula applied to the regular Haar measure
 $d_A(id)=1.$
 ```
 
-:::proof "haar_character_identity"
+:::proof "MeasureTheory.addEquivAddHaarChar_refl"
+{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
 `d_A(id)=1`.
 :::
 
@@ -240,7 +243,7 @@ $d_A(id)=1.$
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_refl}
   \lean{MeasureTheory.addEquivAddHaarChar_refl}
-  \uses{MeasureTheory.addEquivAddHaarChar_eq}
+  \uses{MeasureTheory.addEquivAddHaarChar}
   \leanok
   $d_A(id)=1.$
 \end{lemma}
@@ -259,17 +262,18 @@ If `X` is a Borel set, then `μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 If $X$ is a Borel set then $\mu(X)=d_A(\phi)\mu(\phi^{-1}X)$.
 ```
 
-:::theorem "haar_character_integral_formula" (parent := "haar_character_project")
-If `f : A → ℝ` is Borel measurable, then
+:::theorem "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_integral_map")
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
+If `f : A → ℝ` is a Borel measurable function then
 `d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
-Equivalently, `d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^* μ)(x)`.
 :::
 
 ```tex "haar_character_project/lt_integral_formula"
 If $f:A\to\R$ is a Borel measurable function then $d_A(\phi)\int f(x)d\phi_*\mu(x)=\int f(x)d\mu(x)$.
 ```
 
-:::proof "haar_character_integral_formula"
+:::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_map"
+{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
 This is a restatement of the previous result.
 :::
 
@@ -277,7 +281,42 @@ This is a restatement of the previous result.
 This is a restatement of the previous result.
 ```
 
-:::theorem "haar_character_is_multiplicative" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
+We also have the following variant:
+
+```tex "haar_character_project/lt_integral_variant_intro"
+We also have the following variant:
+```
+
+:::theorem "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (parent := "haar_character_project") (lean := "MeasureTheory.integral_comap_eq_addEquivAddHaarChar_smul")
+{uses "MeasureTheory.addEquivAddHaarChar_comap"}[]
+If `f : A → ℝ` is a Borel measurable function then
+`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
+:::
+
+```tex "haar_character_project/lt_integral_variant"
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_smul_integral_comap}
+  \lean{MeasureTheory.integral_comap_eq_addEquivAddHaarChar_smul}
+  \uses{MeasureTheory.addEquivAddHaarChar_comap}
+  \leanok
+  If $f:A\to\R$ is a Borel measurable function then
+  $d_A(\phi)\int f(x)d\mu(x)=\int f(x)d\phi^*\mu(x)$.
+\end{lemma}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"
+This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
+:::
+
+```tex "haar_character_project/lt_integral_variant_proof"
+\begin{proof}
+  \leanok
+  This is immediate from corollary~\ref{MeasureTheory.addEquivAddHaarChar_comap}.
+\end{proof}
+```
+
+:::theorem "MeasureTheory.addEquivAddHaarChar_trans" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
 `d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
 :::
 
@@ -285,7 +324,8 @@ This is a restatement of the previous result.
 $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
 ```
 
-:::proof "haar_character_is_multiplicative"
+:::proof "MeasureTheory.addEquivAddHaarChar_trans"
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
 {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
 
 Here's one way: it suffices to prove that
@@ -383,7 +423,10 @@ by $u$, namely the map $\ell_u:(R,+)\to(R,+)$ defined by $\ell_u(r)=ur$, is a ho
 an additive automorphism of $(R,+)$, so the preceding theory applies to $\ell_u$.
 ```
 
-:::definition "ring_level_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
+:::definition "MeasureTheory.ringHaarChar" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
+{uses "MeasureTheory.addEquivAddHaarChar_refl"}[]
+{uses "MeasureTheory.addEquivAddHaarChar_trans"}[]
 We define `δ_R(u)`, or just `δ(u)` when the ring `R` is clear, to be
 `d_R(ℓ_u)`.
 :::
@@ -399,7 +442,8 @@ We define `δ_R(u)`, or just `δ(u)` when the ring `R` is clear, to be
 \end{definition}
 ```
 
-:::theorem "ring_haar_character_integral_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
+:::theorem "MeasureTheory.ringHaarChar_mul_integral" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
+{uses "MeasureTheory.ringHaarChar"}[]
 If `f : R → ℝ` is Borel measurable and `u ∈ R^\times`, then
 `δ_R(u) ∫ f(ux) dμ(x) = ∫ f(x) dμ(x)`.
 :::
@@ -421,7 +465,9 @@ If `f : R → ℝ` is Borel measurable and `u ∈ R^\times`, then
 \end{proof}
 ```
 
-:::theorem "ring_haar_character_volume_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
+:::theorem "MeasureTheory.ringHaarChar_mul_volume" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
+{uses "MeasureTheory.ringHaarChar"}[]
+{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
 If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
 `μ(rX) = δ_R(r) μ(X)`.
 :::
@@ -442,7 +488,8 @@ If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
 \end{proof}
 ```
 
-:::theorem "ring_haar_character_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
+:::theorem "MeasureTheory.ringHaarChar_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
+{uses "MeasureTheory.ringHaarChar"}[]
 The function `δ_R : R^\times → ℝ_{>0}` is continuous.
 :::
 
@@ -450,7 +497,9 @@ The function `δ_R : R^\times → ℝ_{>0}` is continuous.
 The function $\delta_R:R^\times\to\R_{>0}$ is continuous.
 ```
 
-:::proof "ring_haar_character_continuous"
+:::proof "MeasureTheory.ringHaarChar_continuous"
+{uses "MeasureTheory.ringHaarChar"}[]
+{uses "MeasureTheory.ringHaarChar_mul_integral"}[]
 Fix a Haar measure `\mu` on `R` and a continuous real-valued function `f` on
 `R` with compact support and such that `\int f(x) d\mu(x) \neq 0`. Then
 `r \mapsto \int f(rx) d\mu(x)` is continuous, and so is
@@ -515,8 +564,8 @@ which agree on generators of a group must agree on the group.
 ```
 
 If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$ is the norm on
-$`R`$ normalized in the following way: $`\delta_R(\varpi)=q^{-1}`$, where
-$`\varpi`$ is a uniformizer and $`q`$ is the size of the finite residue field.
+$`R`$ normalised in the following way: $`\delta_R(\varpi)=q^{-1}`$, where
+$`\varpi`$ is a uniformiser and $`q`$ is the size of the finite residue field.
 In fact the same is true for any nonarchimedean local field. The proof is the
 same as for $`\Q_p`$. Right now this is difficult to state in Lean because
 there is still some discussion about the definition of a nonarchimedean local
@@ -549,11 +598,11 @@ following lemma gives a formula for the scale factor `d_V(φ)`.
   and our theory applies. The following lemma gives a formula for the scale factor $d_V(\phi)$.
 ```
 
-:::theorem "haar_character_linear_map_determinant_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
-Let `F` be a locally compact field and `V` a finite free `F`-module. Assume that
-there is an `F`-basis of `V` with respect to which `φ` is a product of
+:::theorem "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
+{uses "MeasureTheory.ringHaarChar"}[]
+Assume that there is an `F`-basis for `V` such that `φ` is a product of
 elementary and diagonal matrices. Then
-`d_V(φ) = δ_F(det(φ))`, where `det(φ)` is the determinant of `φ` as an
+`d_V(φ)=δ_F(det(φ))`, where `det(φ) ∈ F` is the determinant of `φ` as an
 `F`-linear map.
 :::
 
@@ -574,7 +623,7 @@ elementary and diagonal matrices. Then
 \end{lemma}
 ```
 
-:::proof "haar_character_linear_map_determinant_formula"
+:::proof "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"
 The proof is a generalization of
 `Real.map_matrix_volume_pi_eq_smul_volume_pi`, which crucially uses the
 induction principle
@@ -917,7 +966,7 @@ Follows immediately from
 
 # Some measure-theoretic preliminaries
 
-:::theorem "open_embedding_pullback_is_haar_measure" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.isHaarMeasure_comap")
+:::theorem "Topology.IsOpenEmbedding.isHaarMeasure_comap" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.isHaarMeasure_comap")
 Let `A` and `B` be locally compact topological groups, and let `f : A → B` be
 both a group homomorphism and an open embedding. The pullback along `f` of a
 Haar measure on `B` is a Haar measure on `A`.
@@ -935,17 +984,17 @@ Haar measure on `B` is a Haar measure on `A`.
 \end{lemma}
 ```
 
-:::proof "open_embedding_pullback_is_haar_measure"
-The TeX proof is elementary: translation invariance is immediate, compact sets
-stay finite because continuous images of compact sets are compact, and open sets
-stay bounded because open embeddings send open sets to open sets.
+:::proof "Topology.IsOpenEmbedding.isHaarMeasure_comap"
+Translation-invariance is easy, compact sets are finite because continuous
+image of compact is compact, open sets are bounded because image of open is
+open.
 :::
 
 ```tex "haar_character_project/lt_open_embedding_haar_measure_proof"
 Translation-invariance is easy, compact sets are finite because continuous image of compact is compact, open sets are bounded because image of open is open.
 ```
 
-:::theorem "open_embedding_pullback_regular_measure" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.regular_comap")
+:::theorem "Topology.IsOpenEmbedding.regular_comap" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.regular_comap")
 The pullback of a regular Borel measure along an open embedding is a regular
 Borel measure.
 :::
@@ -961,10 +1010,9 @@ Borel measure.
 \end{lemma}
 ```
 
-:::proof "open_embedding_pullback_regular_measure"
-Again this is exactly the TeX argument: the image of a compact set is compact
-and the image of an open set is open, so the usual regularity axioms are
-preserved by pullback.
+:::proof "Topology.IsOpenEmbedding.regular_comap"
+Again this is because the image of compact is compact and the image of open is
+open, so all the properties of being a regular measure are easily checked.
 :::
 
 ```tex "haar_character_project/lt_open_embedding_regular_proof"
@@ -1442,8 +1490,8 @@ If `B` is a finite-dimensional `\Q`-algebra, if `B_{\A}` denotes the ring
 ```
 
 :::proof "adelic_units_in_kernel_of_haar_character"
-Follows immediately from
-{uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[].
+{uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[]
+Follows immediately from the previous theorem.
 :::
 
 ```tex "haar_character_project/lt_adelic_units_kernel_proof"
