@@ -457,7 +457,16 @@ These elements generate $`\mathbf{Q}_p^\times`, and two characters which agree
 on generators of a group must agree on the group.
 
 ```tex "haar_character_project/lt_padic_calculation"
-Normalise Haar measure so that $\mu(\Z_p)=1$.
+\begin{proof}
+  \uses{MeasureTheory.ringHaarChar_mul_volume}
+  \leanok
+  Normalise Haar measure so that $\mu(\Z_p)=1$.
+  If $u$ is a $p$-adic unit then $u\Z_p=\Z_p$ so multiplication by $u$ didn't change
+  Haar measure. If however $u=p$ then $u\Z_p$ has index $p$ in $\Z_p$ and, because
+  $\mu(i+p\Z_p)=\mu(p\Z_p)$ we have that $\mu(\Z_p)=p\mu(p\Z_p)$ and thus $\delta(p)=p^{-1}$.
+  These elements generate $\Q_p^\times$ and two characters which agree on generators
+  of a group must agree on the group.
+\end{proof}
 ```
 
 # Algebras
@@ -983,7 +992,17 @@ of the `i` for which `\phi(C_i)\not=D_i`. For such `S`, this map factors as
 :::
 
 ```tex "haar_character_project/lt_restricted_product_continuous_proof"
-We use the universal property {\tt RestrictedProduct.continuous\_dom} of the topology in mathlib.
+\begin{proof}
+  \leanok
+  We use the universal property {\tt RestrictedProduct.continuous\_dom} of the
+  topology in mathlib to reduce to the claim that for all finite $S$,
+  the induced map $A_S:=\prod_{i\in S}A_i\times\prod_{i\notin S}C_i\to B$ is continuous.
+  Because the inclusion $A_S\to A_T$ is continuous for $S\subseteq T$ we are reduced
+  to checking this claim for $S$ sufficiently large that it contains all of the $i$
+  for which $\phi(C_i)\not=D_i$. For such $S$, this map $A_S\to B$ factors as $A_S\to B_S\to B$
+  and $B_S\to B$ is continuous, so it suffices to prove that $A_S\to B_S$ is continuous, but
+  this is just a product of continuous maps.
+\end{proof}
 ```
 
 :::theorem "restricted_product_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight")
