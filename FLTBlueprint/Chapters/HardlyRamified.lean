@@ -13,6 +13,8 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+set_option maxRecDepth 20000
+
 #doc (Manual) "Reducibility Of p-Torsion Of The Frey Curve" =>
 
 :::group "hardly_ramified_program"
