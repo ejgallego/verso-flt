@@ -2,6 +2,7 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Abstract
+import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Concrete
 import FLT.NumberField.Completion.Finite
 import FLT.QuaternionAlgebra.NumberField
 
@@ -155,16 +156,23 @@ Finally `R`-linearity is because the `G`-action is `R`-linear.
   Finally $R$-linearity is because the $G$-action is $R$-linear.
 \end{proof}
 ```
-:::theorem "finite_double_coset_criterion" (parent := "hecke_operator_project")
 The finiteness hypothesis that the decomposition `UgV = \coprod_i g_iV` is
 into a finite union is necessary for the theory to work. If `G` is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
-:::
-```tex "hecke_operator_project/abstract_theory/finite_double_coset"
+
+```tex "hecke_operator_project/abstract_theory/finite_double_coset_intro"
 The finiteness hypothesis that the decomposition $UgV=\coprod_i g_iV$ is
 into a finite union is necessary for the theory to work. If $G$ is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
+```
 
+:::theorem "QuotientGroup.mk_image_finite_of_compact_of_open" (parent := "hecke_operator_project") (lean := "QuotientGroup.mk_image_finite_of_compact_of_open")
+If `U` and `V` are compact subgroups of a topological group `G`, if `V` is
+also open, and if `g ∈ G`, then the double coset space `UgV` is a finite union
+of left cosets `g_iV`.
+:::
+
+```tex "hecke_operator_project/abstract_theory/finite_double_coset"
 \begin{lemma}
   \lean{QuotientGroup.mk_image_finite_of_compact_of_open}
   \label{QuotientGroup.mk_image_finite_of_compact_of_open}
@@ -175,7 +183,7 @@ group then here is a criterion which gives the finiteness hypothesis for free.
   is a finite union of left cosets $g_iV$.
 \end{lemma}
 ```
-:::proof "finite_double_coset_criterion"
+:::proof "QuotientGroup.mk_image_finite_of_compact_of_open"
 The subset `UgV` of `G` is a continuous image of the compact set `U × V`
 and is hence compact, and it is covered by the disjoint left cosets `g_iV`;
 this cover must thus be finite.
@@ -189,6 +197,7 @@ this cover must thus be finite.
 \end{proof}
 ```
 :::theorem "abstract_hecke_operators_commute" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
+{uses "AbstractHeckeOperator.HeckeOperator"}[]
 Say $`g,h\in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_ih_j=h_jg_i` for all `i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
@@ -540,8 +549,6 @@ We have `U × U` is a compact subset of `M × M`, and so
 :::theorem "product_units_homeomorphism" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.piUnits")
 If `U_i` are topological monoids then the canonical group isomorphism
 `(\prod_i U_i)ˣ = \prod_i(U_iˣ)` is a homeomorphism.
-This is the componentwise-units homeomorphism used later in
-{uses "restricted_product_units_homeomorphism"}[].
 :::
 
 ```tex "hecke_operator_project/restricted_products/units/5"
@@ -841,7 +848,6 @@ Compactness lies a little deeper because it assumes that the residue field of
 ```
 :::theorem "matrix_full_level_open" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
 `M_2(\calO_v)` is an open subring of `M_2(K_v)`.
-This is the matrix-level form of {uses "local_integer_ring_open"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/5"
@@ -867,7 +873,6 @@ product of compacts is compact and a product of opens is open.
 ```
 :::theorem "matrix_full_level_compact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
 `M_2(\calO_v)` is a compact subring of `M_2(K_v)`.
-This is the matrix-level form of {uses "local_integer_ring_compact"}[].
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/6"
@@ -987,8 +992,8 @@ If `\begin{pmatrix}1&*\\0&1\end{pmatrix} \subseteq \Gamma_v \subseteq
 and set `g = \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}`. For the associated
 compact open subgroup `U`, the double coset `UgU` is the disjoint union of the
 left cosets `g_tU` indexed by `\mathcal{O}_v/\alpha\mathcal{O}_v`, where
-`g_t := \begin{pmatrix}\alpha&\tilde t\\0&1\end{pmatrix}` for any lift
-`\tilde t` of `t`.
+`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}`, where `\tilde{t}` is
+any lift of `t` to `\calO_v`.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/13"
@@ -1006,7 +1011,7 @@ The TeX proof first rewrites the double-coset statement as a finite-quotient
 problem for `U^\alpha := \{u = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in U
 : \alpha \mid b\}`. Writing `h_t = \begin{pmatrix}1&\tilde t\\0&1\end{pmatrix}`,
 one computes
-`h_t^{-1}u = \begin{pmatrix} a-\tilde t c & b-\tilde t d \\ c & d \end{pmatrix}`,
+`h_t^{-1}u = \begin{pmatrix} a-\tilde t c&b-\tilde t d\\c&d\end{pmatrix}`,
 so the upper-right entry vanishes modulo `\alpha` exactly when `b mod \alpha`
 equals `t`. The `g_t` are therefore the coset representatives.
 :::
