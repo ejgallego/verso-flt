@@ -333,8 +333,6 @@ Multiplication by a positive real $r$ sends a unit square to a square of area $r
 :::definition "ring_level_haar_character" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
 For a locally compact topological ring `R` and `u ∈ R^\times`, define
 `δ_R(u) = d_R(ℓ_u)`, where `ℓ_u(r) = ur`.
-This packages the additive setup for ring-level use via
-{uses "additive_haar_character"}[].
 :::
 
 ```tex "haar_character_project/ring_level"
@@ -388,8 +386,6 @@ If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
 
 :::theorem "ring_haar_character_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
 The function `δ_R : R^\times → ℝ_{>0}` is continuous.
-The TeX proof builds this directly from
-{uses "ring_haar_character_integral_formula"}[].
 :::
 
 ```tex "haar_character_project/lt_ring_continuous"
@@ -401,7 +397,8 @@ Fix a Haar measure `\mu` on `R` and a continuous real-valued function `f` on
 `R` with compact support and such that `\int f(x) d\mu(x) \neq 0`. Then
 `r \mapsto \int f(rx) d\mu(x)` is continuous, and so is
 `u \mapsto (\int f(ux) d\mu(x))/(\int f(x) d\mu(x))`. Hence `δ_R^{-1}` is
-continuous, and thus `δ_R` is too.
+continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
+`δ_R` is too.
 :::
 
 ```tex "haar_character_project/ring_continuous"
@@ -461,8 +458,13 @@ This is the integral counterpart to the p-adic formula.
 This is the integral counterpart to the p-adic formula.
 ```
 
-The TeX chapter also remarks here that for a finite extension of `ℚ_p`, the
-same computation gives the normalized nonarchimedean norm.
+If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$ is the norm on
+$`R`$ normalized in the following way: $`\delta_R(\varpi)=q^{-1}`$, where
+$`\varpi`$ is a uniformizer and $`q`$ is the size of the finite residue field.
+In fact the same is true for any nonarchimedean local field. The proof is the
+same as for $`\Q_p`$. Right now this is difficult to state in Lean because
+there is still some discussion about the definition of a nonarchimedean local
+field.
 
 ```tex "haar_character_project/lt_padic_remark"
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
@@ -994,9 +996,15 @@ If the $A_i$ and $B_i$ are topological spaces and the $\phi_i$ are continuous fu
 ```
 
 :::proof "restricted_product_maps_continuous"
-The TeX chapter reduces continuity to the universal property of the
-restricted-product topology. One checks continuity on sufficiently large finite
-stages, where the map becomes an ordinary finite product of continuous maps.
+We use the universal property `RestrictedProduct.continuous_dom` of the
+topology in mathlib to reduce to the claim that for all finite `S`, the induced
+map
+`A_S:=\prod_{i\in S}A_i\times\prod_{i\notin S}C_i\to B` is continuous.
+Because the inclusion `A_S\to A_T` is continuous for `S\subseteq T`, we are
+reduced to checking this claim for `S` sufficiently large that it contains all
+of the `i` for which `\phi(C_i)\not=D_i`. For such `S`, this map factors as
+`A_S\to B_S\to B`, and `B_S\to B` is continuous, so it suffices to prove that
+`A_S\to B_S` is continuous, but this is just a product of continuous maps.
 :::
 
 ```tex "haar_character_project/lt_restricted_product_continuous_proof"
