@@ -879,8 +879,7 @@ restriction of `\rho` to `\Gal(\Qbar_2/\Q_2)` is unramified by
 ```
 
 :::theorem "Frey_characters_at_ell" (parent := "elliptic_frey_bridge")
-In the reducible case, at least one of the two one-dimensional characters is
-also unramified at `\ell`.
+One of $`\alpha`$ and $`\beta`$ is unramified at $`\ell`$.
 :::
 
 ```tex "Frey_characters_at_ell"
@@ -915,8 +914,7 @@ an unramified twist of the cyclotomic character (see Proposition 11 on p273 of~\
 ```
 
 :::theorem "Frey_characters_trivial" (parent := "elliptic_frey_bridge")
-If the Frey-curve `\ell`-torsion representation were reducible, then one of the
-resulting one-dimensional characters would have to be trivial.
+One of $`\alpha`$ and $`\beta`$ is trivial.
 :::
 
 ```tex "Frey_characters_trivial"
@@ -925,7 +923,9 @@ resulting one-dimensional characters would have to be trivial.
 ```
 
 :::proof "Frey_characters_trivial"
-The previous two theorems show that one of `\alpha` and `\beta` is a
+{uses "Frey_characters_are_unramified"}[]
+{uses "Frey_characters_at_ell"}[]
+The previous two theorems show that one of $`\alpha`$ and $`\beta`$ is a
 character unramified at all primes, and hence cuts out an extension unramified
 at all primes, so by Minkowski's theorem this character is trivial.
 :::
@@ -938,16 +938,16 @@ is trivial.
 \end{proof}
 ```
 
-To summarize, the reducible case has the following very restricted shape.
+To summarise, we have shown the following.
 
 ```tex "Frey_curve_reducible_structure/introduction"
 To summarise, we have shown the following.
 ```
 
 :::theorem "Frey_curve_reducible_structure" (parent := "elliptic_frey_bridge")
-If the Frey-curve `\ell`-torsion representation were reducible, then it would
-have either a trivial one-dimensional subrepresentation or a trivial
-one-dimensional quotient.
+If $`\rho`$ is reducible, then either $`\rho`$ has a trivial 1-dimensional
+submodule or a trivial 1-dimensional quotient (here "trivial" means that the
+Galois group $`\GQ`$ acts trivially).
 :::
 
 ```tex "Frey_curve_reducible_structure"
@@ -958,6 +958,7 @@ one-dimensional quotient.
 ```
 
 :::proof "Frey_curve_reducible_structure"
+{uses "Frey_characters_trivial"}[]
 Follows from the above.
 :::
 
@@ -966,7 +967,8 @@ Follows from the above.
 \end{proof}
 ```
 
-We now split into those two cases.
+We now split into two cases, depending on whether $`\rho`$ has a trivial
+submodule or a trivial quotient.
 
 ```tex "Frey_curve_reducible_structure/split_cases"
 We now split into two cases, depending on whether $\rho$ has a trivial submodule or a trivial quotient.
@@ -995,8 +997,7 @@ Indeed, the trivial 1-dimensional submodule is a Galois-invariant subgroup of
 ```
 
 :::theorem "Frey_curve_no_trivial_submodule" (parent := "elliptic_frey_bridge")
-The Frey-curve `\ell`-torsion representation cannot have a trivial
-one-dimensional subrepresentation.
+$`\rho`$ cannot have a trivial 1-dimensional submodule.
 :::
 
 ```tex "Frey_curve_no_trivial_submodule"
@@ -1005,9 +1006,11 @@ one-dimensional subrepresentation.
 ```
 
 :::proof "Frey_curve_no_trivial_submodule"
+{uses "mazur"}[]
+{uses "Frey_curve_trivial_submodule"}[]
 We have just seen that in this case, the Frey curve has a point of order
-`\ell`. It also has three points of order 2, meaning that its torsion subgroup
-has order at least `4\ell\geq 20`, contradicting Mazur's theorem.
+$`\ell`$. It also has three points of order $`2`$, meaning that its torsion
+subgroup has order at least $`4\ell \geq 20`$, contradicting Mazur's theorem.
 :::
 
 ```tex "Frey_curve_no_trivial_submodule/proof"
@@ -1018,9 +1021,9 @@ has order at least `4\ell\geq 20`, contradicting Mazur's theorem.
 \end{proof}
 ```
 
-It remains to rule out the case of a trivial quotient. The TeX chapter brings
-in the geometric fact that one can quotient an elliptic curve by a Galois-stable
-subgroup of order `\ell`.
+It remains to rule out the case where $`\rho`$ is reducible and has a trivial
+quotient. To do this, we need to quotient out $`\rho`$ by its 1-dimensional
+Galois-stable submodule.
 
 ```tex "Frey_curve_no_trivial_quotient/introduction"
 It remains to rule out the case where $\rho$ is reducible and has a trivial quotient. To do this, we need
@@ -1028,9 +1031,12 @@ to quotient out $\rho$ by its 1-dimensional Galois-stable submodule.
 ```
 
 :::theorem "Elliptic_curve_quotient_by_finite_subgroup" (parent := "elliptic_frey_bridge")
-If an elliptic curve has a Galois-stable subgroup of order `\ell` in its
-`\ell`-torsion, then there is an `\ell`-isogenous quotient elliptic curve
-obtained by dividing out by that subgroup.
+If $`p`$ is a prime and if $`E`$ is an elliptic curve over a field $`K`$ of
+characteristic not equal to $`p`$, and if $`C \subseteq E(K^{\sep})[p]`$ is a
+Galois-stable subgroup of order $`p`$, then there is an elliptic curve
+$`E' := E/C`$ over $`K`$ and an isogeny of elliptic curves $`E \to E'`$ over
+$`K`$ inducing a Galois-equivariant surjection
+$`E(K^{\sep}) \to E'(K^{\sep})`$ with kernel precisely $`C`$.
 :::
 
 ```tex "Elliptic_curve_quotient_by_finite_subgroup"
@@ -1044,10 +1050,25 @@ obtained by dividing out by that subgroup.
 ```
 
 :::proof "Elliptic_curve_quotient_by_finite_subgroup"
-The TeX chapter presents this as the geometric input needed to turn the trivial
-quotient case into the trivial submodule case on an isogenous curve. A full
-formal proof would require substantial algebro-geometric machinery, but the
-mathematical role of the theorem inside the Mazur argument is clear.
+Brian Conrad suggested the following approach, applicable as well for abelian
+schemes $`A \to S`$ over a base. Let $`G`$ be a finite locally free
+$`S`$-subgroup of $`A`$, say $`G`$ with constant rank $`n > 0`$ by working
+locally on the base, so $`G`$ is contained in $`A[n]`$. Then
+$`n : A \to A`$ is the fppf quotient of the source by $`A[n]`$, so it expresses
+$`A`$ as an $`A[n]`$-torsor over itself. The problem of building $`A/G`$ as an
+abelian scheme is then seen to be the same as that of constructing the quotient
+of this $`A[n]`$-torsor by the $`G`$-action.
+
+In other words, the problem then becomes one having nothing specific to do with
+abelian schemes, at the cost of working over a base (such as the original
+target $`A`$) even when $`S`$ was the spectrum of a field in the application.
+The question is now: for a finite locally free commutative $`S`$-group $`H`$
+and a closed locally free $`S`$-subgroup $`G`$, build a reasonable quotient
+$`H/G`$. One approach is to look at the Cartier dual $`H^\vee \to G^\vee`$,
+show that it is faithfully flat, and then deduce that the Cartier dual of the
+kernel of this map does the job. Note that one input for this proof is the
+claim that inclusions of Hopf algebras over fields are flat, proved nicely in
+Waterhouse's book.
 :::
 
 ```tex "Elliptic_curve_quotient_by_finite_subgroup/proof"
@@ -1070,9 +1091,22 @@ mathematical role of the theorem inside the Mazur argument is clear.
 \end{proof}
 ```
 
+I suspect that the proof above is a no-go right now; there will presumably be a
+much easier proof of this result in Silverman though. Note also that this
+approach will not give us a plane cubic, but rather a smooth proper group
+scheme so we would need Riemann-Roch to turn it into a plane cubic, although it
+is unlikely that one will be able to prove Mazur's theorem without developing
+all of this machinery and much more.
+
+```tex "Elliptic_curve_quotient_by_finite_subgroup/afterword"
+I suspect that the proof above is a no-go right now; there will presumably be a much easier proof of this result in Silverman though. Note also that this approach will not
+give us a plane cubic, but rather a smooth proper group scheme so we would need Riemann-Roch
+to turn it into a plane cubic, although it's unlikely that one will be able to prove Mazur's
+theorem without developing all of this machinery and much more.
+```
+
 :::theorem "Frey_curve_no_trivial_quotient" (parent := "elliptic_frey_bridge")
-The Frey-curve `\ell`-torsion representation cannot have a trivial
-one-dimensional quotient.
+$`\rho`$ cannot have a trivial 1-dimensional quotient.
 :::
 
 ```tex "Frey_curve_no_trivial_quotient"
@@ -1081,10 +1115,13 @@ one-dimensional quotient.
 ```
 
 :::proof "Frey_curve_no_trivial_quotient"
-The TeX chapter handles this by passing to the `\ell`-isogenous quotient curve
-from {uses "Elliptic_curve_quotient_by_finite_subgroup"}[]. That quotient curve then
-has a trivial subrepresentation and still has the inherited `2`-torsion needed
-to contradict {uses "mazur"}[].
+{uses "Elliptic_curve_quotient_by_finite_subgroup"}[]
+{uses "mazur"}[]
+$`\rho`$ has a Galois-stable submodule $`C`$. The quotient curve $`E/C`$ now
+has a trivial 1-dimensional submodule, and also three points of order $`2`$
+(the images of the three $`2`$-torsion points in $`E`$). Hence the torsion
+subgroup of $`E/C`$ has order at least $`4\ell \geq 20`$, again contradicting
+Mazur's theorem.
 :::
 
 ```tex "Frey_curve_no_trivial_quotient/proof"
@@ -1096,7 +1133,8 @@ to contradict {uses "mazur"}[].
 ```
 
 :::theorem "Frey_curve_irreducible" (parent := "elliptic_frey_bridge")
-The `\ell`-torsion representation of the Frey curve is irreducible.
+The $`\ell`$-torsion in the Frey curve associated to a Frey package
+$`(a,b,c,\ell)`$ is irreducible.
 :::
 
 ```tex "Frey_curve_irreducible"
@@ -1105,10 +1143,13 @@ The `\ell`-torsion representation of the Frey curve is irreducible.
 ```
 
 :::proof "Frey_curve_irreducible"
-By {uses "Frey_curve_reducible_structure"}[], reducibility would leave either a
-trivial subrepresentation or a trivial quotient. The first case is ruled out by
-{uses "Frey_curve_no_trivial_submodule"}[], and the second by
-{uses "Frey_curve_no_trivial_quotient"}[].
+{uses "Frey_curve_reducible_structure"}[]
+{uses "Frey_curve_no_trivial_submodule"}[]
+{uses "Frey_curve_no_trivial_quotient"}[]
+{uses "Elliptic_curve_n_torsion_2d"}[]
+Follows from theorem `Frey_curve_reducible_structure`, corollary
+`Frey_curve_no_trivial_submodule` and corollary
+`Frey_curve_no_trivial_quotient`.
 :::
 
 ```tex "Frey_curve_irreducible/proof"
