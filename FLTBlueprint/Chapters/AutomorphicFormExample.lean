@@ -1162,6 +1162,9 @@ written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 ```
 
 :::proof "QHat.unitsrat_join_unitszHat"
+{uses "ZHat.multiples"}[]
+{uses "ZHat.eq_zero_of_mul_eq_zero"}[]
+{uses "QHat.canonicalForm"}[]
 We already know that a general element of $`\Qhat^\times` can be written as
 $`x/N` with $`N` positive, so this reduces us to proving that a general element
 $`x\in\Zhat` which is invertible in $`\Qhat^\times` can be written as
@@ -1574,6 +1577,7 @@ A calculation.
 ```
 
 :::theorem "Hurwitz.norm_nonneg" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg")
+{uses "Hurwitz.norm"}[]
 The norm of a Hurwitz quaternion is nonnegative.
 :::
 
@@ -1835,6 +1839,9 @@ Finally, we define $\widehat{D}:=D\otimes\Zhat$. Just as with $\Qhat$ we have
 ```
 
 :::theorem "HurwitzRatHat.canonicalForm" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.canonicalForm")
+{uses "QHat"}[]
+{uses "ZHat"}[]
+{uses "Hurwitz"}[]
 Every element of $`\widehat{D}` can be written as $`z/N` with
 $`z\in\calOhat` and $`N\in\N^+`.
 :::

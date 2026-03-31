@@ -28,6 +28,7 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+set_option verso.blueprint.math.lint true
 set_option maxRecDepth 20000
 
 #doc (Manual) "Fermat's Last Theorem Blueprint" =>

@@ -415,7 +415,9 @@ $`K_v\to\prod_{w|v}L_w`$ lying over $`K\to L`$.
 ```
 
 
-:::theorem "nonarchimedean_base_change_local_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'"}[]
+{uses "IsDedekindDomain.HeightOneSpectrum.Extension.finite"}[]
 The induced $`L`$-algebra homomorphism
 $`L\otimes_KK_v\to\prod_{w|v}L_w`$ is an isomorphism of rings.
 :::
@@ -432,7 +434,7 @@ $`L\otimes_KK_v\to\prod_{w|v}L_w`$ is an isomorphism of rings.
 ```
 
 
-:::proof "nonarchimedean_base_change_local_decomposition"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"
 My current proposal to formalize this is as follows. The map is surjective
 because the image is dense and closed; this has been formalized already. It is
 also a `K_v`-algebra homomorphism if we give `L_w` the obvious `K_v`-algebra
@@ -534,7 +536,8 @@ module topologies.
 ```
 
 
-:::theorem "nonarchimedean_integral_decomposition" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"}[]
 The same local decomposition identifies the integral subring
 $`B \otimes_A A_v`$ with the product of the local integer rings
 $`\prod_{w \mid v} B_w`$.
@@ -552,7 +555,7 @@ $`\prod_{w \mid v} B_w`$.
 ```
 
 
-:::proof "nonarchimedean_integral_decomposition"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"
 Certainly the image of the integral elements are integral. The argument in the
 other direction is more delicate. My original plan was to follow
 Cassels--Froehlich, Cassels' article Global fields, section 12 lemma, p61,
@@ -641,7 +644,7 @@ isomorphism.
 ```
 
 
-:::theorem "tensor_product_module_base_change" (parent := "adele_project") (lean := "IsDedekindDomain.linearEquivTensorProductModule")
+:::theorem "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.linearEquivTensorProductModule")
 If $`M`$ is any $`K`$-module then the canonical map
 $`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 :::
@@ -657,7 +660,7 @@ $`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 ```
 
 
-:::proof "tensor_product_module_base_change"
+:::proof "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"
 We can factor this map as
 $`B \otimes_A M \cong B \otimes_A (K \otimes_K M) \cong
 (B \otimes_A K) \otimes_K M \to L \otimes_K M`$, and we just showed that the
@@ -707,7 +710,7 @@ tensor products and arbitrary products preserve surjections.
 ```
 
 
-:::definition "restricted_product_relabel_isomorphism" (parent := "adele_project")
+:::definition "RestrictedProduct.relabelIso" (parent := "adele_project")
 Let `V` and `W` be index sets, and let `f:W→V` be a map with finite fibres. Let
 `X_v` be sets, with subsets `C_v`, let `Y_w` be sets with subsets `D_w`, and
 say for all `v ∈ V` we're given a bijection $`X_v \to \prod_{w \mid f(w)=v} Y_w`$,
@@ -726,11 +729,12 @@ restricted products `∏'_v(X_v,C_v)` and `∏'_w(Y_w,D_w)`.
 ```
 
 
-:::proof "restricted_product_relabel_isomorphism"
+:::proof "RestrictedProduct.relabelIso"
 Let `V` be the finite places of `K` and `W` the finite places of `L`, let
 `X_v` be `B \otimes_A K_v`, let `C_v` be `B \otimes_A A_v`, let `Y_w` be
 `L_w`, let `D_w` be `B_w`, and the result follows from the previous
-definition, given {uses "nonarchimedean_integral_decomposition"}[].
+definition, given
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[].
 :::
 ```tex "adele_project/lt-witness-527"
 \begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
@@ -773,6 +777,8 @@ easily from the definition of the topology.
 
 
 :::theorem "finite_prime_product_tensor_isomorphism" (parent := "adele_project")
+{uses "IsDedekindDomain.AKLB.finitePresentation"}[]
+{uses "pi_tensorProduct_of_finitePresentation"}[]
 If `S` is a finite set of nonzero primes of `A` then the natural map
 $`B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
 (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))`$
@@ -830,10 +836,10 @@ commute with filtered colimits.
 ```
 
 :::theorem "auxiliary_ring_identifies_with_extension_finite_adeles" (parent := "adele_project")
+{uses "RestrictedProduct.relabelIso"}[]
 The ring `R` introduced above, the restricted product of the
 `B\otimes_A K_v` with respect to the `B\otimes_A A_v`, is isomorphic to
 $`\mathbb{A}_L`$.
-{uses "restricted_product_relabel_isomorphism"}[]
 :::
 ```tex "adele_project/lt-witness-548f"
 \begin{corollary}
@@ -849,7 +855,7 @@ $`\mathbb{A}_L`$.
 Let `V` be the finite places of `K` and `W` the finite places of `L`, let
 `X_v` be `B\otimes_A K_v`, let `C_v` be `B\otimes_A A_v`, let `Y_w` be `L_w`,
 let `D_w` be `B_w`, and the result follows from the previous definition, given
-{uses "nonarchimedean_integral_decomposition"}[].
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[].
 :::
 ```tex "adele_project/lt-witness-548g"
 \begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
@@ -864,7 +870,10 @@ From this, we can deduce the theorem we claimed earlier:
 From this, we can deduce the theorem we claimed earlier:
 ```
 
-:::theorem "finite_adele_base_change_integral" (parent := "adele_project")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv" (parent := "adele_project")
+{uses "RestrictedProduct.relabelIso"}[]
+{uses "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1"}[]
+{uses "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2"}[]
 The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty`$ is a `B`-algebra
 isomorphism.
 :::
@@ -879,7 +888,7 @@ isomorphism.
 \end{theorem}
 ```
 
-:::proof "finite_adele_base_change_integral"
+:::proof "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"
 This map factors through the auxiliary ring~`R` so the result follows from the
 previous two constructions.
 :::
@@ -902,8 +911,8 @@ we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$
 
 :::proof "finite_adele_base_change_algebraic"
 Follows immediately from
-{uses "finite_adele_base_change_integral"}[] and
-{uses "tensor_product_module_base_change"}[].
+{uses "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"}[] and
+{uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-548j/proof"
 \begin{proof}
@@ -1109,7 +1118,7 @@ $`\dim_{K_v} \prod_{w \mid v} L_w = \dim_{K_v} L \otimes_K K_v`$.
 ```
 
 
-:::definition "infinite_place_extension_map" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piExtension")
+:::definition "NumberField.InfinitePlace.Completion.piExtension" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piExtension")
 Let `v` be an infinite place of `K`. There is a continuous `K`-algebra
 homomorphism $`K_v \to \prod_{w \mid v} L_w`$, whose restriction to `K`
 corresponds to the global embedding of `K` into $`(L_w)_w`$.
@@ -1126,10 +1135,12 @@ corresponds to the global embedding of `K` into $`(L_w)_w`$.
 ```
 
 
-:::definition "infinite_place_local_base_change_map" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange")
+:::definition "NumberField.InfinitePlace.Completion.baseChange" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange")
+{uses "NumberField.InfinitePlace.Completion.piExtension"}[]
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homomorphism $`L \otimes_K K_v \to \prod_{w \mid v} L_w`$, whose restriction to
-$`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
+$`1 \otimes_K K_v`$ corresponds to the map in
+`NumberField.InfinitePlace.Completion.piExtension`.
 :::
 ```tex "adele_project/lt-witness-783"
 \begin{definition}
@@ -1144,8 +1155,8 @@ $`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
 ```
 
 
-:::proof "infinite_place_local_base_change_map"
-The map in {uses "infinite_place_extension_map"}[] can be lifted to an
+:::proof "NumberField.InfinitePlace.Completion.baseChange"
+The map in `NumberField.InfinitePlace.Completion.piExtension` can be lifted to an
 `L`-algebra homomorphism defined on $`L \otimes_K K_v`$.
 :::
 ```tex "adele_project/lt-witness-786"
@@ -1174,7 +1185,7 @@ is surjective.
 :::proof "infinite_place_local_base_change_surjective"
 Let $`(x_i)_i`$ be a `K_v`-basis of $`\prod_{w \mid v} L_w`$. By the density of
 `L` in $`\prod_{w \mid v} L_w`$ from
-{uses "infinite_place_weak_approximation"}[], we can find $`\alpha_i \in L`$
+{uses "NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi"}[], we can find $`\alpha_i \in L`$
 arbitrarily close to $`x_i`$ with respect to the sup norm when embedded
 globally in $`\prod_{w \mid v} L_w`. In particular, it is possible to choose such
 $`\alpha_i`$ so that the matrix representing the vector
@@ -1265,7 +1276,8 @@ Because `L_w` is a finite-dimensional normed `K_v`-vector space, there exists a
 :::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$, whose restriction
-to $`1 \otimes_K K_v`$ corresponds to {uses "infinite_place_extension_map"}[].
+to $`1 \otimes_K K_v`$ corresponds to the map in
+`NumberField.InfinitePlace.Completion.piExtension`.
 {uses "NumberField.InfinitePlace.Completion.baseChange"}[]
 {uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
 {uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
@@ -1451,11 +1463,11 @@ isomorphism is given by the component `L`-algebra isomorphisms
 ```
 
 
-:::theorem "infinite_adele_base_change" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeEquiv")
+:::theorem "NumberField.InfiniteAdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeEquiv")
+{uses "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv"}[]
 If `K -> L` is a ring homomorphism between two number fields, then there is a
 natural isomorphism, both topological and algebraic,
 $`L \otimes_K K_\infty \cong L_\infty`$.
-This upgrades {uses "infinite_adele_base_change_algebraic"}[].
 :::
 ```tex "adele_project/lt-witness-841"
 \begin{theorem}
@@ -1470,8 +1482,8 @@ This upgrades {uses "infinite_adele_base_change_algebraic"}[].
 ```
 
 
-:::proof "infinite_adele_base_change"
-Since both sides of {uses "infinite_adele_base_change_algebraic"}[] have the
+:::proof "NumberField.InfiniteAdeleRing.baseChangeEquiv"
+Since both sides of {uses "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv"}[] have the
 `K_\infty`-module topology, and since the isomorphism can equivalently be
 viewed as a `K_\infty`-linear isomorphism, it is also a homeomorphism.
 The `L_\infty` side has the `K_\infty`-module topology by
@@ -1488,7 +1500,7 @@ The `L_\infty` side has the `K_\infty`-module topology by
 
 
 :::proof "adele_base_change"
-Follows from {uses "infinite_adele_base_change"}[] and
+Follows from {uses "NumberField.InfiniteAdeleRing.baseChangeEquiv"}[] and
 {uses "finite_adele_base_change_algebraic"}[].
 :::
 ```tex "adele_project/lt-witness-865"
@@ -1825,7 +1837,9 @@ that `q\in(-1,1)` implies `q=0`.
 ```
 
 
-:::theorem "number_field_adele_zero_neighborhood" (parent := "adele_project")
+:::theorem "NumberField.AdeleRing.zero_discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.zero_discrete")
+{uses "Rat.AdeleRing.zero_discrete"}[]
+{uses "NumberField.AdeleRing.baseChangeEquiv"}[]
 There is an open subset of the adeles of a number field whose intersection with
 the number field is just `{0}`.
 :::
@@ -1840,7 +1854,7 @@ the number field is just `{0}`.
 ```
 
 
-:::proof "number_field_adele_zero_neighborhood"
+:::proof "NumberField.AdeleRing.zero_discrete"
 By a previous result, we have `\A_K=K\otimes_{\Q}\A_{\Q}`.
 Choose a basis of `K/\Q`; then `K` can be identified with `\Q^n\subseteq(\A_{\Q})^n`
 and the open subset from the rational case may be taken coordinatewise.
