@@ -52,8 +52,10 @@ We give an overview of the results we need, citing the literature for proofs. Ev
 ```
 
 :::theorem "WeierstrassCurve.n_torsion_card" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_card")
-For an elliptic curve over a separably closed field of characteristic prime to
-`n`, the `n`-torsion has cardinality `n²`.
+Let $`n`$ be a positive integer, let $`F`$ be a separably closed field with
+$`n`$ nonzero in $`F`$, and let $`E`$ be an elliptic curve over $`F`$. Then the
+$`n`$-torsion $`E(F)[n]`$ in the $`F`$-points of $`E`$ is a finite group of
+size $`n^2`$.
 :::
 
 ```tex "WeierstrassCurve.n_torsion_card"
@@ -114,9 +116,10 @@ apply our hypothesis firstly with `d = a_1` to deduce `t = r` and then with
 ```
 
 :::theorem "Elliptic_curve_n_torsion_2d" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_dimension")
-For an elliptic curve over a field of characteristic prime to `n`, the
-`n`-torsion over a separable closure is a two-dimensional
-`\mathbf{Z}/n\mathbf{Z}` module.
+Let $`n`$ be a positive integer, let $`F`$ be a separably closed field with
+$`n`$ nonzero in $`F`$, and let $`E`$ be an elliptic curve over $`F`$. Then the
+$`n`$-torsion $`E(F)[n]`$ in the $`F`$-points of $`E`$ is a finite group
+isomorphic to $`(\Z/n\Z)^2`$.
 :::
 
 ```tex "Elliptic_curve_n_torsion_2d"
@@ -134,21 +137,28 @@ This follows from {uses "group_theory_lemma"}[] and
 :::
 
 ```tex "Elliptic_curve_n_torsion_2d/proof"
-This follows from the previous group-theoretic lemma~\ref{group_theory_lemma} and
-theorem~\ref{WeierstrassCurve.n_torsion_card}.
+\begin{proof}\uses{group_theory_lemma,WeierstrassCurve.n_torsion_card}\leanok
+  This follows from the previous group-theoretic lemma~\ref{group_theory_lemma} and
+  theorem~\ref{WeierstrassCurve.n_torsion_card}.
+\end{proof}
 ```
 
-If `E` is an elliptic curve over a field `k` and `k^{\mathrm{sep}}` is a
-separable closure of `k`, then `\mathrm{Gal}(k^{\mathrm{sep}} / k)` acts on the
-torsion group `E(k^{\mathrm{sep}})[n]`. Once we know that this group is
-two-dimensional over `\mathbf{Z}/n\mathbf{Z}`, fixing a basis turns it into a
-representation to `\GL_2(\mathbf{Z}/n\mathbf{Z})`.
+We saw in section `twopointfour` that if $`E`$ is an elliptic curve over a
+field $`k`$ and if $`k^{\sep}`$ is a separable closure of $`k`$, then the group
+$`\Gal(k^{\sep}/k)`$ acts on $`E(k^{\sep})[n]`$. Now let $`n`$ be a positive
+integer which is nonzero in $`k`$. We have just seen that
+$`E(k^{\sep})[n]`$ is isomorphic to $`(\Z/n\Z)^2`$, and it inherits an action
+of $`\Gal(k^{\sep}/k)`$. If we fix an isomorphism
+$`E(k^{\sep})[n]\cong(\Z/n\Z)^2`$ then we get a representation
+$`\Gal(k^{\sep}/k)\to\GL_2(\Z/n\Z)`$. A fundamental fact about this Galois
+representation is that its determinant is the cyclotomic character.
 
 ```tex "Elliptic_curve_det_n_torsion/introduction"
 We saw in section~\ref{twopointfour} that if $E$ is an elliptic curve over a field $k$ and if $k^{\sep}$ is a separable closure of~$k$, then the group $\Gal(k^{\sep}/k)$ acts on $E(k^{\sep})[n]$. Now let $n$ be a positive integer which is nonzero in $k$. We have just seen that $E(k^{\sep})[n]$ is isomorphic to $(\Z/n\Z)^2$, and it inherits an action of $\Gal(k^{\sep}/k)$. If we fix an isomorphism $E(k^{\sep})[n]\cong(\Z/n\Z)^2$ then we get a representation $\Gal(k^{\sep}/k)\to\GL_2(\Z/n\Z)$. A fundamental fact about this Galois representation is that its determinant is the cyclotomic character.
 ```
 
 :::theorem "Elliptic_curve_det_n_torsion" (parent := "elliptic_frey_bridge")
+{uses "Elliptic_curve_n_torsion_2d"}[]
 If `E` is an elliptic curve over a field `k`, and `n` is a positive integer
 which is nonzero in `k`, then the determinant of the 2-dimensional
 representation of `\Gal(k^{\sep}/k)` on `E(k^{\sep})[n]` is the mod `n`
@@ -344,10 +354,13 @@ flat. Checking this claim formally will probably involve a fair amount of work.
 # Multiplicative Reduction
 
 :::definition "EllipticCurve.MultiplicativeReduction" (parent := "elliptic_frey_bridge")
-Multiplicative reduction means that the reduced cubic has an ordinary double
-point rather than remaining smooth. In the local version over a valuation ring,
-the reduction is split if the two tangent lines at the double point are both
-defined over the residue field, and non-split otherwise.
+Let $`E`$ be an elliptic curve over the field of fractions $`K`$ of a valuation
+ring $`R`$ with maximal ideal $`\m`$. We say $`E`$ has multiplicative
+reduction over $`R`$ if $`E`$ has a model with coefficients in $`R`$ and which
+reduces mod $`R/\m`$ to a plane cubic with one singularity, which is an
+ordinary double point. We say that the reduction is split if the two tangent
+lines at the ordinary double point are both defined over $`R/\m`$, and
+non-split otherwise.
 :::
 
 ```tex "EllipticCurve.MultiplicativeReduction"
@@ -368,9 +381,10 @@ reduction at `P` if `E` has multiplicative reduction over the localization
 ```
 
 :::theorem "Frey_curve_mult_reduction" (parent := "elliptic_frey_bridge")
-If an odd prime divides `abc`, then the Frey curve has multiplicative
-reduction at that prime. This is the local reduction notion of
-{uses "EllipticCurve.MultiplicativeReduction"}[].
+{uses "EllipticCurve.MultiplicativeReduction"}[]
+If $`E`$ is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)`$ associated to a Frey
+package $`(a,b,c,\ell)`$, and if $`p`$ is an odd prime which divides $`abc`$,
+then $`E`$ has multiplicative reduction at $`p`$.
 :::
 
 ```tex "Frey_curve_mult_reduction"
@@ -381,12 +395,11 @@ reduction at that prime. This is the local reduction notion of
 ```
 
 :::proof "Frey_curve_mult_reduction"
-When `p \mid abc`, exactly two of the three roots `0`, `a^\ell`, and `-b^\ell`
-coincide modulo `p`. The reduced cubic therefore acquires an ordinary double
-point.
-
-So outside `\ell`, the bad odd primes of the Frey curve are exactly the primes
-dividing `abc`, and they are all multiplicative.
+The hypothesis $`p \mid abc`$ implies that precisely two of the three roots
+$`0`$, $`a^\ell`$ and $`-b^\ell`$ of the cubic are equal mod $`p`$. Call
+$`x \in \Z/p\Z`$ this common value. Then the reduction mod $`p`$ of the curve
+is smooth away from the point $`(x,0)`$, and has an ordinary double point at
+$`(x,0)`$. Hence the Frey curve has multiplicative reduction at $`p`$.
 :::
 
 ```tex "Frey_curve_mult_reduction/proof"
@@ -408,8 +421,9 @@ multiplicative iff `x-y` is a square mod `p`. We shall not need this fact.
 ```
 
 :::theorem "Frey_curve_mult_reduction_at_two" (parent := "elliptic_frey_bridge")
-The Frey curve always has multiplicative reduction at `2`. This is again a
-{uses "EllipticCurve.MultiplicativeReduction"}[] statement.
+{uses "EllipticCurve.MultiplicativeReduction"}[]
+If $`E`$ is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)`$ associated to a Frey
+package $`(a,b,c,\ell)`$ then $`E`$ has multiplicative reduction at `2`.
 :::
 
 ```tex "Frey_curve_mult_reduction_at_two"
@@ -419,15 +433,14 @@ The Frey curve always has multiplicative reduction at `2`. This is again a
 ```
 
 :::proof "Frey_curve_mult_reduction_at_two"
-The TeX proof makes the explicit change of variables `X = 4X'` and
-`Y = 8Y' + 4X'`. Because `\ell \ge 5`, `b` is even, and `a \equiv 3 \pmod 4`,
-the transformed equation reduces modulo `2` to `Y'^2 + X'Y' = X'^3 + cX'^2`
-for some `c \in \{0,1\}`, hence to a cubic with an ordinary double point at
-`(0,0)`.
-
-This is the special local place where the later hardly ramified package is
-forced to use a weaker semisimplified statement rather than complete
-unramifiedness.
+Indeed, the change of variables $`X=4X'`$ and $`Y=8Y'+4X'`$ transforms the
+equation to
+$`64Y'^2+64X'Y'=64X'^3+16X'^2(b^\ell-a^\ell-1)-4X'a^\ell b^\ell`$ and, because
+$`\ell\geq5`$, $`b`$ is even and $`a=3`$ mod `4`, we see that the `64`s cancel,
+giving an equation over $`\Z`$ which reduces mod `2` to
+$`Y'^2+X'Y'=X'^3+cX'^2`$ for some $`c\in\{0,1\}`$. This cubic is smooth away
+from an ordinary double point at $`(0,0)`$. Hence the Frey curve has
+multiplicative reduction at `2`.
 :::
 
 ```tex "Frey_curve_mult_reduction_at_two/proof"
@@ -438,6 +451,14 @@ unramifiedness.
   $Y'^2+X'Y'=X'^3+cX'^2$ for some $c\in\{0,1\}$. This cubic is smooth away from an ordinary
   double point at $(0,0)$. Hence the Frey curve has multiplicative reduction at~2.
 \end{proof}
+```
+
+Note that $`E`$ has split multiplicative reduction iff $`c=0`$, which happens
+iff $`a^\ell=7`$ mod `8`. We shall not need this fact.
+
+```tex "Frey_curve_mult_reduction_at_two/split_remark"
+\begin{remark} Note that $E$ has split multiplicative reduction iff $c=0$, which happens iff $a^\ell=7$ mod $8$. We shall not need this fact.
+\end{remark}
 ```
 
 In particular, the Frey curve attached to a Frey package is semistable: it has
@@ -458,6 +479,7 @@ local fields is the \emph{uniformisation theorem}, originally due to Tate.
 ```
 
 :::theorem "Tate_curve_uniformisation" (parent := "elliptic_frey_bridge")
+{uses "EllipticCurve.MultiplicativeReduction"}[]
 If an elliptic curve over a field complete with respect to a nontrivial
 nonarchimedean real-valued norm has split multiplicative reduction, then there
 is a Galois-equivariant injection
@@ -848,9 +870,8 @@ The next two results are Lemme `6` on page `307` of
 ```
 
 :::theorem "Frey_characters_are_unramified" (parent := "elliptic_frey_bridge")
-If the Frey-curve `\ell`-torsion representation were reducible with characters
-`\alpha` and `\beta`, then both characters would be unramified at every prime
-`p \ne \ell`.
+With notation as above, the characters $`\alpha`$ and $`\beta`$ are unramified
+at $`p`$ for all primes $`p\not=\ell`$.
 :::
 
 ```tex "Frey_characters_are_unramified"
