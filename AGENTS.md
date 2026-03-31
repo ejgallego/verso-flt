@@ -92,6 +92,20 @@ This repository is the integration layer for the FLT Verso blueprint.
   `tex` block carrying the corresponding TeX source. Prefer a one-block / one-
   witness pairing; do not amortize one TeX block over several translated
   blocks when finer pairing is possible.
+- When a Verso `:::definition`, `:::theorem`, `:::lemma`, `:::corollary`, or
+  `:::proof` node is translating a real TeX formal environment, prefer using
+  the corresponding TeX environment itself as the adjacent witness rather than
+  a short statement-only `lt_...` snippet. Statement-only snippets are for
+  literal prose paragraphs, not for standing in for a full source environment
+  when theorem/proof metadata or proof shape is part of what the node is
+  translating.
+- If a theorem/proof pair in Verso is backed by one TeX theorem plus one TeX
+  proof, keep the witness granularity aligned with that source structure. Do
+  not pair a theorem node to a full theorem+proof witness or a proof node to a
+  one-line theorem statement when finer source-local pairing is available.
+- Keep paragraph boundaries aligned in ordinary prose as well: if a source
+  transition takes two paragraphs, do not leave the first translated paragraph
+  separated from its witness by attaching the witness only after the second.
 - If a source block cannot yet be translated cleanly, keep the source locally
   in a labeled `tex` block instead of paraphrasing it into placeholder prose.
 - Treat semantic cleanup as a second phase (`Blueprint pass`) after the LT
@@ -105,6 +119,11 @@ This repository is the integration layer for the FLT Verso blueprint.
   or split the local `tex` witness to the exact source span that the adjacent
   Verso block is translating. Do this before rewriting good prose just to
   satisfy the metric.
+- If the main problem is that a theorem/definition/proof shell is paired
+  against a truncated statement-only witness while the source has a fuller
+  formal environment, treat this as witness mismatch first. Replace the short
+  witness with the real source environment, or split the Verso node so that the
+  statement and proof each match their own local TeX source.
 - If the main problem is metadata drift on a source-localized block, keep the
   text and tighten `(lean := "...")`, `{uses "..."}[]`, and related links
   rather than replacing the prose.
@@ -112,6 +131,9 @@ This repository is the integration layer for the FLT Verso blueprint.
   summary scaffolding, or otherwise obscures the source structure, prefer
   deleting or demoting that summary block and restoring the real source-grounded
   intermediate nodes.
+- If a low-scoring block is an invented interface node or summary theorem that
+  has no direct TeX formal environment behind it, prefer deleting or demoting
+  that node before spending time polishing its prose.
 - If a translated block is materially misleading, structurally non-literal, or
   cannot be paired cleanly to a local source witness, replace it with a local
   `tex` witness and retranslate later rather than preserving a bad paraphrase.
@@ -299,10 +321,12 @@ This repository is the integration layer for the FLT Verso blueprint.
   silently accepting them.
 - When triaging an obviously low-similarity block, prefer this order:
   1. shrink/split the witness,
-  2. remove invented summary structure,
-  3. restore missing source-grounded nodes,
-  4. only then rewrite the translated prose,
-  5. if none of that yields a trustworthy LT block, fall back to raw `tex`.
+  2. replace truncated statement-only witnesses with the real source
+     theorem/proof environments when applicable,
+  3. remove invented summary structure,
+  4. restore missing source-grounded nodes,
+  5. only then rewrite the translated prose,
+  6. if none of that yields a trustworthy LT block, fall back to raw `tex`.
 - In the work summary for each batch, include a short deviation report listing
   any non-literal changes that were introduced deliberately.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.
