@@ -100,8 +100,8 @@ and $A$ is the subring of $G$-invariants.
 # Statement Of The Theorem
 
 The set-up throughout this project:
-`G` is a finite group acting (via ring isomorphisms) on a commutative ring `B`,
-and `A` is the subring of `G`-invariants.
+$`G`$ is a finite group acting via ring isomorphisms on a commutative ring
+$`B`$, and $`A`$ is the subring of $`G`$-invariants.
 
 ```tex "Statement of the theorem/decomposition_group"
 \section{Statement of the theorem}
@@ -207,11 +207,10 @@ hypotheses on the rings at all.
 
 # Examples
 
-:::theorem "frobenius_elements_classical_corollary" (parent := "frobenius_project")
-In the classical setting where `B` is the ring of integers of a finite Galois
-extension of number fields, the theorem above produces Frobenius elements for
-primes of `B` lying above a rational prime `p`.
-:::
+As a trivial consequence we get Frobenius elements for finite Galois extensions
+in both the local and global field setting, as `Aut(L/K)` is just a Galois
+group of finite fields in these cases, so by surjectivity we can lift a
+Frobenius element.
 
 ```tex "Examples/frobenius"
 As a trivial consequence we get Frobenius elements for finite Galois extensions in both
@@ -219,13 +218,12 @@ the local and global field setting, as $\Aut(L/K)$ is just a Galois group of fin
 in these cases, so by surjectivity we can lift a Frobenius element.
 ```
 
-:::proof "frobenius_elements_classical_corollary"
-In that arithmetic example, the residue-field extension is finite, so
-`Aut(L/K)` is just the Galois group of a finite field extension and is generated
-by a Frobenius automorphism. Surjectivity of
-{uses "stabilizer_hom_surjective"}[] lifts that residue-field Frobenius back to
-an element of the decomposition group.
-:::
+Even though `G` is finite, it is possible in characteristic `p>0` for the
+extension `L/K` to be infinite (and mostly inseparable). The theorem implies
+that `Aut(L/K)` is always finite; what is actually happening is that `L/K` is
+algebraic and normal, and its maximal separable subextension is finite of degree
+at most `|G|`. However, we can prove surjectivity directly without reference to
+this maximal separable subextension.
 
 ```tex "Examples/positive_characteristic"
 Even though $G$ is finite, it is possible in characteristic $p>0$ for the
@@ -235,13 +233,6 @@ algebraic and normal, and its maximal separable subextension is finite of degree
 at most $|G|$. However, we can prove surjectivity directly without reference to
 this maximal separable subextension.
 ```
-
-Even though `G` is finite, it is possible in characteristic `p>0` for the
-extension `L/K` to be infinite (and mostly inseparable). The theorem implies
-that `Aut(L/K)` is always finite; what is actually happening is that `L/K` is
-algebraic and normal, and its maximal separable subextension is finite of degree
-at most `|G|`. However, we can prove surjectivity directly without reference to
-this maximal separable subextension.
 
 ```tex "The extension $B/A$/setup"
 The precise set-up we'll work in is the following. We fix $G$ a finite group acting
@@ -253,7 +244,7 @@ elements of $B$. We don't ever need the map $A\to B$ to be injective so we don't
 # The Extension B/A
 
 The precise set-up we'll work in is the following. We fix `G` a finite group
-acting on `B` a commutative ring, and we have another commutative ring `A`
+acting on `B`, a commutative ring, and we have another commutative ring `A`
 such that `B` is an `A`-algebra and the image of `A` in `B` is precisely the
 `G`-invariant elements of `B`. We don't ever need the map `A → B` to be
 injective so we don't assume this.
@@ -305,7 +296,7 @@ action, then the characteristic polynomial of any `b ∈ B` descends from `B[X]`
 to a monic polynomial over `A`.
 :::
 
-```tex "Algebra.IsInvariant.charpoly_mem_lifts/restate"
+```tex "Algebra.IsInvariant.charpoly_mem_lifts/theorem"
 \begin{lemma}
   \label{Algebra.IsInvariant.charpoly_mem_lifts}
   \lean{Algebra.IsInvariant.charpoly_mem_lifts}
@@ -313,25 +304,13 @@ to a monic polynomial over `A`.
   \mathlibok
   $F_b$ is the lift of some monic polynomial $M_b$ in $A[X]$.
 \end{lemma}
-\begin{proof}
-  \mathlibok
-  The coefficients of $F_b$ are $G$-invariant, and thus lie in the image of $A$.
-\end{proof}
 ```
 
 :::proof "invariant_characteristic_polynomial_descends"
-{uses "group_action_characteristic_polynomial"}[]
 The coefficients of `F_b` are `G`-invariant, and thus lie in the image of `A`.
 :::
 
-```tex "Algebra.IsInvariant.charpoly_mem_lifts"
-\begin{lemma}
-  \label{Algebra.IsInvariant.charpoly_mem_lifts}
-  \lean{Algebra.IsInvariant.charpoly_mem_lifts}
-  \uses{MulSemiringAction.charpoly}
-  \mathlibok
-  $F_b$ is the lift of some monic polynomial $M_b$ in $A[X]$.
-\end{lemma}
+```tex "Algebra.IsInvariant.charpoly_mem_lifts/proof"
 \begin{proof}
   \mathlibok
   The coefficients of $F_b$ are $G$-invariant, and thus lie in the image of $A$.
@@ -342,31 +321,22 @@ The coefficients of `F_b` are `G`-invariant, and thus lie in the image of `A`.
 `B/A` is integral.
 :::
 
-```tex "Algebra.IsInvariant.isIntegral/restate"
+```tex "Algebra.IsInvariant.isIntegral/theorem"
 \begin{theorem}
   \label{Algebra.IsInvariant.isIntegral}
   \lean{Algebra.IsInvariant.isIntegral}
   \mathlibok
   $B/A$ is integral.
 \end{theorem}
-\begin{proof}
-  \uses{MulSemiringAction.monic_charpoly, Algebra.IsInvariant.charpoly_mem_lifts}
-  \mathlibok
-  Use $M_b$.
-\end{proof}
 ```
 
 :::proof "invariant_extension_integral"
+{uses "MulSemiringAction.monic_charpoly"}[]
+{uses "Algebra.IsInvariant.charpoly_mem_lifts"}[]
 Use `M_b`.
 :::
 
-```tex "Algebra.IsInvariant.isIntegral"
-\begin{theorem}
-  \label{Algebra.IsInvariant.isIntegral}
-  \lean{Algebra.IsInvariant.isIntegral}
-  \mathlibok
-  $B/A$ is integral.
-\end{theorem}
+```tex "Algebra.IsInvariant.isIntegral/proof"
 \begin{proof}
   \uses{MulSemiringAction.monic_charpoly, Algebra.IsInvariant.charpoly_mem_lifts}
   \mathlibok
@@ -374,28 +344,21 @@ Use `M_b`.
 \end{proof}
 ```
 
-:::theorem "primes_over_same_prime_are_conjugate" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.exists_smul_of_under_eq")
-If `Q` and `Q'` are two primes above `p`, then there is some `g ∈ G` such that
+If `Q` and `Q'` are two primes above `p` then there is some `g ∈ G` such that
 `gQ = Q'`, and one can deduce from this that `Frob_Q` and `Frob_{Q'}` are
 conjugate. In particular if `G` is abelian then `Frob_Q` and `Frob_{Q'}` are
 equal, so we can call them both `Frob_p`.
-:::
+
+```tex "Examples/frobenius_conjugacy"
+If $Q$ and $Q'$ are two primes above $p$ then there's some $g\in G$ such that
+$gQ=Q'$ and one can deduce from this that $\Frob_Q$ and $\Frob_{Q'}$ are conjugate. In particular
+if $G$ is abelian then $\Frob_Q$ and $\Frob_{Q'}$ are equal, so we can call them both $\Frob_p$.
+```
 
 ```tex "The extension $(B/Q)/(A/P)/section"
 \section{The extension \texorpdfstring{$(B/Q)/(A/P)$}{(B/Q)/(A/P)}.}
 
 Note that $P$ and $Q$ are primes, so the quotients $A/P$ and $B/Q$ are integral domains.
-```
-
-:::proof "primes_over_same_prime_are_conjugate"
-This is the formal reason that Frobenius elements attached to different primes
-above `p` are conjugate, and hence coincide when the ambient Galois group is
-abelian.
-:::
-
-```tex "The extension $(B/Q)/(A/P)/technical_intro"
-The following technical lemma constructs an element of $B$ with nice characteristic polynomial
-modulo $Q$.
 ```
 
 # The Extension (B/Q)/(A/P)
@@ -414,85 +377,6 @@ characteristic polynomial modulo `Q`.
     \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
   \end{itemize}
 \end{lemma}
-```
-
-:::theorem "fixed_residue_class_fixed_by_stabilizer" (parent := "frobenius_project")
-Let `b₀ ∈ B/Q`. Suppose that `b₀` is fixed by the stabilizer subgroup `D_Q`.
-Then `b₀` is fixed by `Aut(L/K)`.
-:::
-
-```tex "fixed_of_fixed1_aux1/lemma"
-\begin{lemma}
-  \label{fixed_of_fixed1_aux1}
-  \mathlibok
-  There exist elements $a,b \in B$, with $a \notin Q$ and $a$ in the image of $A$ such that
-  for all $g\in G$,
-  \begin{itemize}
-    \item If $g \cdot Q = Q$, then $g \cdot b \equiv a \pmod{Q}$.
-    \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
-  \end{itemize}
-\end{lemma}
-```
-
-:::proof "fixed_residue_class_fixed_by_stabilizer"
-{uses "fixed_of_fixed1_aux1"}[]
-{uses "fixed_of_fixed1_aux2"}[]
-Let `a, b ∈ B` be the elements from `fixed_of_fixed1_aux2`. Let `M_b ∈ A[X]`
-be the characteristic polynomial of `b`. We can map `M_b` to `L[X]` in two
-different ways: via `B[X]` and via `K[X]`. Going via `B[X]` tells us that the
-image of `M_b(X)` in `L[X]` is exactly
-$`(X - a b_0)^{|D_Q|} X^{|G|-|D_Q|}`$. But going via `K[X]` tells us that this
-image lies in `K[X]`, so we must have $`a b_0 \in K`$. Then $`a b_0`$ is fixed
-by `Aut(L/K)`, and `a` is nonzero in `L` because `a ∉ Q`, so `b_0` is fixed by
-`Aut(L/K)`.
-:::
-
-```tex "fixed_of_fixed1_aux1/proof"
-\begin{proof}
-  \uses{Algebra.IsInvariant.charpoly_mem_lifts}
-  The ideals $g \cdot Q \neq Q$ are not contained in $Q$.
-  Since $Q$ is a prime ideal, this implies that the intersection of all $g \cdot Q \neq Q$ is
-  still not contained in $Q$.
-  Then we can find an element $c \notin Q$ with $c \in g \cdot Q$ for all $g \cdot Q \neq Q$.
-  Let $F_c$ be the characteristic polynomial of $c$, and write $F_c(X) \equiv X^j R(X) \pmod{Q}$.
-  Let $a$ be the coefficient of $X^j$ in $F_c(X)$, and choose $R(X)$ so that $R(0) = a$.
-  Let $b = R(0) - R(c)$.
-  Note that $F_c(c) = 0$ and $c \not\equiv 0 \pmod{Q}$, so $R(c) \equiv 0 \pmod{Q}$.
-  Then $b \equiv a \pmod{Q}$, so $g \cdot b \equiv a \pmod{Q}$ whenever $g \cdot Q = Q$.
-  But if $g \cdot Q \neq Q$, then $c \equiv 0 \pmod {g \cdot Q}$.
-  Then $b \equiv 0 \pmod {g \cdot Q}$, so $g \cdot b \equiv 0 \pmod{Q}$
-  whenever $g \cdot Q \neq Q$.
-  \mathlibok
-\end{proof}
-```
-
-```tex "fixed_of_fixed1_aux1/restate"
-\begin{lemma}
-  \label{fixed_of_fixed1_aux1}
-  \mathlibok
-  There exist elements $a,b \in B$, with $a \notin Q$ and $a$ in the image of $A$ such that
-  for all $g\in G$,
-  \begin{itemize}
-    \item If $g \cdot Q = Q$, then $g \cdot b \equiv a \pmod{Q}$.
-    \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
-  \end{itemize}
-\end{lemma}
-\begin{proof}
-  \uses{Algebra.IsInvariant.charpoly_mem_lifts}
-  The ideals $g \cdot Q \neq Q$ are not contained in $Q$.
-  Since $Q$ is a prime ideal, this implies that the intersection of all $g \cdot Q \neq Q$ is
-  still not contained in $Q$.
-  Then we can find an element $c \notin Q$ with $c \in g \cdot Q$ for all $g \cdot Q \neq Q$.
-  Let $F_c$ be the characteristic polynomial of $c$, and write $F_c(X) \equiv X^j R(X) \pmod{Q}$.
-  Let $a$ be the coefficient of $X^j$ in $F_c(X)$, and choose $R(X)$ so that $R(0) = a$.
-  Let $b = R(0) - R(c)$.
-  Note that $F_c(c) = 0$ and $c \not\equiv 0 \pmod{Q}$, so $R(c) \equiv 0 \pmod{Q}$.
-  Then $b \equiv a \pmod{Q}$, so $g \cdot b \equiv a \pmod{Q}$ whenever $g \cdot Q = Q$.
-  But if $g \cdot Q \neq Q$, then $c \equiv 0 \pmod {g \cdot Q}$.
-  Then $b \equiv 0 \pmod {g \cdot Q}$, so $g \cdot b \equiv 0 \pmod{Q}$
-  whenever $g \cdot Q \neq Q$.
-  \mathlibok
-\end{proof}
 ```
 
 ```tex "fixed_of_fixed1_aux2"
@@ -516,7 +400,12 @@ by `Aut(L/K)`, and `a` is nonzero in `L` because `a ∉ Q`, so `b_0` is fixed by
 \end{proof}
 ```
 
-```tex "fixed_of_fixed1"
+:::theorem "fixed_residue_class_fixed_by_stabilizer" (parent := "frobenius_project")
+Let `b₀ ∈ B/Q`. Suppose that `b₀` is fixed by the stabilizer subgroup `D_Q`.
+Then `b₀` is fixed by `Aut(L/K)`.
+:::
+
+```tex "fixed_of_fixed1/theorem"
 \begin{proposition}
   \label{fixed_of_fixed1}
   \uses{IsFractionRing.stabilizerHom}
@@ -525,6 +414,22 @@ by `Aut(L/K)`, and `a` is nonzero in `L` because `a ∉ Q`, so `b_0` is fixed by
   Suppose that $b_0$ is fixed by the stabilizer subgroup $D_Q$.
   Then $b_0$ is fixed by $\Aut(L/K)$.
 \end{proposition}
+```
+
+:::proof "fixed_residue_class_fixed_by_stabilizer"
+{uses "fixed_of_fixed1_aux1"}[]
+{uses "fixed_of_fixed1_aux2"}[]
+Let `a, b ∈ B` be the elements from `fixed_of_fixed1_aux2`. Let `M_b ∈ A[X]`
+be the characteristic polynomial of `b`. We can map `M_b` to `L[X]` in two
+different ways: via `B[X]` and via `K[X]`. Going via `B[X]` tells us that the
+image of `M_b(X)` in `L[X]` is exactly
+$`(X - a b_0)^{|D_Q|} X^{|G|-|D_Q|}`$. But going via `K[X]` tells us that this
+image lies in `K[X]`, so we must have $`a b_0 \in K`$. Then $`a b_0`$ is fixed
+by `Aut(L/K)`, and `a` is nonzero in `L` because `a ∉ Q`, so `b_0` is fixed by
+`Aut(L/K)`.
+:::
+
+```tex "fixed_of_fixed1/proof"
 \begin{proof}
   \uses{fixed_of_fixed1_aux1, fixed_of_fixed1_aux2}
   Let $a,b\in B$ be elements from~\ref{fixed_of_fixed1_aux2}.
@@ -595,7 +500,7 @@ If `R/S` is an algebraic extension of integral domains, then any fraction
 `a/b` with `a, b ∈ R` can be rewritten as `c/d` with `c ∈ R` and `d ∈ S`.
 :::
 
-```tex "IsAlgebraic.exists_smul_eq_mul/lemma"
+```tex "IsAlgebraic.exists_smul_eq_mul/theorem"
 \begin{lemma}
   \label{IsAlgebraic.exists_smul_eq_mul}
   \lean{IsAlgebraic.exists_smul_eq_mul}
@@ -603,11 +508,6 @@ If `R/S` is an algebraic extension of integral domains, then any fraction
   If $R/S$ is an algebraic extension of integral domains, then any fraction $a/b$ with $a,b\in R$
   can be written as $c/d$ with $c\in R$ and $d\in S$.
 \end{lemma}
-\begin{proof}
-  If $f\in S[X]$ satisfies $f(b)=0$, then $f(0)\in S$ is a multiple of $b$.
-  If $f(0)=bx\in S$, then $a/b=(ax)/(bx)$ as desired.
-  \mathlibok
-\end{proof}
 ```
 
 :::proof "algebraic_fraction_denominator_lift"
@@ -615,24 +515,17 @@ If `f ∈ S[X]` satisfies `f(b) = 0`, then `f(0) ∈ S` is a multiple of `b`.
 If `f(0) = bx ∈ S`, then `a/b = (ax)/(bx)` as desired.
 :::
 
-```tex "The extension $L/K/denominator_intro"
-Now we upgrade this to elements of $L$ fixed by $D_Q$.
-The following lemma will allow us to lift the denominator from $B/Q$ to $A/P$.
-```
-
-```tex "IsAlgebraic.exists_smul_eq_mul/restate"
-\begin{lemma}
-  \label{IsAlgebraic.exists_smul_eq_mul}
-  \lean{IsAlgebraic.exists_smul_eq_mul}
-  \mathlibok
-  If $R/S$ is an algebraic extension of integral domains, then any fraction $a/b$ with $a,b\in R$
-  can be written as $c/d$ with $c\in R$ and $d\in S$.
-\end{lemma}
+```tex "IsAlgebraic.exists_smul_eq_mul/proof"
 \begin{proof}
   If $f\in S[X]$ satisfies $f(b)=0$, then $f(0)\in S$ is a multiple of $b$.
   If $f(0)=bx\in S$, then $a/b=(ax)/(bx)$ as desired.
   \mathlibok
 \end{proof}
+```
+
+```tex "The extension $L/K/denominator_intro"
+Now we upgrade this to elements of $L$ fixed by $D_Q$.
+The following lemma will allow us to lift the denominator from $B/Q$ to $A/P$.
 ```
 
 :::theorem "fixed_fraction_field_element_fixed_by_stabilizer" (parent := "frobenius_project")
@@ -640,29 +533,7 @@ If an element of `L` is fixed by the stabilizer subgroup `D_Q`, then it is
 fixed by `Aut(L/K)`.
 :::
 
-```tex "IsAlgebraic.exists_smul_eq_mul"
-\begin{lemma}
-  \label{IsAlgebraic.exists_smul_eq_mul}
-  \lean{IsAlgebraic.exists_smul_eq_mul}
-  \mathlibok
-  If $R/S$ is an algebraic extension of integral domains, then any fraction $a/b$ with $a,b\in R$
-  can be written as $c/d$ with $c\in R$ and $d\in S$.
-\end{lemma}
-\begin{proof}
-  If $f\in S[X]$ satisfies $f(b)=0$, then $f(0)\in S$ is a multiple of $b$.
-  If $f(0)=bx\in S$, then $a/b=(ax)/(bx)$ as desired.
-  \mathlibok
-\end{proof}
-```
-
-:::proof "fixed_fraction_field_element_fixed_by_stabilizer"
-Since `(B/Q)/(A/P)` is algebraic, the denominator-lifting theorem lets us write
-`x = b/a` for `b ∈ B/Q` and `a ∈ A/P`. Then `b` is fixed by the stabilizer
-subgroup `D_Q`, and it is enough to show that `b` is fixed by the automorphism
-group `Aut(L/K)`. But this is exactly the preceding result.
-:::
-
-```tex "fixed_of_fixed2"
+```tex "fixed_of_fixed2/theorem"
 \begin{proposition}
   \label{fixed_of_fixed2}
   \mathlibok
@@ -670,6 +541,19 @@ group `Aut(L/K)`. But this is exactly the preceding result.
   Suppose that $x$ is fixed by the stabilizer subgroup $D_Q$.
   Then $x$ is fixed by the automorphism group $\Aut(L/K)$.
 \end{proposition}
+```
+
+:::proof "fixed_fraction_field_element_fixed_by_stabilizer"
+{uses "Algebra.IsInvariant.isIntegral"}[]
+{uses "IsAlgebraic.exists_smul_eq_mul"}[]
+{uses "fixed_of_fixed1"}[]
+Since `(B/Q)/(A/P)` is algebraic, the denominator-lifting theorem lets us write
+`x = b/a` for `b ∈ B/Q` and `a ∈ A/P`. Then `b` is fixed by the stabilizer
+subgroup `D_Q`, and it is enough to show that `b` is fixed by the automorphism
+group `Aut(L/K)`. But this is exactly the preceding result.
+:::
+
+```tex "fixed_of_fixed2/proof"
 \begin{proof}
   \uses{fixed_of_fixed1, Algebra.IsInvariant.isIntegral,
     IsAlgebraic.exists_smul_eq_mul}
@@ -683,8 +567,6 @@ group `Aut(L/K)`. But this is exactly the preceding result.
 ```
 
 :::proof "stabilizer_hom_surjective"
-{uses "FixedPoints.toAlgAut_surjective"}[]
-{uses "fixed_of_fixed2"}[]
 The map `D_Q -> Aut(L/L^{D_Q})` is surjective by
 `FixedPoints.toAlgAut_surjective`. For surjectivity of
 `Aut(L/L^{D_Q}) -> Aut(L/K)`, let `σ` be a field
