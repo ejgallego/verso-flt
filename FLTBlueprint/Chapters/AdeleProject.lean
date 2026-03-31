@@ -910,9 +910,9 @@ we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$
 ```
 
 :::proof "finite_adele_base_change_algebraic"
-Follows immediately from
-{uses "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"}[] and
-{uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[].
+Follows immediately from theorem
+`IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv` and theorem
+`IsDedekindDomain.AKLB.tensorProduct_module_algEquiv`.
 :::
 ```tex "adele_project/lt-witness-548j/proof"
 \begin{proof}
@@ -1273,7 +1273,7 @@ Because `L_w` is a finite-dimensional normed `K_v`-vector space, there exists a
 ```
 
 
-:::theorem "infinite_place_local_base_change_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
+:::theorem "NumberField.InfinitePlace.Completion.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$, whose restriction
 to $`1 \otimes_K K_v`$ corresponds to the map in
@@ -1299,7 +1299,7 @@ to $`1 \otimes_K K_v`$ corresponds to the map in
 ```
 
 
-:::proof "infinite_place_local_base_change_homeomorphism"
+:::proof "NumberField.InfinitePlace.Completion.baseChangeEquiv"
 The map in `NumberField.InfinitePlace.Completion.baseChange` is an `L`-algebra
 isomorphism by the surjectivity and injectivity theorems. Every `K_v`-algebra
 isomorphism between two `K_v`-module topological spaces is a homeomorphism.
@@ -1323,7 +1323,7 @@ a `K_v`-algebra isomorphism, it is also a homeomorphism.
 :::theorem "infinite_place_local_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piEquiv")
 Let `v` be an infinite place of `K`. There is a natural `K_v`-linear
 homeomorphism $`K_v^{[L:K]} \cong \prod_{w \mid v} L_w`$.
-This is obtained from {uses "infinite_place_local_base_change_homeomorphism"}[].
+This is obtained from {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-837"
 \begin{theorem}
@@ -1339,7 +1339,7 @@ This is obtained from {uses "infinite_place_local_base_change_homeomorphism"}[].
 
 :::proof "infinite_place_local_power_homeomorphism"
 Compose the `K_v`-linear isomorphism $`K_v^{[L:K]} \cong \prod_{w \mid v} L_w`$
-with {uses "infinite_place_local_base_change_homeomorphism"}[] to get the
+with {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[] to get the
 isomorphism in the statement. Since both sides have the `K_v`-module topology,
 then this is also a homeomorphism.
 :::
@@ -1424,7 +1424,7 @@ Since `L_\infty` is homeomorphic to a finite product of `K_\infty` as a
 :::theorem "infinite_adele_base_change_algebraic" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv")
 There is a natural `L`-algebra isomorphism
 $`L \otimes_K K_\infty \cong L_\infty`$.
-This is assembled from {uses "infinite_place_local_base_change_homeomorphism"}[].
+This is assembled from {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-888"
 \begin{theorem}
@@ -1445,7 +1445,7 @@ $`L \otimes_K K_\infty \cong \prod_v (L \otimes_K K_v) \cong
 standard `L`-algebra isomorphism
 $`L \otimes_K \prod_v K_v \cong \prod_v (L \otimes_K K_v)`$. The second
 isomorphism is given by the component `L`-algebra isomorphisms
-{uses "infinite_place_local_base_change_homeomorphism"}[].
+{uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-894"
 \begin{proof}
