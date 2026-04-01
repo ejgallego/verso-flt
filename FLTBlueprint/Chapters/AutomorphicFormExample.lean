@@ -240,6 +240,7 @@ Follow your nose.
 ```
 
 :::theorem "ZHat.nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial")
+{uses "ZHat.commRing"}[]
 $`0\not=1` in $`\Zhat`$.
 :::
 
@@ -259,14 +260,7 @@ Evaluating $`0` at `2` gives $`0`, and evaluating $`1` at `2` gives $`1`, and
 these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 :::
 
-```tex "ZHat.nontrivial"
-\begin{lemma}
-    \label{ZHat.nontrivial}
-    \lean{ZHat.nontrivial}
-    \uses{ZHat.commRing}
-    \leanok
-    $0\not=1$ in $\Zhat$.
-\end{lemma}
+```tex "ZHat.nontrivial/proof"
 \begin{proof}
     \leanok
     Recall that you can evaluate an element of $\Zhat$ at a positive integer.
@@ -436,6 +430,8 @@ $`e_N=-t` in $`\Z/N\Z`, so again $`e\not=n`.
 ```
 
 :::theorem "ZHat.torsionfree" (parent := "automorphic_example_program") (lean := "ZHat.torsionfree")
+{uses "ZHat.commRing"}[]
+{uses "ZHat.charZero"}[]
 If $`0<N` is an integer then multiplication by $`N` is injective on $`\Zhat`.
 :::
 
@@ -752,6 +748,8 @@ let's prove this now.
 ```
 
 :::theorem "QHat.canonicalForm" (parent := "automorphic_example_program") (lean := "QHat.canonicalForm")
+{uses "QHat"}[]
+{uses "ZHat.commRing"}[]
 Every element of $`\Qhat:=\Q\otimes\Zhat` can be written as $`q\otimes_t z`
 with $`q\in\Q` and $`z\in\Zhat`. Furthermore one can even assume that
 $`q=\frac{1}{N}` for some positive integer $`N`.
@@ -1000,6 +998,8 @@ these results as $\Q\sqcap\Zhat=\Z$ and $\Q\sqcup\Zhat=\Qhat$.
 ```
 
 :::theorem "QHat.rat_meet_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_meet_zHat")
+{uses "QHat"}[]
+{uses "ZHat.commRing"}[]
 The intersection of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Z`.
 :::
 
@@ -1035,6 +1035,8 @@ $`B=1` and thus $`x=A\in\Z`.
 ```
 
 :::theorem "QHat.rat_join_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_join_zHat")
+{uses "QHat"}[]
+{uses "ZHat.commRing"}[]
 The sum of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Qhat`. More precisely, every
 element of $`\Qhat` can be written as $`q+z` with $`q\in\Q` and $`z\in\Zhat`,
 or more precisely as $`q\otimes_t 1+1\otimes_t z`.
