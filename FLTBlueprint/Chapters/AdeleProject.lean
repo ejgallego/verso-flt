@@ -326,6 +326,7 @@ Standard (and formalized).
 ```
 
 :::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+{uses "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[]
 There's a natural ring map $`K_v\to L_w`$ extending the map $`K\to L`$. It is
 defined by completing the inclusion $`K\to L`$ at the finite places $`v`$ and
 $`w`$ (which can be done because the previous lemma shows that the map is
@@ -1460,6 +1461,9 @@ to $`1 \otimes_K K_v`$ corresponds to the map in
 
 
 :::proof "NumberField.InfinitePlace.Completion.baseChangeEquiv"
+{uses "NumberField.InfinitePlace.Completion.baseChange"}[]
+{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
+{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
 The map in `NumberField.InfinitePlace.Completion.baseChange` is an `L`-algebra
 isomorphism by the surjectivity and injectivity theorems. Every `K_v`-algebra
 isomorphism between two `K_v`-module topological spaces is a homeomorphism.
@@ -2055,7 +2059,8 @@ and the result follows from the previous theorem.
 ```
 
 
-:::theorem "number_field_adele_discrete_embedding" (parent := "adele_project")
+:::theorem "NumberField.AdeleRing.discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.discrete")
+{uses "NumberField.AdeleRing.zero_discrete"}[]
 The additive subgroup `K` of `\mathbf{A}_K` is discrete.
 :::
 ```tex "adele_project/lt-witness-1180"
@@ -2069,7 +2074,7 @@ The additive subgroup `K` of `\mathbf{A}_K` is discrete.
 ```
 
 
-:::proof "number_field_adele_discrete_embedding"
+:::proof "NumberField.AdeleRing.discrete"
 If `x\in K` and `U` is the open subset in the previous lemma, then
 it's easily checked that `K\cap U=\{0\}` implies `K\cap (U+x)=\{x\}`,
 and `U+x` is open.

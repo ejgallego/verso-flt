@@ -180,7 +180,6 @@ $`d_A(\phi)(\phi_*\mu) = \mu.`$
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_map"
-{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
 This is a restatement of the previous result.
 :::
 
@@ -209,7 +208,6 @@ If `μ` is any regular Haar measure on `A` then
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_comap"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
 This follows from the pushforward formula applied to the regular Haar measure
 `\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
 :::
@@ -328,7 +326,6 @@ This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_trans"
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
 {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
 
 Here's one way: it suffices to prove that
@@ -757,6 +754,8 @@ If $B$ is a central simple algebra over a locally compact field $F$, and if $u\i
 ```
 
 :::proof "central_simple_algebra_left_right_same_haar"
+{uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[]
+{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[]
 If `\ell_u` and `r_u` denote left and right multiplication by `u` on `B`, then
 we have seen in
 `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det` that
