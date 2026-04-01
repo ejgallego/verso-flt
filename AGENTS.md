@@ -71,6 +71,17 @@ This repository is the integration layer for the FLT Verso blueprint.
   forward pointer or sketch, the Verso port should stop there too.
 - Preserve TeX `\uses{...}` edges when they exist, but do not invent new
   dependency edges merely to make the blueprint graph look nicer.
+- Treat TeX/source labels and Lean declaration names as distinct namespaces.
+  Node ids and `{uses "..."}[]` belong to the source-label namespace; `(lean := "...")`
+  belongs to the Lean declaration namespace. The two may coincide, but do not
+  assume that they do.
+- If the TeX source has a label for a theorem/definition/lemma/corollary/proof
+  environment or other graph-visible source block, use that TeX/source label as
+  the Verso node id. Do not replace it with an English wrapper name.
+- If the TeX source does not have a label for a block, do not invent a
+  graph-visible node id merely to improve the blueprint graph. Keep the material
+  as prose or as an unlabeled/local witness unless a separate explicit request
+  says otherwise.
 - Metadata fidelity is about preserving the source's intended blueprint
   semantics, not about copying TeX syntax mechanically. If the TeX source splits
   one dependency awkwardly across `\uses{...}` and prose `\ref{...}` because of
@@ -144,6 +155,14 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Do not treat mis-ported source-grounded nodes as invented. If a node does
   correspond to a real TeX theorem/definition/proof, prefer regrounding,
   re-witnessing, splitting, or relabeling it rather than deleting it.
+- Do not "improve" the TeX source during LT work unless explicitly asked or
+  unless a concrete parser/build/harness constraint forces it. In particular,
+  preserve source wording, source naming, source labels, source proof shape,
+  and even source awkwardness by default.
+- If a source passage, node title, theorem statement, proof sketch, dependency
+  edge, or label looks awkward or suboptimal, that is not by itself a reason to
+  rewrite it, rename it, relabel it, or smooth it out. Faithfulness to the TeX
+  source takes priority over stylistic cleanup.
 - If a translated block merges several source items, introduces convenience
   summary scaffolding, or otherwise obscures the source structure, prefer
   deleting or demoting that summary block and restoring the real source-grounded
