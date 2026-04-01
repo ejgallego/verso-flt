@@ -102,6 +102,37 @@ By theorem~\ref{bar}.
         self.assertEqual(score.env_ref_hints, {"bar"})
         self.assertEqual(score.strong_ref_candidates, set())
 
+    def test_label_regrounding_candidates_detect_wrapper_node(self) -> None:
+        verso = verso_block("Alpha.", header=':::theorem "english_wrapper" (lean := "Demo.foo")')
+        tex = tex_block(
+            r"""
+\begin{theorem}
+\label{Demo.foo}
+\lean{Demo.foo}
+Alpha.
+\end{theorem}
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.label_regrounding_candidates, {"Demo.foo"})
+
+    def test_witness_mismatch_detects_multi_env_proof_witness(self) -> None:
+        verso = verso_block("Alpha.", header=':::proof "Demo.foo"')
+        tex = tex_block(
+            r"""
+\begin{lemma}
+\label{Demo.foo}
+Alpha.
+\end{lemma}
+\begin{proof}
+Alpha.
+\end{proof}
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertIn("multi_env_witness", score.witness_mismatch_hints)
+        self.assertNotIn("proof_without_proof_env", score.witness_mismatch_hints)
+
     def test_unrelated_pair_scores_low(self) -> None:
         verso = verso_block("alpha beta gamma")
         tex = tex_block("delta epsilon zeta")
@@ -226,6 +257,7 @@ Alpha.
             self.assertEqual(result.returncode, 0, msg=result.stdout + result.stderr)
             self.assertIn("- metadata-focus:", result.stdout)
             self.assertNotIn("missing_uses=['bar']", result.stdout)
+            self.assertIn("pure_metadata=", result.stdout)
 
     def test_cli_verbose_shows_detailed_metadata(self) -> None:
         content = """#doc (Manual) "Demo" =>
@@ -260,6 +292,7 @@ Alpha.
             )
             self.assertEqual(result.returncode, 0, msg=result.stdout + result.stderr)
             self.assertIn("missing_uses=['bar']", result.stdout)
+            self.assertIn("label_reground=", result.stdout)
 
 
 if __name__ == "__main__":

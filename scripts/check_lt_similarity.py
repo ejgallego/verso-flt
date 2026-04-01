@@ -27,8 +27,12 @@ class PairScore:
     tex_uses: set[str]
     verso_lean: set[str]
     tex_lean: set[str]
+    tex_labels: set[str]
     tex_refs: set[str]
     tex_env_kind: str | None
+    tex_env_kinds: tuple[str, ...]
+    verso_env_kind: str | None
+    verso_header_id: str | None
 
     @property
     def primary_ratio(self) -> float:
@@ -55,14 +59,50 @@ class PairScore:
         return self.tex_refs - self.tex_uses - self.tex_lean - self.verso_uses
 
     @property
-    def metadata_diff_count(self) -> int:
+    def pure_metadata_diff_count(self) -> int:
         return (
             len(self.missing_uses)
             + len(self.extra_uses)
             + len(self.missing_lean)
             + len(self.extra_lean)
+        )
+
+    @property
+    def metadata_diff_count(self) -> int:
+        return (
+            self.pure_metadata_diff_count
             + (2 * len(self.strong_ref_candidates))
             + len(self.env_ref_hints)
+        )
+
+    @property
+    def label_regrounding_candidates(self) -> set[str]:
+        if self.block.kind != "verso" or self.verso_header_id is None:
+            return set()
+        target_pool = self.tex_labels or self.tex_lean
+        if not target_pool:
+            return set()
+        if self.verso_header_id in target_pool:
+            return set()
+        return target_pool
+
+    @property
+    def witness_mismatch_hints(self) -> tuple[str, ...]:
+        if self.block.kind != "verso" or self.verso_env_kind is None:
+            return ()
+        hints: list[str] = []
+        if len(self.tex_env_kinds) > 1:
+            hints.append("multi_env_witness")
+        if self.verso_env_kind == "proof" and "proof" not in self.tex_env_kinds:
+            hints.append("proof_without_proof_env")
+        return tuple(hints)
+
+    @property
+    def ref_hint_count(self) -> int:
+        return (
+            len(self.strong_ref_candidates)
+            + len(self.env_ref_hints)
+            + len(self.soft_ref_hints)
         )
 
     @property
@@ -102,6 +142,7 @@ TEX_SIMPLE_CMD_RE = re.compile(r"\\([A-Za-z]+)")
 TEX_USES_CAPTURE_RE = re.compile(r"\\uses\{([^{}]*)\}")
 TEX_LEAN_CAPTURE_RE = re.compile(r"\\lean\{([^{}]*)\}")
 TEX_REF_CAPTURE_RE = re.compile(r"\\ref\{([^{}]*)\}")
+TEX_LABEL_CAPTURE_RE = re.compile(r"\\label\{([^{}]*)\}")
 TEX_ENV_CAPTURE_RE = re.compile(r"\\begin\{(theorem|lemma|corollary|definition|proof|remark)\}")
 VERSO_LEAN_CAPTURE_RE = re.compile(r'lean := "([^"]+)"')
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
@@ -244,9 +285,39 @@ def extract_tex_refs(text: str) -> set[str]:
     return {match.group(1).strip() for match in TEX_REF_CAPTURE_RE.finditer(stripped)}
 
 
+def extract_tex_labels(text: str) -> set[str]:
+    stripped = strip_tex_comments(text)
+    return {match.group(1).strip() for match in TEX_LABEL_CAPTURE_RE.finditer(stripped)}
+
+
 def extract_tex_env_kind(text: str) -> str | None:
     stripped = strip_tex_comments(text)
     match = TEX_ENV_CAPTURE_RE.search(stripped)
+    return match.group(1) if match else None
+
+
+def extract_tex_env_kinds(text: str) -> tuple[str, ...]:
+    stripped = strip_tex_comments(text)
+    return tuple(match.group(1) for match in TEX_ENV_CAPTURE_RE.finditer(stripped))
+
+
+def extract_verso_env_kind(header: str, kind: str) -> str | None:
+    if kind != "verso":
+        return None
+    stripped = header.strip()
+    if stripped.startswith(":::theorem "):
+        return "theorem"
+    if stripped.startswith(":::definition "):
+        return "definition"
+    if stripped.startswith(":::proof "):
+        return "proof"
+    return None
+
+
+def extract_verso_header_id(header: str, kind: str) -> str | None:
+    if kind != "verso":
+        return None
+    match = re.match(r'^:::(?:theorem|definition|proof) "([^"]+)"', header.strip())
     return match.group(1) if match else None
 
 
@@ -267,8 +338,12 @@ def score_pair(block: Block, tex: Block) -> PairScore:
         tex_uses=extract_tex_uses(tex_body),
         verso_lean=extract_verso_lean(block.header),
         tex_lean=extract_tex_lean(tex_body),
+        tex_labels=extract_tex_labels(tex_body),
         tex_refs=extract_tex_refs(tex_body),
         tex_env_kind=extract_tex_env_kind(tex_body),
+        tex_env_kinds=extract_tex_env_kinds(tex_body),
+        verso_env_kind=extract_verso_env_kind(block.header, block.kind),
+        verso_header_id=extract_verso_header_id(block.header, block.kind),
     )
 
 
@@ -284,11 +359,17 @@ def summarize_file(
     low.sort(key=lambda score: (score.primary_ratio, score.sequence_ratio, score.block.start_line))
     metadata_mismatches = [score for score in scores if score.metadata_diff_count > 0]
     metadata_mismatches.sort(key=lambda score: (-score.metadata_diff_count, score.block.start_line))
+    pure_metadata_pairs = [score for score in scores if score.pure_metadata_diff_count > 0]
+    reground_pairs = [score for score in scores if score.label_regrounding_candidates]
+    witness_pairs = [score for score in scores if score.witness_mismatch_hints]
+    ref_hint_pairs = [score for score in scores if score.ref_hint_count > 0]
 
     lines = [
         f"{path}: pairs={len(scores)} avg={statistics.mean(primary_values):.3f} "
         f"median={statistics.median(primary_values):.3f} min={min(primary_values):.3f} "
-        f"warn_below={warn_below:.2f} low={len(low)} metadata_mismatch={len(metadata_mismatches)}"
+        f"warn_below={warn_below:.2f} low={len(low)} metadata_mismatch={len(metadata_mismatches)} "
+        f"pure_metadata={len(pure_metadata_pairs)} reground={len(reground_pairs)} "
+        f"witness={len(witness_pairs)} ref_hints={len(ref_hint_pairs)}"
     ]
 
     if not verbose:
@@ -309,10 +390,14 @@ def summarize_file(
                 lines.append(
                     f"  line {score.block.start_line} {kind}: "
                     f"diffs={score.metadata_diff_count} "
+                    f"pure={score.pure_metadata_diff_count} "
+                    f"reground={len(score.label_regrounding_candidates)} "
+                    f"witness={len(score.witness_mismatch_hints)} "
                     f"missing_uses={len(score.missing_uses)} "
                     f"missing_lean={len(score.missing_lean)} "
                     f"strong_refs={strong_ref_count} "
                     f"env_ref_hints={env_ref_count} "
+                    f"soft_ref_hints={len(score.soft_ref_hints)} "
                     f"text={score.block.preview()}"
                 )
         return lines
@@ -328,6 +413,10 @@ def summarize_file(
             metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
         if score.extra_lean:
             metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
+        if score.label_regrounding_candidates:
+            metadata_bits.append(f"label_reground={sorted(score.label_regrounding_candidates)}")
+        if score.witness_mismatch_hints:
+            metadata_bits.append(f"witness_hints={list(score.witness_mismatch_hints)}")
         if score.strong_ref_candidates:
             metadata_bits.append(f"strong_refs={sorted(score.strong_ref_candidates)}")
         if score.env_ref_hints:
@@ -354,6 +443,10 @@ def summarize_file(
                 metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
             if score.extra_lean:
                 metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
+            if score.label_regrounding_candidates:
+                metadata_bits.append(f"label_reground={sorted(score.label_regrounding_candidates)}")
+            if score.witness_mismatch_hints:
+                metadata_bits.append(f"witness_hints={list(score.witness_mismatch_hints)}")
             if score.strong_ref_candidates:
                 metadata_bits.append(f"strong_refs={sorted(score.strong_ref_candidates)}")
             if score.env_ref_hints:

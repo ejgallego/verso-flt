@@ -27,6 +27,9 @@ def summarize(path: Path, warn_below: float) -> str:
     primary_values = [score.primary_ratio for score in scores]
     low = sum(score.primary_ratio < warn_below for score in scores)
     metadata = sum(score.metadata_diff_count > 0 for score in scores)
+    pure_metadata = sum(score.pure_metadata_diff_count > 0 for score in scores)
+    reground = sum(bool(score.label_regrounding_candidates) for score in scores)
+    witness = sum(bool(score.witness_mismatch_hints) for score in scores)
     strong_refs = sum(len(score.strong_ref_candidates) for score in scores)
     env_refs = sum(len(score.env_ref_hints) for score in scores)
     return (
@@ -34,6 +37,7 @@ def summarize(path: Path, warn_below: float) -> str:
         f"avg={statistics.mean(primary_values):.3f} "
         f"median={statistics.median(primary_values):.3f} "
         f"low={low} metadata={metadata} "
+        f"pure_metadata={pure_metadata} reground={reground} witness={witness} "
         f"strong_refs={strong_refs} env_ref_hints={env_refs}"
     )
 
