@@ -1323,7 +1323,6 @@ a `K_v`-algebra isomorphism, it is also a homeomorphism.
 :::theorem "infinite_place_local_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piEquiv")
 Let `v` be an infinite place of `K`. There is a natural `K_v`-linear
 homeomorphism $`K_v^{[L:K]} \cong \prod_{w \mid v} L_w`$.
-This is obtained from {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-837"
 \begin{theorem}
@@ -1354,9 +1353,9 @@ then this is also a homeomorphism.
 
 
 :::theorem "infinite_adele_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.piEquiv")
+{uses "NumberField.InfinitePlace.Completion.piEquiv"}[]
 There is a natural `K_\infty`-linear homeomorphism
 $`K_\infty^{[L:K]} \cong L_\infty`$.
-This is assembled from {uses "NumberField.InfinitePlace.Completion.piEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-857"
 \begin{theorem}
@@ -1395,8 +1394,8 @@ $`(x \cdot y)_w = x_{v_w} \cdot y_w`$, which is true by definition.
 
 
 :::theorem "infinite_adele_module_topology" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT")
+{uses "NumberField.InfiniteAdeleRing.piEquiv"}[]
 `L_\infty` has the `K_\infty`-module topology.
-This follows from {uses "NumberField.InfiniteAdeleRing.piEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-876"
 \begin{theorem}
@@ -1422,9 +1421,9 @@ Since `L_\infty` is homeomorphic to a finite product of `K_\infty` as a
 
 
 :::theorem "infinite_adele_base_change_algebraic" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv")
+{uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[]
 There is a natural `L`-algebra isomorphism
 $`L \otimes_K K_\infty \cong L_\infty`$.
-This is assembled from {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
 :::
 ```tex "adele_project/lt-witness-888"
 \begin{theorem}
@@ -1445,7 +1444,8 @@ $`L \otimes_K K_\infty \cong \prod_v (L \otimes_K K_v) \cong
 standard `L`-algebra isomorphism
 $`L \otimes_K \prod_v K_v \cong \prod_v (L \otimes_K K_v)`$. The second
 isomorphism is given by the component `L`-algebra isomorphisms
-{uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
+`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$ from
+`NumberField.InfinitePlace.Completion.baseChangeEquiv`.
 :::
 ```tex "adele_project/lt-witness-894"
 \begin{proof}
@@ -1483,11 +1483,11 @@ $`L \otimes_K K_\infty \cong L_\infty`$.
 
 
 :::proof "NumberField.InfiniteAdeleRing.baseChangeEquiv"
-Since both sides of {uses "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv"}[] have the
+Since both sides of the `L`-algebra isomorphism in
+`NumberField.InfiniteAdeleRing.baseChangeAlgEquiv` have the
 `K_\infty`-module topology, and since the isomorphism can equivalently be
 viewed as a `K_\infty`-linear isomorphism, it is also a homeomorphism.
-The `L_\infty` side has the `K_\infty`-module topology by
-{uses "infinite_adele_module_topology"}[].
+The `L_\infty` side has the `K_\infty`-module topology.
 :::
 ```tex "adele_project/lt-witness-849"
 \begin{proof}
@@ -1500,8 +1500,7 @@ The `L_\infty` side has the `K_\infty`-module topology by
 
 
 :::proof "adele_base_change"
-Follows from {uses "NumberField.InfiniteAdeleRing.baseChangeEquiv"}[] and
-{uses "finite_adele_base_change_algebraic"}[].
+Follows from the previous results.
 :::
 ```tex "adele_project/lt-witness-865"
 \begin{proof}
