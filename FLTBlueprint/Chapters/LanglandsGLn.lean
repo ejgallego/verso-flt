@@ -136,7 +136,7 @@ inverse-transpose. Note that $s(M)$ is always positive, and is large if $M$
 has a very large or very small, in absolute value, eigenvalue.
 ```
 
-:::definition "slowly_increasing_gln_function" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.IsSlowlyIncreasing" (parent := "gln_langlands_program")
 We say that a function $`f : \GL_n(\R) \to \bbC` is slowly-increasing if there
 is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
@@ -163,7 +163,7 @@ don't think it makes any difference.
 
 # Weights At Infinity
 
-:::definition "weight_at_infinity_gln" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.Weight" (parent := "gln_langlands_program")
 The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
 finite-dimensional continuous complex representation $`\rho` of a maximal
 compact subgroup of $`\GL_n(\R)`, and it's convenient to choose one (they're
@@ -293,12 +293,12 @@ From here on there is no more Lean right now, only LaTeX.
 From here on there is no more Lean right now, only LaTeX.
 ```
 
-:::definition "automorphic_form_for_gln" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ" (parent := "gln_langlands_program")
 A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
 $`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
-five conditions. This depends on {uses "smooth_gln_function"}[],
-{uses "slowly_increasing_gln_function"}[],
-{uses "weight_at_infinity_gln"}[], and {uses "instCentreAction"}[].
+five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],
+{uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[],
+{uses "AutomorphicForm.GLn.Weight"}[], and {uses "instCentreAction"}[].
 
 1. Periodicity: for all $`g \in \GL_n(\Q)`, we have $`f(gx,gy) = f(x,y)`.
 2. It has a finite level: there exists a compact open subgroup
@@ -369,8 +369,7 @@ vanish.
 
 :::theorem "hecke_operator_action_gln" (parent := "gln_langlands_program")
 The group $`\GL_n(\A_{\Q}^f)` acts on the space of automorphic forms for
-$`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`. This depends on
-{uses "automorphic_form_for_gln"}[].
+$`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`.
 :::
 
 ```tex "ch07exampleGLn/hecke_operator_action"
@@ -428,7 +427,7 @@ $T_g(f)=\sum g_i\cdot f$.
 :::theorem "gln_hecke_operator_well_defined" (parent := "gln_langlands_program")
 This function is well-defined, in the sense that it sends a $`U`-invariant form
 to a $`U`-invariant form and is independent of the choice of the representatives
-$`g_i`. This depends on {uses "hecke_operator_action_gln"}[].
+$`g_i`.
 :::
 
 ```tex "ch07exampleGLn/gln_hecke_operator_well_defined"

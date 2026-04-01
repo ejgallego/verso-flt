@@ -913,7 +913,7 @@ because a product of compacts is compact and a product of opens is open.
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
 ```
-:::theorem "nolean-compactopen-GL2" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.GL2.localFullLevel")
+:::theorem "nolean-compactopen-GL2" (parent := "hecke_operator_project")
 `GL_2(\calO_v)` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
@@ -1174,7 +1174,7 @@ We fix a totally real field $`F`$, a totally definite quaternion algebra
 $`D/F`$, and a coefficient additive abelian group $`R`$. Set
 $`G = (D \otimes_F \A_F^\infty)^\times`$ as in the previous section. Note that
 `G` naturally contains copies of `D^\times` and $`(\A_F^\infty)^\times`$. Recall from
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[] that an
+definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm` that an
 `R`-valued weight `2` automorphic form is a function $`f : G \to R`$
 satisfying the following axioms:
 
@@ -1209,7 +1209,7 @@ It can be checked that the collection of all such forms is an additive abelian
 group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
 group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
 defined via $`(g \cdot f)(x) := f(xg)`$. Recall from
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"}[] that
+definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel` that
 a weight `2` automorphic form of level `U` is simply an element of the fixed
 points $`A^U`$. In other words, the forms of level `U` are the forms satisfying
 the three axioms defining an automorphic form but with the compact open subgroup

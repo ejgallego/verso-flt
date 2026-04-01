@@ -593,6 +593,7 @@ such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[]
+{uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[]
 
 By lemma `NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel`,
 $`\beta X\cap D^\times\not=\emptyset`$, and lemma
@@ -894,6 +895,7 @@ is finite.
 ```
 
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"
+{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]
 The double cosets give a disjoint open cover of
 $`(D\otimes_K \A_K^\infty)`$ which descends to a disjoint open cover of the
 quotient space $`D^\times\backslash(D\otimes_K \A_K^\infty)^\times`$. However
