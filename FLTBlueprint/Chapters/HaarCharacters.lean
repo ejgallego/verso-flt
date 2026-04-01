@@ -138,16 +138,7 @@ for additive groups.
 $`d_A(\phi)`$ is independent of choice of regular Haar measure.
 :::
 
-```tex "haar_character_project/lt_independent_of_measure"
-$d_A(\phi)$ is independent of choice of regular Haar measure.
-```
-
-:::proof "MeasureTheory.addEquivAddHaarChar_eq"
-If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and the
-`λ`s on each side of `μ'(X) = d_A(\phi)(\phi_* μ')(X)` cancel.
-:::
-
-```tex "haar_character_project/independent_of_measure"
+```tex "haar_character_project/independent_of_measure/theorem"
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_eq}
   \uses{MeasureTheory.addEquivAddHaarChar}
@@ -155,6 +146,14 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
   \leanok
   $d_A(\phi)$ is independent of choice of regular Haar measure.
 \end{lemma}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_eq"
+If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and the
+`λ`s on each side of `μ'(X) = d_A(\phi)(\phi_* μ')(X)` cancel.
+:::
+
+```tex "haar_character_project/independent_of_measure/proof"
 \begin{proof}
   \leanok
   If $\mu'$ is a second choice then $\mu'=\lambda\mu$ for some
@@ -169,16 +168,7 @@ If `μ` is any regular Haar measure on `A` then
 $`d_A(\phi)(\phi_*\mu) = \mu.`$
 :::
 
-```tex "haar_character_project/lt_pushforward_formula"
-If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)(\phi_*\mu) = \mu.$
-```
-
-:::proof "MeasureTheory.addEquivAddHaarChar_smul_map"
-{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
-This is a restatement of the previous result.
-:::
-
-```tex "haar_character_project/pushforward_formula"
+```tex "haar_character_project/pushforward_formula/theorem"
 \begin{lemma}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_map}
   \label{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -187,6 +177,14 @@ This is a restatement of the previous result.
   If $\mu$ is any regular Haar measure on $A$ then
   $d_A(\phi)(\phi_*\mu) = \mu.$
 \end{lemma}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_smul_map"
+{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
+This is a restatement of the previous result.
+:::
+
+```tex "haar_character_project/pushforward_formula/proof"
 \begin{proof}
   \leanok
   This is a restatement of the previous result.
@@ -199,17 +197,7 @@ If `μ` is any regular Haar measure on `A` then
 `d_A(φ)μ = \phi^*μ`.
 :::
 
-```tex "haar_character_project/lt_pullback_formula"
-If $\mu$ is any regular Haar measure on $A$ then $d_A(\phi)\mu = \phi^*\mu.$
-```
-
-:::proof "MeasureTheory.addEquivAddHaarChar_comap"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
-This follows from the pushforward formula applied to the regular Haar measure
-`\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
-:::
-
-```tex "haar_character_project/pullback_formula"
+```tex "haar_character_project/pullback_formula/theorem"
 \begin{corollary}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_eq_comap}
   \label{MeasureTheory.addEquivAddHaarChar_comap}
@@ -218,6 +206,15 @@ This follows from the pushforward formula applied to the regular Haar measure
   If $\mu$ is any regular Haar measure on $A$ then
   $d_A(\phi)\mu = \phi^*\mu.$
 \end{corollary}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_comap"
+{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+This follows from the pushforward formula applied to the regular Haar measure
+`\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
+:::
+
+```tex "haar_character_project/pullback_formula/proof"
 \begin{proof}
   \leanok
   This follows from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -230,16 +227,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 `d_A(id)=1`.
 :::
 
-```tex "haar_character_project/lt_identity_formula"
-$d_A(id)=1.$
-```
-
-:::proof "MeasureTheory.addEquivAddHaarChar_refl"
-{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
-`d_A(id)=1`.
-:::
-
-```tex "haar_character_project/identity"
+```tex "haar_character_project/identity/theorem"
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_refl}
   \lean{MeasureTheory.addEquivAddHaarChar_refl}
@@ -247,6 +235,14 @@ $d_A(id)=1.$
   \leanok
   $d_A(id)=1.$
 \end{lemma}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_refl"
+{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
+Clear.
+:::
+
+```tex "haar_character_project/identity/proof"
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_eq}
   \leanok
@@ -320,8 +316,15 @@ This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
 `d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
 :::
 
-```tex "haar_character_project/lt_multiplicative_formula"
-$d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
+```tex "haar_character_project/multiplicative/theorem"
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_trans}
+  \lean{MeasureTheory.addEquivAddHaarChar_trans}
+  \uses{MeasureTheory.addEquivAddHaarChar}
+  \leanok
+  \discussion{511}
+  $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
+\end{lemma}
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_trans"
@@ -335,15 +338,7 @@ lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
 `(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to `μ`.
 :::
 
-```tex "haar_character_project/multiplicative"
-\begin{lemma}
-  \label{MeasureTheory.addEquivAddHaarChar_trans}
-  \lean{MeasureTheory.addEquivAddHaarChar_trans}
-  \uses{MeasureTheory.addEquivAddHaarChar}
-  \leanok
-  \discussion{511}
-  $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$
-\end{lemma}
+```tex "haar_character_project/multiplicative/proof"
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -493,8 +488,15 @@ If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
 The function `δ_R : R^\times → ℝ_{>0}` is continuous.
 :::
 
-```tex "haar_character_project/lt_ring_continuous"
-The function $\delta_R:R^\times\to\R_{>0}$ is continuous.
+```tex "haar_character_project/ring_continuous/theorem"
+\begin{corollary}
+  \label{MeasureTheory.ringHaarChar_continuous}
+  \lean{MeasureTheory.ringHaarChar_continuous}
+  \uses{MeasureTheory.ringHaarChar}
+  \leanok
+  \discussion{516}
+  The function $\delta_R:R^\times\to\R_{>0}$ is continuous.
+\end{corollary}
 ```
 
 :::proof "MeasureTheory.ringHaarChar_continuous"
@@ -508,15 +510,7 @@ continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
 `δ_R` is too.
 :::
 
-```tex "haar_character_project/ring_continuous"
-\begin{corollary}
-  \label{MeasureTheory.ringHaarChar_continuous}
-  \lean{MeasureTheory.ringHaarChar_continuous}
-  \uses{MeasureTheory.ringHaarChar}
-  \leanok
-  \discussion{516}
-  The function $\delta_R:R^\times\to\R_{>0}$ is continuous.
-\end{corollary}
+```tex "haar_character_project/ring_continuous/proof"
 \begin{proof}
   \leanok
   \uses{MeasureTheory.ringHaarChar_mul_integral}
@@ -563,13 +557,13 @@ which agree on generators of a group must agree on the group.
 \end{proof}
 ```
 
-If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$ is the norm on
-$`R`$ normalised in the following way: $`\delta_R(\varpi)=q^{-1}`$, where
-$`\varpi`$ is a uniformiser and $`q`$ is the size of the finite residue field.
-In fact the same is true for any nonarchimedean local field. The proof is the
-same as for $`\Q_p`$. Right now this is difficult to state in Lean because
-there is still some discussion about the definition of a nonarchimedean local
-field.
+If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$
+is the norm on $`R`$ normalised in the following way:
+$`\delta_R(\varpi)=q^{-1}`$, where $`\varpi`$ is a uniformiser
+and $`q`$ is the size of the (finite) residue field. In fact the same is true
+for any nonarchimedean local field. The proof is
+the same as for $`\Q_p`$. Right now this is difficult to state in Lean because
+there is still some discussion about the definition of a nonarchimedean local field.
 
 ```tex "haar_character_project/lt_padic_remark"
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
