@@ -248,12 +248,35 @@ Clear.
 \end{proof}
 ```
 
-:::theorem "haar_character_preimage_formula" (parent := "haar_character_project")
+:::theorem "MeasureTheory.addEquivAddHaarChar_smul_preimage" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_preimage")
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
 If `X` is a Borel set, then `μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 :::
 
-```tex "haar_character_project/lt_preimage_formula"
-If $X$ is a Borel set then $\mu(X)=d_A(\phi)\mu(\phi^{-1}X)$.
+```tex "haar_character_project/preimage_formula/theorem"
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_smul_preimage}
+  \lean{MeasureTheory.addEquivAddHaarChar_smul_preimage}
+  \uses{MeasureTheory.addEquivAddHaarChar}
+  \discussion{509}
+  \leanok
+  If $X$ is a Borel set then $\mu(X)=d_A(\phi)\mu(\phi^{-1}X)$.
+\end{lemma}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_smul_preimage"
+{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+This follows immediately from lemma `MeasureTheory.addEquivAddHaarChar_smul_map`
+and the definition of the pushforward of a measure.
+:::
+
+```tex "haar_character_project/preimage_formula/proof"
+\begin{proof}
+  \leanok
+  \uses{MeasureTheory.addEquivAddHaarChar_smul_map}
+  This follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_map}
+  and the definition of the pushforward of a measure.
+\end{proof}
 ```
 
 :::theorem "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_integral_map")
