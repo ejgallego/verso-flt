@@ -127,6 +127,23 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If the main problem is metadata drift on a source-localized block, keep the
   text and tighten `(lean := "...")`, `{uses "..."}[]`, and related links
   rather than replacing the prose.
+- Use the following taxonomy when triaging graph-visible Verso nodes:
+  1. source-grounded node: a Verso `:::definition`, `:::theorem`, `:::lemma`,
+     `:::corollary`, or `:::proof` that corresponds directly to a real TeX
+     formal environment or labeled source block;
+  2. mis-ported source-grounded node: a node that does have a real TeX source
+     counterpart, but is paired to the wrong witness, merged with neighboring
+     source material, given the wrong label grounding, or otherwise translated
+     non-literally;
+  3. invented node: a graph-visible Verso node with no direct TeX-side formal
+     environment or labeled source block behind it.
+- Treat invented nodes as the canonical meaning of "invented interface node" or
+  "invented summary theorem" in this repository. In practice, an English
+  wrapper theorem, interface node, or extra proof shell that never existed on
+  the TeX side counts as invented even if it summarizes true source material.
+- Do not treat mis-ported source-grounded nodes as invented. If a node does
+  correspond to a real TeX theorem/definition/proof, prefer regrounding,
+  re-witnessing, splitting, or relabeling it rather than deleting it.
 - If a translated block merges several source items, introduces convenience
   summary scaffolding, or otherwise obscures the source structure, prefer
   deleting or demoting that summary block and restoring the real source-grounded
