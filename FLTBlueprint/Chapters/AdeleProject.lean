@@ -781,7 +781,7 @@ Our next goal in this section is the following two results. First the algebraic 
 ```
 
 
-:::theorem "finite_adele_base_change_algebraic" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is an
 isomorphism.
 {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[]
@@ -1069,7 +1069,7 @@ we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$
   isomorphism.
 ```
 
-:::proof "finite_adele_base_change_algebraic"
+:::proof "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"
 Follows immediately from theorem
 `IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv` and theorem
 `IsDedekindDomain.AKLB.tensorProduct_module_algEquiv`.
@@ -1089,7 +1089,7 @@ Now $L\otimes_K\A_{A,K}^\infty$ is an $\A_{A,K}^\infty$-module and hence can be 
 the $\A_{A,K}^\infty$-module topology. We also claim
 ```
 
-:::theorem "finite_adele_base_change_topological" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
 The induced $`L`$-algebra morphism
 $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`$ is a topological isomorphism.
 {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[]
