@@ -1391,9 +1391,8 @@ is injective.
 :::proof "infinite_place_local_base_change_injective"
 The `L`-algebra map $`L \otimes_K K_v \to \prod_{w \mid v} L_w`$ can
 equivalently be thought of as `K_v`-linear, which is injective, because it is
-surjective by {uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[],
-and both sides have the same `K_v`-dimension by
-{uses "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct"}[].
+surjective by theorem `NumberField.InfinitePlace.Completion.baseChange_surjective`, and both sides have the same `K_v`-dimension by theorem
+`NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct`.
 :::
 ```tex "adele_project/lt-witness-808"
 \begin{proof}
@@ -1461,9 +1460,6 @@ to $`1 \otimes_K K_v`$ corresponds to the map in
 
 
 :::proof "NumberField.InfinitePlace.Completion.baseChangeEquiv"
-{uses "NumberField.InfinitePlace.Completion.baseChange"}[]
-{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
-{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
 The map in `NumberField.InfinitePlace.Completion.baseChange` is an `L`-algebra
 isomorphism by the surjectivity and injectivity theorems. Every `K_v`-algebra
 isomorphism between two `K_v`-module topological spaces is a homeomorphism.
