@@ -378,6 +378,7 @@ Follows by continuity from lemma `IsDedekindDomain.HeightOneSpectrum.valuation_c
 ```
 
 :::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers")
+{uses "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"}[]
 The map $`i_v:K_v\to L_w`$ sends the integer ring $`A_v`$ into $`B_w`.
 :::
 ```tex "adele_project/base-change-local-integral-map/theorem"
@@ -1434,6 +1435,7 @@ Because `L_w` is a finite-dimensional normed `K_v`-vector space, there exists a
 
 
 :::theorem "NumberField.InfinitePlace.Completion.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
+{uses "NumberField.InfinitePlace.Completion.piExtension"}[]
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`$, whose restriction
 to $`1 \otimes_K K_v`$ corresponds to the map in

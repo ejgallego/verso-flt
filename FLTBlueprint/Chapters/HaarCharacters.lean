@@ -285,17 +285,30 @@ If `f : A → ℝ` is a Borel measurable function then
 `d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 :::
 
-```tex "haar_character_project/lt_integral_formula"
-If $f:A\to\R$ is a Borel measurable function then $d_A(\phi)\int f(x)d\phi_*\mu(x)=\int f(x)d\mu(x)$.
+```tex "haar_character_project/integral_formula/theorem"
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
+  \lean{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
+  \uses{MeasureTheory.addEquivAddHaarChar}
+  \discussion{510}
+  \leanok
+  If $f:A\to\R$ is a Borel measurable function then
+  $d_A(\phi)\int f(x)d\phi_*\mu(x)=\int f(x)d\mu(x)$.
+\end{lemma}
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_map"
 {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
-This is a restatement of the previous result.
+This also follows immediately from lemma
+`MeasureTheory.addEquivAddHaarChar_smul_map`.
 :::
 
-```tex "haar_character_project/lt_integral_proof"
-This is a restatement of the previous result.
+```tex "haar_character_project/integral_formula/proof"
+\begin{proof}
+  \leanok
+  \uses{MeasureTheory.addEquivAddHaarChar_smul_map}
+  This also follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_map}.
+\end{proof}
 ```
 
 We also have the following variant:
