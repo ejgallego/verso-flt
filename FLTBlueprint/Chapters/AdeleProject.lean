@@ -142,54 +142,6 @@ adeles, and mathlib knows that they're a $K$-algebra and a topological ring.
 
 # Local compactness
 
-:::theorem "adele_local_compactness" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
-The adeles of a number field are locally compact.
-:::
-```tex "adele_project/local-compactness-adele-ring/theorem"
-\begin{theorem}
-  \lean{NumberField.AdeleRing.locallyCompactSpace}
-  \label{NumberField.AdeleRing.locallyCompactSpace}
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \discussion{253}
-  \leanok
-  The adeles of a number field are locally compact.
-\end{theorem}
-```
-
-
-:::theorem "local_integer_ring_compact_open" (parent := "adele_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
-For a nonarchimedean completion of a number field, the local integer ring
-should be a compact open subgroup.
-:::
-
-```tex "adele_project/local-compactness-compact-open"
-\begin{theorem}
-  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \discussion{451}
-  \leanok
-  If $K$ is a number field and $v$ is a nonzero prime ideal of the integers of $K$,
-  then the integers of $K_v$ is a compact open subgroup.
-\end{theorem}
-\begin{proof} Openness should follow from the fact that the integers are
-  $\{x : v(x)<v(1/\pi)\}$ where $\pi$ is a uniformizer. Compactness needs
-  finiteness of the residue field $\mathcal{O}_K/v$.
-\end{proof}
-```
-
-:::proof "adele_local_compactness"
-The adeles of a number field are a product of the finite adeles and the
-infinite adeles so it suffices to prove that the finite and infinite adeles are
-locally compact.
-:::
-
-```tex "adele_project/local-compactness-adele-ring/proof"
-\begin{proof}
-  The adeles of a number field are a product of the finite adeles and the infinite adeles
-  so it suffices to prove that the finite and infinite adeles are locally compact.
-\end{proof}
-```
-
 As mentioned above, Salvatore Mercuri was the first to give a complete
 formalization of the proof that the adele ring is locally compact as a
 topological space. His work proved the result using the ad hoc topology on the
@@ -210,15 +162,87 @@ that a restricted product of topological additive groups $K_v$ over compact open
 subgroups $A_v$ is locally compact.
 ```
 
+What we need then is this (note that this is not true for a general Dedekind domain):
+```tex "adele_project/local-compactness-what-we-need"
+What we need then is this (note that this is not true for a general Dedekind domain):
+```
+
+:::theorem "NumberField.instCompactSpaceAdicCompletionIntegers" (parent := "adele_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+If $`K`$ is a number field and $`v`$ is a nonzero prime ideal of the integers of $`K`$,
+then the integers of $`K_v`$ is a compact open subgroup.
+:::
+
+```tex "adele_project/local-compactness-compact-open/theorem"
+\begin{theorem}
+  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \discussion{451}
+  \leanok
+  If $K$ is a number field and $v$ is a nonzero prime ideal of the integers of $K$,
+  then the integers of $K_v$ is a compact open subgroup.
+\end{theorem}
+```
+
+:::proof "NumberField.instCompactSpaceAdicCompletionIntegers"
+Openness should follow from the fact that the integers are
+$`\{x : v(x)<v(1/\pi)\}`$ where $`\pi`$ is a uniformizer. Compactness needs
+finiteness of the residue field $`\mathcal{O}_K/v`$.
+:::
+
+```tex "adele_project/local-compactness-compact-open/proof"
+\begin{proof} Openness should follow from the fact that the integers are
+  $\{x : v(x)<v(1/\pi)\}$ where $\pi$ is a uniformizer. Compactness needs
+  finiteness of the residue field $\mathcal{O}_K/v$.
+\end{proof}
+```
+
+Once we have this, the above result from mathlib gives us
+```tex "adele_project/local-compactness-once-we-have-this"
+Once we have this, the above result from mathlib gives us
+```
+
+:::theorem "NumberField.AdeleRing.locallyCompactSpace" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
+{uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
+The adeles of a number field are locally compact.
+:::
+```tex "adele_project/local-compactness-adele-ring/theorem"
+\begin{theorem}
+  \lean{NumberField.AdeleRing.locallyCompactSpace}
+  \label{NumberField.AdeleRing.locallyCompactSpace}
+  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \discussion{253}
+  \leanok
+  The adeles of a number field are locally compact.
+\end{theorem}
+```
+
+:::proof "NumberField.AdeleRing.locallyCompactSpace"
+The adeles of a number field are a product of the finite adeles and the infinite adeles
+so it suffices to prove that the finite and infinite adeles are locally compact.
+The infinite adeles are just isomorphic to $`\R^n`$ as a topological space, so they're certainly
+locally compact. As for the finite adeles,
+the mathlib theorem `RestrictedProduct.locallyCompactSpace_of_addGroup`
+says that a restricted product of locally compact additive groups with respect to open compact
+subgroups is locally compact, so this reduces us the previous result.
+:::
+
+```tex "adele_project/local-compactness-adele-ring/proof"
+\begin{proof}
+  The adeles of a number field are a product of the finite adeles and the infinite adeles
+  so it suffices to prove that the finite and infinite adeles are locally compact.
+  The infinite adeles are just isomorphic to $\R^n$ as a topological space, so they're certainly
+  locally compact. As for the finite adeles,
+  the mathlib theorem {\tt RestrictedProduct.locallyCompactSpace\_of\_addGroup}
+  says that a restricted product of locally compact additive groups with respect to open compact
+  subgroups is locally compact, so this reduces us the previous result.
+\end{proof}
+```
+
 
 # Base change
 
-:::theorem "adele_base_change" (parent := "adele_project") (lean := "NumberField.AdeleRing.baseChangeEquiv")
-If $`L/K`$ is a finite extension of number fields then
-$`\A_L=L\otimes_K\A_K`$.
-:::
-
-```tex "adele_project/base-change"
+The "theorem" we want is that if `L/K` is a finite extension of number fields, then `\A_L = L \otimes_K \A_K`. This isn't a theorem though, this is actually a definition (the map between the two objects) and a theorem about the definition (that it's an isomorphism).
+```tex "adele_project/base-change/1"
 \section{Base change}
 
 The ``theorem'' we want is that if $L/K$ is a finite extension of number fields,
@@ -227,22 +251,28 @@ then $\A_L=L\otimes_K\A_K$. This isn't a theorem though, this is actually a \emp
 the definition (that it's an isomorphism).
 ```
 
-This isn't a theorem though, this is actually a definition of the map between
-the two objects and a theorem about the definition, that it is an isomorphism.
-```tex "adele_project/lt-witness-222"
-The ``theorem'' we want is that if $L/K$ is a finite extension of number fields,
-then $\A_L=L\otimes_K\A_K$. This isn't a theorem though, this is actually a \emph{definition}
-(the map between the two objects) and a theorem about
-the definition (that it's an isomorphism).
-```
 
-
-In fact the full claim is that it is both a homeomorphism and an $L$-algebra
-isomorphism. Before we can prove the theorem, we need to make the definition.
-```tex "adele_project/lt-witness-226"
+In fact the full claim is that it is both a homeomorphism and an $`L`$-algebra
+isomorphism. Before we can prove the theorem, we need to make the
+definition.
+```tex "adele_project/base-change/2"
 In fact the full claim is that it is both a homeomorphism
 and an $L$-algebra isomorphism. Before we can prove the theorem, we need to make the
 definition.
+```
+
+
+Recall that the adeles $`\A_K`$ of a number field is a product $`\A_K^\infty\times K_\infty`$
+of the finite adeles and the infinite adeles. So our "theorem" follows immediately from
+the "theorems" that $`\A_L^\infty=L\otimes_K\A_K^\infty`$ and $`L_\infty=L\otimes_KK_\infty`$
+(both of these equalities mean an algebraic and topological isomorphism).
+We may thus treat the finite and infinite results separately.
+```tex "adele_project/base-change/3"
+Recall that the adeles $\A_K$ of a number field is a product $\A_K^\infty\times K_\infty$
+of the finite adeles and the infinite adeles. So our ``theorem'' follows immediately from
+the ``theorem''s that $\A_L^\infty=L\otimes_K\A_K^\infty$ and $L_\infty=L\otimes_KK_\infty$
+(both of these equalities mean an algebraic and topological isomorphism).
+We may thus treat the finite and infinite results separately.
 ```
 
 
@@ -267,18 +297,7 @@ fields are Dedekind domains in mathlib, and the
 height one spectrum of a field is empty.
 ```
 
-
-:::definition "finite_adele_base_change_map" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
-Before proving finite-adele base change, one first defines the natural map
-$`\mathbf{A}_{A,K}^\infty \to \mathbf{A}_{B,L}^\infty` induced by the local maps
-on completions.
-:::
-```tex "adele_project/lt-witness-244"
-:::definition "finite_adele_base_change_map" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
-```
-
-
-:::theorem "local_valuation_compatibility" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.valuation_comap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
 If $`i:K\to L`$ denotes the inclusion then for $`k\in K`$ we have
 $`e\times w(i(k))=v(k)`$, where $`e`$ is the ramification index of $`w/v`$
 (recall that valuations here are written additively, unlike in mathlib).
@@ -295,7 +314,7 @@ $`e\times w(i(k))=v(k)`$, where $`e`$ is the ramification index of $`w/v`$
 ```
 
 
-:::proof "local_valuation_compatibility"
+:::proof "IsDedekindDomain.HeightOneSpectrum.valuation_comap"
 Standard (and formalized).
 :::
 
@@ -306,7 +325,7 @@ Standard (and formalized).
 \end{proof}
 ```
 
-:::definition "local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
 There's a natural ring map $`K_v\to L_w`$ extending the map $`K\to L`$. It is
 defined by completing the inclusion $`K\to L`$ at the finite places $`v`$ and
 $`w`$ (which can be done because the previous lemma shows that the map is
@@ -326,7 +345,63 @@ uniformly continuous for the $`v`$-adic and $`w`$-adic topologies).
 \end{definition}
 ```
 
-:::theorem "local_module_topology_for_completion" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap")
+{uses "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[]
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[]
+If $`i_v:K_v\to L_w`$ denotes the map of the previous definition
+then for $`x\in K_v`$ we have
+$`e\times w(i(k))=v(k)`$, where $`e`$ is the ramification index of $`w/v`$.
+:::
+```tex "adele_project/base-change-local-valued-map/theorem"
+\begin{lemma}
+  \lean{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
+  \label{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
+  \uses{IsDedekindDomain.HeightOneSpectrum.valuation_comap,
+  IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \leanok
+  If $i_v:K_v\to L_w$ denotes the map of the previous definition
+  then for $x\in K_v$ we have
+  $e\times w(i(k))=v(k)$, where $e$ is the ramification index of $w/v$.
+\end{lemma}
+```
+
+:::proof "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"
+Follows by continuity from lemma `IsDedekindDomain.HeightOneSpectrum.valuation_comap`.
+:::
+
+```tex "adele_project/base-change-local-valued-map/proof"
+\begin{proof}
+  \leanok
+  Follows by continuity from lemma~\ref{IsDedekindDomain.HeightOneSpectrum.valuation_comap}.
+\end{proof}
+```
+
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers")
+The map $`i_v:K_v\to L_w`$ sends the integer ring $`A_v`$ into $`B_w`.
+:::
+```tex "adele_project/base-change-local-integral-map/theorem"
+\begin{lemma}
+  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+  \uses{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
+  \leanok
+  The map $i_v:K_v\to L_w$ sends the integer ring $A_v$ into $B_w$.
+\end{lemma}
+```
+
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"
+The integer ring is defined by $`v\geq0`$ (or $`v\leq 1`$ in mathlib, which uses multiplicative
+valuations) so the result follows from `IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap`.
+:::
+```tex "adele_project/base-change-local-integral-map/proof"
+\begin{proof}
+  \leanok
+  The integer ring is defined by $v\geq0$ (or $v\leq 1$ in mathlib, which uses multiplicative
+  valuations) so the result follows from \ref{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}.
+\end{proof}
+```
+
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
 Giving $`L_w`$ the $`K_v`$-algebra structure coming from the natural map
 $`K_v\to L_w`$, the $`w`$-adic topology on $`L_w`$ is the $`K_v`$-module
 topology.
@@ -344,48 +419,76 @@ topology.
 ```
 
 
-:::proof "local_module_topology_for_completion"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"
 Any basis for $`L`$ as a $`K`$-vector space spans $`L_w`$ as a $`K_v`$-module,
 so $`L_w`$ is finite-dimensional over $`K_v`$ and the module topology is the
-same as the product topology.
+same as the product topology. So we need to establish that the product topology on
+$`L_w=K_v^n`$ is
+the $`w`$-adic topology. But the $`w`$-adic topology is induced by the $`w`$-adic norm,
+which makes $`L_w`$ into a normed $`K_v`$-vector space, and (after picking a basis)
+the product norm on $`L_w=K_v^n`$ also makes $`L_w`$ into a normed $`K_v`$-vector space.
+So the result follows from the standard fact (see for example the lemma on p52
+of Cassels-Froelich, formalized as `ContinuousLinearEquiv.ofFinrankEq` in mathlib)
+that any two norms on a finite-dimensional vector space over
+a complete field are equivalent (and thus induce the same topology).
 :::
 
 ```tex "adele_project/base-change-local-topology/proof"
 \begin{proof}
   Any basis for $L$ as a $K$-vector space spans $L_w$ as a $K_v$-module, so $L_w$ is
   finite-dimensional over $K_v$ and the module topology is the same as the product
-  topology.
+  topology. So we need to establish that the product topology on $L_w=K_v^n$ is
+  the $w$-adic topology. But the $w$-adic topology is induced by the $w$-adic norm,
+  which makes $L_w$ into a normed $K_v$-vector space, and (after picking a basis)
+  the product norm on $L_w=K_v^n$ also makes $L_w$ into a normed $K_v$-vector space.
+  So the result follows from the standard fact (see for example the lemma on p52
+  of Cassels-Froelich, formalized as {\tt ContinuousLinearEquiv.ofFinrankEq} in mathlib)
+  that any two norms on a finite-dimensional vector space over
+  a complete field are equivalent (and thus induce the same topology).
 \end{proof}
 ```
 
-Because of the commutative diagram, we can view `L_w` as an
-`L⊗_KK_v`-algebra.
-```tex "adele_project/lt-witness-317"
+```tex "adele_project/base-change-local-algebra-view/diagram"
 Because of the commutative diagram
+\begin{center}
+\begin{tikzcd}
+K_v \arrow{r} & L_w  \\
+K \arrow{u} \arrow{r} & L \arrow{u}
+\end{tikzcd}
+\end{center}
 ```
 
-
-:::theorem "finite_primes_above_v_are_finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
-For a fixed finite place `v` of `K`, there are only finitely many places `w` of
-`L` lying above it.
-:::
-```tex "adele_project/lt-witness-320"
-:::theorem "finite_primes_above_v_are_finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
+we can view $`L_w`$ as an $`L\otimes_KK_v`$-algebra.
+```tex "adele_project/base-change-local-algebra-view/text"
+we can view $L_w$ as an $L\otimes_KK_v$-algebra.
 ```
 
+Now instead of fixing $`w`$ upstairs, we fix $`v`$ downstairs and consider all $`w`$ lying
+over it at once. So say $`v`$ is in the height one spectrum of $`A`$.
+```tex "adele_project/base-change-local-fix-v"
+Now instead of fixing $w$ upstairs, we fix $v$ downstairs and consider all $w$ lying
+over it at once. So say $v$ is in the height one spectrum of $A$.
+```
 
-:::proof "finite_primes_above_v_are_finite"
-This is a standard fact about Dedekind domains. The key input is mathlib's
-theorem `primesOver_finite`.
+:::theorem "IsDedekindDomain.HeightOneSpectrum.Extension.finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
+There are only finitely many primes $`w`$ of $`B`$ lying above $`v`$.
 :::
-
-```tex "adele_project/base-change-finite-fibres"
+```tex "adele_project/base-change-finite-fibres/theorem"
 \begin{lemma}
   \lean{IsDedekindDomain.HeightOneSpectrum.Extension.finite}
   \label{IsDedekindDomain.HeightOneSpectrum.Extension.finite}
   \leanok
   There are only finitely many primes $w$ of $B$ lying above $v$.
 \end{lemma}
+```
+
+
+:::proof "IsDedekindDomain.HeightOneSpectrum.Extension.finite"
+This is a standard fact about Dedekind domains. The key input is mathlib's
+theorem `primesOver_finite`.
+:::
+
+```tex "adele_project/base-change-finite-fibres/proof"
 \begin{proof}
   \leanok
   This is a standard fact about Dedekind domains. The key input is
@@ -393,13 +496,12 @@ theorem `primesOver_finite`.
 \end{proof}
 ```
 
-The TeX chapter writes `w | v` for this finite set of places above `v`, and
-then takes the product of the local completion maps over all such `w`.
-```tex "adele_project/lt-witness-345"
-The TeX chapter writes `w | v` for this finite set of places above `v`, and
+We write $`w|v`$ to denote the fact that $`w`$ is a prime of $`B`$ above $`v`$ of $`A`$.
+```tex "adele_project/base-change-w-divides-v"
+We write $w|v$ to denote the fact that $w$ is a prime of $B$ above $v$ of $A$.
 ```
 
-:::definition "product_local_completion_map" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'")
+:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'")
 The product of the maps $`K_v\to L_w`$ for $`w|v`$ is a natural ring map
 $`K_v\to\prod_{w|v}L_w`$ lying over $`K\to L`$.
 :::
@@ -414,6 +516,17 @@ $`K_v\to\prod_{w|v}L_w`$ lying over $`K\to L`$.
 \end{definition}
 ```
 
+Because $`K_v\to\prod_{w|v}L_w`$ lies over $`K\to L`$, there's an induced $`L`$-algebra
+map $`L\otimes_KK_v\to\prod_{w|v}L_w`$. We are now able to state one of the key results
+in this section. The proof is probably the hardest proof
+in this section to formalize.
+
+```tex "adele_project/base-change-local-decomposition/intro"
+Because $K_v\to\prod_{w|v}L_w$ lies over $K\to L$, there's an induced $L$-algebra
+map $L\otimes_KK_v\to\prod_{w|v}L_w$. We are now able to state one of the key results
+in this section. The proof is probably the hardest proof
+in this section to formalize.
+```
 
 :::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
 {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'"}[]
@@ -444,7 +557,17 @@ finite-dimensional and have the same dimension. The `K_v`-dimension of
 using the standard notation that `e_w` is the ramification index of `w` and
 `f_w` the residue degree. So it suffices to prove that `[L_w:K_v]=e_wf_w`.
 We already have that `e_w` (defined globally) is equal to the local ramification
-index (defined as the factor by which the valuations differ on `K`).
+index (defined as the factor by which the valuations differ on `K`). So what is left
+is to prove that (i) the residue field extension induced by $`L_w/K_v`$ has degree is equal to the
+globally-defined $`f_w`$, (ii) an extension of local fields has degree $`ef`$. Now (i) sounds
+straightforward given what we have (the map from $`A`$ to $`\mathcal{O}_v`$ has kernel $`v`$ and
+dense image) and (ii) is true for any complete discretely-valued field; I am not suggesting
+we formalize the following proof, but at least it represents a rigorous justification:
+A field complete with respect to a discrete valuation is stable in the sense
+of the book by Bosch-Guntzer-Remmert (Prop 3.6.2.1), so every finite extension of such a field
+is cartesian (def 3.6.1.1) and thus $`ef=n`$ (Prop 3.6.2.4, (iii) implies (ii)). Note
+that if you weaken the hypotheses too much then there are counterexamples; it's possible
+to have $`ef<n`$ and BGR goes into details.
 :::
 
 ```tex "adele_project/base-change-local-decomposition/proof"
@@ -538,9 +661,9 @@ module topologies.
 
 :::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
 {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"}[]
-The same local decomposition identifies the integral subring
-$`B \otimes_A A_v`$ with the product of the local integer rings
-$`\prod_{w \mid v} B_w`$.
+The isomorphism $`L\otimes_KK_v\to\prod_{w|v}L_w`$ induces an isomorphism
+$`B\otimes_AA_v\to \prod_{w|v}B_w`$
+for all $`v`$ in the height one spectrum of $`A`$.
 :::
 ```tex "adele_project/lt-witness-426"
 \begin{theorem}
@@ -604,6 +727,43 @@ the $K_v$-module topology and each $L_w$ has the valuation topology
 then this map is also a homeomorphism. Furthermore we have shown
 that there is an induced algebraic isomorphism $B\otimes_AA_v\equiv\prod_w B_w$
 on the subrings of the left and right hand sides.
+```
+
+Recall that the finite adeles $`\A_{A,K}^\infty`$ is defined in mathlib to be
+the restricted product of the $`K_v`$ with respect to the $`A_v`$, equipped with a certain
+restricted product topology (which is not the subspace topology of the product
+topology, indeed $`\prod_v A_v`$ is open in this topology). We have seen in
+definition `IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom` that
+there's a map $`K_v\to L_w`$ if $`w|v`$, extending $`K\to L`$, and we have seen in
+theorem `IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers`
+that this sends $`A_v`$ to $`B_w`$. We conclude
+```tex "adele_project/finite-adele-map/intro"
+Recall that the finite adeles $\A_{A,K}^\infty$ is defined in mathlib to be
+the restricted product of the $K_v$ with respect to the $A_v$, equipped with a certain
+restricted product topology (which is not the subspace topology of the product
+topology, indeed $\prod_v A_v$ is open in this topology). We have seen in
+definition~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom} that
+there's a map $K_v\to L_w$ if $w|v$, extending $K\to L$, and we have seen in
+theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+that this sends $A_v$ to $B_w$. We conclude
+```
+
+:::definition "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[]
+{uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"}[]
+There's a natural ring homomorphism
+$`\A_{A,K}^\infty\to\A_{B,L}^\infty`$ lying over $`K\to L`.
+:::
+```tex "adele_project/finite-adele-map/theorem"
+\begin{definition}
+  \label{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
+  \lean{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom,
+  IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+  \leanok
+  There's a natural ring homomorphism
+  $\A_{A,K}^\infty\to\A_{B,L}^\infty$ lying over $K\to L$.
+\end{definition}
 ```
 
 
@@ -1499,7 +1659,36 @@ The `L_\infty` side has the `K_\infty`-module topology.
 ```
 
 
-:::proof "adele_base_change"
+From the previous results we deduce immediately that if $`L/K`$ is a finite extension
+of number fields then there's a natural (topological and algebraic) isomorphism
+$`L\otimes_K\A_K\to \A_L`$.
+```tex "adele_project/base-change-for-adeles/intro"
+\subsection{Base change for adeles}
+
+From the previous results we deduce immediately that if $L/K$ is a finite extension
+of number fields then there's a natural (topological and algebraic) isomorphism
+$L\otimes_K\A_K\to \A_L$.
+```
+
+:::theorem "NumberField.AdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.AdeleRing.baseChangeEquiv")
+{uses "NumberField.InfiniteAdeleRing.baseChangeEquiv"}[]
+{uses "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"}[]
+If $`K\to L`$ is a ring homomorphism between two number fields then there is a natural isomorphism
+(both topological and algebraic) $`L\otimes_K\A_K\cong\A_L`$.
+:::
+```tex "adele_project/base-change-for-adeles/theorem"
+\begin{theorem}
+  \label{NumberField.AdeleRing.baseChangeEquiv}
+  \lean{NumberField.AdeleRing.baseChangeEquiv}
+  \leanok
+  \uses{NumberField.InfiniteAdeleRing.baseChangeEquiv,
+  IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
+  If $K\to L$ is a ring homomorphism between two number fields then there is a natural isomorphism
+  (both topological and algebraic) $L\otimes_K\A_K\cong\A_L$.
+\end{theorem}
+```
+
+:::proof "NumberField.AdeleRing.baseChangeEquiv"
 Follows from the previous results.
 :::
 ```tex "adele_project/lt-witness-865"
@@ -1529,7 +1718,7 @@ the natural map `\A_K -> \A_L`.
 
 
 :::proof "adele_base_change_module_topology"
-Indeed {uses "adele_base_change"}[] identifies `\A_L` with
+Indeed {uses "NumberField.AdeleRing.baseChangeEquiv"}[] identifies `\A_L` with
 `L \otimes_K \A_K`, and the right hand side has the `\A_K`-module topology.
 :::
 ```tex "adele_project/lt-witness-883"
@@ -1839,8 +2028,7 @@ that `q\in(-1,1)` implies `q=0`.
 :::theorem "NumberField.AdeleRing.zero_discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.zero_discrete")
 {uses "Rat.AdeleRing.zero_discrete"}[]
 {uses "NumberField.AdeleRing.baseChangeEquiv"}[]
-There is an open subset of the adeles of a number field whose intersection with
-the number field is just `{0}`.
+There's an open subset of $`\A_{K}`$ whose intersection with $`K`$ is $`\{0\}`$.
 :::
 ```tex "adele_project/lt-witness-1165"
 \begin{theorem}
@@ -1856,8 +2044,7 @@ the number field is just `{0}`.
 :::proof "NumberField.AdeleRing.zero_discrete"
 By a previous result, we have `\A_K=K\otimes_{\Q}\A_{\Q}`.
 Choose a basis of `K/\Q`; then `K` can be identified with `\Q^n\subseteq(\A_{\Q})^n`
-and the open subset from the rational case may be taken coordinatewise.
-This gives an open subset of `\A_K` whose intersection with `K` is still `{0}`.
+and the result follows from the previous theorem.
 :::
 ```tex "adele_project/lt-witness-1170"
 \begin{proof}

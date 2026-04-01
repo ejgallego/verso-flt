@@ -1,6 +1,8 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLT.AutomorphicForm.QuaternionAlgebra.Defs
+import FLT.AutomorphicForm.QuaternionAlgebra.FiniteDimensional
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -224,29 +226,39 @@ Let $R$ be an additive commutative group. Later on $R$ will be a commutative
 ring but we will not need this for the definition.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm")
-The space of $`R`-valued *automorphic forms* for $`D^\times` is the set of
-functions $`f : D_{\A^\infty}^\times \to R` satisfying the following axioms:
+Let us now give some precise definitions. Recall that by $`\A_F^\infty`$ we mean
+the finite adeles of the totally real number field $`F`$.
 
-- $`f(dg) = f(g)` for all $`d \in D^\times` and $`g \in D_{\A^\infty}^\times`
-- $`f(gz) = f(g)` for all $`g \in D_{\A^\infty}^\times`
-- there exists a compact open subgroup
-  $`U \subseteq (D \otimes_F \A_F^\infty)^\times` such that $`f(gu) = f(g)` for
-  all $`g \in D_{\A^\infty}^\times` and $`u \in U`
-:::
-
-```tex "weight_two_quaternionic_forms"
-\section{Definition of spaces of automorphic forms}
-
+```tex "weight_two_quaternionic_forms/1"
 Let us now give some precise definitions. Recall that by $\A_F^\infty$ we mean
 the finite adeles of the totally real number field $F$.
+```
 
+A level is a compact open subgroup $`U`$ of $`(D\otimes_F\A_F^\infty)^\times`$.
+These are plentiful. The ring $`D_f:=D\otimes_F\A_F^\infty`$ is a topological
+ring, and hence the units $`D_f^\times`$ of this ring are a topological group.
+This group is locally profinite, and hence has many compact open subgroups; we
+will see explicit examples later on.
+
+```tex "weight_two_quaternionic_forms/2"
 A level is a compact open subgroup~$U$ of $(D\otimes_F\A_F^\infty)^\times$.
 These are plentiful. The ring $D_f:=D\otimes_F\A_F^\infty$ is a topological
 ring, and hence the units $D_f^\times$ of this ring are a topological group.
 This group is locally profinite, and hence has many compact open subgroups; we
 will see explicit examples later on.
+```
 
+We regard $`\A_F^\infty`$ as a subring of
+$`D_{\A^\infty}:=D\otimes_F\A_F^\infty`$, which is possible because $`F`$ is a
+subring of $`D`$. More precisely, we embed $`\A_F^\infty`$ into
+$`D\otimes_F\A_F^\infty`$ via the map sending $`g`$ to $`1\otimes g`$. Because $`F`$ is
+in the centre of $`D`$, we have that $`\A_F^\infty`$ is in the centre of
+$`D_{\A^\infty}`$. As a consequence we can identify $`(\A_F^\infty)^\times`$ as a
+subgroup of $`(D\otimes_F\A_F^\infty)^\times`$. We may also regard $`D`$ as a
+subring of $`D\otimes_F\A_F^\infty`$ via the map $`d\mapsto d\otimes 1`$, and hence
+we can think of $`D^\times`$ as a subgroup of $`(D\otimes_F\A_F^\infty)^\times`.
+
+```tex "weight_two_quaternionic_forms/3"
 We regard $\A_F^\infty$ as a subring of
 $D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because $F$ is a
 subring of $D$. More precisely, we embed $\A_F^\infty$ into
@@ -256,9 +268,27 @@ $D_{\A^\infty}$. As a consequence we can identify $(\A_F^\infty)^\times$ as a
 subgroup of $(D\otimes_F\A_F^\infty)^\times$. We may also regard $D$ as a
 subring of $D\otimes_F\A_F^\infty$ via the map $d\mapsto d\otimes 1$, and hence
 we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
+```
 
+Let $`R`$ be an additive commutative group. Later on $`R`$ will be a commutative
+ring but we will not need this for the definition.
+
+```tex "weight_two_quaternionic_forms/4"
 Let $R$ be an additive commutative group. Later on $R$ will be a commutative
 ring but we will not need this for the definition.
+```
+
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (parent := "quaternion_algebra_project")
+The space of $`R`$-valued *automorphic forms* for $`D^\times`$ is the set of
+functions $`f:D_{\A^\infty}^\times\to R`$ satisfying the following axioms:
+
+- $`f(dg)=f(g)`$ for all $`d\in D^\times`$ and $`g\in D_{\A^\infty}^\times`$.
+- $`f(gz)=f(g)`$ for all $`g\in D_{\A^\infty}^\times`$.
+- There exists a compact open subgroup $`U\subseteq (D_{\A^f}^\times)`$
+  such that $`f(gu)=f(g)`$ for all $`g\in D_{\A^\infty}^\times`$ and $`u\in U`$.
+:::
+
+```tex "weight_two_quaternionic_forms/definition"
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
@@ -283,7 +313,7 @@ Let $S^D(R)$ denote the set of automorphic forms for $D^\times$. The space $S^D(
 quaternionic modular forms over $R$. Three basic observations about $S^D(R)$ are as follows.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" (parent := "quaternion_algebra_project")
 Pointwise addition $`(f_1 + f_2)(g) := f_1(g) + f_2(g)` makes $`S^D(R)` into an
 additive abelian group. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[].
@@ -300,7 +330,7 @@ additive abelian group. This depends on
 \end{definition}
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module" (parent := "quaternion_algebra_project")
 If $`R` is a commutative ring then pointwise scalar multiplication
 $`(r \cdot f)(g) := r \cdot f(g)` makes $`S^D(R)` into an $`R`-module. This
 depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[]
@@ -319,7 +349,7 @@ and {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGrou
 \end{definition}
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction" (parent := "quaternion_algebra_project")
 The group $`D_{\A^\infty}^\times` acts on the additive abelian group $`S^D(R)`
 by $`(g \cdot f)(x) = f(xg)`. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
@@ -353,7 +383,7 @@ $`D_{\A^\infty}^\times`.
 Now let $U$ be a level, that is, a compact open subgroup of $D_{\A^\infty}^\times$.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (parent := "quaternion_algebra_project")
 The quaternionic modular forms of level $`U`, with notation $`S^D(U;R)`, are
 the $`U`-invariants for the $`D_{\A^\infty}^\times`-action on $`S^D(R)`. This
 depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],

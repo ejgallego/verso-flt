@@ -1,4 +1,6 @@
 import FLTBlueprint.Citations
+import FLT.EllipticCurve.Torsion
+import FLT.Basic.FreyPackage
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -88,8 +90,9 @@ purely group-theoretic result:
 ```
 
 :::theorem "group_theory_lemma" (parent := "elliptic_frey_bridge") (lean := "group_theory_lemma")
-If the `d`-torsion in an abelian group has size `d^r` for every divisor `d` of
-`n`, then the `n`-torsion is isomorphic to `(\mathbf{Z}/n\mathbf{Z})^r`.
+Say `n` is a positive integer, `r` is a natural, and `A` is an abelian group.
+Assume that for all `d ∣ n`, the `d`-torsion `A[d]` of `A` has size `d^r`.
+Then `A[n] ≅ (\Z/n\Z)^r`.
 :::
 
 ```tex "group_theory_lemma"
@@ -132,7 +135,8 @@ isomorphic to $`(\Z/n\Z)^2`$.
 ```
 
 :::proof "Elliptic_curve_n_torsion_2d"
-This follows from {uses "group_theory_lemma"}[] and
+This follows from the previous group-theoretic lemma
+{uses "group_theory_lemma"}[] and theorem
 {uses "WeierstrassCurve.n_torsion_card"}[].
 :::
 
@@ -195,12 +199,13 @@ For more details one can consult the standard sources such as~\cite{silverman1}.
 ```
 
 :::definition "EllipticCurve.GoodReduction" (parent := "elliptic_frey_bridge")
-Good reduction over a valuation ring `R` with maximal ideal `\mathfrak m`
-means that an elliptic curve over the fraction field of `R` admits a model
-with coefficients in `R` whose reduction modulo `\mathfrak m` is still
-smooth. For an elliptic curve over a number field `N` and a maximal ideal `P`
-of `\mathcal O_N`, good reduction at `P` means good reduction over
-`\mathcal O_{N,P}`.
+Let `E` be an elliptic curve over the field of fractions `K` of a valuation ring
+`R` with maximal ideal `\m`. We say `E` has good reduction over `R` if `E` has a
+model with coefficients in `R` and the reduction mod `\m` is still non-singular.
+If `E` is an elliptic curve over a number field `N` and `P` is a maximal ideal
+of its integer ring `\calO_N`, then one says that `E` has good reduction at `P`
+if `E` has good reduction over the `\calO_{N,P}`, the localisation of `\calO_N`
+at `P`.
 :::
 
 ```tex "EllipticCurve.GoodReduction"
@@ -220,10 +225,10 @@ From this point on, our Frey curves and Frey packages will use notation
 ```
 
 :::theorem "Frey_curve_good_reduction" (parent := "elliptic_frey_bridge")
-For the Frey curve `Y^2 = X(X-a^\ell)(X+b^\ell)` attached to a Frey package,
-any odd prime not dividing `abc` is a prime of good reduction. This is the
-notion of
-{uses "EllipticCurve.GoodReduction"}[].
+If `E` is the Frey curve `Y^2=X(X-a^\ell)(X+b^\ell)` associated to a
+Frey package `(a,b,c,\ell)`, and if `p` is a prime
+not dividing `abc` (and in particular if `p>2`), then `E` has good reduction
+at `p`.
 :::
 
 ```tex "Frey_curve_good_reduction"
@@ -247,10 +252,13 @@ modulo `p` (note that the difference between `a^\ell` and `-b^\ell` is
 \end{proof}
 ```
 
-If `E` is an elliptic curve over a number field and `\rho` is the Galois
-representation on its `n`-torsion, then `\rho` is said to be unramified at a
-prime exactly when the finite extension cut out by the torsion is unramified
-there.
+If `E` is an elliptic curve over a number field `N` and if `\rho` is the representation
+of `\mathrm{Gal}(\overline{N}/N)` on the `n`-torsion of `E` then `\rho` is continuous and its image is finite,
+so by the fundamental theorem of (infinite) Galois theory the representation factors through an
+injection `\mathrm{Gal}(L/N)\to\mathrm{GL}_2(\Z/n\Z)` where `L/N` is a finite Galois extension of
+number fields. One says that `\rho` is unramified at a maximal ideal `P` of `\calO_N`
+if the extension `L/N` is unramified at `P` (or in other words, if the factorization
+of `P\calO_L` into prime ideals is squarefree).
 
 ```tex "good_reduction/unramified_paragraph"
 If $E$ is an elliptic curve over a number field $N$ and if $\rho$ is the representation
@@ -641,9 +649,7 @@ Apply the explicit formula (presumably already in mathlib).
 ```
 
 :::theorem "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j_valuation_of_bad_prime")
-If `2 < p \mid abc`, then the `p`-adic valuation of the Frey-curve
-`j`-invariant is a multiple of `\ell`. This is a direct valuation
-consequence of {uses "Frey_curve_j"}[].
+If `(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding Frey curve is `j`, and if `2<p∣abc`, then the `p`-adic valuation `v_p(j)` of `j` is a multiple of `\ell`.
 :::
 
 ```tex "FreyCurve.j_valuation_of_bad_prime"
@@ -670,10 +676,7 @@ precisely one of `A`, `B` and `C`. Hence `v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
 ```
 
 :::theorem "frey_curve_unramified" (parent := "elliptic_frey_bridge")
-The Frey-curve `\ell`-torsion representation is unramified at every prime
-`p \ne 2, \ell`.
-This is the main ramification input later used in
-{uses "Frey_curve_hardly_ramified"}[].
+If `(a,b,c,\ell)` is a Frey package, then the `\ell`-torsion in the Frey curve is unramified at all primes `p\not=2,\ell`.
 :::
 
 ```tex "frey_curve_unramified"
@@ -701,10 +704,9 @@ following weaker result.
 ```
 
 :::theorem "frey_curve_at_2" (parent := "elliptic_frey_bridge")
-At the prime `2`, the semisimplification of the restriction of the Frey-curve
-`\ell`-torsion representation to `\mathrm{Gal}(\overline{\mathbf Q}_2/\mathbf Q_2)`
-is unramified.
-This is the `2`-adic input used in {uses "Frey_curve_hardly_ramified"}[].
+If `(a,b,c,\ell)` is a Frey package, then the
+semisimplification of the restriction of the `\ell`-torsion `\rho` in the associated Frey curve
+to `\mathrm{Gal}(\Qbar_2/\Q_2)` is unramified.
 :::
 
 ```tex "frey_curve_at_2"
@@ -731,10 +733,8 @@ unramified characters and is hence unramified.
 ```
 
 :::theorem "Frey_curve_mod_ell_rep_at_ell" (parent := "elliptic_frey_bridge")
-At the prime `\ell`, the Frey-curve `\ell`-torsion comes from a finite flat
-group scheme. This is the local-flatness input of
-{uses "finite_flat_group_scheme"}[].
-This is the local-flatness input used in {uses "Frey_curve_hardly_ramified"}[].
+Let `\rho` be the `\ell`-torsion in the
+Frey curve associated to a Frey package `(a,b,c,\ell)`. Then the restriction of `\rho` to `\GQl` comes from a finite flat group scheme.
 :::
 
 ```tex "Frey_curve_mod_ell_rep_at_ell"
@@ -1168,9 +1168,9 @@ $`(a,b,c,\ell)`$ is irreducible.
 {uses "Frey_curve_no_trivial_submodule"}[]
 {uses "Frey_curve_no_trivial_quotient"}[]
 {uses "Elliptic_curve_n_torsion_2d"}[]
-Follows from theorem `Frey_curve_reducible_structure`, corollary
-`Frey_curve_no_trivial_submodule` and corollary
-`Frey_curve_no_trivial_quotient`.
+Follows from theorem {uses "Frey_curve_reducible_structure"}[], corollary
+{uses "Frey_curve_no_trivial_submodule"}[] and corollary
+{uses "Frey_curve_no_trivial_quotient"}[].
 :::
 
 ```tex "Frey_curve_irreducible/proof"

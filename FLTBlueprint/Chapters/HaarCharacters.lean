@@ -560,10 +560,7 @@ which agree on generators of a group must agree on the group.
 If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$
 is the norm on $`R`$ normalised in the following way:
 $`\delta_R(\varpi)=q^{-1}`$, where $`\varpi`$ is a uniformiser
-and $`q`$ is the size of the (finite) residue field. In fact the same is true
-for any nonarchimedean local field. The proof is
-the same as for $`\Q_p`$. Right now this is difficult to state in Lean because
-there is still some discussion about the definition of a nonarchimedean local field.
+and $`q`$ is the size of the (finite) residue field.
 
 ```tex "haar_character_project/lt_padic_remark"
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.

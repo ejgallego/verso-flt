@@ -514,11 +514,12 @@ This section can be skipped on first reading.
 This section can be skipped on first reading.
 ```
 
-The TeX chapter steps back here and explains why `\widehat{\mathbf{Z}}` is not
-just a curiosity. Seen abstractly, it is the profinite completion of the
-additive group `ℤ`. But the blueprint wants to emphasize a different point:
-completing before localizing gives a far more arithmetic object than the usual
-route through `ℚ` and then `ℝ`.
+People who have seen some more advanced algebra might recognise this construction of $`\Zhat`$
+as being the profinite completion of the additive abelian group $`\Z`$, so it is a fundamental
+object of mathematics in some sense. But usually, when building mathematics, after $`\Z`$ we
+go to $`\Q`$, a multiplicative localisation of $`\Z`, and only complete after that (to get $`\R`$).
+The process of "completing before localising" gives us a far more arithmetic completion
+of $`\Z`$.
 
 ```tex "automorphic_example/qhat/zhat_vs_q"
 People who have seen some more advanced algebra might recognise this construction of $\Zhat$
@@ -529,13 +530,14 @@ The process of ``completing before localising'' gives us a far more arithmetic c
 of $\Z$.
 ```
 
-Even though the profinite completion of the additive group `ℚ` vanishes, one
-can still form a local profinite completion by setting
-`\widehat{\mathbf{Q}} := \mathbf{Q} \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}`.
-The TeX chapter identifies this with the finite adeles of `ℚ`, and more
-generally identifies `F \otimes_{\mathbf{Z}} \widehat{\mathbf{Z}}` with the
-finite adeles of a number field `F`. The full adelic ring is obtained by also
-including the archimedean factor `F \otimes_{\mathbf{Q}} \mathbf{R}`.
+Even though $`\Q`$ is a divisible abelian group and hence its profinite completion vanishes,
+we can still attempt to "locally profinitely complete it" by defining $`\Qhat:=\Q\otimes_{\Z}\Zhat`$.
+This object is more commonly known as the finite adeles of $`\Q`$. More generally if $`F`$ is
+any number field then $`F\otimes_{\Z}\Zhat`$ is the ring of finite adeles of $`F`$. To get to
+the full ring of adeles of a number field $`F`$ you need to take the product with the
+ring of infinite adeles of $`F`$, which is $`F\otimes_{\Q}\R`: some kind of universal
+archimedean completion of $`F`$. I don't know a reference which develops the theory of adeles
+in this way, so this is what we shall do here.
 
 ```tex "automorphic_example/qhat/local_completion"
 Even though $\Q$ is a divisible abelian group and hence its profinite completion vanishes,
@@ -1406,9 +1408,9 @@ Follow your nose.
 \end{proof}
 ```
 
-The TeX chapter immediately notes that this ring is isomorphic to `ℤ^4` as an
-additive group, and that `\mathcal{O} \otimes_{\mathbf{Z}} \mathbf{R}` recovers
-the usual Hamilton quaternions.
+This ring is isomorphic to $`\Z^4`$ as an additive group, and
+$`\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega`$
+is the usual Hamilton quaternions.
 
 ```tex "automorphic_example/hurwitz/ring_remark"
 This ring is isomorphic to $\Z^4$ as an additive group, and
@@ -1556,7 +1558,7 @@ A calculation.
 
 :::theorem "Hurwitz.norm_nonneg" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg")
 {uses "Hurwitz.norm"}[]
-The norm of a Hurwitz quaternion is nonnegative.
+The norm of an element is nonnegative.
 :::
 
 ```tex "Hurwitz.norm_nonneg/theorem"
@@ -1698,8 +1700,8 @@ norm.
 \end{proof}
 ```
 
-The TeX chapter also remarks that all right ideals are principal too, because
-there is an analogous Euclidean statement with `a = bq + r`.
+All right ideals are principal too, because there's
+another version of Euclid saying $`a=bq+r`$.
 
 ```tex "automorphic_example/hurwitz/right_ideal_remark"
 \begin{remark}
@@ -1844,13 +1846,11 @@ Same as the proof for $`\Qhat`.
 \end{proof}
 ```
 
-The TeX chapter then records the additive analogues of the corresponding
-`\widehat{\mathbf{Q}}` statements: `\widehat{\mathcal{O}}` and `D` sit inside
-`\widehat{D}` as additive subgroups with
-`\widehat{\mathcal{O}} \cap D = \mathcal{O}` and
-`\widehat{\mathcal{O}} + D = \widehat{D}`. Because `\mathcal{O}` is just four
-copies of `\mathbf{Z}`, these are direct quaternionic analogues of the earlier
-adelic statements for `\widehat{\mathbf{Q}}`.
+It is not hard to check that $`\widehat{D}`$ contains $`\widehat{\calO}`$
+and $`D`$ as subrings, and that as additive abelian groups we have
+$`\widehat{\calO}\cap D=\calO`$ and $`\widehat{\calO}+D=\widehat{D}`$.
+This is because $`\calO`$ is just four copies of $`\Z`$ and we've proved
+the analogous result for $`\Z`$.
 
 ```tex "automorphic_example/hurwitz_completion/additive_structure"
 It is not hard to check that $\widehat{D}$ contains $\widehat{\calO}$
@@ -1860,11 +1860,12 @@ This is because $\calO$ is just four copies of $\Z$ and we've proved
 the analogous result for $\Z$.
 ```
 
-The multiplicative structure is subtler. For a general quaternion algebra it is
-not true that `\widehat{D}^\times = D^\times \widehat{\mathcal{O}}^\times`;
-there are class-group-style obstructions, encoded by a noncommutative double
-coset space. The TeX chapter emphasizes that the Hamilton/Hurwitz example is
-special precisely because this obstruction vanishes here.
+However the multiplicative structure is more interesting, especially
+as $`D`$ is not commutative. For a general quaternion algebra it is not
+true that $`(\widehat{D})^\times=D^\times(\widehat{\calO})^\times`$, because
+there are "class group obstructions". The double coset space is some
+kind of non-commutative analogue of a class group. However for our
+particular choice of $`D`$ and $`\calO`$ the result is true.
 
 ```tex "automorphic_example/hurwitz_completion/multiplicative_intro"
 However the multiplicative structure is more interesting, especially

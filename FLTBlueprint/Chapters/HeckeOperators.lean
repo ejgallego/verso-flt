@@ -196,7 +196,7 @@ this cover must thus be finite.
   this cover must thus be finite.
 \end{proof}
 ```
-:::theorem "abstract_hecke_operators_commute" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
+:::theorem "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
 {uses "AbstractHeckeOperator.HeckeOperator"}[]
 Say $`g,h\in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_ih_j=h_jg_i` for all `i,j`.
@@ -215,10 +215,10 @@ acting on $`A^U` commute.
   acting on $A^U$ commute.
 \end{lemma}
 ```
-:::proof "abstract_hecke_operators_commute"
-We have $`[UgU][UhU]a=\sum_i g_i(\sum_j h_j a)=\sum_{i,j} g_i h_j a`
-and $`[UhU][UgU]a=\sum_j h_j\sum_i g_i a=\sum_{j,i} h_j g_i a` and these
-sums are equal because $`g_i h_j = h_j g_i`.
+:::proof "AbstractHeckeOperator.comm"
+We have $`[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja`$
+and $`[UhU][UgU]a=\sum_jh_j\sum_ig_ia=\sum_{j,i}h_jg_ia`$ and these
+sums are equal because $`g_ih_j=h_jg_i`$.
 :::
 ```tex "hecke_operator_project/abstract_theory/commutativity_proof"
 \begin{proof}
@@ -323,7 +323,7 @@ $GL_2(\mathbb{A}_F)$ is obviously topologically a restricted product of
 $GL_2(F_v)$ with respect to $GL_2(\mathcal{O}_v)$. We now spend some time justifying
 this claim, which is a little more intricate than it sounds.
 ```
-:::theorem "restricted_product_binary_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductProd")
+:::theorem "Homeomorph.restrictedProductProd" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductProd")
 If `A_i` is a family of topological spaces equipped with open subsets `B_i`,
 and `C_i` is a family of topological spaces equipped with open subsets `D_i`,
 and `A_i × C_i` is equipped with the open subset `B_i × D_i`, then the natural
@@ -347,27 +347,45 @@ is a homeomorphism.
 \end{lemma}
 ```
 
-:::proof "restricted_product_binary_homeomorphism"
-We need to check continuity in both directions. The easy way is continuity of
-the map from the restricted product to the map from the binary product; the
-lemma `RestrictedProduct.continuous_dom` in mathlib tells us that a map from a
-restricted product is continuous when its restriction to the finite-stage
-domain is continuous for all finite `S ⊆ I`. The universal property of the
-binary product tells us that the map into the binary product is continuous if
-and only if the maps into the factors are continuous.
+This may well not be true if $`B_i`$ and $`D_i`$ are not open, because
+filtered colimits and binary products do not appear in general to commute
+in the category of topological spaces. I don't know an explicit counterexample though.
 
-The harder direction is the other way, because we are working against both
-universal properties. The trick is `RestrictedProduct.continuous_dom_prod` in
-mathlib, which is where we assume `B_i` and `D_i` are open. The map from the
-finite-stage domain to the restricted product then factors through the expected
-restricted-product stage; the first map is a homeomorphism, and the second is
-continuous by definition of the topology on a restricted product.
-:::
-```tex "hecke_operator_project/restricted_products/products/binary-proof"
+```tex "hecke_operator_project/restricted_products/products/binary-remark"
 \begin{remark} This may well not be true if $B_i$ and $D_i$ are not open, because
   filtered colimits and binary products do not appear in general to commute
   in the category of topological spaces. I don't know an explicit counterexample though.
 \end{remark}
+```
+
+:::proof "Homeomorph.restrictedProductProd"
+We need to check continuity in both directions. The easy way is
+continuity of the map from the restricted product to the map from the binary
+product; the lemma `RestrictedProduct.continuous_dom` in mathlib
+tells us that a map from a restricted product is continuous when its restriction
+to $`\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)`$
+is continuous for all finite $`S\subseteq I`$; the universal property of the binary
+product tells us that the map into the binary product is continuous iff the maps into
+the factors are continuous, but the map into $`\prod'_iX_i`$ is a product of the
+natural maps from $`\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)`$
+to $`\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)`$
+and the inclusion, and both are known to be continuous (an arbitrary product of continuous
+maps is continuous, and the other claim is in the restricted product API in mathlib).
+
+The harder direction is the other way, because we are working against both universal
+properties. The trick is `RestrictedProduct.continuous_dom_prod` in mathlib
+(this is where we assume $`B_i`$ and $`D_i`$ are open), which tells us that a map out of
+a binary product of restricted products is continuous when its restriction to
+$`\left(\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)\right)\times
+\left(\left(\prod_{i\in S}C_i\right)\times\left(\prod_{i\notin S}D_i\right)\right)`$
+is, for all finite $`S`$ (note that the $`S`$ in the mathlib lemma is actually our $`I-S`$).
+The map from this to the restricted product factors through
+$`\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)`$;
+the first map is a homeomorphism (use the fact that $`\prod_iX_i\times Y_i`$ is homeomorphic
+to $`\left(\prod_iX_i\right)\times\left(\prod_iY_i\right)`$), and the second is continuous
+by definition of the topology on a restricted product.
+:::
+```tex "hecke_operator_project/restricted_products/products/binary-proof"
 \begin{proof}
   \leanok
   \proves{Homeomorph.restrictedProductProd}
@@ -399,7 +417,7 @@ continuous by definition of the topology on a restricted product.
 \end{proof}
 ```
 
-:::theorem "restricted_product_product_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
+:::theorem "Homeomorph.restrictedProductPi" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
 Restricted products with respect to open subspaces commute with finite products.
 In other words, if `j` runs through a finite set `J` and `i` runs through an
 arbitrary set `I`, and if `X_{ji}` are topological spaces equipped with open
@@ -420,7 +438,7 @@ $`\prod'_i(\prod_j X_{ji})=\prod_j(\prod'_i X_{ji})`$ is a homeomorphism.
   is a homeomorphism.
 \end{corollary}
 ```
-:::proof "restricted_product_product_homeomorphism"
+:::proof "Homeomorph.restrictedProductPi"
 Induction on the size of the finite set, using
 {uses "Homeomorph.restrictedProductProd"}[] to get started.
 :::
@@ -432,7 +450,7 @@ Induction on the size of the finite set, using
   to get you started.
 \end{proof}
 ```
-:::theorem "restricted_product_matrix_homeomorphism" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductMatrix")
+:::theorem "Homeomorph.restrictedProductMatrix" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductMatrix")
 If $`X_i`$ are topological spaces and the $`Y_i`$ are open subspaces, then the
 obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::
@@ -447,8 +465,8 @@ obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
   then the obvious map $M_n(\prod'_iX_i)=\prod'_iM_n(X_i)$ is a homeomorphism.
 \end{corollary}
 ```
-:::proof "restricted_product_matrix_homeomorphism"
-Immediate from {uses "Homeomorph.restrictedProductPi"}[].
+:::proof "Homeomorph.restrictedProductMatrix"
+Immediate from the previous corollary {uses "Homeomorph.restrictedProductPi"}[].
 :::
 ```tex "hecke_operator_project/restricted_products/matrix/proof"
 \begin{proof}
@@ -822,8 +840,7 @@ Openness is already in mathlib.
 \end{proof}
 ```
 :::theorem "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
-`\calO_v` is a compact subring of `K_v`; the
-compactness comes from the finiteness of the residue field `k_v`.
+`\calO_v` is a compact subring of `K_v`.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/4"
@@ -896,7 +913,7 @@ because a product of compacts is compact and a product of opens is open.
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
 ```
-:::theorem "local_gl2_full_level_compact_open" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.GL2.localFullLevel")
+:::theorem "nolean-compactopen-GL2" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.GL2.localFullLevel")
 `GL_2(\calO_v)` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
@@ -905,7 +922,8 @@ because a product of compacts is compact and a product of opens is open.
   \label{nolean-compactopen-GL2}
 \end{lemma}
 ```
-:::proof "local_gl2_full_level_compact_open"
+:::proof "nolean-compactopen-GL2"
+{uses "nolean-compactopen-GL2"}[]
 `K_v` is known to be Hausdorff, so `M_2(K_v)` is Hausdorff and the result
 follows from {uses "Submonoid.units_isOpen"}[] and
 {uses "Submonoid.units_isCompact"}[].
@@ -945,10 +963,8 @@ is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finit
 cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
 ```
 
-:::theorem "local_congruence_level_compact_open" (parent := "hecke_operator_project")
-If `Γ_v \le GL₂(k_v)` and `U_v` is its preimage in `M₂(\mathcal{O}_v)` under
-reduction modulo `\varpi`, then `U_v` is a compact open subgroup of
-`GL₂(K_v)`.
+:::theorem "nolean-compactopen-U1p" (parent := "hecke_operator_project")
+`U_v` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/10"
@@ -956,7 +972,7 @@ reduction modulo `\varpi`, then `U_v` is a compact open subgroup of
   \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
 \end{lemma}
 ```
-:::proof "local_congruence_level_compact_open"
+:::proof "nolean-compactopen-U1p"
 `Γ_v` is a group and hence its preimage `U_v` is a subgroup of the monoid
 `M₂(K_v)`. It is compact and open as we just saw. Hence its units (also
 `U_v`) are a subgroup of `GL₂(K_v)`, which is compact and open, again by
@@ -986,14 +1002,10 @@ Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{p
 Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
 ```
 
-:::theorem "local_u_operator_double_coset_decomposition" (parent := "hecke_operator_project")
-If `\begin{pmatrix}1&*\\0&1\end{pmatrix} \subseteq \Gamma_v \subseteq
-\begin{pmatrix}*&*\\0&*\end{pmatrix}`, choose `0 \neq \alpha \in \mathcal{O}_v`
-and set `g = \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}`. For the associated
-compact open subgroup `U`, the double coset `UgU` is the disjoint union of the
-left cosets `g_tU` indexed by `\mathcal{O}_v/\alpha\mathcal{O}_v`, where
-`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}`, where `\tilde{t}` is
-any lift of `t` to `\calO_v`.
+:::theorem "bijOn_unipotent_mul_diagU1_U1diagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1")
+The double coset space $`UgU`$ is the disjoint union of $`g_tU`$ as $`t`$ ranges
+through $`\calO_v/\alpha\calO_v`$ and $`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}`$,
+where $`\tilde{t}`$ is any lift of $`t`$ to $`\calO_v`$.
 :::
 
 ```tex "hecke_operator_project/local_theory/introduction/13"
@@ -1006,14 +1018,21 @@ any lift of `t` to `\calO_v`.
   where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
 \end{lemma}
 ```
-:::proof "local_u_operator_double_coset_decomposition"
-The TeX proof first rewrites the double-coset statement as a finite-quotient
-problem for `U^\alpha := \{u = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in U
-: \alpha \mid b\}`. Writing `h_t = \begin{pmatrix}1&\tilde t\\0&1\end{pmatrix}`,
-one computes
-`h_t^{-1}u = \begin{pmatrix} a-\tilde t c&b-\tilde t d\\c&d\end{pmatrix}`,
-so the upper-right entry vanishes modulo `\alpha` exactly when `b mod \alpha`
-equals `t`. The `g_t` are therefore the coset representatives.
+:::proof "bijOn_unipotent_mul_diagU1_U1diagU1"
+We first manipulate the statement into a statement about finite groups.
+We have $`UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})`$.
+By the second isomorphism theorem this is true if
+$`U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)`$. So when is an element of $`U`$
+in $`gUg^{-1}`$? Equivalently, if $`x\in U`$, when is $`g^{-1}xg\in U`$? An explicit calculation
+of matrices shows us that this is true iff $`g=\begin{pmatrix} a&b\\c&d\end{pmatrix}`$ with
+$`\alpha\mid b`$. Define $`U^\alpha`$ to be this subgroup of $`U`$. We have reduced the question
+to showing that the matrices $`h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}`$
+are a set of left coset representatives for the subgroup $`U^\alpha`$ of $`U`$.
+
+It thus suffices to show that if $`u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U`$
+then $`u\in h_tU^\alpha`$ iff $`b\in\calO_v`$ reduces mod $`\alpha`$ to $`t\in\calO_v/\alpha`$.
+We do this by computing $`h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}`$
+and observing that its top right hand entry mod~$`\alpha`$ is zero iff $`b`$ mod $`\alpha`$ is $`t`$.
 :::
 ```tex "hecke_operator_project/local_theory/introduction/14"
 \begin{proof}
@@ -1327,18 +1346,16 @@ The big theorem we want in this section is
 # Analysis of the Hecke algebra
 First we discuss commutativity of the Hecke operators. First, assume that
 `v \notin S`. Then `U = GL₂(\mathcal{O}_v) \times U'` where `U'` is a subgroup
-of the restricted product of `GL₂(F_w)` for `w \neq v`. We can use
+of the restricted product of `GL₂(F_w)` for `w \not=v`. We can use
 `RestrictedProduct.SubmonoidClass.isProductAt` to express this concept of being
 an internal direct product. If `g` is the element of `G` used to make `T_v` then
 `g` is also supported at `w`, so the double coset space `UgU` is just
-`(GL₂(\mathcal{O}_v) \begin{pmatrix}\varpi & 0 \\ 0 & 1\end{pmatrix}
-GL₂(\mathcal{O}_v)) \times U'` and in particular can be decomposed into single
-left `U`-cosets of the form `g_iU` where `g_i` is also supported at `v`. This is
+`(GL₂(\mathcal{O}_v)\begin{pmatrix}\varpi&0\\0&1\end{pmatrix}GL₂(\mathcal{O}_v))\times U'`
+and in particular can be decomposed into single left `U`-cosets of the form `g_iU`
+where `g_i` is also supported at `v`. This is
 `RestrictedProduct.mem_coset_and_mulSupport_subset_of_isProductAt`.
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra"
-\section{Analysis of the Hecke algebra}
-
+```tex "hecke_operator_project/analysis_of_hecke_algebra/1"
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
 Then $U=GL_2(\calO_v)\times U'$ where $U'$ is a subgroup of the restricted product
 of $GL_2(F_w)$ for $w\not=v$. We can use {\tt RestrictedProduct.SubmonoidClass.isProductAt} to express this
@@ -1347,188 +1364,62 @@ $g$ is also supported at $w$, so the double coset space $UgU$ is just
 $(GL_2(\calO_v)\begin{pmatrix}\varpi&0\\0&1\end{pmatrix}GL_2(\calO_v))\times U'$
 and in particular can be decomposed into single left $U$-cosets of the form $g_iU$
 where $g_i$ is also supported at~$v$. This is {\tt RestrictedProduct.mem\_coset\_and\_mulSupport\_subset\_of\_isProductAt}.
-
-Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
-and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
-with the $g_i$ supported only at~$v$.
-
-We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
-associated to different finite places of~$F$ commute.
-What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
-more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
-because $\alpha\beta=\beta\alpha$.
-
-\begin{lemma}
-  \label{nolean-product-of-U-alpha}
-  If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-  then $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$.
-\end{lemma}
-\begin{proof} Follows easily from the explicit double coset decomposition proved above.
-\end{proof}
-
-The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
-miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
-and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,
-so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
-and thus a Noetherian ring.
-```
-Similarly if `v \in S`, if `0 \neq \alpha \in \mathcal{O}_v` and if
-`g_v = \begin{pmatrix}\alpha & 0 \\ 0 & 1\end{pmatrix}` and is `1` elsewhere,
-then the double coset space `UgU` can again be written as $`\coprod_i g_iU`$
-with the `g_i` supported only at `v`.
-
-```tex "hecke_operator_project/analysis_of_hecke_algebra/2a"
-Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
-and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
-with the $g_i$ supported only at~$v$.
 ```
 
-We deduce immediately from `AbstractHeckeOperator.comm` that two
-Hecke operators associated to different finite places of `F` commute. What
-remains is to check that `U_{α,v}` and `U_{β,v}` commute. In fact we claim
-more, namely that $`U_{α,v} U_{β,v} = U_{αβ,v}`$. This will suffice because
-$`αβ = βα`$.
-
-```tex "hecke_operator_project/analysis_of_hecke_algebra/2b"
-We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
-associated to different finite places of~$F$ commute.
-What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
-more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
-because $\alpha\beta=\beta\alpha$.
-```
+Similarly if `v \in S`, if `0 \not=\alpha \in \calO_v` and if
+`g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}` and is `1` elsewhere, then the
+double coset space `UgU` can again be written as $`\coprod_i g_iU`$ with the
+`g_i` supported only at `v`.
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/2"
-\section{Analysis of the Hecke algebra}
-
-First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
-Then $U=GL_2(\calO_v)\times U'$ where $U'$ is a subgroup of the restricted product
-of $GL_2(F_w)$ for $w\not=v$. We can use {\tt RestrictedProduct.SubmonoidClass.isProductAt} to express this
-concept of being an internal direct product. If $g$ is the element of $G$ used to make $T_v$ then
-$g$ is also supported at $w$, so the double coset space $UgU$ is just
-$(GL_2(\calO_v)\begin{pmatrix}\varpi&0\\0&1\end{pmatrix}GL_2(\calO_v))\times U'$
-and in particular can be decomposed into single left $U$-cosets of the form $g_iU$
-where $g_i$ is also supported at~$v$. This is {\tt RestrictedProduct.mem\_coset\_and\_mulSupport\_subset\_of\_isProductAt}.
-
 Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
 and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
 with the $g_i$ supported only at~$v$.
-
-We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
-associated to different finite places of~$F$ commute.
-What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
-more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
-because $\alpha\beta=\beta\alpha$.
-
-\begin{lemma}
-  \label{nolean-product-of-U-alpha}
-  If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-  then $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$.
-\end{lemma}
-\begin{proof} Follows easily from the explicit double coset decomposition proved above.
-\end{proof}
-
-The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
-miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
-and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,
-so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
-and thus a Noetherian ring.
 ```
-If `v\in S` and `\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq
-\begin{pmatrix}*&*\\0&*\end{pmatrix}` then `U_{α,v}U_{β,v}=U_{αβ,v}`.
+
+We deduce immediately from `AbstractHeckeOperator.comm` that two Hecke operators
+associated to different finite places of `F` commute.
+What remains is to check that `U_{α,v}` and `U_{β,v}` commute. In fact we claim
+more, namely that `U_{α,v}U_{β,v}=U_{αβ,v}`. This will suffice
+because `αβ=βα`.
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/3"
-\begin{lemma}
-  \label{nolean-product-of-U-alpha}
-  If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-  then $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$.
-\end{lemma}
-\begin{proof} Follows easily from the explicit double coset decomposition proved above.
-\end{proof}
-
-The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
-miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
-and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,
-so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
-and thus a Noetherian ring.
+We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
+associated to different finite places of~$F$ commute.
+What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
+more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
+because $\alpha\beta=\beta\alpha$.
 ```
-Follows easily from the explicit double coset decomposition proved above.
+
+:::theorem "nolean-product-of-U-alpha" (parent := "hecke_operator_project")
+If $`v\in S`$ and $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}`$
+then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`$.
+:::
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/4"
-\begin{proof} Follows easily from the explicit double coset decomposition proved above.
-\end{proof}
+\begin{lemma}
+  \label{nolean-product-of-U-alpha}
+  If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
+  then $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$.
+\end{lemma}
 ```
-The reason that the Hecke algebra is Noetherian is that the main theorem of the
-Fujisaki miniproject immediately implies that `A^G` is a submodule of a finite
-free `R`-module and is hence Noetherian. Its endomorphism algebra is hence a
-Noetherian `R`-module, so the sub-`R`-algebra generated by the Hecke operators
-is also a Noetherian `R`-module and thus a Noetherian ring.
+
+:::proof "nolean-product-of-U-alpha"
+Follows easily from the explicit double coset decomposition proved above.
+:::
 
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/5"
-\section{Analysis of the Hecke algebra}
-
-First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
-Then $U=GL_2(\calO_v)\times U'$ where $U'$ is a subgroup of the restricted product
-of $GL_2(F_w)$ for $w\not=v$. We can use {\tt RestrictedProduct.SubmonoidClass.isProductAt} to express this
-concept of being an internal direct product. If $g$ is the element of $G$ used to make $T_v$ then
-$g$ is also supported at $w$, so the double coset space $UgU$ is just
-$(GL_2(\calO_v)\begin{pmatrix}\varpi&0\\0&1\end{pmatrix}GL_2(\calO_v))\times U'$
-and in particular can be decomposed into single left $U$-cosets of the form $g_iU$
-where $g_i$ is also supported at~$v$. This is {\tt RestrictedProduct.mem\_coset\_and\_mulSupport\_subset\_of\_isProductAt}.
-
-Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
-and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
-with the $g_i$ supported only at~$v$.
-
-We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
-associated to different finite places of~$F$ commute.
-What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
-more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
-because $\alpha\beta=\beta\alpha$.
-
-\begin{lemma}
-  \label{nolean-product-of-U-alpha}
-  If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-  then $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$.
-\end{lemma}
 \begin{proof} Follows easily from the explicit double coset decomposition proved above.
 \end{proof}
+```
 
 The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
-miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
-and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,
-so the sub-$R$-algebra generated by the Hecke operators is also a Noetherian $R$-module
+miniproject immediately implies that $`A^G`$ is a submodule of a finite free $`R`$-module
+and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $`R`$-module,
+so the sub-$`R`$-algebra generated by the Hecke operators is also a Noetherian $`R`$-module
 and thus a Noetherian ring.
-```
+
 ```tex "hecke_operator_project/analysis_of_hecke_algebra/6"
-\section{Analysis of the Hecke algebra}
-
-First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
-Then $U=GL_2(\calO_v)\times U'$ where $U'$ is a subgroup of the restricted product
-of $GL_2(F_w)$ for $w\not=v$. We can use {\tt RestrictedProduct.SubmonoidClass.isProductAt} to express this
-concept of being an internal direct product. If $g$ is the element of $G$ used to make $T_v$ then
-$g$ is also supported at $w$, so the double coset space $UgU$ is just
-$(GL_2(\calO_v)\begin{pmatrix}\varpi&0\\0&1\end{pmatrix}GL_2(\calO_v))\times U'$
-and in particular can be decomposed into single left $U$-cosets of the form $g_iU$
-where $g_i$ is also supported at~$v$. This is {\tt RestrictedProduct.mem\_coset\_and\_mulSupport\_subset\_of\_isProductAt}.
-
-Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
-and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
-with the $g_i$ supported only at~$v$.
-
-We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
-associated to different finite places of~$F$ commute.
-What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
-more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
-because $\alpha\beta=\beta\alpha$.
-
-\begin{lemma}
-  \label{nolean-product-of-U-alpha}
-  If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
-  then $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$.
-\end{lemma}
-\begin{proof} Follows easily from the explicit double coset decomposition proved above.
-\end{proof}
-
 The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
 miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
 and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,

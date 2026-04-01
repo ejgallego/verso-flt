@@ -279,6 +279,16 @@ bigger than $`m`$). Then $`\mu(xE)=\mu(E)>m`$ so the map can't be injective.
   $\Q\backslash \A_{\Q}$ is compact by theorem~\ref{Rat.AdeleRing.cocompact}.
   Hence $D$ is discrete in $D_{\A}$
   and the quotient $D\backslash D_{\A}$ is compact.
+
+    Fix a Haar measure $\mu$ on $D_{\A}$ and push it forward
+    to $D\backslash D_{\A}$; by compactness this quotient has finite
+    and positive measure, say $m\in\R_{>0}$.
+    Choose any compact $E\subseteq D_{\A}$ with measure $> m$
+    (for example, choose a $\Z$-lattice $L\cong\Z^d$ in $D\cong\Q^d$,
+    define $E_f:=\prod_p L_p\in D\otimes_{\Q}\A_{\Q}^\infty$,
+    and define $E_{\infty}\subseteq D\otimes_{\Q}\R\cong\R^n$ to be a huge closed
+    ball, large enough to ensure the measure of $E:=E_f\times E_{\infty}$ is bigger than $m$).
+    Then $\mu(xE)=\mu(E)>m$ so the map can't be injective.
 \end{proof}
 ```
 
