@@ -101,7 +101,7 @@ quaternion algebra relations $`i^2=j^2=k^2=ijk=-1`. You can think of $`D` as
 an analogue of `2 × 2` matrices with rational coefficients, hence its units
 $`D^\times` are an analogue of the group $`\GL_2(\Q)`.
 
-```tex "automorphic_example/quaternion_algebra/basic_definition"
+```tex
 Let's define $D$ to be the quaternion algebra $\Q\oplus\Q i\oplus\Q j\oplus\Q k$. As a vector
 space, $D$ is 4-dimensional over $\Q$ with $[1,i,j,k]$ giving a basis. It has a (non-commutative)ring structure,
 with multiplication satisfying the usual quaternion algebra relations $i^2=j^2=k^2=ijk=-1$.
@@ -118,7 +118,7 @@ $`(i+j+k)^2=-3`. The simplest way to understand $`\calO` is that it's
 quaternions $`a+bi+cj+dk` where either $`a,b,c,d` are all integers or are all
 in $`\frac{1}{2}+\Z`.
 
-```tex "automorphic_example/quaternion_algebra/hurwitz_order"
+```tex
 We will also need an analogue of the group $\GL_2(\Z)$, which will come from an integral structure
 on~$D$. We choose the Hurwitz order, namely the subring $\calO:=\Z\oplus\Z i\oplus\Z j\oplus\Z \omega$,
 where $\omega=\frac{-1+(i+j+k)}{2}$, a cube root of unity, as $(i+j+k)^2=-3$. The simplest way
@@ -130,7 +130,7 @@ Note that $`\calO` is a maximal order and a Euclidean domain, which is why we
 prefer it over the more obvious sublattice
 $`\Z\oplus\Z i\oplus\Z j\oplus\Z k`.
 
-```tex "automorphic_example/quaternion_algebra/order_remark"
+```tex
 Note that $\calO$ is a maximal order and a Euclidean domain, which is why we prefer it over the
 more obvious sublattice $\Z\oplus\Z i\oplus\Z j\oplus\Z k.$
 ```
@@ -139,7 +139,7 @@ In this chapter, we are going to compute a complex vector space which could be
 called something like the "weight `2` level `2` modular forms for $`D^\times`".
 The main result will be that this space is `1`-dimensional.
 
-```tex "automorphic_example/quaternion_algebra/main_result"
+```tex
 In this chapter, we are going to compute a complex vector space which could be called something
 like the ``weight 2 level 2 modular forms for $D^\times$''. The main result will be that this
 space is 1-dimensional.
@@ -152,7 +152,7 @@ mathlib gets the necessary complex analysis, then the first nonzero space of
 modular forms to be proved finite-dimensional in Lean will be a space of
 quaternionic modular forms.
 
-```tex "automorphic_example/quaternion_algebra/mathlib_status"
+```tex
 Note that mathlib has modular forms, but it doesn't have enough complex analysis to deduce
 that the space of modular forms of a given weight and level is finite-dimensional. If all
 the `sorry`s in this chapter are completed
@@ -163,7 +163,7 @@ to be proved finite-dimensional in Lean will be a space of quaternionic modular 
 We will use a modern "adelic" definition of our modular forms, so the first
 thing we need to do is to talk about profinite completions.
 
-```tex "automorphic_example/quaternion_algebra/adelic_transition"
+```tex
 We will use a modern "adelic" definition of our modular forms, so the first thing we need
 to do is to talk about profinite completions.
 ```
@@ -178,7 +178,7 @@ A collection is said to be compatible if for all positive integers
 $`D \mid N`$, we have $`c_N`$ mod $`D`$ equals $`c_D`.
 :::
 
-```tex "ZHat"
+```tex
 \section{\texorpdfstring{$\Zhat$}{Zhat}}
 
 \begin{definition}\label{ZHat}\lean{ZHat}\leanok The profinite completion $\Zhat$ of $\Z$ is the set of
@@ -202,7 +202,7 @@ can work instead with the conceptually simpler object $`\Zhat`, the profinite
 completion of $`\Z`. So what is $`\Zhat`? We offer a low-level definition of
 this object.
 
-```tex "automorphic_example/zhat/historical_motivation"
+```tex
 Classically automorphic forms were defined as functions on symmetric spaces (like the upper half
 plane) which transformed well under the action of certain discrete groups (for example $\SL_2(\Z)$).
 However such definitions became combinatorially problematic when generalised to number fields
@@ -296,7 +296,7 @@ Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
 Note that it follows easily that that the map from the integers to $`\Zhat` is
 injective.
 
-```tex "automorphic_example/zhat/integer_injection"
+```tex
 Note that it follows easily that that the map from the integers to $\Zhat$ is injective.
 ```
 
@@ -304,7 +304,7 @@ But $`\Zhat$ is \emph{much} larger than $`\Z$; it has the same cardinality as
 the reals in fact. Let's write down an explicit example of an element of
 $`\Zhat` which isn't obviously in $`\Z`.
 
-```tex "automorphic_example/zhat/not_just_z"
+```tex
 But $\Zhat$
 is \emph{much} larger than $\Z$; it has the same cardinality as the reals in fact.
 Let's write down an explicit example of an element of $\Zhat$ which isn't obviously in $\Z$.
@@ -514,7 +514,7 @@ and that $`Ny=z`.
 
 This section can be skipped on first reading.
 
-```tex "automorphic_example/qhat/skip_note"
+```tex
 This section can be skipped on first reading.
 ```
 
@@ -525,7 +525,7 @@ go to $`\Q`$, a multiplicative localisation of $`\Z`, and only complete after th
 The process of "completing before localising" gives us a far more arithmetic completion
 of $`\Z`$.
 
-```tex "automorphic_example/qhat/zhat_vs_q"
+```tex
 People who have seen some more advanced algebra might recognise this construction of $\Zhat$
 as being the profinite completion of the additive abelian group $\Z$, so it is a fundamental
 object of mathematics in some sense. But usually, when building mathematics, after $\Z$ we
@@ -543,7 +543,7 @@ ring of infinite adeles of $`F`$, which is $`F\otimes_{\Q}\R`: some kind of univ
 archimedean completion of $`F`$. I don't know a reference which develops the theory of adeles
 in this way, so this is what we shall do here.
 
-```tex "automorphic_example/qhat/local_completion"
+```tex
 Even though $\Q$ is a divisible abelian group and hence its profinite completion vanishes,
 we can still attempt to "locally profinitely complete it" by defining $\Qhat:=\Q\otimes_{\Z}\Zhat$.
 This object is more commonly known as the \emph{finite adeles} of $\Q$. More generally if $F$ is
@@ -559,7 +559,7 @@ in this way, so this is what we shall do here.
 The definition of $`\Qhat` is easy if you know about tensor products of
 additive abelian groups.
 
-```tex "automorphic_example/qhat/definition_intro"
+```tex
 The definition of $\Qhat$ is easy if you know about tensor products
 of additive abelian groups.
 ```
@@ -570,7 +570,7 @@ The profinite completion $`\Qhat` of $`\Q` is the tensor product
 $`\Q\otimes_{\Z}\Zhat`, or $`\Qhat=\Q\otimes\Zhat` for short.
 :::
 
-```tex "QHat"
+```tex "QHat" (slot := statement)
 \begin{definition}
     \label{QHat}
     \lean{QHat}
@@ -589,7 +589,7 @@ just to orient yourself, if $`A` and $`B` are additive abelian groups, then
 $`A\otimes B` is also an abelian group. And if $`A` and $`B` are commutative
 rings (as they are in our case), then $`A\otimes B` is also a commutative ring.
 
-```tex "automorphic_example/tensor_products/basic_orientation"
+```tex
 We've defined $\Qhat$ to be $\Q\otimes\Zhat$. Whatever does this mean? Well just to orient yourself,
 if $A$ and $B$ are additive abelian groups, then $A\otimes B$ is also an abelian group.
 And if $A$ and $B$ are commutative rings (as they are in our case), then $A\otimes B$ is also
@@ -603,7 +603,7 @@ over the integers). It is not like the product of groups or the disjoint union
 of two sets, where you have a completely explicit unambiguous formula for each
 element.
 
-```tex "automorphic_example/tensor_products/incomprehensible"
+```tex
 Even if $A$ and $B$ are completely concrete commutative rings, their tensor product $A\otimes B$
 might be incomprehensible. For example $\bbC\otimes\bbC$ is completely incomprehensible (note that we are
 tensoring over the integers). It is not like the product of groups or the disjoint union of
@@ -623,7 +623,7 @@ no "canonical form" for a general continuous function, and yet we prove things
 about them anyway. We shall adopt the same attitude for elements of
 $`A\otimes B`.
 
-```tex "automorphic_example/tensor_products/continuous_functions"
+```tex
 In this sense, the theory of tensor products is a bit like the theory of continuous functions.
 Humanity started off studying concrete polynomial equations such as $x^2+1$ and then moved on to
 concrete analytic functions such as $\log(x)$ and $\sin(x)$, but eventually the abstract concept
@@ -640,7 +640,7 @@ groups $`A` and $`B` is a "constructor" for the type. In other words, how can
 we make elements $`A\otimes B`? Well, it turns out that given elements
 $`a\in A` and $`b\in B`, we can form the element $`a\otimes_t b\in A\otimes B`.
 
-```tex "automorphic_example/tensor_products/constructor"
+```tex
 The first thing to know about the tensor product $A\otimes B$ of two abelian groups $A$ and $B$
 is a ``constructor'' for the type. In other words, how can we make elements $A\otimes B$?
 Well, it turns out that given elements $a\in A$ and $b\in B$, we can form the element
@@ -651,7 +651,7 @@ Recall that the sum of all the factorials is an element $`e\in\Zhat`, and
 $`22/7` is certainly a rational number, so we can make the element
 $`\frac{22}{7}\otimes_te\in\Qhat`.
 
-```tex "automorphic_example/tensor_products/example"
+```tex
 \begin{example} Recall that the sum of all the factorials is an element $e\in\Zhat$, and $22/7$ is certainly
 a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 \end{example}
@@ -659,7 +659,7 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 
 This example is in the Lean code.
 
-```tex "automorphic_example/tensor_products/example_in_lean"
+```tex
 This example is in the Lean code.
 ```
 
@@ -669,7 +669,7 @@ follow `mathlib`'s convention in reserving the $`\otimes` symbol for groups
 like $`A \otimes B`, and adorning it with a $`t` when using it on elements of
 the groups (or, as Lean calls them, terms, which explains the notation).
 
-```tex "automorphic_example/tensor_products/pure_tensors"
+```tex
 Elements of the form $a\otimes_t b\in A\otimes B$ are known as \emph{pure tensors}. In the
 literature, pure tensors
 are often written $a\otimes b$, but we shall follow {\tt mathlib}'s convention in reserving
@@ -689,7 +689,7 @@ pure tensors, with the result that one can attempt to define additive maps from
 $`A\otimes B` by saying what they do on pure tensors, and then extending
 linearly.
 
-```tex "automorphic_example/tensor_products/distributivity"
+```tex
 Addition of pure tensors obeys the ``distributivity'' rules
 $a\otimes_t b_1+a\otimes_t b_2=a\otimes_t(b_1+b_2)$ and
 $a_1\otimes_t b+a_2\otimes_t b=(a_1+a_2)\otimes_t b$, but there is no rule which simplifies
@@ -711,7 +711,7 @@ equality is hard: in general there may not be an algorithm to decide whether
 two pure tensors $`a\otimes_t b` and $`c\otimes_t d` are equal in
 $`A\otimes B`.
 
-```tex "automorphic_example/tensor_products/equality"
+```tex
 Another thing worth understanding is that just like how rational numbers can be written as
 quotients of integers in several ways (for example $1/2=2/4=3/6=\cdots$), a general pure tensor
 in $A\otimes B$ can be represented as $a\otimes_t b$ in many ways. For example, in $\Qhat$
@@ -728,7 +728,7 @@ nonunique, and furthermore given explicit elements $`a_1,a_2\in A` and
 $`b_1,b_2\in B` it might be a hard problem to figure out if
 $`a_1\otimes_t b_1=a_2\otimes_t b_2`.
 
-```tex "automorphic_example/tensor_products/summary"
+```tex
 \begin{remark} A summary of the situation: if $A$ and $B$ are abelian groups, then every element
     of $A\otimes B$ can be written in the form $\sum_{i=1}^Na_i\otimes_tb_i$. It's just that this
     representation is highly nonunique, and furthermore given explicit elements $a_1,a_2\in A$
@@ -740,7 +740,7 @@ For example, it turns out that $`(\Z/2\Z)\otimes(\Z/3\Z)=0` and so in this
 tensor product all the $`a\otimes_t b` are equal to each other and to
 $`0\otimes 0`.
 
-```tex "automorphic_example/tensor_products/example_zero"
+```tex
     For example, it turns out that $(\Z/2\Z)\otimes(\Z/3\Z)=0$
     and so in this tensor product all the $a\otimes_t b$ are equal to each other and to $0\otimes 0$.
 \end{remark}
@@ -749,7 +749,7 @@ $`0\otimes 0`.
 Having said all of that, one nice property of $`\Qhat` is that every tensor is
 pure; let's prove this now.
 
-```tex "automorphic_example/tensor_products/canonical_form_intro"
+```tex
 Having said all of that, one nice property of $\Qhat$ is that every tensor \emph{is} pure;
 let's prove this now.
 ```
@@ -813,7 +813,7 @@ $`q\otimes z`, this representation may not be unique. For example
 $`2\otimes 1=1\otimes 2`. However, writing $`\frac{1}{N}\otimes_t z` as
 $`z/N` does tempt us into the following definition.
 
-```tex "automorphic_example/qhat/nonuniqueness"
+```tex
 Be careful though: just because every element of $\Qhat$ can be written as $q\otimes z$, this
 representation may not be unique. For example $2\otimes 1=1\otimes 2$. However, writing
 $\frac{1}{N}\otimes_t z$ as $z/N$ does tempt us into the following definition.
@@ -826,7 +826,7 @@ $`z_N\in(\Z/N\Z)^\times`. We write $`z/N` as notation for the element
 $`\frac{1}{N}\otimes_tz`.
 :::
 
-```tex "QHat.IsCoprime"
+```tex "QHat.IsCoprime" (slot := statement)
 \begin{definition}
     \label{QHat.IsCoprime}
     \lean{QHat.IsCoprime}
@@ -909,7 +909,7 @@ $`B\to A\otimes B` sending $`a` to $`a\otimes_t 1` and $`b` to
 $`1\otimes_t b`. In general such maps are not injective, but in the case of
 $`\Qhat=\Q\otimes\Zhat` both maps from $`\Q` and $`\Zhat` are inclusions.
 
-```tex "automorphic_example/qhat/ring_structure"
+```tex
 If $A$ and $B$ are additive abelian groups then $A\otimes B$ is also an additive abelian group.
 However if $A$ and $B$ are commutative rings, then $A\otimes B$ also inherits the structure
 of a commutative ring, with $0=0\otimes_t 0$ and $1=1\otimes_t 1$. Pure tensors multiply in the
@@ -992,7 +992,7 @@ Here we forget the ring structure on everything, and analyse $`\Qhat` as an
 additive abelian group, and in particular how the subgroups $`\Z`, $`\Q` and
 $`\Zhat` sit within it.
 
-```tex "automorphic_example/qhat/additive_structure_intro"
+```tex
 Here we forget the ring structure on everything, and analyse $\Qhat$ as an additive
 abelian group, and in particular how the subgroups $\Z$, $\Q$ and $\Zhat$ sit within it.
 ```
@@ -1001,7 +1001,7 @@ The two results we prove in this section are that $`\Q\cap\Zhat=\Z` and that
 $`\Q+\Zhat=\Qhat`. Using lattice-theoretic notation we could write these
 results as $`\Q\sqcap\Zhat=\Z` and $`\Q\sqcup\Zhat=\Qhat`.
 
-```tex "automorphic_example/qhat/additive_structure_goals"
+```tex
 The two results we prove in this section are that $\Q\cap\Zhat=\Z$ and
 that $\Q+\Zhat=\Qhat$. Using lattice-theoretic notation we could write
 these results as $\Q\sqcap\Zhat=\Z$ and $\Q\sqcup\Zhat=\Qhat$.
@@ -1088,7 +1088,7 @@ consider the multiplicative structure of its group of units $`\Qhat^\times`
 (which I couldn't get into the section title). We have the obvious subgroups
 $`\Q^\times`, $`\Z^\times` and $`\Zhat^\times`.
 
-```tex "automorphic_example/qhat/units_intro"
+```tex
 We now forget the additive structure on the commutative ring $\Qhat$ and consider
 the multiplicative structure of its group of units $\Qhat^\times$ (which I couldn't
 get into the section title). We have the obvious
@@ -1133,7 +1133,7 @@ term representation.
 
 Note that by the previous lemma, this representation will be unique up to sign.
 
-```tex "automorphic_example/qhat/units_uniqueness"
+```tex
 Note that by the previous lemma, this representation will be unique up to sign.
 ```
 
@@ -1226,7 +1226,7 @@ is a Hurwitz quaternion if either $`a,b,c,d\in\Z` or
 $`a,b,c,d\in\Z+\frac{1}{2}`.
 :::
 
-```tex "Hurwitz"
+```tex "Hurwitz" (slot := statement)
 \begin{definition}
     \label{Hurwitz}
     \lean{Hurwitz}
@@ -1240,7 +1240,7 @@ $`a,b,c,d\in\Z+\frac{1}{2}`.
 \end{definition}
 ```
 
-```tex "Hurwitz.ring"
+```tex
 \begin{lemma}
     \label{Hurwitz.ring}
     \lean{Hurwitz.ring}
@@ -1429,7 +1429,7 @@ This ring is isomorphic to $`\Z^4`$ as an additive group, and
 $`\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega`$
 is the usual Hamilton quaternions.
 
-```tex "automorphic_example/hurwitz/ring_remark"
+```tex
 This ring is isomorphic to $\Z^4$ as an additive group, and
 $\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega$
 is the usual Hamilton quaternions.
@@ -1444,7 +1444,7 @@ $`(xy)^*=y^*x^*` and $`(x+y)^*=x^*+y^*`. In particular, the Hurwitz quaternions
 are a "star ring" in the sense of mathlib.
 :::
 
-```tex "Hurwitz.starRing"
+```tex "Hurwitz.starRing" (slot := statement)
 \begin{definition}
     \label{Hurwitz.starRing}
     \lean{Hurwitz.starRing}
@@ -1464,7 +1464,7 @@ $`a^2+b^2+c^2+d^2` on $`a+bi+cj+dk` but needs to be modified a bit to deal with
 $`\omega`.
 :::
 
-```tex "Hurwitz.norm"
+```tex "Hurwitz.norm" (slot := statement)
 \begin{definition}
     \label{Hurwitz.norm}
     \lean{Hurwitz.norm}
@@ -1734,14 +1734,14 @@ norm.
 All right ideals are principal too, because there's
 another version of Euclid saying $`a=bq+r`$.
 
-```tex "automorphic_example/hurwitz/right_ideal_remark"
+```tex
 \begin{remark}
     All right ideals are principal too, because there's
     another version of Euclid saying $a=bq+r$.
 \end{remark}
 ```
 
-```tex "HurwitzRatHat.canonicalForm"
+```tex
 \section{Profinite completion of the Hurwitz quaternions}
 
 We define $\calOhat$ to be $\calO\otimes\Zhat$, so it's elements $a+bi+cj+d\omega$
@@ -1806,7 +1806,7 @@ particular choice of $D$ and $\calO$ the result is true.
 We define $`\calOhat` to be $`\calO\otimes\Zhat`, so it's elements
 $`a+bi+cj+d\omega` with $`a,b,c,d\in\Zhat`. The basic thing we need is this:
 
-```tex "automorphic_example/hurwitz_completion/ohat_intro"
+```tex
 We define $\calOhat$ to be $\calO\otimes\Zhat$, so it's elements $a+bi+cj+d\omega$
 with $a,b,c,d\in\Zhat$. The basic thing we need is this:
 ```
@@ -1845,7 +1845,7 @@ We define $`D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\
 Finally, we define $`\widehat{D}:=D\otimes\Zhat`. Just as with $`\Qhat` we
 have
 
-```tex "automorphic_example/hurwitz_completion/dhat_intro"
+```tex
 We define $D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\oplus\Q j\oplus\Q k$.
 Finally, we define $\widehat{D}:=D\otimes\Zhat$. Just as with $\Qhat$ we have
 ```
@@ -1884,7 +1884,7 @@ $`\widehat{\calO}\cap D=\calO`$ and $`\widehat{\calO}+D=\widehat{D}`$.
 This is because $`\calO`$ is just four copies of $`\Z`$ and we've proved
 the analogous result for $`\Z`$.
 
-```tex "automorphic_example/hurwitz_completion/additive_structure"
+```tex
 It is not hard to check that $\widehat{D}$ contains $\widehat{\calO}$
 and $D$ as subrings, and that as additive abelian groups we have
 $\widehat{\calO}\cap D=\calO$ and $\widehat{\calO}+D=\widehat{D}$.
@@ -1899,7 +1899,7 @@ there are "class group obstructions". The double coset space is some
 kind of non-commutative analogue of a class group. However for our
 particular choice of $`D`$ and $`\calO`$ the result is true.
 
-```tex "automorphic_example/hurwitz_completion/multiplicative_intro"
+```tex
 However the multiplicative structure is more interesting, especially
 as $D$ is not commutative. For a general quaternion algebra it is \emph{not}
 true that $(\widehat{D})^\times=D^\times(\widehat{\calO})^\times$, because

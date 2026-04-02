@@ -110,7 +110,7 @@ Assuming `UgV` is a finite union of cosets `g_iV`,
 we define `[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
 :::
-```tex "hecke_operator_project/abstract_theory/hecke_operator/definition"
+```tex "AbstractHeckeOperator.HeckeOperator_toFun" (slot := statement)
 \begin{definition}
   \lean{AbstractHeckeOperator.HeckeOperator_toFun}
   \label{AbstractHeckeOperator.HeckeOperator_toFun}
@@ -125,7 +125,7 @@ to $`\sum_i g_i a`.
 This function is well-defined (that is, independent of the
 choice of `g_i`), has image in `A^U` and is `R`-linear.
 :::
-```tex "hecke_operator_project/abstract_theory/hecke_operator/lemma"
+```tex "AbstractHeckeOperator.HeckeOperator" (slot := statement)
 \begin{lemma}
   \lean{AbstractHeckeOperator.HeckeOperator}
   \label{AbstractHeckeOperator.HeckeOperator}
@@ -144,7 +144,7 @@ fixes `UgV` and hence permutes the cosets `g_iV`.
 
 Finally `R`-linearity is because the `G`-action is `R`-linear.
 :::
-```tex "hecke_operator_project/abstract_theory/hecke_operator_proof"
+```tex "AbstractHeckeOperator.HeckeOperator" (slot := proof)
 \begin{proof}
   \leanok
   Well-definedness is because if we change $g_i$ to $g'_i:=g_iv$
@@ -160,7 +160,7 @@ The finiteness hypothesis that the decomposition `UgV = \coprod_i g_iV` is
 into a finite union is necessary for the theory to work. If `G` is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
 
-```tex "hecke_operator_project/abstract_theory/finite_double_coset_intro"
+```tex
 The finiteness hypothesis that the decomposition $UgV=\coprod_i g_iV$ is
 into a finite union is necessary for the theory to work. If $G$ is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
@@ -172,7 +172,7 @@ also open, and if `g ∈ G`, then the double coset space `UgV` is a finite union
 of left cosets `g_iV`.
 :::
 
-```tex "hecke_operator_project/abstract_theory/finite_double_coset"
+```tex "QuotientGroup.mk_image_finite_of_compact_of_open" (slot := statement)
 \begin{lemma}
   \lean{QuotientGroup.mk_image_finite_of_compact_of_open}
   \label{QuotientGroup.mk_image_finite_of_compact_of_open}
@@ -188,7 +188,7 @@ The subset `UgV` of `G` is a continuous image of the compact set `U × V`
 and is hence compact, and it is covered by the disjoint left cosets `g_iV`;
 this cover must thus be finite.
 :::
-```tex "hecke_operator_project/abstract_theory/finite_double_coset_proof"
+```tex "QuotientGroup.mk_image_finite_of_compact_of_open" (slot := proof)
 \begin{proof}
   \leanok
   The subset $UgV$ of $G$ is a continuous image of the compact set $U\times V$
@@ -203,7 +203,7 @@ and $`UhU=\coprod_j h_j` and that $`g_ih_j=h_jg_i` for all `i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
 acting on $`A^U` commute.
 :::
-```tex "hecke_operator_project/abstract_theory/commutativity"
+```tex "AbstractHeckeOperator.comm" (slot := statement)
 \begin{lemma}
   \lean{AbstractHeckeOperator.comm}
   \label{AbstractHeckeOperator.comm}
@@ -220,7 +220,7 @@ We have $`[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja`$
 and $`[UhU][UgU]a=\sum_jh_j\sum_ig_ia=\sum_{j,i}h_jg_ia`$ and these
 sums are equal because $`g_ih_j=h_jg_i`$.
 :::
-```tex "hecke_operator_project/abstract_theory/commutativity_proof"
+```tex "AbstractHeckeOperator.comm" (slot := proof)
 \begin{proof}
   \leanok
   We have $[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja$
@@ -271,7 +271,7 @@ is inherited via the inclusion $`\prod'_iX_i\subseteq\prod_iX_i`$ and the fact
 that arbitrary products of groups, rings, and modules are groups, rings, and
 modules.
 
-```tex "hecke_operator_project/restricted_products/topology/1"
+```tex
 It is straightforward to check that if the $X_i$ are groups or rings or $R$-modules,
 and the $Y_i$ are subgroups or subrings or submodules, then the restricted product
 is a group, ring or $R$-module; indeed the structure is inherited via the
@@ -292,7 +292,7 @@ $`\left(\prod'_iX_i\right)\cap U`$ for any open subset $`U`$ of $`\prod_iX_i`$
 in general; the map from $`\prod'_iX_i`$ to $`\prod_iX_i`$ is continuous but is
 not in general an embedding.
 
-```tex "hecke_operator_project/restricted_products/topology/2"
+```tex
 More subtle is the theory of topological space structures. If the $X_i$
 are topological spaces then we do \emph{not} give $\prod'_iX_i$ the subspace
 topology coming from the product topology on $\prod_iX_i$; instead we give
@@ -315,7 +315,7 @@ restricted product of $`GL_2(F_v)`$ with respect to
 $`GL_2(\mathcal{O}_v)`$. We now spend some time justifying this claim, which is
 a little more intricate than it sounds.
 
-```tex "hecke_operator_project/restricted_products/topology/3"
+```tex
 If you've seen automorphic forms before, then here is an obvious-sounding claim:
 because the adeles $\mathbb{A}_F$ of a number field are a restricted product of
 completions $F_v$ with respect to the integer rings $\mathcal{O}_v$, then
@@ -332,7 +332,7 @@ $`\prod'_i(A_i \times C_i)= (\prod'_i A_i) \times (\prod'_i B_i)`$
 is a homeomorphism.
 :::
 
-```tex "hecke_operator_project/restricted_products/products/binary"
+```tex "Homeomorph.restrictedProductProd" (slot := statement)
 \begin{lemma}
   \lean{Homeomorph.restrictedProductProd}
   \label{Homeomorph.restrictedProductProd}
@@ -351,7 +351,7 @@ This may well not be true if $`B_i`$ and $`D_i`$ are not open, because
 filtered colimits and binary products do not appear in general to commute
 in the category of topological spaces. I don't know an explicit counterexample though.
 
-```tex "hecke_operator_project/restricted_products/products/binary-remark"
+```tex
 \begin{remark} This may well not be true if $B_i$ and $D_i$ are not open, because
   filtered colimits and binary products do not appear in general to commute
   in the category of topological spaces. I don't know an explicit counterexample though.
@@ -385,7 +385,7 @@ the first map is a homeomorphism (use the fact that $`\prod_iX_i\times Y_i`$ is 
 to $`\left(\prod_iX_i\right)\times\left(\prod_iY_i\right)`$), and the second is continuous
 by definition of the topology on a restricted product.
 :::
-```tex "hecke_operator_project/restricted_products/products/binary-proof"
+```tex
 \begin{proof}
   \leanok
   \proves{Homeomorph.restrictedProductProd}
@@ -480,7 +480,7 @@ If `M` is a topological monoid and `U` is an open submonoid, then the units
 `Uˣ` of `U` are naturally an open subgroup of `Mˣ`.
 :::
 
-```tex "hecke_operator_project/restricted_products/units"
+```tex "Submonoid.units_isOpen" (slot := statement)
 \begin{lemma}
   \lean{Submonoid.units_isOpen}
   \label{Submonoid.units_isOpen}
@@ -494,7 +494,7 @@ If `M` is a topological monoid and `U` is an open submonoid, then the units
 `M^\times` does not get the subspace topology from `M`; it is embedded into
 `M \times M` via `g \mapsto (g, g^{-1})` and gets the subspace topology from
 the product. This makes it into a topological group.
-```tex "hecke_operator_project/restricted_products/units/remark-open"
+```tex
 \begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
   it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
   topology from the product. This makes it into a topological group.
@@ -508,7 +508,7 @@ this subgroup with `U × U` is open in `Mˣ` and consists of the elements of
 to be the copy of `Uˣ` we're talking about.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/open-proof"
+```tex "Submonoid.units_isOpen" (slot := proof)
 \begin{proof}
   \proves{Submonoid.units_isOpen}
   We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
@@ -523,7 +523,7 @@ If `M` is a Hausdorff topological monoid and `U` is a compact submonoid, then
 the units `Uˣ` of `U` are naturally a compact subgroup of `Mˣ`.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/3"
+```tex "Submonoid.units_isCompact" (slot := statement)
 \begin{lemma}
   \lean{Submonoid.units_isCompact}
   \label{Submonoid.units_isCompact}
@@ -535,7 +535,7 @@ the units `Uˣ` of `U` are naturally a compact subgroup of `Mˣ`.
 ```
 
 Is Hausdorffness necessary?
-```tex "hecke_operator_project/restricted_products/units/remark-compact"
+```tex
 \begin{remark} Is Hausdorffness necessary?
 \end{remark}
 ```
@@ -550,7 +550,7 @@ We have `U × U` is a compact subset of `M × M`, and so
 `Uˣ = Mˣ ∩ U × U` is a closed subspace of a compact space and is thus compact.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/compact-proof"
+```tex "Submonoid.units_isCompact" (slot := proof)
 \begin{proof}
   \proves{Submonoid.units_isCompact}
   First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
@@ -569,7 +569,7 @@ If `U_i` are topological monoids then the canonical group isomorphism
 `(\prod_i U_i)ˣ = \prod_i(U_iˣ)` is a homeomorphism.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/5"
+```tex "ContinuousMulEquiv.piUnits" (slot := statement)
 \begin{lemma}
   \lean{ContinuousMulEquiv.piUnits}
   \label{ContinuousMulEquiv.piUnits}
@@ -602,7 +602,7 @@ the maps we're concerned with are composites of these maps and are hence
 continuous.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/product-proof"
+```tex
 \begin{proof}
   \leanok
   We prove that the maps in both directions are continuous. Let's start
@@ -634,7 +634,7 @@ If `M_i` are a family of topological monoids equipped with open submonoids
 homeomorphism.
 :::
 
-```tex "hecke_operator_project/restricted_products/units/7"
+```tex "ContinuousMulEquiv.restrictedProductUnits" (slot := statement)
 \begin{theorem}
   \lean{ContinuousMulEquiv.restrictedProductUnits}
   \label{ContinuousMulEquiv.restrictedProductUnits}
@@ -659,7 +659,7 @@ from `X` to `Y`. We choose the units of `\prod_i U_i` and the product
 `Submonoid.units_isOpen`. The result now follows from the previous lemma
 `ContinuousMulEquiv.piUnits`.
 :::
-```tex "hecke_operator_project/restricted_products/units/restricted-proof"
+```tex
 \begin{proof}
   \leanok
   \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
@@ -1138,7 +1138,7 @@ This follows from the former lemma and the latter lemma.
   and lemma~\ref{Homeomorph.restrictedProductMatrix}.
 \end{proof}
 ```
-```tex "hecke_operator_project/adelic_groups/levels"
+```tex
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
 a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
 create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S$
@@ -1155,7 +1155,7 @@ compact open subgroup `\tilde{Γ}_v` of `GL₂(K_v)`. For `v \notin S` define
 subgroup of `\prod_v GL₂(\mathcal{O}_v)`. It is compact subgroups of this form
 which we shall be using.
 
-```tex "hecke_operator_project/adelic_groups/levels/2"
+```tex
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
 a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
 create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S$
@@ -1184,7 +1184,7 @@ satisfying the following axioms:
 3. $`f(gz) = f(g)`$ for all $`z \in (\A_F^\infty)^\times`$.
 :::
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/automorphic_setup"
+```tex
 \section{Automorphic forms}
 
 We recall some of the definitions of spaces of automorphic forms, from the
@@ -1214,7 +1214,7 @@ points $`A^U`$. In other words, the forms of level `U` are the forms satisfying
 the three axioms defining an automorphic form but with the compact open subgroup
 in the second axiom being `U`.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/automorphic_setup_2"
+```tex
 It can be checked that the collection of all such forms is an additive abelian
 group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
 group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
@@ -1230,7 +1230,7 @@ Let $`F`$ be a number field. For each finite place $`v`$ we have the completion
 $`F_v`$ of $`F`$ at $`v`$, which is a normed field equipped with its integer
 ring $`\calO_v`$, a local ring with finite residue field $`k_v`$.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/concrete_setup_1"
+```tex
 \section{Concrete Hecke operators}
 
 Let~$F$ be a number field. For each finite place $v$ we have the completion $F_v$ of $F$ at $v$,
@@ -1242,7 +1242,7 @@ $`k_v^\times`$ and consider the subgroup $`\Gamma_v`$ of $`GL_2(k_v)`$
 consisting of matrices $`\begin{pmatrix}a&b\\0&d\end{pmatrix}`$ with
 $`a,d\in k_v^\times`$ and $`a/d\in\Delta_v`$.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/concrete_setup_2"
+```tex
 For $v$ a finite place of~$F$, let $\Delta_v$ be a subgroup of $k_v^\times$ and consider
 the subgroup $\Gamma_v$ of $GL_2(k_v)$ consisting of matrices $\begin{pmatrix}a&b\\0&d\end{pmatrix}$
 with $a,d\in k_v^\times$ and $a/d\in\Delta_v$. Then
@@ -1253,7 +1253,7 @@ so the local double-coset decomposition above applies. Let
 $`U_{\Delta_v}`$ be the preimage of this subgroup in $`GL_2(\calO_v)`$. This
 is a compact open subgroup of $`GL_2(\calO_v)`$, by the remarks above.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/concrete_setup_3"
+```tex
 It is easily checked that this is a subgroup, and that
 $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix},$
 so lemma~\ref{nolean-U1-coset-decomposition} applies.
@@ -1270,7 +1270,7 @@ the inclusion $`\prod_v GL_2(\calO_v)\to GL_2(\A_F^\infty)`$ is an open
 embedding, we can regard $`U_\Delta(S)`$ as a compact open subgroup of
 $`GL_2(\A_F^\infty)`$.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/concrete_setup_4"
+```tex
 Let~$S$ be a finite set of finite places of~$F$, and define $U_\Delta(S)$ to be the matrices
 in $\prod_v GL_2(\calO_v)$ which are in $U_{\Delta_v}$ for all $v\in S$ (we put no condition
 at the places $v\notin S$). We can consider
@@ -1283,14 +1283,14 @@ If we fix $`r`$ a rigidification, it induces an isomorphism
 $`GL_2(\A_F^\infty)=(D\otimes_F\A_F^\infty)^\times`$ and so we can identify
 $`U_\Delta(S)`$ with its image in $`(D\otimes_F\A_F^\infty)`$.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/concrete_setup_5"
+```tex
 If we fix $r$ a rigidification, it
 induces an isomorphism $GL_2(\A_F^\infty)=(D\otimes_F\A_F^\infty)^\times$
 and so we can identify~$U_\Delta(S)$ with its image in $(D\otimes_F\A_F^\infty)$.
 ```
 We introduce Hecke operators of two types.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/concrete_setup_6"
+```tex
 We introduce Hecke operators of two types.
 ```
 First, for $`v`$ any place not in $`S`$, we choose a uniformiser
@@ -1301,7 +1301,7 @@ $`w\not=v`$ be the identity. We define the Hecke operator
 $`T_v:A^U\to A^U`$ to be $`[UgU]`$, using the notation defined at the
 beginning of this section.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/3"
+```tex
 First, for $v$ any place not in~$S$ we choose a uniformiser $\varpi_v\in F_v$,
 form the invertible $2\times 2$ matrix $\begin{pmatrix}\varpi_v&0\\0&1\end{pmatrix}\in GL_2(F_v)$
 and extend this element to an element $g\in G$ by letting its component at all finite places
@@ -1314,7 +1314,7 @@ $`\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}`$ at $`v`$ and `1` at all other
 local components. Via the rigidification $`r`$ we obtain an element $`g\in G`$.
 We define the Hecke operator $`U_{v,\alpha}`$ to be $`[UgU]`$.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/4"
+```tex
 For the second kind of Hecke operator we choose
 $0\not=\alpha\in\calO_v$ and we consider the $2\times 2$ matrix in $GL_2(\A_K^\infty)$
 which is $\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$ at~$v$ and 1 at all other local components.
@@ -1324,7 +1324,7 @@ We define the Hecke operator $U_{v,\alpha}$ to be $[UgU]$.
 The Hecke algebra of interest to us will be generated by the Hecke operators
 `T_v` for `v\notin S` and `U_{v,\alpha}` for `v\in S`.
 
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/6"
+```tex
 The Hecke algebra of interest to us will be generated by the Hecke operators $T_v$ for $v\notin S$
 and $U_{v,\alpha}$ for $v\in S$.
 ```
@@ -1332,7 +1332,7 @@ The big theorem we want in this section is that, if `R` is a Noetherian ring,
 then the subalgebra of the `R`-linear endomorphisms of `A^U` generated by the
 Hecke operators `T_v` for `v\notin S` and `U_{v,\alpha}` for `v\in S` is a
 Noetherian commutative ring.
-```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/7"
+```tex
 The big theorem we want in this section is
   \begin{theorem}
     \label{nolean-hecke-algebra-commutative-noetherian}
@@ -1353,7 +1353,7 @@ and in particular can be decomposed into single left `U`-cosets of the form `g_i
 where `g_i` is also supported at `v`. This is
 `RestrictedProduct.mem_coset_and_mulSupport_subset_of_isProductAt`.
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra/1"
+```tex
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
 Then $U=GL_2(\calO_v)\times U'$ where $U'$ is a subgroup of the restricted product
 of $GL_2(F_w)$ for $w\not=v$. We can use {\tt RestrictedProduct.SubmonoidClass.isProductAt} to express this
@@ -1369,7 +1369,7 @@ Similarly if `v \in S`, if `0 \not=\alpha \in \calO_v` and if
 double coset space `UgU` can again be written as $`\coprod_i g_iU`$ with the
 `g_i` supported only at `v`.
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra/2"
+```tex
 Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
 and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
 with the $g_i$ supported only at~$v$.
@@ -1381,7 +1381,7 @@ What remains is to check that `U_{α,v}` and `U_{β,v}` commute. In fact we clai
 more, namely that `U_{α,v}U_{β,v}=U_{αβ,v}`. This will suffice
 because `αβ=βα`.
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra/3"
+```tex
 We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
 associated to different finite places of~$F$ commute.
 What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
@@ -1394,7 +1394,7 @@ If $`v\in S`$ and $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subset
 then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`$.
 :::
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra/4"
+```tex "nolean-product-of-U-alpha" (slot := statement)
 \begin{lemma}
   \label{nolean-product-of-U-alpha}
   If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
@@ -1406,7 +1406,7 @@ then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`$.
 Follows easily from the explicit double coset decomposition proved above.
 :::
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra/5"
+```tex "nolean-product-of-U-alpha" (slot := proof)
 \begin{proof} Follows easily from the explicit double coset decomposition proved above.
 \end{proof}
 ```
@@ -1417,7 +1417,7 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $`R`$-mo
 so the sub-$`R`$-algebra generated by the Hecke operators is also a Noetherian $`R`$-module
 and thus a Noetherian ring.
 
-```tex "hecke_operator_project/analysis_of_hecke_algebra/6"
+```tex
 The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
 miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
 and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,
