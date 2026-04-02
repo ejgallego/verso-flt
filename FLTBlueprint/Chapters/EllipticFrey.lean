@@ -225,6 +225,8 @@ From this point on, our Frey curves and Frey packages will use notation
 ```
 
 :::theorem "Frey_curve_good_reduction" (parent := "elliptic_frey_bridge")
+{uses "FreyCurve"}[]
+{uses "EllipticCurve.GoodReduction"}[]
 If `E` is the Frey curve `Y^2=X(X-a^\ell)(X+b^\ell)` associated to a
 Frey package `(a,b,c,\ell)`, and if `p` is a prime
 not dividing `abc` (and in particular if `p>2`), then `E` has good reduction
@@ -232,7 +234,7 @@ at `p`.
 :::
 
 ```tex "Frey_curve_good_reduction"
-\begin{lemma}\label{Frey_curve_good_reduction}\uses{EllipticCurve.GoodReduction} If $E$ is the Frey curve $Y^2=X(X-a^\ell)(X+b^\ell)$ associated to a
+\begin{lemma}\label{Frey_curve_good_reduction}\uses{FreyCurve, EllipticCurve.GoodReduction} If $E$ is the Frey curve $Y^2=X(X-a^\ell)(X+b^\ell)$ associated to a
   Frey package $(a,b,c,\ell)$, and if $p$ is a prime
   not dividing $abc$ (and in particular if $p>2$), then $E$ has good reduction at~$p$.
 \end{lemma}
@@ -617,13 +619,16 @@ If `p \ne \ell` is a prime not dividing `abc`, then `\rho` is unramified at
 ```
 
 :::proof "Frey_curve_good"
+{uses "Frey_curve_good_reduction"}[]
+{uses "good_reduction_implies_unramified"}[]
 Indeed, `E` has good reduction at `p`, and hence `\rho` is unramified at `p`
-by {uses "good_reduction_implies_unramified"}[].
+by theorem `good_reduction_implies_unramified`.
 :::
 
 ```tex "Frey_curve_good/proof"
-Indeed, $E$ has good reduction at $p$, and hence $\rho$ is unramified at $p$
-by~\ref{good_reduction_implies_unramified}.
+\begin{proof}\uses{Frey_curve_good_reduction,good_reduction_implies_unramified} Indeed, $E$ has good reduction at $p$, and hence $\rho$ is unramified at $p$
+  by~\ref{good_reduction_implies_unramified}.
+\end{proof}
 ```
 
 :::theorem "Frey_curve_j" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j")
@@ -649,6 +654,7 @@ Apply the explicit formula (presumably already in mathlib).
 ```
 
 :::theorem "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j_valuation_of_bad_prime")
+{uses "Frey_curve_j"}[]
 If `(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding Frey curve is `j`, and if `2<p∣abc`, then the `p`-adic valuation `v_p(j)` of `j` is a multiple of `\ell`.
 :::
 
@@ -662,6 +668,7 @@ If `(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding F
 ```
 
 :::proof "FreyCurve.j_valuation_of_bad_prime"
+{uses "Frey_curve_j"}[]
 Indeed `p` does not divide `2^8` as `p>2`, and (using the notation of the
 previous theorem) `p` does not divide `C^2-AB` either, because it divides
 precisely one of `A`, `B` and `C`. Hence `v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
@@ -717,6 +724,7 @@ to `\mathrm{Gal}(\Qbar_2/\Q_2)` is unramified.
 ```
 
 :::proof "frey_curve_at_2"
+{uses "multiplicative_reduction_torsion"}[]
 After a quadratic twist to make the curve have split multiplicative
 reduction, the theory of the Tate curve shows us that `\rho` is an extension
 of the trivial character by the cyclotomic character. Hence the
@@ -733,6 +741,7 @@ unramified characters and is hence unramified.
 ```
 
 :::theorem "Frey_curve_mod_ell_rep_at_ell" (parent := "elliptic_frey_bridge")
+{uses "finite_flat_group_scheme"}[]
 Let `\rho` be the `\ell`-torsion in the
 Frey curve associated to a Frey package `(a,b,c,\ell)`. Then the restriction of `\rho` to `\GQl` comes from a finite flat group scheme.
 :::
@@ -782,6 +791,7 @@ We make the following definition; this is not in the literature but it is a usef
 ```
 
 :::theorem "frey_curve_hardly_ramified" (parent := "elliptic_frey_bridge")
+{uses "hardly_ramified"}[]
 The `\ell`-torsion Galois representation of the Frey curve coming from a Frey
 package is hardly ramified.
 :::
