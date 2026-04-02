@@ -8,6 +8,7 @@ import sys
 
 
 MALFORMED_INLINE_MATH_RE = re.compile(r"\$`[^`\n]+`\$")
+MISSING_CLOSING_BACKTICK_RE = re.compile(r"\$`[^`\n$]+\$")
 
 
 def default_chapter_paths(root: Path) -> list[Path]:
@@ -32,6 +33,11 @@ def suspicious_dollars(path: Path) -> list[str]:
                 errors.append(
                     f"{path}:{line_no}: malformed Verso inline math delimiter; "
                     f"TeX '$...$' should become '$`...`', not '$`...`$': {stripped}"
+                )
+            if MISSING_CLOSING_BACKTICK_RE.search(line):
+                errors.append(
+                    f"{path}:{line_no}: malformed Verso inline math delimiter; "
+                    f"missing closing backtick before '$': {stripped}"
                 )
             continue
         if "$" in stripped:

@@ -44,6 +44,21 @@ def test_malformed_inline_math() -> None:
         assert "malformed Verso inline math delimiter" in errs[0]
 
 
+def test_missing_closing_backtick() -> None:
+    with tempfile.TemporaryDirectory() as tmpdir:
+        path = write_tmp(
+            Path(tmpdir),
+            """
+            #doc (Manual) "X" =>
+
+            This contains malformed inline math $`a$ in prose.
+            """,
+        )
+        errs = suspicious_dollars(path)
+        assert len(errs) == 1
+        assert "missing closing backtick" in errs[0]
+
+
 def test_skip_fenced_tex() -> None:
     with tempfile.TemporaryDirectory() as tmpdir:
         path = write_tmp(
@@ -62,5 +77,6 @@ def test_skip_fenced_tex() -> None:
 if __name__ == "__main__":
     test_heading_raw_dollar()
     test_malformed_inline_math()
+    test_missing_closing_backtick()
     test_skip_fenced_tex()
     print("check_verso_math_delimiters tests passed")

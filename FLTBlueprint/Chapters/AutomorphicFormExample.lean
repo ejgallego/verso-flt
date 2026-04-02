@@ -301,7 +301,7 @@ injective.
 Note that it follows easily that that the map from the integers to $\Zhat$ is injective.
 ```
 
-But $`\Zhat$ is \emph{much} larger than $`\Z$; it has the same cardinality as
+But $`\Zhat` is *much* larger than $`\Z`; it has the same cardinality as
 the reals in fact. Let's write down an explicit example of an element of
 $`\Zhat` which isn't obviously in $`\Z`.
 
