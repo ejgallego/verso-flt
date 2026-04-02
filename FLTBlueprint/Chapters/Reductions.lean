@@ -99,7 +99,7 @@ says that this is impossible.
 
 Euler proved Fermat's Last Theorem for `p = 3`.
 
-```tex "fermatLastTheoremThree/introduction"
+```tex
 Euler proved Fermat's Last Theorem for $p=3$;
 ```
 
@@ -153,7 +153,7 @@ Follows from the previous two lemmas.
 
 For convenience we make the following definition.
 
-```tex "FreyPackage/introduction"
+```tex
 For convenience we make the following definition.
 ```
 
@@ -171,7 +171,7 @@ and a prime $p\geq5$, such that $a^p+b^p=c^p$.\end{definition}
 
 Our next reduction is as follows.
 
-```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5/introduction"
+```tex
 Our next reduction is as follows:
 ```
 
@@ -329,7 +329,7 @@ pairwise-coprime integers `a`, `b`, and `c` satisfying $`a^p+b^p=c^p` and the
 congruences $`a \equiv 3 \pmod 4` and $`b \equiv 0 \pmod 2`. We have shown
 above that if Fermat's Last Theorem is false, then a Frey package exists.
 
-```tex "FreyCurve/introduction"
+```tex
 Recall that a \emph{Frey package} $(a,b,c,p)$ is simply a prime $p\geq5$ and nonzero
 pairwise-coprime integers $a,b,c$ satisfying $a^p+b^p=c^p$ and satisfying the congruences
 $a\equiv3\pmod4$ and $b\equiv0\pmod2$. We have shown above that if Fermat's Last Theorem is false,
@@ -447,7 +447,7 @@ working on a formalization of this result, as it was known in the `1980`s. We
 will however be thinking a lot about the next result, which says the exact
 opposite.
 
-```tex "Wiles_Frey/introduction"
+```tex
 Note that in the first (pre-2029) phase of the FLT project, we will not be working on
 a formalization of this result, as it was known in the 1980s. We will however be thinking
 a lot about the next result, which says the exact opposite.
@@ -515,7 +515,7 @@ Follows immediately from the previous two theorems.
 
 We deduce.
 
-```tex "FLT/introduction"
+```tex
 We deduce
 ```
 

@@ -24,7 +24,7 @@ using various more modern tricks which were developed later. This chapter
 (currently work in progress) will contain a detailed discussion of all the
 things involved in the statement of the theorem.
 
-```tex "modularity_lifting_program/introduction"
+```tex
 I think that a nice and accessible goal (which will maybe take a month or two) would be to
 \emph{state} the modularity lifting theorems which we'll be formalising. There are in fact two;
 one (the "minimal case") is proved using an extension of the original Taylor--Wiles techniques,

@@ -71,7 +71,7 @@ theorem, let us set the scene.
 The goal of the mini-project is to get this theorem formalised and ideally into
 mathlib.
 
-```tex "Examples/goal/intro"
+```tex
 The goal of the mini-project is to get this theorem formalised and ideally into mathlib.
 ```
 

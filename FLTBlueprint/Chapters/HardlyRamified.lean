@@ -222,7 +222,7 @@ following four conditions:
 
 A well-known result, which basically goes back to Frey, is the following:
 
-```tex "Frey_curve_hardly_ramified/introduction"
+```tex
 A well-known result, which basically goes back to Frey, is the following:
 ```
 
@@ -313,7 +313,7 @@ methods introduced by Khare and Wintenberger to prove this special case of
 Serre's conjecture. Given this result, we can deduce theorem `Wiles_Frey`
 (which we restate here) easily:
 
-```tex "hardly_ramified_reducible/introduction"
+```tex
 Note that this (deep) claim is a consequence of Serre's conjecture~\cite{serreconj},
 now a theorem of Khare and Wintenberger~\cite{kwII}, and indeed we shall use
 methods introduced by Khare and Wintenberger to prove this special case of
@@ -354,7 +354,7 @@ the latter.
 Our job of reducing FLT to theorems of the `1980`s is hence reduced to proving
 `hardly_ramified_reducible`.
 
-```tex "hardly_ramified_reducible/transition"
+```tex
 Our job of reducing FLT to theorems of the 1980s is hence reduced to proving
 Theorem~\ref{hardly_ramified_reducible}.
 ```
@@ -364,7 +364,7 @@ Theorem~\ref{hardly_ramified_reducible}.
 In this section we will state three theorems, from which
 `hardly_ramified_reducible` easily follows.
 
-```tex "hardly_ramified_mod_p_reducible/introduction"
+```tex
 In this section we will state three theorems, from which Theorem~\ref{hardly_ramified_reducible}
 easily follows.
 ```
@@ -372,7 +372,7 @@ easily follows.
 Firstly, we claim that an irreducible hardly ramified mod `\ell`
 representation lifts to an `\ell`-adic representation.
 
-```tex "hardly_ramified_lifts/introduction"
+```tex
 Firstly, we claim that
 an irreducible hardly ramified mod $\ell$ representation lifts to an $\ell$-adic representation.
 ```
@@ -417,7 +417,7 @@ a compatible family of hardly ramified `q`-adic representations for all odd
 primes `q`. Note that we have not made a definition of a hardly ramified `2`-adic
 representation.
 
-```tex "hardly_ramified_spreads_out/introduction"
+```tex
 Next we claim that a hardly ramified $\ell$-adic representation ``spreads out'' to a compatible
 family of hardly ramified $q$-adic representations for all odd primes $q$ (note that we have
 not made a definition of a hardly ramified 2-adic representation).
@@ -482,7 +482,7 @@ In particular, we can "move" from an irreducible hardly ramified mod `\ell`
 representation to a hardly ramified `3`-adic representation, and hence to a
 hardly ramified mod `3` representation.
 
-```tex "hardly_ramified_mod3_reducible/transition"
+```tex
 In particular, we can ``move'' from an irreducible hardly ramified mod $\ell$ representation
 to a hardly ramified 3-adic representation, and hence to a hardly ramified mod 3 representation.
 ```
@@ -490,7 +490,7 @@ to a hardly ramified 3-adic representation, and hence to a hardly ramified mod 3
 However, we can essentially completely classify the hardly ramified mod `3`
 Galois representations:
 
-```tex "hardly_ramified_mod3_reducible/introduction"
+```tex
 However, we can essentially completely classify the hardly ramified mod 3 Galois representations:
 ```
 
@@ -527,7 +527,7 @@ Omitted for now. TODO.
 And we can use this to essentially completely classify the hardly ramified
 `3`-adic Galois representations:
 
-```tex "hardly_ramified_3adic_reducible/introduction"
+```tex
 And we can use this to essentially completely classify the hardly ramified 3-adic Galois
 representations:
 ```

@@ -28,7 +28,7 @@ chapter: firstly that the `p`-torsion `\rho` in the Frey curve is "hardly
 ramified", and secondly that Mazur's result on the possible torsion of
 elliptic curves implies that `\rho` must be irreducible.
 
-```tex "overview/introduction"
+```tex
 In Chapter~\ref{ch_reductions} we explained how, given a counterexample to Fermat's Last Theorem, we could construct a Frey package and thus a Frey curve, which is an elliptic curve with some interesting properties. In this chapter we start with an overview of parts of the theory of the arithmetic of elliptic curves. Following
 this we sketch proofs of the two main results of this chapter: firstly that the $p$-torsion $\rho$ in the Frey curve is ``hardly ramified'', and secondly that Mazur's result on the possible torsion of elliptic curves implies that $\rho$ must be irreducible.
 ```
@@ -46,7 +46,7 @@ Everything here follows from standard results about elliptic curves, however alm
 We give an overview of the results we need, citing the literature for proofs.
 Everything here is standard, and most of it dates back to the 1970s or before.
 
-```tex "arith/introduction"
+```tex
 \section{The arithmetic of elliptic curves}
 
 We give an overview of the results we need, citing the literature for proofs. Everything here is
@@ -84,7 +84,7 @@ Angdinata, and it will be part of his PhD thesis.
 This theorem actually tells us the structure of the `n`-torsion, because of the
 following purely group-theoretic result:
 
-```tex "group_theory_lemma/introduction"
+```tex
 This theorem actually tells us the structure of the $n$-torsion, because of the following
 purely group-theoretic result:
 ```
@@ -157,7 +157,7 @@ $`E(k^{\sep})[n]\cong(\Z/n\Z)^2`$ then we get a representation
 $`\Gal(k^{\sep}/k)\to\GL_2(\Z/n\Z)`$. A fundamental fact about this Galois
 representation is that its determinant is the cyclotomic character.
 
-```tex "Elliptic_curve_det_n_torsion/introduction"
+```tex
 We saw in section~\ref{twopointfour} that if $E$ is an elliptic curve over a field $k$ and if $k^{\sep}$ is a separable closure of~$k$, then the group $\Gal(k^{\sep}/k)$ acts on $E(k^{\sep})[n]$. Now let $n$ be a positive integer which is nonzero in $k$. We have just seen that $E(k^{\sep})[n]$ is isomorphic to $(\Z/n\Z)^2$, and it inherits an action of $\Gal(k^{\sep}/k)$. If we fix an isomorphism $E(k^{\sep})[n]\cong(\Z/n\Z)^2$ then we get a representation $\Gal(k^{\sep}/k)\to\GL_2(\Z/n\Z)$. A fundamental fact about this Galois representation is that its determinant is the cyclotomic character.
 ```
 
@@ -193,7 +193,7 @@ such as {Informal.citep silvermanArithmeticEllipticCurves}[]. We stick with the 
 elliptic curves as plane cubics; whilst we cannot do this forever, it will
 suffice for these initial results.
 
-```tex "good_reduction/introduction"
+```tex
 We give a brief overview of the theory of good and multiplicative reduction of elliptic curves.
 For more details one can consult the standard sources such as~\cite{silverman1}. We stick with the low-level approach, thinking of elliptic curves as plane cubics; whilst we cannot do this forever, it will suffice for these initial results.
 ```
@@ -275,7 +275,7 @@ of $P\calO_L$ into prime ideals is squarefree).
 At some point we will need a theory of finite flat group schemes over an affine
 base. Here is a working definition.
 
-```tex "finite_flat_group_scheme/introduction"
+```tex
 At some point we will need a theory of finite flat group schemes over an affine base. Here
 is a working definition.
 ```
@@ -483,7 +483,7 @@ The main thing we need about elliptic curves with multiplicative reduction over
 nonarchimedean local fields is the uniformisation theorem, originally due to
 Tate.
 
-```tex "Tate_curve_uniformisation/introduction"
+```tex
 The main thing we need about elliptic curves with multiplicative reduction over nonarchimedean
 local fields is the \emph{uniformisation theorem}, originally due to Tate.
 ```
@@ -564,7 +564,7 @@ all accounted for by the `n`-torsion in `(K^{\sep})^\times/q^{\mathbf Z}`.
 
 We have now proved the first main result of this chapter.
 
-```tex "frey_curve_hardly_ramified/introduction"
+```tex
 We have now proved the first main result of this chapter.
 ```
 
@@ -704,7 +704,7 @@ This analysis needs to be slightly modified if `p=2`, because the `j`-invariant
 of the Frey curve may not have `2`-adic valuation a multiple of `\ell`. We
 obtain the following weaker result.
 
-```tex "frey_curve_at_2/introduction"
+```tex
 This analysis needs to be slightly modified if $p=2$, because the $j$-invariant of
 the Frey curve may not have 2-adic valuation a multiple of $\ell$. We obtain the
 following weaker result.
@@ -786,7 +786,7 @@ much more elementary proof using arguments in
 We make the following definition; this is not in the literature but it is a
 useful concept for us.
 
-```tex "hardly_ramified/introduction"
+```tex
 We make the following definition; this is not in the literature but it is a useful concept for us.
 ```
 
@@ -829,7 +829,7 @@ We finish this chapter by showing that Mazur's theorem implies that the
 `\ell`-torsion in the Frey curve is irreducible. We start by stating Mazur's
 theorem.
 
-```tex "mazur/introduction"
+```tex
 We finish this chapter by showing that Mazur's theorem implies that the $\ell$-torsion in the Frey
  curve is irreducible. We start by stating Mazur's theorem.
 ```
@@ -864,7 +864,7 @@ Let `(a,b,c,\ell)` be a Frey package, with associated Frey curve `E` and mod
 two-dimensional. Suppose for contradiction that it is reducible, so its
 semisimplification is the direct sum of two characters `\alpha` and `\beta`.
 
-```tex "Frey_characters/introduction"
+```tex
 Let $(a,b,c,\ell)$ be a Frey package, with associated Frey curve $E$ and mod $\ell$ Galois
  representation $\rho=E[\ell]$. We know that $\rho$ is 2-dimensional; let's suppose for a
  contradiction that that it is
@@ -971,7 +971,7 @@ is trivial.
 
 To summarise, we have shown the following.
 
-```tex "Frey_curve_reducible_structure/introduction"
+```tex
 To summarise, we have shown the following.
 ```
 
@@ -1056,7 +1056,7 @@ It remains to rule out the case where $`\rho`$ is reducible and has a trivial
 quotient. To do this, we need to quotient out $`\rho`$ by its 1-dimensional
 Galois-stable submodule.
 
-```tex "Frey_curve_no_trivial_quotient/introduction"
+```tex
 It remains to rule out the case where $\rho$ is reducible and has a trivial quotient. To do this, we need
 to quotient out $\rho$ by its 1-dimensional Galois-stable submodule.
 ```

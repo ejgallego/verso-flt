@@ -17,7 +17,7 @@ This miniproject packages the abstract double-coset formalism and then applies
 it to spaces of automorphic forms.
 :::
 
-```tex "hecke_operator_project/abstract_theory/introduction"
+```tex
 \section{The abstract theory}
 
 \subsection{Introduction}
@@ -32,7 +32,7 @@ This is an active miniproject. The abstract theory is completely formalized;
 at the time of writing the concrete theory has no sorried definitions but it
 does have some sorried proofs.
 
-```tex "hecke_operator_project/abstract_theory/introduction/2"
+```tex
 \section{Status}
 
 This is an active miniproject. The abstract theory is completely formalized;
@@ -45,7 +45,7 @@ acting on spaces of automorphic forms. These Hecke operators generate
 Hecke algebras, which are the rings called $`T` in the modularity lifting theorems,
 or $`R=T` theorems, crucially introduced by Wiles in order to prove FLT.
 
-```tex "hecke_operator_project/abstract_theory/introduction/4"
+```tex
 \section{The goal}
 
 The goal of this project is to get sorry-free definitions of Hecke operators
@@ -61,7 +61,7 @@ the concrete theory still needs some work because to apply the theory to the
 adelic groups we care about we need to develop some more API around the theory
 of restricted products, and of compact open subgroups of matrix groups.
 
-```tex "hecke_operator_project/abstract_theory/introduction/5"
+```tex
 The theory comes in two parts;
 the ``abstract'' theory, which is pure algebra, and the ``concrete'' theory
 where we apply the abstract constructions to produce endomorphisms of
@@ -74,20 +74,20 @@ of restricted products, and of compact open subgroups of matrix groups.
 The set-up: we have a commutative ring $R$, the coefficient ring, and
 all of our spaces which the operators act on will be $R$-modules.
 
-```tex "hecke_operator_project/abstract_theory/introduction/6"
+```tex
 The set-up: we have a commutative ring $R$, the coefficient ring, and
 all of our spaces which the operators act on will be $R$-modules.
 ```
 We have a group $`G`$ acting $`R`$-linearly on an $`R`$-module $`A`.
 
-```tex "hecke_operator_project/abstract_theory/introduction/6b"
+```tex
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
 We have subgroups $`U` and $`V` of $`G`.
 We will be particularly interested in the $`R`-modules $`A^U` and $`A^V`
 of invariant elements.
 
-```tex "hecke_operator_project/abstract_theory/introduction/7"
+```tex
 We have subgroups $U$ and $V$ of $G$.
 We will be particularly interested in the $R$-modules $A^U$ and $A^V$
 of invariant elements.
@@ -98,7 +98,7 @@ from `A^V` to `A^U`. The finiteness hypothesis is that the
 double coset `UgV` can be written as a finite union of single
 cosets `g_iV`.
 
-```tex "hecke_operator_project/abstract_theory/introduction/8"
+```tex
 Given an element $g\in G$, then under a certain finiteness hypothesis
 we will be able to define an $R$-linear map $T_g$ or $[UgV]$
 from $A^V$ to $A^U$. The finiteness hypothesis is that the
@@ -237,7 +237,7 @@ $`G`$ which we are interested in, and they are restricted products. So we now
 develop some theory for restricted products, starting by recalling the
 definition.
 
-```tex "hecke_operator_project/restricted_products/introduction/1"
+```tex
 \section{Restricted products}
 
 In the concrete example of Hecke operators which we care about, the invariants $A^G$
@@ -256,7 +256,7 @@ the $`Y_i`$ from the notation in this document, although in Lean we cannot do
 this and the restricted product looks something like
 $`\prod{}^{r} i,[X\ i, Y\ i]`$.
 
-```tex "hecke_operator_project/restricted_products/introduction/2"
+```tex
 If $I$ is an index set, if $X_i$ are sets indexed by $i\in I$ and if $Y_i$
 are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
 to be the subset of the full product $\prod_i X_i$ consisting of those
@@ -679,7 +679,7 @@ field `K` at a finite place `v`. Such a completion is a topological field `K_v`
 equipped with a discrete valuation, a ring of integers `\calO_v` having a principal
 maximal ideal `(\varpi)`, and a finite residue field `k_v := \calO_v/(\varpi)`.
 
-```tex "hecke_operator_project/local_theory/introduction/1"
+```tex
 We could work over a general nonarchimedean normed field but we still do not have them
 in mathlib, so we stick to the case of interest which is the completion of a number
 field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
@@ -691,12 +691,12 @@ There is no formal Lean code for the lemmas in this section; it would seem more 
 to prove them in the right generality, and we don't have a definition of nonarchimedean
 local field yet.
 
-```tex "hecke_operator_project/local_theory/introduction"
+```tex
 There is no formal Lean code for the lemmas in this section; I am slightly dragging my
 feet because it would seem more sensible to prove them in the right generality,
 and we don't have a definition of nonarchimedean local field yet.
 ```
-```tex "hecke_operator_project/local_theory/introduction/2"
+```tex
 \section{Some local theory}
 
 We could work over a general nonarchimedean normed field but we still do not have them
@@ -821,7 +821,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 `\calO_v` is an open subring of `K_v`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/3"
+```tex
 \begin{lemma}
   \lean{NumberField.isOpenAdicCompletionIntegers}
   \label{NumberField.isOpenAdicCompletionIntegers}
@@ -833,7 +833,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 :::proof "NumberField.isOpenAdicCompletionIntegers"
 Openness is already in mathlib.
 :::
-```tex "hecke_operator_project/local_theory/introduction/3-proof"
+```tex
 \begin{proof}
   \leanok
   Openness is already in mathlib.
@@ -843,7 +843,7 @@ Openness is already in mathlib.
 `\calO_v` is a compact subring of `K_v`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/4"
+```tex
 \begin{lemma}
   \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
   \label{NumberField.instCompactSpaceAdicCompletionIntegers}
@@ -856,7 +856,7 @@ Openness is already in mathlib.
 Compactness lies a little deeper because it assumes that the residue field of
 `K_v` is finite.
 :::
-```tex "hecke_operator_project/local_theory/introduction/4-proof"
+```tex
 \begin{proof}
   \leanok
   Compactness lies a little deeper because it
@@ -867,7 +867,7 @@ Compactness lies a little deeper because it assumes that the residue field of
 `M_2(\calO_v)` is an open subring of `M_2(K_v)`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/5"
+```tex
 \begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
   \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
   \label{M2.localFullLevel.isOpen}
@@ -880,7 +880,7 @@ Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
 follows from {uses "NumberField.isOpenAdicCompletionIntegers"}[] because a
 product of compacts is compact and a product of opens is open.
 :::
-```tex "hecke_operator_project/local_theory/introduction/5-proof"
+```tex
 \begin{proof}
   \leanok
   \uses{NumberField.isOpenAdicCompletionIntegers}
@@ -892,7 +892,7 @@ product of compacts is compact and a product of opens is open.
 `M_2(\calO_v)` is a compact subring of `M_2(K_v)`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/6"
+```tex
 \begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
   \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
   \label{M2.localFullLevel.isCompact}
@@ -905,7 +905,7 @@ Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
 follows from {uses "local_integer_ring_compact"}[]
 because a product of compacts is compact and a product of opens is open.
 :::
-```tex "hecke_operator_project/local_theory/introduction/6-proof"
+```tex
 \begin{proof}
   \leanok
   \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
@@ -917,7 +917,7 @@ because a product of compacts is compact and a product of opens is open.
 `GL_2(\calO_v)` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/7"
+```tex
 \begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
   \label{nolean-compactopen-GL2}
 \end{lemma}
@@ -929,7 +929,7 @@ follows from {uses "Submonoid.units_isOpen"}[] and
 {uses "Submonoid.units_isCompact"}[].
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/8"
+```tex
 \begin{proof}
 \uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
   $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
@@ -951,7 +951,7 @@ hence compact and open as a submonoid of $`M_2(\calO_v)`$ and hence of
 $`M_2(K_v)`$.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/9"
+```tex
 Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
 field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
 with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
@@ -967,7 +967,7 @@ cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and
 `U_v` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/10"
+```tex
 \begin{lemma}
   \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
 \end{lemma}
@@ -980,7 +980,7 @@ cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and
 {uses "Submonoid.units_isCompact"}[].
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/11"
+```tex
 \begin{proof}
   \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
   $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
@@ -995,7 +995,7 @@ and let $`U:=U_v`$ be its preimage in $`GL_2(\calO_v)`$, considered as a compact
 of $`GL_2(K_v)`$. Choose $`0\not=\alpha\in\calO_v`$ and define
 $`g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)`$. Let's do an explicit
 double coset decomposition in preparation for a calculation with Hecke operators.
-```tex "hecke_operator_project/local_theory/introduction/12"
+```tex
 Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
 and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
 Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
@@ -1008,7 +1008,7 @@ through $`\calO_v/\alpha\calO_v`$ and $`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&
 where $`\tilde{t}`$ is any lift of $`t`$ to $`\calO_v`$.
 :::
 
-```tex "hecke_operator_project/local_theory/introduction/13"
+```tex
 \begin{lemma}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
   \label{bijOn_unipotent_mul_diagU1_U1diagU1}
@@ -1034,7 +1034,7 @@ then $`u\in h_tU^\alpha`$ iff $`b\in\calO_v`$ reduces mod $`\alpha`$ to $`t\in\c
 We do this by computing $`h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}`$
 and observing that its top right hand entry mod~$`\alpha`$ is zero iff $`b`$ mod $`\alpha`$ is $`t`$.
 :::
-```tex "hecke_operator_project/local_theory/introduction/14"
+```tex
 \begin{proof}
   \leanok
   We first manipulate the statement into a statement about finite groups.
@@ -1061,7 +1061,7 @@ topological ring, defined to be the restricted
 product of the commutative topological fields `K_v` as `v` runs through the finite places
 of `K`, with respect to the compact open subrings `\calO_v`.
 
-```tex "hecke_operator_project/adelic_groups/introduction/1"
+```tex
 \section{Adelic groups}
 
 We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
@@ -1075,7 +1075,7 @@ of~$K$, with respect to the compact open subrings $\calO_v$.
 The group~$G$ we are interested in for the rest of this miniproject is the group
 $(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
 but the first thing we need to do is to find a way of talking about elements of the group.
-```tex "hecke_operator_project/adelic_groups/introduction/2a"
+```tex
 The group~$G$ we are interested in for the rest of this miniproject is the group
 $(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
 but the first thing we need to do is to find a way of talking about elements of the group.
@@ -1089,7 +1089,7 @@ fancy way of saying the product topology. They are both free of rank `4` as
 $`\A_K^\infty`$-modules, and the rigidification is then a homeomorphism because
 all $`\A_K^\infty`$-module maps between modules with the
 $`\A_K^\infty`$-module topology are continuous.
-```tex "hecke_operator_project/adelic_groups/introduction/2b"
+```tex
 We will assume that there exists an $\A_K^\infty$-algebra isomorphism
 $D\otimes_K\A_K^\infty=M_2(\A_K^\infty)$ and we will fix such an isomorphism $r$
 (called a \emph{rigidification} in the Lean code). We give both of these $\A_K^\infty$-algebras
@@ -1102,7 +1102,7 @@ topology are continuous).
 This means that our group~$G$ is isomorphic (both algebraically and topologically)
 to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
-```tex "hecke_operator_project/adelic_groups/introduction/2c"
+```tex
 This means that our group~$G$ is isomorphic (both algebraically and topologically)
 to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
@@ -1112,7 +1112,7 @@ let say something about matrix rings over complete fields.
 to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 :::
 
-```tex "hecke_operator_project/adelic_groups/introduction/2"
+```tex
 \begin{theorem}
   \lean{IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct}
   \label{GL2.restrictedProduct}
@@ -1129,7 +1129,7 @@ to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 This follows from the former lemma and the latter lemma.
 :::
 
-```tex "hecke_operator_project/adelic_groups/introduction/3"
+```tex
 \begin{proof}
   \leanok
   \uses{ContinuousMulEquiv.restrictedProductUnits,

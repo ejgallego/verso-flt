@@ -25,7 +25,7 @@ that they're equal is basically the Shimura--Taniyama--Weil conjecture, now
 known as the Breuil--Conrad--Diamond--Taylor modularity theorem: any elliptic
 curve over the rationals is modular.
 
-```tex "automorphic_example/introduction/modularity_lifting"
+```tex
 The key ingredient in Wiles' proof of Fermat's Last Theorem is a \emph{modularity lifting theorem},
 sometimes called an $R=T$ theorem. For Wiles, the $R$ came from elliptic curves, the $T$ came from
 classical modular forms, and the fact that they're equal is basically the Shimura--Taniyama--Weil
@@ -44,7 +44,7 @@ are the norm `1` units in rings such as Hamilton's quaternions
 $`\R\oplus\R i\oplus\R j\oplus\R k`, and subrings such as
 $`\Z\oplus\Z i\oplus\Z j\oplus\Z k`.
 
-```tex "automorphic_example/introduction/quaternionic_forms"
+```tex
 At the heart of the proof we shall formalise is also an $R=T$ theorem, however the $T$ which we
 shall use will be associated not to classical modular forms, but to spaces of more general
 automorphic forms called quaternionic modular forms. Those of you who know something about
@@ -63,7 +63,7 @@ example, in the cases we need, the definition is completely algebraic; there
 are no holomorphic functions in sight, and the analogue of the upper half plane
 in the quaternionic theory is a finite set of points).
 
-```tex "automorphic_example/introduction/project_goal"
+```tex
 One of the main goals of the FLT project at the time of writing this sentence, is formalising
 the \emph{statement} of the modularity lifting theorem which we shall use. So we are going
 to need to develop the theory of quaternionic modular forms, which is rather different
@@ -81,7 +81,7 @@ forms. The process of constructing the example might even inform what kind of
 machinery we should be developing in general. Let's begin by discussing the
 quaternion algebra we shall use.
 
-```tex "automorphic_example/introduction/example_motivation"
+```tex
 We could just launch into the general theory over totally real fields, which will be the generality
 which we'll need. But when I was a PhD student, I learnt about
 these objects by playing with explicit examples. So, whilst not logically necessary for the proof,

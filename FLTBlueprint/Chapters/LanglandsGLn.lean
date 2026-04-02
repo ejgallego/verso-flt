@@ -17,7 +17,7 @@ The ultimate goal is to formally state some version of the global Langlands
 reciprocity conjectures for `GL_n` over `Q`.
 :::
 
-```tex "ch07exampleGLn/introduction"
+```tex
 \chapter{Automorphic forms and the Langlands Conjectures}
 
 This chapter came from discussions between Patrick, Mario and myself, all currently
