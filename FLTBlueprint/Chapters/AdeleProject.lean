@@ -23,7 +23,7 @@ results needed later in the project.
 
 This is an active miniproject.
 
-```tex "adele_project/status"
+```tex
 \section{Status}
 
 This is an active miniproject.
@@ -34,7 +34,7 @@ This is an active miniproject.
 
 There are several goals to this miniproject.
 
-```tex "adele_project/goals/intro"
+```tex
 There are several goals to this miniproject.
 ```
 
@@ -48,7 +48,7 @@ There are several goals to this miniproject.
    compact.
 5. Get this stuff into mathlib.
 
-```tex "adele_project/goals/list"
+```tex
 \begin{enumerate}
   \item Define the adeles $\A_K$ of a number field~$K$ and
     give them the structure of a $K$-algebra;
@@ -65,7 +65,7 @@ There are several goals to this miniproject.
 We briefly go through the basic definitions. Let $`K`$ be a number field. Let
 $`\Zhat=\projlim_{N\geq1}(\Z/N\Z)`$ be the profinite completion of $`\Z`$,
 equipped with the projective limit topology.
-```tex "adele_project/basic-definitions/1"
+```tex
 We briefly go through the basic definitions. Let $K$ be a number field.
 Let $\Zhat=\projlim_{N\geq1}(\Z/N\Z)$ be the profinite completion of $\Z$,
 equipped with the projective limit topology.
@@ -73,7 +73,7 @@ equipped with the projective limit topology.
 
 A cheap definition of the finite adeles $`\A_K^\infty`$ of $`K`$ is
 $`K\otimes_{\Z}\Zhat`$, equipped with the $`\Zhat`$-module topology.
-```tex "adele_project/basic-definitions/2"
+```tex
 A cheap definition of the finite adeles $\A_K^\infty$ of $K$ is $K\otimes_{\Z}\Zhat$,
 equipped with the $\Zhat$-module topology.
 ```
@@ -81,7 +81,7 @@ equipped with the $\Zhat$-module topology.
 A cheap definition of the infinite adeles $`K_\infty`$ is $`K\otimes_{\Q}\R`$
 with the $`\R`$-module topology. This is a finite-dimensional $`\R`$-vector
 space, so this is just the usual topology on $`\R^n`.
-```tex "adele_project/basic-definitions/3"
+```tex
 A cheap definition of the infinite adeles
 $K_\infty$ of $K$ is $K\otimes_{\Q}\R$ with the $\R$-module topology (this is a
 finite-dimensional $\R$-vector space so this is just the usual topology on $\R^n$).
@@ -90,7 +90,7 @@ finite-dimensional $\R$-vector space so this is just the usual topology on $\R^n
 A cheap definition of the adeles of $`K`$ is
 $`\A_K^\infty\times K_\infty`$ with the product topology. This is a
 commutative topological ring.
-```tex "adele_project/basic-definitions/4"
+```tex
 A cheap definition of the adeles of $K$ is $\A_K^\infty\times K_\infty$ with
 the product topology. This is a commutative topological ring.
 ```
@@ -107,7 +107,7 @@ definition given in mathlib. Mathlib also has the proof that they are a
 topological ring; furthermore the construction of the finite adeles in mathlib
 works for any Dedekind domain. The adeles are an arithmetic object, but the
 finite adeles are an algebraic object.
-```tex "adele_project/basic-definitions/5"
+```tex
 However in the literature (and in mathlib) we see different definitions.
 The finite adeles of $K$ are usually defined in the books
 as the so-called restricted product $\prod'_{\mathfrak{p}}K_{\mathfrak{p}}$ over the completions
@@ -125,7 +125,7 @@ are an arithmetic object, but the finite adeles are an algebraic object).
 Similarly the infinite adeles of a number field $`K`$ are usually defined as
 $`\prod_v K_v`$, the product running over the archimedean completions of $`K`$,
 and this is the mathlib definition.
-```tex "adele_project/basic-definitions/6"
+```tex
 Similarly the infinite adeles of a number field~$K$
 are usually defined as $\prod_v K_v$,
 the product running over the archimedean completions of~$K$, and this is
@@ -134,7 +134,7 @@ the mathlib definition.
 
 The adeles of a number field $`K`$ are the product of the finite and infinite
 adeles, and mathlib knows that they are a $`K`$-algebra and a topological ring.
-```tex "adele_project/basic-definitions/7"
+```tex
 The adeles of a number field $K$ are the product of the finite and infinite
 adeles, and mathlib knows that they're a $K$-algebra and a topological ring.
 ```
@@ -163,7 +163,7 @@ subgroups $A_v$ is locally compact.
 ```
 
 What we need then is this (note that this is not true for a general Dedekind domain):
-```tex "adele_project/local-compactness-what-we-need"
+```tex
 What we need then is this (note that this is not true for a general Dedekind domain):
 ```
 
@@ -197,7 +197,7 @@ finiteness of the residue field $`\mathcal{O}_K/v`$.
 ```
 
 Once we have this, the above result from mathlib gives us
-```tex "adele_project/local-compactness-once-we-have-this"
+```tex
 Once we have this, the above result from mathlib gives us
 ```
 
@@ -242,7 +242,7 @@ subgroups is locally compact, so this reduces us the previous result.
 # Base change
 
 The "theorem" we want is that if `L/K` is a finite extension of number fields, then `\A_L = L \otimes_K \A_K`. This isn't a theorem though, this is actually a definition (the map between the two objects) and a theorem about the definition (that it's an isomorphism).
-```tex "adele_project/base-change/1"
+```tex
 \section{Base change}
 
 The ``theorem'' we want is that if $L/K$ is a finite extension of number fields,
@@ -255,7 +255,7 @@ the definition (that it's an isomorphism).
 In fact the full claim is that it is both a homeomorphism and an $`L`$-algebra
 isomorphism. Before we can prove the theorem, we need to make the
 definition.
-```tex "adele_project/base-change/2"
+```tex
 In fact the full claim is that it is both a homeomorphism
 and an $L$-algebra isomorphism. Before we can prove the theorem, we need to make the
 definition.
@@ -267,7 +267,7 @@ of the finite adeles and the infinite adeles. So our "theorem" follows immediate
 the "theorems" that $`\A_L^\infty=L\otimes_K\A_K^\infty`$ and $`L_\infty=L\otimes_KK_\infty`$
 (both of these equalities mean an algebraic and topological isomorphism).
 We may thus treat the finite and infinite results separately.
-```tex "adele_project/base-change/3"
+```tex
 Recall that the adeles $\A_K$ of a number field is a product $\A_K^\infty\times K_\infty$
 of the finite adeles and the infinite adeles. So our ``theorem'' follows immediately from
 the ``theorem''s that $\A_L^\infty=L\otimes_K\A_K^\infty$ and $L_\infty=L\otimes_KK_\infty$
@@ -297,7 +297,7 @@ fields are Dedekind domains in mathlib, and the
 height one spectrum of a field is empty.
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.valuation_comap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.valuation_comap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
 If $`i:K\to L`$ denotes the inclusion then for $`k\in K`$ we have
 $`e\times w(i(k))=v(k)`$, where $`e`$ is the ramification index of $`w/v`$
 (recall that valuations here are written additively, unlike in mathlib).
@@ -332,7 +332,7 @@ defined by completing the inclusion $`K\to L`$ at the finite places $`v`$ and
 $`w`$ (which can be done because the previous lemma shows that the map is
 uniformly continuous for the $`v`$-adic and $`w`$-adic topologies).
 :::
-```tex "adele_project/base-change-local-map"
+```tex "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (slot := statement)
 \begin{definition}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
   \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
@@ -346,7 +346,7 @@ uniformly continuous for the $`v`$-adic and $`w`$-adic topologies).
 \end{definition}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap")
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap")
 {uses "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[]
 {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[]
 If $`i_v:K_v\to L_w`$ denotes the map of the previous definition
@@ -378,7 +378,7 @@ Follows by continuity from lemma `IsDedekindDomain.HeightOneSpectrum.valuation_c
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers")
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers")
 {uses "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"}[]
 The map $`i_v:K_v\to L_w`$ sends the integer ring $`A_v`$ into $`B_w`.
 :::
@@ -452,7 +452,7 @@ a complete field are equivalent (and thus induce the same topology).
 \end{proof}
 ```
 
-```tex "adele_project/base-change-local-algebra-view/diagram"
+```tex
 Because of the commutative diagram
 \begin{center}
 \begin{tikzcd}
@@ -463,18 +463,18 @@ K \arrow{u} \arrow{r} & L \arrow{u}
 ```
 
 we can view $`L_w`$ as an $`L\otimes_KK_v`$-algebra.
-```tex "adele_project/base-change-local-algebra-view/text"
+```tex
 we can view $L_w$ as an $L\otimes_KK_v$-algebra.
 ```
 
 Now instead of fixing $`w`$ upstairs, we fix $`v`$ downstairs and consider all $`w`$ lying
 over it at once. So say $`v`$ is in the height one spectrum of $`A`$.
-```tex "adele_project/base-change-local-fix-v"
+```tex
 Now instead of fixing $w$ upstairs, we fix $v$ downstairs and consider all $w$ lying
 over it at once. So say $v$ is in the height one spectrum of $A$.
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.Extension.finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.Extension.finite" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.finite")
 There are only finitely many primes $`w`$ of $`B`$ lying above $`v`$.
 :::
 ```tex
@@ -501,7 +501,7 @@ theorem `primesOver_finite`.
 ```
 
 We write $`w|v`$ to denote the fact that $`w`$ is a prime of $`B`$ above $`v`$ of $`A`$.
-```tex "adele_project/base-change-w-divides-v"
+```tex
 We write $w|v$ to denote the fact that $w$ is a prime of $B$ above $v$ of $A$.
 ```
 
@@ -509,7 +509,7 @@ We write $w|v$ to denote the fact that $w$ is a prime of $B$ above $v$ of $A$.
 The product of the maps $`K_v\to L_w`$ for $`w|v`$ is a natural ring map
 $`K_v\to\prod_{w|v}L_w`$ lying over $`K\to L`$.
 :::
-```tex "adele_project/base-change-product-local-map"
+```tex "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" (slot := statement)
 \begin{definition}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
   \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
@@ -525,7 +525,7 @@ map $`L\otimes_KK_v\to\prod_{w|v}L_w`$. We are now able to state one of the key 
 in this section. The proof is probably the hardest proof
 in this section to formalize.
 
-```tex "adele_project/base-change-local-decomposition/intro"
+```tex
 Because $K_v\to\prod_{w|v}L_w$ lies over $K\to L$, there's an induced $L$-algebra
 map $L\otimes_KK_v\to\prod_{w|v}L_w$. We are now able to state one of the key results
 in this section. The proof is probably the hardest proof
@@ -741,7 +741,7 @@ definition `IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom` th
 there's a map $`K_v\to L_w`$ if $`w|v`$, extending $`K\to L`$, and we have seen in
 theorem `IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers`
 that this sends $`A_v`$ to $`B_w`$. We conclude
-```tex "adele_project/finite-adele-map/intro"
+```tex
 Recall that the finite adeles $\A_{A,K}^\infty$ is defined in mathlib to be
 the restricted product of the $K_v$ with respect to the $A_v$, equipped with a certain
 restricted product topology (which is not the subspace topology of the product
@@ -808,7 +808,7 @@ isomorphism.
 ```
 
 
-:::theorem "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.linearEquivTensorProductModule")
+:::corollary "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.linearEquivTensorProductModule")
 If $`M`$ is any $`K`$-module then the canonical map
 $`B \otimes_A M \to L \otimes_K M`$ is an isomorphism.
 :::
@@ -940,7 +940,7 @@ easily from the definition of the topology.
 ```
 
 
-:::theorem "finite_prime_product_tensor_isomorphism" (parent := "adele_project")
+:::corollary "finite_prime_product_tensor_isomorphism" (parent := "adele_project")
 {uses "IsDedekindDomain.AKLB.finitePresentation"}[]
 {uses "pi_tensorProduct_of_finitePresentation"}[]
 If `S` is a finite set of nonzero primes of `A` then the natural map
@@ -978,7 +978,7 @@ where $v$ runs through the nonzero primes of $A$. Let $R$ denote the restricted
 product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$.
 ```
 
-:::theorem "finite_adele_tensor_product_auxiliary_ring" (parent := "adele_project")
+:::corollary "finite_adele_tensor_product_auxiliary_ring" (parent := "adele_project")
 The natural map $`B\otimes_A\A_K^\infty\to R`$ is a `B`-algebra isomorphism.
 :::
 ```tex
@@ -999,7 +999,7 @@ commute with filtered colimits.
 \end{proof}
 ```
 
-:::theorem "auxiliary_ring_identifies_with_extension_finite_adeles" (parent := "adele_project")
+:::corollary "auxiliary_ring_identifies_with_extension_finite_adeles" (parent := "adele_project")
 {uses "RestrictedProduct.relabelIso"}[]
 The ring `R` introduced above, the restricted product of the
 `B\otimes_A K_v` with respect to the `B\otimes_A A_v`, is isomorphic to
@@ -1126,7 +1126,7 @@ going on. We do this in the
 next subsection.
 ```
 
-```tex "adele_project/base-change-finite-topology"
+```tex
 \begin{definition} If $X_v$ and $Y_v$ are families of topological spaces indexed by $v\in V$,
   if $f_v:X_v\to Y_v$ is a continuous map sending the subset $C_v\subseteq X_v$ into
   $D_v\subseteq Y_v$ then there's an induced continuous map $\prod'_v(X_v,C_v)\to\prod'_v(Y_v,D_v)$.
@@ -1157,7 +1157,7 @@ products.
 \end{proof}
 ```
 
-:::theorem "finite_adele_auxiliary_ring_homeomorphism" (parent := "adele_project")
+:::corollary "finite_adele_auxiliary_ring_homeomorphism" (parent := "adele_project")
 $`\mathbb{\A_L^\infty}`$ is homeomorphic to
 $`\prod_v(B\otimes_AK_v,B\otimes_AA_v)`$.
 {uses "restricted_product_relabel_homeomorphism"}[]
@@ -1178,7 +1178,7 @@ Follows from the previous theorem with `X_v=B\otimes_AK_v`, `D_w=L_w`, etc.
 \end{proof}
 ```
 
-```tex "adele_project/base-change-finite-topology/continued"
+```tex
 Recall that if $$R$$ is a commutative ring, and two $$R$$-modules both have the $$R$$-module
 topology, then any $$R$$-linear morphism between them is automatically continuous. We know
 that $\A_L^\infty$ is $\A_K^\infty$-linearly isomorphic to $L\otimes_K\A_K^\infty$ and our claim is that
@@ -1671,7 +1671,7 @@ The `L_\infty` side has the `K_\infty`-module topology.
 From the previous results we deduce immediately that if $`L/K`$ is a finite extension
 of number fields then there's a natural (topological and algebraic) isomorphism
 $`L\otimes_K\A_K\to \A_L`$.
-```tex "adele_project/base-change-for-adeles/intro"
+```tex
 \subsection{Base change for adeles}
 
 From the previous results we deduce immediately that if $L/K$ is a finite extension
@@ -1737,7 +1737,7 @@ Indeed {uses "NumberField.AdeleRing.baseChangeEquiv"}[] identifies `\A_L` with
   the right hand side has the $\A_K$-module topology.
 \end{proof}
 ```
-```tex "adele_project/base-change-infinite"
+```tex
 \subsection{Base change for infinite adeles}
 
 Recall that if $K$ is a number field then the infinite adeles of $K$ are defined
@@ -2130,7 +2130,7 @@ the archimedean coordinate into `\prod_p\Z_p\times[0,1)`, so every class in
 ```
 
 
-```tex "adele_project/discreteness-compactness"
+```tex
 \section{Discreteness and compactness}
 
 We need that if $K$ is a number field then
