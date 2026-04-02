@@ -367,6 +367,7 @@ $`e\times w(i(k))=v(k)`$, where $`e`$ is the ramification index of $`w/v`$.
 ```
 
 :::proof "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"
+{uses "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[]
 Follows by continuity from lemma `IsDedekindDomain.HeightOneSpectrum.valuation_comap`.
 :::
 
@@ -392,6 +393,7 @@ The map $`i_v:K_v\to L_w`$ sends the integer ring $`A_v`$ into $`B_w`.
 ```
 
 :::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"
+{uses "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"}[]
 The integer ring is defined by $`v\geq0`$ (or $`v\leq 1`$ in mathlib, which uses multiplicative
 valuations) so the result follows from `IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap`.
 :::
@@ -1072,9 +1074,9 @@ we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$
 ```
 
 :::proof "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"
-Follows immediately from theorem
-`IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv` and theorem
-`IsDedekindDomain.AKLB.tensorProduct_module_algEquiv`.
+{uses "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"}[]
+{uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[]
+Follows immediately from theorem and theorem cited above.
 :::
 ```tex "adele_project/lt-witness-548j/proof"
 \begin{proof}
@@ -1390,6 +1392,8 @@ is injective.
 
 
 :::proof "infinite_place_local_base_change_injective"
+{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
+{uses "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct"}[]
 The `L`-algebra map $`L \otimes_K K_v \to \prod_{w \mid v} L_w`$ can
 equivalently be thought of as `K_v`-linear, which is injective, because it is
 surjective by theorem `NumberField.InfinitePlace.Completion.baseChange_surjective`, and both sides have the same `K_v`-dimension by theorem
@@ -1462,6 +1466,9 @@ to $`1 \otimes_K K_v`$ corresponds to the map in
 
 
 :::proof "NumberField.InfinitePlace.Completion.baseChangeEquiv"
+{uses "NumberField.InfinitePlace.Completion.baseChange"}[]
+{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
+{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
 The map in `NumberField.InfinitePlace.Completion.baseChange` is an `L`-algebra
 isomorphism by the surjectivity and injectivity theorems. Every `K_v`-algebra
 isomorphism between two `K_v`-module topological spaces is a homeomorphism.
