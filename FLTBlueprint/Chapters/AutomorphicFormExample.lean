@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 import FLT.Data.Hurwitz
 import FLT.Data.HurwitzRatHat
 import FLT.Data.QHat

@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 import Mathlib.RingTheory.Invariant.Basic
 
 open Verso.Genre

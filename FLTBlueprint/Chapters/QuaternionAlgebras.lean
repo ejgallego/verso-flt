@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 import FLT.AutomorphicForm.QuaternionAlgebra.Defs
 import FLT.AutomorphicForm.QuaternionAlgebra.FiniteDimensional
 

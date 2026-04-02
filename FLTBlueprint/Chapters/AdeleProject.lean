@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 import FLT.NumberField.AdeleRing
 import FLT.NumberField.Completion.Finite
 import FLT.DedekindDomain.Completion.BaseChange

@@ -9,6 +9,7 @@ import FLT.GaloisRepresentation.HardlyRamified.Threeadic
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 
 open Verso.Genre
 open Verso.Genre.Manual

@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Abstract
 import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Concrete
 import FLT.NumberField.Completion.Finite

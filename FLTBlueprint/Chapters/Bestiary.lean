@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXPrelude
 import FLTBlueprint.Citations
 import FLT.Deformations.RepresentationTheory.GaloisRepFamily
 import FLT.GlobalLanglandsConjectures.GLnDefs
