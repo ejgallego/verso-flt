@@ -410,7 +410,8 @@ $\beta X\cap D^\times\not=\emptyset$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
-Indeed by {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[], the
+{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[]
+Indeed by the previous lemma, the
 map $`\beta E\to D\backslash D_{\A}`$ is not injective, so there are distinct
 $`\beta e_1,\beta e_2\in \beta E`$ with $`e_i\in E`$ and
 $`\beta e_1-\beta e_2=b\in D`$. Now $`b\not=0`$ and $`D`$ is a division
