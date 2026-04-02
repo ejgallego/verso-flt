@@ -8,6 +8,12 @@ import sys
 
 from update_porting_todo import CHAPTERS
 
+HARNESS_NATIVE_CHAPTERS = {
+    "HistoricalInputs.lean",
+    "MiniProjects.lean",
+    "PortingStatus.lean",
+}
+
 
 @dataclass
 class Block:
@@ -28,6 +34,10 @@ class Block:
 def default_chapter_paths(root: Path) -> list[Path]:
     chapter_dir = root / "FLTBlueprint" / "Chapters"
     return [chapter_dir / lean_name for _, lean_name in CHAPTERS]
+
+
+def is_harness_native_chapter(path: Path) -> bool:
+    return path.name in HARNESS_NATIVE_CHAPTERS
 
 
 def parse_blocks(path: Path) -> list[Block]:
@@ -195,7 +205,11 @@ def main() -> int:
         return 2
 
     failures: list[str] = []
+    skipped = 0
     for path in paths:
+        if is_harness_native_chapter(path):
+            skipped += 1
+            continue
         failures.extend(audit_file(path))
 
     if failures:
@@ -205,7 +219,9 @@ def main() -> int:
         print(f"\n{len(failures)} block(s) need adjacent tex source blocks.")
         return 1
 
-    print(f"LT source-pair audit passed for {len(paths)} file(s).")
+    print(f"LT source-pair audit passed for {len(paths) - skipped} file(s).")
+    if skipped:
+        print(f"Skipped {skipped} harness-native file(s).")
     return 0
 
 
