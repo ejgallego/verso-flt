@@ -839,7 +839,7 @@ Openness is already in mathlib.
   Openness is already in mathlib.
 \end{proof}
 ```
-:::theorem "NumberField.instCompactSpaceAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+:::theorem "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 `\calO_v` is a compact subring of `K_v`.
 :::
 
@@ -852,7 +852,7 @@ Openness is already in mathlib.
 \end{lemma}
 ```
 
-:::proof "NumberField.instCompactSpaceAdicCompletionIntegers"
+:::proof "local_integer_ring_compact"
 Compactness lies a little deeper because it assumes that the residue field of
 `K_v` is finite.
 :::
@@ -902,7 +902,7 @@ product of compacts is compact and a product of opens is open.
 
 :::proof "M2.localFullLevel.isCompact"
 Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
-follows from {uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
+follows from {uses "local_integer_ring_compact"}[]
 because a product of compacts is compact and a product of opens is open.
 :::
 ```tex "hecke_operator_project/local_theory/introduction/6-proof"
