@@ -220,7 +220,7 @@ the profinite completion of $\Z$. So what is $\Zhat$? We offer a low-level defin
 $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 :::
 
-```tex "ZHat.commRing/theorem"
+```tex "ZHat.commRing" (slot := statement)
 \begin{lemma}
     \label{ZHat.commRing}
     \lean{ZHat.commRing}
@@ -234,7 +234,7 @@ $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 Follow your nose.
 :::
 
-```tex "ZHat.commRing/proof"
+```tex "ZHat.commRing" (slot := proof)
 \begin{proof} \leanok Follow your nose.
 \end{proof}
 ```
@@ -244,7 +244,7 @@ Follow your nose.
 $`0\not=1` in $`\Zhat`$.
 :::
 
-```tex "ZHat.nontrivial/theorem"
+```tex "ZHat.nontrivial" (slot := statement)
 \begin{lemma}
     \label{ZHat.nontrivial}
     \lean{ZHat.nontrivial}
@@ -260,7 +260,7 @@ Evaluating $`0` at `2` gives $`0`, and evaluating $`1` at `2` gives $`1`, and
 these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 :::
 
-```tex "ZHat.nontrivial/proof"
+```tex "ZHat.nontrivial" (slot := proof)
 \begin{proof}
     \leanok
     Recall that you can evaluate an element of $\Zhat$ at a positive integer.
@@ -273,7 +273,7 @@ these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 The map from the naturals into $`\Zhat`$ sending $`n` to $`n` is injective.
 :::
 
-```tex "ZHat.charZero/theorem"
+```tex "ZHat.charZero" (slot := statement)
 \begin{lemma}
     \label{ZHat.charZero}
     \lean{ZHat.charZero}
@@ -286,7 +286,7 @@ The map from the naturals into $`\Zhat`$ sending $`n` to $`n` is injective.
 Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
 :::
 
-```tex "ZHat.charZero/proof"
+```tex "ZHat.charZero" (slot := proof)
 \begin{proof}
     \leanok
     Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
@@ -322,7 +322,7 @@ $`N`.
 Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
 :::
 
-```tex "ZHat.e/theorem"
+```tex "ZHat.e" (slot := statement)
 \begin{definition}
     \label{ZHat.e}
     \lean{ZHat.e}
@@ -349,7 +349,7 @@ $`N`.
 Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
 :::
 
-```tex "ZHat.e/proof"
+```tex "ZHat.e" (slot := proof)
 The infinite sum $0!+1!+2!+3!+4!+5!+\cdots$ looks
 like it makes no sense at all; it is the sum of an infinite series of larger and larger
 positive numbers.
@@ -364,7 +364,7 @@ Explicitly, $e_N=0!+1!+\cdots+(N-1)!$ modulo $N$.
 The collection $`(e_N)_N` is an element of $`\Zhat`.
 :::
 
-```tex "ZHat.e_def/theorem"
+```tex "ZHat.e_def" (slot := statement)
 \begin{lemma}
     \label{ZHat.e_def}
     \lean{ZHat.e_def}
@@ -379,7 +379,7 @@ This boils down to checking that $`D!+(D+1)!+\cdots+(N-1)!` is a multiple of
 $`D`.
 :::
 
-```tex "ZHat.e_def/proof"
+```tex "ZHat.e_def" (slot := proof)
 \begin{proof}
     \leanok
     This boils down to checking that $D!+(D+1)!+\cdots+(N-1)!$ is a multiple of~$D$.
@@ -391,7 +391,7 @@ $`D`.
 The element $`(e_N)_N` of $`\Zhat`$ is not in $`\Z`.
 :::
 
-```tex "ZHat.e_not_in_Int/theorem"
+```tex "ZHat.e_not_in_Int" (slot := statement)
 \begin{lemma}
     \label{ZHat.e_not_in_Int}
     \lean{ZHat.e_not_in_Int}
@@ -415,7 +415,7 @@ j!`) and then set $`N=(j+1)!` and we have $`0 < e_N<N-t<N` so we cannot have
 $`e_N=-t` in $`\Z/N\Z`, so again $`e\not=n`.
 :::
 
-```tex "ZHat.e_not_in_Int/proof"
+```tex "ZHat.e_not_in_Int" (slot := proof)
 \begin{proof}
     \leanok
     First imagine that $e=n$ with $n\in\Z$ and $0\leq n$. In this case, choose $j$
@@ -438,7 +438,7 @@ $`e_N=-t` in $`\Z/N\Z`, so again $`e\not=n`.
 If $`0<N` is an integer then multiplication by $`N` is injective on $`\Zhat`.
 :::
 
-```tex "ZHat.torsionfree/theorem"
+```tex "ZHat.torsionfree" (slot := statement)
 \begin{lemma}
     \label{ZHat.torsionfree}
     \lean{ZHat.torsionfree}
@@ -458,7 +458,7 @@ compatibility assumption on the $`z_i` we have that $`z_j\in\Z/j\Z` is the
 mod~$`j` reduction of $`z_{Nj}` and hence is zero.
 :::
 
-```tex "ZHat.torsionfree/proof"
+```tex "ZHat.torsionfree" (slot := proof)
 \begin{proof}
     \leanok
     Suppose that $(z_i)_i\in\Zhat$ and $Nz=0$. This means that $Nz_i=0\in\Z/i\Z$ for all $i$.
@@ -476,7 +476,7 @@ The multiples of~$`N` in $`\Zhat` are precisely the compatible collections
 $`(z_i)_i\in\Zhat` with $`z_N=0`.
 :::
 
-```tex "ZHat.multiples/theorem"
+```tex "ZHat.multiples" (slot := statement)
 \begin{lemma}
     \label{ZHat.multiples}
     \lean{ZHat.multiples}
@@ -498,7 +498,7 @@ how we construct $`y_j`. It is easily checked that the $`y_j` are compatible
 and that $`Ny=z`.
 :::
 
-```tex "ZHat.multiples/proof"
+```tex "ZHat.multiples" (slot := proof)
 \begin{proof} \leanok
     Clearly $z_N=0$ is a necessary condition to be a multiple of~$N$. To see it is sufficient,
     take a general $(z_i)\in\Zhat$ such that $z_N=0$,
@@ -762,7 +762,7 @@ with $`q\in\Q` and $`z\in\Zhat`. Furthermore one can even assume that
 $`q=\frac{1}{N}` for some positive integer $`N`.
 :::
 
-```tex "QHat.canonicalForm/theorem"
+```tex "QHat.canonicalForm" (slot := statement)
 \begin{lemma}
     \label{QHat.canonicalForm}
     \lean{QHat.canonicalForm}
@@ -791,7 +791,7 @@ prove using the above technique whilst avoiding the general theory of finite
 sums.
 :::
 
-```tex "QHat.canonicalForm/proof"
+```tex "QHat.canonicalForm" (slot := proof)
 \begin{proof} \leanok
     A proof I would write on the board would look like the following. Take a general
     element of $\Qhat$; we know it can be expressed as a finite sum
@@ -844,7 +844,7 @@ Every element of $`\Qhat` can be uniquely written as $`z/N` with $`z\in\Zhat`,
 $`N\in\N^+`, and with $`N` and $`z` coprime.
 :::
 
-```tex "QHat.lowestTerms/theorem"
+```tex "QHat.lowestTerms" (slot := statement)
 \begin{lemma}
     \label{QHat.lowestTerms}
     \lean{QHat.lowestTerms}
@@ -878,7 +878,7 @@ prime divided $`L/N` then $`w/M` would not be in lowest terms. We deduce that
 $`L=M=N` and hence $`z=w` by torsionfreeness.
 :::
 
-```tex "QHat.lowestTerms/proof"
+```tex "QHat.lowestTerms" (slot := proof)
 \begin{proof}
     Existence: by the previous lemma, an arbitrary element can be written as $z/N$; let $D$
     be the greatest common divisor of $N$ and $z_N$ (lifted to a natural). If $D=1$
@@ -926,7 +926,7 @@ The ring homomorphism $`\Q\to\Qhat` sending $`q` to $`q\otimes_t 1` is
 injective.
 :::
 
-```tex "QHat.injective_rat/theorem"
+```tex "QHat.injective_rat" (slot := statement)
 \begin{lemma}
     \label{QHat.injective_rat}
     \lean{QHat.injective_rat}
@@ -944,7 +944,7 @@ the map from $`\Q=\Q\otimes\Z` to $`\Qhat=\Q\otimes\Zhat` is also injective.
 There is no doubt a more elementary proof of this fact.
 :::
 
-```tex "QHat.injective_rat/proof"
+```tex "QHat.injective_rat" (slot := proof)
 \begin{proof} \leanok
     We have seen that the map from $\Z$ to $\Zhat$ is
     injective. Now $\Q$ is a flat $\Z$-module, because it's
@@ -961,7 +961,7 @@ The ring homomorphism $`\Zhat\to\Qhat` sending $`z` to $`1\otimes_t z` is
 injective.
 :::
 
-```tex "QHat.injective_zHat/theorem"
+```tex "QHat.injective_zHat" (slot := statement)
 \begin{lemma}
     \label{QHat.injective_zHat}
     \lean{QHat.injective_zHat}
@@ -978,7 +978,7 @@ torsion-free and thus flat $`\Z`-module, so the map from $`\Zhat` to
 $`\Qhat` is also injective.
 :::
 
-```tex "QHat.injective_zHat/proof"
+```tex "QHat.injective_zHat" (slot := proof)
 \begin{proof} \leanok
     The map from $\Z$ to $\Q$ is injective, and we have seen
     that $\Zhat$ is a torsion-free and thus flat $\Z$-module,
@@ -1013,7 +1013,7 @@ these results as $\Q\sqcap\Zhat=\Z$ and $\Q\sqcup\Zhat=\Qhat$.
 The intersection of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Z`.
 :::
 
-```tex "QHat.rat_meet_zHat/theorem"
+```tex "QHat.rat_meet_zHat" (slot := statement)
 \begin{lemma}
     \label{QHat.rat_meet_zHat}
     \lean{QHat.rat_meet_zHat}
@@ -1033,7 +1033,7 @@ $`x\in\Zhat` implies that $`x=x/1` is in lowest terms, so we deduce that
 $`B=1` and thus $`x=A\in\Z`.
 :::
 
-```tex "QHat.rat_meet_zHat/proof"
+```tex "QHat.rat_meet_zHat" (slot := proof)
 \begin{proof}
     \uses{QHat.lowestTerms}
     \leanok
@@ -1053,7 +1053,7 @@ element of $`\Qhat` can be written as $`q+z` with $`q\in\Q` and $`z\in\Zhat`,
 or more precisely as $`q\otimes_t 1+1\otimes_t z`.
 :::
 
-```tex "QHat.rat_join_zHat/theorem"
+```tex "QHat.rat_join_zHat" (slot := statement)
 \begin{lemma}
     \label{QHat.rat_join_zHat}
     \lean{QHat.rat_join_zHat}
@@ -1072,7 +1072,7 @@ $`t` and observe that $`(z-t)_N=0`, hence $`z-t=Ny` for some $`y\in\Zhat`. Now
 $`x=t/N+y\in\Q+\Zhat`.
 :::
 
-```tex "QHat.rat_join_zHat/proof"
+```tex "QHat.rat_join_zHat" (slot := proof)
 \begin{proof}
     \uses{QHat.canonicalForm}
     \leanok
@@ -1102,7 +1102,7 @@ The intersection of $`\Q^\times` and $`\Zhat^\times` in $`\Qhat^\times` is
 $`\Z^\times`.
 :::
 
-```tex "Qhat.unitsrat_meet_unitszHat/theorem"
+```tex "Qhat.unitsrat_meet_unitszHat" (slot := statement)
 \begin{lemma}
     \label{Qhat.unitsrat_meet_unitszHat}
     \lean{QHat.unitsrat_meet_unitszHat}
@@ -1121,7 +1121,7 @@ lowest terms but also in $`\Zhat`, and hence $`|n|=1` by uniqueness of lowest
 term representation.
 :::
 
-```tex "Qhat.unitsrat_meet_unitszHat/proof"
+```tex "Qhat.unitsrat_meet_unitszHat" (slot := proof)
 \begin{proof}
     \uses{QHat.lowestTerms,QHat.rat_meet_zHat}
     \leanok
@@ -1145,7 +1145,7 @@ $`\Qhat^\times`. More precisely, every element of $`\Qhat^\times` can be
 written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 :::
 
-```tex "QHat.unitsrat_join_unitszHat/theorem"
+```tex "QHat.unitsrat_join_unitszHat" (slot := statement)
 \begin{lemma}
     \label{QHat.unitsrat_join_unitszHat}
     \lean{QHat.unitsrat_join_unitszHat}
@@ -1186,7 +1186,7 @@ $`x_g-x` is a multiple of $`g` and hence of $`x`, and this contradicts
 minimality of $`g`.
 :::
 
-```tex "QHat.unitsrat_join_unitszHat/proof"
+```tex "QHat.unitsrat_join_unitszHat" (slot := proof)
 \begin{proof}
     \uses{ZHat.multiples,ZHat.eq_zero_of_mul_eq_zero,QHat.canonicalForm}
     \leanok
@@ -1404,7 +1404,7 @@ is the usual Hamilton quaternions.
 The Hurwitz quaternions form a ring.
 :::
 
-```tex "Hurwitz.ring/theorem"
+```tex "Hurwitz.ring" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.ring}
     \lean{Hurwitz.ring}
@@ -1418,7 +1418,7 @@ The Hurwitz quaternions form a ring.
 Follow your nose.
 :::
 
-```tex "Hurwitz.ring/proof"
+```tex "Hurwitz.ring" (slot := proof)
 \begin{proof}
     \leanok
     Follow your nose.
@@ -1479,7 +1479,7 @@ $`\omega`.
 We have $`N(x)=x\overline{x}`.
 :::
 
-```tex "Hurwitz.norm_eq_mul_conj/theorem"
+```tex "Hurwitz.norm_eq_mul_conj" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.norm_eq_mul_conj}
     \lean{Hurwitz.norm_eq_mul_conj}
@@ -1494,7 +1494,7 @@ We have $`N(x)=x\overline{x}`.
 Easy calculation.
 :::
 
-```tex "Hurwitz.norm_eq_mul_conj/proof"
+```tex "Hurwitz.norm_eq_mul_conj" (slot := proof)
 \begin{proof}
     \uses{Hurwitz.norm, Hurwitz.starRing}
     \leanok
@@ -1507,7 +1507,7 @@ Easy calculation.
 The norm of $`0` is $`0`.
 :::
 
-```tex "Hurwitz.norm_zero/theorem"
+```tex "Hurwitz.norm_zero" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.norm_zero}
     \lean{Hurwitz.norm_zero}
@@ -1521,7 +1521,7 @@ The norm of $`0` is $`0`.
 A calculation.
 :::
 
-```tex "Hurwitz.norm_zero/proof"
+```tex "Hurwitz.norm_zero" (slot := proof)
 \begin{proof}
     \leanok
     A calculation.
@@ -1533,7 +1533,7 @@ A calculation.
 The norm of $`1` is $`1`.
 :::
 
-```tex "Hurwitz.norm_one/theorem"
+```tex "Hurwitz.norm_one" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.norm_one}
     \lean{Hurwitz.norm_one}
@@ -1547,7 +1547,7 @@ The norm of $`1` is $`1`.
 A calculation.
 :::
 
-```tex "Hurwitz.norm_one/proof"
+```tex "Hurwitz.norm_one" (slot := proof)
 \begin{proof}
     \leanok
     A calculation.
@@ -1559,7 +1559,7 @@ A calculation.
 The norm of a product is the product of the norms.
 :::
 
-```tex "Hurwitz.norm_mul/theorem"
+```tex "Hurwitz.norm_mul" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.norm_mul}
     \lean{Hurwitz.norm_mul}
@@ -1573,7 +1573,7 @@ The norm of a product is the product of the norms.
 A calculation.
 :::
 
-```tex "Hurwitz.norm_mul/proof"
+```tex "Hurwitz.norm_mul" (slot := proof)
 \begin{proof}
     \leanok
     A calculation.
@@ -1585,7 +1585,7 @@ A calculation.
 The norm of an element is nonnegative.
 :::
 
-```tex "Hurwitz.norm_nonneg/theorem"
+```tex "Hurwitz.norm_nonneg" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.norm_nonneg}
     \lean{Hurwitz.norm_nonneg}
@@ -1599,7 +1599,7 @@ The norm of an element is nonnegative.
 It's a sum of rational squares.
 :::
 
-```tex "Hurwitz.norm_nonneg/proof"
+```tex "Hurwitz.norm_nonneg" (slot := proof)
 \begin{proof} \leanok
     It's a sum of rational squares.
 \end{proof}
@@ -1610,7 +1610,7 @@ It's a sum of rational squares.
 The norm of an element is zero if and only if the element is zero.
 :::
 
-```tex "Hurwitz.norm_eq_zero/theorem"
+```tex "Hurwitz.norm_eq_zero" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.norm_eq_zero}
     \lean{Hurwitz.norm_eq_zero}
@@ -1624,7 +1624,7 @@ The norm of an element is zero if and only if the element is zero.
 It's a sum of rational squares.
 :::
 
-```tex "Hurwitz.norm_eq_zero/proof"
+```tex "Hurwitz.norm_eq_zero" (slot := proof)
 \begin{proof}
     \leanok
     It's a sum of rational squares.
@@ -1637,7 +1637,7 @@ Given a "usual" quaternion $`a=x+yi+zj+wk` with $`x,y,z,w\in\R`, there exists a
 Hurwitz quaternion $`q` such that $`N(a-q)<1`.
 :::
 
-```tex "Hurwitz.exists_near/theorem"
+```tex "Hurwitz.exists_near" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.exists_near}
     \lean{Hurwitz.exists_near}
@@ -1658,7 +1658,7 @@ $`|x-[x]|=|y-[y]|=|z-[z]|=|w-[w]|=\frac{1}{2}`, in which case
 $`a\in\mathcal{O}` because $`a-\omega` has integer coordinates.
 :::
 
-```tex "Hurwitz.exists_near/proof"
+```tex "Hurwitz.exists_near" (slot := proof)
 \begin{proof}
     \leanok
   If $[r]$ denotes the nearest integer to the real number $r$, then $|r-[r]|\leq \frac{1}{2}$.
@@ -1676,7 +1676,7 @@ Given two Hurwitz quaternions $`a` and $`b` with $`b` nonzero, there exists
 $`q` and $`r` such that $`a=qb+r` and $`N(r)<N(b)`.
 :::
 
-```tex "Hurwitz.quot_rem/theorem"
+```tex "Hurwitz.quot_rem" (slot := statement)
 \begin{lemma}
     \label{Hurwitz.quot_rem}
     \lean{Hurwitz.quot_rem}
@@ -1694,7 +1694,7 @@ lemma `Hurwitz.exists_near` to $`a/b := ab^{-1}`; then $`N(a/b-q)<1` and
 now everything follows after multiplying up.
 :::
 
-```tex "Hurwitz.quot_rem/proof"
+```tex "Hurwitz.quot_rem" (slot := proof)
 \begin{proof}
     \leanok
   Let $q$ be the Hurwitz quaternion obtained by applying Lemma~\ref{Hurwitz.exists_near}
@@ -1707,7 +1707,7 @@ now everything follows after multiplying up.
 All left ideals of $`\calO` are principal.
 :::
 
-```tex "Hurwitz.left_ideal_princ/theorem"
+```tex "Hurwitz.left_ideal_princ" (slot := statement)
 \begin{corollary}
     \label{Hurwitz.left_ideal_princ}
     \lean{Hurwitz.left_ideal_princ}
@@ -1723,7 +1723,7 @@ If the ideal is `0`, use `0`. Otherwise, choose a nonzero element of smallest
 norm.
 :::
 
-```tex "Hurwitz.left_ideal_princ/proof"
+```tex "Hurwitz.left_ideal_princ" (slot := proof)
 \begin{proof}
     \uses{Hurwitz.quot_rem}
     \leanok
@@ -1817,7 +1817,7 @@ If $`N` is a positive natural then the obvious map
 $`\calO\to\calOhat/N\calOhat` is surjective.
 :::
 
-```tex "Hurwitz.surjective_pnat_quotient/theorem"
+```tex "Hurwitz.surjective_pnat_quotient" (slot := statement)
 \begin{theorem}
     \label{Hurwitz.surjective_pnat_quotient}
     \uses{Hurwitz}
@@ -1832,7 +1832,7 @@ $`z\in\Zhat` you can subtract an integer $`w` such that $`(z-w)_N=0`, so
 $`z-w` is a multiple of $`N`.
 :::
 
-```tex "Hurwitz.surjective_pnat_quotient/proof"
+```tex "Hurwitz.surjective_pnat_quotient" (slot := proof)
 \begin{proof}
     This is just four copies of the surjection $\Z\to\Zhat/N\Zhat$.
     Note that this latter map is surjective because $\Z\to\Z/N\Z$ is surjective,
@@ -1858,7 +1858,7 @@ Every element of $`\widehat{D}` can be written as $`z/N` with
 $`z\in\calOhat` and $`N\in\N^+`.
 :::
 
-```tex "HurwitzRatHat.canonicalForm/theorem"
+```tex "HurwitzRatHat.canonicalForm" (slot := statement)
 \begin{lemma}
     \label{HurwitzRatHat.canonicalForm}
     \lean{HurwitzRatHat.canonicalForm}
@@ -1872,7 +1872,7 @@ $`z\in\calOhat` and $`N\in\N^+`.
 Same as the proof for $`\Qhat`.
 :::
 
-```tex "HurwitzRatHat.canonicalForm/proof"
+```tex "HurwitzRatHat.canonicalForm" (slot := proof)
 \begin{proof}
     Same as the proof for $\Qhat$.
 \end{proof}
@@ -1915,7 +1915,7 @@ precisely, every element of $`\widehat{D}^\times` can be written as a product
 $`\delta u` with $`\delta\in D^\times` and $`u\in\calOhat^\times`.
 :::
 
-```tex "HurwitzRatHat.completed_units/theorem"
+```tex "HurwitzRatHat.completed_units" (slot := statement)
 \begin{theorem}
     \label{HurwitzRatHat.completed_units}
     \lean{HurwitzRatHat.completed_units}
@@ -1973,7 +1973,7 @@ $`\calOhat y\cap\calO=\calO\alpha`, meaning $`\beta=\gamma\alpha` for some
 $`\gamma\in\calO`. Hence $`y\in\beta+\calOhat T\subseteq\calOhat\alpha`.
 :::
 
-```tex "HurwitzRatHat.completed_units/proof"
+```tex "HurwitzRatHat.completed_units" (slot := proof)
 \begin{proof}
     Given an element $x$ of $\widehat{D}^\times$, we can use lemma~\ref{HurwitzRatHat.canonicalForm}
     to write it as $z/N$ with $N$ a positive integer

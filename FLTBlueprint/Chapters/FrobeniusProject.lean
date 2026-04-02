@@ -279,7 +279,7 @@ Clearly $F_b$ is a monic polynomial.
 $`F_b`$ is monic.
 :::
 
-```tex "MulSemiringAction.monic_charpoly/theorem"
+```tex "MulSemiringAction.monic_charpoly" (slot := statement)
 \begin{lemma}
   \label{MulSemiringAction.monic_charpoly}
   \lean{MulSemiringAction.monic_charpoly}
@@ -293,7 +293,7 @@ $`F_b`$ is monic.
 Obvious.
 :::
 
-```tex "MulSemiringAction.monic_charpoly/proof"
+```tex "MulSemiringAction.monic_charpoly" (slot := proof)
 \begin{proof}
   \mathlibok
   Obvious.
@@ -321,7 +321,7 @@ it's not even well-defined if the map $A\to B$ isn't injective.
 $`F_b`$ is the lift of some monic polynomial $`M_b`$ in $`A[X]`$.
 :::
 
-```tex "Algebra.IsInvariant.charpoly_mem_lifts/theorem"
+```tex "Algebra.IsInvariant.charpoly_mem_lifts" (slot := statement)
 \begin{lemma}
   \label{Algebra.IsInvariant.charpoly_mem_lifts}
   \lean{Algebra.IsInvariant.charpoly_mem_lifts}
@@ -336,7 +336,7 @@ The coefficients of $`F_b`$ are $`G`$-invariant, and thus lie in the image of
 $`A`$.
 :::
 
-```tex "Algebra.IsInvariant.charpoly_mem_lifts/proof"
+```tex "Algebra.IsInvariant.charpoly_mem_lifts" (slot := proof)
 \begin{proof}
   \mathlibok
   The coefficients of $F_b$ are $G$-invariant, and thus lie in the image of $A$.
@@ -347,7 +347,7 @@ $`A`$.
 $`B/A`$ is integral.
 :::
 
-```tex "Algebra.IsInvariant.isIntegral/theorem"
+```tex "Algebra.IsInvariant.isIntegral" (slot := statement)
 \begin{theorem}
   \label{Algebra.IsInvariant.isIntegral}
   \lean{Algebra.IsInvariant.isIntegral}
@@ -362,7 +362,7 @@ $`B/A`$ is integral.
 Use $`M_b`$.
 :::
 
-```tex "Algebra.IsInvariant.isIntegral/proof"
+```tex "Algebra.IsInvariant.isIntegral" (slot := proof)
 \begin{proof}
   \uses{MulSemiringAction.monic_charpoly, Algebra.IsInvariant.charpoly_mem_lifts}
   \mathlibok
@@ -409,7 +409,7 @@ of $`A`$, such that for all $`g \in G`$:
 - If $`g \cdot Q \neq Q`$, then $`g \cdot b \equiv 0 \pmod{Q}`$.
 :::
 
-```tex "fixed_of_fixed1_aux1/theorem"
+```tex "fixed_of_fixed1_aux1" (slot := statement)
 \begin{lemma}
   \label{fixed_of_fixed1_aux1}
   \mathlibok
@@ -439,7 +439,7 @@ $`b \equiv 0 \pmod{g \cdot Q}`$, so $`g \cdot b \equiv 0 \pmod{Q}`$ whenever
 $`g \cdot Q \neq Q`$.
 :::
 
-```tex "fixed_of_fixed1_aux1/proof"
+```tex "fixed_of_fixed1_aux1" (slot := proof)
 \begin{proof}
   \uses{Algebra.IsInvariant.charpoly_mem_lifts}
   The ideals $g \cdot Q \neq Q$ are not contained in $Q$.
@@ -474,7 +474,7 @@ for all $`g \in G`$:
 - If $`g \cdot Q \neq Q`$, then $`g \cdot b \equiv 0 \pmod{Q}`$.
 :::
 
-```tex "fixed_of_fixed1_aux2/theorem"
+```tex "fixed_of_fixed1_aux2" (slot := statement)
 \begin{lemma}
   \label{fixed_of_fixed1_aux2}
   \mathlibok
@@ -495,7 +495,7 @@ for all $`g \in G`$:
 Multiply the $`b`$ from `fixed_of_fixed1_aux1` by $`b_0`$.
 :::
 
-```tex "fixed_of_fixed1_aux2/proof"
+```tex "fixed_of_fixed1_aux2" (slot := proof)
 \begin{proof}
   \uses{fixed_of_fixed1_aux1}
   Multiply the $b$ from~\ref{fixed_of_fixed1_aux1} by $b_0$.
@@ -530,7 +530,7 @@ If a finite group $`H`$ acts on a field $`F`$ by field automorphisms, then the
 map $`H \to \Aut(F/F^H)`$ is surjective.
 :::
 
-```tex "FixedPoints.toAlgAut_surjective/theorem"
+```tex "FixedPoints.toAlgAut_surjective" (slot := statement)
 \begin{theorem}
   \label{FixedPoints.toAlgAut_surjective}
   \lean{FixedPoints.toAlgAut_surjective}
@@ -544,7 +544,7 @@ map $`H \to \Aut(F/F^H)`$ is surjective.
 This is a general fact of Galois theory and was already in mathlib.
 :::
 
-```tex "FixedPoints.toAlgAut_surjective/proof"
+```tex "FixedPoints.toAlgAut_surjective" (slot := proof)
 \begin{proof}
   This is a general fact of Galois theory and was already in mathlib.
   \mathlibok
@@ -567,7 +567,7 @@ Let $`b_0 \in B/Q`$. Suppose that $`b_0`$ is fixed by the stabilizer subgroup
 $`D_Q`$. Then $`b_0`$ is fixed by $`\Aut(L/K)`$.
 :::
 
-```tex "fixed_of_fixed1/theorem"
+```tex "fixed_of_fixed1" (slot := statement)
 \begin{proposition}
   \label{fixed_of_fixed1}
   \uses{IsFractionRing.stabilizerHom}
@@ -591,7 +591,7 @@ $`a b_0`$ is fixed by $`\Aut(L/K)`$, and $`a`$ is nonzero in $`L`$ (since
 $`a \notin Q`$), so $`b_0`$ is fixed by $`\Aut(L/K)`$.
 :::
 
-```tex "fixed_of_fixed1/proof"
+```tex "fixed_of_fixed1" (slot := proof)
 \begin{proof}
   \uses{fixed_of_fixed1_aux1, fixed_of_fixed1_aux2}
   Let $a,b\in B$ be elements from~\ref{fixed_of_fixed1_aux2}.
@@ -620,7 +620,7 @@ $`a/b`$ with $`a,b \in R`$ can be written as $`c/d`$ with $`c \in R`$ and
 $`d \in S`$.
 :::
 
-```tex "IsAlgebraic.exists_smul_eq_mul/theorem"
+```tex "IsAlgebraic.exists_smul_eq_mul" (slot := statement)
 \begin{lemma}
   \label{IsAlgebraic.exists_smul_eq_mul}
   \lean{IsAlgebraic.exists_smul_eq_mul}
@@ -635,7 +635,7 @@ If $`f \in S[X]`$ satisfies $`f(b) = 0`$, then $`f(0) \in S`$ is a multiple of
 $`b`$. If $`f(0)=bx \in S`$, then $`a/b=(ax)/(bx)`$ as desired.
 :::
 
-```tex "IsAlgebraic.exists_smul_eq_mul/proof"
+```tex "IsAlgebraic.exists_smul_eq_mul" (slot := proof)
 \begin{proof}
   If $f\in S[X]$ satisfies $f(b)=0$, then $f(0)\in S$ is a multiple of $b$.
   If $f(0)=bx\in S$, then $a/b=(ax)/(bx)$ as desired.
@@ -648,7 +648,7 @@ Let $`x \in L`$. Suppose that $`x`$ is fixed by the stabilizer subgroup $`D_Q`$.
 Then $`x`$ is fixed by the automorphism group $`\Aut(L/K)`$.
 :::
 
-```tex "fixed_of_fixed2/theorem"
+```tex "fixed_of_fixed2" (slot := statement)
 \begin{proposition}
   \label{fixed_of_fixed2}
   \mathlibok
@@ -669,7 +669,7 @@ suffices to show that $`b`$ is fixed by the automorphism group
 $`\Aut(L/K)`$. But this is exactly `fixed_of_fixed1`.
 :::
 
-```tex "fixed_of_fixed2/proof"
+```tex "fixed_of_fixed2" (slot := proof)
 \begin{proof}
   \uses{fixed_of_fixed1, Algebra.IsInvariant.isIntegral,
     IsAlgebraic.exists_smul_eq_mul}

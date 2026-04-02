@@ -82,7 +82,7 @@ Theorem for `n = 4`. But Fermat's theorem for exponent `4`, already in mathlib,
 says that this is impossible.
 :::
 
-```tex "FermatLastTheorem.of_odd_primes/proof"
+```tex "FermatLastTheorem.of_odd_primes" (slot := proof)
 \begin{proof}\leanok
   Note: this proof is \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#FermatLastTheorem.of_odd_primes}{in mathlib already};
   we run through it for completeness' sake.
@@ -119,7 +119,7 @@ The proof in mathlib was formalized by a team from the Lean For the Curious
 Mathematician conference held in Luminy in March `2024`.
 :::
 
-```tex "fermatLastTheoremThree/proof"
+```tex "fermatLastTheoremThree" (slot := proof)
 \begin{proof}
   \leanok
   The proof in mathlib was formalized by a team from the ``Lean For the Curious Mathematician'' conference held in Luminy in March 2024
@@ -144,7 +144,7 @@ counterexample $`a^p+b^p=c^p`$ with `p` prime and $`p \ge 5`$.
 Follows from the previous two lemmas.
 :::
 
-```tex "FermatLastTheorem.of_p_ge_5/proof"
+```tex "FermatLastTheorem.of_p_ge_5" (slot := proof)
 \begin{proof}\uses{fermatLastTheoremThree, FermatLastTheorem.of_odd_primes}\leanok Follows from the
   previous two lemmas.\end{proof}
 ```
@@ -213,7 +213,7 @@ already `3` modulo `4` then we are done; if `a` is `1` modulo `4`, we replace
 `a`, `b`, and `c` by their negatives, and this gives the Frey package we seek.
 :::
 
-```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5/proof"
+```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (slot := proof)
 \begin{proof}
   \uses{FreyPackage}
   \leanok
@@ -430,7 +430,7 @@ Proposition `6` in Section `4.1` of
 {Informal.citep serreModularityConjecture}[].
 :::
 
-```tex "Mazur_Frey/proof"
+```tex "Mazur_Frey" (slot := proof)
 \begin{proof}
   \uses{Frey_curve_irreducible}
   \notready
@@ -476,7 +476,7 @@ although later on in this project we will have a lot to say about a proof of
 this.
 :::
 
-```tex "Wiles_Frey/proof"
+```tex "Wiles_Frey" (slot := proof)
 \begin{proof}
 %  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
   This is the main content of Wiles' magnum opus.
@@ -507,7 +507,7 @@ There is no Frey package.
 Follows immediately from the previous two theorems.
 :::
 
-```tex "FreyPackage.false/proof"
+```tex "FreyPackage.false" (slot := proof)
 \begin{proof}\leanok Follows immediately from the previous two
   theorems~\ref{Mazur_Frey} and~\ref{Wiles_Frey}.
 \end{proof}
@@ -543,7 +543,7 @@ Then
 contradicting {uses "FreyPackage.false"}[].
 :::
 
-```tex "FLT/proof"
+```tex "FLT" (slot := proof)
 \begin{proof}
   \uses{FermatLastTheorem.of_p_ge_5, FreyPackage.false, FreyPackage.of_not_FermatLastTheorem_p_ge_5}
   \leanok

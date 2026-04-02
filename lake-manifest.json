@@ -5,7 +5,7 @@
    "type": "git",
    "subDir": null,
    "scope": "",
-   "rev": "41693fb4e3de9971716827c5a439291fb48755f6",
+   "rev": "73b8fc26040dd76d1b51c7eff8bdf34d4130fe6d",
    "name": "VersoBlueprint",
    "manifestFile": "lake-manifest.json",
    "inputRev": "fix/inductive-external-refs-v428",

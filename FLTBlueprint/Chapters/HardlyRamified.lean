@@ -260,7 +260,7 @@ curve. Finally, the claim that `\rho` is flat at `\ell` is Proposition~5 and
 `(4.1.13)` of {Informal.citep serreModularityConjecture}[].
 :::
 
-```tex "Frey_curve_hardly_ramified/proof"
+```tex "Frey_curve_hardly_ramified" (slot := proof)
 \begin{proof}
   This was well-known in the 1980s. A proof sketch is as follows.
   First note that $\ell\geq5>3$ by definition of a Frey package. Let $\rho$
@@ -343,7 +343,7 @@ Indeed, `\rho` is hardly ramified by the former theorem and thus reducible by
 the latter.
 :::
 
-```tex "Wiles_Frey_again/proof"
+```tex "Wiles_Frey_again" (slot := proof)
 \begin{proof}
   \uses{Frey_curve_hardly_ramified,hardly_ramified_reducible}
   Indeed, $\rho$ is hardly ramified by theorem~\ref{Frey_curve_hardly_ramified}
@@ -406,7 +406,7 @@ whose reduction modulo $`\mathfrak{m}`$ is isomorphic to $`\overline{\rho}`.
 Omitted for now. TODO.
 :::
 
-```tex "hardly_ramified_lifts/proof"
+```tex "hardly_ramified_lifts" (slot := proof)
 \begin{proof}
   Omitted for now {\bf TODO}
 \end{proof}
@@ -472,7 +472,7 @@ we mean the generic fibre is semisimple), with the following properties:
 Omitted for now. TODO.
 :::
 
-```tex "hardly_ramified_spreads_out/proof"
+```tex "hardly_ramified_spreads_out" (slot := proof)
 \begin{proof}
   Omitted for now {\bf TODO}
 \end{proof}
@@ -518,7 +518,7 @@ representation.
 Omitted for now. TODO.
 :::
 
-```tex "hardly_ramified_mod3_reducible/proof"
+```tex "hardly_ramified_mod3_reducible" (slot := proof)
 \begin{proof}
   Omitted for now. {\bf TODO}
 \end{proof}
@@ -559,7 +559,7 @@ $`\chi_3`$ is the `3`-adic cyclotomic character.
 Omitted for now. TODO.
 :::
 
-```tex "hardly_ramified_3adic_reducible/proof"
+```tex "hardly_ramified_3adic_reducible" (slot := proof)
 \begin{proof}
   Omitted for now {\bf TODO}
 \end{proof}
@@ -599,7 +599,7 @@ Thus by the Brauer-Nesbitt theorem, $`\overline{\rho}`$ is reducible, the
 contradiction we seek.
 :::
 
-```tex "hardly_ramified_reducible/proof"
+```tex "hardly_ramified_reducible" (slot := proof)
 \begin{proof}
   \proves{hardly_ramified_reducible}
   \uses{hardly_ramified_lifts,
