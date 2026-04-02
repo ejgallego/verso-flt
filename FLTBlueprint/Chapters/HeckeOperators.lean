@@ -120,7 +120,7 @@ to $`\sum_i g_i a`.
   to $\sum_i g_ia.$
 \end{definition}
 ```
-:::theorem "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
+:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
 {uses "AbstractHeckeOperator.HeckeOperator_toFun"}[]
 This function is well-defined (that is, independent of the
 choice of `g_i`), has image in `A^U` and is `R`-linear.
@@ -166,7 +166,7 @@ into a finite union is necessary for the theory to work. If $G$ is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
 ```
 
-:::theorem "QuotientGroup.mk_image_finite_of_compact_of_open" (parent := "hecke_operator_project") (lean := "QuotientGroup.mk_image_finite_of_compact_of_open")
+:::lemma_ "QuotientGroup.mk_image_finite_of_compact_of_open" (parent := "hecke_operator_project") (lean := "QuotientGroup.mk_image_finite_of_compact_of_open")
 If `U` and `V` are compact subgroups of a topological group `G`, if `V` is
 also open, and if `g ∈ G`, then the double coset space `UgV` is a finite union
 of left cosets `g_iV`.
@@ -196,7 +196,7 @@ this cover must thus be finite.
   this cover must thus be finite.
 \end{proof}
 ```
-:::theorem "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
+:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
 {uses "AbstractHeckeOperator.HeckeOperator"}[]
 Say $`g,h\in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_ih_j=h_jg_i` for all `i,j`.
@@ -323,7 +323,7 @@ $GL_2(\mathbb{A}_F)$ is obviously topologically a restricted product of
 $GL_2(F_v)$ with respect to $GL_2(\mathcal{O}_v)$. We now spend some time justifying
 this claim, which is a little more intricate than it sounds.
 ```
-:::theorem "Homeomorph.restrictedProductProd" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductProd")
+:::lemma_ "Homeomorph.restrictedProductProd" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductProd")
 If `A_i` is a family of topological spaces equipped with open subsets `B_i`,
 and `C_i` is a family of topological spaces equipped with open subsets `D_i`,
 and `A_i × C_i` is equipped with the open subset `B_i × D_i`, then the natural
@@ -417,7 +417,7 @@ by definition of the topology on a restricted product.
 \end{proof}
 ```
 
-:::theorem "Homeomorph.restrictedProductPi" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
+:::corollary "Homeomorph.restrictedProductPi" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductPi")
 Restricted products with respect to open subspaces commute with finite products.
 In other words, if `j` runs through a finite set `J` and `i` runs through an
 arbitrary set `I`, and if `X_{ji}` are topological spaces equipped with open
@@ -450,7 +450,7 @@ Induction on the size of the finite set, using
   to get you started.
 \end{proof}
 ```
-:::theorem "Homeomorph.restrictedProductMatrix" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductMatrix")
+:::corollary "Homeomorph.restrictedProductMatrix" (parent := "hecke_operator_project") (lean := "Homeomorph.restrictedProductMatrix")
 If $`X_i`$ are topological spaces and the $`Y_i`$ are open subspaces, then the
 obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::
@@ -475,7 +475,7 @@ Immediate from the previous corollary {uses "Homeomorph.restrictedProductPi"}[].
   Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}.
 \end{proof}
 ```
-:::theorem "Submonoid.units_isOpen" (parent := "hecke_operator_project") (lean := "Submonoid.units_isOpen")
+:::lemma_ "Submonoid.units_isOpen" (parent := "hecke_operator_project") (lean := "Submonoid.units_isOpen")
 If `M` is a topological monoid and `U` is an open submonoid, then the units
 `Uˣ` of `U` are naturally an open subgroup of `Mˣ`.
 :::
@@ -518,7 +518,7 @@ to be the copy of `Uˣ` we're talking about.
   checked to be the copy of $U^\times$ we're talking about.
 \end{proof}
 ```
-:::theorem "Submonoid.units_isCompact" (parent := "hecke_operator_project") (lean := "Submonoid.units_isCompact")
+:::lemma_ "Submonoid.units_isCompact" (parent := "hecke_operator_project") (lean := "Submonoid.units_isCompact")
 If `M` is a Hausdorff topological monoid and `U` is a compact submonoid, then
 the units `Uˣ` of `U` are naturally a compact subgroup of `Mˣ`.
 :::
@@ -564,7 +564,7 @@ We have `U × U` is a compact subset of `M × M`, and so
   and is thus compact.
 \end{proof}
 ```
-:::theorem "ContinuousMulEquiv.piUnits" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.piUnits")
+:::lemma_ "ContinuousMulEquiv.piUnits" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.piUnits")
 If `U_i` are topological monoids then the canonical group isomorphism
 `(\prod_i U_i)ˣ = \prod_i(U_iˣ)` is a homeomorphism.
 :::
@@ -817,7 +817,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-:::theorem "NumberField.isOpenAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.isOpenAdicCompletionIntegers")
+:::lemma_ "NumberField.isOpenAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.isOpenAdicCompletionIntegers")
 `\calO_v` is an open subring of `K_v`.
 :::
 
@@ -839,7 +839,7 @@ Openness is already in mathlib.
   Openness is already in mathlib.
 \end{proof}
 ```
-:::theorem "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+:::lemma_ "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 `\calO_v` is a compact subring of `K_v`.
 :::
 
@@ -863,7 +863,7 @@ Compactness lies a little deeper because it assumes that the residue field of
   assumes that the residue field of $K_v$ is finite.
 \end{proof}
 ```
-:::theorem "M2.localFullLevel.isOpen" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
+:::lemma_ "M2.localFullLevel.isOpen" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
 `M_2(\calO_v)` is an open subring of `M_2(K_v)`.
 :::
 
@@ -888,7 +888,7 @@ product of compacts is compact and a product of opens is open.
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
 ```
-:::theorem "M2.localFullLevel.isCompact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
+:::lemma_ "M2.localFullLevel.isCompact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
 `M_2(\calO_v)` is a compact subring of `M_2(K_v)`.
 :::
 
@@ -913,7 +913,7 @@ because a product of compacts is compact and a product of opens is open.
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
 ```
-:::theorem "nolean-compactopen-GL2" (parent := "hecke_operator_project")
+:::lemma_ "nolean-compactopen-GL2" (parent := "hecke_operator_project")
 `GL_2(\calO_v)` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
@@ -963,7 +963,7 @@ is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finit
 cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and hence of $M_2(K_v)$.
 ```
 
-:::theorem "nolean-compactopen-U1p" (parent := "hecke_operator_project")
+:::lemma_ "nolean-compactopen-U1p" (parent := "hecke_operator_project")
 `U_v` is a compact open subgroup of `GL_2(K_v)`.
 :::
 
@@ -1002,7 +1002,7 @@ Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{p
 Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
 ```
 
-:::theorem "bijOn_unipotent_mul_diagU1_U1diagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1")
+:::lemma_ "bijOn_unipotent_mul_diagU1_U1diagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1")
 The double coset space $`UgU`$ is the disjoint union of $`g_tU`$ as $`t`$ ranges
 through $`\calO_v/\alpha\calO_v`$ and $`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}`$,
 where $`\tilde{t}`$ is any lift of $`t`$ to $`\calO_v`$.
@@ -1389,7 +1389,7 @@ more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
 because $\alpha\beta=\beta\alpha$.
 ```
 
-:::theorem "nolean-product-of-U-alpha" (parent := "hecke_operator_project")
+:::lemma_ "nolean-product-of-U-alpha" (parent := "hecke_operator_project")
 If $`v\in S`$ and $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}`$
 then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`$.
 :::
