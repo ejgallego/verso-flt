@@ -278,7 +278,7 @@ Let $R$ be an additive commutative group. Later on $R$ will be a commutative
 ring but we will not need this for the definition.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (parent := "quaternion_algebra_project")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm")
 The space of $`R`$-valued *automorphic forms* for $`D^\times`$ is the set of
 functions $`f:D_{\A^\infty}^\times\to R`$ satisfying the following axioms:
 
@@ -313,7 +313,7 @@ Let $S^D(R)$ denote the set of automorphic forms for $D^\times$. The space $S^D(
 quaternionic modular forms over $R$. Three basic observations about $S^D(R)$ are as follows.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" (parent := "quaternion_algebra_project")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup")
 Pointwise addition $`(f_1 + f_2)(g) := f_1(g) + f_2(g)` makes $`S^D(R)` into an
 additive abelian group. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[].
@@ -330,7 +330,7 @@ additive abelian group. This depends on
 \end{definition}
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module" (parent := "quaternion_algebra_project")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module")
 If $`R` is a commutative ring then pointwise scalar multiplication
 $`(r \cdot f)(g) := r \cdot f(g)` makes $`S^D(R)` into an $`R`-module. This
 depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[]
@@ -349,7 +349,7 @@ and {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGrou
 \end{definition}
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction" (parent := "quaternion_algebra_project")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction")
 The group $`D_{\A^\infty}^\times` acts on the additive abelian group $`S^D(R)`
 by $`(g \cdot f)(x) = f(xg)`. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
@@ -383,7 +383,7 @@ $`D_{\A^\infty}^\times`.
 Now let $U$ be a level, that is, a compact open subgroup of $D_{\A^\infty}^\times$.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (parent := "quaternion_algebra_project")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel")
 The quaternionic modular forms of level $`U`, with notation $`S^D(U;R)`, are
 the $`U`-invariants for the $`D_{\A^\infty}^\times`-action on $`S^D(R)`. This
 depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],

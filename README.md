@@ -85,6 +85,52 @@ porting:
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.
 
+## Dependency Discipline
+
+This repository is intended to enrich upstream FLT, not to carry an
+independently drifting FLT dependency state.
+
+- Keep `FLT/` verbatim with respect to the upstream FLT repository state you are
+  targeting.
+- Treat the committed `FLT/lake-manifest.json` as the source of truth for the
+  exact upstream dependency artifact, especially the pinned `mathlib` revision.
+- Do not run a general `lake update` in `FLT/` unless you are deliberately
+  changing the upstream FLT dependency artifact.
+- Prefer `lake exe cache get` over dependency refreshes whenever the goal is to
+  reuse the existing upstream artifact.
+
+On slow connections it is easy to accidentally fetch or compile a second copy of
+`mathlib` from the repository root. The outer harness and `FLT/` share the same
+`mathlib` pin, so when the root `.lake/packages/mathlib` checkout is missing or
+partial, prefer reusing `FLT/.lake/packages/mathlib` rather than letting Lake
+start a fresh clone.
+
+Also note that the `mathlib` cache is not the same thing as a fully native-built
+dependency tree. In this repository:
+
+- `lake exe cache get` populates the cached Lean artifacts needed for checking
+  modules cheaply.
+- `lake env lean <file>` and `lean-beam` are the preferred validation paths when
+  you want to avoid native-compiling dependency object files.
+- `nice lake build blueprint-gen` and `bash ./scripts/ci-pages.sh` may still
+  native-compile `Mathlib.*:c.o` objects even when the cache is present, because
+  they build executables rather than only checking Lean modules.
+
+So the reliable low-bandwidth workflow is:
+
+```bash
+cd FLT
+lake exe cache get
+lake build
+
+cd ..
+lake env lean FLTBlueprint/Chapters/SomeChapter.lean
+lean-beam sync FLTBlueprint/Chapters/SomeChapter.lean
+```
+
+Reserve `nice lake build blueprint-gen` or `bash ./scripts/ci-pages.sh` for the
+point where native compilation of the outer harness is acceptable.
+
 For the current strict LT source-pair audit, run:
 
 ```bash

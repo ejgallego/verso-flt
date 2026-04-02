@@ -157,7 +157,7 @@ For convenience we make the following definition.
 For convenience we make the following definition.
 ```
 
-:::definition "FreyPackage" (parent := "first_reductions")
+:::definition "FreyPackage" (parent := "first_reductions") (lean := "FreyPackage")
 A Frey package $`(a,b,c,p)` is three nonzero pairwise-coprime integers `a`,
 `b`, and `c`, with $`a \equiv 3 \pmod 4` and $`b \equiv 0 \pmod 2`, together
 with a prime $`p \ge 5`, such that $`a^p+b^p=c^p`.
@@ -502,6 +502,8 @@ There is no Frey package.
 ```
 
 :::proof "FreyPackage.false"
+{uses "Mazur_Frey"}[]
+{uses "Wiles_Frey"}[]
 Follows immediately from the previous two theorems.
 :::
 

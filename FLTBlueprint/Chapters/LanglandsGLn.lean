@@ -136,7 +136,7 @@ inverse-transpose. Note that $s(M)$ is always positive, and is large if $M$
 has a very large or very small, in absolute value, eigenvalue.
 ```
 
-:::definition "AutomorphicForm.GLn.IsSlowlyIncreasing" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.IsSlowlyIncreasing" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.IsSlowlyIncreasing")
 We say that a function $`f : \GL_n(\R) \to \bbC` is slowly-increasing if there
 is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
@@ -163,7 +163,7 @@ don't think it makes any difference.
 
 # Weights At Infinity
 
-:::definition "AutomorphicForm.GLn.Weight" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.Weight" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.Weight")
 The weight of an automorphic form for $`\GL_n/\Q` can be thought of as a
 finite-dimensional continuous complex representation $`\rho` of a maximal
 compact subgroup of $`\GL_n(\R)`, and it's convenient to choose one (they're
@@ -175,6 +175,7 @@ all conjugate) so we choose $`O_n(\R)`.
 
 \begin{definition}
   \label{AutomorphicForm.GLn.Weight}
+  \lean{AutomorphicForm.GLn.Weight}
 
 The \emph{weight} of an automorphic form for $\GL_n/\Q$ can be thought of as a finite-dimensional
 continuous complex representation $\rho$ of a maximal compact subgroup of $\GL_n(\R)$,
@@ -293,7 +294,7 @@ From here on there is no more Lean right now, only LaTeX.
 From here on there is no more Lean right now, only LaTeX.
 ```
 
-:::definition "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ")
 A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
 $`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
 five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],

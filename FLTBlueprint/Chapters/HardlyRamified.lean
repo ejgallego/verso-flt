@@ -176,7 +176,7 @@ a $\Z_\ell$-algebra, we can talk about the $\ell$-adic cyclotomic character $\GQ
 We are now ready to define hardly ramified representations.
 ```
 
-:::definition "hardly_ramified" (parent := "hardly_ramified_program")
+:::definition "hardly_ramified" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified")
 Let $`R`$ be a coefficient ring with finite residue field of characteristic
 $`\ell\geq3`$. Let $`V`$ be a finite free $`R`$-module of rank `2`, equipped
 with the product topology. A continuous representation
