@@ -89,7 +89,7 @@ This theorem actually tells us the structure of the $n$-torsion, because of the 
 purely group-theoretic result:
 ```
 
-:::theorem "group_theory_lemma" (parent := "elliptic_frey_bridge") (lean := "group_theory_lemma")
+:::lemma_ "group_theory_lemma" (parent := "elliptic_frey_bridge") (lean := "group_theory_lemma")
 Say `n` is a positive integer, `r` is a natural, and `A` is an abelian group.
 Assume that for all `d ∣ n`, the `d`-torsion `A[d]` of `A` has size `d^r`.
 Then `A[n] ≅ (\Z/n\Z)^r`.
@@ -118,7 +118,7 @@ apply our hypothesis firstly with `d = a_1` to deduce `t = r` and then with
 \end{proof}
 ```
 
-:::theorem "Elliptic_curve_n_torsion_2d" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_dimension")
+:::corollary "Elliptic_curve_n_torsion_2d" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_dimension")
 Let $`n`$ be a positive integer, let $`F`$ be a separably closed field with
 $`n`$ nonzero in $`F`$, and let $`E`$ be an elliptic curve over $`F`$. Then the
 $`n`$-torsion $`E(F)[n]`$ in the $`F`$-points of $`E`$ is a finite group
@@ -224,7 +224,7 @@ From this point on, our Frey curves and Frey packages will use notation
 \end{remark}
 ```
 
-:::theorem "Frey_curve_good_reduction" (parent := "elliptic_frey_bridge")
+:::lemma_ "Frey_curve_good_reduction" (parent := "elliptic_frey_bridge")
 {uses "FreyCurve"}[]
 {uses "EllipticCurve.GoodReduction"}[]
 If `E` is the Frey curve `Y^2=X(X-a^\ell)(X+b^\ell)` associated to a
@@ -390,7 +390,7 @@ reduction at `P` if `E` has multiplicative reduction over the localization
   over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$, then one says that $E$ has \emph{multiplicative reduction at $P$} if $E$ has multiplicative reduction over the $\calO_{N,P}$, the localisation of $\calO_N$ at $P$.
 ```
 
-:::theorem "Frey_curve_mult_reduction" (parent := "elliptic_frey_bridge")
+:::lemma_ "Frey_curve_mult_reduction" (parent := "elliptic_frey_bridge")
 {uses "EllipticCurve.MultiplicativeReduction"}[]
 If $`E`$ is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)`$ associated to a Frey
 package $`(a,b,c,\ell)`$, and if $`p`$ is an odd prime which divides $`abc`$,
@@ -430,7 +430,7 @@ multiplicative iff `x-y` is a square mod `p`. We shall not need this fact.
 \end{remark}
 ```
 
-:::theorem "Frey_curve_mult_reduction_at_two" (parent := "elliptic_frey_bridge")
+:::lemma_ "Frey_curve_mult_reduction_at_two" (parent := "elliptic_frey_bridge")
 {uses "EllipticCurve.MultiplicativeReduction"}[]
 If $`E`$ is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)`$ associated to a Frey
 package $`(a,b,c,\ell)`$ then $`E`$ has multiplicative reduction at `2`.
@@ -519,7 +519,7 @@ lot of work and is a good target for breaking down into many smaller lemmas.
 \end{proof}
 ```
 
-:::theorem "multiplicative_reduction_torsion" (parent := "elliptic_frey_bridge")
+:::corollary "multiplicative_reduction_torsion" (parent := "elliptic_frey_bridge")
 If an elliptic curve over a field complete with respect to a nontrivial
 nonarchimedean real-valued norm and with perfect residue field has
 multiplicative reduction, then there is an unramified character `\chi` of the
@@ -653,7 +653,7 @@ Apply the explicit formula (presumably already in mathlib).
 \end{proof}
 ```
 
-:::theorem "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j_valuation_of_bad_prime")
+:::corollary "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j_valuation_of_bad_prime")
 {uses "Frey_curve_j"}[]
 If `(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding Frey curve is `j`, and if `2<p∣abc`, then the `p`-adic valuation `v_p(j)` of `j` is a multiple of `\ell`.
 :::
@@ -682,7 +682,7 @@ precisely one of `A`, `B` and `C`. Hence `v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
 \end{proof}
 ```
 
-:::theorem "frey_curve_unramified" (parent := "elliptic_frey_bridge")
+:::corollary "frey_curve_unramified" (parent := "elliptic_frey_bridge")
 If `(a,b,c,\ell)` is a Frey package, then the `\ell`-torsion in the Frey curve is unramified at all primes `p\not=2,\ell`.
 :::
 
@@ -710,7 +710,7 @@ the Frey curve may not have 2-adic valuation a multiple of $\ell$. We obtain the
 following weaker result.
 ```
 
-:::theorem "frey_curve_at_2" (parent := "elliptic_frey_bridge")
+:::corollary "frey_curve_at_2" (parent := "elliptic_frey_bridge")
 If `(a,b,c,\ell)` is a Frey package, then the
 semisimplification of the restriction of the `\ell`-torsion `\rho` in the associated Frey curve
 to `\mathrm{Gal}(\Qbar_2/\Q_2)` is unramified.
@@ -944,7 +944,7 @@ an unramified twist of the cyclotomic character (see Proposition 11 on p273 of~\
 \end{proof}
 ```
 
-:::theorem "Frey_characters_trivial" (parent := "elliptic_frey_bridge")
+:::corollary "Frey_characters_trivial" (parent := "elliptic_frey_bridge")
 One of $`\alpha`$ and $`\beta`$ is trivial.
 :::
 
@@ -1005,7 +1005,7 @@ submodule or a trivial quotient.
 We now split into two cases, depending on whether $\rho$ has a trivial submodule or a trivial quotient.
 ```
 
-:::theorem "Frey_curve_trivial_submodule" (parent := "elliptic_frey_bridge")
+:::lemma_ "Frey_curve_trivial_submodule" (parent := "elliptic_frey_bridge")
 If the Frey-curve `\ell`-torsion representation has a trivial one-dimensional
 submodule, then the Frey curve has a rational point of order `\ell`.
 :::
@@ -1027,7 +1027,7 @@ Indeed, the trivial 1-dimensional submodule is a Galois-invariant subgroup of
 \end{proof}
 ```
 
-:::theorem "Frey_curve_no_trivial_submodule" (parent := "elliptic_frey_bridge")
+:::corollary "Frey_curve_no_trivial_submodule" (parent := "elliptic_frey_bridge")
 $`\rho`$ cannot have a trivial 1-dimensional submodule.
 :::
 
@@ -1136,7 +1136,7 @@ to turn it into a plane cubic, although it's unlikely that one will be able to p
 theorem without developing all of this machinery and much more.
 ```
 
-:::theorem "Frey_curve_no_trivial_quotient" (parent := "elliptic_frey_bridge")
+:::corollary "Frey_curve_no_trivial_quotient" (parent := "elliptic_frey_bridge")
 $`\rho`$ cannot have a trivial 1-dimensional quotient.
 :::
 

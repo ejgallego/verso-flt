@@ -54,7 +54,7 @@ representation is both reducible and irreducible, the contradiction we seek.
 
 # Reduction To `n >= 5` And Prime
 
-:::theorem "FermatLastTheorem.of_odd_primes" (parent := "first_reductions") (lean := "FermatLastTheorem.of_odd_primes")
+:::lemma_ "FermatLastTheorem.of_odd_primes" (parent := "first_reductions") (lean := "FermatLastTheorem.of_odd_primes")
 If there is a counterexample to Fermat's Last Theorem, then there is a
 counterexample $`a^p+b^p=c^p`$ with `p` an odd prime.
 :::
@@ -103,7 +103,7 @@ Euler proved Fermat's Last Theorem for `p = 3`.
 Euler proved Fermat's Last Theorem for $p=3$;
 ```
 
-:::theorem "fermatLastTheoremThree" (parent := "first_reductions") (lean := "fermatLastTheoremThree")
+:::lemma_ "fermatLastTheoremThree" (parent := "first_reductions") (lean := "fermatLastTheoremThree")
 There are no solutions in positive integers to $`a^3+b^3=c^3`$.
 :::
 
@@ -127,7 +127,7 @@ Mathematician conference held in Luminy in March `2024`.
 \end{proof}
 ```
 
-:::theorem "FermatLastTheorem.of_p_ge_5" (parent := "first_reductions") (lean := "FermatLastTheorem.of_p_ge_5")
+:::corollary "FermatLastTheorem.of_p_ge_5" (parent := "first_reductions") (lean := "FermatLastTheorem.of_p_ge_5")
 If there is a counterexample to Fermat's Last Theorem, then there is a
 counterexample $`a^p+b^p=c^p`$ with `p` prime and $`p \ge 5`$.
 :::
@@ -175,7 +175,7 @@ Our next reduction is as follows.
 Our next reduction is as follows:
 ```
 
-:::theorem "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheorem_p_ge_5")
+:::lemma_ "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheorem_p_ge_5")
 If Fermat's Last Theorem is false for `p` prime and $`p \ge 5`, then there
 exists a Frey package.
 :::
@@ -485,7 +485,7 @@ this.
 \end{proof}
 ```
 
-:::theorem "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false")
+:::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false")
 {uses "Mazur_Frey"}[]
 {uses "Wiles_Frey"}[]
 There is no Frey package.
@@ -519,7 +519,7 @@ We deduce.
 We deduce
 ```
 
-:::theorem "FLT" (parent := "first_reductions") (lean := "Wiles_Taylor_Wiles")
+:::corollary "FLT" (parent := "first_reductions") (lean := "Wiles_Taylor_Wiles")
 Fermat's Last Theorem is true. In other words, there are no positive integers
 `a`, `b`, and `c` and natural numbers `n >= 3` such that $`a^n+b^n=c^n`.
 :::
