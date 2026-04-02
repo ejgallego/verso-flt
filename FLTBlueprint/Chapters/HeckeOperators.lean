@@ -105,7 +105,7 @@ from $A^V$ to $A^U$. The finiteness hypothesis is that the
 double coset $UgV$ can be written as a \emph{finite} union of single
 cosets $g_iV$.
 ```
-:::definition "abstract_hecke_operator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator_toFun")
+:::definition "AbstractHeckeOperator.HeckeOperator_toFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator_toFun")
 Assuming `UgV` is a finite union of cosets `g_iV`,
 we define `[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
@@ -120,7 +120,7 @@ to $`\sum_i g_i a`.
   to $\sum_i g_ia.$
 \end{definition}
 ```
-:::theorem "abstract_hecke_operator_well_defined" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
+:::theorem "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
 {uses "AbstractHeckeOperator.HeckeOperator_toFun"}[]
 This function is well-defined (that is, independent of the
 choice of `g_i`), has image in `A^U` and is `R`-linear.
@@ -135,7 +135,7 @@ choice of `g_i`), has image in `A^U` and is `R`-linear.
   choice of $g_i$), has image in $A^U$ and is $R$-linear.
 \end{lemma}
 ```
-:::proof "abstract_hecke_operator_well_defined"
+:::proof "AbstractHeckeOperator.HeckeOperator"
 Well-definedness is because if we change `g_i` to `g'_i := g_i v`
 for some `v ∈ V` then `g_i a = g'_i a` because `a ∈ A^V`.
 
@@ -475,7 +475,7 @@ Immediate from the previous corollary {uses "Homeomorph.restrictedProductPi"}[].
   Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}.
 \end{proof}
 ```
-:::theorem "units_of_open_submonoid_open" (parent := "hecke_operator_project") (lean := "Submonoid.units_isOpen")
+:::theorem "Submonoid.units_isOpen" (parent := "hecke_operator_project") (lean := "Submonoid.units_isOpen")
 If `M` is a topological monoid and `U` is an open submonoid, then the units
 `Uˣ` of `U` are naturally an open subgroup of `Mˣ`.
 :::
@@ -500,7 +500,7 @@ the product. This makes it into a topological group.
   topology from the product. This makes it into a topological group.
 \end{remark}
 ```
-:::proof "units_of_open_submonoid_open"
+:::proof "Submonoid.units_isOpen"
 We have `U × U` is an open subset of `M × M`, and if we view `Mˣ`
 embedded in `M × M` via `g \mapsto (g, g^{-1})`, then the intersection of
 this subgroup with `U × U` is open in `Mˣ` and consists of the elements of
@@ -518,7 +518,7 @@ to be the copy of `Uˣ` we're talking about.
   checked to be the copy of $U^\times$ we're talking about.
 \end{proof}
 ```
-:::theorem "units_of_compact_submonoid_compact" (parent := "hecke_operator_project") (lean := "Submonoid.units_isCompact")
+:::theorem "Submonoid.units_isCompact" (parent := "hecke_operator_project") (lean := "Submonoid.units_isCompact")
 If `M` is a Hausdorff topological monoid and `U` is a compact submonoid, then
 the units `Uˣ` of `U` are naturally a compact subgroup of `Mˣ`.
 :::
@@ -539,7 +539,7 @@ Is Hausdorffness necessary?
 \begin{remark} Is Hausdorffness necessary?
 \end{remark}
 ```
-:::proof "units_of_compact_submonoid_compact"
+:::proof "Submonoid.units_isCompact"
 First I claim that `Mˣ` embedded in `M × M` via `g ↦ (g, g⁻¹)` is a closed
 subset of `M × M`. Indeed, if `p : M × M → M` is `(a,b) ↦ ab` and
 `q : M × M → M` is `(a,b) ↦ ba`, then `p` and `q` are continuous,
@@ -564,7 +564,7 @@ We have `U × U` is a compact subset of `M × M`, and so
   and is thus compact.
 \end{proof}
 ```
-:::theorem "product_units_homeomorphism" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.piUnits")
+:::theorem "ContinuousMulEquiv.piUnits" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.piUnits")
 If `U_i` are topological monoids then the canonical group isomorphism
 `(\prod_i U_i)ˣ = \prod_i(U_iˣ)` is a homeomorphism.
 :::
@@ -579,7 +579,7 @@ If `U_i` are topological monoids then the canonical group isomorphism
   group isomorphism $(\prod_i U_i)^\times=\prod_i(U_i^\times)$ is a homeomorphism.
 \end{lemma}
 ```
-:::proof "product_units_homeomorphism"
+:::proof "ContinuousMulEquiv.piUnits"
 We prove that the maps in both directions are continuous. Let's start with the
 map from left to right.
 
@@ -628,7 +628,7 @@ continuous.
   of these maps and are hence continuous.
 \end{proof}
 ```
-:::theorem "restricted_product_units_homeomorphism" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.restrictedProductUnits")
+:::theorem "ContinuousMulEquiv.restrictedProductUnits" (parent := "hecke_operator_project") (lean := "ContinuousMulEquiv.restrictedProductUnits")
 If `M_i` are a family of topological monoids equipped with open submonoids
 `U_i`, then the canonical map `(\prod'_i M_i)ˣ \to \prod'_i(M_iˣ)` is a
 homeomorphism.
@@ -645,7 +645,7 @@ homeomorphism.
   is a homeomorphism.
 \end{theorem}
 ```
-:::proof "restricted_product_units_homeomorphism"
+:::proof "ContinuousMulEquiv.restrictedProductUnits"
 {uses "ContinuousMulEquiv.piUnits"}[]
 {uses "Submonoid.units_isOpen"}[]
 I don't know a clean way of showing that the map from left to right is
@@ -817,7 +817,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
   and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$.
 \end{proof}
 ```
-:::theorem "local_integer_ring_open" (parent := "hecke_operator_project") (lean := "NumberField.isOpenAdicCompletionIntegers")
+:::theorem "NumberField.isOpenAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.isOpenAdicCompletionIntegers")
 `\calO_v` is an open subring of `K_v`.
 :::
 
@@ -830,7 +830,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 \end{lemma}
 ```
 
-:::proof "local_integer_ring_open"
+:::proof "NumberField.isOpenAdicCompletionIntegers"
 Openness is already in mathlib.
 :::
 ```tex "hecke_operator_project/local_theory/introduction/3-proof"
@@ -839,7 +839,7 @@ Openness is already in mathlib.
   Openness is already in mathlib.
 \end{proof}
 ```
-:::theorem "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+:::theorem "NumberField.instCompactSpaceAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 `\calO_v` is a compact subring of `K_v`.
 :::
 
@@ -852,7 +852,7 @@ Openness is already in mathlib.
 \end{lemma}
 ```
 
-:::proof "local_integer_ring_compact"
+:::proof "NumberField.instCompactSpaceAdicCompletionIntegers"
 Compactness lies a little deeper because it assumes that the residue field of
 `K_v` is finite.
 :::
@@ -863,7 +863,7 @@ Compactness lies a little deeper because it assumes that the residue field of
   assumes that the residue field of $K_v$ is finite.
 \end{proof}
 ```
-:::theorem "matrix_full_level_open" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
+:::theorem "M2.localFullLevel.isOpen" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
 `M_2(\calO_v)` is an open subring of `M_2(K_v)`.
 :::
 
@@ -875,7 +875,7 @@ Compactness lies a little deeper because it assumes that the residue field of
 \end{lemma}
 ```
 
-:::proof "matrix_full_level_open"
+:::proof "M2.localFullLevel.isOpen"
 Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
 follows from {uses "NumberField.isOpenAdicCompletionIntegers"}[] because a
 product of compacts is compact and a product of opens is open.
@@ -888,7 +888,7 @@ product of compacts is compact and a product of opens is open.
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
 ```
-:::theorem "matrix_full_level_compact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
+:::theorem "M2.localFullLevel.isCompact" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isCompact")
 `M_2(\calO_v)` is a compact subring of `M_2(K_v)`.
 :::
 
@@ -900,7 +900,7 @@ product of compacts is compact and a product of opens is open.
 \end{lemma}
 ```
 
-:::proof "matrix_full_level_compact"
+:::proof "M2.localFullLevel.isCompact"
 Topologically $`M_2(\calO_v) \cong \calO_v^4`$ as a subset of $`K_v^4`, so this
 follows from {uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
 because a product of compacts is compact and a product of opens is open.
@@ -1107,7 +1107,7 @@ This means that our group~$G$ is isomorphic (both algebraically and topologicall
 to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
 ```
-:::theorem "adelic_gl2_is_restricted_product" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct")
+:::theorem "GL2.restrictedProduct" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct")
 `G` is isomorphic and homeomorphic to the restricted product of `GL₂(K_v)` with respect
 to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 :::
@@ -1122,7 +1122,7 @@ to the compact open subgroups `GL₂(\mathcal{O}_v)`.
   to the compact open subgroups $GL_2(\calO_v)$.
 \end{theorem}
 ```
-:::proof "adelic_gl2_is_restricted_product"
+:::proof "GL2.restrictedProduct"
 {uses "ContinuousMulEquiv.restrictedProductUnits"}[]
 {uses "Homeomorph.restrictedProductMatrix"}[]
 {uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[]
@@ -1204,7 +1204,6 @@ satisfying the following axioms:
   \item $f(gz)=f(g)$ for all $z\in(\A_F^\infty)^\times$.
 \end{enumerate}
 ```
-:::proof "automorphic_forms_for_hecke_setup"
 It can be checked that the collection of all such forms is an additive abelian
 group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
 group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
@@ -1214,18 +1213,17 @@ a weight `2` automorphic form of level `U` is simply an element of the fixed
 points $`A^U`$. In other words, the forms of level `U` are the forms satisfying
 the three axioms defining an automorphic form but with the compact open subgroup
 in the second axiom being `U`.
-:::
 
 ```tex "hecke_operator_project/automorphic_forms_and_concrete_operators/automorphic_setup_2"
 It can be checked that the collection of all such forms is an additive abelian
-group, and if~$R$ is a ring then it is naturally an~$R$-module. Let's call this
-group~$A$ for short. Then~$A$ has a left action of $G$, with $g\cdot f$
-defined via $(g\cdot f)(x):=f(xg)$. Recall from
-definition~\ref{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
-that a weight 2 automorphic form of level~$U$ is simply an element of the
-fixed points $A^U$. In other words, the forms of level~$U$ are the forms satisfying the three axioms
-defining an automorphic form but with the compact open subgroup in the second
-axiom being~$U$.
+group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
+group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
+defined via $`(g \cdot f)(x) := f(xg)`$. Recall from
+definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel` that
+a weight `2` automorphic form of level `U` is simply an element of the fixed
+points $`A^U`$. In other words, the forms of level `U` are the forms satisfying
+the three axioms defining an automorphic form but with the compact open subgroup
+in the second axiom being `U`.
 ```
 # Concrete Hecke operators
 Let $`F`$ be a number field. For each finite place $`v`$ we have the completion
