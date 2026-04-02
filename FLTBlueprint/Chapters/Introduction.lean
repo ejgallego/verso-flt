@@ -16,7 +16,7 @@ around `1800` years ago, and he would have been able to understand the
 statement of the theorem (he knew about positive integers, addition and
 multiplication).
 
-```tex "flt-intro-statement-tex"
+```tex
 Fermat's Last Theorem is the statement that if $a,b,c,n$ are positive whole numbers with $n\geq 3$,
 then $a^n+b^n\not=c^n$. It is thus the claim that a family of \emph{Diophantine equations}
 ($a^3+b^3=c^3, a^4+b^4=c^4,\ldots$) has no positive integer solutions.
@@ -30,7 +30,7 @@ by Wiles, with the proof completed in joint work with Taylor, in `1994`. There
 are now several proofs, but all of them go broadly in the same direction, using
 elliptic curves and modular forms.
 
-```tex "flt-intro-history-tex"
+```tex
 Fermat's Last Theorem was explicitly raised by Fermat in 1637, and was proved by Wiles (with the
 proof completed in joint work with Taylor) in 1994. There are now several proofs but all of them
 go broadly in the same direction, using elliptic curves and modular forms.
@@ -45,7 +45,7 @@ places in Lean's source code where these things happen. However, we will adopt
 a more efficient approach: we will assume all of the theorems both in core Lean
 and in its mathematics library `mathlib`, and proceed from there.
 
-```tex "flt-intro-lean-first-paragraph"
+```tex
 Lean is an interactive theorem prover; it checks mathematical arguments with super-human accuracy.
 Explaining a proof of Fermat's Last Theorem to Lean is in some sense like explaining the proof to
 Diophantus; for example, the proof starts by observing that before we go any further it's convenient
@@ -70,7 +70,7 @@ worse than this; in `2025` at least, the computer will only start filling in
 details of arguments by itself once the arguments are mathematically utterly
 obvious. Thus, currently, formalization can be a very time-consuming process.
 
-```tex "flt-intro-lean-tex"
+```tex
 Lean is an interactive theorem prover; it checks mathematical arguments with super-human accuracy.
 Explaining a proof of Fermat's Last Theorem to Lean is in some sense like explaining the proof to
 Diophantus; for example, the proof starts by observing that before we go any further it's convenient
@@ -100,7 +100,7 @@ At the time of writing, these notes do not contain anywhere near a proof of
 FLT, or even a sketch proof, although we are currently actively working on
 fixing this.
 
-```tex "flt-intro-which-proof-status"
+```tex
 At the time of writing, these notes do not contain anywhere near a proof of FLT, or even a sketch proof,
 although we are currently actively working on fixing this.
 ```
@@ -119,7 +119,7 @@ forms, Langlands' cyclic base change theorem for $`\GL_2`, Mazur's theorem
 bounding the torsion subgroup of an elliptic curve over the rationals, and
 several other nontrivial results which were known by the end of the `1980`s.
 
-```tex "flt-intro-which-proof-plan"
+```tex
 From 2024 to 2029 we will be beginning to build a proof of FLT, following a strategy
 constructed by Taylor, taking into account Buzzard's comments on what would be easy or hard to do
 in Lean. Our strategy uses refinements of the original Taylor--Wiles method by Diamond/Fujiwara,
@@ -139,7 +139,7 @@ the goal is that it is a formalization of the papers of Wiles and
 Taylor--Wiles, assuming the results in the references of those papers. However,
 as noted above, we will actually be taking a slightly different path.
 
-```tex "flt-intro-which-proof-upshot"
+```tex
 The upshot of this is that, by 2029 at the end of this first phase, the
 project should contain a complete proof that FLT follows from results that were
 known to humanity in the 1980s. In particular, one naive way of understanding
@@ -154,7 +154,7 @@ This blueprint is a nonlinear document, comprising many chapters. The chapters
 are not designed to be read in order. Each chapter is self-contained and has a
 well-defined goal, typically stated at the top of the chapter.
 
-```tex "flt-intro-structure-overview"
+```tex
 This blueprint is a \emph{nonlinear} document, comprising many chapters. The chapters
 are not designed to be read in order. Each chapter is self-contained and has a well-defined goal,
 typically stated at the top of the chapter.
@@ -167,7 +167,7 @@ in the `1970`s by Mazur, and we shall not be concentrating on it until after
 the first phase is complete. The other is a theorem of Wiles, and this is what
 we will be concentrating on in the remainder of the blueprint.
 
-```tex "flt-intro-structure-next"
+```tex
 After this chapter, you should next read chapter~\ref{ch_reductions}, which explains how to reduce FLT
 to two highly nontrivial statements about the $p$-torsion in a certain elliptic curve (the Frey curve).
 One of these statements was proved in the 1970s by Mazur, and we shall not be concentrating on
@@ -180,7 +180,7 @@ be concentrating on in the remainder of the blueprint.
 The actual blueprint currently also contains a lot of disorganised ideas.
 Currently these should be disregarded.
 
-```tex "flt-intro-remarks-disorganised"
+```tex
 The actual blueprint currently also contains a lot of disorganised ideas. Currently these
 should be disregarded.
 ```
@@ -188,7 +188,7 @@ should be disregarded.
 The overview chapter is an extremely sketchy overview of how the rest of the
 proof goes. This is currently being expanded and should be ignored right now.
 
-```tex "flt-intro-remarks-overview"
+```tex
 Chapter~\ref{ch_overview} is an \emph{extremely} sketchy overview of how
 the rest of the proof goes. This is currently being expanded and should be ignored
 right now.
@@ -205,7 +205,7 @@ mini-project and the quaternion algebra mini-project. These projects do not
 logically depend on each other for the most part, and one can pick and choose
 how one reads them.
 
-```tex "flt-intro-remarks-miniprojects"
+```tex
 All of the remaining chapters are experiments, and most of them are what I am currently
 calling ``mini-projects''. A mini-project is a bottom-up project, typically at early graduate
 student level, with a concrete goal. The ultimate goal of many of these projects is to actually
@@ -220,7 +220,7 @@ There is also an appendix, which is again very sketchy, and comprises mostly of
 a big list of nontrivial theorems many of which we will be assuming without
 proof in the FLT project.
 
-```tex "flt-intro-remarks-appendix"
+```tex
 There is also an appendix, which is again very sketchy, and comprises mostly of a big
 list of nontrivial theorems many of which we will be assuming without proof in the FLT
 project.
@@ -228,6 +228,6 @@ project.
 
 The next chapter to read, where the proof begins, is the reductions chapter.
 
-```tex "flt-intro-remarks-next"
+```tex
 The next chapter to read, where the proof begins, is chapter~\ref{ch_reductions}.
 ```

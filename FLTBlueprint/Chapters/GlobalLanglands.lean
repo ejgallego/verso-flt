@@ -15,7 +15,7 @@ Langlands conjectures for connected reductive groups over number fields.
 
 This is not imported right now.
 
-```tex "global_langlands_not_imported"
+```tex
 This is not imported right now.
 ```
 
@@ -30,7 +30,7 @@ down precisely what is meant by phrases such as `automorphic representation`,
 representation`, and so on; these words hide a large amount of technical
 material.
 
-```tex "global_langlands_overview"
+```tex
 \chapter{The Global Langlands conjectures}
 
 \section{Overview of the chapter}
@@ -51,7 +51,7 @@ Let $`R` be a commutative base ring; it will often be a field but we shall
 develop the theory in more generality when there is no extra effort needed to
 do.
 
-```tex "global_langlands_statement"
+```tex
 \section{Statement of the conjecture}
 
 Let $R$ be a commutative base ring; it will often be a field but we shall develop
@@ -63,7 +63,7 @@ An affine group scheme over $`R` is a group object in the category of affine
 schemes over $`R`.
 :::
 
-```tex "affine_group_scheme_over_affine_base"
+```tex "affine_group_scheme_over_affine_base" (slot := statement)
 \begin{definition}\label{affine_group_scheme_over_affine_base}\lean{???}
 
   An \emph{affine group scheme over $R$} is a group object in the category of affine schemes over $R$.
@@ -73,7 +73,7 @@ schemes over $`R`.
 TODO: Connected and reductive.
 :::
 
-```tex "Hopf_algebra"
+```tex "Hopf_algebra" (slot := statement)
 \begin{definition}\label{Hopf_algebra}\lean{TODO}% we have Hopf algebras in mathlib
 
   %%%%%%%%%%%%%%%%%%%

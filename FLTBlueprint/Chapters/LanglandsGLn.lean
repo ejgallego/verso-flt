@@ -38,7 +38,7 @@ this section we will explain the definition of an automorphic form for the
 group $`\GL_n/\Q`, following the exposition by Borel and Jacquet in Corvallis
 {Informal.citep corvallisAutomorphicForms}[].
 
-```tex "ch07exampleGLn/definition_intro"
+```tex
 The global Langlands reciprocity conjectures relate automorphic forms to Galois representations.
 The statements for a general connected reductive group involve the construction of the Langlands
 dual group, and we do not have quite enough Lie algebra theory to push this definition through
@@ -54,7 +54,7 @@ Mathlib already has the definition of the finite adeles $`\A_{\Q}^f` of the
 rationals as a commutative $`\Q`-algebra, and the proof that it's a
 topological ring.
 
-```tex "ch07exampleGLn/finite_adeles"
+```tex
 Mathlib already has the definition of the finite adeles $\A_{\Q}^f$ of the rationals as a
 commutative $\Q$-algebra, and the proof that it's a topological ring.
 ```
@@ -66,7 +66,7 @@ product topology. They are a topological ring. Hence
 $`\GL_n(\A_{\Q}) = \GL_n(\A_{\Q}^f) \times \GL_n(\R)` is a topological group,
 where we are being a bit liberal with our use of the equality symbol.
 
-```tex "ch07exampleGLn/adelic_group"
+```tex
 The adeles $\A_{\Q}$ of $\Q$ are the product $\A_{\Q}^f\times\R$, with the product topology.
 They are a topological ring. Hence $\GL_n(\A_{\Q})=\GL_n(\A_{\Q}^f)\times\GL_n(\R)$ is a
 topological group, where we are being a bit liberal with our use of the equality symbol.
@@ -83,7 +83,7 @@ the following three properties:
 3. For all $`y \in \GL_n(\R)`, the function $`x \mapsto f(x,y)` is locally constant.
 :::
 
-```tex "ch07exampleGLn/smooth_functions"
+```tex
 \section{Smooth functions}
 
 \begin{definition}
@@ -104,7 +104,7 @@ say the the function is smooth on the infinite part, because I have never used
 the manifold library before and I have no idea what my model with corners is
 supposed to be.
 
-```tex "ch07exampleGLn/smooth_functions_note"
+```tex
 Current state of this definition: I've half-formalised it; I don't know how to
 say the the function is smooth on the infinite part, because I have never used
 the manifold library before and I have no idea what my model with corners is
@@ -116,7 +116,7 @@ supposed to be.
 Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 
-```tex "ch07exampleGLn/slowly_increasing_preamble"
+```tex
 Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 ```
@@ -126,7 +126,7 @@ by $`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}`
 denotes inverse-transpose. Note that $`s(M)` is always positive, and is large
 if $`M` has a very large or very small, in absolute value, eigenvalue.
 
-```tex "ch07exampleGLn/slowly_increasing_intro"
+```tex
 Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 
@@ -142,7 +142,7 @@ is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 :::
 
-```tex "ch07exampleGLn/slowly_increasing_functions"
+```tex "AutomorphicForm.GLn.IsSlowlyIncreasing" (slot := statement)
 \begin{definition}
   \label{AutomorphicForm.GLn.IsSlowlyIncreasing}
   \lean{AutomorphicForm.GLn.IsSlowlyIncreasing}
@@ -156,7 +156,7 @@ $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 Note: the book says $`n` is positive, but $`\{M|s(M)\leq 1\}` is compact so I
 don't think it makes any difference.
 
-```tex "ch07exampleGLn/slowly_increasing_note"
+```tex
 Note: the book says $n$ is positive, but $\{M|s(M)\leq 1\}$ is compact so I
 don't think it makes any difference.
 ```
@@ -170,7 +170,7 @@ compact subgroup of $`\GL_n(\R)`, and it's convenient to choose one (they're
 all conjugate) so we choose $`O_n(\R)`.
 :::
 
-```tex "ch07exampleGLn/weights_at_infinity"
+```tex
 \section{Weights at infinity}
 
 \begin{definition}
@@ -188,7 +188,7 @@ The Lean definition is incomplete right now -- I don't demand irreducibility
 theory then I might have struggled to say that the representation was
 continuous).
 
-```tex "ch07exampleGLn/weights_at_infinity_note"
+```tex
 The Lean definition is incomplete right now -- I don't demand irreducibility
 (I wasn't sure whether I was doing this the right way; if I used category
 theory then I might have struggled to say that the representation was
@@ -202,7 +202,7 @@ There is a natural action of the real Lie algebra of $`\GL_n(\R)` on the
 complex vector space of smooth complex-valued functions on $`\GL_n(\R)`.
 :::
 
-```tex "ch07exampleGLn/lie_algebra_action"
+```tex
 \section{The action of the universal enveloping algebra.}
 
 \begin{definition}
@@ -212,7 +212,7 @@ smooth complex-valued functions on $\GL_n(\R)$.
 \end{definition}
 ```
 
-```tex "ch07exampleGLn/complex_lie_algebra_action"
+```tex
 \begin{definition}
   \label{instComplexLieAlgebraAction}
   \uses{instLieAlgebraAction}
@@ -229,7 +229,7 @@ the real Lie algebra on the smooth complex-valued functions on $`\GL_n(\R)`.
 This depends on {uses "instLieAlgebraAction"}[].
 :::
 
-```tex "ch07exampleGLn/complex_lie_algebra_action/2"
+```tex "instComplexLieAlgebraAction" (slot := statement)
 \begin{definition}
   \label{instComplexLieAlgebraAction}
   \uses{instLieAlgebraAction}
@@ -246,7 +246,7 @@ complexified Lie algebra on the smooth complex-valued functions. This depends on
 {uses "instComplexLieAlgebraAction"}[].
 :::
 
-```tex "ch07exampleGLn/universal_enveloping_algebra_action"
+```tex "instUniversalEnvelopingAlgebraAction" (slot := statement)
 \begin{definition}
   \label{instUniversalEnvelopingAlgebraAction}
   \uses{instComplexLieAlgebraAction}
@@ -262,7 +262,7 @@ smooth complex-valued functions. This depends on
 {uses "instUniversalEnvelopingAlgebraAction"}[].
 :::
 
-```tex "ch07exampleGLn/centre_action"
+```tex "instCentreAction" (slot := statement)
 \begin{definition}
 \label{instCentreAction}
 \uses{instUniversalEnvelopingAlgebraAction}
@@ -277,7 +277,7 @@ $`\bbC`. Note that Harish-Chandra, or possibly this was known earlier, showed
 that it is a polynomial ring in $`n` variables over the complexes. We shall not
 need this.
 
-```tex "ch07exampleGLn/centre_action_note"
+```tex
 \begin{remark} The centre we just defined is a commutative ring which contains a copy of $\bbC$.
   Note that Harish-Chandra, or possibly this was known earlier, showed that it is a polynomial
   ring in $n$ variables over the complexes. We shall not need this.
@@ -288,7 +288,7 @@ need this.
 
 From here on there is no more Lean right now, only LaTeX.
 
-```tex "ch07exampleGLn/automorphic_forms_intro"
+```tex
 \section{Automorphic forms}
 
 From here on there is no more Lean right now, only LaTeX.
@@ -322,7 +322,7 @@ five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],
    function $`y \mapsto f(x,y)` on $`\GL_n(\R)` is slowly-increasing.
 :::
 
-```tex "ch07exampleGLn/automorphic_form_definition"
+```tex
 \begin{definition}
   \label{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
   \lean{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
@@ -358,7 +358,7 @@ subspace which is finite-dimensional; this is a theorem of Harish-Chandra.
 There is also the concept of a cusp form, meaning an automorphic form for which
 furthermore some adelic integrals vanish.
 
-```tex "ch07exampleGLn/automorphic_forms_note"
+```tex
 Automorphic forms of a fixed weight $\rho$ form a complex vector space, and if we also
 fix the finite level $U$ and the infinite level $I$ then we get a subspace which is
 finite-dimensional; this is a theorem of Harish-Chandra. There is also the concept

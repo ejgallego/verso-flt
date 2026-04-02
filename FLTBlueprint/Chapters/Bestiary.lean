@@ -25,7 +25,7 @@ needs to be done before we can start talking about formalising theorems.
 
 # Results from class field theory
 
-```tex "bestiary/class_field_theory"
+```tex
 We start with the local case. In fact we restrict to the $p$-adic case, but only for simplicity of exposition because it's all we'll need (and, to be frank, because I'm not 100 percent of what is true in the function field case).
 
 Let $K$ be a finite extension of $\Q_p$. We write $\widehat{\Z}$ for the profinite completion of $\Z$; it is isomorphic to $\prod_p\Z_p$ where $\Z_p$ is the $p$-adic integers and the product is over all primes.
@@ -118,7 +118,7 @@ We also need Poitou-Tate duality; I'll refrain from writing it down for now, bec
 All rings and algebras in this section are commutative with a `1`, and all
 morphisms send `1` to `1`.
 
-```tex "bestiary/affine_variety_intro"
+```tex
 All rings and algebras in this section are commutative with a 1, and all
 morphisms send 1 to 1.
 ```
@@ -128,7 +128,7 @@ example `X` could be an affine algebraic variety; in fact we shall only be
 interested in smooth affine varieties in the applications, but the initial
 definition and theorem are fine for all finite type schemes.
 
-```tex "bestiary/affine_variety_over_field"
+```tex
 Let $X=\Spec(A)$ be an affine scheme of finite type over a field $K$. For
 example $X$ could be an affine algebraic variety; in fact we shall only be
 interested in smooth affine varieties in the applications, but the initial
@@ -139,7 +139,7 @@ If `R` is any `K`-algebra then one can talk about the `R`-points `X(R)` of `X`,
 which in this case naturally bijects with the `K`-algebra homomorphisms from
 `A` to `R`.
 
-```tex "bestiary/affine_variety_points"
+```tex
 If $R$ is any $K$-algebra then one can talk about the $R$-points $X(R)$ of $X$,
 which in this case naturally bijects with the $K$-algebra homomorphisms from
 $A$ to $R$.
@@ -153,7 +153,7 @@ the set-theoretic maps from `A` to `R` with its product topology, and giving it
 the subspace topology.
 :::
 
-```tex "bestiary/topology_on_affine_variety_points"
+```tex "topology_on_affine_variety_points" (slot := statement)
 \begin{definition}\label{topology_on_affine_variety_points} If $X$ is an affine
 scheme of finite type over $K$, and if $R$ is a $K$-algebra which is also a
 topological ring, then we define a topology on the $R$-points $X(R)$ of $X$ by
@@ -170,7 +170,7 @@ topological spaces (that is, a homeomorphism onto its image).
 This uses {uses "topology_on_affine_variety_points"}[].
 :::
 
-```tex "bestiary/topology_on_affine_variety_computation"
+```tex "topology_on_affine_variety_computation" (slot := statement)
 \begin{theorem}\label{topology_on_affine_variety_computation}\uses{topology_on_affine_variety_points}
 If $X$ is as above and $X\to\mathbb{A}^n_K$ is a closed immersion, then the
 induced map from $X(R)$ with its topology as above to $R^n$ is an embedding of
@@ -182,7 +182,7 @@ topological spaces (that is, a homeomorphism onto its image).
 See [Conrad's notes](https://math.stanford.edu/~conrad/papers/adelictop.pdf).
 :::
 
-```tex "bestiary/topology_on_affine_variety_computation_proof"
+```tex "topology_on_affine_variety_computation" (slot := proof)
 \begin{proof}
 See \href{https://math.stanford.edu/~conrad/papers/adelictop.pdf}{Conrad's
 notes}.
@@ -192,7 +192,7 @@ notes}.
 We now specialise to the smooth case. I want to make the following conjectural
 definition:
 
-```tex "bestiary/smooth_case_intro"
+```tex
 We now specialise to the smooth case. I want to make the following conjectural
 ``definition'':
 ```
@@ -204,7 +204,7 @@ variety over `K`. Then the points `X(K)` naturally inherit the structure of a
 manifold over `K`.
 :::
 
-```tex "bestiary/manifold_on_algebraic_variety_points"
+```tex "manifold_on_algebraic_variety_points" (slot := statement)
 \begin{definition}\label{manifold_on_algebraic_variety_points}\notready Let $K$
 be a field equipped with an isomorphism to the reals, complexes, or a finite
 extension of the $p$-adic numbers. Let $X$ be a smooth affine algebraic variety
@@ -215,7 +215,7 @@ over $K$.
 
 Probably this is fine for a broader class of fields `K`.
 
-```tex "bestiary/manifold_on_algebraic_variety_points_remark"
+```tex
 \begin{remark}
 Probably this is fine for a broader class of fields $K$.
 \end{remark}
@@ -228,7 +228,7 @@ immersion, then the induced map from `X(K)` with its manifold structure to
 This uses {uses "manifold_on_algebraic_variety_points"}[].
 :::
 
-```tex "bestiary/manifold_on_algebraic_variety_computation"
+```tex "manifold_on_algebraic_variety_computation" (slot := statement)
 \begin{theorem}\label{manifold_on_algebraic_variety_computation}\uses{manifold_on_algebraic_variety_points}\notready
 If $X$ is as in the previous definition and $X\to\mathbb{A}^n_K$ is a closed
 immersion, then the induced map from $X(K)$ with its manifold structure to
@@ -240,7 +240,7 @@ $K^n$ is an embedding of manifolds.
 I'm assuming this is standard, if true.
 :::
 
-```tex "bestiary/manifold_on_algebraic_variety_computation_proof"
+```tex "manifold_on_algebraic_variety_computation" (slot := proof)
 \begin{proof}
 I'm assuming this is standard, if true.
 \end{proof}
@@ -252,7 +252,7 @@ then `G(K)` is naturally a real or complex Lie group.
 This uses {uses "manifold_on_algebraic_variety_computation"}[].
 :::
 
-```tex "bestiary/lie_group_from_algebraic_group"
+```tex "lie_group_from_algebraic_group" (slot := statement)
 \begin{corollary}\label{lie_group_from_algebraic_group}\uses{manifold_on_algebraic_variety_computation}\notready
 If $G$ is an affine algebraic group of finite type over $K=\R$ or $K=\bbC$
 then $G(K)$ is naturally a real or complex Lie group.
@@ -266,7 +266,7 @@ As a toy example, one can embed `\GL_n(\R)` into either `\R^{n^2+1}` via
 `M \mapsto (M,\det(M)^{-1})` or into `\R^{2n^2}` via `M \mapsto (M,M^{-1})`
 and the claim is that the two induced manifold structures are the same.
 
-```tex "bestiary/lie_group_from_algebraic_group_remark"
+```tex
 \begin{remark}
 
 The corollary, for sure, is true! And it's all we need. I have not yet made any
@@ -288,7 +288,7 @@ same to mathematicians but different to Lean and some thought should go into
 which of these should be the actual definition, and which should be proved to
 be the same thing as the definition.
 
-```tex "bestiary/algebraic_group_definition_paragraph"
+```tex
 The concept of an affine algebraic group over a field $K$ can be implemented in
 Lean as a commutative Hopf algebra over $K$, as a group object in the category
 of affine schemes over $K$, as a representable group functor on the category of
@@ -305,7 +305,7 @@ connected if it is connected as a scheme, and reductive if `G_{\overline{k}}`
 has no nontrivial smooth connected unipotent normal `k`-subgroup.
 :::
 
-```tex "bestiary/connected_reductive_group"
+```tex "connected_reductive_group" (slot := statement)
 \begin{definition}\label{connected_reductive_group}\notready An affine algebraic
 group~$G$ of finite type over a field~$k$ is said to be \emph{connected} if it
 is connected as a scheme, and \emph{reductive} if $G_{\overline{k}}$ has no
@@ -315,7 +315,7 @@ nontrivial smooth connected unipotent normal $k$-subgroup.
 
 # Automorphic forms and representations
 
-```tex "bestiary/automorphic_and_later"
+```tex
 \section{Automorphic forms and representations}
 
 This section needs a lot of work; I am just attempting to write down some approximation to the well-known definitions but in great generality (far greater than we need). Some definitions below are short on details; indeed there may even be errors or imprecisions right now (because we are working in more generality than I am used to). It will be a very interesting project to get these details down. One reference (which leaves a lot of exercises) is Borel-Casselman in \cite{corvallis1}. Even stating these definitions will be a big challenge in Lean; indeed one of the motivations of the project is that it forces us to write down all the below properly.

@@ -24,7 +24,7 @@ finiteness results like this in order to control the Hecke algebras which act
 on these spaces; these Hecke algebras are the `T`s which are isomorphic to the
 `R`s in the `R = T` theorem which is the big first target for the FLT project.
 
-```tex "quat_goal_intro"
+```tex
 At the time of writing, {\tt mathlib} still does not have a proof that the space
 of classical modular forms of a fixed weight, level and character is finite-dimensional.
 The main result in this miniproject is to prove that certain spaces of quaternionic modular forms
@@ -39,7 +39,7 @@ is the big first target for the FLT project.
 Our first goal in this miniproject is the definition of these spaces of
 quaternionic modular forms. We start with some preliminary work towards this.
 
-```tex "quat_initial_goal"
+```tex
 Our first goal in this miniproject is the definition of these spaces of quaternionic modular forms.
 We start with some preliminary work towards this.
 ```
@@ -47,7 +47,7 @@ We start with some preliminary work towards this.
 Let $`K` be a field. Recall that a quaternion algebra over $`K` is a central
 simple $`K`-algebra of $`K`-dimension `4`.
 
-```tex "quat_initial_field"
+```tex
 Let $K$ be a field. Recall that a quaternion algebra
 over $K$ is a central simple $K$-algebra of $K$-dimension~4.
 ```
@@ -59,7 +59,7 @@ algebra over $`K` then $`D \otimes_K L` is a quaternion algebra over $`L`.
 Some Imperial undergraduate students have established this fact in ongoing
 project work.
 
-```tex "quat_initial_csa"
+```tex
 A fundamental fact about central simple algebras is that if $D/K$
 is a central simple $K$-algebra and $L/K$ is an extension of fields, then $D\otimes_KL$
 is a central simple $L$-algebra. In particular if $D$ is a quaternion algebra over $K$
@@ -78,7 +78,7 @@ algebra. Thus Fujisaki's theorem from the Fujisaki miniproject applies, and we
 know that
 $`D^\times\backslash (D\otimes_F\A_F)^{(1)}` is compact.
 
-```tex "quat_initial_totally_real"
+```tex
 A \emph{totally real field} is a number field~$F$ such that the image of every ring
 homomorphism $F\to\bbC$ is a subset of $\R$. We fix once and for all a totally real field~$F$ and a
 quaternion algebra $D$ over $F$. We furthermore assume that $D$ is \emph{totally definite}, that is,
@@ -102,7 +102,7 @@ definite, the "associated symmetric space is a 0-dimensional manifold",
 meaning in practice that the part of the definition of an automorphic form
 involving differential equations is vacuously satisfied in this setting.
 
-```tex "quat_initial_high_falutin"
+```tex
 The high-falutin' explanation of what is about to happen is that the units $D^\times$ of $D$
 can be regarded as a connected reductive algebraic group over $F$, and we are going to define certain spaces
 of automorphic forms for this algebraic group. For a general connected reductive algebraic group,
@@ -122,7 +122,7 @@ in an arbitrary additive commutative group. In particular, it is possible to
 talk about mod `p^n` and `p`-adic automorphic forms in this setting without
 doing any complicated algebraic geometry.
 
-```tex "quat_initial_consequence"
+```tex
 As a consequence, the definitions we're about to give have a far more algebraic flavour. Crucially, in stark
 contrast to the general theory, the fact that we do not need to talk about differential equations at all means that one does
 not need to assume that our automorphic forms are $\bbC$-valued; our definition makes sense for forms valued in an arbitrary additive commutative group.
@@ -138,7 +138,7 @@ the adeles of a number field are proved in the adele miniproject. Our
 automorphic forms will be certain functions on the units of the ring
 $`D_{\A^\infty} := D \otimes_F \A_F^\infty \cong D \otimes_{\Q} \A_{\Q}^\infty`.
 
-```tex "quat_brief_intro_1"
+```tex
 Having made assumptions on $D$ which make the theory of automorphic forms over
 $D^\times$ far less technical, we will now make it a little more technical by
 using the modern adelic approach to the theory. Note that many results about
@@ -159,7 +159,7 @@ will see in our situation will be the level of the forms. The main result in
 this miniproject will be that the space of weight `2` automorphic forms of
 level $`U` is finite-dimensional.
 
-```tex "quat_brief_intro_2"
+```tex
 To prove Fermat's Last Theorem it suffices to work in weight 2 and trivial character, and for simplicity we shall (at least for now)
 bake these assumptions into our definitions, even though they would be easy to remove (at the expense of having
 to write ``of weight 2 and trivial character'' throughout the proof). We remark again that
@@ -176,7 +176,7 @@ is finite-dimensional.
 Let us now give some precise definitions. Recall that by $`\A_F^\infty` we mean
 the finite adeles of the totally real number field $`F`.
 
-```tex "quat_defs_1"
+```tex
 Let us now give some precise definitions. Recall that by $\A_F^\infty$ we mean
 the finite adeles of the totally real number field $F$.
 ```
@@ -187,7 +187,7 @@ topological ring, and hence the units $`D_f^\times` of this ring are a
 topological group. This group is locally profinite, and hence has many compact
 open subgroups; we will see explicit examples later on.
 
-```tex "quat_defs_2"
+```tex
 A \emph{level} is a compact open subgroup~$U$ of $(D\otimes_F\A_F^\infty)^\times$. These are
 plentiful. The ring $D_f:=D\otimes_F\A_F^\infty$ is a topological ring,
 and hence the units $D_f^\times$ of this ring
@@ -206,7 +206,7 @@ We may also regard $`D` as a subring of $`D \otimes_F \A_F^\infty` via the map
 $`d \mapsto d \otimes 1`, and hence we can think of $`D^\times` as a subgroup
 of $`(D \otimes_F \A_F^\infty)^\times`.
 
-```tex "quat_defs_3"
+```tex
 We regard $\A_F^\infty$ as a subring of
 $D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because $F$ is a
 subring of $D$. More precisely, we embed $\A_F^\infty$ into
@@ -221,7 +221,7 @@ we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
 Let $`R` be an additive commutative group. Later on $`R` will be a commutative
 ring but we will not need this for the definition.
 
-```tex "quat_defs_4"
+```tex
 Let $R$ be an additive commutative group. Later on $R$ will be a commutative
 ring but we will not need this for the definition.
 ```
@@ -229,7 +229,7 @@ ring but we will not need this for the definition.
 Let us now give some precise definitions. Recall that by $`\A_F^\infty`$ we mean
 the finite adeles of the totally real number field $`F`$.
 
-```tex "weight_two_quaternionic_forms/1"
+```tex
 Let us now give some precise definitions. Recall that by $\A_F^\infty$ we mean
 the finite adeles of the totally real number field $F$.
 ```
@@ -240,7 +240,7 @@ ring, and hence the units $`D_f^\times`$ of this ring are a topological group.
 This group is locally profinite, and hence has many compact open subgroups; we
 will see explicit examples later on.
 
-```tex "weight_two_quaternionic_forms/2"
+```tex
 A level is a compact open subgroup~$U$ of $(D\otimes_F\A_F^\infty)^\times$.
 These are plentiful. The ring $D_f:=D\otimes_F\A_F^\infty$ is a topological
 ring, and hence the units $D_f^\times$ of this ring are a topological group.
@@ -258,7 +258,7 @@ subgroup of $`(D\otimes_F\A_F^\infty)^\times`$. We may also regard $`D`$ as a
 subring of $`D\otimes_F\A_F^\infty`$ via the map $`d\mapsto d\otimes 1`$, and hence
 we can think of $`D^\times`$ as a subgroup of $`(D\otimes_F\A_F^\infty)^\times`.
 
-```tex "weight_two_quaternionic_forms/3"
+```tex
 We regard $\A_F^\infty$ as a subring of
 $D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because $F$ is a
 subring of $D$. More precisely, we embed $\A_F^\infty$ into
@@ -273,7 +273,7 @@ we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
 Let $`R`$ be an additive commutative group. Later on $`R`$ will be a commutative
 ring but we will not need this for the definition.
 
-```tex "weight_two_quaternionic_forms/4"
+```tex
 Let $R$ be an additive commutative group. Later on $R$ will be a commutative
 ring but we will not need this for the definition.
 ```
@@ -288,7 +288,7 @@ functions $`f:D_{\A^\infty}^\times\to R`$ satisfying the following axioms:
   such that $`f(gu)=f(g)`$ for all $`g\in D_{\A^\infty}^\times`$ and $`u\in U`$.
 :::
 
-```tex "weight_two_quaternionic_forms/definition"
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (slot := statement)
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
@@ -308,7 +308,7 @@ Let $`S^D(R)` denote the set of automorphic forms for $`D^\times`. The space
 $`S^D(R)` is sometimes referred to as a space of "quaternionic modular forms"
 over $`R`. Three basic observations about $`S^D(R)` are as follows.
 
-```tex "quat_automorphic_forms_intro"
+```tex
 Let $S^D(R)$ denote the set of automorphic forms for $D^\times$. The space $S^D(R)$ is sometimes referred to as a space of
 quaternionic modular forms over $R$. Three basic observations about $S^D(R)$ are as follows.
 ```
@@ -319,7 +319,7 @@ additive abelian group. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[].
 :::
 
-```tex "automorphic_forms_additive_group"
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" (slot := statement)
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
@@ -337,7 +337,7 @@ depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[]
 and {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup"}[].
 :::
 
-```tex "automorphic_forms_module"
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module" (slot := statement)
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
@@ -357,7 +357,7 @@ by $`(g \cdot f)(x) = f(xg)`. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
 :::
 
-```tex "adelic_right_action_on_quaternionic_forms"
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction" (slot := statement)
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
@@ -372,14 +372,14 @@ by $`(g \cdot f)(x) = f(xg)`. This depends on
 If $`R` is a commutative ring then the action of $`D_{\A^\infty}^\times`
 commutes with the $`R`-action.
 
-```tex "quat_action_commutes"
+```tex
 If $R$ is a commutative ring then the action of $D_{\A^\infty}^\times$ commutes with the $R$-action.
 ```
 
 Now let $`U` be a level, that is, a compact open subgroup of
 $`D_{\A^\infty}^\times`.
 
-```tex "quat_level_intro"
+```tex
 Now let $U$ be a level, that is, a compact open subgroup of $D_{\A^\infty}^\times$.
 ```
 
@@ -392,7 +392,7 @@ depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
 :::
 
-```tex "weight_two_quaternionic_forms_of_level"
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (slot := statement)
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
@@ -408,7 +408,7 @@ depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
 The Hecke algebras involved in the main modularity lifting theorems needed in
 the FLT project will be endomorphisms of these spaces $`S^D(U;R)`.
 
-```tex "quat_hecke_algebras"
+```tex
 The Hecke algebras involved in the main modularity lifting theorems needed in
 the FLT project will be endomorphisms of these spaces $S^D(U;R)$.
 ```
@@ -422,7 +422,7 @@ Jacquet and Langlands this result, in the case $`k = \bbC`, implies many cases
 of that classical claim, although of course the Jacquet--Langlands theorem is
 much harder to prove than the classical proof of finite-dimensionality.
 
-```tex "quat_main_result_intro"
+```tex
 The point of this miniproject is the finite-dimensionality result below. This
 is an analogue of the result that classical modular forms of a fixed
 level, weight and character are finite-dimensional. In fact, by delicate results
@@ -437,7 +437,7 @@ $`k`-vector space. This depends on
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
 :::
 
-```tex "quat_main_result_theorem"
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (slot := statement)
 \begin{theorem}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
@@ -473,7 +473,7 @@ $`f_2(g) = f_2(g_i)`. Because $`f_1(g_i) = f_2(g_i)` by assumption, we deduce
 that $`f_1(g) = f_2(g)` as required.
 :::
 
-```tex "quat_main_result_proof"
+```tex
 \begin{proof}
   \proves{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
   \uses{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact,

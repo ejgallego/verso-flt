@@ -17,7 +17,7 @@ open Informal
 First reductions of the problem.
 :::
 
-```tex "first_reductions/chapter"
+```tex
 \chapter{First reductions of the problem}\label{ch_reductions}
 ```
 
@@ -26,7 +26,7 @@ First reductions of the problem.
 The goal of this chapter is to reduce Fermat's Last Theorem to one deep theorem
 of Mazur and one deep theorem of Wiles about a Galois representation.
 
-```tex "first_reductions/goal"
+```tex
 The goal of this chapter is to reduce FLT to a deep theorem of Mazur and a deep theorem of Wiles
 about a Galois representation.
 ```
@@ -42,7 +42,7 @@ elliptic curve, and finally, using two very deep and independent theorems, one
 due to Mazur and the other due to Wiles, we show that this representation is
 both reducible and irreducible, the contradiction we seek.
 
-```tex "first_reductions/overview"
+```tex
 The proof of Fermat's Last Theorem is by contradiction. We assume that we have a counterexample
 $a^n+b^n=c^n$, and manipulate it until it satisfies the axioms of a ``Frey package'', a basic
 concept which we will explain below. From the
@@ -59,7 +59,7 @@ If there is a counterexample to Fermat's Last Theorem, then there is a
 counterexample $`a^p+b^p=c^p`$ with `p` an odd prime.
 :::
 
-```tex "FermatLastTheorem.of_odd_primes"
+```tex "FermatLastTheorem.of_odd_primes" (slot := statement)
 \begin{lemma}\label{FermatLastTheorem.of_odd_primes}\lean{FermatLastTheorem.of_odd_primes}\leanok
   If there is a counterexample to Fermat's Last Theorem, then there is a counterexample $a^p+b^p=c^p$
   with $p$ an odd prime.
@@ -107,7 +107,7 @@ Euler proved Fermat's Last Theorem for $p=3$;
 There are no solutions in positive integers to $`a^3+b^3=c^3`$.
 :::
 
-```tex "fermatLastTheoremThree"
+```tex "fermatLastTheoremThree" (slot := statement)
 \begin{lemma}\label{fermatLastTheoremThree}\lean{fermatLastTheoremThree}\leanok
 \discussion{16}
   There are no solutions in positive integers to $a^3+b^3=c^3$.
@@ -132,7 +132,7 @@ If there is a counterexample to Fermat's Last Theorem, then there is a
 counterexample $`a^p+b^p=c^p`$ with `p` prime and $`p \ge 5`$.
 :::
 
-```tex "FermatLastTheorem.of_p_ge_5"
+```tex "FermatLastTheorem.of_p_ge_5" (slot := statement)
 \begin{corollary}\label{FermatLastTheorem.of_p_ge_5}\lean{FermatLastTheorem.of_p_ge_5}\leanok If there is a counterexample to
   Fermat's Last Theorem, then there is a counterexample $a^p+b^p=c^p$ with $p$ prime and $p\geq 5$.
 \end{corollary}
@@ -163,7 +163,7 @@ A Frey package $`(a,b,c,p)` is three nonzero pairwise-coprime integers `a`,
 with a prime $`p \ge 5`, such that $`a^p+b^p=c^p`.
 :::
 
-```tex "FreyPackage"
+```tex "FreyPackage" (slot := statement)
 \begin{definition}\label{FreyPackage}\lean{FreyPackage}\leanok A \emph{Frey package} $(a,b,c,p)$
 is three nonzero pairwise-coprime integers $a$, $b$, $c$, with $a\equiv3\pmod4$ and $b\equiv0\pmod2$,
 and a prime $p\geq5$, such that $a^p+b^p=c^p$.\end{definition}
@@ -180,7 +180,7 @@ If Fermat's Last Theorem is false for `p` prime and $`p \ge 5`, then there
 exists a Frey package.
 :::
 
-```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5"
+```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (slot := statement)
 \begin{lemma}
   \label{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
   \lean{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
@@ -244,7 +244,7 @@ complex roots are distinct, and consider the equation $`E : Y^2 = f(X)`. This
 defines a curve in the `(X,Y)`-plane, and more precisely its projectivization
 is an elliptic curve over $`\Q`.
 
-```tex "galois_representations_and_elliptic_curves/elliptic_curve_over_q"
+```tex
 To continue, we need some of the theory of elliptic curves over $\Q$. So let $f(X)$ denote any
 monic cubic polynomial with rational coefficients and whose three complex roots are distinct,
 and let us consider the equation $E:Y^2=f(X)$, which defines a curve in the $(X,Y)$ plane.
@@ -262,7 +262,7 @@ This group law is already in mathlib. It has the further property that three
 distinct points `P`, `Q`, and `R` of `E(K)` sum to zero if and only if they are
 collinear.
 
-```tex "galois_representations_and_elliptic_curves/points_and_group_law"
+```tex
 If $E:Y^2=f(X)$ is an elliptic curve over $\Q$, and if $K$ is any characteristic zero field (and
 hence a $\Q$-algebra), then we write $E(K)$ for the set of solutions to $y^2=f(x)$ with $x,y\in K$,
 together with an additional ``point at infinity'' corresponding morally to $x=y=\infty$.
@@ -285,7 +285,7 @@ $`\Q` and $`\GQ` denotes the group of field automorphisms $`\Qbar \to \Qbar`,
 then for any elliptic curve `E` over $`\Q` we obtain an action of $`\GQ` on
 `E(\Qbar)` and hence on `E(\Qbar)[n]`.
 
-```tex "galois_representations_and_elliptic_curves/change_of_field"
+```tex
 The group structure behaves well under change of field: if $E$ is an elliptic curve over $\Q$
 and if $K\to L$ is a homomorphism of
 characteristic zero fields then the induced map $E(K)\to E(L)$ is a group homomorphism.
@@ -307,7 +307,7 @@ representation of $`\GQ`. This is the mod `p` Galois representation attached to
 the elliptic curve `E`, and it is well-known to be `2`-dimensional. We call it
 $`\rho_{E,p}`.
 
-```tex "galois_representations_and_elliptic_curves/mod_p_representation"
+```tex
 If furthermore $n=p$ is prime, then $E(\Qbar)[p]$ is naturally a vector space over the
 field $\Z/p\Z$, and thus it inherits the structure of a mod $p$ representation of $\GQ$.
 This is the \emph{mod $p$ Galois representation} attached to the elliptic curve $E$.
@@ -317,7 +317,7 @@ It is well-known to be 2-dimensional. We call this representation $\rho_{E,p}$.
 In the next section we apply this theory to the elliptic curve coming from a
 counterexample to Fermat's Last Theorem.
 
-```tex "galois_representations_and_elliptic_curves/next_section"
+```tex
 In the next section we apply this theory to an elliptic curve coming from a counterexample to
 Fermat's Last theorem.
 ```
@@ -343,7 +343,7 @@ curve over $`\Q` (considered by Frey and, before him, Hellegouarch) defined by t
 $`Y^2 = X(X-a^p)(X+b^p)`.
 :::
 
-```tex "FreyCurve"
+```tex "FreyCurve" (slot := statement)
 \begin{definition}[Frey]
   \label{FreyCurve}
   \lean{FreyPackage.freyCurve}
@@ -358,7 +358,7 @@ $`Y^2 = X(X-a^p)(X+b^p)`.
 Note that the roots of the cubic $`X(X-a^p)(X+b^p)` are distinct because `a`,
 `b`, and `c` are nonzero and $`a^p+b^p=c^p`.
 
-```tex "FreyCurve/roots_are_distinct"
+```tex
 Note that the roots of the cubic $X(X-a^p)(X+b^p)$ are distinct because $a,b,c$ are nonzero and
 $a^p+b^p=c^p$.
 ```
@@ -370,7 +370,7 @@ Frey's observation is that this representation has some very surprising
 properties. We will make this remark more explicit in the next chapter. Here we
 shall show how these properties can be used to finish the job.
 
-```tex "FreyCurve/mod_p_representation"
+```tex
 Given a Frey package $(a,b,c,p)$ with corresponding Frey curve $E$, the mod $p$ Galois
 representation $\rho_{E,p}$ associated to this package is the 2-dimensional representation of
 $\GQ$ on $E(\Qbar)[p]$ described above. Frey's observation is that this mod $p$ Galois
@@ -384,7 +384,7 @@ Recall that a representation of a group `G` on a vector space `W` is said to be
 irreducible if there are precisely two `G`-stable subspaces of `W`, namely `0`
 and `W`. The representation is said to be reducible otherwise.
 
-```tex "reduction_to_two_big_theorems/irreducible_definition"
+```tex
 Recall that a representation of a group $G$ on a vector space $W$ is said to be \emph{irreducible}
 if there are precisely two $G$-stable subspaces of $W$, namely $0$ and $W$.
 The representation is said to be \emph{reducible} otherwise.
@@ -394,7 +394,7 @@ Now let $`(a,b,c,p)` be a Frey package. Consider the mod `p` representation of
 $`\GQ` coming from the `p`-torsion in the Frey curve associated to the package,
 and call this representation $`\rho`. Is $`\rho` irreducible or not?
 
-```tex "reduction_to_two_big_theorems/question"
+```tex
 Now say $(a,b,c,p)$ is a Frey package.
 Consider the mod $p$ representation of $\GQ$ coming from the $p$-torsion in the Frey
 curve $Y^2=X(x-a^p)(X+b^p)$ associated to the package. Let's call this representation $\rho$,
@@ -408,7 +408,7 @@ If `\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then `\rho` is irreducible.
 :::
 
-```tex "Mazur_Frey"
+```tex "Mazur_Frey" (slot := statement)
 \begin{theorem}[Mazur]
   \label{Mazur_Frey}
   \lean{Mazur_Frey}
@@ -459,7 +459,7 @@ If `\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then `\rho` is reducible.
 :::
 
-```tex "Wiles_Frey"
+```tex "Wiles_Frey" (slot := statement)
 \begin{theorem}[Wiles,Taylor--Wiles, Ribet,\ldots]
   \label{Wiles_Frey}
   \lean{Wiles_Frey}
@@ -491,7 +491,7 @@ this.
 There is no Frey package.
 :::
 
-```tex "FreyPackage.false"
+```tex "FreyPackage.false" (slot := statement)
 \begin{corollary}
   \label{FreyPackage.false}
   \lean{FreyPackage.false}
@@ -524,7 +524,7 @@ Fermat's Last Theorem is true. In other words, there are no positive integers
 `a`, `b`, and `c` and natural numbers `n >= 3` such that $`a^n+b^n=c^n`.
 :::
 
-```tex "FLT"
+```tex "FLT" (slot := statement)
 \begin{corollary}
   \label{FLT}
   \lean{Wiles_Taylor_Wiles}
@@ -559,7 +559,7 @@ Because we are, for now at least, assuming Mazur's theorem, we now turn our
 attention to a proof of theorem `Wiles_Frey`. We start on this proof
 in the next chapter.
 
-```tex "Wiles_Frey/next_chapter"
+```tex
 Because we are (for now at least) assuming Mazur's theorem, we now need to turn our attention
 to a proof of theorem~\ref{Wiles_Frey}. We start on this proof in Chapter~\ref{ch_freyreduction}.
 ```
