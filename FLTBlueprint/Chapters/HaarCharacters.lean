@@ -133,7 +133,7 @@ and uses {\tt @[to\_additive]} to deduce the corresponding results
 for additive groups.
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_eq" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_eq" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
 $`d_A(\phi)`$ is independent of choice of regular Haar measure.
 :::
@@ -163,7 +163,7 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_smul_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
 {uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
 If `μ` is any regular Haar measure on `A` then
 $`d_A(\phi)(\phi_*\mu) = \mu.`$
@@ -191,7 +191,7 @@ This is a restatement of the previous result.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_comap" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
+:::corollary "MeasureTheory.addEquivAddHaarChar_comap" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
 {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
 If `μ` is any regular Haar measure on `A` then
 `d_A(φ)μ = \phi^*μ`.
@@ -222,7 +222,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_refl" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_refl" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
 `d_A(id)=1`.
 :::
@@ -250,7 +250,7 @@ Clear.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_smul_preimage" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_preimage")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_preimage" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_preimage")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
 If `X` is a Borel set, then `μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 :::
@@ -281,7 +281,7 @@ and the definition of the pushforward of a measure.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_integral_map")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_integral_map")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
 If `f : A → ℝ` is a Borel measurable function then
 `d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
@@ -319,7 +319,7 @@ We also have the following variant:
 We also have the following variant:
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (parent := "haar_character_project") (lean := "MeasureTheory.integral_comap_eq_addEquivAddHaarChar_smul")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (parent := "haar_character_project") (lean := "MeasureTheory.integral_comap_eq_addEquivAddHaarChar_smul")
 {uses "MeasureTheory.addEquivAddHaarChar_comap"}[]
 If `f : A → ℝ` is a Borel measurable function then
 `d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
@@ -348,7 +348,7 @@ This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_trans" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_trans" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
 `d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
 :::
@@ -390,7 +390,7 @@ lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
 
 # Examples
 
-:::theorem "MeasureTheory.ringHaarChar_real" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_real")
+:::lemma_ "MeasureTheory.ringHaarChar_real" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_real")
 If $`R=\R`$ then $`\delta_R(u)=|u|`$.
 :::
 
@@ -420,7 +420,7 @@ and if $u<0$ then $u*[0,1]=[u,0]$ which has measure $-u=|u|$.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.ringHaarChar_complex" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_complex")
+:::lemma_ "MeasureTheory.ringHaarChar_complex" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_complex")
 If $`R=\bbC`$ then $`\delta_R(u)=|u|^2`$.
 :::
 
@@ -486,7 +486,7 @@ We define `δ_R(u)`, or just `δ(u)` when the ring `R` is clear, to be
 \end{definition}
 ```
 
-:::theorem "MeasureTheory.ringHaarChar_mul_integral" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
+:::lemma_ "MeasureTheory.ringHaarChar_mul_integral" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
 {uses "MeasureTheory.ringHaarChar"}[]
 If `f : R → ℝ` is Borel measurable and `u ∈ R^\times`, then
 `δ_R(u) ∫ f(ux) dμ(x) = ∫ f(x) dμ(x)`.
@@ -517,7 +517,7 @@ A short calculation using the previous lemma.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.ringHaarChar_mul_volume" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
+:::lemma_ "MeasureTheory.ringHaarChar_mul_volume" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
 {uses "MeasureTheory.ringHaarChar"}[]
 {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
 If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
@@ -548,7 +548,7 @@ Immediate from the previous lemma.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.ringHaarChar_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
+:::corollary "MeasureTheory.ringHaarChar_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
 {uses "MeasureTheory.ringHaarChar"}[]
 The function `δ_R : R^\times → ℝ_{>0}` is continuous.
 :::
@@ -654,7 +654,7 @@ following lemma gives a formula for the scale factor `d_V(φ)`.
   and our theory applies. The following lemma gives a formula for the scale factor $d_V(\phi)$.
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
 {uses "MeasureTheory.ringHaarChar"}[]
 Assume that there is an `F`-basis for `V` such that `φ` is a product of
 elementary and diagonal matrices. Then
@@ -727,7 +727,7 @@ recall $\ell_u:R\to R$ is left multiplication by $u$. Then $\ell_u$ is easily ch
 an $F$-linear homeomorphism.
 ```
 
-:::theorem "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det")
+:::corollary "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det")
 If `u ∈ R^\times` then `δ_R(u) = δ_F(det(ℓ_u))`.
 :::
 
@@ -915,7 +915,7 @@ Here are two facts which we will need about products.
 Here are two facts which we will need about products.
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_prodCongr" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_prodCongr")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_prodCongr" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_prodCongr")
 If `(A, +)` and `(B, +)` are locally compact topological abelian groups, and if
 `φ : A → A` and `ψ : B → B` are additive homeomorphisms, then
 `φ × ψ : A × B → A × B` is an additive homeomorphism and
@@ -1073,7 +1073,7 @@ Follows immediately from
 
 # Some measure-theoretic preliminaries
 
-:::theorem "Topology.IsOpenEmbedding.isHaarMeasure_comap" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.isHaarMeasure_comap")
+:::lemma_ "Topology.IsOpenEmbedding.isHaarMeasure_comap" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.isHaarMeasure_comap")
 Let `A` and `B` be locally compact topological groups, and let `f : A → B` be
 both a group homomorphism and an open embedding. The pullback along `f` of a
 Haar measure on `B` is a Haar measure on `A`.
@@ -1104,7 +1104,7 @@ open.
 \end{proof}
 ```
 
-:::theorem "Topology.IsOpenEmbedding.regular_comap" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.regular_comap")
+:::lemma_ "Topology.IsOpenEmbedding.regular_comap" (parent := "haar_character_project") (lean := "Topology.IsOpenEmbedding.regular_comap")
 The pullback of a regular Borel measure along an open embedding is a regular
 Borel measure.
 :::
@@ -1134,7 +1134,7 @@ open, so all the properties of being a regular measure are easily checked.
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (parent := "haar_character_project") (lean := "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace")
+:::lemma_ "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (parent := "haar_character_project") (lean := "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace")
 Say `A` is a compact topological additive group and `φ : A → A` is an additive
 isomorphism. Then `d_A(φ)=1`.
 :::
@@ -1165,7 +1165,7 @@ We have `d_A(\phi)\mu(A)=\mu(A)`, and `\mu(A)` is positive and finite because
 \end{proof}
 ```
 
-:::theorem "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding")
 If `f : A → B` is a group homomorphism and open embedding between locally
 compact topological additive groups and if `α : A → A` and `β : B → B` are
 additive homeomorphisms such that the square commutes
@@ -1332,7 +1332,7 @@ and the $\phi_i$ are group or ring or module homomorphisms, then $\phi$ is a gro
 module homomorphism. However topological facts lie a little deeper.
 ```
 
-:::theorem "Continuous.restrictedProduct_congrRight" (parent := "haar_character_project") (lean := "Continuous.restrictedProduct_congrRight")
+:::lemma_ "Continuous.restrictedProduct_congrRight" (parent := "haar_character_project") (lean := "Continuous.restrictedProduct_congrRight")
 If the `A_i` and `B_i` are topological spaces and the `φ_i` are continuous
 functions, then the restricted product `φ = \prod'_i φ_i` is a continuous
 function.
@@ -1600,7 +1600,7 @@ As a special case, if $R$ is the restricted product of a collection of topologic
 
 # Adeles
 
-:::theorem "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
+:::corollary "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
 If `B` is a finite-dimensional `\Q`-algebra, if `B_{\A}` denotes the ring
 `B \otimes_{\Q} \A_{\Q}`, and if `b ∈ B^\times`, then `δ_{B_{\A}}(b)=1`.
 :::
