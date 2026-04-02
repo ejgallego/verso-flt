@@ -45,8 +45,8 @@ of this material.
 
 # Initial definitions
 
-Let $`A`$ be a locally compact topological additive abelian group. There's then
-a regular additive Haar measure $`\mu`$ on $`A`$, unique up to a positive
+Let $`A` be a locally compact topological additive abelian group. There's then
+a regular additive Haar measure $`\mu` on $`A`, unique up to a positive
 scalar factor. If `φ : (A, +) ≃ (A, +)` is a homeomorphism and an additive
 automorphism of `A`, then we can push forward `μ` along `φ` to get a second
 measure `φ_* μ` on `A`, with the property that
@@ -135,7 +135,7 @@ for additive groups.
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_eq" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
-$`d_A(\phi)`$ is independent of choice of regular Haar measure.
+$`d_A(\phi)` is independent of choice of regular Haar measure.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := statement)
@@ -166,7 +166,7 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
 {uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
 If `μ` is any regular Haar measure on `A` then
-$`d_A(\phi)(\phi_*\mu) = \mu.`$
+$`d_A(\phi)(\phi_*\mu) = \mu.`
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := statement)
@@ -391,7 +391,7 @@ lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
 # Examples
 
 :::lemma_ "MeasureTheory.ringHaarChar_real" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_real")
-If $`R=\R`$ then $`\delta_R(u)=|u|`$.
+If $`R=\R` then $`\delta_R(u)=|u|`.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_real" (slot := statement)
@@ -421,7 +421,7 @@ and if $u<0$ then $u*[0,1]=[u,0]$ which has measure $-u=|u|$.
 ```
 
 :::lemma_ "MeasureTheory.ringHaarChar_complex" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_complex")
-If $`R=\bbC`$ then $`\delta_R(u)=|u|^2`$.
+If $`R=\bbC` then $`\delta_R(u)=|u|^2`.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_complex" (slot := statement)
@@ -452,7 +452,7 @@ change area. The general case follows.
 
 # Ring-level Haar characters
 
-Now let $`R`$ be a locally compact topological ring. The Haar character of
+Now let $`R` be a locally compact topological ring. The Haar character of
 `R`, or more precisely the left Haar character of `R`, is a group homomorphism
 `R^\times \to \R^\times` defined in the following way. If `u ∈ R^\times` then
 left multiplication by `u`, namely the map `\ell_u : (R,+) → (R,+)` defined by
@@ -593,7 +593,7 @@ continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
 ```
 
 :::theorem "padic_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_padic")
-If $`R=\Q_p`$ then $`\delta_R(u)=|u|_p`$, the usual $`p`$-adic norm.
+If $`R=\Q_p` then $`\delta_R(u)=|u|_p`, the usual $`p`-adic norm.
 :::
 
 ```tex
@@ -622,10 +622,10 @@ which agree on generators of a group must agree on the group.
 \end{proof}
 ```
 
-If $`R`$ is a finite extension of $`\Q_p`$ then $`\delta_R(u)`$
-is the norm on $`R`$ normalised in the following way:
-$`\delta_R(\varpi)=q^{-1}`$, where $`\varpi`$ is a uniformiser
-and $`q`$ is the size of the (finite) residue field.
+If $`R` is a finite extension of $`\Q_p` then $`\delta_R(u)`
+is the norm on $`R` normalised in the following way:
+$`\delta_R(\varpi)=q^{-1}`, where $`\varpi` is a uniformiser
+and $`q` is the size of the (finite) residue field.
 
 ```tex
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
@@ -633,7 +633,7 @@ If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ nor
 
 # Algebras
 
-Say $`F`$ is a locally compact topological ring, for example `\R`, `\bbC`,
+Say $`F` is a locally compact topological ring, for example `\R`, `\bbC`,
 `\Q_p`, or the adeles of a number field, `V` is a finite free `F`-module, and
 `φ : V → V` is an invertible `F`-linear map. Then `V` with its module topology
 (which is the product topology if one picks a basis) is a locally compact
@@ -708,7 +708,7 @@ Note: we assume that $F$ is second countable
 \end{proof}
 ```
 
-Now say $`F`$ is a locally compact topological field, and that `R` is a
+Now say $`F` is a locally compact topological field, and that `R` is a
 possibly noncommutative `F`-algebra. Recall that this means that `F` lies in
 the center of `R`, unless `R = 0`. Assume that `R` is finite-dimensional as an
 `F`-vector space. Then if we give `R` the `F`-module topology, which is just
@@ -943,16 +943,16 @@ Haar measure on `A × B` is the product of Haar measures on `A` and `B`, and
 in this case the result follows easily. Without this assumption, the product of
 these measures may not even be a Borel measure and one has to be more careful.
 The proof in this case is explained by Gou\"ezel.
-Here is the idea. Let $`\rho`$ be a Haar measure on $`A\times B`$. Fix sets
-$`X\subseteq A`$ and $`Y\subseteq B`$ which are compact with nonempty
-interior. We can now pull back $`\rho`$ to a measure $`\nu`$ on the Borel
-sigma-algebra of $`A`$ defined as $`\nu(s)=\rho(s\times Y)`$, and this is
-easily checked to be a Haar measure on $`A`$. Then
+Here is the idea. Let $`\rho` be a Haar measure on $`A\times B`. Fix sets
+$`X\subseteq A` and $`Y\subseteq B` which are compact with nonempty
+interior. We can now pull back $`\rho` to a measure $`\nu` on the Borel
+sigma-algebra of $`A` defined as $`\nu(s)=\rho(s\times Y)`, and this is
+easily checked to be a Haar measure on $`A`. Then
 $$`\delta_{A\times B}(a,0)\nu(X)=
 \delta_{A\times B}(a,0)\rho(X\times Y)=\rho((a,0)(X\times Y))=
 \rho(aX\times Y)=\nu(aX)=\delta_A(a)\nu(X)`.
-So $`\delta_{A\times B}(a,0)=\delta_A(a)`$. Similarly
-$`\delta_{A\times B}(0,b)=\delta_B(b)`$, and because $`\delta_{A\times B}`$ is
+So $`\delta_{A\times B}(a,0)=\delta_A(a)`. Similarly
+$`\delta_{A\times B}(0,b)=\delta_B(b)`, and because $`\delta_{A\times B}` is
 a group homomorphism we're home.
 :::
 
@@ -1305,7 +1305,7 @@ Then $d_A(\phi)=1.$
 
 # Restricted products
 
-Now say $`A = \prod'_i A_i`$ is the restricted product of a collection of types
+Now say $`A = \prod'_i A_i` is the restricted product of a collection of types
 `A_i` with respect to the subsets `C_i`. Recall that this is the subset of
 `∏_i A_i` consisting of those elements whose `i`th coordinate lies in `C_i`
 for all but finitely many `i`. Say `B = \prod'_i B_i` is the restricted

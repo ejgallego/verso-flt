@@ -96,8 +96,8 @@ hypotheses on the rings at all.
 # Statement Of The Theorem
 
 The set-up throughout this project:
-$`G`$ is a finite group acting (via ring isomorphisms) on a commutative ring
-$`B`$, and $`A`$ is the subring of $`G`$-invariants.
+$`G` is a finite group acting (via ring isomorphisms) on a commutative ring
+$`B`, and $`A` is the subring of $`G`-invariants.
 
 ```tex
 The set-up throughout this project:
@@ -106,11 +106,11 @@ and $A$ is the subring of $G$-invariants.
 ```
 
 :::definition "decomposition_group_definition" (parent := "frobenius_project")
-Say $`Q`$ is a prime ideal of $`B`$, whose pullback to $`A`$ is the prime ideal
-$`P`$. Note that $`G`$ naturally acts on the ideals of $`B`$. Let the
-decomposition group $`D_Q`$ of $`Q`$ be the subgroup of $`G`$ which stabilizes
-$`Q`$ (just to be clear: $`g \in D_Q`$ means $`\{g \cdot q \,:\, q \in Q\}=Q`$,
-not $`\forall q \in Q, g \cdot q = q`$).
+Say $`Q` is a prime ideal of $`B`, whose pullback to $`A` is the prime ideal
+$`P`. Note that $`G` naturally acts on the ideals of $`B`. Let the
+decomposition group $`D_Q` of $`Q` be the subgroup of $`G` which stabilizes
+$`Q` (just to be clear: $`g \in D_Q` means $`\{g \cdot q \,:\, q \in Q\}=Q`,
+not $`\forall q \in Q, g \cdot q = q`).
 :::
 
 ```tex
@@ -121,10 +121,10 @@ stabilizes $Q$ (just to be clear: $g\in D_Q$ means
 $\{g\cdot q\, :\, q \in Q\}=Q$, not $\forall q\in Q, g\cdot q=q$).
 ```
 
-Let $`L`$ be the field of fractions of the integral domain $`B/Q`$, and let
-$`K`$ be the field of fractions of the subring $`A/P`$. Then $`L`$ is naturally
-a $`K`$-algebra. In this generality $`L/K`$ may not even be finite or Galois,
-but we can still talk about $`\Aut(L/K)`$.
+Let $`L` be the field of fractions of the integral domain $`B/Q`, and let
+$`K` be the field of fractions of the subring $`A/P`. Then $`L` is naturally
+a $`K`-algebra. In this generality $`L/K` may not even be finite or Galois,
+but we can still talk about $`\Aut(L/K)`.
 
 ```tex
 Let $L$ be the field of fractions of the integral domain $B/Q$, and let $K$ be the
@@ -133,18 +133,18 @@ In this generality $L/K$ may not even be finite or Galois, but we can still talk
 $\Aut(L/K)$.
 ```
 
-In the next definition we write down a group homomorphism $`\phi`$ from $`D_Q`$
-to $`\Aut(L/K)`$.
+In the next definition we write down a group homomorphism $`\phi` from $`D_Q`
+to $`\Aut(L/K)`.
 
 ```tex
 In the next definition we write down a group homomorphism $\phi$ from $D_Q$ to $\Aut(L/K)$.
 ```
 
 :::definition "IsFractionRing.stabilizerHom" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom")
-Choose $`g \in D_Q`$. Then the action of $`g`$ on $`B`$ gives us an induced
-$`A/P`$-algebra automorphism of $`B/Q`$ which extends to a $`K`$-algebra
-automorphism $`\phi(g)`$ of $`L`$. This construction $`g \mapsto \phi(g)`$
-defines a group homomorphism from $`D_Q`$ to $`\Aut(L/K)`$ (all the proofs
+Choose $`g \in D_Q`. Then the action of $`g` on $`B` gives us an induced
+$`A/P`-algebra automorphism of $`B/Q` which extends to a $`K`-algebra
+automorphism $`\phi(g)` of $`L`. This construction $`g \mapsto \phi(g)`
+defines a group homomorphism from $`D_Q` to $`\Aut(L/K)` (all the proofs
 implicit in the definition here are straightforward).
 :::
 
@@ -168,7 +168,7 @@ The theorem we want in this mini-project is
 
 :::theorem "IsFractionRing.stabilizerHom_surjective" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom_surjective")
 {uses "IsFractionRing.stabilizerHom"}[]
-The map $`g \mapsto \phi_g`$ from $`D_Q`$ to $`\Aut(L/K)`$ defined above is
+The map $`g \mapsto \phi_g` from $`D_Q` to $`\Aut(L/K)` defined above is
 surjective.
 :::
 
@@ -189,8 +189,8 @@ mathlib.
 The goal of this mini-project is to get this theorem formalised and ideally into mathlib.
 ```
 
-In particular, $`\Aut(L/K)`$ is finite as a corollary. What is so striking about
-this theorem to me is that the only finiteness hypothesis is on the group $`G`$
+In particular, $`\Aut(L/K)` is finite as a corollary. What is so striking about
+this theorem to me is that the only finiteness hypothesis is on the group $`G`
 which acts; there are no finiteness or Noetherian hypotheses on the rings at
 all.
 
@@ -232,11 +232,11 @@ this maximal separable subextension.
 
 # The Extension B/A
 
-The precise set-up we'll work in is the following. We fix $`G`$ a finite group
-acting on $`B`$ a commutative ring, and we have another commutative ring $`A`$
-such that $`B`$ is an $`A`$-algebra and the image of $`A`$ in $`B`$ is
-precisely the $`G`$-invariant elements of $`B`$. We do not ever need the map
-$`A \to B`$ to be injective so we do not assume this.
+The precise set-up we'll work in is the following. We fix $`G` a finite group
+acting on $`B` a commutative ring, and we have another commutative ring $`A`
+such that $`B` is an $`A`-algebra and the image of $`A` in $`B` is
+precisely the $`G`-invariant elements of $`B`. We do not ever need the map
+$`A \to B` to be injective so we do not assume this.
 
 ```tex
 The precise set-up we'll work in is the following. We fix $G$ a finite group acting
@@ -246,7 +246,7 @@ elements of $B$. We don't ever need the map $A\to B$ to be injective so we don't
 ```
 
 We start with a construction which is fundamental to everything, and which
-explains why we need $`G`$ to be finite.
+explains why we need $`G` to be finite.
 
 ```tex
 We start with a construction which is fundamental to everything,
@@ -254,8 +254,8 @@ and which explains why we need $G$ to be finite.
 ```
 
 :::definition "MulSemiringAction.charpoly" (parent := "frobenius_project") (lean := "MulSemiringAction.charpoly")
-If $`b \in B`$ then define the characteristic polynomial $`F_b(X) \in B[X]`$
-of $`b`$ to be $`\prod_{g \in G}(X - g \cdot b)`$.
+If $`b \in B` then define the characteristic polynomial $`F_b(X) \in B[X]`
+of $`b` to be $`\prod_{g \in G}(X - g \cdot b)`.
 :::
 
 ```tex "MulSemiringAction.charpoly" (slot := statement)
@@ -268,7 +268,7 @@ of $`b`$ to be $`\prod_{g \in G}(X - g \cdot b)`$.
 \end{definition}
 ```
 
-Clearly $`F_b`$ is a monic polynomial.
+Clearly $`F_b` is a monic polynomial.
 
 ```tex
 Clearly $F_b$ is a monic polynomial.
@@ -276,7 +276,7 @@ Clearly $F_b$ is a monic polynomial.
 
 :::lemma_ "MulSemiringAction.monic_charpoly" (parent := "frobenius_project") (lean := "MulSemiringAction.monic_charpoly")
 {uses "MulSemiringAction.charpoly"}[]
-$`F_b`$ is monic.
+$`F_b` is monic.
 :::
 
 ```tex "MulSemiringAction.monic_charpoly" (slot := statement)
@@ -300,12 +300,12 @@ Obvious.
 \end{proof}
 ```
 
-It is also clear that $`F_b`$ has degree $`|G|`$ and has $`b`$ as a root. Also
-$`F_b`$ is $`G`$-invariant, because acting by some $`\gamma \in G`$ just
-permutes the order of the factors. Hence we can descend $`F_b`$ to a monic
-polynomial $`M_b(X)`$ of degree $`|G|`$ in $`A[X]`$. We will also refer to
-$`M_b`$ as the characteristic polynomial of $`b`$, even though it is not even
-well-defined if the map $`A \to B`$ is not injective.
+It is also clear that $`F_b` has degree $`|G|` and has $`b` as a root. Also
+$`F_b` is $`G`-invariant, because acting by some $`\gamma \in G` just
+permutes the order of the factors. Hence we can descend $`F_b` to a monic
+polynomial $`M_b(X)` of degree $`|G|` in $`A[X]`. We will also refer to
+$`M_b` as the characteristic polynomial of $`b`, even though it is not even
+well-defined if the map $`A \to B` is not injective.
 
 ```tex
 It's also clear that $F_b$ has degree $|G|$ and has $b$ as a root.
@@ -318,7 +318,7 @@ it's not even well-defined if the map $A\to B$ isn't injective.
 
 :::lemma_ "Algebra.IsInvariant.charpoly_mem_lifts" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.charpoly_mem_lifts")
 {uses "MulSemiringAction.charpoly"}[]
-$`F_b`$ is the lift of some monic polynomial $`M_b`$ in $`A[X]`$.
+$`F_b` is the lift of some monic polynomial $`M_b` in $`A[X]`.
 :::
 
 ```tex "Algebra.IsInvariant.charpoly_mem_lifts" (slot := statement)
@@ -332,8 +332,8 @@ $`F_b`$ is the lift of some monic polynomial $`M_b`$ in $`A[X]`$.
 ```
 
 :::proof "Algebra.IsInvariant.charpoly_mem_lifts"
-The coefficients of $`F_b`$ are $`G`$-invariant, and thus lie in the image of
-$`A`$.
+The coefficients of $`F_b` are $`G`-invariant, and thus lie in the image of
+$`A`.
 :::
 
 ```tex "Algebra.IsInvariant.charpoly_mem_lifts" (slot := proof)
@@ -344,7 +344,7 @@ $`A`$.
 ```
 
 :::theorem "Algebra.IsInvariant.isIntegral" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.isIntegral")
-$`B/A`$ is integral.
+$`B/A` is integral.
 :::
 
 ```tex "Algebra.IsInvariant.isIntegral" (slot := statement)
@@ -359,7 +359,7 @@ $`B/A`$ is integral.
 :::proof "Algebra.IsInvariant.isIntegral"
 {uses "MulSemiringAction.monic_charpoly"}[]
 {uses "Algebra.IsInvariant.charpoly_mem_lifts"}[]
-Use $`M_b`$.
+Use $`M_b`.
 :::
 
 ```tex "Algebra.IsInvariant.isIntegral" (slot := proof)
@@ -387,15 +387,15 @@ if $G$ is abelian then $\Frob_Q$ and $\Frob_{Q'}$ are equal, so we can call them
 
 # The Extension (B/Q)/(A/P)
 
-Note that $`P`$ and $`Q`$ are primes, so the quotients $`A/P`$ and $`B/Q`$ are
+Note that $`P` and $`Q` are primes, so the quotients $`A/P` and $`B/Q` are
 integral domains.
 
 ```tex
 Note that $P$ and $Q$ are primes, so the quotients $A/P$ and $B/Q$ are integral domains.
 ```
 
-The following technical lemma constructs an element of $`B`$ with nice
-characteristic polynomial modulo $`Q`$.
+The following technical lemma constructs an element of $`B` with nice
+characteristic polynomial modulo $`Q`.
 
 ```tex
 The following technical lemma constructs an element of $B$ with nice characteristic polynomial
@@ -403,10 +403,10 @@ modulo $Q$.
 ```
 
 :::lemma_ "fixed_of_fixed1_aux1" (parent := "frobenius_project")
-There exist elements $`a,b \in B`$, with $`a \notin Q`$ and $`a`$ in the image
-of $`A`$, such that for all $`g \in G`$:
-- If $`g \cdot Q = Q`$, then $`g \cdot b \equiv a \pmod{Q}`$.
-- If $`g \cdot Q \neq Q`$, then $`g \cdot b \equiv 0 \pmod{Q}`$.
+There exist elements $`a,b \in B`, with $`a \notin Q` and $`a` in the image
+of $`A`, such that for all $`g \in G`:
+- If $`g \cdot Q = Q`, then $`g \cdot b \equiv a \pmod{Q}`.
+- If $`g \cdot Q \neq Q`, then $`g \cdot b \equiv 0 \pmod{Q}`.
 :::
 
 ```tex "fixed_of_fixed1_aux1" (slot := statement)
@@ -424,19 +424,19 @@ of $`A`$, such that for all $`g \in G`$:
 
 :::proof "fixed_of_fixed1_aux1"
 {uses "Algebra.IsInvariant.charpoly_mem_lifts"}[]
-The ideals $`g \cdot Q \neq Q`$ are not contained in $`Q`$. Since $`Q`$ is a
-prime ideal, this implies that the intersection of all $`g \cdot Q \neq Q`$ is
-still not contained in $`Q`$. Then we can find an element $`c \notin Q`$ with
-$`c \in g \cdot Q`$ for all $`g \cdot Q \neq Q`$. Let $`F_c`$ be the
-characteristic polynomial of $`c`$, and write
-$`F_c(X) \equiv X^j R(X) \pmod{Q}`$. Let $`a`$ be the coefficient of $`X^j`$ in
-$`F_c(X)`$, and choose $`R(X)`$ so that $`R(0) = a`$. Let $`b = R(0) - R(c)`$.
-Note that $`F_c(c) = 0`$ and $`c \not\equiv 0 \pmod{Q}`$, so
-$`R(c) \equiv 0 \pmod{Q}`$. Then $`b \equiv a \pmod{Q}`$, so
-$`g \cdot b \equiv a \pmod{Q}`$ whenever $`g \cdot Q = Q`$. But if
-$`g \cdot Q \neq Q`$, then $`c \equiv 0 \pmod{g \cdot Q}`$. Then
-$`b \equiv 0 \pmod{g \cdot Q}`$, so $`g \cdot b \equiv 0 \pmod{Q}`$ whenever
-$`g \cdot Q \neq Q`$.
+The ideals $`g \cdot Q \neq Q` are not contained in $`Q`. Since $`Q` is a
+prime ideal, this implies that the intersection of all $`g \cdot Q \neq Q` is
+still not contained in $`Q`. Then we can find an element $`c \notin Q` with
+$`c \in g \cdot Q` for all $`g \cdot Q \neq Q`. Let $`F_c` be the
+characteristic polynomial of $`c`, and write
+$`F_c(X) \equiv X^j R(X) \pmod{Q}`. Let $`a` be the coefficient of $`X^j` in
+$`F_c(X)`, and choose $`R(X)` so that $`R(0) = a`. Let $`b = R(0) - R(c)`.
+Note that $`F_c(c) = 0` and $`c \not\equiv 0 \pmod{Q}`, so
+$`R(c) \equiv 0 \pmod{Q}`. Then $`b \equiv a \pmod{Q}`, so
+$`g \cdot b \equiv a \pmod{Q}` whenever $`g \cdot Q = Q`. But if
+$`g \cdot Q \neq Q`, then $`c \equiv 0 \pmod{g \cdot Q}`. Then
+$`b \equiv 0 \pmod{g \cdot Q}`, so $`g \cdot b \equiv 0 \pmod{Q}` whenever
+$`g \cdot Q \neq Q`.
 :::
 
 ```tex "fixed_of_fixed1_aux1" (slot := proof)
@@ -458,7 +458,7 @@ $`g \cdot Q \neq Q`$.
 \end{proof}
 ```
 
-A slight modification allows us to take an element of $`B`$ fixed by $`D_Q`$ as
+A slight modification allows us to take an element of $`B` fixed by $`D_Q` as
 input.
 
 ```tex
@@ -466,12 +466,12 @@ A slight modification allows us to take an element of $B$ fixed by $D_Q$ as inpu
 ```
 
 :::lemma_ "fixed_of_fixed1_aux2" (parent := "frobenius_project")
-Let $`b_0 \in B`$. Suppose that the image of $`b_0`$ in the quotient $`B/Q`$ is
-fixed by the stabilizer subgroup $`D_Q`$. Then there exist elements
-$`a,b \in B`$, with $`a \notin Q`$ and $`a`$ in the image of $`A`$, such that
-for all $`g \in G`$:
-- If $`g \cdot Q = Q`$, then $`g \cdot b \equiv a b_0 \pmod{Q}`$.
-- If $`g \cdot Q \neq Q`$, then $`g \cdot b \equiv 0 \pmod{Q}`$.
+Let $`b_0 \in B`. Suppose that the image of $`b_0` in the quotient $`B/Q` is
+fixed by the stabilizer subgroup $`D_Q`. Then there exist elements
+$`a,b \in B`, with $`a \notin Q` and $`a` in the image of $`A`, such that
+for all $`g \in G`:
+- If $`g \cdot Q = Q`, then $`g \cdot b \equiv a b_0 \pmod{Q}`.
+- If $`g \cdot Q \neq Q`, then $`g \cdot b \equiv 0 \pmod{Q}`.
 :::
 
 ```tex "fixed_of_fixed1_aux2" (slot := statement)
@@ -492,7 +492,7 @@ for all $`g \in G`$:
 
 :::proof "fixed_of_fixed1_aux2"
 {uses "fixed_of_fixed1_aux1"}[]
-Multiply the $`b`$ from `fixed_of_fixed1_aux1` by $`b_0`$.
+Multiply the $`b` from `fixed_of_fixed1_aux1` by $`b_0`.
 :::
 
 ```tex "fixed_of_fixed1_aux2" (slot := proof)
@@ -509,9 +509,9 @@ Multiply the $`b`$ from `fixed_of_fixed1_aux1` by $`b_0`$.
 
 # The Extension L/K
 
-Let $`L^{D_Q}`$ denote the fixed field of the action $`D_Q`$ on $`L`$. Our
-strategy for proving surjectivity of $`D_Q \to \Aut(L/K)`$ will be to write
-this map as the composition $`D_Q \to \Aut(L/L^{D_Q}) \to \Aut(L/K)`$.
+Let $`L^{D_Q}` denote the fixed field of the action $`D_Q` on $`L`. Our
+strategy for proving surjectivity of $`D_Q \to \Aut(L/K)` will be to write
+this map as the composition $`D_Q \to \Aut(L/L^{D_Q}) \to \Aut(L/K)`.
 
 ```tex
 Let $L^{D_Q}$ denote the fixed field of the action $D_Q$ on $L$.
@@ -526,8 +526,8 @@ The surjectivity of the first map is a general fact of Galois theory.
 ```
 
 :::theorem "FixedPoints.toAlgAut_surjective" (parent := "frobenius_project") (lean := "FixedPoints.toAlgAut_surjective")
-If a finite group $`H`$ acts on a field $`F`$ by field automorphisms, then the
-map $`H \to \Aut(F/F^H)`$ is surjective.
+If a finite group $`H` acts on a field $`F` by field automorphisms, then the
+map $`H \to \Aut(F/F^H)` is surjective.
 :::
 
 ```tex "FixedPoints.toAlgAut_surjective" (slot := statement)
@@ -552,8 +552,8 @@ This is a general fact of Galois theory and was already in mathlib.
 ```
 
 For surjectivity of the second map, we need to know that every element of
-$`L^{D_Q}`$ is fixed by $`\Aut(L/K)`$. We first show this for elements of
-$`B/Q`$ fixed by $`D_Q`$.
+$`L^{D_Q}` is fixed by $`\Aut(L/K)`. We first show this for elements of
+$`B/Q` fixed by $`D_Q`.
 
 ```tex
 For surjectivity of the second map, we need to know that every element of $L^{D_Q}$ is fixed by
@@ -563,8 +563,8 @@ We first show this for elements of $B/Q$ fixed by $D_Q$.
 
 :::theorem "fixed_of_fixed1" (parent := "frobenius_project")
 {uses "IsFractionRing.stabilizerHom"}[]
-Let $`b_0 \in B/Q`$. Suppose that $`b_0`$ is fixed by the stabilizer subgroup
-$`D_Q`$. Then $`b_0`$ is fixed by $`\Aut(L/K)`$.
+Let $`b_0 \in B/Q`. Suppose that $`b_0` is fixed by the stabilizer subgroup
+$`D_Q`. Then $`b_0` is fixed by $`\Aut(L/K)`.
 :::
 
 ```tex "fixed_of_fixed1" (slot := statement)
@@ -581,14 +581,14 @@ $`D_Q`$. Then $`b_0`$ is fixed by $`\Aut(L/K)`$.
 :::proof "fixed_of_fixed1"
 {uses "fixed_of_fixed1_aux1"}[]
 {uses "fixed_of_fixed1_aux2"}[]
-Let $`a,b \in B`$ be elements from `fixed_of_fixed1_aux2`. Let
-$`M_b \in A[X]`$ be the characteristic polynomial of $`b`$. We can map
-$`M_b`$ to $`L[X]`$ in two different ways: via $`B[X]`$ and via $`K[X]`$.
-Going via $`B[X]`$ tells us that the image of $`M_b(X)`$ in $`L[X]`$ is exactly
-$`(X - a b_0)^{|D_Q|} X^{|G|-|D_Q|}`$. But going via $`K[X]`$ tells us that
-this image lies in $`K[X]`$, so we must have $`a b_0 \in K`$. Then
-$`a b_0`$ is fixed by $`\Aut(L/K)`$, and $`a`$ is nonzero in $`L`$ (since
-$`a \notin Q`$), so $`b_0`$ is fixed by $`\Aut(L/K)`$.
+Let $`a,b \in B` be elements from `fixed_of_fixed1_aux2`. Let
+$`M_b \in A[X]` be the characteristic polynomial of $`b`. We can map
+$`M_b` to $`L[X]` in two different ways: via $`B[X]` and via $`K[X]`.
+Going via $`B[X]` tells us that the image of $`M_b(X)` in $`L[X]` is exactly
+$`(X - a b_0)^{|D_Q|} X^{|G|-|D_Q|}`. But going via $`K[X]` tells us that
+this image lies in $`K[X]`, so we must have $`a b_0 \in K`. Then
+$`a b_0` is fixed by $`\Aut(L/K)`, and $`a` is nonzero in $`L` (since
+$`a \notin Q`), so $`b_0` is fixed by $`\Aut(L/K)`.
 :::
 
 ```tex "fixed_of_fixed1" (slot := proof)
@@ -606,8 +606,8 @@ $`a \notin Q`$), so $`b_0`$ is fixed by $`\Aut(L/K)`$.
 \end{proof}
 ```
 
-Now we upgrade this to elements of $`L`$ fixed by $`D_Q`$. The following lemma
-will allow us to lift the denominator from $`B/Q`$ to $`A/P`$.
+Now we upgrade this to elements of $`L` fixed by $`D_Q`. The following lemma
+will allow us to lift the denominator from $`B/Q` to $`A/P`.
 
 ```tex
 Now we upgrade this to elements of $L$ fixed by $D_Q$.
@@ -615,9 +615,9 @@ The following lemma will allow us to lift the denominator from $B/Q$ to $A/P$.
 ```
 
 :::lemma_ "IsAlgebraic.exists_smul_eq_mul" (parent := "frobenius_project") (lean := "IsAlgebraic.exists_smul_eq_mul")
-If $`R/S`$ is an algebraic extension of integral domains, then any fraction
-$`a/b`$ with $`a,b \in R`$ can be written as $`c/d`$ with $`c \in R`$ and
-$`d \in S`$.
+If $`R/S` is an algebraic extension of integral domains, then any fraction
+$`a/b` with $`a,b \in R` can be written as $`c/d` with $`c \in R` and
+$`d \in S`.
 :::
 
 ```tex "IsAlgebraic.exists_smul_eq_mul" (slot := statement)
@@ -631,8 +631,8 @@ $`d \in S`$.
 ```
 
 :::proof "IsAlgebraic.exists_smul_eq_mul"
-If $`f \in S[X]`$ satisfies $`f(b) = 0`$, then $`f(0) \in S`$ is a multiple of
-$`b`$. If $`f(0)=bx \in S`$, then $`a/b=(ax)/(bx)`$ as desired.
+If $`f \in S[X]` satisfies $`f(b) = 0`, then $`f(0) \in S` is a multiple of
+$`b`. If $`f(0)=bx \in S`, then $`a/b=(ax)/(bx)` as desired.
 :::
 
 ```tex "IsAlgebraic.exists_smul_eq_mul" (slot := proof)
@@ -644,8 +644,8 @@ $`b`$. If $`f(0)=bx \in S`$, then $`a/b=(ax)/(bx)`$ as desired.
 ```
 
 :::theorem "fixed_of_fixed2" (parent := "frobenius_project")
-Let $`x \in L`$. Suppose that $`x`$ is fixed by the stabilizer subgroup $`D_Q`$.
-Then $`x`$ is fixed by the automorphism group $`\Aut(L/K)`$.
+Let $`x \in L`. Suppose that $`x` is fixed by the stabilizer subgroup $`D_Q`.
+Then $`x` is fixed by the automorphism group $`\Aut(L/K)`.
 :::
 
 ```tex "fixed_of_fixed2" (slot := statement)
@@ -662,11 +662,11 @@ Then $`x`$ is fixed by the automorphism group $`\Aut(L/K)`$.
 {uses "Algebra.IsInvariant.isIntegral"}[]
 {uses "IsAlgebraic.exists_smul_eq_mul"}[]
 {uses "fixed_of_fixed1"}[]
-Since $`(B/Q)/(A/P)`$ is algebraic by `Algebra.IsInvariant.isIntegral`,
-`IsAlgebraic.exists_smul_eq_mul` lets us write $`x=b/a`$ for $`b \in B/Q`$ and
-$`a \in A/P`$. Then $`b`$ is fixed by the stabilizer subgroup $`D_Q`$, and it
-suffices to show that $`b`$ is fixed by the automorphism group
-$`\Aut(L/K)`$. But this is exactly `fixed_of_fixed1`.
+Since $`(B/Q)/(A/P)` is algebraic by `Algebra.IsInvariant.isIntegral`,
+`IsAlgebraic.exists_smul_eq_mul` lets us write $`x=b/a` for $`b \in B/Q` and
+$`a \in A/P`. Then $`b` is fixed by the stabilizer subgroup $`D_Q`, and it
+suffices to show that $`b` is fixed by the automorphism group
+$`\Aut(L/K)`. But this is exactly `fixed_of_fixed1`.
 :::
 
 ```tex "fixed_of_fixed2" (slot := proof)
@@ -691,12 +691,12 @@ Combining this with~\ref{FixedPoints.toAlgAut_surjective} finishes the proof.
 :::proof "IsFractionRing.stabilizerHom_surjective"
 {uses "fixed_of_fixed2"}[]
 {uses "FixedPoints.toAlgAut_surjective"}[]
-The map $`D_Q \to \Aut(L/L^{D_Q})`$ is surjective by
+The map $`D_Q \to \Aut(L/L^{D_Q})` is surjective by
 `FixedPoints.toAlgAut_surjective`. For surjectivity of
-$`\Aut(L/L^{D_Q}) \to \Aut(L/K)`$, let $`\sigma`$ be a field automorphism of
-$`L`$ fixing $`K`$ pointwise. We must show that $`\sigma`$ automatically fixes
-$`L^{D_Q}`$ pointwise. But this is exactly `fixed_of_fixed2`. Thus, the
-composition $`D_Q \to \Aut(L/L^{D_Q}) \to \Aut(L/K)`$ is surjective.
+$`\Aut(L/L^{D_Q}) \to \Aut(L/K)`, let $`\sigma` be a field automorphism of
+$`L` fixing $`K` pointwise. We must show that $`\sigma` automatically fixes
+$`L^{D_Q}` pointwise. But this is exactly `fixed_of_fixed2`. Thus, the
+composition $`D_Q \to \Aut(L/L^{D_Q}) \to \Aut(L/K)` is surjective.
 :::
 
 ```tex "IsFractionRing.stabilizerHom_surjective" (slot := proof)

@@ -48,14 +48,14 @@ $`K \backslash \mathbf{A}_K`.
 ```
 
 The TeX chapter uses this analogy repeatedly. The quotient
-$`K \backslash \mathbf{A}_K`$ is the model case: a global field
+$`K \backslash \mathbf{A}_K` is the model case: a global field
 embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
 for the same style of compactness after replacing the commutative additive group
 by the norm-one units in an adelic division algebra.
 
 ```tex
 The TeX chapter uses this analogy repeatedly. The quotient
-$`K \backslash \mathbf{A}_K`$ is the model case: a global field
+$`K \backslash \mathbf{A}_K` is the model case: a global field
 embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
 for the same style of compactness after replacing the commutative additive group
 by the norm-one units in an adelic division algebra.
@@ -114,13 +114,13 @@ then this is a quaternion algebra (which may or may not be isomorphic to $M_2(K)
 generality).
 ```
 
-Some central simple algebras $`B`$ are division algebras, meaning that they are
-division rings, or equivalently that every nonzero $`b\in B`$ has a two-sided
+Some central simple algebras $`B` are division algebras, meaning that they are
+division rings, or equivalently that every nonzero $`b\in B` has a two-sided
 inverse. For example Hamilton's quaternions are a division algebra over
-$`\R`$, because
-$`(x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2`$, so the inverse of a nonzero
-$`x+yi+zj+tk`$ is
-$`(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)`$.
+$`\R`, because
+$`(x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2`, so the inverse of a nonzero
+$`x+yi+zj+tk` is
+$`(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)`.
 
 ```tex
 Some central simple algebras~$B$ are \emph{division algebras}, meaning that they are division
@@ -130,10 +130,10 @@ because $(x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2$, so the inverse
 of a nonzero $x+yi+zj+tk$ is $(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)$.
 ```
 
-However $`2\times 2`$ matrices over a field $`K`$, whilst being a central
-simple algebra over $`K`$, are never a division algebra, because a nonzero
+However $`2\times 2` matrices over a field $`K`, whilst being a central
+simple algebra over $`K`, are never a division algebra, because a nonzero
 matrix with determinant zero such as
-$`\begin{pmatrix}1&0\\0&0\end{pmatrix}`$ has no inverse.
+$`\begin{pmatrix}1&0\\0&0\end{pmatrix}` has no inverse.
 
 ```tex
 However $2\times 2$ matrices over a field~$K$, whilst being a central simple algebra
@@ -171,17 +171,17 @@ generality).
 # Enter the adeles
 
 :::definition "adelic_division_algebra_setup" (parent := "fujisaki_project")
-Let $`K`$ be a number field and let $`D/K`$ be a finite-dimensional central
-simple $`K`$-algebra (later on $`D`$ will be a division algebra, hence the
-name, but we do not need this yet). Then $`D_{\A}:=D\otimes_K\A_K`$ is an
-$`\A_K`$-algebra which is free of finite rank, and if we give $`D_{\A}`$ the
-$`\A_K`$-module topology then it is a topological ring. Furthermore
-$`D_{\A}`$ is free of finite rank over the locally compact topological ring
-$`\A_K`$ and is thus also locally compact. So by the theory of Haar characters
+Let $`K` be a number field and let $`D/K` be a finite-dimensional central
+simple $`K`-algebra (later on $`D` will be a division algebra, hence the
+name, but we do not need this yet). Then $`D_{\A}:=D\otimes_K\A_K` is an
+$`\A_K`-algebra which is free of finite rank, and if we give $`D_{\A}` the
+$`\A_K`-module topology then it is a topological ring. Furthermore
+$`D_{\A}` is free of finite rank over the locally compact topological ring
+$`\A_K` and is thus also locally compact. So by the theory of Haar characters
 there is a canonical character
-$`\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}`$ measuring how left multiplication
-by an element of $`D_{\A}^\times`$ changes the additive Haar measure on
-$`D_{\A}`$. Let $`D_{\A}^{(1)}`$ denote the kernel of $`\delta_{D_{\A}}`$, and
+$`\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}` measuring how left multiplication
+by an element of $`D_{\A}^\times` changes the additive Haar measure on
+$`D_{\A}`. Let $`D_{\A}^{(1)}` denote the kernel of $`\delta_{D_{\A}}`, and
 give it the subspace topology coming from $`D_{\A}^\times`.
 :::
 
@@ -199,11 +199,11 @@ measure on $D_{\A}$. Let $D_{\A}^{(1)}$ denote the kernel of $\delta_{D_{\A}}$,
 and give it the subspace topology coming from $D_{\A}^\times$.
 ```
 
-One can furthermore check that if $`R`$ is a finite $`K`$-algebra then the
-$`\A_K`$-module topologies and $`\A_{\Q}`$-module topologies on $`R_{\A}`$
-coincide. Indeed, the topology on $`\A_K`$ is the $`\A_{\Q}`$-module topology,
-as $`\A_K=\A_{\Q}\otimes_{\Q}K`$ as topological $`\A_{\Q}`$-algebras, where the
-right hand side has the $`\A_{\Q}`$-module topology by definition.
+One can furthermore check that if $`R` is a finite $`K`-algebra then the
+$`\A_K`-module topologies and $`\A_{\Q}`-module topologies on $`R_{\A}`
+coincide. Indeed, the topology on $`\A_K` is the $`\A_{\Q}`-module topology,
+as $`\A_K=\A_{\Q}\otimes_{\Q}K` as topological $`\A_{\Q}`-algebras, where the
+right hand side has the $`\A_{\Q}`-module topology by definition.
 
 ```tex
 One can furthermore check that if $R$ is a finite $K$-algebra then the $\A_K$-module topologies and $\A_{\Q}$-module
@@ -234,8 +234,8 @@ has the $\A_{\Q}$-module topology by definition.
 # The proof
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE")
-There's a compact subset $`E`$ of $`D_A`$ with the property that for all
-$`x\in D_A^{(1)}`$, the obvious map $`xE\to D\backslash D_A`$ is not injective.
+There's a compact subset $`E` of $`D_A` with the property that for all
+$`x\in D_A^{(1)}`, the obvious map $`xE\to D\backslash D_A` is not injective.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (slot := statement)
@@ -252,22 +252,22 @@ $`x\in D_A^{(1)}`$, the obvious map $`xE\to D\backslash D_A`$ is not injective.
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"
 {uses "NumberField.AdeleRing.discrete"}[]
 {uses "Rat.AdeleRing.cocompact"}[]
-We know that if we pick a $`\Q`$-basis for $`D`$ of size $`d`$ then this
-identifies $`D`$ with $`\Q^d`$, $`D_{\A}`$ with $`\A_{\Q}^d`$, and
-$`D\backslash D_{\A}`$ with $`(\Q\backslash\A_{\Q})^d`$. Now $`\Q`$ is
-discrete in $`\A_{\Q}`$ by theorem `NumberField.AdeleRing.discrete`, and the
-quotient $`\Q\backslash \A_{\Q}`$ is compact by theorem
-`Rat.AdeleRing.cocompact`. Hence $`D`$ is discrete in $`D_{\A}`$ and the
-quotient $`D\backslash D_{\A}`$ is compact.
+We know that if we pick a $`\Q`-basis for $`D` of size $`d` then this
+identifies $`D` with $`\Q^d`, $`D_{\A}` with $`\A_{\Q}^d`, and
+$`D\backslash D_{\A}` with $`(\Q\backslash\A_{\Q})^d`. Now $`\Q` is
+discrete in $`\A_{\Q}` by theorem `NumberField.AdeleRing.discrete`, and the
+quotient $`\Q\backslash \A_{\Q}` is compact by theorem
+`Rat.AdeleRing.cocompact`. Hence $`D` is discrete in $`D_{\A}` and the
+quotient $`D\backslash D_{\A}` is compact.
 
-Fix a Haar measure $`\mu`$ on $`D_{\A}`$ and push it forward to
-$`D\backslash D_{\A}`$; by compactness this quotient has finite and positive
-measure, say $`m\in\R_{>0}`$. Choose any compact $`E\subseteq D_{\A}`$ with
-measure $`>m`$ (for example, choose a $`\Z`$-lattice $`L\cong\Z^d`$ in
-$`D\cong\Q^d`$, define $`E_f:=\prod_p L_p\in D\otimes_{\Q}\A_{\Q}^\infty`$, and
-define $`E_{\infty}\subseteq D\otimes_{\Q}\R\cong\R^n`$ to be a huge closed
-ball, large enough to ensure the measure of $`E:=E_f\times E_{\infty}`$ is
-bigger than $`m`$). Then $`\mu(xE)=\mu(E)>m`$ so the map can't be injective.
+Fix a Haar measure $`\mu` on $`D_{\A}` and push it forward to
+$`D\backslash D_{\A}`; by compactness this quotient has finite and positive
+measure, say $`m\in\R_{>0}`. Choose any compact $`E\subseteq D_{\A}` with
+measure $`>m` (for example, choose a $`\Z`-lattice $`L\cong\Z^d` in
+$`D\cong\Q^d`, define $`E_f:=\prod_p L_p\in D\otimes_{\Q}\A_{\Q}^\infty`, and
+define $`E_{\infty}\subseteq D\otimes_{\Q}\R\cong\R^n` to be a huge closed
+ball, large enough to ensure the measure of $`E:=E_f\times E_{\infty}` is
+bigger than $`m`). Then $`\mu(xE)=\mu(E)>m` so the map can't be injective.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (slot := proof)
@@ -311,7 +311,7 @@ We let `E` denote any compact set satisfying the hypothesis of the previous lemm
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-Define $`X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}`$.
+Define $`X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (slot := statement)
@@ -326,7 +326,7 @@ Define $X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}$.
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-Define $`Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}`$.
+Define $`Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (slot := statement)
@@ -341,7 +341,7 @@ Define $Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}$.
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-$`X`$ is a compact subset of $`D_{\A}`$.
+$`X` is a compact subset of $`D_{\A}`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (slot := statement)
@@ -355,7 +355,7 @@ $`X`$ is a compact subset of $`D_{\A}`$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"
-It's the continuous image of the compact set $`E\times E`$.
+It's the continuous image of the compact set $`E\times E`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (slot := proof)
@@ -367,7 +367,7 @@ It's the continuous image of the compact set $`E\times E`$.
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
-$`Y`$ is a compact subset of $`D_{\A}`$.
+$`Y` is a compact subset of $`D_{\A}`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (slot := statement)
@@ -381,7 +381,7 @@ $`Y`$ is a compact subset of $`D_{\A}`$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"
-It's the continuous image of the compact set $`X\times X`$.
+It's the continuous image of the compact set $`X\times X`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (slot := proof)
@@ -394,7 +394,7 @@ It's the continuous image of the compact set $`X\times X`$.
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-If $`\beta\in D_{\A}^{(1)}`$ then $`\beta X\cap D^\times\not=\emptyset`$.
+If $`\beta\in D_{\A}^{(1)}` then $`\beta X\cap D^\times\not=\emptyset`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (slot := statement)
@@ -412,11 +412,11 @@ $\beta X\cap D^\times\not=\emptyset$.
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[]
 Indeed by the previous lemma, the
-map $`\beta E\to D\backslash D_{\A}`$ is not injective, so there are distinct
-$`\beta e_1,\beta e_2\in \beta E`$ with $`e_i\in E`$ and
-$`\beta e_1-\beta e_2=b\in D`$. Now $`b\not=0`$ and $`D`$ is a division
-algebra, so $`b\in D^\times`$. And $`e_1-e_2\in X`$ so
-$`b=\beta(e_1-e_2)\in \beta X`$, so we are done.
+map $`\beta E\to D\backslash D_{\A}` is not injective, so there are distinct
+$`\beta e_1,\beta e_2\in \beta E` with $`e_i\in E` and
+$`\beta e_1-\beta e_2=b\in D`. Now $`b\not=0` and $`D` is a division
+algebra, so $`b\in D^\times`. And $`e_1-e_2\in X` so
+$`b=\beta(e_1-e_2)\in \beta X`, so we are done.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (slot := proof)
@@ -434,8 +434,8 @@ And $e_1-e_2\in X$ so $b=\beta(e_1-e_2)\in \beta X$, so we're done.
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-Similarly, if $`\beta\in D_{\A}^{(1)}`$ then
-$`X\beta^{-1}\cap D^\times\not=\emptyset`$.
+Similarly, if $`\beta\in D_{\A}^{(1)}` then
+$`X\beta^{-1}\cap D^\times\not=\emptyset`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (slot := statement)
@@ -452,13 +452,13 @@ $`X\beta^{-1}\cap D^\times\not=\emptyset`$.
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
-Indeed, $`\beta^{-1}\in D_{\A}^{(1)}`$, and so left multiplication by
-$`\beta^{-1}`$ does not change Haar measure on $`D_{\A}`$, so neither does
+Indeed, $`\beta^{-1}\in D_{\A}^{(1)}`, and so left multiplication by
+$`\beta^{-1}` does not change Haar measure on $`D_{\A}`, so neither does
 right multiplication (by theorem
 `NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul`).
-So the same argument works: $`E\beta^{-1}\to D\backslash D_{\A}`$ is not
-injective so choose $`e_1\beta^{-1}\not=e_2\beta^{-1}`$ with difference
-$`b\in D`$ and then $`(e_1-e_2)\beta^{-1}\in D-\{0\}=D^\times`$.
+So the same argument works: $`E\beta^{-1}\to D\backslash D_{\A}` is not
+injective so choose $`e_1\beta^{-1}\not=e_2\beta^{-1}` with difference
+$`b\in D` and then $`(e_1-e_2)\beta^{-1}\in D-\{0\}=D^\times`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (slot := proof)
@@ -508,9 +508,9 @@ The set `T` is finite.
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"}[]
-It suffices to prove that $`Y\cap D`$ is finite. But
-$`D\subseteq D_{\A}`$ is a discrete additive subgroup, and hence closed. And
-$`Y\subseteq D_{\A}`$ is compact. So $`D\cap Y`$ is compact and discrete, so
+It suffices to prove that $`Y\cap D` is finite. But
+$`D\subseteq D_{\A}` is a discrete additive subgroup, and hence closed. And
+$`Y\subseteq D_{\A}` is compact. So $`D\cap Y` is compact and discrete, so
 finite.
 :::
 
@@ -599,21 +599,21 @@ such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
 {uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[]
 
 By lemma `NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel`,
-$`\beta X\cap D^\times\not=\emptyset`$, and lemma
+$`\beta X\cap D^\times\not=\emptyset`, and lemma
 `NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'`,
-$`X\beta^{-1}\cap D^\times\not=\emptyset`$, so we can write
-$`\beta x_1=b_1`$ and $`x_2\beta^{-1}=b_2`$ with $`b_i\in D^\times`$ and
-$`x_i\in X`$. Note that $`\beta\in D_{\A}^{(1)}`$ and
-$`b_i\in D^{\times}\subseteq D_{\A}^{(1)}`$ by corollary
-`NumberField.AdeleRing.units_mem_ringHaarCharacter_ker`, so $`x_i\in D_{\A}^{(1)}`$
-as well. In particular $`x_i\in D_{\A}^\times`$ so $`x_1^{-1}`$ makes sense.
+$`X\beta^{-1}\cap D^\times\not=\emptyset`, so we can write
+$`\beta x_1=b_1` and $`x_2\beta^{-1}=b_2` with $`b_i\in D^\times` and
+$`x_i\in X`. Note that $`\beta\in D_{\A}^{(1)}` and
+$`b_i\in D^{\times}\subseteq D_{\A}^{(1)}` by corollary
+`NumberField.AdeleRing.units_mem_ringHaarCharacter_ker`, so $`x_i\in D_{\A}^{(1)}`
+as well. In particular $`x_i\in D_{\A}^\times` so $`x_1^{-1}` makes sense.
 
-Multiplying the equations defining the $`x_i`$ and $`b_i`$ we deduce that
-$`x_2x_1=b_2b_1\in Y\cap D^\times=T`$ (recall that $`Y=X.X`$ and
-$`T=Y\cap D^\times`$ is finite); call this element $`t`$. Then
-$`x_1^{-1}=t^{-1}x_2\in T^{-1}.X`$, and $`x_1\in X`$, so if we set
-$`\nu=x_1^{-1}\in D_{\A}^{(1)}`$ and $`b=b_1\in D^\times`$ then we have
-$`\beta=b\nu`$ and $`(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X`$. We are done!
+Multiplying the equations defining the $`x_i` and $`b_i` we deduce that
+$`x_2x_1=b_2b_1\in Y\cap D^\times=T` (recall that $`Y=X.X` and
+$`T=Y\cap D^\times` is finite); call this element $`t`. Then
+$`x_1^{-1}=t^{-1}x_2\in T^{-1}.X`, and $`x_1\in X`, so if we set
+$`\nu=x_1^{-1}\in D_{\A}^{(1)}` and $`b=b_1\in D^\times` then we have
+$`\beta=b\nu` and $`(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X`. We are done!
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (slot := proof)
@@ -642,9 +642,9 @@ $`\beta=b\nu`$ and $`(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X`$. We are done!
 ```
 
 :::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
-If $`D`$ is a division algebra then the quotient
-$`D^\times\backslash D_{\A}^{(1)}`$ with its quotient topology coming from
-$`D_{\A}^{(1)}`$ is compact.
+If $`D` is a division algebra then the quotient
+$`D^\times\backslash D_{\A}^{(1)}` with its quotient topology coming from
+$`D_{\A}^{(1)}` is compact.
 :::
 
 ```tex "compact_quotient_for_division_algebra" (slot := statement)
@@ -900,8 +900,8 @@ is finite.
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]
 The double cosets give a disjoint open cover of
-$`(D\otimes_K \A_K^\infty)`$ which descends to a disjoint open cover of the
-quotient space $`D^\times\backslash(D\otimes_K \A_K^\infty)^\times`$. However
+$`(D\otimes_K \A_K^\infty)` which descends to a disjoint open cover of the
+quotient space $`D^\times\backslash(D\otimes_K \A_K^\infty)^\times`. However
 this space is compact by theorem
 `NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact`.
 :::

@@ -226,17 +226,17 @@ Let $R$ be an additive commutative group. Later on $R$ will be a commutative
 ring but we will not need this for the definition.
 ```
 
-Let us now give some precise definitions. Recall that by $`\A_F^\infty`$ we mean
-the finite adeles of the totally real number field $`F`$.
+Let us now give some precise definitions. Recall that by $`\A_F^\infty` we mean
+the finite adeles of the totally real number field $`F`.
 
 ```tex
 Let us now give some precise definitions. Recall that by $\A_F^\infty$ we mean
 the finite adeles of the totally real number field $F$.
 ```
 
-A level is a compact open subgroup $`U`$ of $`(D\otimes_F\A_F^\infty)^\times`$.
-These are plentiful. The ring $`D_f:=D\otimes_F\A_F^\infty`$ is a topological
-ring, and hence the units $`D_f^\times`$ of this ring are a topological group.
+A level is a compact open subgroup $`U` of $`(D\otimes_F\A_F^\infty)^\times`.
+These are plentiful. The ring $`D_f:=D\otimes_F\A_F^\infty` is a topological
+ring, and hence the units $`D_f^\times` of this ring are a topological group.
 This group is locally profinite, and hence has many compact open subgroups; we
 will see explicit examples later on.
 
@@ -248,15 +248,15 @@ This group is locally profinite, and hence has many compact open subgroups; we
 will see explicit examples later on.
 ```
 
-We regard $`\A_F^\infty`$ as a subring of
-$`D_{\A^\infty}:=D\otimes_F\A_F^\infty`$, which is possible because $`F`$ is a
-subring of $`D`$. More precisely, we embed $`\A_F^\infty`$ into
-$`D\otimes_F\A_F^\infty`$ via the map sending $`g`$ to $`1\otimes g`$. Because $`F`$ is
-in the centre of $`D`$, we have that $`\A_F^\infty`$ is in the centre of
-$`D_{\A^\infty}`$. As a consequence we can identify $`(\A_F^\infty)^\times`$ as a
-subgroup of $`(D\otimes_F\A_F^\infty)^\times`$. We may also regard $`D`$ as a
-subring of $`D\otimes_F\A_F^\infty`$ via the map $`d\mapsto d\otimes 1`$, and hence
-we can think of $`D^\times`$ as a subgroup of $`(D\otimes_F\A_F^\infty)^\times`.
+We regard $`\A_F^\infty` as a subring of
+$`D_{\A^\infty}:=D\otimes_F\A_F^\infty`, which is possible because $`F` is a
+subring of $`D`. More precisely, we embed $`\A_F^\infty` into
+$`D\otimes_F\A_F^\infty` via the map sending $`g` to $`1\otimes g`. Because $`F` is
+in the centre of $`D`, we have that $`\A_F^\infty` is in the centre of
+$`D_{\A^\infty}`. As a consequence we can identify $`(\A_F^\infty)^\times` as a
+subgroup of $`(D\otimes_F\A_F^\infty)^\times`. We may also regard $`D` as a
+subring of $`D\otimes_F\A_F^\infty` via the map $`d\mapsto d\otimes 1`, and hence
+we can think of $`D^\times` as a subgroup of $`(D\otimes_F\A_F^\infty)^\times`.
 
 ```tex
 We regard $\A_F^\infty$ as a subring of
@@ -270,7 +270,7 @@ subring of $D\otimes_F\A_F^\infty$ via the map $d\mapsto d\otimes 1$, and hence
 we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
 ```
 
-Let $`R`$ be an additive commutative group. Later on $`R`$ will be a commutative
+Let $`R` be an additive commutative group. Later on $`R` will be a commutative
 ring but we will not need this for the definition.
 
 ```tex
@@ -279,13 +279,13 @@ ring but we will not need this for the definition.
 ```
 
 :::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm")
-The space of $`R`$-valued *automorphic forms* for $`D^\times`$ is the set of
-functions $`f:D_{\A^\infty}^\times\to R`$ satisfying the following axioms:
+The space of $`R`-valued *automorphic forms* for $`D^\times` is the set of
+functions $`f:D_{\A^\infty}^\times\to R` satisfying the following axioms:
 
-- $`f(dg)=f(g)`$ for all $`d\in D^\times`$ and $`g\in D_{\A^\infty}^\times`$.
-- $`f(gz)=f(g)`$ for all $`g\in D_{\A^\infty}^\times`$.
-- There exists a compact open subgroup $`U\subseteq (D_{\A^f}^\times)`$
-  such that $`f(gu)=f(g)`$ for all $`g\in D_{\A^\infty}^\times`$ and $`u\in U`$.
+- $`f(dg)=f(g)` for all $`d\in D^\times` and $`g\in D_{\A^\infty}^\times`.
+- $`f(gz)=f(g)` for all $`g\in D_{\A^\infty}^\times`.
+- There exists a compact open subgroup $`U\subseteq (D_{\A^f}^\times)`
+  such that $`f(gu)=f(g)` for all $`g\in D_{\A^\infty}^\times` and $`u\in U`.
 :::
 
 ```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" (slot := statement)

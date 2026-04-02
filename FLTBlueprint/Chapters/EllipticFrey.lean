@@ -54,10 +54,10 @@ We give an overview of the results we need, citing the literature for proofs. Ev
 ```
 
 :::theorem "WeierstrassCurve.n_torsion_card" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_card")
-Let $`n`$ be a positive integer, let $`F`$ be a separably closed field with
-$`n`$ nonzero in $`F`$, and let $`E`$ be an elliptic curve over $`F`$. Then the
-$`n`$-torsion $`E(F)[n]`$ in the $`F`$-points of $`E`$ is a finite group of
-size $`n^2`$.
+Let $`n` be a positive integer, let $`F` be a separably closed field with
+$`n` nonzero in $`F`, and let $`E` be an elliptic curve over $`F`. Then the
+$`n`-torsion $`E(F)[n]` in the $`F`-points of $`E` is a finite group of
+size $`n^2`.
 :::
 
 ```tex "WeierstrassCurve.n_torsion_card" (slot := statement)
@@ -119,10 +119,10 @@ apply our hypothesis firstly with `d = a_1` to deduce `t = r` and then with
 ```
 
 :::corollary "Elliptic_curve_n_torsion_2d" (parent := "elliptic_frey_bridge") (lean := "WeierstrassCurve.n_torsion_dimension")
-Let $`n`$ be a positive integer, let $`F`$ be a separably closed field with
-$`n`$ nonzero in $`F`$, and let $`E`$ be an elliptic curve over $`F`$. Then the
-$`n`$-torsion $`E(F)[n]`$ in the $`F`$-points of $`E`$ is a finite group
-isomorphic to $`(\Z/n\Z)^2`$.
+Let $`n` be a positive integer, let $`F` be a separably closed field with
+$`n` nonzero in $`F`, and let $`E` be an elliptic curve over $`F`. Then the
+$`n`-torsion $`E(F)[n]` in the $`F`-points of $`E` is a finite group
+isomorphic to $`(\Z/n\Z)^2`.
 :::
 
 ```tex "Elliptic_curve_n_torsion_2d" (slot := statement)
@@ -147,14 +147,14 @@ This follows from the previous group-theoretic lemma
 \end{proof}
 ```
 
-We saw in section `twopointfour` that if $`E`$ is an elliptic curve over a
-field $`k`$ and if $`k^{\sep}`$ is a separable closure of $`k`$, then the group
-$`\Gal(k^{\sep}/k)`$ acts on $`E(k^{\sep})[n]`$. Now let $`n`$ be a positive
-integer which is nonzero in $`k`$. We have just seen that
-$`E(k^{\sep})[n]`$ is isomorphic to $`(\Z/n\Z)^2`$, and it inherits an action
-of $`\Gal(k^{\sep}/k)`$. If we fix an isomorphism
-$`E(k^{\sep})[n]\cong(\Z/n\Z)^2`$ then we get a representation
-$`\Gal(k^{\sep}/k)\to\GL_2(\Z/n\Z)`$. A fundamental fact about this Galois
+We saw in section `twopointfour` that if $`E` is an elliptic curve over a
+field $`k` and if $`k^{\sep}` is a separable closure of $`k`, then the group
+$`\Gal(k^{\sep}/k)` acts on $`E(k^{\sep})[n]`. Now let $`n` be a positive
+integer which is nonzero in $`k`. We have just seen that
+$`E(k^{\sep})[n]` is isomorphic to $`(\Z/n\Z)^2`, and it inherits an action
+of $`\Gal(k^{\sep}/k)`. If we fix an isomorphism
+$`E(k^{\sep})[n]\cong(\Z/n\Z)^2` then we get a representation
+$`\Gal(k^{\sep}/k)\to\GL_2(\Z/n\Z)`. A fundamental fact about this Galois
 representation is that its determinant is the cyclotomic character.
 
 ```tex
@@ -364,12 +364,12 @@ flat. Checking this claim formally will probably involve a fair amount of work.
 # Multiplicative Reduction
 
 :::definition "EllipticCurve.MultiplicativeReduction" (parent := "elliptic_frey_bridge")
-Let $`E`$ be an elliptic curve over the field of fractions $`K`$ of a valuation
-ring $`R`$ with maximal ideal $`\m`$. We say $`E`$ has multiplicative
-reduction over $`R`$ if $`E`$ has a model with coefficients in $`R`$ and which
-reduces mod $`R/\m`$ to a plane cubic with one singularity, which is an
+Let $`E` be an elliptic curve over the field of fractions $`K` of a valuation
+ring $`R` with maximal ideal $`\m`. We say $`E` has multiplicative
+reduction over $`R` if $`E` has a model with coefficients in $`R` and which
+reduces mod $`R/\m` to a plane cubic with one singularity, which is an
 ordinary double point. We say that the reduction is split if the two tangent
-lines at the ordinary double point are both defined over $`R/\m`$, and
+lines at the ordinary double point are both defined over $`R/\m`, and
 non-split otherwise.
 :::
 
@@ -392,9 +392,9 @@ reduction at `P` if `E` has multiplicative reduction over the localization
 
 :::lemma_ "Frey_curve_mult_reduction" (parent := "elliptic_frey_bridge")
 {uses "EllipticCurve.MultiplicativeReduction"}[]
-If $`E`$ is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)`$ associated to a Frey
-package $`(a,b,c,\ell)`$, and if $`p`$ is an odd prime which divides $`abc`$,
-then $`E`$ has multiplicative reduction at $`p`$.
+If $`E` is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)` associated to a Frey
+package $`(a,b,c,\ell)`, and if $`p` is an odd prime which divides $`abc`,
+then $`E` has multiplicative reduction at $`p`.
 :::
 
 ```tex "Frey_curve_mult_reduction" (slot := statement)
@@ -405,11 +405,11 @@ then $`E`$ has multiplicative reduction at $`p`$.
 ```
 
 :::proof "Frey_curve_mult_reduction"
-The hypothesis $`p \mid abc`$ implies that precisely two of the three roots
-$`0`$, $`a^\ell`$ and $`-b^\ell`$ of the cubic are equal mod $`p`$. Call
-$`x \in \Z/p\Z`$ this common value. Then the reduction mod $`p`$ of the curve
-is smooth away from the point $`(x,0)`$, and has an ordinary double point at
-$`(x,0)`$. Hence the Frey curve has multiplicative reduction at $`p`$.
+The hypothesis $`p \mid abc` implies that precisely two of the three roots
+$`0`, $`a^\ell` and $`-b^\ell` of the cubic are equal mod $`p`. Call
+$`x \in \Z/p\Z` this common value. Then the reduction mod $`p` of the curve
+is smooth away from the point $`(x,0)`, and has an ordinary double point at
+$`(x,0)`. Hence the Frey curve has multiplicative reduction at $`p`.
 :::
 
 ```tex "Frey_curve_mult_reduction" (slot := proof)
@@ -432,8 +432,8 @@ multiplicative iff `x-y` is a square mod `p`. We shall not need this fact.
 
 :::lemma_ "Frey_curve_mult_reduction_at_two" (parent := "elliptic_frey_bridge")
 {uses "EllipticCurve.MultiplicativeReduction"}[]
-If $`E`$ is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)`$ associated to a Frey
-package $`(a,b,c,\ell)`$ then $`E`$ has multiplicative reduction at `2`.
+If $`E` is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)` associated to a Frey
+package $`(a,b,c,\ell)` then $`E` has multiplicative reduction at `2`.
 :::
 
 ```tex "Frey_curve_mult_reduction_at_two" (slot := statement)
@@ -443,13 +443,13 @@ package $`(a,b,c,\ell)`$ then $`E`$ has multiplicative reduction at `2`.
 ```
 
 :::proof "Frey_curve_mult_reduction_at_two"
-Indeed, the change of variables $`X=4X'`$ and $`Y=8Y'+4X'`$ transforms the
+Indeed, the change of variables $`X=4X'` and $`Y=8Y'+4X'` transforms the
 equation to
-$`64Y'^2+64X'Y'=64X'^3+16X'^2(b^\ell-a^\ell-1)-4X'a^\ell b^\ell`$ and, because
-$`\ell\geq5`$, $`b`$ is even and $`a=3`$ mod `4`, we see that the `64`s cancel,
-giving an equation over $`\Z`$ which reduces mod `2` to
-$`Y'^2+X'Y'=X'^3+cX'^2`$ for some $`c\in\{0,1\}`$. This cubic is smooth away
-from an ordinary double point at $`(0,0)`$. Hence the Frey curve has
+$`64Y'^2+64X'Y'=64X'^3+16X'^2(b^\ell-a^\ell-1)-4X'a^\ell b^\ell` and, because
+$`\ell\geq5`, $`b` is even and $`a=3` mod `4`, we see that the `64`s cancel,
+giving an equation over $`\Z` which reduces mod `2` to
+$`Y'^2+X'Y'=X'^3+cX'^2` for some $`c\in\{0,1\}`. This cubic is smooth away
+from an ordinary double point at $`(0,0)`. Hence the Frey curve has
 multiplicative reduction at `2`.
 :::
 
@@ -463,8 +463,8 @@ multiplicative reduction at `2`.
 \end{proof}
 ```
 
-Note that $`E`$ has split multiplicative reduction iff $`c=0`$, which happens
-iff $`a^\ell=7`$ mod `8`. We shall not need this fact.
+Note that $`E` has split multiplicative reduction iff $`c=0`, which happens
+iff $`a^\ell=7` mod `8`. We shall not need this fact.
 
 ```tex
 \begin{remark} Note that $E$ has split multiplicative reduction iff $c=0$, which happens iff $a^\ell=7$ mod $8$. We shall not need this fact.
@@ -880,8 +880,8 @@ The next two results are Lemme `6` on page `307` of
 ```
 
 :::theorem "Frey_characters_are_unramified" (parent := "elliptic_frey_bridge")
-With notation as above, the characters $`\alpha`$ and $`\beta`$ are unramified
-at $`p`$ for all primes $`p\not=\ell`$.
+With notation as above, the characters $`\alpha` and $`\beta` are unramified
+at $`p` for all primes $`p\not=\ell`.
 :::
 
 ```tex "Frey_characters_are_unramified" (slot := statement)
@@ -910,7 +910,7 @@ restriction of `\rho` to `\Gal(\Qbar_2/\Q_2)` is unramified by
 ```
 
 :::theorem "Frey_characters_at_ell" (parent := "elliptic_frey_bridge")
-One of $`\alpha`$ and $`\beta`$ is unramified at $`\ell`$.
+One of $`\alpha` and $`\beta` is unramified at $`\ell`.
 :::
 
 ```tex "Frey_characters_at_ell" (slot := statement)
@@ -945,7 +945,7 @@ an unramified twist of the cyclotomic character (see Proposition 11 on p273 of~\
 ```
 
 :::corollary "Frey_characters_trivial" (parent := "elliptic_frey_bridge")
-One of $`\alpha`$ and $`\beta`$ is trivial.
+One of $`\alpha` and $`\beta` is trivial.
 :::
 
 ```tex "Frey_characters_trivial" (slot := statement)
@@ -956,7 +956,7 @@ One of $`\alpha`$ and $`\beta`$ is trivial.
 :::proof "Frey_characters_trivial"
 {uses "Frey_characters_are_unramified"}[]
 {uses "Frey_characters_at_ell"}[]
-The previous two theorems show that one of $`\alpha`$ and $`\beta`$ is a
+The previous two theorems show that one of $`\alpha` and $`\beta` is a
 character unramified at all primes, and hence cuts out an extension unramified
 at all primes, so by Minkowski's theorem this character is trivial.
 :::
@@ -976,9 +976,9 @@ To summarise, we have shown the following.
 ```
 
 :::theorem "Frey_curve_reducible_structure" (parent := "elliptic_frey_bridge")
-If $`\rho`$ is reducible, then either $`\rho`$ has a trivial 1-dimensional
+If $`\rho` is reducible, then either $`\rho` has a trivial 1-dimensional
 submodule or a trivial 1-dimensional quotient (here "trivial" means that the
-Galois group $`\GQ`$ acts trivially).
+Galois group $`\GQ` acts trivially).
 :::
 
 ```tex "Frey_curve_reducible_structure" (slot := statement)
@@ -998,7 +998,7 @@ Follows from the above.
 \end{proof}
 ```
 
-We now split into two cases, depending on whether $`\rho`$ has a trivial
+We now split into two cases, depending on whether $`\rho` has a trivial
 submodule or a trivial quotient.
 
 ```tex
@@ -1028,7 +1028,7 @@ Indeed, the trivial 1-dimensional submodule is a Galois-invariant subgroup of
 ```
 
 :::corollary "Frey_curve_no_trivial_submodule" (parent := "elliptic_frey_bridge")
-$`\rho`$ cannot have a trivial 1-dimensional submodule.
+$`\rho` cannot have a trivial 1-dimensional submodule.
 :::
 
 ```tex "Frey_curve_no_trivial_submodule" (slot := statement)
@@ -1040,8 +1040,8 @@ $`\rho`$ cannot have a trivial 1-dimensional submodule.
 {uses "mazur"}[]
 {uses "Frey_curve_trivial_submodule"}[]
 We have just seen that in this case, the Frey curve has a point of order
-$`\ell`$. It also has three points of order $`2`$, meaning that its torsion
-subgroup has order at least $`4\ell \geq 20`$, contradicting Mazur's theorem.
+$`\ell`. It also has three points of order $`2`, meaning that its torsion
+subgroup has order at least $`4\ell \geq 20`, contradicting Mazur's theorem.
 :::
 
 ```tex "Frey_curve_no_trivial_submodule" (slot := proof)
@@ -1052,8 +1052,8 @@ subgroup has order at least $`4\ell \geq 20`$, contradicting Mazur's theorem.
 \end{proof}
 ```
 
-It remains to rule out the case where $`\rho`$ is reducible and has a trivial
-quotient. To do this, we need to quotient out $`\rho`$ by its 1-dimensional
+It remains to rule out the case where $`\rho` is reducible and has a trivial
+quotient. To do this, we need to quotient out $`\rho` by its 1-dimensional
 Galois-stable submodule.
 
 ```tex
@@ -1062,19 +1062,19 @@ to quotient out $\rho$ by its 1-dimensional Galois-stable submodule.
 ```
 
 :::theorem "Elliptic_curve_quotient_by_finite_subgroup" (parent := "elliptic_frey_bridge")
-If $`p`$ is a prime and if $`E`$ is an elliptic curve over a field $`K`$ of
-characteristic not equal to $`p`$, and if $`C \subseteq E(K^{\sep})[p]`$ is a
-Galois-stable subgroup of order $`p`$, then there is an elliptic curve
-$`E' := E/C`$ over $`K`$ and an isogeny of elliptic curves $`E \to E'`$ over
-$`K`$ inducing a Galois-equivariant surjection
-$`E(K^{\sep}) \to E'(K^{\sep})`$ with kernel precisely $`C`$.
+If $`p` is a prime and if $`E` is an elliptic curve over a field $`K` of
+characteristic not equal to $`p`, and if $`C \subseteq E(K^{\sep})[p]` is a
+Galois-stable subgroup of order $`p`, then there is an elliptic curve
+$`E' := E/C` over $`K` and an isogeny of elliptic curves $`E \to E'` over
+$`K` inducing a Galois-equivariant surjection
+$`E(K^{\sep}) \to E'(K^{\sep})` with kernel precisely $`C`.
 :::
 
 ```tex "Elliptic_curve_quotient_by_finite_subgroup" (slot := statement)
 \begin{theorem}\label{Elliptic_curve_quotient_by_finite_subgroup}\notready If $p$ is a prime and
   if $E$ is an elliptic curve over a field $K$ of characteristic not equal to $p$,
    and if $C\subseteq E(K^{\sep})[p]$ is a Galois-stable
-  subgroup of order $p$, then there's an elliptic curve $E':=$``$E/C$'' over $K$ and an isogeny of elliptic
+  subgroup of order $p$, then there's an elliptic curve $E':=$``E/C$'' over $K$ and an isogeny of elliptic
   curves $E\to E'$ over $K$ inducing a Galois-equivariant surjection $E(K^{\sep})\to E'(K^{\sep})$
   with kernel precisely $C$.
 \end{theorem}
@@ -1082,20 +1082,20 @@ $`E(K^{\sep}) \to E'(K^{\sep})`$ with kernel precisely $`C`$.
 
 :::proof "Elliptic_curve_quotient_by_finite_subgroup"
 Brian Conrad suggested the following approach, applicable as well for abelian
-schemes $`A \to S`$ over a base. Let $`G`$ be a finite locally free
-$`S`$-subgroup of $`A`$, say $`G`$ with constant rank $`n > 0`$ by working
-locally on the base, so $`G`$ is contained in $`A[n]`$. Then
-$`n : A \to A`$ is the fppf quotient of the source by $`A[n]`$, so it expresses
-$`A`$ as an $`A[n]`$-torsor over itself. The problem of building $`A/G`$ as an
+schemes $`A \to S` over a base. Let $`G` be a finite locally free
+$`S`-subgroup of $`A`, say $`G` with constant rank $`n > 0` by working
+locally on the base, so $`G` is contained in $`A[n]`. Then
+$`n : A \to A` is the fppf quotient of the source by $`A[n]`, so it expresses
+$`A` as an $`A[n]`-torsor over itself. The problem of building $`A/G` as an
 abelian scheme is then seen to be the same as that of constructing the quotient
-of this $`A[n]`$-torsor by the $`G`$-action.
+of this $`A[n]`-torsor by the $`G`-action.
 
 In other words, the problem then becomes one having nothing specific to do with
 abelian schemes, at the cost of working over a base (such as the original
-target $`A`$) even when $`S`$ was the spectrum of a field in the application.
-The question is now: for a finite locally free commutative $`S`$-group $`H`$
-and a closed locally free $`S`$-subgroup $`G`$, build a reasonable quotient
-$`H/G`$. One approach is to look at the Cartier dual $`H^\vee \to G^\vee`$,
+target $`A`) even when $`S` was the spectrum of a field in the application.
+The question is now: for a finite locally free commutative $`S`-group $`H`
+and a closed locally free $`S`-subgroup $`G`, build a reasonable quotient
+$`H/G`. One approach is to look at the Cartier dual $`H^\vee \to G^\vee`,
 show that it is faithfully flat, and then deduce that the Cartier dual of the
 kernel of this map does the job. Note that one input for this proof is the
 claim that inclusions of Hopf algebras over fields are flat, proved nicely in
@@ -1137,7 +1137,7 @@ theorem without developing all of this machinery and much more.
 ```
 
 :::corollary "Frey_curve_no_trivial_quotient" (parent := "elliptic_frey_bridge")
-$`\rho`$ cannot have a trivial 1-dimensional quotient.
+$`\rho` cannot have a trivial 1-dimensional quotient.
 :::
 
 ```tex "Frey_curve_no_trivial_quotient" (slot := statement)
@@ -1148,10 +1148,10 @@ $`\rho`$ cannot have a trivial 1-dimensional quotient.
 :::proof "Frey_curve_no_trivial_quotient"
 {uses "Elliptic_curve_quotient_by_finite_subgroup"}[]
 {uses "mazur"}[]
-$`\rho`$ has a Galois-stable submodule $`C`$. The quotient curve $`E/C`$ now
-has a trivial 1-dimensional submodule, and also three points of order $`2`$
-(the images of the three $`2`$-torsion points in $`E`$). Hence the torsion
-subgroup of $`E/C`$ has order at least $`4\ell \geq 20`$, again contradicting
+$`\rho` has a Galois-stable submodule $`C`. The quotient curve $`E/C` now
+has a trivial 1-dimensional submodule, and also three points of order $`2`
+(the images of the three $`2`-torsion points in $`E`). Hence the torsion
+subgroup of $`E/C` has order at least $`4\ell \geq 20`, again contradicting
 Mazur's theorem.
 :::
 
@@ -1164,8 +1164,8 @@ Mazur's theorem.
 ```
 
 :::theorem "Frey_curve_irreducible" (parent := "elliptic_frey_bridge")
-The $`\ell`$-torsion in the Frey curve associated to a Frey package
-$`(a,b,c,\ell)`$ is irreducible.
+The $`\ell`-torsion in the Frey curve associated to a Frey package
+$`(a,b,c,\ell)` is irreducible.
 :::
 
 ```tex "Frey_curve_irreducible" (slot := statement)

@@ -171,11 +171,11 @@ to do is to talk about profinite completions.
 # Zhat
 
 :::definition "ZHat" (parent := "automorphic_example_program") (lean := "ZHat")
-The profinite completion $`\Zhat`$ of $`\Z`$ is the set of all compatible
-collections $`c=(c_N)_N`$ of elements of $`\Z/N\Z`$ indexed by
-$`\N^+ := \{1,2,3,\ldots\}`$.
+The profinite completion $`\Zhat` of $`\Z` is the set of all compatible
+collections $`c=(c_N)_N` of elements of $`\Z/N\Z` indexed by
+$`\N^+ := \{1,2,3,\ldots\}`.
 A collection is said to be compatible if for all positive integers
-$`D \mid N`$, we have $`c_N`$ mod $`D`$ equals $`c_D`.
+$`D \mid N`, we have $`c_N` mod $`D` equals $`c_D`.
 :::
 
 ```tex
@@ -192,7 +192,7 @@ Classically automorphic forms were defined as functions on symmetric spaces
 (like the upper half plane) which transformed well under the action of certain
 discrete groups (for example $`\SL_2(\Z)`). However such definitions became
 combinatorially problematic when generalised to number fields with nontrivial
-class group, because the classical theory needed a number $`p`$ to define
+class group, because the classical theory needed a number $`p` to define
 the Hecke operator $`T_p`, and in the case where $`p` was a non-principal prime
 ideal in a number field, there was no appropriate number. One fix is to take
 disjoint unions of symmetric spaces indexed by the ideal class group of the
@@ -241,7 +241,7 @@ Follow your nose.
 
 :::lemma_ "ZHat.nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial")
 {uses "ZHat.commRing"}[]
-$`0\not=1` in $`\Zhat`$.
+$`0\not=1` in $`\Zhat`.
 :::
 
 ```tex "ZHat.nontrivial" (slot := statement)
@@ -255,7 +255,7 @@ $`0\not=1` in $`\Zhat`$.
 ```
 
 :::proof "ZHat.nontrivial"
-Recall that you can evaluate an element of $`\Zhat`$ at a positive integer.
+Recall that you can evaluate an element of $`\Zhat` at a positive integer.
 Evaluating $`0` at `2` gives $`0`, and evaluating $`1` at `2` gives $`1`, and
 these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 :::
@@ -270,7 +270,7 @@ these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 ```
 
 :::lemma_ "ZHat.charZero" (parent := "automorphic_example_program") (lean := "ZHat.charZero")
-The map from the naturals into $`\Zhat`$ sending $`n` to $`n` is injective.
+The map from the naturals into $`\Zhat` sending $`n` to $`n` is injective.
 :::
 
 ```tex "ZHat.charZero" (slot := statement)
@@ -312,7 +312,7 @@ Let's write down an explicit example of an element of $\Zhat$ which isn't obviou
 
 :::definition "ZHat.e" (parent := "automorphic_example_program") (lean := "ZHat.e")
 {uses "ZHat.commRing"}[]
-The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots`$ looks like it makes no sense at
+The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots` looks like it makes no sense at
 all; it is the sum of an infinite series of larger and larger positive numbers.
 However, the sum is finite modulo $`N` for every positive integer $`N`, because
 all the terms from $`N!` onwards are multiples of $`N` and thus are zero in
@@ -339,7 +339,7 @@ Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
 ```
 
 :::proof "ZHat.e"
-The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots`$ looks like it makes no sense at
+The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots` looks like it makes no sense at
 all; it is the sum of an infinite series of larger and larger positive numbers.
 However, the sum is finite modulo $`N` for every positive integer $`N`, because
 all the terms from $`N!` onwards are multiples of $`N` and thus are zero in
@@ -388,7 +388,7 @@ $`D`.
 
 :::lemma_ "ZHat.e_not_in_Int" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int")
 {uses "ZHat.e"}[]
-The element $`(e_N)_N` of $`\Zhat`$ is not in $`\Z`.
+The element $`(e_N)_N` of $`\Zhat` is not in $`\Z`.
 :::
 
 ```tex "ZHat.e_not_in_Int" (slot := statement)
@@ -402,7 +402,7 @@ The element $`(e_N)_N` of $`\Zhat`$ is not in $`\Z`.
 ```
 
 :::proof "ZHat.e_not_in_Int"
-First imagine that $`e=n` with $`n\in\Z`$ and $`0\leq n`. In this case, choose
+First imagine that $`e=n` with $`n\in\Z` and $`0\leq n`. In this case, choose
 $`j` such that $`0!+1!+2!+\cdots+j!>n` and check also that the sum is less than
 $`(j+1)!`. Now set $`N=(j+1)!` and let's compare $`e_N` and $`n_N=n`. The trick
 is that $`e_N` must be $`0!+1!+\cdots+j!` mod $`N`, because all the terms
@@ -518,12 +518,12 @@ This section can be skipped on first reading.
 This section can be skipped on first reading.
 ```
 
-People who have seen some more advanced algebra might recognise this construction of $`\Zhat`$
-as being the profinite completion of the additive abelian group $`\Z`$, so it is a fundamental
-object of mathematics in some sense. But usually, when building mathematics, after $`\Z`$ we
-go to $`\Q`$, a multiplicative localisation of $`\Z`, and only complete after that (to get $`\R`$).
+People who have seen some more advanced algebra might recognise this construction of $`\Zhat`
+as being the profinite completion of the additive abelian group $`\Z`, so it is a fundamental
+object of mathematics in some sense. But usually, when building mathematics, after $`\Z` we
+go to $`\Q`, a multiplicative localisation of $`\Z`, and only complete after that (to get $`\R`).
 The process of "completing before localising" gives us a far more arithmetic completion
-of $`\Z`$.
+of $`\Z`.
 
 ```tex
 People who have seen some more advanced algebra might recognise this construction of $\Zhat$
@@ -534,13 +534,13 @@ The process of ``completing before localising'' gives us a far more arithmetic c
 of $\Z$.
 ```
 
-Even though $`\Q`$ is a divisible abelian group and hence its profinite completion vanishes,
-we can still attempt to "locally profinitely complete it" by defining $`\Qhat:=\Q\otimes_{\Z}\Zhat`$.
-This object is more commonly known as the finite adeles of $`\Q`$. More generally if $`F`$ is
-any number field then $`F\otimes_{\Z}\Zhat`$ is the ring of finite adeles of $`F`$. To get to
-the full ring of adeles of a number field $`F`$ you need to take the product with the
-ring of infinite adeles of $`F`$, which is $`F\otimes_{\Q}\R`: some kind of universal
-archimedean completion of $`F`$. I don't know a reference which develops the theory of adeles
+Even though $`\Q` is a divisible abelian group and hence its profinite completion vanishes,
+we can still attempt to "locally profinitely complete it" by defining $`\Qhat:=\Q\otimes_{\Z}\Zhat`.
+This object is more commonly known as the finite adeles of $`\Q`. More generally if $`F` is
+any number field then $`F\otimes_{\Z}\Zhat` is the ring of finite adeles of $`F`. To get to
+the full ring of adeles of a number field $`F` you need to take the product with the
+ring of infinite adeles of $`F`, which is $`F\otimes_{\Q}\R`: some kind of universal
+archimedean completion of $`F`. I don't know a reference which develops the theory of adeles
 in this way, so this is what we shall do here.
 
 ```tex
@@ -1425,8 +1425,8 @@ Follow your nose.
 \end{proof}
 ```
 
-This ring is isomorphic to $`\Z^4`$ as an additive group, and
-$`\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega`$
+This ring is isomorphic to $`\Z^4` as an additive group, and
+$`\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega`
 is the usual Hamilton quaternions.
 
 ```tex
@@ -1732,7 +1732,7 @@ norm.
 ```
 
 All right ideals are principal too, because there's
-another version of Euclid saying $`a=bq+r`$.
+another version of Euclid saying $`a=bq+r`.
 
 ```tex
 \begin{remark}
@@ -1878,11 +1878,11 @@ Same as the proof for $`\Qhat`.
 \end{proof}
 ```
 
-It is not hard to check that $`\widehat{D}`$ contains $`\widehat{\calO}`$
-and $`D`$ as subrings, and that as additive abelian groups we have
-$`\widehat{\calO}\cap D=\calO`$ and $`\widehat{\calO}+D=\widehat{D}`$.
-This is because $`\calO`$ is just four copies of $`\Z`$ and we've proved
-the analogous result for $`\Z`$.
+It is not hard to check that $`\widehat{D}` contains $`\widehat{\calO}`
+and $`D` as subrings, and that as additive abelian groups we have
+$`\widehat{\calO}\cap D=\calO` and $`\widehat{\calO}+D=\widehat{D}`.
+This is because $`\calO` is just four copies of $`\Z` and we've proved
+the analogous result for $`\Z`.
 
 ```tex
 It is not hard to check that $\widehat{D}$ contains $\widehat{\calO}$
@@ -1893,11 +1893,11 @@ the analogous result for $\Z$.
 ```
 
 However the multiplicative structure is more interesting, especially
-as $`D`$ is not commutative. For a general quaternion algebra it is not
-true that $`(\widehat{D})^\times=D^\times(\widehat{\calO})^\times`$, because
+as $`D` is not commutative. For a general quaternion algebra it is not
+true that $`(\widehat{D})^\times=D^\times(\widehat{\calO})^\times`, because
 there are "class group obstructions". The double coset space is some
 kind of non-commutative analogue of a class group. However for our
-particular choice of $`D`$ and $`\calO`$ the result is true.
+particular choice of $`D` and $`\calO` the result is true.
 
 ```tex
 However the multiplicative structure is more interesting, especially

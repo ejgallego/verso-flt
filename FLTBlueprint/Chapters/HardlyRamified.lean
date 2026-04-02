@@ -100,16 +100,16 @@ Let us call such rings ``coefficient rings'' for now.
 
 We make some remarks to orient the reader.
 - Any complete local Noetherian ring with finite residue field is a coefficient
-  ring, if the ring is equipped with the $`\m`$-adic topology where $`\m`$ is
-  the maximal ideal. In this case, all powers of $`\m`$ are open.
+  ring, if the ring is equipped with the $`\m`-adic topology where $`\m` is
+  the maximal ideal. In this case, all powers of $`\m` are open.
 - In particular finite fields, and integer rings of finite extensions of
-  $`\Q_p`$, are coefficient rings.
-- If $`R`$ is a coefficient ring then $`R`$ is isomorphic to the projective
-  limit of the finite rings $`R/I`$ as $`I`$ runs over the open ideals of
-  $`R`$.
+  $`\Q_p`, are coefficient rings.
+- If $`R` is a coefficient ring then $`R` is isomorphic to the projective
+  limit of the finite rings $`R/I` as $`I` runs over the open ideals of
+  $`R`.
 - A non-Noetherian example of a coefficient ring is the projective limit over
-  $`n`$ of the rings
-  $`\Z/p\Z[\varepsilon_1,\ldots,\varepsilon_n]/(\forall i,j,\varepsilon_i\varepsilon_j=0)`$;
+  $`n` of the rings
+  $`\Z/p\Z[\varepsilon_1,\ldots,\varepsilon_n]/(\forall i,j,\varepsilon_i\varepsilon_j=0)`;
   these rings are convenient to include as coefficient rings for technical
   reasons; they make representability theorems easier.
 - The category of coefficient rings is equivalent to the pro-category of the
@@ -117,18 +117,18 @@ We make some remarks to orient the reader.
 - A coefficient ring is pseudocompact in the sense of Grothendieck. A
   pseudocompact local ring is however a more general concept as such a thing
   may have an infinite residue field and would thus not be profinite.
-- If $`R`$ is a coefficient ring with residue field of characteristic $`\ell`$,
-  then there is a unique continuous map $`\Z_\ell\to R`$. Indeed, it suffices
-  to prove that there is a unique continuous map $`\Z_\ell\to R/I`$ for each
-  open ideal $`I`$, but $`R/I`$ is a finite local ring with residue field of
-  characteristic $`\ell`$. $`R/I`$ is hence Artinian, so some power of the
-  maximal ideal is zero by Nakayama. This means that $`\ell^N=0`$ for some
-  sufficiently large $`N`$, and hence $`R/I`$ is a $`\Z/\ell^N\Z`$-algebra and
-  thus admits admits a unique map from $`\Z_\ell`$.
+- If $`R` is a coefficient ring with residue field of characteristic $`\ell`,
+  then there is a unique continuous map $`\Z_\ell\to R`. Indeed, it suffices
+  to prove that there is a unique continuous map $`\Z_\ell\to R/I` for each
+  open ideal $`I`, but $`R/I` is a finite local ring with residue field of
+  characteristic $`\ell`. $`R/I` is hence Artinian, so some power of the
+  maximal ideal is zero by Nakayama. This means that $`\ell^N=0` for some
+  sufficiently large $`N`, and hence $`R/I` is a $`\Z/\ell^N\Z`-algebra and
+  thus admits admits a unique map from $`\Z_\ell`.
 - It will be more convenient to fix once and for all the integer
-  $`\mathcal{O}`$ in a finite extension of $`\Q_\ell`$ and consider coefficient
-  $`\mathcal{O}`$-algebras, namely coefficient rings $`R`$ equipped with a
-  continuous map $`\mathcal{O}\to R`$ which is a local homomorphism inducing an
+  $`\mathcal{O}` in a finite extension of $`\Q_\ell` and consider coefficient
+  $`\mathcal{O}`-algebras, namely coefficient rings $`R` equipped with a
+  continuous map $`\mathcal{O}\to R` which is a local homomorphism inducing an
   isomorphism on residue fields.
 
 ```tex
@@ -177,23 +177,23 @@ We are now ready to define hardly ramified representations.
 ```
 
 :::definition "hardly_ramified" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified")
-Let $`R`$ be a coefficient ring with finite residue field of characteristic
-$`\ell\geq3`$. Let $`V`$ be a finite free $`R`$-module of rank `2`, equipped
+Let $`R` be a coefficient ring with finite residue field of characteristic
+$`\ell\geq3`. Let $`V` be a finite free $`R`-module of rank `2`, equipped
 with the product topology. A continuous representation
-$`\rho:\GQ\to \GL_R(V)`$ is said to be hardly ramified if it satisfies the
+$`\rho:\GQ\to \GL_R(V)` is said to be hardly ramified if it satisfies the
 following four conditions:
 
-- $`\det(\rho):\GQ\to R^\times`$ is the cyclotomic character.
-- $`\rho`$ is unramified outside $`2\ell`$.
-- The restriction of $`\rho`$ to $`\Gal(\Qbar_2/\Q_2)`$ is reducible. More
+- $`\det(\rho):\GQ\to R^\times` is the cyclotomic character.
+- $`\rho` is unramified outside $`2\ell`.
+- The restriction of $`\rho` to $`\Gal(\Qbar_2/\Q_2)` is reducible. More
   precisely, there is a short exact sequence
-  $`0\to R\to V\to R\to 0`$ which is stable under the action of
-  $`\Gal(\Qbar_2/\Q_2)`$, and the Galois action on the 1-dimensional quotient
-  is an unramified representation of $`\Gal(\Qbar_2/\Q_2)`$ whose square is
+  $`0\to R\to V\to R\to 0` which is stable under the action of
+  $`\Gal(\Qbar_2/\Q_2)`, and the Galois action on the 1-dimensional quotient
+  is an unramified representation of $`\Gal(\Qbar_2/\Q_2)` whose square is
   trivial.
-- The restriction of $`\rho`$ to $`\GQl`$ is flat, by which we mean that for
-  all open ideals $`I`$ of $`R`$, the finite-image representation
-  $`\rho`$ mod $`I:\GQl\to \GL_{R/I}(V/I)`$ comes from a finite flat group
+- The restriction of $`\rho` to $`\GQl` is flat, by which we mean that for
+  all open ideals $`I` of $`R`, the finite-image representation
+  $`\rho` mod $`I:\GQl\to \GL_{R/I}(V/I)` comes from a finite flat group
   scheme.
 :::
 
@@ -280,7 +280,7 @@ curve. Finally, the claim that `\rho` is flat at `\ell` is Proposition~5 and
 
 Note that irreducibility and absolute irreducibility for hardly ramified mod
 `\ell` representations are the same, because our assumptions that
-$`\ell\geq3`$ and that the determinant is cyclotomic imply that the image of
+$`\ell\geq3` and that the determinant is cyclotomic imply that the image of
 complex conjugation has distinct eigenvalues defined over the ground field.
 
 ```tex
@@ -385,7 +385,7 @@ is hardly ramified and irreducible, then there exists a finite extension
 $`K / \Q_\ell` with integer ring $`\mathcal{O}` and maximal ideal
 $`\mathfrak{m}` and a hardly ramified representation
 $`\rho : \GQ \to \GL_2(\mathcal{O})`
-whose reduction modulo $`\mathfrak{m}`$ is isomorphic to $`\overline{\rho}`.
+whose reduction modulo $`\mathfrak{m}` is isomorphic to $`\overline{\rho}`.
 :::
 
 ```tex "hardly_ramified_lifts" (slot := statement)
@@ -433,14 +433,14 @@ prime to `2`, with completion `M_\mu` having integer ring `R_\mu`, a hardly
 ramified semisimple representation `\rho_\mu : \GQ \to \GL_2(R_\mu)` (by which
 we mean the generic fibre is semisimple), with the following properties:
 
-- There is some $`\lambda\mid\ell`$ of $`M`$ such that $`\rho_\lambda\cong\rho`$,
+- There is some $`\lambda\mid\ell` of $`M` such that $`\rho_\lambda\cong\rho`,
   the isomorphism happening over some appropriate local field containing a copy
-  of $`M_\lambda`$ and a copy of $`K`$
-- If $`\mu_1`$ and $`\mu_2`$ are two finite places of $`M`$ with odd residue
-  characteristics $`m_1`$ and $`m_2`$, and if $`p\nmid 2m_1m_2`$ is prime,
-  then $`\rho_{\mu_1}`$ and $`\rho_{\mu_2}`$ are both unramified at $`p`$ and
-  the characteristic polynomials $`\rho_{\mu_1}(\Frob_p)`$ and
-  $`\rho_{\mu_2}(\Frob_p)`$ lie in $`M[X]`$ and are equal
+  of $`M_\lambda` and a copy of $`K`
+- If $`\mu_1` and $`\mu_2` are two finite places of $`M` with odd residue
+  characteristics $`m_1` and $`m_2`, and if $`p\nmid 2m_1m_2` is prime,
+  then $`\rho_{\mu_1}` and $`\rho_{\mu_2}` are both unramified at $`p` and
+  the characteristic polynomials $`\rho_{\mu_1}(\Frob_p)` and
+  $`\rho_{\mu_2}(\Frob_p)` lie in $`M[X]` and are equal
 :::
 
 ```tex
@@ -538,8 +538,8 @@ representations:
 If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has
-$`\rho_3^{ss} = 1 \oplus \chi_3` where $`1`$ is the trivial character and
-$`\chi_3`$ is the `3`-adic cyclotomic character.
+$`\rho_3^{ss} = 1 \oplus \chi_3` where $`1` is the trivial character and
+$`\chi_3` is the `3`-adic cyclotomic character.
 :::
 
 ```tex "hardly_ramified_3adic_reducible" (slot := statement)
@@ -565,9 +565,9 @@ Omitted for now. TODO.
 \end{proof}
 ```
 
-Theorem `hardly_ramified_reducible` (if $`\ell\geq 3`$ is a prime and
-$`\overline{\rho}:\GQ\to\GL_2(\Z/\ell\Z)`$ is hardly ramified, then
-$`\overline{\rho}`$ is reducible) is an easy consequence of these theorems, as
+Theorem `hardly_ramified_reducible` (if $`\ell\geq 3` is a prime and
+$`\overline{\rho}:\GQ\to\GL_2(\Z/\ell\Z)` is hardly ramified, then
+$`\overline{\rho}` is reducible) is an easy consequence of these theorems, as
 we now show.
 
 ```tex
@@ -581,21 +581,21 @@ as we now show.
 {uses "hardly_ramified_lifts"}[]
 {uses "hardly_ramified_spreads_out"}[]
 {uses "hardly_ramified_3adic_reducible"}[]
-Assume for a contradiction that $`\overline{\rho}`$ is irreducible. By theorem
-`hardly_ramified_lifts`, $`\overline{\rho}`$ lifts to a hardly ramified
-`\ell`-adic representation $`\rho`$. By theorem
-`hardly_ramified_spreads_out`, $`\rho`$ is part of a compatible family of
+Assume for a contradiction that $`\overline{\rho}` is irreducible. By theorem
+`hardly_ramified_lifts`, $`\overline{\rho}` lifts to a hardly ramified
+`\ell`-adic representation $`\rho`. By theorem
+`hardly_ramified_spreads_out`, $`\rho` is part of a compatible family of
 `q`-adic Galois representations. By theorem
-`hardly_ramified_3adic_reducible`, any `3`-adic member $`\rho_3`$ of this
-family has semisimplification $`1\oplus\chi_3`$ and in particular for
-$`p\nmid 6`$ we have that the characteristic polynomial of
-$`\rho_3(\Frob_p)`$ is $`(X-p)(X-1)`$. By compatibility of the family we deduce
-that for $`p\nmid 6\ell`$ the characteristic polynomial of $`\rho(\Frob_p)`$
-is $`(X-p)(X-1)`$, and thus the characteristic polynomial of
-$`\overline{\rho}(\Frob_p)`$ is $`(X-p)(X-1)`$. By the Chebotarev density
-theorem, $`\overline{\rho}`$ and $`1\oplus\chi`$ have the same characteristic
-polynomials everywhere (here $`\chi`$ is the mod `\ell` cyclotomic character).
-Thus by the Brauer-Nesbitt theorem, $`\overline{\rho}`$ is reducible, the
+`hardly_ramified_3adic_reducible`, any `3`-adic member $`\rho_3` of this
+family has semisimplification $`1\oplus\chi_3` and in particular for
+$`p\nmid 6` we have that the characteristic polynomial of
+$`\rho_3(\Frob_p)` is $`(X-p)(X-1)`. By compatibility of the family we deduce
+that for $`p\nmid 6\ell` the characteristic polynomial of $`\rho(\Frob_p)`
+is $`(X-p)(X-1)`, and thus the characteristic polynomial of
+$`\overline{\rho}(\Frob_p)` is $`(X-p)(X-1)`. By the Chebotarev density
+theorem, $`\overline{\rho}` and $`1\oplus\chi` have the same characteristic
+polynomials everywhere (here $`\chi` is the mod `\ell` cyclotomic character).
+Thus by the Brauer-Nesbitt theorem, $`\overline{\rho}` is reducible, the
 contradiction we seek.
 :::
 

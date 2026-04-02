@@ -110,13 +110,13 @@ explicit while the full geometric proof stays outside the current phase.
 :::theorem "odlyzko_root_discriminant_bound" (parent := "historical_inputs") (lean := "Odlyzko_statement")
 Odlyzko-Poitou discriminant bounds rule out certain totally complex number
 fields with too-small root discriminant.
-In the planned FLT route, this is part of the $`3`$-adic contradiction after
+In the planned FLT route, this is part of the $`3`-adic contradiction after
 passing to a compatible family.
 :::
 
 :::proof "odlyzko_root_discriminant_bound"
 This assumption is one of the explicit numerical inputs used to analyze the
-specialization at $`3`$ after the modularity-lifting stage.
+specialization at $`3` after the modularity-lifting stage.
 
 The project notes spell out the strategic point here too: this bound replaces
 the older Langlands–Tunnell detour in the classical Wiles/Taylor–Wiles proof by
