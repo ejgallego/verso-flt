@@ -425,7 +425,7 @@ subspaces `Y_{ji}`, then the obvious bijection
 $`\prod'_i(\prod_j X_{ji})=\prod_j(\prod'_i X_{ji})`$ is a homeomorphism.
 :::
 
-```tex "hecke_operator_project/restricted_products/products/theorem"
+```tex "Homeomorph.restrictedProductPi" (slot := statement)
 \begin{corollary}
   \lean{Homeomorph.restrictedProductPi}
   \label{Homeomorph.restrictedProductPi}
@@ -442,7 +442,7 @@ $`\prod'_i(\prod_j X_{ji})=\prod_j(\prod'_i X_{ji})`$ is a homeomorphism.
 Induction on the size of the finite set, using
 {uses "Homeomorph.restrictedProductProd"}[] to get started.
 :::
-```tex "hecke_operator_project/restricted_products/products/proof"
+```tex "Homeomorph.restrictedProductPi" (slot := proof)
 \begin{proof}
   \leanok
   \uses{Homeomorph.restrictedProductProd}
@@ -455,7 +455,7 @@ If $`X_i`$ are topological spaces and the $`Y_i`$ are open subspaces, then the
 obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::
 
-```tex "hecke_operator_project/restricted_products/matrix/theorem"
+```tex "Homeomorph.restrictedProductMatrix" (slot := statement)
 \begin{corollary}
   \label{Homeomorph.restrictedProductMatrix}
   \lean{Homeomorph.restrictedProductMatrix}
@@ -468,7 +468,7 @@ obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)`$ is a homeomorphism.
 :::proof "Homeomorph.restrictedProductMatrix"
 Immediate from the previous corollary {uses "Homeomorph.restrictedProductPi"}[].
 :::
-```tex "hecke_operator_project/restricted_products/matrix/proof"
+```tex "Homeomorph.restrictedProductMatrix" (slot := proof)
 \begin{proof}
   \leanok
   \uses{Homeomorph.restrictedProductPi}

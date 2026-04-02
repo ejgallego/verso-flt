@@ -138,7 +138,7 @@ for additive groups.
 $`d_A(\phi)`$ is independent of choice of regular Haar measure.
 :::
 
-```tex "haar_character_project/independent_of_measure/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := statement)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_eq}
   \lean{MeasureTheory.addEquivAddHaarChar_eq}
@@ -154,7 +154,7 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 `λ`s on each side of `μ'(X) = d_A(\phi)(\phi_* μ')(X)` cancel.
 :::
 
-```tex "haar_character_project/independent_of_measure/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := proof)
 \begin{proof}
   \leanok
   If $\mu'$ is a second choice then $\mu'=\lambda\mu$ for some
@@ -169,7 +169,7 @@ If `μ` is any regular Haar measure on `A` then
 $`d_A(\phi)(\phi_*\mu) = \mu.`$
 :::
 
-```tex "haar_character_project/pushforward_formula/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := statement)
 \begin{lemma}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_map}
   \label{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -184,7 +184,7 @@ $`d_A(\phi)(\phi_*\mu) = \mu.`$
 This is a restatement of the previous result.
 :::
 
-```tex "haar_character_project/pushforward_formula/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := proof)
 \begin{proof}
   \leanok
   This is a restatement of the previous result.
@@ -197,7 +197,7 @@ If `μ` is any regular Haar measure on `A` then
 `d_A(φ)μ = \phi^*μ`.
 :::
 
-```tex "haar_character_project/pullback_formula/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_comap" (slot := statement)
 \begin{corollary}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_eq_comap}
   \label{MeasureTheory.addEquivAddHaarChar_comap}
@@ -214,7 +214,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 `\phi^* \mu` and the fact that `\phi_*\phi^*\mu = \mu`.
 :::
 
-```tex "haar_character_project/pullback_formula/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_comap" (slot := proof)
 \begin{proof}
   \leanok
   This follows from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -227,7 +227,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 `d_A(id)=1`.
 :::
 
-```tex "haar_character_project/identity/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_refl" (slot := statement)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_refl}
   \lean{MeasureTheory.addEquivAddHaarChar_refl}
@@ -242,7 +242,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 Clear.
 :::
 
-```tex "haar_character_project/identity/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_refl" (slot := proof)
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_eq}
   \leanok
@@ -255,7 +255,7 @@ Clear.
 If `X` is a Borel set, then `μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 :::
 
-```tex "haar_character_project/preimage_formula/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_smul_preimage" (slot := statement)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_smul_preimage}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -272,7 +272,7 @@ This follows immediately from lemma `MeasureTheory.addEquivAddHaarChar_smul_map`
 and the definition of the pushforward of a measure.
 :::
 
-```tex "haar_character_project/preimage_formula/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_smul_preimage" (slot := proof)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -287,7 +287,7 @@ If `f : A → ℝ` is a Borel measurable function then
 `d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 :::
 
-```tex "haar_character_project/integral_formula/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := statement)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
@@ -305,7 +305,7 @@ This also follows immediately from lemma
 `MeasureTheory.addEquivAddHaarChar_smul_map`.
 :::
 
-```tex "haar_character_project/integral_formula/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := proof)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -353,7 +353,7 @@ This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
 `d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
 :::
 
-```tex "haar_character_project/multiplicative/theorem"
+```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := statement)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_trans}
   \lean{MeasureTheory.addEquivAddHaarChar_trans}
@@ -375,7 +375,7 @@ lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
 `(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to `μ`.
 :::
 
-```tex "haar_character_project/multiplicative/proof"
+```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := proof)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -509,7 +509,7 @@ If `f : R → ℝ` is Borel measurable and `u ∈ R^\times`, then
 A short calculation using the previous lemma.
 :::
 
-```tex "haar_character_project/ring_integral/proof"
+```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := proof)
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
   \leanok
@@ -540,7 +540,7 @@ If `X` is a Borel subset of `R` and `r ∈ R^\times`, then
 Immediate from the previous lemma.
 :::
 
-```tex "haar_character_project/ring_volume/proof"
+```tex "MeasureTheory.ringHaarChar_mul_volume" (slot := proof)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -553,7 +553,7 @@ Immediate from the previous lemma.
 The function `δ_R : R^\times → ℝ_{>0}` is continuous.
 :::
 
-```tex "haar_character_project/ring_continuous/theorem"
+```tex "MeasureTheory.ringHaarChar_continuous" (slot := statement)
 \begin{corollary}
   \label{MeasureTheory.ringHaarChar_continuous}
   \lean{MeasureTheory.ringHaarChar_continuous}
@@ -575,7 +575,7 @@ continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
 `δ_R` is too.
 :::
 
-```tex "haar_character_project/ring_continuous/proof"
+```tex "MeasureTheory.ringHaarChar_continuous" (slot := proof)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.ringHaarChar_mul_integral}
