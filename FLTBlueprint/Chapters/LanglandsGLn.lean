@@ -368,12 +368,12 @@ vanish.
 
 # Hecke Operators
 
-:::theorem "hecke_operator_action_gln" (parent := "gln_langlands_program")
+:::lemma_ "hecke_operator_action_gln" (parent := "gln_langlands_program")
 The group $`\GL_n(\A_{\Q}^f)` acts on the space of automorphic forms for
 $`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`.
 :::
 
-```tex "ch07exampleGLn/hecke_operator_action"
+```tex "hecke_operator_action_gln" (slot := statement)
 \begin{lemma} The group $\GL_n(\A_{\Q}^f)$ acts (on the left) on the space of automorphic forms
   for $\GL_n(\A_{\Q})$ by the formula $(g\cdot f)(x,y)=f(xg,y)$.
 \end{lemma}
@@ -384,7 +384,7 @@ This is obvious. Note that the conjugate of a compact open subgroup is still
 compact and open.
 :::
 
-```tex "ch07exampleGLn/hecke_operator_action_proof"
+```tex "hecke_operator_action_gln" (slot := proof)
 \begin{proof}
   This is obvious. Note that the conjugate of a compact open subgroup is still
   compact and open.
@@ -393,7 +393,7 @@ compact and open.
 
 A formal development of the theory of Hecke operators looks like the following.
 
-```tex "ch07exampleGLn/hecke_operator_formal_development"
+```tex
 A formal development of the theory of Hecke operators looks like the following.
 ```
 
@@ -406,7 +406,7 @@ a finite disjoint union of single cosets $`g_iU`: the double coset space is
 certainly a disjoint union of left cosets, but the double coset space is
 compact and the left cosets are open.
 
-```tex "ch07exampleGLn/hecke_operator_setup"
+```tex
 Let $U$ be a fixed compact open subgroup of $\GL_n(\A_{\Q}^f)$, and let's also fix
 a weight $\rho$, and let $M_\rho(n)$ denote the complex vector space of automorphic
 forms for $\GL_n/\Q$ of weight $\rho$. The level $U$ forms $M_\rho(n,U)$ are just the $U$-invariants
@@ -420,18 +420,18 @@ are open.
 Define the Hecke operator $`T_g : M_\rho(n,U) \to M_\rho(n,U)` by
 $`T_g(f) = \sum g_i \cdot f`.
 
-```tex "ch07exampleGLn/hecke_operator_definition"
+```tex
 Define the Hecke operator $T_g:M_\rho(n,U)\to M_\rho(n,U)$ by
 $T_g(f)=\sum g_i\cdot f$.
 ```
 
-:::theorem "gln_hecke_operator_well_defined" (parent := "gln_langlands_program")
+:::lemma_ "gln_hecke_operator_well_defined" (parent := "gln_langlands_program")
 This function is well-defined, in the sense that it sends a $`U`-invariant form
 to a $`U`-invariant form and is independent of the choice of the representatives
 $`g_i`.
 :::
 
-```tex "ch07exampleGLn/gln_hecke_operator_well_defined"
+```tex "gln_hecke_operator_well_defined" (slot := statement)
 \begin{lemma} This function is well-defined, i.e., it sends a $U$-invariant form to
   a $U$-invariant form which is independent of the choice of $g_i$.
 \end{lemma}
@@ -441,7 +441,7 @@ $`g_i`.
 Easy group theory.
 :::
 
-```tex "ch07exampleGLn/gln_hecke_operator_well_defined_proof"
+```tex "gln_hecke_operator_well_defined" (slot := proof)
 \begin{proof} Easy group theory.
 \end{proof}
 ```
