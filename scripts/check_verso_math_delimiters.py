@@ -3,7 +3,11 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import re
 import sys
+
+
+MALFORMED_INLINE_MATH_RE = re.compile(r"\$`[^`\n]+`\$")
 
 
 def default_chapter_paths(root: Path) -> list[Path]:
@@ -24,6 +28,11 @@ def suspicious_dollars(path: Path) -> list[str]:
             continue
 
         if not stripped.startswith("#"):
+            if MALFORMED_INLINE_MATH_RE.search(line):
+                errors.append(
+                    f"{path}:{line_no}: malformed Verso inline math delimiter; "
+                    f"TeX '$...$' should become '$`...`', not '$`...`$': {stripped}"
+                )
             continue
         if "$" in stripped:
             errors.append(
@@ -37,7 +46,8 @@ def suspicious_dollars(path: Path) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Check for raw dollar-math in headings outside fenced blocks, which can leak into rendered titles."
+            "Check for raw dollar-math in headings and malformed Verso inline math delimiters "
+            "outside fenced blocks."
         )
     )
     parser.add_argument(

@@ -28,6 +28,12 @@ blueprint structure should only be introduced when the TeX source already has a
 corresponding formal item or when a clearly marked editorial note is
 unavoidable.
 
+When a TeX source block is a `lemma`, `corollary`, or `definition`, preserve
+that environment kind in Verso too. In practice, use `:::lemma_` for TeX
+lemmas, `:::corollary` for TeX corollaries, `:::definition` for TeX
+definitions, and reserve `:::theorem` for actual TeX theorems rather than using
+it as a generic theorem-like wrapper.
+
 When the TeX source uses mathematical notation, the default is to keep it as
 mathematical notation in Verso too. Variables, formulas, congruences, and maps
 should not routinely be rewritten as code spans just because that is
@@ -81,6 +87,8 @@ porting:
 - do not leave raw TeX commands like `\ref` or `\emph` in ordinary Verso prose;
   either keep them in the local `tex` witness or translate them into parser-safe
   Verso/math/prose form
+- do not translate TeX inline math `$a$` into malformed Verso `$`a`$`; the
+  correct Verso inline form is `$`a``
 
 For the detailed chapter-by-chapter workflow and validation rules, see
 `AGENTS.md`.
@@ -137,6 +145,13 @@ For the current strict LT source-pair audit, run:
 python3 scripts/check_lt_source_pairs.py
 ```
 
+To check that theorem/lemma/corollary/definition node kinds match the adjacent
+TeX source environment, run:
+
+```bash
+python3 scripts/check_blueprint_node_kinds.py
+```
+
 For a human-friendly combined LT audit on one or more chapters, run:
 
 ```bash
@@ -170,6 +185,13 @@ For regression checks on the LT similarity tool itself, run:
 
 ```bash
 python3 scripts/test_check_lt_similarity.py
+```
+
+For malformed Verso math delimiters, especially bad TeX-to-Verso translations
+like `$`a`$`, run:
+
+```bash
+python3 scripts/check_verso_math_delimiters.py
 ```
 
 For the current TeX-to-Verso status snapshot inside the generated blueprint

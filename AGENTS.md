@@ -78,6 +78,11 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If the TeX source has a label for a theorem/definition/lemma/corollary/proof
   environment or other graph-visible source block, use that TeX/source label as
   the Verso node id. Do not replace it with an English wrapper name.
+- Preserve theorem-like environment kind as well as label grounding. In
+  practice, use `:::lemma_` for TeX `\begin{lemma}`, `:::corollary` for TeX
+  `\begin{corollary}`, `:::definition` for TeX `\begin{definition}`, and
+  reserve `:::theorem` for TeX `\begin{theorem}`. Do not use `:::theorem` as a
+  generic wrapper for all theorem-like source environments.
 - If the TeX source does not have a label for a block, do not invent a
   graph-visible node id merely to improve the blueprint graph. Keep the material
   as prose or as an unlabeled/local witness unless a separate explicit request
@@ -195,12 +200,19 @@ This repository is the integration layer for the FLT Verso blueprint.
   `python3 scripts/check_lt_source_pairs.py <chapter.lean>` after the edit and
   treat any reported block as unaudited until the adjacent `tex` witness is in
   place.
+- After the source-pair check, run
+  `python3 scripts/check_blueprint_node_kinds.py <chapter.lean>` on touched
+  direct-port chapters to ensure theorem/lemma/corollary/definition nodes match
+  the adjacent TeX source environment kind.
 - After the source-pair check is green, use
   `python3 scripts/check_lt_similarity.py <chapter.lean>` to get the first
   draft of the block-level mechanical drift report suggested by David. This now
   includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`, and
   TeX `\ref{...}` / `\uses{...}` mismatches. The default output is human-
   oriented summary; use `--verbose` when an agent needs the full per-block dump.
+- Run `python3 scripts/check_verso_math_delimiters.py <chapter.lean>` on
+  touched chapters to catch malformed Verso math delimiters such as the bad
+  TeX-to-Verso translation pattern `$`...`$`.
 - When changing the LT similarity tooling itself, run
   `python3 scripts/test_check_lt_similarity.py` before relying on the updated
   scores for porting decisions.
@@ -237,6 +249,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Verso Blueprint math syntax is easy to get wrong: inline math is opened with
   `$`` and closed with a backtick, not with a trailing dollar sign. For display
   math, use `$$`` ... ``.
+- In particular, do not translate TeX `$a$` as Verso `$`a`$`. The closing
+  delimiter for inline math is the backtick alone, so the correct Verso form is
+  `$`a``.
 - Keep Verso directive headers syntactically conservative. In practice, put the
   full `:::definition` / `:::theorem` / `:::proof` header, including
   `(parent := ...)` and `(lean := ...)`, on one physical line rather than
