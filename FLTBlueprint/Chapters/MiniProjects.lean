@@ -60,7 +60,7 @@ Its current chapter centers on {uses "adele_ring_goals"}[] and culminates in
 The Haar characters mini-project packages the measure-theoretic and restricted
 product constructions that feed into the adelic viewpoint.
 Its main interface node is {uses "haar_character_goal"}[], and its later adelic
-payoff is {uses "adelic_units_in_kernel_of_haar_character"}[].
+payoff is {uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[].
 :::
 
 :::definition "frobenius_miniproject" (parent := "legacy_blueprint_map")
