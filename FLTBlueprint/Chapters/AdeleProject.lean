@@ -942,8 +942,8 @@ easily from the definition of the topology.
 
 
 :::corollary "finite_prime_product_tensor_isomorphism" (parent := "adele_project")
-{uses "IsDedekindDomain.AKLB.finitePresentation"}[]
-{uses "pi_tensorProduct_of_finitePresentation"}[]
+{uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[]
+{uses "tensor_product_commutes_with_products_for_finite_presentation"}[]
 If `S` is a finite set of nonzero primes of `A` then the natural map
 $`B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
 (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))`$
@@ -1037,8 +1037,8 @@ From this, we can deduce the theorem we claimed earlier:
 
 :::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv" (parent := "adele_project")
 {uses "RestrictedProduct.relabelIso"}[]
-{uses "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1"}[]
-{uses "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2"}[]
+{uses "finite_adele_tensor_product_auxiliary_ring"}[]
+{uses "auxiliary_ring_identifies_with_extension_finite_adeles"}[]
 The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty` is a `B`-algebra
 isomorphism.
 :::
@@ -1171,7 +1171,7 @@ $`\prod_v(B\otimes_AK_v,B\otimes_AA_v)`.
 
 :::proof "finite_adele_auxiliary_ring_homeomorphism"
 Follows from the previous theorem with `X_v=B\otimes_AK_v`, `D_w=L_w`, etc.
-{uses "nonarchimedean_integral_decomposition"}[]
+{uses "restricted_product_relabel_homeomorphism"}[]
 :::
 
 ```tex
@@ -1350,7 +1350,7 @@ is surjective.
 :::proof "infinite_place_local_base_change_surjective"
 Let $`(x_i)_i` be a `K_v`-basis of $`\prod_{w \mid v} L_w`. By the density of
 `L` in $`\prod_{w \mid v} L_w` from
-{uses "NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi"}[], we can find $`\alpha_i \in L`
+{uses "infinite_place_weak_approximation"}[], we can find $`\alpha_i \in L`
 arbitrarily close to $`x_i` with respect to the sup norm when embedded
 globally in $`\prod_{w \mid v} L_w`. In particular, it is possible to choose such
 $`\alpha_i` so that the matrix representing the vector
@@ -1393,8 +1393,8 @@ is injective.
 
 
 :::proof "infinite_place_local_base_change_injective"
-{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
-{uses "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct"}[]
+{uses "infinite_place_local_base_change_surjective"}[]
+{uses "infinite_place_dimension_count"}[]
 The `L`-algebra map $`L \otimes_K K_v \to \prod_{w \mid v} L_w` can
 equivalently be thought of as `K_v`-linear, which is injective, because it is
 surjective by theorem `NumberField.InfinitePlace.Completion.baseChange_surjective`, and both sides have the same `K_v`-dimension by theorem
@@ -1446,9 +1446,9 @@ homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`, whose restriction
 to $`1 \otimes_K K_v` corresponds to the map in
 `NumberField.InfinitePlace.Completion.piExtension`.
 {uses "NumberField.InfinitePlace.Completion.baseChange"}[]
-{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
-{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
-{uses "NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT"}[]
+{uses "infinite_place_local_base_change_surjective"}[]
+{uses "infinite_place_local_base_change_injective"}[]
+{uses "infinite_place_local_module_topology"}[]
 :::
 ```tex
 \begin{theorem}
@@ -1468,8 +1468,8 @@ to $`1 \otimes_K K_v` corresponds to the map in
 
 :::proof "NumberField.InfinitePlace.Completion.baseChangeEquiv"
 {uses "NumberField.InfinitePlace.Completion.baseChange"}[]
-{uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[]
-{uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[]
+{uses "infinite_place_local_base_change_surjective"}[]
+{uses "infinite_place_local_base_change_injective"}[]
 The map in `NumberField.InfinitePlace.Completion.baseChange` is an `L`-algebra
 isomorphism by the surjectivity and injectivity theorems. Every `K_v`-algebra
 isomorphism between two `K_v`-module topological spaces is a homeomorphism.
@@ -1523,7 +1523,7 @@ then this is also a homeomorphism.
 
 
 :::theorem "infinite_adele_power_homeomorphism" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.piEquiv")
-{uses "NumberField.InfinitePlace.Completion.piEquiv"}[]
+{uses "infinite_place_local_power_homeomorphism"}[]
 There is a natural `K_\infty`-linear homeomorphism
 $`K_\infty^{[L:K]} \cong L_\infty`.
 :::
@@ -1541,7 +1541,7 @@ $`K_\infty^{[L:K]} \cong L_\infty`.
 
 :::proof "infinite_adele_power_homeomorphism"
 Using the isomorphisms
-{uses "NumberField.InfinitePlace.Completion.piEquiv"}[], we clearly have a
+{uses "infinite_place_local_power_homeomorphism"}[], we clearly have a
 bijection $`K_\infty^{[L:K]} \cong \prod_v \prod_{w \mid v} L_w \cong \prod_w L_w`.
 The `K_v`-linearity of each component isomorphism extends to
 `K_\infty`-linearity if the action of $`\prod_v K_v` on $`\prod_w L_w` is
@@ -1564,7 +1564,7 @@ $`(x \cdot y)_w = x_{v_w} \cdot y_w`, which is true by definition.
 
 
 :::theorem "infinite_adele_module_topology" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT")
-{uses "NumberField.InfiniteAdeleRing.piEquiv"}[]
+{uses "infinite_adele_power_homeomorphism"}[]
 `L_\infty` has the `K_\infty`-module topology.
 :::
 ```tex
@@ -1634,7 +1634,7 @@ isomorphism is given by the component `L`-algebra isomorphisms
 
 
 :::theorem "NumberField.InfiniteAdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeEquiv")
-{uses "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv"}[]
+{uses "infinite_adele_base_change_algebraic"}[]
 If `K -> L` is a ring homomorphism between two number fields, then there is a
 natural isomorphism, both topological and algebraic,
 $`L \otimes_K K_\infty \cong L_\infty`.
@@ -2036,7 +2036,7 @@ that `q\in(-1,1)` implies `q=0`.
 
 
 :::theorem "NumberField.AdeleRing.zero_discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.zero_discrete")
-{uses "Rat.AdeleRing.zero_discrete"}[]
+{uses "rational_adele_zero_neighborhood"}[]
 {uses "NumberField.AdeleRing.baseChangeEquiv"}[]
 There's an open subset of $`\A_{K}` whose intersection with $`K` is $`\{0\}`.
 :::

@@ -64,7 +64,7 @@ Poitou–Tate duality.
 
 :::proof "forthcoming_assumptions_scope"
 This list already mirrors the appendix frontier recorded in
-{uses "bestiary_appendix"}[]. The difference is one of maturity: appendix nodes
+`bestiary_appendix`. The difference is one of maturity: appendix nodes
 track mathematical obligations, while this chapter records which of those
 obligations have become precise enough to promote into explicit project
 assumptions.
@@ -79,11 +79,11 @@ constructions, and Poitou--Tate duality.
 :::proof "future_assumptions_pipeline"
 The chapter's own forward-looking list already names these themes. In current
 blueprint terms, the relevant appendix nodes are
-{uses "local_class_field_theory_placeholder"}[],
-{uses "global_class_field_theory_placeholder"}[],
-{uses "moret_bailly_placeholder"}[],
-{uses "automorphic_to_galois_representation_placeholder"}[], and
-{uses "poitou_tate_duality_placeholder"}[].
+`local_class_field_theory_placeholder`,
+`global_class_field_theory_placeholder`,
+`moret_bailly_placeholder`,
+`automorphic_to_galois_representation_placeholder`, and
+`poitou_tate_duality_placeholder`.
 
 So the assumptions chapter and the appendix are not redundant: one marks the
 currently explicit axioms, the other marks the queue of future axioms or future

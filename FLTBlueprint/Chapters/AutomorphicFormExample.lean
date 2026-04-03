@@ -1160,7 +1160,7 @@ written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 
 :::proof "QHat.unitsrat_join_unitszHat"
 {uses "ZHat.multiples"}[]
-{uses "ZHat.eq_zero_of_mul_eq_zero"}[]
+{uses "ZHat.torsionfree"}[]
 {uses "QHat.canonicalForm"}[]
 We already know that a general element of $`\Qhat^\times` can be written as
 $`x/N` with $`N` positive, so this reduces us to proving that a general element

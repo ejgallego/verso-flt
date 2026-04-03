@@ -9,6 +9,26 @@ import sys
 
 
 PRELUDE_RE = re.compile(r'tex_prelude\s+r#"(.*?)"#', re.S)
+PROBE_CASES = [
+    (
+        "builtin-preservation",
+        # KaTeX already defines short names such as \N, \Z, \R, and \Reals.
+        # The prelude must not trip over those built-ins.
+        r"\N \Z \R \Reals",
+    ),
+    (
+        "source-macro-coverage",
+        # These names exist in the old FLT prelude but are not provided by KaTeX.
+        r"\A \Q \F \Qp \Ql \Qbar \Qpbar \Qlbar \bbC \GQ \GQp \GQl \m \GK \GN \Kbar \Qhat \calO \calOhat \bbH \p \rhobar \Zhat",
+    ),
+    (
+        "operator-macro-coverage",
+        # The old TeX source uses \DeclareMathOperator for these, but KaTeX
+        # requires them to be expressed through macros that expand to
+        # \operatorname{...}.
+        r"\Gal(\Qbar/\Q) \avoid \Aut \GL \PGL \PSL \SL \Spec \sep \ab \tr \Hom \Frob",
+    ),
+]
 
 
 def extract_prelude(path: Path) -> str:
@@ -19,16 +39,24 @@ def extract_prelude(path: Path) -> str:
     return m.group(1)
 
 
-def katex_probe(root: Path, prelude: str) -> str | None:
+def katex_probe(
+    root: Path,
+    prelude: str,
+    probe_cases: list[tuple[str, str]] | None = None,
+) -> str | None:
     katex_path = root / ".lake" / "packages" / "verso" / "vendored-js" / "katex" / "katex.js"
+    cases = probe_cases or PROBE_CASES
     script = f"""
 const katex = require({katex_path.as_posix()!r});
 const prelude = {prelude!r};
-const out = katex.renderToString(prelude + "\\n\\\\Q", {{ throwOnError: false, displayMode: false }});
-const m = out.match(/katex-error[^>]*title="([^"]*)"/);
-if (m) {{
-  process.stdout.write(m[1]);
-  process.exit(1);
+const cases = {cases!r};
+for (const [label, probe] of cases) {{
+  try {{
+    katex.renderToString(prelude + "\\n" + probe, {{ throwOnError: true, displayMode: false }});
+  }} catch (err) {{
+    process.stdout.write(label + ": " + String(err));
+    process.exit(1);
+  }}
 }}
 """
     result = subprocess.run(

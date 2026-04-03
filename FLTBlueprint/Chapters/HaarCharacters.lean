@@ -818,6 +818,46 @@ an $F$-linear homeomorphism.
 
 # Left and right multiplication
 
+:::lemma_ "IsSimpleRing.mulLeft_det_eq_mulRight_det" (parent := "haar_character_project") (lean := "IsSimpleRing.mulLeft_det_eq_mulRight_det")
+Say `B` is a finite-dimensional central simple algebra over a field `k`, and
+`u ∈ B^\times`. Let `\ell_u : B → B` be the `k`-linear map sending `x` to
+`ux`, and let `r_u : B → B` be the `k`-linear map sending `x` to `xu`. Then
+`det(\ell_u)=det(r_u)`.
+:::
+
+```tex "IsSimpleRing.mulLeft_det_eq_mulRight_det" (slot := statement)
+\begin{lemma}
+  \label{IsSimpleRing.mulLeft_det_eq_mulRight_det}
+  \lean{IsSimpleRing.mulLeft_det_eq_mulRight_det}
+  \leanok
+  \discussion{518}
+  Say $B$ is a finite-dimensional central simple algebra over a field~$k$,
+  and $u\in B^\times$. Let $\ell_u:B\to B$ be the $k$-linear mapping $x$ to $ux$ and
+  let $r_u:B\to B$ be the $k$-linear map sending $x$ to $xu$. Then
+  $\det(\ell_u)=\det(r_u)$.
+\end{lemma}
+```
+
+:::proof "IsSimpleRing.mulLeft_det_eq_mulRight_det"
+Determinants are unchanged by base extension, so without loss of generality `k`
+is algebraically closed. Then `B` is a matrix algebra, say `M_n(k)`. Now `u`
+can be thought of as a matrix with intrinsic determinant `d`, and `B` as a
+left `B`-module becomes a direct sum of `n` copies of the standard
+`n`-dimensional representation `V` of `B`. Thus `det(\ell_u)=d^n`. Similarly
+`det(r_u)=d^n`, so they are equal.
+:::
+
+```tex "IsSimpleRing.mulLeft_det_eq_mulRight_det" (slot := proof)
+\begin{proof}
+  \leanok
+  Determinants are unchanged by base extension, so WLOG $k$ is algebraically closed.
+  Then it's known that $B$ must be a matrix algebra, say $M_n(k)$. Now $u$ can be thought
+  of as a matrix which has its own intrinsic determinant $d$, and $B$ as a left $B$-module
+  becomes a direct sum of $n$ copies of $V$, the standard $n$-dimensional representation of $B$.
+  Thus $\det(\ell_u)=d^n$. Similarly $\det(r_u)=d^n$ and in particular they are equal.
+\end{proof}
+```
+
 :::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project") (lean := "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight")
 For a central simple algebra `B` over a locally compact field `F` and
 `u ∈ B^\times`, one has `d_B(r_u) = δ_B(u)`.
@@ -976,6 +1016,36 @@ a group homomorphism we're home.
   , so $\delta_{A\times B}(a,0)=\delta_A(a)$.
   Similarly $\delta_{A\times B}(0,b)=\delta_B(b)$ and because $\delta_{A\times B}$ is a group
   homomorphism we're home.
+\end{proof}
+```
+
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_piCongrRight" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_piCongrRight")
+{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[]
+If `A_i` are a finite collection of locally compact topological abelian groups,
+with `\phi_i : A_i → A_i` additive homeomorphisms, then
+`d_{\prod_i A_i}(\prod_i\phi_i)=\prod_i d_{A_i}(\phi_i)`.
+:::
+
+```tex "MeasureTheory.addEquivAddHaarChar_piCongrRight" (slot := statement)
+\begin{lemma}
+  \label{MeasureTheory.addEquivAddHaarChar_piCongrRight}
+  \lean{MeasureTheory.addEquivAddHaarChar_piCongrRight}
+  \leanok
+  \discussion{521}
+  \uses{MeasureTheory.addEquivAddHaarChar_prodCongr}
+  If $A_i$ are a finite collection of locally compact topological abelian groups,
+  with $\phi_i:A_i\to A_i$ additive homeomorphisms, then $d_{\prod_i A_i}(\prod_i\phi_i)=\prod_i d_{A_i}(\phi_i)$.
+\end{lemma}
+```
+
+:::proof "MeasureTheory.addEquivAddHaarChar_piCongrRight"
+Induction on the size of the finite set, using the previous lemma.
+:::
+
+```tex "MeasureTheory.addEquivAddHaarChar_piCongrRight" (slot := proof)
+\begin{proof}
+  \leanok
+  Induction on the size of the finite set, using the previous lemma.
 \end{proof}
 ```
 
@@ -1600,6 +1670,185 @@ As a special case, if $R$ is the restricted product of a collection of topologic
 ```
 
 # Adeles
+
+:::corollary "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv")
+If `K` is a number field and `V` is a `K`-module, then the natural isomorphism
+`V \otimes_K \A_K = V \otimes_{\Q} \A_{\Q}` induced by the natural isomorphism
+`\A_K = K \otimes_K \A_{\Q}` is a homeomorphism if the left-hand side has the
+`\A_K`-module topology and the right-hand side has the `\A_{\Q}`-module
+topology.
+:::
+
+```tex "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (slot := statement)
+\begin{corollary}
+  \label{NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv}
+  \lean{NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv}
+  \leanok
+  If $K$ is a number field and $V$ is an $K$-module, then
+  the natural isomorphism $V\otimes_K\A_K=V\otimes_{\Q}\A_{\Q}$ induced by the natural
+  isomorphism $\A_K=K\otimes_K\A_{\Q}$ is a homeomorphism if the left hand side has the $\A_K$-module
+  topology and the right hand side has the $\A_{\Q}$-module topology.
+\end{corollary}
+```
+
+:::proof "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv"
+Lemma `IsModuleTopology.continuous_bilinear_of_finite_left` tells us that
+`V\otimes_K\A_K` has the `\A_{\Q}`-module topology, and it is easily checked
+that the isomorphism is `\A_{\Q}`-linear and hence automatically continuous.
+
+Note that in Lean this is proved for a general extension `L/K` rather than
+only for `K/\Q`.
+:::
+
+```tex "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (slot := proof)
+\begin{proof}
+  \leanok
+  \uses{IsModuleTopology.continuous_bilinear_of_finite_left}
+  Lemma~\ref{IsModuleTopology.continuous_bilinear_of_finite_left} tells us that $V\otimes_K\A_K$
+  has the $\A_{\Q}$-module topology, and it is easily checked that the isomorphism is
+  $\A_{\Q}$-linear and hence automatically continuous.
+
+  Note that in the Lean we prove this for a general extension $L/K$ rather than $K/\Q$.
+\end{proof}
+```
+
+:::theorem "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (parent := "haar_character_project")
+{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
+{uses "central_simple_algebra_left_right_same_haar"}[]
+Let `B` be a finite-dimensional central simple `K`-algebra. Say `u ∈ B_{\A}^\times`,
+and define `\ell_u` and `r_u : B_{\A} → B_{\A}` by `\ell_u(x)=ux` and
+`r_u(x)=xu`. Then `d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
+:::
+
+```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := statement)
+\begin{theorem}
+  \label{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
+  \leanok
+  Let $B$ be a finite-dimensional central simple $K$-algebra.
+  Say $u\in B_{\A}^\times$, and define $\ell_u$ and $r_u:B_{\A}\to B_{\A}$ by
+  $\ell_u(x)=ux$ and $r_u(x)=xu$. Then $d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)$.
+\end{theorem}
+```
+
+:::proof "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"
+We think of `B_{\A}` as `B\otimes_K\A_K`. If `u=(u_v)` as `v` runs through the
+places of `K`, then `d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})` by
+`MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight`, and the
+product is finite. By `central_simple_algebra_left_right_same_haar` this equals
+`\prod_v d_{B_v}(r_{u_v})`, and again by
+`MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight` this is
+`d_{B_{\A}}(r_u)`.
+:::
+
+```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := proof)
+\begin{proof}
+  \uses{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight,
+    IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+  We think of $B_{\A}$ as $B\otimes_K\A_K$.
+  If $u=(u_v)$ as $v$ runs through the places of $K$ then
+  $d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})$ by
+  theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} (and the product is finite).
+  By corollary~\ref{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+  this equals $\prod_v d_{B_v}(r_{u_v})$, and again by
+  theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} this is $d_{B_{\A}}(r_u)$.
+\end{proof}
+```
+
+:::theorem "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (parent := "haar_character_project") (lean := "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one")
+{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[]
+{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
+{uses "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv"}[]
+In the above situation, where `V` is a finite-dimensional `\Q`-vector space,
+`\phi : V \cong V` is `\Q`-linear, and `\phi_{\A}` is the base extension to
+`V_{\A}:=V\otimes_{\Q}\A_{\Q}` as a continuous linear endomorphism of `V_{\A}`
+with the `\A_{\Q}`-module topology, we have `d_{V_{\A}}(\phi_{\A})=1`.
+:::
+
+```tex "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (slot := statement)
+\begin{theorem}
+  \label{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
+  \lean{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
+  \leanok
+  In the above situation ($V$ a finite-dimensional $\Q$-vector space, $\phi:V\cong V$ is
+  $\Q$-linear, $\phi_{\A}$ the base extension to $V_{\A}:=V\otimes_{\Q}{\A_{\Q}}$, a continuous linear
+  endomorphism of $V_{\A}$ with the $\A_{\Q}$-module topology), we have $d_{V_{\A}}(\phi_{\A})=1.$
+\end{theorem}
+```
+
+:::proof "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"
+The original blueprint proof of this was that $`\phi_{\mathbb{A}} : V_{\mathbb{A}}\to
+V_{\mathbb{A}}` could be written as a restricted product of
+$`\phi_v:V\otimes_{\Q}\Q_v \to V\otimes_{\Q}\Q_v`, and hence by
+{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[] we
+have
+$`d_{V_{\A}}(\phi_{\A})=\prod_p d_{V_p}(\phi_p)\times d_{V_\infty}(\phi_\infty)`,
+and then applying
+{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[] this is equal
+to $`\prod_v\delta_{\Q_v}(\det(\phi_v))\prod_v\delta_{\Q_v}(\det(\phi))=1`.
+
+This turned out to be a nightmare to formalize, because commuting the tensor
+product and the restricted product cannot be done naively, as the tensor
+product is over `\Q` and the submodules in the restricted product defining
+`\A_{\Q}` are not `\Q`-modules. So one has to choose a `\Z`-lattice
+`\Lambda` in `V` and use the isomorphisms
+$$`V\otimes_{\mathbb{Q}}\mathbb{A}
+=\Lambda\otimes_{\mathbb{Z}}\mathbb{A}
+=\Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_\infty\times\prod'_p[\Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_p;\Lambda\otimes_{\mathbb{Z}}\mathbb{Z}_p]
+=V\otimes_{\mathbb{Q}}\mathbb{Q}_\infty\times\prod'_p[V\otimes_{\mathbb{Q}}\mathbb{Q}_p;im(\Lambda\otimes_{\Z}\mathbb{Z}_p)]`$$
+and check that all of these canonical maps are continuous. One of these claims
+boils down to yet another claim of the form "if you do something to the
+factors and then take the restricted product, then this is topologically the
+same as doing it to the restricted product", with the thing being
+`\Lambda\otimes_{\Z}` in this case. The needed homeomorphism is recorded in
+{uses "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv"}[].
+
+So here is the proof which we actually formalized. Say an automorphism of a
+finite free `R`-module is nice if it is a product of transvections and diagonal
+matrices with unit entries. Mathlib has the fact that if `R` is a field then
+all automorphisms are nice, and the base change of a nice morphism is nice.
+Hence $`\phi_{\mathbb{A}}` is nice, and we can simply prove
+{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[] for nice
+endomorphisms over a commutative ring, which gives the result immediately by
+the product formula.
+:::
+
+```tex "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (slot := proof)
+\begin{proof}
+  \leanok
+  \uses{
+    MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
+    MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight,
+    NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv
+  }
+  The original blueprint proof of this was that $\phi_{\mathbb{A}} : V_{\mathbb{A}}\to V_{\mathbb{A}}$
+  could be written as a restricted product of $\phi_v:V\otimes_{\Q}{\Q_v} \to V\otimes_{\Q}\Q_v$
+  and hence by theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
+  we have $d_{V_{\A}}(\phi_{\A})=\prod_p d_{V_p}(\phi_p)\times d_{V_\infty}(\phi_\infty)$,
+  and then applying Lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} this
+  is equal to $\prod_v\delta_{\Q_v}(\det(\phi_v))\prod_v\delta_{\Q_v}(\det(\phi))=1$.
+
+  This turned out to be a nightmare to formalize, because commuting the tensor product
+  and the restricted product cannot be done naively, as the tensor product is over $\Q$
+  and the submodules in the restricted product defining $\A_{\Q}$ are not $\Q$-modules.
+  So one has to choose a $\Z$-lattice in $V$ and
+  use the isomorphisms $V\otimes_{\mathbb{Q}}\mathbb{A}=\Lambda\otimes_{\mathbb{Z}}\mathbb{A}=
+  \Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_\infty\times\prod'_p[\Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_p;\Lambda\otimes_{\mathbb{Z}}\mathbb{Z}_p]=
+  V\otimes_{\mathbb{Q}}\mathbb{Q}_\infty\times\prod'_p[V\otimes_{\mathbb{Q}}\mathbb{Q}_p;im(\Lambda\otimes_{\Z}\mathbb{Z}_p)]$
+  and check that all of these canonical maps are continuous (and one of these claims
+  boils down to yet another claim of the form "if you do something to the factors and then
+  take the restricted product, then this is topologically the same as doing it to the restriced product",
+  with the thing being $\Lambda\otimes_{\Z}$ in this case, something which needs
+  checking).
+
+  So here is the proof which we actually formalized. Say an automorphism of a finite free
+  $R$-module is \emph{nice} if it's a product of transvections and diagonal matrices with unit
+  entries. Mathlib has the fact that if $R$ is a field then all automorphisms are nice,
+  and the base change of a nice morphism is nice. Hence $\phi_{\mathbb{A}}$ is nice,
+  and we can simply prove Lemma~\cite{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
+  for nice endomorphisms over a commutative ring, which gives the result we want immediately
+  by the product formula.
+\end{proof}
+```
 
 :::corollary "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
 If `B` is a finite-dimensional `\Q`-algebra, if `B_{\A}` denotes the ring

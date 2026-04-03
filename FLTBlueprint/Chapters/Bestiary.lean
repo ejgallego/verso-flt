@@ -114,6 +114,81 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 We also need Poitou-Tate duality; I'll refrain from writing it down for now, because we don't even have Galois cohomology in Lean yet (although we are very close to it).
 ```
 
+:::theorem "local_galois_coh_finite" (parent := "bestiary_appendix")
+If `M` is finite then the cohomology groups `H^i(G_K,M)` are all finite.
+:::
+
+```tex "local_galois_coh_finite" (slot := statement)
+\begin{theorem}
+    \label{local_galois_coh_finite}
+    \notready
+    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ are all finite.
+\end{theorem}
+```
+
+:::theorem "local_galois_coh_dim_two" (parent := "bestiary_appendix")
+If `M` is torsion then `H^i(G_K,M)=0` if `i>2`.
+:::
+
+```tex "local_galois_coh_dim_two" (slot := statement)
+\begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
+  If $M$ is torsion then $H^i(G_K,M)=0$ if $i>2$.
+\end{theorem}
+```
+
+:::theorem "local_galois_coh_top_degree" (parent := "bestiary_appendix")
+$`H^2(G_K,\mu_n)` is canonically isomorphic to $`\Z/n\Z`.
+:::
+
+```tex "local_galois_coh_top_degree" (slot := statement)
+\begin{theorem} ["top degree"]
+    \label{local_galois_coh_top_degree}
+    \notready
+    $H^2(G_K,\mu_n)$ is ``canonically'' isomorphic to $\Z/n\Z$.
+\end{theorem}
+```
+
+:::theorem "local_galois_coh_poincare" (parent := "bestiary_appendix")
+If $`\mu=\bigcup_{n\geq1}\mu_n` and $`M':=\Hom(M,\mu)` is the dual of `M`,
+then for $`0\leq i\leq 2` the cup-product pairing
+$`H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z` is perfect.
+:::
+
+```tex "local_galois_coh_poincare" (slot := statement)
+\begin{theorem} ["Poincar\'e duality"]\label{local_galois_coh_poincare}\notready
+    If $\mu=\bigcup_{n\geq1}\mu_n$ and $M':=\Hom(M,\mu)$ is the dual of $M$ then for
+    $0\leq i\leq 2$ the cup product pairing $H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z$ is perfect.
+\end{theorem}
+```
+
+:::theorem "local_galois_coh_euler_poincare" (parent := "bestiary_appendix")
+If `h^i(M)` denotes the order of `H^i(G_K,M)`, then
+`h^0(M)-h^1(M)+h^2(M)=0`.
+:::
+
+```tex "local_galois_coh_euler_poincare" (slot := statement)
+\begin{theorem} ["Euler-Poincar\'e characteristic"]\label{local_galois_coh_euler_poincare}\notready
+    If $h^i(M)$ denotes the order of $H^i(G_K,M)$ then $h^0(M)-h^1(M)+h^2(M)=0$.
+\end{theorem}
+```
+
+:::theorem "Skinner_Wiles_CFT_trick" (parent := "bestiary_appendix")
+Let `S` be a finite set of places of a number field `K`. For each `v \in S`
+let `L_v/K_v` be a finite Galois extension. Then there is a finite solvable
+Galois extension `L/K` such that if `w` is a place of `L` dividing `v \in S`,
+then `L_w/K_v` is isomorphic to `L_v/K_v` as a `K_v`-algebra. Moreover, if
+`K^{\avoid}/K` is any finite extension then `L` can be chosen linearly
+disjoint from `K^{\avoid}`.
+:::
+
+```tex "Skinner_Wiles_CFT_trick" (slot := statement)
+\begin{theorem}\label{Skinner_Wiles_CFT_trick}\uses{global_class_field_theory}\notready Let $S$ be a finite set of places of a number field $K$ . For each $v \in S$
+let $L_v/K_v$ be a finite Galois extension. Then there is a finite solvable Galois extension
+$L/K$ such that if $w$ is a place of $L$ dividing $v \in S$, then $L_w/K_v$ is isomorphic to $L_v/K_v$ as $K_v$-algebra. Moreover, if $K^{\avoid} /K$ is
+any finite extension then we can choose $L$ to be linearly disjoint from $K^{\avoid}$.
+\end{theorem}
+```
+
 # Structures on the points of an affine variety.
 
 All rings and algebras in this section are commutative with a `1`, and all
@@ -426,4 +501,43 @@ Note that we do not even have the definition of a curve over a field in Lean.
 \section{Algebra}
 
 We need the classification of finite subgroups of $\PGL_2(\overline{\F}_p)$. The answer is that they are all cyclic, dihedral, $A_4$, $S_4$, $A_5$, or isomorphic to $\PSL_2(k)$ or $\PGL_2(k)$ for some finite field of characteristic~`p`. This should at least be easy to state!
+```
+
+:::definition "cuspidal_automorphic_representation" (parent := "bestiary_appendix")
+A cuspidal automorphic representation is an irreducible
+`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
+summand of the space of cusp forms.
+:::
+
+```tex "cuspidal_automorphic_representation" (slot := statement)
+\begin{definition}\label{cuspidal_automorphic_representation}\uses{cuspidal_automorphic_form_decomposition}\notready A cuspidal automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible summand of the space of cusp forms.
+\end{definition}
+```
+
+:::theorem "automorphic_representation_local_decomposition" (parent := "bestiary_appendix")
+An irreducible admissible `(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module is a
+restricted tensor product of irreducible representations `\pi_v` of `G(N_v)`
+as `v` runs through the finite places of `N`, tensored with a tensor product of
+irreducible `(\mathfrak{g}_v,U_{\infty,v})`-modules as `v` runs through the
+infinite places of `N`. The representations `\pi_v` are unramified for all but
+finitely many `v`.
+:::
+
+```tex "automorphic_representation_local_decomposition" (slot := statement)
+\begin{theorem}\label{automorphic_representation_local_decomposition}\uses{automorphic_representation}\notready An irreducible admissible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module is a restricted tensor product of irreducible representations $\pi_v$ of $G(N_v)$ as $v$ runs through the finite places of $N$, tensored with a tensor product of irreducible $(\mathfrak{g}_v,U_{\infty,v})$-modules as $v$ runs through the infinite places of $N$. The representations $\pi_v$ are unramified for all but finitely many $v$.
+\end{theorem}
+```
+
+:::theorem "Galois_representation_from_automorphic_representation_on_GL_2_form" (parent := "bestiary_appendix")
+Given an automorphic representation `\pi` for an inner form of `\GL_2` over a
+totally real field and with reflex field `E`, such that `\pi` is weight `2`
+discrete series at every infinite place, there exists a compatible family of
+`2`-dimensional Galois representations associated to `\pi`, with `S` the
+places at which `\pi` is ramified and `F_{\mathfrak p}(X)` the monic
+polynomial with roots the two Satake parameters for `\pi` at `\mathfrak p`.
+:::
+
+```tex "Galois_representation_from_automorphic_representation_on_GL_2_form" (slot := statement)
+\begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation `\pi` for an inner form of `\GL_2` over a totally real field and with reflex field~`E`, such that `\pi` is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to `\pi`, with `S` being the places at which `\pi` is ramified, and `F_{\p}(X)` being the monic polynomial with roots the two Satake parameters for `\pi` at `\p`.
+\end{theorem}
 ```

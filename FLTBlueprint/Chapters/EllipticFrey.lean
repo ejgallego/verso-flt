@@ -693,7 +693,7 @@ If `(a,b,c,\ell)` is a Frey package, then the `\ell`-torsion in the Frey curve i
 ```
 
 :::proof "frey_curve_unramified"
-Follows from {uses "Frey_curve_good"}[] and {uses "Frey_curve_unram"}[].
+Follows from {uses "Frey_curve_good"}[] and {uses "good_reduction_implies_unramified"}[].
 :::
 
 ```tex "frey_curve_unramified" (slot := proof)

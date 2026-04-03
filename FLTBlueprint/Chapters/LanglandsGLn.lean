@@ -298,7 +298,7 @@ From here on there is no more Lean right now, only LaTeX.
 :::definition "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ")
 A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
 $`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
-five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],
+five conditions. This depends on {uses "smooth_gln_function"}[],
 {uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[],
 {uses "AutomorphicForm.GLn.Weight"}[], and {uses "instCentreAction"}[].
 

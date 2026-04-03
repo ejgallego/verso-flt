@@ -252,7 +252,7 @@ $`x\in D_A^{(1)}`, the obvious map $`xE\to D\backslash D_A` is not injective.
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"
 {uses "NumberField.AdeleRing.discrete"}[]
-{uses "Rat.AdeleRing.cocompact"}[]
+{uses "rational_adele_quotient_compact"}[]
 We know that if we pick a $`\Q`-basis for $`D` of size $`d` then this
 identifies $`D` with $`\Q^d`, $`D_{\A}` with $`\A_{\Q}^d`, and
 $`D\backslash D_{\A}` with $`(\Q\backslash\A_{\Q})^d`. Now $`\Q` is
@@ -826,7 +826,7 @@ is compact.
 ```
 
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"
-{uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[]
+{uses "compact_quotient_for_division_algebra"}[]
 There's a natural map `α` from
 `D^\times \backslash D_A^{(1)}` to
 `D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that

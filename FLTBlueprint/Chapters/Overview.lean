@@ -178,7 +178,6 @@ that the functor representing $S$-good lifts of $\rhobar$ is representable.
 {uses "automorphic_representation_local_decomposition"}[]
 {uses "cuspidal_automorphic_representation"}[]
 {uses "Galois_representation_from_automorphic_representation_on_GL_2_form"}[]
-{uses "moret-bailly"}[]
 {uses "local_galois_coh_finite"}[]
 If $`\rhobar` is modular of level $`\Gamma_1(S)` and
 $`\rho : G_F \to \GL_2(\calO)` is an S-good lift of $`\rhobar` to $`\calO`, the

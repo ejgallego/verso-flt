@@ -1126,7 +1126,6 @@ to the compact open subgroups `GL₂(\mathcal{O}_v)`.
 :::proof "GL2.restrictedProduct"
 {uses "ContinuousMulEquiv.restrictedProductUnits"}[]
 {uses "Homeomorph.restrictedProductMatrix"}[]
-{uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[]
 This follows from the former lemma and the latter lemma.
 :::
 
