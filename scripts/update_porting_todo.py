@@ -49,8 +49,6 @@ FORMAL_ENVS = {
 COMPLETION_FLAGS = {"leanok", "mathlibok"}
 PLACEHOLDER_LEAN_TARGETS = {"???", "TODO", "TBD", "FIXME"}
 OPEN_PROOF_MARKERS = (
-    "not ready",
-    "notready",
     "todo",
     "omitted for now",
     "omit the argument",
@@ -204,10 +202,6 @@ def lean_targets_are_placeholder(node: EnvNode) -> bool:
     return any(lean.strip() in PLACEHOLDER_LEAN_TARGETS for lean in node.leans)
 
 
-def has_completion_flag(node: EnvNode) -> bool:
-    return bool(node.flags & COMPLETION_FLAGS)
-
-
 def proof_looks_unfinished(text: str) -> bool:
     lower = text.lower()
     return any(marker in lower for marker in OPEN_PROOF_MARKERS)
@@ -221,15 +215,9 @@ def open_reasons(node: EnvNode, header_text: str, full_text: str) -> list[str]:
             reasons.append("no `\\lean{...}` target")
         elif lean_targets_are_placeholder(node):
             reasons.append("placeholder Lean target")
-        if not has_completion_flag(node):
-            reasons.append("missing `\\leanok` / `\\mathlibok`")
-        if "notready" in node.flags:
-            reasons.append("explicit `\\notready` marker")
 
     if node.kind == "proof":
-        if "notready" in node.flags:
-            reasons.append("explicit `\\notready` marker")
-        elif proof_looks_unfinished(full_text):
+        if proof_looks_unfinished(full_text):
             reasons.append("proof sketch still reads as unfinished")
 
     return reasons
@@ -334,8 +322,8 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " informal block in the Verso chapter to sit next to a labeled `tex` witness block;"
         " check that separately with `python3 scripts/check_lt_source_pairs.py`."
     )
-    lines.append("It treats `\\leanok` and `\\mathlibok` as closed, and surfaces explicit `\\notready`,")
-    lines.append("placeholder Lean targets, and unfinished proof sketches as open work.")
+    lines.append("It ignores legacy `\\leanok`, `\\mathlibok`, and `\\notready` markers for backlog purposes,")
+    lines.append("and surfaces placeholder Lean targets, missing Lean targets, and unfinished proof sketches as open work.")
     lines.append(
         "When a source block is still open, keep the raw TeX nearby in a labeled `tex` block"
         " instead of rewriting it into placeholder prose."

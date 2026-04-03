@@ -190,8 +190,11 @@ harness should be able to flag it automatically for re-audit.
 :::definition "chapter_audit_todo_index" (parent := "porting_status")
 The repository-level chapter audit is now split into two layers.
 
-- `PortingTodo.md` tracks source markers, missing Lean targets, `\notready`
-  items, and unfinished proof sketches drawn from the TeX source.
+- `PortingTodo.md` tracks source markers, missing Lean targets, and unfinished
+  proof sketches drawn from the TeX source.
+  It intentionally ignores legacy `\leanok` / `\mathlibok` completion flags,
+  and for now also ignores explicit `\notready` markers, as a source of
+  backlog.
 - the stricter LT audit tracks whether each translated informal block has a
   local adjacent `tex` witness block, checked with
   `python3 scripts/check_lt_source_pairs.py`
