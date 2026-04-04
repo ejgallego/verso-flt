@@ -14,7 +14,7 @@ When a source block is still open, keep the raw TeX nearby in a labeled `tex` bl
 - Mapped TeX chapters scanned: 14
 - Source nodes scanned: 435
 - Chapters with open work: 9
-- Open source nodes: 57
+- Open source nodes: 56
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -242,7 +242,7 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Miniproject: Adeles
 - Source: `AdeleMiniproject.tex` -> `AdeleProject.lean`
 - Scanned nodes: 95
-- Open work: 13 source nodes need port attention (13 formal statements, 0 proof sketches).
+- Open work: 12 source nodes need port attention (12 formal statements, 0 proof sketches).
 - Tasks:
 - [ ] `IsDedekindDomain.dvd_norm` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{IsDedekindDomain.dvd_norm}`.
@@ -262,16 +262,6 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
   \label{IsDedekindDomain.AKLB.surjective_tensorProduct_map}
   \uses{IsDedekindDomain.dvd_norm}
   The $A$-bilinear map $B\times K\to L$ sending $(b,k)$ to $bk$ is surjective.
-\end{corollary}
-```
-- [ ] `IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv}`; uses: `\uses{IsDedekindDomain.dvd_norm}`.
-  - source:
-```tex
-\begin{corollary}
-  \label{IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv}
-  \uses{IsDedekindDomain.dvd_norm}
-  The natural map $B\otimes_AK\to L$ is a $B$-algebra isomorphism.
 \end{corollary}
 ```
 - [ ] `IsDedekindDomain.pi_tensorProduct` needs attention: no `\lean{...}` target.

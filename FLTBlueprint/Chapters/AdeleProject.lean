@@ -779,6 +779,122 @@ $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty`.
 Hence there's a natural $L$-algebra homomorphism $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$.
 ```
 
+We start with the following observation. If `M` is a `K`-module then there's a
+canonical map $`B\otimes_A M\to L\otimes_K M` sending $`b\otimes m` to
+$`b\otimes m` by the universal property of the tensor product. Our first goal
+is to show that this map is an isomorphism, so let us establish some lemmas
+first.
+
+```tex
+We start with the following observation. If $M$ is a $K$-module then there's a canonical
+map $B\otimes_AM\to L\otimes_KM$ sending $b\otimes m$ to $b\otimes m$ (this follows from the
+universal property of the tensor product). Our first goal
+is to show that this map is an isomorphism. Let us establish some lemmas first.
+```
+
+:::lemma_ "IsDedekindDomain.dvd_norm" (parent := "adele_project")
+If $`0\not=b\in B` then there exists $`0\not=a\in A` such that $`b` divides
+the image of $`a` in $`B`.
+:::
+
+```tex "IsDedekindDomain.dvd_norm" (slot := statement)
+\begin{lemma}
+  \label{IsDedekindDomain.dvd_norm}
+  If $0\not=b\in B$ then there exists $0\not=a\in A$ such that $b$ divides
+  the image of $a$ in $B$.
+\end{lemma}
+```
+
+:::proof "IsDedekindDomain.dvd_norm"
+Let $`a=N_{L/K}(b)`, the norm. This is known to take nonzero elements of $`L`
+to nonzero elements of $`K` because the norm is the determinant of an
+invertible linear map, and integral elements to integral elements. Furthermore
+$`a/b\in L` is the product of the conjugates of $`b` in some normal closure of
+`L`, and hence it is integral, so it lies in `B`.
+:::
+
+```tex "IsDedekindDomain.dvd_norm" (slot := proof)
+\begin{proof} Let $a=N_{L/K}(b)$, the norm. This is known to take nonzero elements of $L$
+to nonzero elements of $K$ (because the norm is the determinant of an invertible linear map)
+and integral elements to integral elements. Furthermore $a/b\in L$ is the the product of the
+conjugates of $b$ in some normal closure of $L$, and hence it is integral, and thus in $B$.
+\end{proof}
+```
+
+:::corollary "IsDedekindDomain.AKLB.surjective_tensorProduct_map" (parent := "adele_project")
+{uses "IsDedekindDomain.dvd_norm"}[]
+The $`A`-bilinear map $`B\times K\to L` sending $`(b,k)` to $`bk` is
+surjective.
+:::
+
+```tex "IsDedekindDomain.AKLB.surjective_tensorProduct_map" (slot := statement)
+\begin{corollary}
+  \label{IsDedekindDomain.AKLB.surjective_tensorProduct_map}
+  \uses{IsDedekindDomain.dvd_norm}
+  The $A$-bilinear map $B\times K\to L$ sending $(b,k)$ to $bk$ is surjective.
+\end{corollary}
+```
+
+:::proof "IsDedekindDomain.AKLB.surjective_tensorProduct_map"
+{uses "IsDedekindDomain.dvd_norm"}[]
+Given $`\lambda\in L`, write it as $`n/d` with $`0\not=d\in B`. Choose
+$`0\not=a\in A` and $`b\in B` with $`db=a`, and then note that
+$`\lambda=nb\times a^{-1}`.
+:::
+
+```tex "IsDedekindDomain.AKLB.surjective_tensorProduct_map" (slot := proof)
+\begin{proof} Given $\lambda\in L$ write it as $n/d$ with $0\not=d\in B$. Choose $0\not=a\in A$
+  and $b\in B$ with $db=a$ and then note $\lambda=nb/a=nb\times a^{-1}$.
+\end{proof}
+```
+
+:::corollary "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.linearEquivTensorProductModule")
+{uses "IsDedekindDomain.dvd_norm"}[]
+The natural map $`B\otimes_AK\to L` is a $`B`-algebra isomorphism.
+:::
+
+```tex "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv" (slot := statement)
+\begin{corollary}
+  \label{IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv}
+  \uses{IsDedekindDomain.dvd_norm}
+  The natural map $B\otimes_AK\to L$ is a $B$-algebra isomorphism.
+\end{corollary}
+```
+
+:::proof "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv"
+We write down an inverse. Regard $`B\otimes_AK` as a $`B`-algebra via the
+action on the left. Note that at this point it's not even clear that
+$`B\otimes_AK` is a field. We have the structure map $`B\to B\otimes_AK`
+sending $`b` to $`b\otimes1`, which is $`B`-linear. I claim that every nonzero
+element of $`B` gets sent to an invertible element of $`B\otimes_AK`. Indeed,
+if $`b\not=0` and, using the previous lemma, we choose $`0\not=a\in A` such
+that $`bb'=a`, then $`(b\otimes1)(b'\otimes\frac1a)=1`. Thus by the universal
+property of localization, the $`B`-linear map $`B\to B\otimes_AK` extends to a
+ring homomorphism from the field of fractions of $`B` to $`B\otimes_AK`, which
+we claim is our desired inverse. Checking that both composites are the identity
+should be straightforward. Starting with $`B\otimes_AK` we only have to check on
+elements of the form $`b\otimes k`; starting with $`L` we only have to check on
+elements of $`B`. Hopefully both are straightforward.
+:::
+
+```tex "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv" (slot := proof)
+\begin{proof}
+
+We write down an inverse. Regard $B\otimes_AK$ as a $B$-algebra via the action on the left.
+Note that at this point it's not even clear that $B\otimes_AK$ is a field. We have the
+structure map $B\to B\otimes_AK$ sending $b$ to $b\otimes1$, which is $B$-linear. I claim
+that every nonzero element of $B$ gets sent to an invertible element of $B\otimes_AK$.
+Indeed, if $b\not=0$ and (using the previous lemma) we choose $0\not=a\in A$ such that
+$bb'=a$, then $(b\otimes1)(b'\otimes\frac1a)=1$. Thus by the universal property of
+localisation, the $B$-linear map $B\to B\otimes_AK$ extends to a ring homomorphism from the field
+of fractions of $B$ to $B\otimes_AK$, which we claim is our desired inverse.
+Checking that both composites are the identity should be straightforward. Starting
+with $B\otimes_AK$ we only have to check on elements of the form $b\otimes k$;
+starting with $L$ we only have to check on elements of $B$. Hopefully both are
+straightforward.
+\end{proof}
+```
+
 Our next goal in this section is the following two results. First the algebraic
 claim.
 ```tex
