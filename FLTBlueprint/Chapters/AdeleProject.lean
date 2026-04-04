@@ -847,7 +847,29 @@ The reason we care about this is the following.
 ```
 
 
-:::theorem "tensor_product_commutes_with_products_for_finite_presentation" (parent := "adele_project")
+:::theorem "IsDedekindDomain.AKLB.finitePresentation" (parent := "adele_project") (lean := "Module.finitePresentation_of_finite")
+$`B` is a finitely presented $`A`-module.
+:::
+```tex
+\begin{theorem} $B$ is a finitely-presented $A$-module.
+  \label{IsDedekindDomain.AKLB.finitePresentation}
+\end{theorem}
+```
+
+
+:::proof "IsDedekindDomain.AKLB.finitePresentation"
+$`A` is Noetherian as it is a Dedekind domain, so it suffices to prove that
+$`B` is finitely generated as an $`A`-module. But this is in mathlib already.
+:::
+```tex
+\begin{proof} $A$ is Noetherian as it is a Dedekind domain, so it suffices to prove that $B$ is
+  finitely-generated as an $A$-module. But this is in mathlib already (a proof is
+  around line 101 of {\tt BaseChange.lean} in FLT at the time of writing).
+\end{proof}
+```
+
+
+:::theorem "pi_tensorProduct_of_finitePresentation" (parent := "adele_project") (lean := "tensorPi_equiv_piTensor'")
 If $`R` is a commutative ring, if $`M` is a finitely presented $`R`-module
 and if $`N_i` are a collection of $`R`-modules, then the canonical map
 $`M \otimes_R \prod_i N_i \to \prod_i (M \otimes_R N_i)` is an isomorphism.
@@ -862,7 +884,7 @@ $`M \otimes_R \prod_i N_i \to \prod_i (M \otimes_R N_i)` is an isomorphism.
 ```
 
 
-:::proof "tensor_product_commutes_with_products_for_finite_presentation"
+:::proof "pi_tensorProduct_of_finitePresentation"
 If `M` is finite and free then Maddy Crim has already formalized this in FLT.
 For the general case present $`M` as $`R^a \to R^b \to M \to 0` and use that
 tensor products and arbitrary products preserve surjections.
@@ -943,7 +965,7 @@ easily from the definition of the topology.
 
 :::corollary "finite_prime_product_tensor_isomorphism" (parent := "adele_project")
 {uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[]
-{uses "tensor_product_commutes_with_products_for_finite_presentation"}[]
+{uses "pi_tensorProduct_of_finitePresentation"}[]
 If `S` is a finite set of nonzero primes of `A` then the natural map
 $`B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
 (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))`$

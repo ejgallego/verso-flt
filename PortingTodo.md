@@ -14,7 +14,7 @@ When a source block is still open, keep the raw TeX nearby in a labeled `tex` bl
 - Mapped TeX chapters scanned: 14
 - Source nodes scanned: 435
 - Chapters with open work: 9
-- Open source nodes: 60
+- Open source nodes: 58
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -242,7 +242,7 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Miniproject: Adeles
 - Source: `AdeleMiniproject.tex` -> `AdeleProject.lean`
 - Scanned nodes: 95
-- Open work: 15 source nodes need port attention (15 formal statements, 0 proof sketches).
+- Open work: 13 source nodes need port attention (13 formal statements, 0 proof sketches).
 - Tasks:
 - [ ] `IsDedekindDomain.dvd_norm` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{IsDedekindDomain.dvd_norm}`.
@@ -273,25 +273,6 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
   \uses{IsDedekindDomain.dvd_norm}
   The natural map $B\otimes_AK\to L$ is a $B$-algebra isomorphism.
 \end{corollary}
-```
-- [ ] `IsDedekindDomain.AKLB.finitePresentation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.AKLB.finitePresentation}`.
-  - source:
-```tex
-\begin{theorem} $B$ is a finitely-presented $A$-module.
-  \label{IsDedekindDomain.AKLB.finitePresentation}
-\end{theorem}
-```
-- [ ] `pi_tensorProduct_of_finitePresentation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{pi_tensorProduct_of_finitePresentation}`.
-  - source:
-```tex
-\begin{theorem}
-  \label{pi_tensorProduct_of_finitePresentation}
-  If $R$ is a commutative ring, if $M$ is a finitely presented $R$-module
-  and if $N_i$ are a collection of $R$-modules, then the canonical map
-  $M\otimes_R\prod_i N_i\to\prod_i(M\otimes_R N_i)$ is an isomorphism.
-\end{theorem}
 ```
 - [ ] `IsDedekindDomain.pi_tensorProduct` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{IsDedekindDomain.pi_tensorProduct}`; uses: `\uses{IsDedekindDomain.AKLB.finitePresentation,pi_tensorProduct_of_finitePresentation}`.
