@@ -13,7 +13,7 @@ When a source block is still open, keep the raw TeX nearby in a labeled `tex` bl
 - Mapped TeX chapters scanned: 16
 - Source nodes scanned: 501
 - Chapters with open work: 10
-- Open source nodes: 94
+- Open source nodes: 91
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -63,7 +63,7 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## Elliptic curves, and the Frey Curve
 - Source: `ch03freyold.tex` -> `EllipticFrey.lean`
 - Scanned nodes: 66
-- Open work: 30 source nodes need port attention (28 formal statements, 2 proof sketches).
+- Open work: 27 source nodes need port attention (25 formal statements, 2 proof sketches).
 - Tasks:
 - [ ] `Elliptic_curve_det_n_torsion` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{Elliptic_curve_det_n_torsion}`; uses: `\uses{Elliptic_curve_n_torsion_2d}`.
@@ -241,23 +241,6 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
   Frey curve associated to a Frey package $(a,b,c,\ell)$. Then the restriction of $\rho$ to $\GQl$ comes from a finite flat group scheme.
 \end{theorem}
 ```
-- [ ] `frey_curve_hardly_ramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{frey_curve_hardly_ramified}`; uses: `\uses{hardly_ramified}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{frey_curve_hardly_ramified}\uses{hardly_ramified}\notready Let $\rho$ be the Galois representation on the
-  $\ell$-torsion of the Frey curve coming from a Frey package $(a,b,c,\ell)$. Then $\rho$ is hardly
-  ramified.
-\end{theorem}
-```
-- [ ] `mazur` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{mazur}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{mazur}\notready Let $E$ be an elliptic curve over $\Q$. Then the torsion subgroup
-  of $E$ has size at most 16.
-\end{theorem}
-```
 - [ ] `Frey_characters_are_unramified` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{Frey_characters_are_unramified}`; flags: `\notready`.
   - source:
@@ -322,13 +305,6 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 ```tex
 \begin{corollary}\label{Frey_curve_no_trivial_quotient} $\rho$ cannot have a trivial 1-dimensional quotient.
 \end{corollary}
-```
-- [ ] `Frey_curve_irreducible` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_irreducible}`.
-  - source:
-```tex
-\begin{theorem}\label{Frey_curve_irreducible} The $\ell$-torsion in the Frey curve associated to a Frey package $(a,b,c,\ell)$ is irreducible.
-\end{theorem}
 ```
 - Representative source:
 ```tex
