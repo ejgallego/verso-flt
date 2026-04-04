@@ -14,7 +14,7 @@ When a source block is still open, keep the raw TeX nearby in a labeled `tex` bl
 - Mapped TeX chapters scanned: 14
 - Source nodes scanned: 435
 - Chapters with open work: 9
-- Open source nodes: 64
+- Open source nodes: 60
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -199,55 +199,8 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Automorphic forms and the Langlands Conjectures
 - Source: `ch07exampleGLn.tex` -> `LanglandsGLn.lean`
 - Scanned nodes: 13
-- Open work: 6 source nodes need port attention (6 formal statements, 0 proof sketches).
+- Open work: 2 source nodes need port attention (2 formal statements, 0 proof sketches).
 - Tasks:
-- [ ] `instLieAlgebraAction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{instLieAlgebraAction}`.
-  - source:
-```tex
-\begin{definition}
-  \label{instLieAlgebraAction}
-There is a natural action of the real Lie algebra of $\GL_n(\R)$ on the complex vector space of
-smooth complex-valued functions on $\GL_n(\R)$.
-\end{definition}
-```
-- [ ] `instComplexLieAlgebraAction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{instComplexLieAlgebraAction}`; uses: `\uses{instLieAlgebraAction}`.
-  - source:
-```tex
-\begin{definition}
-  \label{instComplexLieAlgebraAction}
-  \uses{instLieAlgebraAction}
-
-  This extends to is a natural complex Lie algebra action of the complexification of
-  the real Lie algebra, on the smooth complex functions on $\GL_n(\R)$.
-
-\end{definition}
-```
-- [ ] `instUniversalEnvelopingAlgebraAction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{instUniversalEnvelopingAlgebraAction}`; uses: `\uses{instComplexLieAlgebraAction}`.
-  - source:
-```tex
-\begin{definition}
-  \label{instUniversalEnvelopingAlgebraAction}
-  \uses{instComplexLieAlgebraAction}
-By functoriality, we get an action of the universal enveloping algebra of this
-complexified Lie algebra on the smooth complex functions.
-
-\end{definition}
-```
-- [ ] `instCentreAction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{instCentreAction}`; uses: `\uses{instUniversalEnvelopingAlgebraAction}`.
-  - source:
-```tex
-\begin{definition}
-\label{instCentreAction}
-\uses{instUniversalEnvelopingAlgebraAction}
-Thus the \emph{centre} $\Z_n$ of this universal enveloping algebra also acts on the smooth
-complex functions.
-
-\end{definition}
-```
 - [ ] `lemma @164` needs attention: no `\lean{...}` target.
   - source:
 ```tex
@@ -264,11 +217,9 @@ complex functions.
 ```
 - Representative source:
 ```tex
-\begin{definition}
-  \label{instLieAlgebraAction}
-There is a natural action of the real Lie algebra of $\GL_n(\R)$ on the complex vector space of
-smooth complex-valued functions on $\GL_n(\R)$.
-\end{definition}
+\begin{lemma} The group $\GL_n(\A_{\Q}^f)$ acts (on the left) on the space of automorphic forms
+  for $\GL_n(\A_{\Q})$ by the formula $(g\cdot f)(x,y)=f(xg,y)$.
+\end{lemma}
 ```
 
 ## Miniproject: Frobenius elements

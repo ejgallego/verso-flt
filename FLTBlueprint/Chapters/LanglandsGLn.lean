@@ -198,7 +198,7 @@ continuous).
 
 # The Action Of The Universal Enveloping Algebra
 
-:::definition "instLieAlgebraAction" (parent := "gln_langlands_program")
+:::definition "instLieAlgebraAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.action")
 There is a natural action of the real Lie algebra of $`\GL_n(\R)` on the
 complex vector space of smooth complex-valued functions on $`\GL_n(\R)`.
 :::
@@ -224,7 +224,7 @@ smooth complex-valued functions on $\GL_n(\R)$.
 \end{definition}
 ```
 
-:::definition "instComplexLieAlgebraAction" (parent := "gln_langlands_program")
+:::definition "instComplexLieAlgebraAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.actionTensorC")
 This extends to a natural complex Lie algebra action of the complexification of
 the real Lie algebra on the smooth complex-valued functions on $`\GL_n(\R)`.
 This depends on {uses "instLieAlgebraAction"}[].
@@ -241,7 +241,7 @@ This depends on {uses "instLieAlgebraAction"}[].
 \end{definition}
 ```
 
-:::definition "instUniversalEnvelopingAlgebraAction" (parent := "gln_langlands_program")
+:::definition "instUniversalEnvelopingAlgebraAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.actionTensorCAlg'")
 By functoriality, we get an action of the universal enveloping algebra of this
 complexified Lie algebra on the smooth complex-valued functions. This depends on
 {uses "instComplexLieAlgebraAction"}[].
@@ -257,7 +257,7 @@ complexified Lie algebra on the smooth complex functions.
 \end{definition}
 ```
 
-:::definition "instCentreAction" (parent := "gln_langlands_program")
+:::definition "instCentreAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.actionTensorCAlg'3")
 Thus the centre $`Z_n` of this universal enveloping algebra also acts on the
 smooth complex-valued functions. This depends on
 {uses "instUniversalEnvelopingAlgebraAction"}[].
