@@ -7,14 +7,14 @@ It follows the authoritative upstream blueprint chapter list from `content.tex`;
 The harness migration is largely done: most direct-port chapters now keep the remaining open source in local `tex` blocks, and the main work left is selective chapter fidelity rather than broad infrastructure.
 This board is not an LT certification report. Strict LT now also requires every translated informal block in the Verso chapter to sit next to a labeled `tex` witness block; check that separately with `python3 scripts/check_lt_source_pairs.py`.
 It ignores legacy `\leanok`, `\mathlibok`, and `\notready` markers for backlog purposes,
-and surfaces placeholder Lean targets, missing Lean targets on unfinished source items, and unfinished proof sketches as open work.
+and surfaces placeholder Lean targets, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work.
 When a source block is still open, keep the raw TeX nearby in a labeled `tex` block instead of rewriting it into placeholder prose.
 
 ## Snapshot
 - Mapped TeX chapters scanned: 14
 - Source nodes scanned: 435
-- Chapters with open work: 9
-- Open source nodes: 56
+- Chapters with open work: 8
+- Open source nodes: 47
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -144,15 +144,8 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## An example of an automorphic form
 - Source: `ch05automorphicformexample.tex` -> `AutomorphicFormExample.lean`
 - Scanned nodes: 66
-- Open work: 2 source nodes need port attention (2 formal statements, 0 proof sketches).
+- Open work: 1 source nodes need port attention (1 formal statements, 0 proof sketches).
 - Tasks:
-- [ ] `example @289` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{example} Recall that the sum of all the factorials is an element $e\in\Zhat$, and $22/7$ is certainly
-a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
-\end{example}
-```
 - [ ] `Hurwitz.surjective_pnat_quotient` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{Hurwitz.surjective_pnat_quotient}`; uses: `\uses{Hurwitz}`.
   - source:
@@ -165,9 +158,11 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ```
 - Representative source:
 ```tex
-\begin{example} Recall that the sum of all the factorials is an element $e\in\Zhat$, and $22/7$ is certainly
-a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
-\end{example}
+\begin{theorem}
+    \label{Hurwitz.surjective_pnat_quotient}
+    \uses{Hurwitz}
+    If $N$ is a positive natural then the obvious map $\calO\to\calOhat/N\calOhat$ is surjective.
+\end{theorem}
 ```
 
 ## Stating the modularity lifting theorems
@@ -199,27 +194,21 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Automorphic forms and the Langlands Conjectures
 - Source: `ch07exampleGLn.tex` -> `LanglandsGLn.lean`
 - Scanned nodes: 13
-- Open work: 2 source nodes need port attention (2 formal statements, 0 proof sketches).
-- Tasks:
-- [ ] `lemma @164` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{lemma} The group $\GL_n(\A_{\Q}^f)$ acts (on the left) on the space of automorphic forms
-  for $\GL_n(\A_{\Q})$ by the formula $(g\cdot f)(x,y)=f(xg,y)$.
-\end{lemma}
-```
-- [ ] `lemma @186` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{lemma} This function is well-defined, i.e., it sends a $U$-invariant form to
-  a $U$-invariant form which is independent of the choice of $g_i$.
-\end{lemma}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
-\begin{lemma} The group $\GL_n(\A_{\Q}^f)$ acts (on the left) on the space of automorphic forms
-  for $\GL_n(\A_{\Q})$ by the formula $(g\cdot f)(x,y)=f(xg,y)$.
-\end{lemma}
+\begin{definition}
+  \label{AutomorphicForm.GLn.IsSmooth}
+  \lean{AutomorphicForm.GLn.IsSmooth}
+  A function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is \emph{smooth}
+  if it has the following three properties.
+
+  \begin{enumerate}
+    \item $f$ is continuous.
+    \item For all $x\in\GL_n(\A_{\Q}^f)$, the function $y\mapsto f(x,y)$ is smooth.
+    \item For all $y\in\GL_n(\R)$, the function $x\mapsto f(x,y)$ is locally constant.
+  \end{enumerate}
+\end{definition}
 ```
 
 ## Miniproject: Frobenius elements
@@ -242,7 +231,7 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Miniproject: Adeles
 - Source: `AdeleMiniproject.tex` -> `AdeleProject.lean`
 - Scanned nodes: 95
-- Open work: 12 source nodes need port attention (12 formal statements, 0 proof sketches).
+- Open work: 7 source nodes need port attention (7 formal statements, 0 proof sketches).
 - Tasks:
 - [ ] `IsDedekindDomain.dvd_norm` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{IsDedekindDomain.dvd_norm}`.
@@ -326,51 +315,6 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
   The natural map $B\otimes_A\A_K^\infty\to\A_L^\infty$ is a $B$-algebra
   isomorphism.
 \end{theorem}
-```
-- [ ] `definition @604` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{definition} If $X_v$ and $Y_v$ are families of topological spaces indexed by $v\in V$,
-  if $f_v:X_v\to Y_v$ is a continuous map sending the subset $C_v\subseteq X_v$ into
-  $D_v\subseteq Y_v$ then there's an induced continuous map $\prod'_v(X_v,C_v)\to\prod'_v(Y_v,D_v)$.
-\end{definition}
-```
-- [ ] `definition @609` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{definition} If all the $f_v$ are homeomorphisms identifying $C_v$ with $D_v$ then
-  the induced map on restricted products is also a homeomorphism (proof: apply the previous
-  construction to $f_v$ and their inverses)
-\end{definition}
-```
-- [ ] `theorem @621` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{theorem} In the same setup as definition~\ref{RestrictedProduct.relabelIso}
-  ($V,W$ index sets, $f:W\to V$,
-  $C_v\subseteq X_v$ and $D_w\subseteq Y_w$, bijections $b_v:X_v\to\prod_{w:f(w)=v}Y_w$
-  identifying $C_v$ with $\prod_{w:f(w)=v}D_w$), if all the $X_v$ and $Y_w$ are furthermore
-  topological spaces, all the $C_v$ and $D_w$ are open, and all the $b_v$ are homeomorphisms,
-  then the induced
-  map $\prod'_v(X_v,C_v)\to\prod'_w(Y_w,D_w)$ is also a homeomorphism.
-\end{theorem}
-```
-- [ ] `corollary @633` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{corollary} $\mathbb{\A_L^\infty}$ is homeomorphic to $\prod_v(B\otimes_AK_v,B\otimes_AA_v)$.
-\end{corollary}
-```
-- [ ] `lemma @665` needs attention: no `\lean{...}` target.
-  - source:
-```tex
-\begin{lemma}
-  If $X_v$ and $Y_v$ are topological spaces with open subspaces $C_v$ and $D_v$, then
-  the obvious bijection $\prod'_v(X_v \times Y_v,C_v\times D_v) \cong
-  \left(\prod'_v(X_v,C_v)\right)\times\left(\prod'_v(Y_v,D_v)\right)$ is a homeomorphism,
-  where the restricted products have the restricted product topology and the binary
-  product has the product topology.
-\end{lemma}
 ```
 - Representative source:
 ```tex
@@ -476,7 +420,7 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Appendix: A collection of results which are needed in the proof.
 - Source: `chtopbestiary.tex` -> `Bestiary.lean`
 - Scanned nodes: 43
-- Open work: 30 source nodes need port attention (30 formal statements, 0 proof sketches).
+- Open work: 29 source nodes need port attention (29 formal statements, 0 proof sketches).
 - Tasks:
 - [ ] `maximal_unramified_extension_of_p-adic_field` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{maximal_unramified_extension_of_p-adic_field}`; flags: `\notready`.
@@ -526,13 +470,6 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
     \label{local_galois_coh_top_degree}
     \notready
     $H^2(G_K,\mu_n)$ is ``canonically'' isomorphic to $\Z/n\Z$.
-\end{theorem}
-```
-- [ ] `theorem @61` needs attention: no `\lean{...}` target.
-  - metadata: flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\notready There is a ``canonical'' isomorphism $H^2(K,\mu_\infty)=\Q/\Z$.
 \end{theorem}
 ```
 - [ ] `local_galois_coh_poincare` needs attention: no `\lean{...}` target.

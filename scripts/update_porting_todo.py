@@ -265,7 +265,12 @@ def open_reasons(node: EnvNode, header_text: str, full_text: str) -> list[str]:
     has_completion = bool(node.flags & COMPLETION_FLAGS)
 
     if node.kind in FORMAL_ENVS:
-        if not node.leans and not node.verso_leans and not has_completion:
+        # Under strict blueprint fidelity, only source-grounded formal environments
+        # with an explicit TeX label should accumulate missing-attachment debt.
+        # Unlabeled theorem-like blocks may still matter for the literal port, but
+        # they are not intended graph-visible source nodes and should not be
+        # treated as "missing \lean{...}" work by this board.
+        if node.labels and not node.leans and not node.verso_leans and not has_completion:
             reasons.append("no `\\lean{...}` target")
         elif lean_targets_are_placeholder(node):
             reasons.append("placeholder Lean target")
@@ -384,7 +389,7 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " check that separately with `python3 scripts/check_lt_source_pairs.py`."
     )
     lines.append("It ignores legacy `\\leanok`, `\\mathlibok`, and `\\notready` markers for backlog purposes,")
-    lines.append("and surfaces placeholder Lean targets, missing Lean targets on unfinished source items, and unfinished proof sketches as open work.")
+    lines.append("and surfaces placeholder Lean targets, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work.")
     lines.append(
         "When a source block is still open, keep the raw TeX nearby in a labeled `tex` block"
         " instead of rewriting it into placeholder prose."
