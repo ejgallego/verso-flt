@@ -29,6 +29,9 @@ CHAPTER_TO_LEAN = {
     "HeckeOperatorProject.tex": "HeckeOperators.lean",
     "chtopbestiary.tex": "Bestiary.lean",
 }
+# Legacy compatibility for other audit scripts that import `CHAPTERS` from here.
+# The task board itself now uses `active_chapters_from_content`.
+CHAPTERS = list(CHAPTER_TO_LEAN.items())
 NON_CHAPTER_INPUTS = {"biblio.tex"}
 
 TARGET_ENVS = {
