@@ -1,8 +1,9 @@
 # TeX to Verso Porting Task Board
 
-Generated from `FLT/blueprint/src/chapter/*.tex` by `scripts/update_porting_todo.py`.
+Generated from the active chapter list in `FLT/blueprint/src/content.tex` by `scripts/update_porting_todo.py`.
 
 This board is driven by source markers rather than stale cross-chapter match counts.
+It follows the authoritative upstream blueprint chapter list from `content.tex`; commented-out or replaced chapter files are ignored.
 The harness migration is largely done: most direct-port chapters now keep the remaining open source in local `tex` blocks, and the main work left is selective chapter fidelity rather than broad infrastructure.
 This board is not an LT certification report. Strict LT now also requires every translated informal block in the Verso chapter to sit next to a labeled `tex` witness block; check that separately with `python3 scripts/check_lt_source_pairs.py`.
 It ignores legacy `\leanok`, `\mathlibok`, and `\notready` markers for backlog purposes,
@@ -10,10 +11,10 @@ and surfaces placeholder Lean targets, missing Lean targets on unfinished source
 When a source block is still open, keep the raw TeX nearby in a labeled `tex` block instead of rewriting it into placeholder prose.
 
 ## Snapshot
-- Mapped TeX chapters scanned: 16
-- Source nodes scanned: 501
-- Chapters with open work: 10
-- Open source nodes: 90
+- Mapped TeX chapters scanned: 14
+- Source nodes scanned: 435
+- Chapters with open work: 9
+- Open source nodes: 64
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -58,243 +59,6 @@ go broadly in the same direction, using elliptic curves and modular forms.
   We omit the argument for now, although later on in this project
   we will have a lot to say about a proof of this.
 \end{proof}
-```
-
-## Elliptic curves, and the Frey Curve
-- Source: `ch03freyold.tex` -> `EllipticFrey.lean`
-- Scanned nodes: 66
-- Open work: 26 source nodes need port attention (24 formal statements, 2 proof sketches).
-- Tasks:
-- [ ] `Elliptic_curve_det_n_torsion` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Elliptic_curve_det_n_torsion}`; uses: `\uses{Elliptic_curve_n_torsion_2d}`.
-  - source:
-```tex
-\begin{theorem}\label{Elliptic_curve_det_n_torsion}\uses{Elliptic_curve_n_torsion_2d} If $E$ is an elliptic curve over a field $k$, and $n$ is a positive integer which is nonzero in $k$, then the determinant of the 2-dimensional representation of $\Gal(k^{\sep}/k)$ on $E(k^{\sep})[n]$ is the mod $n$ cyclotomic character.
-\end{theorem}
-```
-- [ ] `proof @46` needs attention: proof sketch still reads as unfinished.
-  - source:
-```tex
-\begin{proof}
-  This presumably should be done via the Weil pairing. I have not yet put any thought into a feasible way to formalise this.
-\end{proof}
-```
-- [ ] `EllipticCurve.GoodReduction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{EllipticCurve.GoodReduction}`.
-  - source:
-```tex
-\begin{definition}\label{EllipticCurve.GoodReduction} Let $E$ be an elliptic curve over the field of fractions $K$ of a valuation ring $R$ with maximal ideal $\m$. We say $E$ has \emph{good reduction over $R$} if $E$ has a model with
-coefficients in $R$ and the reduction mod $\m$ is still non-singular. If $E$ is an elliptic curve
-over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$, then one says that $E$ has \emph{good reduction at $P$} if $E$ has good reduction over the $\calO_{N,P}$, the localisation of $\calO_N$ at $P$.
-\end{definition}
-```
-- [ ] `Frey_curve_good_reduction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_good_reduction}`; uses: `\uses{FreyCurve, EllipticCurve.GoodReduction}`.
-  - source:
-```tex
-\begin{lemma}\label{Frey_curve_good_reduction}\uses{FreyCurve, EllipticCurve.GoodReduction} If $E$ is the Frey curve $Y^2=X(X-a^\ell)(X+b^\ell)$ associated to a
-  Frey package $(a,b,c,\ell)$, and if $p$ is a prime
-  not dividing $abc$ (and in particular if $p>2$), then $E$ has good reduction at~$p$.
-\end{lemma}
-```
-- [ ] `finite_flat_group_scheme` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{finite_flat_group_scheme}`.
-  - source:
-```tex
-\begin{definition}\label{finite_flat_group_scheme} If $R$ is a commutative ring, then
-  a \emph{finite flat group scheme} over $R$ is the spectrum of a commutative Hopf algebra $H/R$
-  which is finite and flat as an $R$-module.
-\end{definition}
-```
-- [ ] `good_reduction_implies_unramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{good_reduction_implies_unramified}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{good_reduction_implies_unramified}\notready If $E$ is an elliptic curve over a number
-  field $N$ and $E$ has good reduction at a maximal ideal $P$ of $\calO_N$, and if furthermore
-  $n\not\in P$, then the Galois representation on the $n$-torsion of $E$ is unramified.
-\end{theorem}
-```
-- [ ] `good_reduction_implies_flat` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{good_reduction_implies_flat}`; uses: `\uses{finite_flat_group_scheme}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{good_reduction_implies_flat}\uses{finite_flat_group_scheme}\notready If $E$ is an elliptic curve over a number field
-  $N$ and $E$ has good reduction at a maximal ideal $P$ of $\calO_N$ containing the prime number $p$,
-  then the Galois representation on the $p$-torsion of $E$ comes from a finite flat group scheme
-  over the localisation $\calO_{N,P}$.
-\end{theorem}
-```
-- [ ] `EllipticCurve.MultiplicativeReduction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{EllipticCurve.MultiplicativeReduction}`.
-  - source:
-```tex
-\begin{definition}\label{EllipticCurve.MultiplicativeReduction} Let $E$ be an elliptic curve over the field of fractions $K$ of a valuation ring $R$ with maximal ideal $\m$. We say $E$ has \emph{multiplicative reduction over $R$} if $E$ has a model with coefficients in $R$ and which reduces mod $R/\m$ to a plane cubic with one singularity, which is an ordinary double point.
-  We say that the reduction is \emph{split} if the two tangent lines at the ordinary double point
-  are both defined over $R/\m$, and \emph{non-split} otherwise.
-\end{definition}
-```
-- [ ] `Frey_curve_mult_reduction` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_mult_reduction}`; uses: `\uses{EllipticCurve.MultiplicativeReduction}`.
-  - source:
-```tex
-\begin{lemma}\label{Frey_curve_mult_reduction}\uses{EllipticCurve.MultiplicativeReduction} If $E$ is the Frey curve $Y^2=X(X-a^\ell)(X+b^\ell)$ associated to a Frey
-  package $(a,b,c,\ell)$, and if $p$ is an odd prime
-  which divides $abc$, then $E$ has multiplicative reduction at~$p$.
-\end{lemma}
-```
-- [ ] `Frey_curve_mult_reduction_at_two` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_mult_reduction_at_two}`; uses: `\uses{EllipticCurve.MultiplicativeReduction}`.
-  - source:
-```tex
-\begin{lemma}\label{Frey_curve_mult_reduction_at_two}\uses{EllipticCurve.MultiplicativeReduction}  If $E$ is the Frey curve $Y^2=X(X-a^\ell)(X+b^\ell)$ associated to a Frey package
-  $(a,b,c,\ell)$ then $E$ has multiplicative reduction at 2.
-\end{lemma}
-```
-- [ ] `Tate_curve_uniformisation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Tate_curve_uniformisation}`; uses: `\uses{EllipticCurve.MultiplicativeReduction}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{Tate_curve_uniformisation}\uses{EllipticCurve.MultiplicativeReduction}\notready If $E$ is an elliptic curve over a field
-  complete with respect to a nontrivial nonarchimedean (real-valued) norm $K$ and if $E$ has split
-  multiplicative reduction, then there is a Galois-equivariant injection
-  $(K^{\sep})^\times/q^{\mathbb{Z}}\to E(K^{\sep})$, where $q\in K^\times$ satisfies
-  $|q|=|j(E)|^{-1}$.
-\end{theorem}
-```
-- [ ] `multiplicative_reduction_torsion` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{multiplicative_reduction_torsion}`.
-  - source:
-```tex
-\begin{corollary}\label{multiplicative_reduction_torsion} If $E$ is an elliptic curve
-  over a field $K$ complete with respect to a nontrivial nonarchimedean (real-valued) norm
-  and with perfect residue field, and if $E$ has multiplicative reduction, then there's
-  an unramified character $\chi$ of $\Gal(K^{\sep}/K)$ whose square is 1, such that for
-  all positive integers $n$ with $n\not=0$ in $K$, the
-  $n$-torsion $E(K^{\sep})[n]$ is an extension of $\chi$ by $\epsilon\chi$, where $\epsilon$ is the
-  cyclotomic character. Furthermore, the element of $K^\times/(K^\times)^\ell$ corresponding
-  to this extension is given by the $q$-invariant of the curve.
-\end{corollary}
-```
-- [ ] `Frey_curve_good` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_good}`; flags: `\notready`.
-  - source:
-```tex
- \begin{theorem}\label{Frey_curve_good}\notready If $p\not=\ell$ is a prime not dividing $abc$ then
-  $\rho$ is unramified at~$p$.
- \end{theorem}
-```
-- [ ] `proof @220` needs attention: proof sketch still reads as unfinished.
-  - metadata: flags: `\leanok`.
-  - source:
-```tex
-\begin{proof}
-  \leanok
-  Apply the explicit formula (presumably already in mathlib)
-\end{proof}
-```
-- [ ] `Frey_curve_unram` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_unram}`; flags: `\notready`.
-  - source:
-```tex
-\begin{corollary}\label{Frey_curve_unram}\notready If $(a,b,c,\ell)$ is a Frey package, if $2<p\mid abc$
-  is a prime with $p\not=\ell$, then the $\ell$-torsion in the Frey curve is unramified
-  at $p$.
-\end{corollary}
-```
-- [ ] `frey_curve_unramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{frey_curve_unramified}`; flags: `\notready`.
-  - source:
-```tex
-\begin{corollary}\label{frey_curve_unramified}\notready If $(a,b,c,\ell)$ is a Frey package, then the $\ell$-torsion in the Frey curve is unramified at all primes $p\not=2,\ell$.
-\end{corollary}
-```
-- [ ] `frey_curve_at_2` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{frey_curve_at_2}`; flags: `\notready`.
-  - source:
-```tex
-\begin{corollary}\label{frey_curve_at_2}\notready If $(a,b,c,\ell)$ is a Frey package, then the
-  semisimplification of the restriction of the $\ell$-torsion $\rho$ in the associated Frey curve
-  to $\Gal(\Qbar_2/\Q_2)$ is unramified.
-\end{corollary}
-```
-- [ ] `Frey_curve_mod_ell_rep_at_ell` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_mod_ell_rep_at_ell}`; uses: `\uses{finite_flat_group_scheme}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{Frey_curve_mod_ell_rep_at_ell}\uses{finite_flat_group_scheme}\notready Let $\rho$ be the $\ell$-torsion in the
-  Frey curve associated to a Frey package $(a,b,c,\ell)$. Then the restriction of $\rho$ to $\GQl$ comes from a finite flat group scheme.
-\end{theorem}
-```
-- [ ] `Frey_characters_are_unramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_characters_are_unramified}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{Frey_characters_are_unramified}\notready With notation as above, the characters
-  $\alpha$ and $\beta$ are unramified at $p$ for all primes $p\not=\ell$.
-\end{theorem}
-```
-- [ ] `Frey_characters_at_ell` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_characters_at_ell}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{Frey_characters_at_ell}\notready One of $\alpha$ and $\beta$ is unramified at $\ell$.
-\end{theorem}
-```
-- [ ] `Frey_characters_trivial` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_characters_trivial}`.
-  - source:
-```tex
-\begin{corollary}\label{Frey_characters_trivial} One of $\alpha$ and $\beta$ is trivial.
-\end{corollary}
-```
-- [ ] `Frey_curve_reducible_structure` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_reducible_structure}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{Frey_curve_reducible_structure}\notready If $\rho$ is reducible, then either $\rho$
-  has a trivial 1-dimensional submodule or a trivial 1-dimensional quotient (here ``trivial'' means
-  that the Galois group $\GQ$ acts trivially).
-\end{theorem}
-```
-- [ ] `Frey_curve_trivial_submodule` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_trivial_submodule}`.
-  - source:
-```tex
-\begin{lemma}\label{Frey_curve_trivial_submodule} If $\rho$ has a trivial 1-dimensional submodule then the
-  Frey curve has a non-trivial point of order $\ell$.
-\end{lemma}
-```
-- [ ] `Frey_curve_no_trivial_submodule` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_no_trivial_submodule}`.
-  - source:
-```tex
-\begin{corollary}\label{Frey_curve_no_trivial_submodule} $\rho$ cannot have a trivial 1-dimensional submodule.
-\end{corollary}
-```
-- [ ] `Elliptic_curve_quotient_by_finite_subgroup` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Elliptic_curve_quotient_by_finite_subgroup}`; flags: `\notready`.
-  - source:
-```tex
-\begin{theorem}\label{Elliptic_curve_quotient_by_finite_subgroup}\notready If $p$ is a prime and
-  if $E$ is an elliptic curve over a field $K$ of characteristic not equal to $p$,
-   and if $C\subseteq E(K^{\sep})[p]$ is a Galois-stable
-  subgroup of order $p$, then there's an elliptic curve $E':=$``$E/C$'' over $K$ and an isogeny of elliptic
-  curves $E\to E'$ over $K$ inducing a Galois-equivariant surjection $E(K^{\sep})\to E'(K^{\sep})$
-  with kernel precisely $C$.
-\end{theorem}
-```
-- [ ] `Frey_curve_no_trivial_quotient` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_no_trivial_quotient}`.
-  - source:
-```tex
-\begin{corollary}\label{Frey_curve_no_trivial_quotient} $\rho$ cannot have a trivial 1-dimensional quotient.
-\end{corollary}
-```
-- Representative source:
-```tex
-\begin{theorem}\label{Elliptic_curve_det_n_torsion}\uses{Elliptic_curve_n_torsion_2d} If $E$ is an elliptic curve over a field $k$, and $n$ is a positive integer which is nonzero in $k$, then the determinant of the 2-dimensional representation of $\Gal(k^{\sep}/k)$ on $E(k^{\sep})[n]$ is the mod $n$ cyclotomic character.
-\end{theorem}
 ```
 
 ## Reducibility of {\it p
@@ -505,25 +269,6 @@ complex functions.
 There is a natural action of the real Lie algebra of $\GL_n(\R)$ on the complex vector space of
 smooth complex-valued functions on $\GL_n(\R)$.
 \end{definition}
-```
-
-## The Global Langlands conjectures
-- Source: `global_langlands.tex` -> `GlobalLanglands.lean`
-- Scanned nodes: 0
-- [x] No formal statements or proof sketches are currently flagged as open in the source.
-- Representative source:
-```tex
-This is not imported right now.
-
-\chapter{The Global Langlands conjectures}
-
-\section{Overview of the chapter}
-
-In this section we discuss the problem of attempting to state the motivic global Langlands conjectures for connected reductive groups over number fields. More precisely, the goal is to formally state the Buzzard--Gee version of the conjecture, which applies to algebraic automorphic representations. The main difficulties here are in writing down precisely what is meant by phrases such as ``automorphic representation'', ``connected reductive group'', ``local-global compatibility'', ``de Rham Galois representation'', and so on; these words hide a large amount of technical material.
-
-\section{Statement of the conjecture}
-
-Let $R$ be a commutative base ring; it will often be a field but we shall develop the theory in more generality when there is no extra effort needed to do.
 ```
 
 ## Miniproject: Frobenius elements

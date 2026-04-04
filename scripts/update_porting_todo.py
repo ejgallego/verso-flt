@@ -7,24 +7,29 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 
-CHAPTERS = [
-    ("ch01introduction.tex", "Introduction.lean"),
-    ("ch02reductions.tex", "Reductions.lean"),
-    ("ch03freyold.tex", "EllipticFrey.lean"),
-    ("ch03freyreduction.tex", "HardlyRamified.lean"),
-    ("ch04overview.tex", "Overview.lean"),
-    ("ch05automorphicformexample.tex", "AutomorphicFormExample.lean"),
-    ("ch06automorphicrepresentations.tex", "ModularityLifting.lean"),
-    ("ch07exampleGLn.tex", "LanglandsGLn.lean"),
-    ("global_langlands.tex", "GlobalLanglands.lean"),
-    ("FrobeniusProject.tex", "FrobeniusProject.lean"),
-    ("AdeleMiniproject.tex", "AdeleProject.lean"),
-    ("HaarCharacterProject.tex", "HaarCharacters.lean"),
-    ("FujisakiProject.tex", "FujisakiProject.lean"),
-    ("QuaternionAlgebraProject.tex", "QuaternionAlgebras.lean"),
-    ("HeckeOperatorProject.tex", "HeckeOperators.lean"),
-    ("chtopbestiary.tex", "Bestiary.lean"),
-]
+# Keep the TeX->Verso filename map here, but derive the active chapter list from
+# `FLT/blueprint/src/content.tex`, which is the authoritative upstream blueprint
+# chapter order. Replaced/commented-out files such as `ch03freyold.tex` must not
+# appear on the task board when they are no longer active there.
+CHAPTER_TO_LEAN = {
+    "ch01introduction.tex": "Introduction.lean",
+    "ch02reductions.tex": "Reductions.lean",
+    "ch03freyold.tex": "EllipticFrey.lean",
+    "ch03freyreduction.tex": "HardlyRamified.lean",
+    "ch04overview.tex": "Overview.lean",
+    "ch05automorphicformexample.tex": "AutomorphicFormExample.lean",
+    "ch06automorphicrepresentations.tex": "ModularityLifting.lean",
+    "ch07exampleGLn.tex": "LanglandsGLn.lean",
+    "global_langlands.tex": "GlobalLanglands.lean",
+    "FrobeniusProject.tex": "FrobeniusProject.lean",
+    "AdeleMiniproject.tex": "AdeleProject.lean",
+    "HaarCharacterProject.tex": "HaarCharacters.lean",
+    "FujisakiProject.tex": "FujisakiProject.lean",
+    "QuaternionAlgebraProject.tex": "QuaternionAlgebras.lean",
+    "HeckeOperatorProject.tex": "HeckeOperators.lean",
+    "chtopbestiary.tex": "Bestiary.lean",
+}
+NON_CHAPTER_INPUTS = {"biblio.tex"}
 
 TARGET_ENVS = {
     "theorem",
@@ -68,6 +73,7 @@ CHAPTER_RE = re.compile(r"\\chapter(?:\[[^\]]*\])?\{([^}]*)\}")
 LABEL_RE = re.compile(r"\\label\{([^}]*)\}")
 LEAN_RE = re.compile(r"\\lean\{([^}]*)\}")
 USES_RE = re.compile(r"\\uses\{([^}]*)\}")
+CONTENT_INPUT_RE = re.compile(r"\\input\{chapter/([^}]+)\}")
 VERSO_NODE_HEADER_RE = re.compile(r'^:::(?:definition|theorem|lemma_|corollary|proof)\s+"([^"]+)"(.*)$')
 VERSO_LEAN_RE = re.compile(r'\(lean := "([^"]+)"\)')
 
@@ -147,13 +153,26 @@ def extract_verso_lean_targets(path: Path) -> dict[str, str]:
     return targets
 
 
-def extract_global_unique_verso_lean_targets(root: Path) -> dict[str, str]:
-    occurrences: dict[str, list[str]] = {}
-    for _, lean_name in CHAPTERS:
-        path = root / "FLTBlueprint" / "Chapters" / lean_name
-        for label, lean in extract_verso_lean_targets(path).items():
-            occurrences.setdefault(label, []).append(lean)
-    return {label: leans[0] for label, leans in occurrences.items() if len(set(leans)) == 1}
+def active_chapters_from_content(root: Path) -> list[tuple[str, str]]:
+    content_path = root / "FLT" / "blueprint" / "src" / "content.tex"
+    chapters: list[tuple[str, str]] = []
+
+    for raw_line in content_path.read_text(encoding="utf-8").splitlines():
+        stripped = strip_tex_comment(raw_line)
+        match = CONTENT_INPUT_RE.search(stripped)
+        if not match:
+            continue
+        tex_name = match.group(1)
+        if not tex_name.endswith(".tex"):
+            tex_name = tex_name + ".tex"
+        if tex_name in NON_CHAPTER_INPUTS:
+            continue
+        lean_name = CHAPTER_TO_LEAN.get(tex_name)
+        if lean_name is None:
+            raise ValueError(f"no Verso chapter mapping configured for active content entry {tex_name}")
+        chapters.append((tex_name, lean_name))
+
+    return chapters
 
 
 def parse_chapter(tex_path: Path, lean_path: str, verso_lean_targets: dict[str, str] | None = None) -> ChapterData:
@@ -342,10 +361,15 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
     lines.append("# TeX to Verso Porting Task Board")
     lines.append("")
     lines.append(
-        "Generated from `FLT/blueprint/src/chapter/*.tex` by `scripts/update_porting_todo.py`."
+        "Generated from the active chapter list in `FLT/blueprint/src/content.tex`"
+        " by `scripts/update_porting_todo.py`."
     )
     lines.append("")
     lines.append("This board is driven by source markers rather than stale cross-chapter match counts.")
+    lines.append(
+        "It follows the authoritative upstream blueprint chapter list from `content.tex`;"
+        " commented-out or replaced chapter files are ignored."
+    )
     lines.append(
         "The harness migration is largely done: most direct-port chapters now keep the remaining open"
         " source in local `tex` blocks, and the main work left is selective chapter fidelity rather"
@@ -394,17 +418,13 @@ def main() -> int:
     root = args.root.resolve()
     output = args.output.resolve() if args.output else root / "PortingTodo.md"
     chapter_root = root / "FLT" / "blueprint" / "src" / "chapter"
-    global_verso_targets = extract_global_unique_verso_lean_targets(root)
-
     chapters: list[ChapterData] = []
-    for tex_name, lean_name in CHAPTERS:
+    for tex_name, lean_name in active_chapters_from_content(root):
         tex_path = chapter_root / tex_name
         if not tex_path.exists():
             continue
         verso_path = root / "FLTBlueprint" / "Chapters" / lean_name
-        verso_targets = global_verso_targets.copy()
-        verso_targets.update(extract_verso_lean_targets(verso_path))
-        chapters.append(parse_chapter(tex_path, lean_name, verso_targets))
+        chapters.append(parse_chapter(tex_path, lean_name, extract_verso_lean_targets(verso_path)))
 
     markdown = generate_markdown(chapters)
     output.write_text(markdown, encoding="utf-8")
