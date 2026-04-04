@@ -82,7 +82,7 @@ when $K$ is clear we will just refer to them as central simple algebras. We rema
 more to say about these later on.
 ```
 
-Matrix algebras `M_n(K)` are examples of finite-dimensional central simple
+Matrix algebras $`M_n(K)` are examples of finite-dimensional central simple
 `K`-algebras. If `K = ℂ` or more generally if `K` is algebraically closed, then
 matrix algebras are the only finite-dimensional examples up to isomorphism.
 
@@ -94,13 +94,13 @@ up to isomorphism.
 ```
 
 There are other examples over the reals: for example Hamilton's quaternions
-`ℍ := ℝ ⊕ ℝ i ⊕ ℝ j ⊕ ℝ k` with the usual rules `i^2 = j^2 = k^2 = -1`,
-`ij = -ji = k` and so on are an example of a central simple `ℝ`-algebra, and
+`ℍ := ℝ ⊕ ℝ i ⊕ ℝ j ⊕ ℝ k` with the usual rules $`i^2 = j^2 = k^2 = -1`,
+$`ij = -ji = k` and so on are an example of a central simple `ℝ`-algebra, and
 matrix algebras over `ℍ` are other central simple `ℝ`-algebras. For a general
 field `K` one can make an analogue of Hamilton's quaternions
 `K ⊕ Ki ⊕ Kj ⊕ Kk` with the same multiplication rules to describe the
 multiplication, and if the characteristic of `K` is not `2` then this is a
-quaternion algebra which may or may not be isomorphic to `M_2(K)`.
+quaternion algebra which may or may not be isomorphic to $`M_2(K)`.
 
 ```tex
 There are other examples over the reals: for example Hamilton's quaternions
@@ -479,7 +479,7 @@ $`b\in D` and then $`(e_1-e_2)\beta^{-1}\in D-\{0\}=D^\times`.
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.T" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
-Let `T = Y ∩ D^×`.
+Let $`T = Y \cap D^\times`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T" (slot := statement)
@@ -577,8 +577,8 @@ The set `C` is compact.
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
-For every $`\beta \in D_A^{(1)}`, there exist `b ∈ D^×` and `ν ∈ D_A^{(1)}`
-such that `β = bν` and `(ν, ν⁻¹) ∈ C`.
+For every $`\beta \in D_A^{(1)}`, there exist $`b \in D^\times` and
+$`\nu \in D_A^{(1)}` such that $`\beta = b\nu` and $`(\nu, \nu^{-1}) \in C`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (slot := statement)
@@ -662,14 +662,14 @@ $`D_{\A}^{(1)}` is compact.
 :::proof "compact_quotient_for_division_algebra"
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[]
 Indeed, if `M` is the preimage of `C` under the inclusion
-`D_A^{(1)} \to D_A \times D_A` sending `ν` to `(ν, ν⁻¹)`, then `M` is a
-closed subspace of a compact space so it's compact (note that `δ_{D_A}` is
+$`D_A^{(1)} \to D_A \times D_A` sending $`\nu` to $`(\nu, \nu^{-1})`, then `M` is a
+closed subspace of a compact space so it's compact (note that $`\delta_{D_A}` is
 continuous, by {uses "MeasureTheory.ringHaarChar_continuous"}[], so
-`D_A^{(1)}` is a closed subset of `D_A^\times` which is itself a closed subset
-of `D_A \times D_A`).
+$`D_A^{(1)}` is a closed subset of $`D_A^\times` which is itself a closed subset
+of $`D_A \times D_A`).
 
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"}[] shows that `M` surjects onto
-`D^\times \backslash D_A^{(1)}` which is thus also compact.
+$`D^\times \backslash D_A^{(1)}` which is thus also compact.
 :::
 
 ```tex "compact_quotient_for_division_algebra" (slot := proof)
@@ -828,30 +828,30 @@ is compact.
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"
 {uses "compact_quotient_for_division_algebra"}[]
 There's a natural map `α` from
-`D^\times \backslash D_A^{(1)}` to
-`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that
+$`D^\times \backslash D_A^{(1)}` to
+$`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that
 it's surjective. Granted this claim, we are home, because if we put the
 quotient topology on
-`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times` coming from
-`(D \otimes_K \mathbf{A}_K^\infty)^\times` then it's readily verified that `α`
+$`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times` coming from
+$`(D \otimes_K \mathbf{A}_K^\infty)^\times` then it's readily verified that `α`
 is continuous, and the continuous image of a compact space is compact.
 
 As for surjectivity: say
-`x ∈ (D \otimes_K \mathbf{A}_K^\infty)^\times`. We need to extend `x` to an
+$`x \in (D \otimes_K \mathbf{A}_K^\infty)^\times`. We need to extend `x` to an
 element
-`(x,y) ∈ (D \otimes_K \mathbf{A}_K^\infty)^\times × (D \otimes_K K_\infty)^\times`
-which is in the kernel of `δ_{D_A}`. Because `δ_{D_A}(x,1)` is some positive
+$`(x,y) \in (D \otimes_K \mathbf{A}_K^\infty)^\times \times (D \otimes_K K_\infty)^\times`
+which is in the kernel of $`\delta_{D_A}`. Because $`\delta_{D_A}(x,1)` is some positive
 real number, it will suffice to show that if `r` is any positive real number
 then we can find
-`y ∈ (D \otimes_K \mathbf{A}_K^\infty)^\times = (D \otimes_\mathbf{Q} \mathbf{R})^\times`
-with `δ_{D_A}(1,y)=r`, or equivalently, setting
-`D_\mathbf{R} = D \otimes_\mathbf{Q} \mathbf{R}`, that `δ_{D_\mathbf{R}}(y)=r`.
-But `D ≠ 0` as it is a division algebra, and hence
-`\mathbf{Q} \subseteq D`, meaning `\mathbf{R} \subseteq D_\mathbf{R}`, and if
-`x ∈ \mathbf{R}^\times \subseteq D_\mathbf{R}^\times` then
-`δ(x)=|x|^d` with `d = \dim_\mathbf{Q}(D)`, as multiplication by `x` is just
-scaling by a factor of `x` on `D_\mathbf{R}\cong\mathbf{R}^d`. In particular
-we can set `x=y^{1/d}`.
+$`y \in (D \otimes_K \mathbf{A}_K^\infty)^\times = (D \otimes_\mathbf{Q} \mathbf{R})^\times`
+with $`\delta_{D_A}(1,y)=r`, or equivalently, setting
+$`D_\mathbf{R} = D \otimes_\mathbf{Q} \mathbf{R}`, that $`\delta_{D_\mathbf{R}}(y)=r`.
+But $`D \ne 0` as it is a division algebra, and hence
+$`\mathbf{Q} \subseteq D`, meaning $`\mathbf{R} \subseteq D_\mathbf{R}`, and if
+$`x \in \mathbf{R}^\times \subseteq D_\mathbf{R}^\times` then
+$`\delta(x)=|x|^d` with $`d = \dim_\mathbf{Q}(D)`, as multiplication by `x` is just
+scaling by a factor of `x` on $`D_\mathbf{R}\cong\mathbf{R}^d`. In particular
+we can set $`x=y^{1/d}`.
 :::
 
 ```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" (slot := proof)

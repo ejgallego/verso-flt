@@ -115,7 +115,7 @@ We also need Poitou-Tate duality; I'll refrain from writing it down for now, bec
 ```
 
 :::theorem "local_galois_coh_finite" (parent := "bestiary_appendix")
-If `M` is finite then the cohomology groups `H^i(G_K,M)` are all finite.
+If `M` is finite then the cohomology groups $`H^i(G_K,M)` are all finite.
 :::
 
 ```tex "local_galois_coh_finite" (slot := statement)
@@ -127,7 +127,7 @@ If `M` is finite then the cohomology groups `H^i(G_K,M)` are all finite.
 ```
 
 :::theorem "local_galois_coh_dim_two" (parent := "bestiary_appendix")
-If `M` is torsion then `H^i(G_K,M)=0` if `i>2`.
+If `M` is torsion then $`H^i(G_K,M)=0` if $`i>2`.
 :::
 
 ```tex "local_galois_coh_dim_two" (slot := statement)
@@ -162,8 +162,8 @@ $`H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z` is perfect.
 ```
 
 :::theorem "local_galois_coh_euler_poincare" (parent := "bestiary_appendix")
-If `h^i(M)` denotes the order of `H^i(G_K,M)`, then
-`h^0(M)-h^1(M)+h^2(M)=0`.
+If $`h^i(M)` denotes the order of $`H^i(G_K,M)`, then
+$`h^0(M)-h^1(M)+h^2(M)=0`.
 :::
 
 ```tex "local_galois_coh_euler_poincare" (slot := statement)
@@ -173,12 +173,12 @@ If `h^i(M)` denotes the order of `H^i(G_K,M)`, then
 ```
 
 :::theorem "Skinner_Wiles_CFT_trick" (parent := "bestiary_appendix")
-Let `S` be a finite set of places of a number field `K`. For each `v \in S`
-let `L_v/K_v` be a finite Galois extension. Then there is a finite solvable
-Galois extension `L/K` such that if `w` is a place of `L` dividing `v \in S`,
-then `L_w/K_v` is isomorphic to `L_v/K_v` as a `K_v`-algebra. Moreover, if
-`K^{\avoid}/K` is any finite extension then `L` can be chosen linearly
-disjoint from `K^{\avoid}`.
+Let `S` be a finite set of places of a number field `K`. For each $`v \in S`
+let $`L_v/K_v` be a finite Galois extension. Then there is a finite solvable
+Galois extension $`L/K` such that if `w` is a place of `L` dividing $`v \in S`,
+then $`L_w/K_v` is isomorphic to $`L_v/K_v` as a $`K_v`-algebra. Moreover, if
+$`K^{\avoid}/K` is any finite extension then `L` can be chosen linearly
+disjoint from $`K^{\avoid}`.
 :::
 
 ```tex "Skinner_Wiles_CFT_trick" (slot := statement)
@@ -199,7 +199,7 @@ All rings and algebras in this section are commutative with a 1, and all
 morphisms send 1 to 1.
 ```
 
-Let `X = \Spec(A)` be an affine scheme of finite type over a field `K`. For
+Let $`X = \Spec(A)` be an affine scheme of finite type over a field `K`. For
 example `X` could be an affine algebraic variety; in fact we shall only be
 interested in smooth affine varieties in the applications, but the initial
 definition and theorem are fine for all finite type schemes.
@@ -224,7 +224,7 @@ $A$ to $R$.
 :::definition "topology_on_affine_variety_points" (parent := "bestiary_appendix")
 If `X` is an affine scheme of finite type over `K`, and if `R` is a `K`-algebra
 which is also a topological ring, then we define a topology on the `R`-points
-`X(R)` of `X` by embedding the `K`-algebra homomorphisms from `A` to `R` into
+$`X(R)` of `X` by embedding the `K`-algebra homomorphisms from `A` to `R` into
 the set-theoretic maps from `A` to `R` with its product topology, and giving it
 the subspace topology.
 :::
@@ -240,8 +240,8 @@ topology.
 ```
 
 :::theorem "topology_on_affine_variety_computation" (parent := "bestiary_appendix")
-If `X` is as above and `X \to \mathbb{A}^n_K` is a closed immersion, then the
-induced map from `X(R)` with its topology as above to `R^n` is an embedding of
+If `X` is as above and $`X \to \mathbb{A}^n_K` is a closed immersion, then the
+induced map from $`X(R)` with its topology as above to $`R^n` is an embedding of
 topological spaces (that is, a homeomorphism onto its image).
 This uses {uses "topology_on_affine_variety_points"}[].
 :::
@@ -298,9 +298,9 @@ Probably this is fine for a broader class of fields $K$.
 ```
 
 :::theorem "manifold_on_algebraic_variety_computation" (parent := "bestiary_appendix")
-If `X` is as in the previous definition and `X \to \mathbb{A}^n_K` is a closed
-immersion, then the induced map from `X(K)` with its manifold structure to
-`K^n` is an embedding of manifolds.
+If `X` is as in the previous definition and $`X \to \mathbb{A}^n_K` is a closed
+immersion, then the induced map from $`X(K)` with its manifold structure to
+$`K^n` is an embedding of manifolds.
 This uses {uses "manifold_on_algebraic_variety_points"}[].
 :::
 
@@ -323,8 +323,8 @@ I'm assuming this is standard, if true.
 ```
 
 :::corollary "lie_group_from_algebraic_group" (parent := "bestiary_appendix")
-If `G` is an affine algebraic group of finite type over `K=\R` or `K=\bbC`
-then `G(K)` is naturally a real or complex Lie group.
+If `G` is an affine algebraic group of finite type over $`K=\R` or $`K=\bbC`
+then $`G(K)` is naturally a real or complex Lie group.
 This uses {uses "manifold_on_algebraic_variety_computation"}[].
 :::
 
@@ -338,8 +338,8 @@ then $G(K)$ is naturally a real or complex Lie group.
 The corollary, for sure, is true! And it's all we need. I have not yet made
 any serious effort to find a reference for the definition or independence,
 although there seem to be some ideas [here](https://leanprover.zulipchat.com/#narrow/stream/116395-maths/topic/top.20space.20.2F.20manifold.20structure.20on.20points.20of.20alg.20varieties/near/431812525).
-As a toy example, one can embed `\GL_n(\R)` into either `\R^{n^2+1}` via
-`M \mapsto (M,\det(M)^{-1})` or into `\R^{2n^2}` via `M \mapsto (M,M^{-1})`
+As a toy example, one can embed $`\GL_n(\R)` into either $`\R^{n^2+1}` via
+ $`M \mapsto (M,\det(M)^{-1})` or into $`\R^{2n^2}` via $`M \mapsto (M,M^{-1})`
 and the claim is that the two induced manifold structures are the same.
 
 ```tex
@@ -377,7 +377,7 @@ be the same thing as the definition.
 
 :::definition "connected_reductive_group" (parent := "bestiary_appendix")
 An affine algebraic group `G` of finite type over a field `k` is said to be
-connected if it is connected as a scheme, and reductive if `G_{\overline{k}}`
+connected if it is connected as a scheme, and reductive if $`G_{\overline{k}}`
 has no nontrivial smooth connected unipotent normal `k`-subgroup.
 :::
 
@@ -505,7 +505,7 @@ We need the classification of finite subgroups of $\PGL_2(\overline{\F}_p)$. The
 
 :::definition "cuspidal_automorphic_representation" (parent := "bestiary_appendix")
 A cuspidal automorphic representation is an irreducible
-`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
+ $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
 summand of the space of cusp forms.
 :::
 
@@ -515,11 +515,11 @@ summand of the space of cusp forms.
 ```
 
 :::theorem "automorphic_representation_local_decomposition" (parent := "bestiary_appendix")
-An irreducible admissible `(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module is a
-restricted tensor product of irreducible representations `\pi_v` of `G(N_v)`
+An irreducible admissible $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module is a
+restricted tensor product of irreducible representations $`\pi_v` of $`G(N_v)`
 as `v` runs through the finite places of `N`, tensored with a tensor product of
-irreducible `(\mathfrak{g}_v,U_{\infty,v})`-modules as `v` runs through the
-infinite places of `N`. The representations `\pi_v` are unramified for all but
+irreducible $`(\mathfrak{g}_v,U_{\infty,v})`-modules as `v` runs through the
+infinite places of `N`. The representations $`\pi_v` are unramified for all but
 finitely many `v`.
 :::
 
@@ -529,12 +529,12 @@ finitely many `v`.
 ```
 
 :::theorem "Galois_representation_from_automorphic_representation_on_GL_2_form" (parent := "bestiary_appendix")
-Given an automorphic representation `\pi` for an inner form of `\GL_2` over a
-totally real field and with reflex field `E`, such that `\pi` is weight `2`
+Given an automorphic representation $`\pi` for an inner form of $`\GL_2` over a
+totally real field and with reflex field `E`, such that $`\pi` is weight `2`
 discrete series at every infinite place, there exists a compatible family of
-`2`-dimensional Galois representations associated to `\pi`, with `S` the
-places at which `\pi` is ramified and `F_{\mathfrak p}(X)` the monic
-polynomial with roots the two Satake parameters for `\pi` at `\mathfrak p`.
+`2`-dimensional Galois representations associated to $`\pi`, with `S` the
+places at which $`\pi` is ramified and $`F_{\mathfrak p}(X)` the monic
+polynomial with roots the two Satake parameters for $`\pi` at $`\mathfrak p`.
 :::
 
 ```tex "Galois_representation_from_automorphic_representation_on_GL_2_form" (slot := statement)

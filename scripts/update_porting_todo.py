@@ -68,6 +68,8 @@ CHAPTER_RE = re.compile(r"\\chapter(?:\[[^\]]*\])?\{([^}]*)\}")
 LABEL_RE = re.compile(r"\\label\{([^}]*)\}")
 LEAN_RE = re.compile(r"\\lean\{([^}]*)\}")
 USES_RE = re.compile(r"\\uses\{([^}]*)\}")
+VERSO_NODE_HEADER_RE = re.compile(r'^:::(?:definition|theorem|lemma_|corollary|proof)\s+"([^"]+)"(.*)$')
+VERSO_LEAN_RE = re.compile(r'\(lean := "([^"]+)"\)')
 
 
 @dataclass
@@ -79,6 +81,7 @@ class EnvNode:
     lines: list[str] = field(default_factory=list)
     labels: list[str] = field(default_factory=list)
     leans: list[str] = field(default_factory=list)
+    verso_leans: list[str] = field(default_factory=list)
     uses: list[str] = field(default_factory=list)
     flags: set[str] = field(default_factory=set)
     open_reasons: list[str] = field(default_factory=list)
@@ -110,7 +113,7 @@ def extract_metadata(text: str) -> tuple[list[str], list[str], list[str], set[st
     uses = [chunk.strip() for chunk in USES_RE.findall(text)]
     flags = set()
     for flag in COMPLETION_FLAGS | {"notready"}:
-        if rf"\\{flag}" in text:
+        if f"\\{flag}" in text:
             flags.add(flag)
     return labels, leans, uses, flags
 
@@ -128,11 +131,28 @@ def metadata_excerpt(lines: list[str], limit: int = 10) -> list[str]:
     return excerpt
 
 
-def parse_chapter(tex_path: Path, lean_path: str) -> ChapterData:
+def extract_verso_lean_targets(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    targets: dict[str, str] = {}
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        m = VERSO_NODE_HEADER_RE.match(raw_line.strip())
+        if not m:
+            continue
+        label = m.group(1)
+        rest = m.group(2)
+        lean = VERSO_LEAN_RE.search(rest)
+        if lean:
+            targets[label] = lean.group(1)
+    return targets
+
+
+def parse_chapter(tex_path: Path, lean_path: str, verso_lean_targets: dict[str, str] | None = None) -> ChapterData:
     raw_lines = tex_path.read_text(encoding="utf-8").splitlines()
     chapter_title = tex_path.stem
     active: list[EnvNode] = []
     nodes: list[EnvNode] = []
+    verso_lean_targets = verso_lean_targets or {}
 
     for line_no, raw_line in enumerate(raw_lines, start=1):
         stripped = strip_tex_comment(raw_line)
@@ -170,9 +190,11 @@ def parse_chapter(tex_path: Path, lean_path: str) -> ChapterData:
     for node in nodes:
         header_text = "\n".join(strip_tex_comment(line) for line in metadata_excerpt(node.lines))
         full_text = "\n".join(strip_tex_comment(line) for line in node.lines)
-        labels, leans, uses, flags = extract_metadata(header_text)
+        labels, leans, uses, flags = extract_metadata(full_text)
         node.labels = labels
         node.leans = leans
+        if not leans:
+            node.verso_leans = [verso_lean_targets[label] for label in labels if label in verso_lean_targets]
         node.uses = uses
         node.flags = flags
         node.open_reasons = open_reasons(node, header_text, full_text)
@@ -209,9 +231,10 @@ def proof_looks_unfinished(text: str) -> bool:
 
 def open_reasons(node: EnvNode, header_text: str, full_text: str) -> list[str]:
     reasons: list[str] = []
+    has_completion = bool(node.flags & COMPLETION_FLAGS)
 
     if node.kind in FORMAL_ENVS:
-        if not node.leans:
+        if not node.leans and not node.verso_leans and not has_completion:
             reasons.append("no `\\lean{...}` target")
         elif lean_targets_are_placeholder(node):
             reasons.append("placeholder Lean target")
@@ -256,6 +279,8 @@ def render_node_task(node: EnvNode) -> list[str]:
         metadata_bits.append("labels: " + ", ".join(f"`\\label{{{label}}}`" for label in node.labels))
     if node.leans:
         metadata_bits.append("lean: " + ", ".join(f"`\\lean{{{lean}}}`" for lean in node.leans))
+    if node.verso_leans:
+        metadata_bits.append("verso lean: " + ", ".join(f"`{lean}`" for lean in node.verso_leans))
     if node.uses:
         metadata_bits.append("uses: " + ", ".join(f"`\\uses{{{use}}}`" for use in node.uses))
     if node.flags:
@@ -323,7 +348,7 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " check that separately with `python3 scripts/check_lt_source_pairs.py`."
     )
     lines.append("It ignores legacy `\\leanok`, `\\mathlibok`, and `\\notready` markers for backlog purposes,")
-    lines.append("and surfaces placeholder Lean targets, missing Lean targets, and unfinished proof sketches as open work.")
+    lines.append("and surfaces placeholder Lean targets, missing Lean targets on unfinished source items, and unfinished proof sketches as open work.")
     lines.append(
         "When a source block is still open, keep the raw TeX nearby in a labeled `tex` block"
         " instead of rewriting it into placeholder prose."
@@ -366,7 +391,8 @@ def main() -> int:
         tex_path = chapter_root / tex_name
         if not tex_path.exists():
             continue
-        chapters.append(parse_chapter(tex_path, lean_name))
+        verso_path = root / "FLTBlueprint" / "Chapters" / lean_name
+        chapters.append(parse_chapter(tex_path, lean_name, extract_verso_lean_targets(verso_path)))
 
     markdown = generate_markdown(chapters)
     output.write_text(markdown, encoding="utf-8")

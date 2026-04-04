@@ -76,7 +76,7 @@ mathlib.
 The goal of the mini-project is to get this theorem formalised and ideally into mathlib.
 ```
 
-In particular, `Aut(L/K)` is finite as a corollary. What is so striking about
+In particular, $`\Aut(L/K)` is finite as a corollary. What is so striking about
 this theorem to me is that the only finiteness hypothesis is on the group `G`
 which acts; there are no finiteness or Noetherian hypotheses on the rings at
 all.
@@ -205,7 +205,7 @@ hypotheses on the rings at all.
 # Examples
 
 As a trivial consequence we get Frobenius elements for finite Galois extensions
-in both the local and global field setting, as `Aut(L/K)` is just a Galois
+in both the local and global field setting, as $`\Aut(L/K)` is just a Galois
 group of finite fields in these cases, so by surjectivity we can lift a
 Frobenius element.
 
@@ -215,9 +215,9 @@ the local and global field setting, as $\Aut(L/K)$ is just a Galois group of fin
 in these cases, so by surjectivity we can lift a Frobenius element.
 ```
 
-Even though `G` is finite, it is possible in characteristic `p>0` for the
-extension `L/K` to be infinite (and mostly inseparable). The theorem implies
-that `Aut(L/K)` is always finite; what is actually happening is that `L/K` is
+Even though `G` is finite, it is possible in characteristic $`p > 0` for the
+extension $`L/K` to be infinite (and mostly inseparable). The theorem implies
+that $`\Aut(L/K)` is always finite; what is actually happening is that $`L/K` is
 algebraic and normal, and its maximal separable subextension is finite of degree
 at most `|G|`. However, we can prove surjectivity directly without reference to
 this maximal separable subextension.
@@ -371,8 +371,8 @@ Use $`M_b`.
 \end{proof}
 ```
 
-If `Q` and `Q'` are two primes above `p` then there is some `g ∈ G` such that
-`gQ = Q'`, and one can deduce from this that `Frob_Q` and `Frob_{Q'}` are
+If `Q` and `Q'` are two primes above `p` then there is some $`g \in G` such that
+$`gQ = Q'`, and one can deduce from this that `Frob_Q` and `Frob_{Q'}` are
 conjugate. In particular if `G` is abelian then `Frob_Q` and `Frob_{Q'}` are
 equal, so we can call them both `Frob_p`.
 

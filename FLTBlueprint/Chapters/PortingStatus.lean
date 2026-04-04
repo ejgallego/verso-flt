@@ -150,6 +150,8 @@ main remaining frontiers are:
   markers still recorded in `PortingTodo.md`
 - KaTeX-facing cleanup for math-heavy chapters, especially where old TeX macro
   expectations still need to be encoded explicitly in the local prelude
+- a dedicated pass for TeX math that was mis-ported as literal code spans
+  rather than Verso math delimiters
 - the intentional frontier material in `GlobalLanglands.lean`
 :::
 
@@ -173,6 +175,8 @@ following a suggestion from David.
 - future work is to surface KaTeX-lint guidance more directly during math-heavy
   ports, while still treating the old TeX prelude as the primary source for
   which macros need to exist locally
+- future work is to automate the audit for math-looking inline code spans so
+  that TeX math is less likely to be silently downgraded into Verso literals
 :::
 
 :::proof "future_harness_plan"
@@ -194,7 +198,8 @@ The repository-level chapter audit is now split into two layers.
   proof sketches drawn from the TeX source.
   It intentionally ignores legacy `\leanok` / `\mathlibok` completion flags,
   and for now also ignores explicit `\notready` markers, as a source of
-  backlog.
+  backlog. In particular, a source block already marked complete is not kept
+  open merely because the old TeX source omitted a `\lean{...}` attachment.
 - the stricter LT audit tracks whether each translated informal block has a
   local adjacent `tex` witness block, checked with
   `python3 scripts/check_lt_source_pairs.py`

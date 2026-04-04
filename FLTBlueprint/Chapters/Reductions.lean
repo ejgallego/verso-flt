@@ -73,13 +73,13 @@ completeness.
 
 Say $`a^n + b^n = c^n` is a counterexample to Fermat's Last Theorem. Every
 positive integer is either a power of `2` or has an odd prime factor. If
-`n = kp` has an odd prime factor `p`, then
+$`n = kp` has an odd prime factor `p`, then
 $`(a^k)^p + (b^k)^p = (c^k)^p`, which is the counterexample we seek.
 
 It remains to deal with the case where `n` is a power of `2`, so let us assume
-this. We have $`3 \le n` by assumption, so `n = 4k` is a multiple of `4`, and
+this. We have $`3 \le n` by assumption, so $`n = 4k` is a multiple of `4`, and
 thus $`(a^k)^4 + (b^k)^4 = (c^k)^4`, giving a counterexample to Fermat's Last
-Theorem for `n = 4`. But Fermat's theorem for exponent `4`, already in mathlib,
+Theorem for $`n = 4`. But Fermat's theorem for exponent `4`, already in mathlib,
 says that this is impossible.
 :::
 
@@ -98,7 +98,7 @@ says that this is impossible.
 \end{proof}
 ```
 
-Euler proved Fermat's Last Theorem for `p = 3`.
+Euler proved Fermat's Last Theorem for $`p = 3`.
 
 ```tex
 Euler proved Fermat's Last Theorem for $p=3$;
@@ -284,7 +284,7 @@ $`\Aut(K)` of automorphisms of `K` on `E(K)`, and hence on the `n`-torsion
 subgroup `E(K)[n]`. In particular, if $`\Qbar` denotes an algebraic closure of
 $`\Q` and $`\GQ` denotes the group of field automorphisms $`\Qbar \to \Qbar`,
 then for any elliptic curve `E` over $`\Q` we obtain an action of $`\GQ` on
-`E(\Qbar)` and hence on `E(\Qbar)[n]`.
+$`E(\Qbar)` and hence on $`E(\Qbar)[n]`.
 
 ```tex
 The group structure behaves well under change of field: if $E$ is an elliptic curve over $\Q$
@@ -302,7 +302,7 @@ of $\GQ$ on the additive abelian group $E(\Qbar)$, and hence on its $n$-torsion 
 $E(\Qbar)[n]$.
 ```
 
-If furthermore `n = p` is prime, then `E(\Qbar)[p]` is naturally a vector space
+If furthermore $`n = p` is prime, then $`E(\Qbar)[p]` is naturally a vector space
 over $`\Z/p\Z`, and therefore it inherits the structure of a mod `p`
 representation of $`\GQ`. This is the mod `p` Galois representation attached to
 the elliptic curve `E`, and it is well-known to be `2`-dimensional. We call it
@@ -366,7 +366,7 @@ $a^p+b^p=c^p$.
 
 Given a Frey package $`(a,b,c,p)` with corresponding Frey curve `E`, the mod
 `p` Galois representation $`\rho_{E,p}` attached to this package is the
-`2`-dimensional representation of $`\GQ` on `E(\Qbar)[p]` described above.
+`2`-dimensional representation of $`\GQ` on $`E(\Qbar)[p]` described above.
 Frey's observation is that this representation has some very surprising
 properties. We will make this remark more explicit in the next chapter. Here we
 shall show how these properties can be used to finish the job.
@@ -405,8 +405,8 @@ Is it irreducible or not?
 
 :::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey")
 {uses "FreyCurve"}[]
-If `\rho` is the mod `p` Galois representation associated to a Frey package
-`(a,b,c,p)` then `\rho` is irreducible.
+If $`\rho` is the mod `p` Galois representation associated to a Frey package
+`(a,b,c,p)` then $`\rho` is irreducible.
 :::
 
 ```tex "Mazur_Frey" (slot := statement)
@@ -424,7 +424,7 @@ If `\rho` is the mod `p` Galois representation associated to a Frey package
 {uses "Frey_curve_irreducible"}[]
 This follows from a profound and long result of Mazur
 {Informal.citep mazurTorsion}[] from `1977`, namely the fact that the torsion
-subgroup of an elliptic curve over `\Q` can have size at most `16`. In fact
+subgroup of an elliptic curve over $`\Q` can have size at most `16`. In fact
 there is still a little more work which needs to be done to deduce the theorem
 from Mazur's result. A pre-`1990` reference for the full proof of this claim is
 Proposition `6` in Section `4.1` of
@@ -456,8 +456,8 @@ a lot about the next result, which says the exact opposite.
 
 :::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey")
 {uses "FreyCurve"}[]
-If `\rho` is the mod `p` Galois representation associated to a Frey package
-`(a,b,c,p)` then `\rho` is reducible.
+If $`\rho` is the mod `p` Galois representation associated to a Frey package
+`(a,b,c,p)` then $`\rho` is reducible.
 :::
 
 ```tex "Wiles_Frey" (slot := statement)

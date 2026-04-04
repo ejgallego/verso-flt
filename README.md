@@ -194,6 +194,14 @@ like `$`a`$`, run:
 python3 scripts/check_verso_math_delimiters.py
 ```
 
+This same audit now also flags suspicious inline code spans that look like
+TeX/math and probably should have been translated as Verso math rather than as
+literal code spans. For the full per-occurrence dump, use:
+
+```bash
+python3 scripts/check_verso_math_delimiters.py --verbose
+```
+
 For the current TeX-to-Verso status snapshot inside the generated blueprint
 harness, see the `TeX To Verso Porting Status` chapter.
 

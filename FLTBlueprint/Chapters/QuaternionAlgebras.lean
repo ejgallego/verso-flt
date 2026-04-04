@@ -23,7 +23,7 @@ finite-dimensional. The main result in this miniproject is to prove that
 certain spaces of quaternionic modular forms are finite-dimensional. We need
 finiteness results like this in order to control the Hecke algebras which act
 on these spaces; these Hecke algebras are the `T`s which are isomorphic to the
-`R`s in the `R = T` theorem which is the big first target for the FLT project.
+`R`s in the $`R = T` theorem which is the big first target for the FLT project.
 
 ```tex
 At the time of writing, {\tt mathlib} still does not have a proof that the space
@@ -120,7 +120,7 @@ algebraic flavour. Crucially, the fact that we do not need to talk about
 differential equations at all means that one does not need to assume that our
 automorphic forms are `ℂ`-valued; our definition makes sense for forms valued
 in an arbitrary additive commutative group. In particular, it is possible to
-talk about mod `p^n` and `p`-adic automorphic forms in this setting without
+talk about mod $`p^n` and `p`-adic automorphic forms in this setting without
 doing any complicated algebraic geometry.
 
 ```tex

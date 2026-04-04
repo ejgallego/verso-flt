@@ -6,14 +6,14 @@ This board is driven by source markers rather than stale cross-chapter match cou
 The harness migration is largely done: most direct-port chapters now keep the remaining open source in local `tex` blocks, and the main work left is selective chapter fidelity rather than broad infrastructure.
 This board is not an LT certification report. Strict LT now also requires every translated informal block in the Verso chapter to sit next to a labeled `tex` witness block; check that separately with `python3 scripts/check_lt_source_pairs.py`.
 It ignores legacy `\leanok`, `\mathlibok`, and `\notready` markers for backlog purposes,
-and surfaces placeholder Lean targets, missing Lean targets, and unfinished proof sketches as open work.
+and surfaces placeholder Lean targets, missing Lean targets on unfinished source items, and unfinished proof sketches as open work.
 When a source block is still open, keep the raw TeX nearby in a labeled `tex` block instead of rewriting it into placeholder prose.
 
 ## Snapshot
 - Mapped TeX chapters scanned: 16
 - Source nodes scanned: 501
-- Chapters with open work: 11
-- Open source nodes: 99
+- Chapters with open work: 10
+- Open source nodes: 94
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -107,7 +107,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{definition}
 ```
 - [ ] `good_reduction_implies_unramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{good_reduction_implies_unramified}`.
+  - metadata: labels: `\label{good_reduction_implies_unramified}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{good_reduction_implies_unramified}\notready If $E$ is an elliptic curve over a number
@@ -116,7 +116,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{theorem}
 ```
 - [ ] `good_reduction_implies_flat` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{good_reduction_implies_flat}`; uses: `\uses{finite_flat_group_scheme}`.
+  - metadata: labels: `\label{good_reduction_implies_flat}`; uses: `\uses{finite_flat_group_scheme}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{good_reduction_implies_flat}\uses{finite_flat_group_scheme}\notready If $E$ is an elliptic curve over a number field
@@ -152,7 +152,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{lemma}
 ```
 - [ ] `Tate_curve_uniformisation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Tate_curve_uniformisation}`; uses: `\uses{EllipticCurve.MultiplicativeReduction}`.
+  - metadata: labels: `\label{Tate_curve_uniformisation}`; uses: `\uses{EllipticCurve.MultiplicativeReduction}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Tate_curve_uniformisation}\uses{EllipticCurve.MultiplicativeReduction}\notready If $E$ is an elliptic curve over a field
@@ -177,7 +177,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{corollary}
 ```
 - [ ] `hardly_ramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{hardly_ramified}`.
+  - metadata: labels: `\label{hardly_ramified}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{hardly_ramified}\notready Let $\ell\geq5$ be a prime and let $V$ be a
@@ -192,7 +192,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{definition}
 ```
 - [ ] `Frey_curve_good` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_good}`.
+  - metadata: labels: `\label{Frey_curve_good}`; flags: `\notready`.
   - source:
 ```tex
  \begin{theorem}\label{Frey_curve_good}\notready If $p\not=\ell$ is a prime not dividing $abc$ then
@@ -200,6 +200,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
  \end{theorem}
 ```
 - [ ] `proof @220` needs attention: proof sketch still reads as unfinished.
+  - metadata: flags: `\leanok`.
   - source:
 ```tex
 \begin{proof}
@@ -208,7 +209,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{proof}
 ```
 - [ ] `Frey_curve_unram` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_unram}`.
+  - metadata: labels: `\label{Frey_curve_unram}`; flags: `\notready`.
   - source:
 ```tex
 \begin{corollary}\label{Frey_curve_unram}\notready If $(a,b,c,\ell)$ is a Frey package, if $2<p\mid abc$
@@ -217,14 +218,14 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{corollary}
 ```
 - [ ] `frey_curve_unramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{frey_curve_unramified}`.
+  - metadata: labels: `\label{frey_curve_unramified}`; flags: `\notready`.
   - source:
 ```tex
 \begin{corollary}\label{frey_curve_unramified}\notready If $(a,b,c,\ell)$ is a Frey package, then the $\ell$-torsion in the Frey curve is unramified at all primes $p\not=2,\ell$.
 \end{corollary}
 ```
 - [ ] `frey_curve_at_2` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{frey_curve_at_2}`.
+  - metadata: labels: `\label{frey_curve_at_2}`; flags: `\notready`.
   - source:
 ```tex
 \begin{corollary}\label{frey_curve_at_2}\notready If $(a,b,c,\ell)$ is a Frey package, then the
@@ -233,7 +234,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{corollary}
 ```
 - [ ] `Frey_curve_mod_ell_rep_at_ell` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_mod_ell_rep_at_ell}`; uses: `\uses{finite_flat_group_scheme}`.
+  - metadata: labels: `\label{Frey_curve_mod_ell_rep_at_ell}`; uses: `\uses{finite_flat_group_scheme}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Frey_curve_mod_ell_rep_at_ell}\uses{finite_flat_group_scheme}\notready Let $\rho$ be the $\ell$-torsion in the
@@ -241,7 +242,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{theorem}
 ```
 - [ ] `frey_curve_hardly_ramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{frey_curve_hardly_ramified}`; uses: `\uses{hardly_ramified}`.
+  - metadata: labels: `\label{frey_curve_hardly_ramified}`; uses: `\uses{hardly_ramified}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{frey_curve_hardly_ramified}\uses{hardly_ramified}\notready Let $\rho$ be the Galois representation on the
@@ -250,7 +251,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{theorem}
 ```
 - [ ] `mazur` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{mazur}`.
+  - metadata: labels: `\label{mazur}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{mazur}\notready Let $E$ be an elliptic curve over $\Q$. Then the torsion subgroup
@@ -258,7 +259,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{theorem}
 ```
 - [ ] `Frey_characters_are_unramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_characters_are_unramified}`.
+  - metadata: labels: `\label{Frey_characters_are_unramified}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Frey_characters_are_unramified}\notready With notation as above, the characters
@@ -266,7 +267,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{theorem}
 ```
 - [ ] `Frey_characters_at_ell` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_characters_at_ell}`.
+  - metadata: labels: `\label{Frey_characters_at_ell}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Frey_characters_at_ell}\notready One of $\alpha$ and $\beta$ is unramified at $\ell$.
@@ -280,7 +281,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{corollary}
 ```
 - [ ] `Frey_curve_reducible_structure` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Frey_curve_reducible_structure}`.
+  - metadata: labels: `\label{Frey_curve_reducible_structure}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Frey_curve_reducible_structure}\notready If $\rho$ is reducible, then either $\rho$
@@ -304,7 +305,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 \end{corollary}
 ```
 - [ ] `Elliptic_curve_quotient_by_finite_subgroup` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Elliptic_curve_quotient_by_finite_subgroup}`.
+  - metadata: labels: `\label{Elliptic_curve_quotient_by_finite_subgroup}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Elliptic_curve_quotient_by_finite_subgroup}\notready If $p$ is a prime and
@@ -385,7 +386,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
       local_galois_coh_poincare,local_galois_coh_euler_poincare,IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv,
       automorphic_representation_local_decomposition,cuspidal_automorphic_representation,
       Galois_representation_from_automorphic_representation_on_GL_2_form, moret-bailly,
-      local_galois_coh_finite}`.
+      local_galois_coh_finite}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}
@@ -447,21 +448,8 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 ## Stating the modularity lifting theorems
 - Source: `ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`
 - Scanned nodes: 4
-- Open work: 2 source nodes need port attention (2 formal statements, 0 proof sketches).
+- Open work: 1 source nodes need port attention (1 formal statements, 0 proof sketches).
 - Tasks:
-- [ ] `MatrixRing.isCentralSimple` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{MatrixRing.isCentralSimple}`.
-  - source:
-```tex
-\begin{lemma}
-    \label{MatrixRing.isCentralSimple}
-    %\lean{MatrixRing.isCentralSimple}
-    %\uses{IsCentralSimple}
-    \discussion{47}
-    \leanok
-    If $n\geq1$ then the $n\times n$ matrices $M_n(K)$ are a central simple algebra over~$K$.
-\end{lemma}
-```
 - [ ] `IsCentralSimple.baseChange` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{IsCentralSimple.baseChange}`.
   - source:
@@ -476,12 +464,10 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 - Representative source:
 ```tex
 \begin{lemma}
-    \label{MatrixRing.isCentralSimple}
-    %\lean{MatrixRing.isCentralSimple}
+    \label{IsCentralSimple.baseChange} % no Lean yet because Lean didn't seem to know L \otimes_K D was a ring
     %\uses{IsCentralSimple}
-    \discussion{47}
-    \leanok
-    If $n\geq1$ then the $n\times n$ matrices $M_n(K)$ are a central simple algebra over~$K$.
+    If $D$ is a central simple algebra over~$K$ and $L/K$ is a field extension, then $L\otimes_KD$
+    is a central simple algebra over~$L$.
 \end{lemma}
 ```
 
@@ -582,75 +568,18 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 ## Miniproject: Frobenius elements
 - Source: `FrobeniusProject.tex` -> `FrobeniusProject.lean`
 - Scanned nodes: 22
-- Open work: 4 source nodes need port attention (4 formal statements, 0 proof sketches).
-- Tasks:
-- [ ] `fixed_of_fixed1_aux1` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{fixed_of_fixed1_aux1}`.
-  - source:
-```tex
-\begin{lemma}
-  \label{fixed_of_fixed1_aux1}
-  \mathlibok
-  There exist elements $a,b \in B$, with $a \notin Q$ and $a$ in the image of $A$ such that
-  for all $g\in G$,
-  \begin{itemize}
-    \item If $g \cdot Q = Q$, then $g \cdot b \equiv a \pmod{Q}$.
-    \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
-  \end{itemize}
-\end{lemma}
-```
-- [ ] `fixed_of_fixed1_aux2` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{fixed_of_fixed1_aux2}`.
-  - source:
-```tex
-\begin{lemma}
-  \label{fixed_of_fixed1_aux2}
-  \mathlibok
-  Let $b_0 \in B$.
-  Suppose that the image of $b_0$ in the quotient $B/Q$ is fixed by the stabilizer subgroup
-  $D_Q$.
-  Then there exist elements $a,b \in B$, with $a\notin Q$ and $a$ in the image of $A$ such that
-  for all $g\in G$,
-  \begin{itemize}
-    \item If $g \cdot Q = Q$, then $g \cdot b \equiv ab_0 \pmod{Q}$.
-```
-- [ ] `fixed_of_fixed1` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{fixed_of_fixed1}`; uses: `\uses{IsFractionRing.stabilizerHom}`.
-  - source:
-```tex
-\begin{proposition}
-  \label{fixed_of_fixed1}
-  \uses{IsFractionRing.stabilizerHom}
-  \mathlibok
-  Let $b_0 \in B/Q$.
-  Suppose that $b_0$ is fixed by the stabilizer subgroup $D_Q$.
-  Then $b_0$ is fixed by $\Aut(L/K)$.
-\end{proposition}
-```
-- [ ] `fixed_of_fixed2` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{fixed_of_fixed2}`.
-  - source:
-```tex
-\begin{proposition}
-  \label{fixed_of_fixed2}
-  \mathlibok
-  Let $x \in L$.
-  Suppose that $x$ is fixed by the stabilizer subgroup $D_Q$.
-  Then $x$ is fixed by the automorphism group $\Aut(L/K)$.
-\end{proposition}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
-\begin{lemma}
-  \label{fixed_of_fixed1_aux1}
+\begin{definition}
+  \label{IsFractionRing.stabilizerHom}
+  \lean{IsFractionRing.stabilizerHom}
+  Choose $g\in D_Q$. Then the action of $g$ on $B$ gives us an induced
+  $A/P$-algebra automorphism of $B/Q$ which extends to a $K$-algebra automorphism $\phi(g)$ of $L$.
+  This construction $g\mapsto \phi(g)$ defines a group homomorphism from $D_Q$
+  to $\Aut(L/K)$ (all the proofs implicit in the definition here are straightforward).
   \mathlibok
-  There exist elements $a,b \in B$, with $a \notin Q$ and $a$ in the image of $A$ such that
-  for all $g\in G$,
-  \begin{itemize}
-    \item If $g \cdot Q = Q$, then $g \cdot b \equiv a \pmod{Q}$.
-    \item If $g \cdot Q \neq Q$, then $g \cdot b \equiv 0 \pmod{Q}$.
-  \end{itemize}
-\end{lemma}
+\end{definition}
 ```
 
 ## Miniproject: Adeles
@@ -932,7 +861,7 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 - Open work: 30 source nodes need port attention (30 formal statements, 0 proof sketches).
 - Tasks:
 - [ ] `maximal_unramified_extension_of_p-adic_field` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{maximal_unramified_extension_of_p-adic_field}`.
+  - metadata: labels: `\label{maximal_unramified_extension_of_p-adic_field}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{maximal_unramified_extension_of_p-adic_field}\notready The maximal unramified extension $K^{un}$ in a given algebraic closure of $K$
@@ -940,21 +869,21 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 \end{theorem}
 ```
 - [ ] `local_Weil_group` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_Weil_group}`; uses: `\uses{maximal_unramified_extension_of_p-adic_field}`.
+  - metadata: labels: `\label{local_Weil_group}`; uses: `\uses{maximal_unramified_extension_of_p-adic_field}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{local_Weil_group}\uses{maximal_unramified_extension_of_p-adic_field}\notready The topological group described above is called the \emph{Weil group} of $K$.
 \end{definition}
 ```
 - [ ] `local_class_field_theory` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_class_field_theory}`; uses: `\uses{local_Weil_group}`.
+  - metadata: labels: `\label{local_class_field_theory}`; uses: `\uses{local_Weil_group}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{local_class_field_theory}\uses{local_Weil_group}\notready If $K$ is a finite extension of $\Q_p$ then there are two ``canonical'' isomorphisms of topological abelian groups, between $K^\times$ and the abelianisation of the Weil group of $K$.
 \end{theorem}
 ```
 - [ ] `local_galois_coh_finite` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_galois_coh_finite}`.
+  - metadata: labels: `\label{local_galois_coh_finite}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}
@@ -964,7 +893,7 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 \end{theorem}
 ```
 - [ ] `local_galois_coh_dim_two` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_galois_coh_dim_two}`.
+  - metadata: labels: `\label{local_galois_coh_dim_two}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
@@ -972,7 +901,7 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 \end{theorem}
 ```
 - [ ] `local_galois_coh_top_degree` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_galois_coh_top_degree}`.
+  - metadata: labels: `\label{local_galois_coh_top_degree}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem} ["top degree"]
@@ -982,13 +911,14 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 \end{theorem}
 ```
 - [ ] `theorem @61` needs attention: no `\lean{...}` target.
+  - metadata: flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\notready There is a ``canonical'' isomorphism $H^2(K,\mu_\infty)=\Q/\Z$.
 \end{theorem}
 ```
 - [ ] `local_galois_coh_poincare` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_galois_coh_poincare}`.
+  - metadata: labels: `\label{local_galois_coh_poincare}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem} ["Poincar\'e duality"]\label{local_galois_coh_poincare}\notready
@@ -997,7 +927,7 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 \end{theorem}
 ```
 - [ ] `local_galois_coh_euler_poincare` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{local_galois_coh_euler_poincare}`.
+  - metadata: labels: `\label{local_galois_coh_euler_poincare}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem} ["Euler-Poincar\'e characteristic"]\label{local_galois_coh_euler_poincare}\notready
@@ -1005,14 +935,14 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 \end{theorem}
 ```
 - [ ] `global_class_field_theory` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{global_class_field_theory}`; uses: `\uses{local_class_field_theory}`.
+  - metadata: labels: `\label{global_class_field_theory}`; uses: `\uses{local_class_field_theory}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{global_class_field_theory}\uses{local_class_field_theory}\notready If $N$ is a finite extension of $\Q$ then there are two ``canonical'' isomorphisms of topological groups between the profinite abelian groups $\pi_0(\A_N^\times/N^\times)$ and $\GN^{\ab}$; one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above.
 \end{theorem}
 ```
 - [ ] `Skinner_Wiles_CFT_trick` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Skinner_Wiles_CFT_trick}`; uses: `\uses{global_class_field_theory}`.
+  - metadata: labels: `\label{Skinner_Wiles_CFT_trick}`; uses: `\uses{global_class_field_theory}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Skinner_Wiles_CFT_trick}\uses{global_class_field_theory}\notready Let $S$ be a finite set of places of a number field $K$ . For each $v \in S$
@@ -1038,14 +968,14 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \end{theorem}
 ```
 - [ ] `manifold_on_algebraic_variety_points` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{manifold_on_algebraic_variety_points}`.
+  - metadata: labels: `\label{manifold_on_algebraic_variety_points}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{manifold_on_algebraic_variety_points}\notready Let $K$ be a field equipped with an isomorphism to the reals, complexes, or a finite extension of the $p$-adic numbers. Let $X$ be a smooth affine algebraic variety over $K$. Then the points $X(K)$ naturally inherit the structure of a manifold over $K$.
 \end{definition}
 ```
 - [ ] `manifold_on_algebraic_variety_computation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{manifold_on_algebraic_variety_computation}`; uses: `\uses{manifold_on_algebraic_variety_points}`.
+  - metadata: labels: `\label{manifold_on_algebraic_variety_computation}`; uses: `\uses{manifold_on_algebraic_variety_points}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{manifold_on_algebraic_variety_computation}\uses{manifold_on_algebraic_variety_points}\notready
@@ -1053,7 +983,7 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \end{theorem}
 ```
 - [ ] `lie_group_from_algebraic_group` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{lie_group_from_algebraic_group}`; uses: `\uses{manifold_on_algebraic_variety_computation}`.
+  - metadata: labels: `\label{lie_group_from_algebraic_group}`; uses: `\uses{manifold_on_algebraic_variety_computation}`; flags: `\notready`.
   - source:
 ```tex
 \begin{corollary}\label{lie_group_from_algebraic_group}\uses{manifold_on_algebraic_variety_computation}\notready
@@ -1061,14 +991,14 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \end{corollary}
 ```
 - [ ] `connected_reductive_group` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{connected_reductive_group}`.
+  - metadata: labels: `\label{connected_reductive_group}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{connected_reductive_group}\notready An affine algebraic group~$G$ of finite type over a field~$k$ is said to be \emph{connected} if it is connected as a scheme, and \emph{reductive} if $G_{\overline{k}}$ has no nontrivial smooth connected unipotent normal $k$-subgroup.
 \end{definition}
 ```
 - [ ] `slowly_increasing` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{slowly_increasing}`.
+  - metadata: labels: `\label{slowly_increasing}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{slowly_increasing}\notready A function $f : G(N_\infty)\to\bbC$ is \emph{slowly-increasing} if there exists some $C>0$
@@ -1076,14 +1006,14 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \end{definition}
 ```
 - [ ] `slowly_increasing_well_defined` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{slowly_increasing_well_defined}`; uses: `\uses{slowly_increasing}`.
+  - metadata: labels: `\label{slowly_increasing_well_defined}`; uses: `\uses{slowly_increasing}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{slowly_increasing_well_defined}\uses{slowly_increasing}\notready This is independent of the choice of $\rho$ as above.
 \end{theorem}
 ```
 - [ ] `automorphic_form` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{automorphic_form}`; uses: `\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}`.
+  - metadata: labels: `\label{automorphic_form}`; uses: `\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{automorphic_form}\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}\notready An \emph{automorphic form} is a function $\phi:G(\A_N)\to\bbC$ satisfying the following conditions:
@@ -1098,14 +1028,14 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \end{definition}
 ```
 - [ ] `cuspidal_automorphic_form` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{cuspidal_automorphic_form}`; uses: `\uses{automorphic_form}`.
+  - metadata: labels: `\label{cuspidal_automorphic_form}`; uses: `\uses{automorphic_form}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{cuspidal_automorphic_form}\uses{automorphic_form}\notready An automorphic form is \emph{cuspidal} (or ``a cusp form'') if it furthermore satisfies $\int_{U(N)\backslash U(\A_N)}\phi(ux)du=0$, where $P$ runs through all the proper parabolic subgroups of $G$ defined over $N$ and $U$ is the unipotent radical of $P$, and the integral is with respect to the measure coming from Haar measure.
 \end{definition}
 ```
 - [ ] `automorphic_form_actions` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{automorphic_form_actions}`; uses: `\uses{automorphic_form}`.
+  - metadata: labels: `\label{automorphic_form_actions}`; uses: `\uses{automorphic_form}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{automorphic_form_actions}\uses{automorphic_form}\notready The group $G(\A_N)$ acts on itself on the right, and this induces a left action of its
@@ -1120,21 +1050,21 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \end{theorem}
 ```
 - [ ] `cuspidal_automorphic_representation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{cuspidal_automorphic_representation}`; uses: `\uses{cuspidal_automorphic_form_decomposition}`.
+  - metadata: labels: `\label{cuspidal_automorphic_representation}`; uses: `\uses{cuspidal_automorphic_form_decomposition}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{cuspidal_automorphic_representation}\uses{cuspidal_automorphic_form_decomposition}\notready A cuspidal automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible summand of the space of cusp forms.
 \end{definition}
 ```
 - [ ] `automorphic_representation` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{automorphic_representation}`; uses: `\uses{automorphic_form_actions}`.
+  - metadata: labels: `\label{automorphic_representation}`; uses: `\uses{automorphic_form_actions}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{automorphic_representation}\uses{automorphic_form_actions}\notready An automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible subquotient of the space of automorphic forms.
 \end{definition}
 ```
 - [ ] `automorphic_representation_local_decomposition` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{automorphic_representation_local_decomposition}`; uses: `\uses{automorphic_representation}`.
+  - metadata: labels: `\label{automorphic_representation_local_decomposition}`; uses: `\uses{automorphic_representation}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{automorphic_representation_local_decomposition}\uses{automorphic_representation}\notready An irreducible admissible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module is a restricted tensor product of irreducible representations $\pi_v$ of $G(N_v)$ as $v$ runs through the finite places of $N$, tensored with a tensor product of irreducible $(\mathfrak{g}_v,U_{\infty,v})$-modules as $v$ runs through the infinite places of $N$. The representations $\pi_v$ are unramified for all but finitely many $v$.
@@ -1149,21 +1079,21 @@ a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each f
 \end{definition}
 ```
 - [ ] `Galois_representation_from_automorphic_representation_on_GL_2_form` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Galois_representation_from_automorphic_representation_on_GL_2_form}`; uses: `\uses{automorphic_representation,Shimura_varieties,compatible_family}`.
+  - metadata: labels: `\label{Galois_representation_from_automorphic_representation_on_GL_2_form}`; uses: `\uses{automorphic_representation,Shimura_varieties,compatible_family}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation $\pi$ for an inner form of $\GL_2$ over a totally real field and with reflex field~$E$, such that $\pi$ is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to $\pi$, with $S$ being the places at which $\pi$ is ramified, and $F_{\p}(X)$ being the monic polynomial with roots the two Satake parameters for $\pi$ at $\p$.
 \end{theorem}
 ```
 - [ ] `Shimura_varieties` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{Shimura_varieties}`.
+  - metadata: labels: `\label{Shimura_varieties}`; flags: `\notready`.
   - source:
 ```tex
 \begin{definition}\label{Shimura_varieties}\notready We need the definition of (the canonical model over $F$ of) the Shimura curve attached to an inner form of $\GL_2$ with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it's compact).
 \end{definition}
 ```
 - [ ] `moret-bailly` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{moret-bailly}`.
+  - metadata: labels: `\label{moret-bailly}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{moret-bailly}\notready Let $K^{\avoid}/K$ be a Galois extension of number fields. Suppose also

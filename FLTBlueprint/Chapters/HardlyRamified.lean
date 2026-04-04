@@ -34,9 +34,9 @@ theorem from the `1970`s, to the assertion that `p`-torsion in the Frey curve
 is reducible. In this chapter we deduce that assertion from three more complex
 claims about hardly ramified Galois representations. One of those three claims
 is comparatively close to Fontaine's work from the `1980`s on the
-nonexistence of nontrivial abelian schemes over `\mathbf{Z}`. The other two
+nonexistence of nontrivial abelian schemes over $`\mathbf{Z}`. The other two
 lie deeper and use techniques developed in the `1990`s and later around
-Wiles-style `R = T` arguments.
+Wiles-style $`R = T` arguments.
 
 ```tex
 In chapter~\ref{ch_reductions} we reduced FLT, modulo a hard theorem from the 1970s,
@@ -55,7 +55,7 @@ Let $`(a,b,c,p)` be a Frey package, let `E` be the corresponding Frey curve
 over $`\Q`, and let
 $`\rho : \GQ \to \Aut(E(\Qbar)[p])`
 be the `2`-dimensional Galois representation on the `p`-torsion of `E`. Our
-goal is to prove that `\rho` is reducible.
+goal is to prove that $`\rho` is reducible.
 
 ```tex
 Let $(a,b,c,p)$ be a Frey package (so in particular $p\geq5$ is prime and $a^p+b^p=c^p$),
@@ -64,10 +64,10 @@ be the 2-dimensional Galois representation on the $p$-torsion of~$E$. Recall tha
 is to prove that $\rho$ is reducible.
 ```
 
-What we need to leverage is the fact that `\rho` has very little ramification.
-To give a toy example before we start: if `K` is a number field, that is, a
-finite extension of `\Q`, and if the extension `K / \Q` is unramified at all
-primes, then an old theorem of Minkowski tells us that `K = \Q`. We want to
+What we need to leverage is the fact that $`\rho` has very little ramification.
+To give a toy example before we start: if $`K` is a number field, that is, a
+finite extension of $`\Q`, and if the extension $`K / \Q` is unramified at all
+primes, then an old theorem of Minkowski tells us that $`K = \Q`. We want to
 prove a theorem in a similar vein, namely that if a `2`-dimensional mod `p`
 Galois representation is hardly ramified, then it is reducible. Below, we give
 a precise definition of what it means for a continuous `2`-dimensional
@@ -166,8 +166,8 @@ representability theorems easier.
 \end{remark}
 ```
 
-Because a coefficient ring with residue characteristic `\ell` is naturally a
-$`\mathbf{Z}_\ell`-algebra, we can talk about the `\ell`-adic cyclotomic
+Because a coefficient ring with residue characteristic $`\ell` is naturally a
+$`\mathbf{Z}_\ell`-algebra, we can talk about the $`\ell`-adic cyclotomic
 character with values in that ring. We are now ready to define hardly ramified
 representations.
 
@@ -229,8 +229,8 @@ A well-known result, which basically goes back to Frey, is the following:
 
 :::theorem "Frey_curve_hardly_ramified" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_isHardlyRamified")
 {uses "hardly_ramified"}[]
-The `\ell`-torsion representation in the Frey curve attached to a Frey package
-`(a,b,c,\ell)` is hardly ramified.
+The $`\ell`-torsion representation in the Frey curve attached to a Frey package
+$`(a,b,c,\ell)` is hardly ramified.
 :::
 
 ```tex "Frey_curve_hardly_ramified" (slot := statement)
@@ -246,18 +246,18 @@ The `\ell`-torsion representation in the Frey curve attached to a Frey package
 
 :::proof "Frey_curve_hardly_ramified"
 This was well-known in the 1980s. A proof sketch is as follows.
-First note that `\ell \ge 5 > 3` by definition of a Frey package. Let `\rho`
-denote the Galois representation on the `\ell`-torsion of the Frey curve.
-The fact that `\rho` is `2`-dimensional is Corollary~III.6.4(b) of
+First note that $`\ell \ge 5 > 3` by definition of a Frey package. Let $`\rho`
+denote the Galois representation on the $`\ell`-torsion of the Frey curve.
+The fact that $`\rho` is `2`-dimensional is Corollary~III.6.4(b) of
 {Informal.citep silvermanArithmeticEllipticCurves}[], and the fact that its
 determinant is cyclotomic is Proposition~III.8.3 of the same reference. These
 results hold for elliptic curves in general. The remaining claims are specific
-to the Frey curve and lie deeper. The fact that `\rho` is unramified outside
-`2\ell` is a consequence of `(4.1.12)` and `(4.1.13)` of
-{Informal.citep serreModularityConjecture}[]. The fact that `\rho` at `2` has
+to the Frey curve and lie deeper. The fact that $`\rho` is unramified outside
+$`2\ell` is a consequence of `(4.1.12)` and `(4.1.13)` of
+{Informal.citep serreModularityConjecture}[]. The fact that $`\rho` at `2` has
 an unramified `1`-dimensional quotient of order at most `2` follows from the
 fact that the Frey curve is semistable at `2` and the theory of the Tate
-curve. Finally, the claim that `\rho` is flat at `\ell` is Proposition~5 and
+curve. Finally, the claim that $`\rho` is flat at $`\ell` is Proposition~5 and
 `(4.1.13)` of {Informal.citep serreModularityConjecture}[].
 :::
 
@@ -280,7 +280,7 @@ curve. Finally, the claim that `\rho` is flat at `\ell` is Proposition~5 and
 ```
 
 Note that irreducibility and absolute irreducibility for hardly ramified mod
-`\ell` representations are the same, because our assumptions that
+$`\ell` representations are the same, because our assumptions that
 $`\ell\geq3` and that the determinant is cyclotomic imply that the image of
 complex conjugation has distinct eigenvalues defined over the ground field.
 
@@ -294,7 +294,7 @@ has distinct eigenvalues defined over the ground field.
 :::theorem "hardly_ramified_reducible" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_not_isIrreducible")
 If $`\ell \ge 3` is prime and
 $`\rho : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
-is hardly ramified, then `\rho` is reducible.
+is hardly ramified, then $`\rho` is reducible.
 :::
 
 ```tex "hardly_ramified_reducible" (slot := statement)
@@ -323,8 +323,8 @@ Serre's conjecture. Given this result, we can deduce Theorem~\ref{Wiles_Frey}
 ```
 
 :::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program") (lean := "Wiles_Frey")
-If `\overline{\rho}` is the mod `p` Galois representation associated to a
-Frey package `(a,b,c,p)` then `\overline{\rho}` is reducible.
+If $`\overline{\rho}` is the mod `p` Galois representation associated to a
+Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 :::
 
 ```tex "Wiles_Frey_again" (slot := statement)
@@ -340,7 +340,7 @@ Frey package `(a,b,c,p)` then `\overline{\rho}` is reducible.
 :::proof "Wiles_Frey_again"
 {uses "Frey_curve_hardly_ramified"}[]
 {uses "hardly_ramified_reducible"}[]
-Indeed, `\rho` is hardly ramified by the former theorem and thus reducible by
+Indeed, $`\rho` is hardly ramified by the former theorem and thus reducible by
 the latter.
 :::
 
@@ -370,8 +370,8 @@ In this section we will state three theorems, from which Theorem~\ref{hardly_ram
 easily follows.
 ```
 
-Firstly, we claim that an irreducible hardly ramified mod `\ell`
-representation lifts to an `\ell`-adic representation.
+Firstly, we claim that an irreducible hardly ramified mod $`\ell`
+representation lifts to an $`\ell`-adic representation.
 
 ```tex
 Firstly, we claim that
@@ -380,7 +380,7 @@ an irreducible hardly ramified mod $\ell$ representation lifts to an $\ell$-adic
 
 :::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.lifts")
 {uses "hardly_ramified"}[]
-If `\ell \ge 3` is prime and
+If $`\ell \ge 3` is prime and
 $`\overline{\rho} : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
 is hardly ramified and irreducible, then there exists a finite extension
 $`K / \Q_\ell` with integer ring $`\mathcal{O}` and maximal ideal
@@ -413,7 +413,7 @@ Omitted for now. TODO.
 \end{proof}
 ```
 
-Next we claim that a hardly ramified `\ell`-adic representation spreads out to
+Next we claim that a hardly ramified $`\ell`-adic representation spreads out to
 a compatible family of hardly ramified `q`-adic representations for all odd
 primes `q`. Note that we have not made a definition of a hardly ramified `2`-adic
 representation.
@@ -426,12 +426,12 @@ not made a definition of a hardly ramified 2-adic representation).
 
 :::theorem "hardly_ramified_spreads_out" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mem_isCompatible")
 {uses "hardly_ramified"}[]
-If `\ell \ge 3` is prime, `K` is a finite extension of `\Q_\ell` with
-integers `\mathcal{O}` and if `\rho : \GQ \to \GL_2(\mathcal{O})` is a hardly
+If $`\ell \ge 3` is prime, `K` is a finite extension of $`\Q_\ell` with
+integers $`\mathcal{O}` and if $`\rho : \GQ \to \GL_2(\mathcal{O})` is a hardly
 ramified representation whose reduction is irreducible, then there exists a
-number field `M` and, for each finite place `\mu` of `M` of characteristic
-prime to `2`, with completion `M_\mu` having integer ring `R_\mu`, a hardly
-ramified semisimple representation `\rho_\mu : \GQ \to \GL_2(R_\mu)` (by which
+number field `M` and, for each finite place $`\mu` of `M` of characteristic
+prime to `2`, with completion $`M_\mu` having integer ring $`R_\mu`, a hardly
+ramified semisimple representation $`\rho_\mu : \GQ \to \GL_2(R_\mu)` (by which
 we mean the generic fibre is semisimple), with the following properties:
 
 - There is some $`\lambda\mid\ell` of $`M` such that $`\rho_\lambda\cong\rho`,
@@ -479,7 +479,7 @@ Omitted for now. TODO.
 \end{proof}
 ```
 
-In particular, we can "move" from an irreducible hardly ramified mod `\ell`
+In particular, we can "move" from an irreducible hardly ramified mod $`\ell`
 representation to a hardly ramified `3`-adic representation, and hence to a
 hardly ramified mod `3` representation.
 
@@ -536,7 +536,7 @@ representations:
 :::theorem "hardly_ramified_3adic_reducible" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.three_adic")
 {uses "hardly_ramified"}[]
 {uses "hardly_ramified_mod3_reducible"}[]
-If $`L / \Q_3` is a finite extension with integer ring `\mathcal{O}_L` and
+If $`L / \Q_3` is a finite extension with integer ring $`\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has
 $`\rho_3^{ss} = 1 \oplus \chi_3` where $`1` is the trivial character and
@@ -584,7 +584,7 @@ as we now show.
 {uses "hardly_ramified_3adic_reducible"}[]
 Assume for a contradiction that $`\overline{\rho}` is irreducible. By theorem
 `hardly_ramified_lifts`, $`\overline{\rho}` lifts to a hardly ramified
-`\ell`-adic representation $`\rho`. By theorem
+ $`\ell`-adic representation $`\rho`. By theorem
 `hardly_ramified_spreads_out`, $`\rho` is part of a compatible family of
 `q`-adic Galois representations. By theorem
 `hardly_ramified_3adic_reducible`, any `3`-adic member $`\rho_3` of this
@@ -595,7 +595,7 @@ that for $`p\nmid 6\ell` the characteristic polynomial of $`\rho(\Frob_p)`
 is $`(X-p)(X-1)`, and thus the characteristic polynomial of
 $`\overline{\rho}(\Frob_p)` is $`(X-p)(X-1)`. By the Chebotarev density
 theorem, $`\overline{\rho}` and $`1\oplus\chi` have the same characteristic
-polynomials everywhere (here $`\chi` is the mod `\ell` cyclotomic character).
+polynomials everywhere (here $`\chi` is the mod $`\ell` cyclotomic character).
 Thus by the Brauer-Nesbitt theorem, $`\overline{\rho}` is reducible, the
 contradiction we seek.
 :::
@@ -626,8 +626,8 @@ to prove the three theorems `hardly_ramified_lifts`,
 the easiest is theorem `hardly_ramified_3adic_reducible`; this follows from old
 estimates of Fontaine, ultimately relying on bounds for root discriminants due
 to Odlyzko and Poitou, originally developed to prove that there was no
-nontrivial abelian scheme over `\mathbf{Z}`. The other two theorems are deeper,
-and both use modern variants of Wiles' `R = T` machinery.
+nontrivial abelian scheme over $`\mathbf{Z}`. The other two theorems are deeper,
+and both use modern variants of Wiles' $`R = T` machinery.
 
 ```tex
 What remains then (modulo several results which were known in the 1980s),

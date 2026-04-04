@@ -27,7 +27,7 @@ Langlands conjectures for connected reductive groups over number fields. More
 precisely, the goal is to state the Buzzard--Gee formulation of the conjecture
 for algebraic automorphic representations. The main difficulties lie in writing
 down precisely what is meant by phrases such as `automorphic representation`,
-`connected reductive group`, `local-global compatibility`, `de Rham Galois
+`connected reductive group`, local-global compatibility, `de Rham Galois
 representation`, and so on; these words hide a large amount of technical
 material.
 
