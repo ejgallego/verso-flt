@@ -1389,7 +1389,7 @@ more, namely that $U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}$. This will suffice
 because $\alpha\beta=\beta\alpha$.
 ```
 
-:::lemma_ "nolean-product-of-U-alpha" (parent := "hecke_operator_project")
+:::lemma_ "nolean-product-of-U-alpha" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.U_mul")
 If $`v\in S` and $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}`
 then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`.
 :::
