@@ -25,9 +25,9 @@ Fermat's Last Theorem, we could construct a Frey package and thus a Frey curve,
 which is an elliptic curve with some interesting properties. In this chapter
 we start with an overview of parts of the theory of the arithmetic of elliptic
 curves. Following this we sketch proofs of the two main results of this
-chapter: firstly that the `p`-torsion `\rho` in the Frey curve is "hardly
+chapter: firstly that the `p`-torsion $`\rho` in the Frey curve is "hardly
 ramified", and secondly that Mazur's result on the possible torsion of
-elliptic curves implies that `\rho` must be irreducible.
+elliptic curves implies that $`\rho` must be irreducible.
 
 ```tex
 In Chapter~\ref{ch_reductions} we explained how, given a counterexample to Fermat's Last Theorem, we could construct a Frey package and thus a Frey curve, which is an elliptic curve with some interesting properties. In this chapter we start with an overview of parts of the theory of the arithmetic of elliptic curves. Following
@@ -92,8 +92,8 @@ purely group-theoretic result:
 
 :::lemma_ "group_theory_lemma" (parent := "elliptic_frey_bridge") (lean := "group_theory_lemma")
 Say `n` is a positive integer, `r` is a natural, and `A` is an abelian group.
-Assume that for all `d ∣ n`, the `d`-torsion `A[d]` of `A` has size `d^r`.
-Then `A[n] ≅ (\Z/n\Z)^r`.
+Assume that for all $`d \mid n`, the `d`-torsion `A[d]` of `A` has size $`d^r`.
+Then $`A[n] \cong (\Z/n\Z)^r`.
 :::
 
 ```tex "group_theory_lemma" (slot := statement)
@@ -105,11 +105,11 @@ Then `A[n] ≅ (\Z/n\Z)^r`.
 ```
 
 :::proof "group_theory_lemma"
-The result is obvious if `n = 1`, so we may assume `n > 1`. One proof would be
-to write `A` as `\prod_{i=1}^t(\Z/a_i\Z)` with `a_i \mid a_{i+1}` (this is
+The result is obvious if $`n = 1`, so we may assume $`n > 1`. One proof would be
+to write `A` as $`\prod_{i=1}^t(\Z/a_i\Z)` with $`a_i \mid a_{i+1}` (this is
 possible by the structure theorem for finite abelian groups), and then to
-apply our hypothesis firstly with `d = a_1` to deduce `t = r` and then with
-`d = a_t` to deduce `a_1 = a_t`.
+apply our hypothesis firstly with $`d = a_1` to deduce $`t = r` and then with
+$`d = a_t` to deduce $`a_1 = a_t`.
 :::
 
 ```tex "group_theory_lemma" (slot := proof)
@@ -166,7 +166,7 @@ We saw in section~\ref{twopointfour} that if $E$ is an elliptic curve over a fie
 {uses "Elliptic_curve_n_torsion_2d"}[]
 If `E` is an elliptic curve over a field `k`, and `n` is a positive integer
 which is nonzero in `k`, then the determinant of the 2-dimensional
-representation of `\Gal(k^{\sep}/k)` on `E(k^{\sep})[n]` is the mod `n`
+representation of $`\Gal(k^{\sep}/k)` on $`E(k^{\sep})[n]` is the mod `n`
 cyclotomic character.
 :::
 
@@ -201,11 +201,11 @@ For more details one can consult the standard sources such as~\cite{silverman1}.
 
 :::definition "EllipticCurve.GoodReduction" (parent := "elliptic_frey_bridge")
 Let `E` be an elliptic curve over the field of fractions `K` of a valuation ring
-`R` with maximal ideal `\m`. We say `E` has good reduction over `R` if `E` has a
-model with coefficients in `R` and the reduction mod `\m` is still non-singular.
+`R` with maximal ideal $`\m`. We say `E` has good reduction over `R` if `E` has a
+model with coefficients in `R` and the reduction mod $`\m` is still non-singular.
 If `E` is an elliptic curve over a number field `N` and `P` is a maximal ideal
-of its integer ring `\calO_N`, then one says that `E` has good reduction at `P`
-if `E` has good reduction over the `\calO_{N,P}`, the localisation of `\calO_N`
+of its integer ring $`\calO_N`, then one says that `E` has good reduction at `P`
+if `E` has good reduction over the $`\calO_{N,P}`, the localisation of $`\calO_N`
 at `P`.
 :::
 
@@ -217,7 +217,7 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
 ```
 
 From this point on, our Frey curves and Frey packages will use notation
-`(a,b,c,\ell)`, with `\ell\geq 5` a prime number, rather than `p`. This frees up
+$`(a,b,c,\ell)`, with $`\ell\geq 5` a prime number, rather than `p`. This frees up
 `p` for use as another prime.
 
 ```tex
@@ -228,9 +228,9 @@ From this point on, our Frey curves and Frey packages will use notation
 :::lemma_ "Frey_curve_good_reduction" (parent := "elliptic_frey_bridge")
 {uses "FreyCurve"}[]
 {uses "EllipticCurve.GoodReduction"}[]
-If `E` is the Frey curve `Y^2=X(X-a^\ell)(X+b^\ell)` associated to a
-Frey package `(a,b,c,\ell)`, and if `p` is a prime
-not dividing `abc` (and in particular if `p>2`), then `E` has good reduction
+If `E` is the Frey curve $`Y^2=X(X-a^\ell)(X+b^\ell)` associated to a
+Frey package $`(a,b,c,\ell)`, and if `p` is a prime
+not dividing `abc` (and in particular if $`p>2`), then `E` has good reduction
 at `p`.
 :::
 
@@ -243,9 +243,9 @@ at `p`.
 
 :::proof "Frey_curve_good_reduction"
 The reduction mod `p` of the equation defining the Frey curve is still a smooth
-plane cubic, because the three roots `0`, `a^\ell` and `-b^\ell` are distinct
-modulo `p` (note that the difference between `a^\ell` and `-b^\ell` is
-`c^\ell`).
+plane cubic, because the three roots `0`, $`a^\ell` and $`-b^\ell` are distinct
+modulo `p` (note that the difference between $`a^\ell` and $`-b^\ell` is
+$`c^\ell`).
 :::
 
 ```tex "Frey_curve_good_reduction" (slot := proof)
@@ -255,13 +255,13 @@ modulo `p` (note that the difference between `a^\ell` and `-b^\ell` is
 \end{proof}
 ```
 
-If `E` is an elliptic curve over a number field `N` and if `\rho` is the representation
-of `\mathrm{Gal}(\overline{N}/N)` on the `n`-torsion of `E` then `\rho` is continuous and its image is finite,
+If `E` is an elliptic curve over a number field `N` and if $`\rho` is the representation
+of $`\mathrm{Gal}(\overline{N}/N)` on the `n`-torsion of `E` then $`\rho` is continuous and its image is finite,
 so by the fundamental theorem of (infinite) Galois theory the representation factors through an
-injection `\mathrm{Gal}(L/N)\to\mathrm{GL}_2(\Z/n\Z)` where `L/N` is a finite Galois extension of
-number fields. One says that `\rho` is unramified at a maximal ideal `P` of `\calO_N`
-if the extension `L/N` is unramified at `P` (or in other words, if the factorization
-of `P\calO_L` into prime ideals is squarefree).
+injection $`\mathrm{Gal}(L/N)\to\mathrm{GL}_2(\Z/n\Z)` where $`L/N` is a finite Galois extension of
+number fields. One says that $`\rho` is unramified at a maximal ideal `P` of $`\calO_N`
+if the extension $`L/N` is unramified at `P` (or in other words, if the factorization
+of $`P\calO_L` into prime ideals is squarefree).
 
 ```tex
 If $E$ is an elliptic curve over a number field $N$ and if $\rho$ is the representation
@@ -283,7 +283,7 @@ is a working definition.
 
 :::definition "finite_flat_group_scheme" (parent := "elliptic_frey_bridge")
 For the purposes of the FLT strategy, a finite flat group scheme over a
-commutative ring `R` is the spectrum of a commutative Hopf algebra `H/R` that
+commutative ring `R` is the spectrum of a commutative Hopf algebra $`H/R` that
 is finite and flat as an `R`-module.
 :::
 
@@ -310,7 +310,7 @@ Some facts we will need are:
 
 :::theorem "good_reduction_implies_unramified" (parent := "elliptic_frey_bridge")
 If `E` is an elliptic curve over a number field `N` and `E` has good reduction
-at a maximal ideal `P` of `\mathcal O_N`, and if furthermore `n \notin P`,
+at a maximal ideal `P` of $`\mathcal O_N`, and if furthermore $`n \notin P`,
 then the Galois representation on the `n`-torsion of `E` is unramified.
 :::
 
@@ -323,7 +323,7 @@ then the Galois representation on the `n`-torsion of `E` is unramified.
 
 :::proof "good_reduction_implies_unramified"
 One approach would be by showing that the `n`-torsion in the integral model of
-`E` over `\mathcal O_{N,P}` is an etale finite flat group scheme. There might
+`E` over $`\mathcal O_{N,P}` is an etale finite flat group scheme. There might
 be simpler approaches however. It's worth looking to see what Silverman does.
 :::
 
@@ -336,9 +336,9 @@ be simpler approaches however. It's worth looking to see what Silverman does.
 
 :::theorem "good_reduction_implies_flat" (parent := "elliptic_frey_bridge")
 If `E` is an elliptic curve over a number field `N` and `E` has good reduction
-at a maximal ideal `P` of `\mathcal O_N` containing the prime number `p`,
+at a maximal ideal `P` of $`\mathcal O_N` containing the prime number `p`,
 then the Galois representation on the `p`-torsion of `E` comes from a finite
-flat group scheme over `\mathcal O_{N,P}`. This packages
+flat group scheme over $`\mathcal O_{N,P}`. This packages
 {uses "finite_flat_group_scheme"}[].
 :::
 
@@ -382,9 +382,9 @@ non-split otherwise.
 ```
 
 If `E` is an elliptic curve over a number field `N` and `P` is a maximal ideal
-of its integer ring `\mathcal O_N`, then one says that `E` has multiplicative
+of its integer ring $`\mathcal O_N`, then one says that `E` has multiplicative
 reduction at `P` if `E` has multiplicative reduction over the localization
-`\mathcal O_{N,P}`.
+$`\mathcal O_{N,P}`.
 
 ```tex
   If $E$ is an elliptic curve
@@ -422,8 +422,8 @@ $`(x,0)`. Hence the Frey curve has multiplicative reduction at $`p`.
 \end{proof}
 ```
 
-If the third root reduces mod `p` to `y \ne x`, then the reduction is split
-multiplicative iff `x-y` is a square mod `p`. We shall not need this fact.
+If the third root reduces mod `p` to $`y \ne x`, then the reduction is split
+multiplicative iff $`x-y` is a square mod `p`. We shall not need this fact.
 
 ```tex
 \begin{remark} If the third root reduces mod $p$ to $y\not=x$, then the reduction
@@ -494,8 +494,8 @@ local fields is the \emph{uniformisation theorem}, originally due to Tate.
 If an elliptic curve over a field complete with respect to a nontrivial
 nonarchimedean real-valued norm has split multiplicative reduction, then there
 is a Galois-equivariant injection
-`(K^{\sep})^\times / q^{\mathbf Z} \to E(K^{\sep})`, where `q \in K^\times`
-satisfies `|q| = |j(E)|^{-1}`.
+$`(K^{\sep})^\times / q^{\mathbf Z} \to E(K^{\sep})`, where $`q \in K^\times`
+satisfies $`|q| = |j(E)|^{-1}`.
 :::
 
 ```tex "Tate_curve_uniformisation" (slot := statement)
@@ -523,11 +523,11 @@ lot of work and is a good target for breaking down into many smaller lemmas.
 :::corollary "multiplicative_reduction_torsion" (parent := "elliptic_frey_bridge")
 If an elliptic curve over a field complete with respect to a nontrivial
 nonarchimedean real-valued norm and with perfect residue field has
-multiplicative reduction, then there is an unramified character `\chi` of the
-local Galois group with `\chi^2 = 1` such that, for all positive integers `n`
-with `n \not= 0` in the field, the `n`-torsion is an extension of `\chi` by
-`\epsilon \chi`, where `\epsilon` is the cyclotomic character. Furthermore, the
-element of `K^\times/(K^\times)^\ell` corresponding to this extension is given
+multiplicative reduction, then there is an unramified character $`\chi` of the
+local Galois group with $`\chi^2 = 1` such that, for all positive integers `n`
+with $`n \not= 0` in the field, the `n`-torsion is an extension of $`\chi` by
+$`\epsilon \chi`, where $`\epsilon` is the cyclotomic character. Furthermore, the
+element of $`K^\times/(K^\times)^\ell` corresponding to this extension is given
 by the `q`-invariant of the curve.
 :::
 
@@ -548,9 +548,9 @@ After a quadratic twist we may assume that the curve has split multiplicative
 reduction. The result then follows from
 {uses "Tate_curve_uniformisation"}[] and an explicit computation. Note that
 even if we do not prove surjectivity of Tate's uniformization, we still know
-that it's surjective on the `n`-torsion, because we know that there are `n^2`
+that it's surjective on the `n`-torsion, because we know that there are $`n^2`
 points in the `n`-torsion of the curve over the separable closure, and they are
-all accounted for by the `n`-torsion in `(K^{\sep})^\times/q^{\mathbf Z}`.
+all accounted for by the `n`-torsion in $`(K^{\sep})^\times/q^{\mathbf Z}`.
 :::
 
 ```tex "multiplicative_reduction_torsion" (slot := proof)
@@ -597,9 +597,9 @@ forms. We shall come back to these ideas later.
 
 # The ℓ-Torsion In The Frey Curve Is Hardly Ramified.
 
-Let `(a,b,c,\ell)` be a Frey package, with associated Frey curve `E` and mod
-`\ell` Galois representation `\rho = E[\ell]`. We now work through a proof that
-`\rho` is hardly ramified.
+Let $`(a,b,c,\ell)` be a Frey package, with associated Frey curve `E` and mod
+$`\ell` Galois representation $`\rho = E[\ell]`. We now work through a proof that
+$`\rho` is hardly ramified.
 
 ```tex
 \section[The l-torsion in the Frey curve is hardly ramified.]{The $\ell$-torsion in the Frey curve is hardly ramified.}
@@ -609,7 +609,7 @@ Let $(a,b,c,\ell)$ be a Frey package, with associated Frey curve $E$ and mod $\e
 ```
 
 :::theorem "Frey_curve_good" (parent := "elliptic_frey_bridge")
-If `p \ne \ell` is a prime not dividing `abc`, then `\rho` is unramified at
+If $`p \ne \ell` is a prime not dividing `abc`, then $`\rho` is unramified at
 `p`.
 :::
 
@@ -622,7 +622,7 @@ If `p \ne \ell` is a prime not dividing `abc`, then `\rho` is unramified at
 :::proof "Frey_curve_good"
 {uses "Frey_curve_good_reduction"}[]
 {uses "good_reduction_implies_unramified"}[]
-Indeed, `E` has good reduction at `p`, and hence `\rho` is unramified at `p`
+Indeed, `E` has good reduction at `p`, and hence $`\rho` is unramified at `p`
 by theorem `good_reduction_implies_unramified`.
 :::
 
@@ -633,8 +633,8 @@ by theorem `good_reduction_implies_unramified`.
 ```
 
 :::theorem "Frey_curve_j" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j")
-The `j`-invariant of the Frey curve is `2^8(C^2 - AB)^3/(A^2B^2C^2)`, where
-`A = a^\ell`, `B = b^\ell`, and `C = c^\ell`. This is the explicit formula for
+The `j`-invariant of the Frey curve is $`2^8(C^2 - AB)^3/(A^2B^2C^2)`, where
+$`A = a^\ell`, $`B = b^\ell`, and $`C = c^\ell`. This is the explicit formula for
 {uses "FreyCurve"}[].
 :::
 
@@ -656,7 +656,7 @@ Apply the explicit formula (presumably already in mathlib).
 
 :::corollary "FreyCurve.j_valuation_of_bad_prime" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.j_valuation_of_bad_prime")
 {uses "Frey_curve_j"}[]
-If `(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding Frey curve is `j`, and if `2<p∣abc`, then the `p`-adic valuation `v_p(j)` of `j` is a multiple of `\ell`.
+If $`(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding Frey curve is `j`, and if $`2<p∣abc`, then the `p`-adic valuation $`v_p(j)` of `j` is a multiple of $`\ell`.
 :::
 
 ```tex "FreyCurve.j_valuation_of_bad_prime" (slot := statement)
@@ -670,10 +670,10 @@ If `(a,b,c,\ell)` is a Frey package and the `j`-invariant of the corresponding F
 
 :::proof "FreyCurve.j_valuation_of_bad_prime"
 {uses "Frey_curve_j"}[]
-Indeed `p` does not divide `2^8` as `p>2`, and (using the notation of the
-previous theorem) `p` does not divide `C^2-AB` either, because it divides
-precisely one of `A`, `B` and `C`. Hence `v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
-=-2\ell v_p(abc)` is a multiple of `\ell`.
+Indeed `p` does not divide $`2^8` as $`p>2`, and (using the notation of the
+previous theorem) `p` does not divide $`C^2-AB` either, because it divides
+precisely one of `A`, `B` and `C`. Hence $`v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
+=-2\ell v_p(abc)` is a multiple of $`\ell`.
 :::
 
 ```tex "FreyCurve.j_valuation_of_bad_prime" (slot := proof)
@@ -684,7 +684,7 @@ precisely one of `A`, `B` and `C`. Hence `v_p(j)=-2v_p(a^\ell b^\ell c^\ell)
 ```
 
 :::corollary "frey_curve_unramified" (parent := "elliptic_frey_bridge")
-If `(a,b,c,\ell)` is a Frey package, then the `\ell`-torsion in the Frey curve is unramified at all primes `p\not=2,\ell`.
+If $`(a,b,c,\ell)` is a Frey package, then the $`\ell`-torsion in the Frey curve is unramified at all primes $`p\not=2,\ell`.
 :::
 
 ```tex "frey_curve_unramified" (slot := statement)
@@ -701,8 +701,8 @@ Follows from {uses "Frey_curve_good"}[] and {uses "good_reduction_implies_unrami
 \end{proof}
 ```
 
-This analysis needs to be slightly modified if `p=2`, because the `j`-invariant
-of the Frey curve may not have `2`-adic valuation a multiple of `\ell`. We
+This analysis needs to be slightly modified if $`p=2`, because the `j`-invariant
+of the Frey curve may not have `2`-adic valuation a multiple of $`\ell`. We
 obtain the following weaker result.
 
 ```tex
@@ -712,9 +712,9 @@ following weaker result.
 ```
 
 :::corollary "frey_curve_at_2" (parent := "elliptic_frey_bridge")
-If `(a,b,c,\ell)` is a Frey package, then the
-semisimplification of the restriction of the `\ell`-torsion `\rho` in the associated Frey curve
-to `\mathrm{Gal}(\Qbar_2/\Q_2)` is unramified.
+If $`(a,b,c,\ell)` is a Frey package, then the
+semisimplification of the restriction of the $`\ell`-torsion $`\rho` in the associated Frey curve
+to $`\mathrm{Gal}(\Qbar_2/\Q_2)` is unramified.
 :::
 
 ```tex "frey_curve_at_2" (slot := statement)
@@ -727,7 +727,7 @@ to `\mathrm{Gal}(\Qbar_2/\Q_2)` is unramified.
 :::proof "frey_curve_at_2"
 {uses "multiplicative_reduction_torsion"}[]
 After a quadratic twist to make the curve have split multiplicative
-reduction, the theory of the Tate curve shows us that `\rho` is an extension
+reduction, the theory of the Tate curve shows us that $`\rho` is an extension
 of the trivial character by the cyclotomic character. Hence the
 semisimplification of this representation is the direct sum of two
 unramified characters and is hence unramified.
@@ -743,8 +743,8 @@ unramified characters and is hence unramified.
 
 :::theorem "Frey_curve_mod_ell_rep_at_ell" (parent := "elliptic_frey_bridge")
 {uses "finite_flat_group_scheme"}[]
-Let `\rho` be the `\ell`-torsion in the
-Frey curve associated to a Frey package `(a,b,c,\ell)`. Then the restriction of `\rho` to `\GQl` comes from a finite flat group scheme.
+Let $`\rho` be the $`\ell`-torsion in the
+Frey curve associated to a Frey package $`(a,b,c,\ell)`. Then the restriction of $`\rho` to $`\GQl` comes from a finite flat group scheme.
 :::
 
 ```tex "Frey_curve_mod_ell_rep_at_ell" (slot := statement)
@@ -756,13 +756,13 @@ Frey curve associated to a Frey package `(a,b,c,\ell)`. Then the restriction of 
 :::proof "Frey_curve_mod_ell_rep_at_ell"
 {uses "good_reduction_implies_flat"}[]
 {uses "multiplicative_reduction_torsion"}[]
-The Frey curve either has good reduction at `\ell` (case 1 of FLT) or
-multiplicative reduction at `\ell` (case 2 of FLT). In the first case the
-`\ell`-torsion is finite and flat at `\ell` by the former theorem.
-In the second case the theory of the Tate curve shows that the `\ell`-torsion
+The Frey curve either has good reduction at $`\ell` (case 1 of FLT) or
+multiplicative reduction at $`\ell` (case 2 of FLT). In the first case the
+$`\ell`-torsion is finite and flat at $`\ell` by the former theorem.
+In the second case the theory of the Tate curve shows that the $`\ell`-torsion
 is (up to quadratic twist) an extension of the trivial character by the
-cyclotomic character corresponding (via Hilbert 90) to the `\ell`th power of
-an `\ell`-adic unit. This extension is known to be finite and flat; see for
+cyclotomic character corresponding (via Hilbert 90) to the $`\ell`th power of
+an $`\ell`-adic unit. This extension is known to be finite and flat; see for
 example Proposition `8.2` of {Informal.citep edixWeightInSerreConjectures}[].
 Note that the proof there uses fppf cohomology, although one can write down a
 much more elementary proof using arguments in
@@ -793,7 +793,7 @@ We make the following definition; this is not in the literature but it is a usef
 
 :::theorem "frey_curve_hardly_ramified" (parent := "elliptic_frey_bridge")
 {uses "hardly_ramified"}[]
-The `\ell`-torsion Galois representation of the Frey curve coming from a Frey
+The $`\ell`-torsion Galois representation of the Frey curve coming from a Frey
 package is hardly ramified.
 :::
 
@@ -809,7 +809,7 @@ package is hardly ramified.
 {uses "frey_curve_unramified"}[]
 {uses "frey_curve_at_2"}[]
 {uses "Frey_curve_mod_ell_rep_at_ell"}[]
-This follows from the results above. The fact that `\ell\geq 5` follows from
+This follows from the results above. The fact that $`\ell\geq 5` follows from
 the definition of a Frey package. The first condition is the determinant
 statement, and the second is `frey_curve_unramified`. The third condition is
 `frey_curve_at_2`, and the fourth is `Frey_curve_mod_ell_rep_at_ell`.
@@ -827,7 +827,7 @@ statement, and the second is `frey_curve_unramified`. The third condition is
 # The ℓ-Torsion In The Frey Curve Is Irreducible
 
 We finish this chapter by showing that Mazur's theorem implies that the
-`\ell`-torsion in the Frey curve is irreducible. We start by stating Mazur's
+$`\ell`-torsion in the Frey curve is irreducible. We start by stating Mazur's
 theorem.
 
 ```tex
@@ -836,7 +836,7 @@ We finish this chapter by showing that Mazur's theorem implies that the $\ell$-t
 ```
 
 :::theorem "mazur" (parent := "elliptic_frey_bridge")
-Let `E` be an elliptic curve over `\Q`. Then the torsion subgroup of `E` has
+Let `E` be an elliptic curve over $`\Q`. Then the torsion subgroup of `E` has
 size at most `16`.
 :::
 
@@ -860,10 +860,10 @@ proofs of FLT, so there seems to be no way around it.
 \end{proof}
 ```
 
-Let `(a,b,c,\ell)` be a Frey package, with associated Frey curve `E` and mod
-`\ell` Galois representation `\rho = E[\ell]`. We know that `\rho` is
+Let $`(a,b,c,\ell)` be a Frey package, with associated Frey curve `E` and mod
+$`\ell` Galois representation $`\rho = E[\ell]`. We know that $`\rho` is
 two-dimensional. Suppose for contradiction that it is reducible, so its
-semisimplification is the direct sum of two characters `\alpha` and `\beta`.
+semisimplification is the direct sum of two characters $`\alpha` and $`\beta`.
 
 ```tex
 Let $(a,b,c,\ell)$ be a Frey package, with associated Frey curve $E$ and mod $\ell$ Galois
@@ -894,11 +894,11 @@ at $`p` for all primes $`p\not=\ell`.
 :::proof "Frey_characters_are_unramified"
 {uses "frey_curve_unramified"}[]
 {uses "frey_curve_at_2"}[]
-We have seen in `frey_curve_unramified` that `\rho` is unramified
-at all primes `p\not=2,\ell`, so the characters `\alpha` and `\beta` are
-unramified at all such primes. If `p=2` then the semisimplification of the
-restriction of `\rho` to `\Gal(\Qbar_2/\Q_2)` is unramified by
-`frey_curve_at_2`, so `\alpha` and `\beta` are unramified at `2`.
+We have seen in `frey_curve_unramified` that $`\rho` is unramified
+at all primes $`p\not=2,\ell`, so the characters $`\alpha` and $`\beta` are
+unramified at all such primes. If $`p=2` then the semisimplification of the
+restriction of $`\rho` to $`\Gal(\Qbar_2/\Q_2)` is unramified by
+`frey_curve_at_2`, so $`\alpha` and $`\beta` are unramified at `2`.
 :::
 
 ```tex "Frey_characters_are_unramified" (slot := proof)
@@ -923,12 +923,12 @@ One of $`\alpha` and $`\beta` is unramified at $`\ell`.
 {uses "multiplicative_reduction_torsion"}[]
 {uses "Frey_curve_mod_ell_rep_at_ell"}[]
 In the multiplicative case this follows immediately from the theory of the
-Tate curve. In the good reduction case, the `\ell`-torsion is finite and flat
-at `\ell` by `Frey_curve_mod_ell_rep_at_ell`, so we now need to
+Tate curve. In the good reduction case, the $`\ell`-torsion is finite and flat
+at $`\ell` by `Frey_curve_mod_ell_rep_at_ell`, so we now need to
 understand what such representations look like. If the reduction is
-supersingular, then `\rho` is necessarily irreducible, contradicting our
+supersingular, then $`\rho` is necessarily irreducible, contradicting our
 assumption. If however the reduction is ordinary, then the theory of the
-canonical subgroup shows that the `\ell`-torsion is an extension of an
+canonical subgroup shows that the $`\ell`-torsion is an extension of an
 unramified character by an unramified twist of the cyclotomic character (see
 Proposition `11` on p273 of
 {Informal.citep serreGaloisPointsEllipticCurves}[]).
@@ -1007,8 +1007,8 @@ We now split into two cases, depending on whether $\rho$ has a trivial submodule
 ```
 
 :::lemma_ "Frey_curve_trivial_submodule" (parent := "elliptic_frey_bridge")
-If the Frey-curve `\ell`-torsion representation has a trivial one-dimensional
-submodule, then the Frey curve has a rational point of order `\ell`.
+If the Frey-curve $`\ell`-torsion representation has a trivial one-dimensional
+submodule, then the Frey curve has a rational point of order $`\ell`.
 :::
 
 ```tex "Frey_curve_trivial_submodule" (slot := statement)
@@ -1019,7 +1019,7 @@ submodule, then the Frey curve has a rational point of order `\ell`.
 
 :::proof "Frey_curve_trivial_submodule"
 Indeed, the trivial 1-dimensional submodule is a Galois-invariant subgroup of
-`E[\ell]`, so it corresponds to a Galois-stable point of order `\ell`.
+$`E[\ell]`, so it corresponds to a Galois-stable point of order $`\ell`.
 :::
 
 ```tex "Frey_curve_trivial_submodule" (slot := proof)
