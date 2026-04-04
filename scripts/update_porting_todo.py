@@ -147,6 +147,15 @@ def extract_verso_lean_targets(path: Path) -> dict[str, str]:
     return targets
 
 
+def extract_global_unique_verso_lean_targets(root: Path) -> dict[str, str]:
+    occurrences: dict[str, list[str]] = {}
+    for _, lean_name in CHAPTERS:
+        path = root / "FLTBlueprint" / "Chapters" / lean_name
+        for label, lean in extract_verso_lean_targets(path).items():
+            occurrences.setdefault(label, []).append(lean)
+    return {label: leans[0] for label, leans in occurrences.items() if len(set(leans)) == 1}
+
+
 def parse_chapter(tex_path: Path, lean_path: str, verso_lean_targets: dict[str, str] | None = None) -> ChapterData:
     raw_lines = tex_path.read_text(encoding="utf-8").splitlines()
     chapter_title = tex_path.stem
@@ -385,6 +394,7 @@ def main() -> int:
     root = args.root.resolve()
     output = args.output.resolve() if args.output else root / "PortingTodo.md"
     chapter_root = root / "FLT" / "blueprint" / "src" / "chapter"
+    global_verso_targets = extract_global_unique_verso_lean_targets(root)
 
     chapters: list[ChapterData] = []
     for tex_name, lean_name in CHAPTERS:
@@ -392,7 +402,9 @@ def main() -> int:
         if not tex_path.exists():
             continue
         verso_path = root / "FLTBlueprint" / "Chapters" / lean_name
-        chapters.append(parse_chapter(tex_path, lean_name, extract_verso_lean_targets(verso_path)))
+        verso_targets = global_verso_targets.copy()
+        verso_targets.update(extract_verso_lean_targets(verso_path))
+        chapters.append(parse_chapter(tex_path, lean_name, verso_targets))
 
     markdown = generate_markdown(chapters)
     output.write_text(markdown, encoding="utf-8")

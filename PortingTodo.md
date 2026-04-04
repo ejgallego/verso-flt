@@ -13,7 +13,7 @@ When a source block is still open, keep the raw TeX nearby in a labeled `tex` bl
 - Mapped TeX chapters scanned: 16
 - Source nodes scanned: 501
 - Chapters with open work: 10
-- Open source nodes: 91
+- Open source nodes: 90
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -63,7 +63,7 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## Elliptic curves, and the Frey Curve
 - Source: `ch03freyold.tex` -> `EllipticFrey.lean`
 - Scanned nodes: 66
-- Open work: 27 source nodes need port attention (25 formal statements, 2 proof sketches).
+- Open work: 26 source nodes need port attention (24 formal statements, 2 proof sketches).
 - Tasks:
 - [ ] `Elliptic_curve_det_n_torsion` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{Elliptic_curve_det_n_torsion}`; uses: `\uses{Elliptic_curve_n_torsion_2d}`.
@@ -175,21 +175,6 @@ over a number field $N$ and $P$ is a maximal ideal of its integer ring $\calO_N$
   cyclotomic character. Furthermore, the element of $K^\times/(K^\times)^\ell$ corresponding
   to this extension is given by the $q$-invariant of the curve.
 \end{corollary}
-```
-- [ ] `hardly_ramified` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{hardly_ramified}`; flags: `\notready`.
-  - source:
-```tex
-\begin{definition}\label{hardly_ramified}\notready Let $\ell\geq5$ be a prime and let $V$ be a
-  2-dimensional vector space over $\Z/\ell\Z$. A representation
-  $\rho: \GQ\to \GL(V)$ is said to be \emph{hardly ramified} if it satisfies the following four axioms:
-  \begin{enumerate}
-  \item $\det(\rho)$ is the mod $\ell$ cyclotomic character;
-  \item $\rho$ is unramified outside $2\ell$;
-  \item The semisimplification of the restriction of $\rho$ to $\Gal(\Qbar_2/\Q_2)$ is unramified;
-  \item The restriction of $\rho$ to $\GQl$ comes from a finite flat group scheme.
-  \end{enumerate}
-\end{definition}
 ```
 - [ ] `Frey_curve_good` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{Frey_curve_good}`; flags: `\notready`.
