@@ -1,0 +1,31 @@
+package_name = "FLTBlueprint"
+blueprint_main = "FLTBlueprintMain"
+chapter_root = "FLTBlueprint/Chapters"
+tex_source_glob = "FLT/blueprint/src/chapter/*.tex"
+
+[lt]
+default_chapters = [
+  "FLTBlueprint/Chapters/Introduction.lean",
+  "FLTBlueprint/Chapters/Reductions.lean",
+  "FLTBlueprint/Chapters/EllipticFrey.lean",
+  "FLTBlueprint/Chapters/HardlyRamified.lean",
+  "FLTBlueprint/Chapters/Overview.lean",
+  "FLTBlueprint/Chapters/AutomorphicFormExample.lean",
+  "FLTBlueprint/Chapters/ModularityLifting.lean",
+  "FLTBlueprint/Chapters/LanglandsGLn.lean",
+  "FLTBlueprint/Chapters/Bestiary.lean",
+  "FLTBlueprint/Chapters/AdeleProject.lean",
+  "FLTBlueprint/Chapters/FrobeniusProject.lean",
+  "FLTBlueprint/Chapters/FujisakiProject.lean",
+  "FLTBlueprint/Chapters/HaarCharacters.lean",
+  "FLTBlueprint/Chapters/HeckeOperators.lean",
+  "FLTBlueprint/Chapters/QuaternionAlgebras.lean",
+]
+
+[harness]
+non_port_chapters = [
+  "FLTBlueprint/Chapters/HistoricalInputs.lean",
+  "FLTBlueprint/Chapters/MiniProjects.lean",
+  "FLTBlueprint/Chapters/PortingStatus.lean",
+  "FLTBlueprint/Chapters/GlobalLanglands.lean",
+]
