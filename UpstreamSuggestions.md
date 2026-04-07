@@ -13,7 +13,21 @@ These are not local LT drift:
 `env` means the prose reference occurs inside a theorem-like environment or
 proof and may deserve upstream review, but is lower-confidence.
 
+There is also a small class of stronger source issues:
+- `dangling uses target` means the TeX source already contains a `\uses{...}`
+  edge to a label that is never defined as a graph-visible blueprint node
+
 ## Current Queue
+
+### Definite Source Issues
+
+- `dangling uses target: ZHat.eq_zero_of_mul_eq_zero`
+  Seen from [AutomorphicFormExample.lean](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/AutomorphicFormExample.lean#L1140), mirroring
+  `\uses{ZHat.eq_zero_of_mul_eq_zero}` in
+  [ch05automorphicformexample.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/ch05automorphicformexample.tex).
+  The Lean theorem exists in [QHat.lean](/home/egallego/lean/verso-flt/FLT/FLT/Data/QHat.lean#L191), but there is no TeX `\label{ZHat.eq_zero_of_mul_eq_zero}`
+  and no graph-visible Verso node with that label, so the generated blueprint graph
+  resolves it as unresolved.
 
 ### Reductions
 
