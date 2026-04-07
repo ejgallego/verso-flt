@@ -179,6 +179,10 @@ For a compact project-status snapshot, run:
 python3 scripts/status_lt.py FLTBlueprint/Chapters/HeckeOperators.lean FLTBlueprint/Chapters/AdeleProject.lean
 ```
 
+Reviewed upstream-facing suggestions for possible TeX `\ref` to `\uses`
+promotion now live in `UpstreamSuggestions.md`. Those are review items, not
+current LT drift.
+
 For the first draft of the block-level LT similarity report, following David's
 idea of using a mechanical drift signal, run:
 
