@@ -218,6 +218,13 @@ like `$`a`$`, run:
 python3 scripts/check_verso_math_delimiters.py
 ```
 
+To detect active-source TeX `\uses{...}` targets that have no matching active
+source `\label{...}`, run:
+
+```bash
+python3 scripts/check_dangling_source_uses.py
+```
+
 This same audit now also flags suspicious inline code spans that look like
 TeX/math and probably should have been translated as Verso math rather than as
 literal code spans. For the full per-occurrence dump, use:

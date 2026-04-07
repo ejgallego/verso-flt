@@ -21,6 +21,15 @@ There is also a small class of stronger source issues:
 
 ### Definite Source Issues
 
+- `dangling uses target: Frey_curve_irreducible`
+  Seen from [ch02reductions.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/ch02reductions.tex).
+  The label exists only in inactive source file
+  [ch03freyold.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/ch03freyold.tex),
+  while the active replacement chapter is `ch03freyreduction.tex`.
+  The local Verso port still has a graph node
+  [Frey_curve_irreducible](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/EllipticFrey.lean#L1172),
+  but in the active TeX source this is a stale cross-chapter dependency.
+
 - `dangling uses target: ZHat.eq_zero_of_mul_eq_zero`
   Seen from [AutomorphicFormExample.lean](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/AutomorphicFormExample.lean#L1140), mirroring
   `\uses{ZHat.eq_zero_of_mul_eq_zero}` in
@@ -28,6 +37,29 @@ There is also a small class of stronger source issues:
   The Lean theorem exists in [QHat.lean](/home/egallego/lean/verso-flt/FLT/FLT/Data/QHat.lean#L191), but there is no TeX `\label{ZHat.eq_zero_of_mul_eq_zero}`
   and no graph-visible Verso node with that label, so the generated blueprint graph
   resolves it as unresolved.
+
+- `dangling uses target: MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det`
+  Seen in [HaarCharacterProject.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/HaarCharacterProject.tex).
+  The likely cause is a malformed multi-label source line:
+  `\label{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc}`
+  which the source tooling reads as one label rather than two.
+
+- `dangling uses target: MeasureTheory.mulEquivHaarChar_smul_preimage`
+  Seen in [HaarCharacterProject.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/HaarCharacterProject.tex).
+  The likely intended target is
+  `MeasureTheory.addEquivAddHaarChar_smul_preimage`, which is the actual
+  label in the local port and surrounding source.
+
+- `dangling uses target: addHaarScalarFactor.left_mul_eq_right_mul`
+  Seen in [FujisakiProject.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/FujisakiProject.tex).
+  This looks like an outdated/stale label name. The nearby relevant local node is
+  [NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/HaarCharacters.lean#L1715).
+
+- `dangling uses target: nolean-compactopen-matrix`
+  Seen in [HeckeOperatorProject.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/HeckeOperatorProject.tex).
+  The likely intended target is
+  [M2.localFullLevel.isCompact](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/HeckeOperators.lean#L892),
+  which is the actual graph-visible node for compactness of the local matrix ring.
 
 ### Reductions
 
