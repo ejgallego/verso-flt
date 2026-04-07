@@ -1,13 +1,13 @@
 # Upstream Suggestions
 
-This queue records reviewed upstream-facing suggestions for the TeX blueprint
-source in `FLT/blueprint/src/chapter/*.tex`.
+This file records reviewed upstream-facing suggestions for the TeX blueprint
+sources in `FLT/blueprint/src/chapter/*.tex`.
 
-These items are not local LT drift:
-- the local Verso port currently leaves them as prose references on purpose
+These are not local LT drift:
+- the local Verso port now leaves them as prose references on purpose
 - `FLT/` is read-only in this repository unless explicitly authorized
-- the question for each item is whether an upstream TeX prose `\ref{...}`
-  should be promoted to an explicit TeX `\uses{...}`
+- the question is whether an upstream TeX prose `\ref{...}` should instead be
+  promoted to an explicit TeX `\uses{...}`
 
 `strong` means the prose reference looks like real dependency metadata.
 `env` means the prose reference occurs inside a theorem-like environment or

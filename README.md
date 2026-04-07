@@ -183,6 +183,10 @@ Reviewed upstream-facing suggestions for possible TeX `\ref` to `\uses`
 promotion now live in `UpstreamSuggestions.md`. Those are review items, not
 current LT drift.
 
+Reviewed upstream-facing suggestions for possible TeX `\ref` to `\uses`
+promotion now live in `UpstreamSuggestions.md`. Those are review items, not
+current LT drift.
+
 For the first draft of the block-level LT similarity report, following David's
 idea of using a mechanical drift signal, run:
 
