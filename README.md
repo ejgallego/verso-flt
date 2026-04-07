@@ -13,6 +13,11 @@ porting goal in this repository is a faithful, as-near-word-for-word-as-
 practical translation from TeX/`leanblueprint` layout into Verso layout, not a
 substantive rewrite of the mathematical content.
 
+For normal work in this repository, treat `FLT/` as strictly read-only,
+including `FLT/blueprint/src/chapter/*.tex`. Use those files as the reference
+source for the port, but make blueprint/integration changes in the repository
+root unless you are explicitly doing FLT upstream/fork work.
+
 The repository uses `LT` as the canonical term for this workflow, but `LF`
 (`LaTeX Fidelity` / `Literal Fidelity`) and `TF` (`Translation Faithfulness`)
 are accepted aliases meaning the same thing. The first pass is a translation
@@ -27,6 +32,13 @@ section/theorem/proof order, and local claim order from the TeX source. New
 blueprint structure should only be introduced when the TeX source already has a
 corresponding formal item or when a clearly marked editorial note is
 unavoidable.
+
+Adding outer-repo placeholder interfaces is not an acceptable way to "complete"
+the port. If a source-grounded block has no real TeX-side `\lean{...}` target
+and no honest existing formal declaration to attach, leave it unattached rather
+than adding `(lean := "..._placeholder")` or importing a helper placeholder
+module. In this repository that counts as a priority-1 LT violation, not as
+progress.
 
 When a TeX source block is a `lemma`, `corollary`, or `definition`, preserve
 that environment kind in Verso too. In practice, use `:::lemma_` for TeX
@@ -100,6 +112,8 @@ independently drifting FLT dependency state.
 
 - Keep `FLT/` verbatim with respect to the upstream FLT repository state you are
   targeting.
+- Do not edit files under `FLT/` during normal blueprint/integration work in
+  this repository unless the user explicitly asks for FLT-side work.
 - Treat the committed `FLT/lake-manifest.json` as the source of truth for the
   exact upstream dependency artifact, especially the pinned `mathlib` revision.
 - Do not run a general `lake update` in `FLT/` unless you are deliberately
@@ -176,6 +190,8 @@ python3 scripts/check_lt_similarity.py --verbose
 The similarity report now also surfaces metadata drift heuristics:
 - missing / extra `\uses{...}` vs `{uses "..."}[]`
 - missing / extra `\lean{...}` vs `(lean := "...")`
+- placeholder-only `(lean := "..._placeholder")` attachments as priority-1 LT
+  violations
 - TeX `\ref{...}` labels that are still only weak reference hints rather than
   mirrored explicit dependency metadata
 - default output is summary-first for humans; `--verbose` restores the detailed

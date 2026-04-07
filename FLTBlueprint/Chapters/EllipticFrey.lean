@@ -695,7 +695,10 @@ If $`(a,b,c,\ell)` is a Frey package, then the $`\ell`-torsion in the Frey curve
 ```
 
 :::proof "frey_curve_unramified"
-Follows from {uses "Frey_curve_good"}[] and {uses "good_reduction_implies_unramified"}[].
+{uses "Frey_curve_good"}[]
+{uses "Frey_curve_unram"}[]
+Follows from theorem {uses "Frey_curve_good"}[] and theorem
+{uses "Frey_curve_unram"}[].
 :::
 
 ```tex "frey_curve_unramified" (slot := proof)
@@ -793,7 +796,7 @@ useful concept for us.
 We make the following definition; this is not in the literature but it is a useful concept for us.
 ```
 
-:::theorem "frey_curve_hardly_ramified" (parent := "elliptic_frey_bridge") (lean := "FreyCurve.torsion_isHardlyRamified")
+:::theorem "frey_curve_hardly_ramified" (parent := "elliptic_frey_bridge")
 {uses "hardly_ramified"}[]
 The $`\ell`-torsion Galois representation of the Frey curve coming from a Frey
 package is hardly ramified.
@@ -837,7 +840,7 @@ We finish this chapter by showing that Mazur's theorem implies that the $\ell$-t
  curve is irreducible. We start by stating Mazur's theorem.
 ```
 
-:::theorem "mazur" (parent := "elliptic_frey_bridge") (lean := "Mazur_statement")
+:::theorem "mazur" (parent := "elliptic_frey_bridge")
 Let `E` be an elliptic curve over $`\Q`. Then the torsion subgroup of `E` has
 size at most `16`.
 :::
@@ -1166,7 +1169,7 @@ Mazur's theorem.
 \end{proof}
 ```
 
-:::theorem "Frey_curve_irreducible" (parent := "elliptic_frey_bridge") (lean := "Mazur_Frey")
+:::theorem "Frey_curve_irreducible" (parent := "elliptic_frey_bridge")
 The $`\ell`-torsion in the Frey curve associated to a Frey package
 $`(a,b,c,\ell)` is irreducible.
 :::

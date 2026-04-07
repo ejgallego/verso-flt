@@ -92,7 +92,7 @@ Fujisaki's lemma and its surrounding infrastructure sit at the interface
 between adelic constructions and the automorphic representation-theoretic
 chapters.
 Its goal is {uses "fujisaki_lemma_goal"}[], and its main theorem is
-{uses "compact_quotient_for_division_algebra"}[].
+{uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[].
 :::
 
 :::theorem "adelic_automorphic_cluster" (parent := "legacy_blueprint_map")
@@ -107,7 +107,7 @@ This dependency story is one of the main reasons to keep the legacy map visible.
 The chain runs through
 {uses "adele_ring_goals"}[],
 {uses "haar_character_goal"}[],
-{uses "compact_quotient_for_division_algebra"}[],
+{uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[],
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[], and
 {uses "concrete_hecke_action"}[].
 

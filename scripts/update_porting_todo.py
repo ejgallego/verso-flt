@@ -218,7 +218,7 @@ def parse_chapter(tex_path: Path, lean_path: str, verso_lean_targets: dict[str, 
                     nodes.append(node)
                     break
 
-    for node in nodes:
+    for index, node in enumerate(nodes):
         header_text = "\n".join(strip_tex_comment(line) for line in metadata_excerpt(node.lines))
         full_text = "\n".join(strip_tex_comment(line) for line in node.lines)
         labels, leans, uses, flags = extract_metadata(full_text)
@@ -228,7 +228,12 @@ def parse_chapter(tex_path: Path, lean_path: str, verso_lean_targets: dict[str, 
             node.verso_leans = [verso_lean_targets[label] for label in labels if label in verso_lean_targets]
         node.uses = uses
         node.flags = flags
-        node.open_reasons = open_reasons(node, header_text, full_text)
+        node.open_reasons = open_reasons(
+            node,
+            header_text,
+            full_text,
+            previous_source_node(nodes, index),
+        )
 
     return ChapterData(
         tex_path=tex_path,
@@ -249,10 +254,16 @@ def display_name(node: EnvNode) -> str:
     return f"{node.kind} @{node.start_line}"
 
 
+def looks_like_placeholder_lean_target(target: str) -> bool:
+    stripped = target.strip()
+    return stripped in PLACEHOLDER_LEAN_TARGETS or stripped.endswith("_placeholder")
+
+
 def lean_targets_are_placeholder(node: EnvNode) -> bool:
-    if not node.leans:
+    targets = [*node.leans, *node.verso_leans]
+    if not targets:
         return False
-    return any(lean.strip() in PLACEHOLDER_LEAN_TARGETS for lean in node.leans)
+    return any(looks_like_placeholder_lean_target(lean) for lean in targets)
 
 
 def proof_looks_unfinished(text: str) -> bool:
@@ -260,7 +271,30 @@ def proof_looks_unfinished(text: str) -> bool:
     return any(marker in lower for marker in OPEN_PROOF_MARKERS)
 
 
-def open_reasons(node: EnvNode, header_text: str, full_text: str) -> list[str]:
+def previous_source_node(nodes: list[EnvNode], index: int) -> EnvNode | None:
+    for prev_index in range(index - 1, -1, -1):
+        prev = nodes[prev_index]
+        if prev.kind in TARGET_ENVS:
+            return prev
+    return None
+
+
+def proof_placeholder_counts_as_backlog(node: EnvNode, previous: EnvNode | None) -> bool:
+    if node.kind != "proof":
+        return False
+    if not proof_looks_unfinished(node.text()):
+        return False
+    if previous and previous.kind in FORMAL_ENVS and (previous.leans or previous.verso_leans):
+        return False
+    return True
+
+
+def open_reasons(
+    node: EnvNode,
+    header_text: str,
+    full_text: str,
+    previous: EnvNode | None,
+) -> list[str]:
     reasons: list[str] = []
     has_completion = bool(node.flags & COMPLETION_FLAGS)
 
@@ -276,7 +310,7 @@ def open_reasons(node: EnvNode, header_text: str, full_text: str) -> list[str]:
             reasons.append("placeholder Lean target")
 
     if node.kind == "proof":
-        if proof_looks_unfinished(full_text):
+        if proof_placeholder_counts_as_backlog(node, previous):
             reasons.append("proof sketch still reads as unfinished")
 
     return reasons
@@ -389,7 +423,10 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " check that separately with `python3 scripts/check_lt_source_pairs.py`."
     )
     lines.append("It ignores legacy `\\leanok`, `\\mathlibok`, and `\\notready` markers for backlog purposes,")
-    lines.append("and surfaces placeholder Lean targets, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work.")
+    lines.append(
+        "and surfaces placeholder Lean targets, including outer-repo-only placeholder `(lean := ...)`"
+        " attachments, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work."
+    )
     lines.append(
         "When a source block is still open, keep the raw TeX nearby in a labeled `tex` block"
         " instead of rewriting it into placeholder prose."

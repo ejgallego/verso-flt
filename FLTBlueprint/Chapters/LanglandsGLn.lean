@@ -75,7 +75,7 @@ topological group, where we are being a bit liberal with our use of the equality
 
 # Smooth Functions
 
-:::definition "smooth_gln_function" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.IsSmooth" (parent := "gln_langlands_program")
 A function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is smooth if it has
 the following three properties:
 
@@ -198,7 +198,7 @@ continuous).
 
 # The Action Of The Universal Enveloping Algebra
 
-:::definition "instLieAlgebraAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.action")
+:::definition "instLieAlgebraAction" (parent := "gln_langlands_program")
 There is a natural action of the real Lie algebra of $`\GL_n(\R)` on the
 complex vector space of smooth complex-valued functions on $`\GL_n(\R)`.
 :::
@@ -224,7 +224,7 @@ smooth complex-valued functions on $\GL_n(\R)$.
 \end{definition}
 ```
 
-:::definition "instComplexLieAlgebraAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.actionTensorC")
+:::definition "instComplexLieAlgebraAction" (parent := "gln_langlands_program")
 This extends to a natural complex Lie algebra action of the complexification of
 the real Lie algebra on the smooth complex-valued functions on $`\GL_n(\R)`.
 This depends on {uses "instLieAlgebraAction"}[].
@@ -241,7 +241,7 @@ This depends on {uses "instLieAlgebraAction"}[].
 \end{definition}
 ```
 
-:::definition "instUniversalEnvelopingAlgebraAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.actionTensorCAlg'")
+:::definition "instUniversalEnvelopingAlgebraAction" (parent := "gln_langlands_program")
 By functoriality, we get an action of the universal enveloping algebra of this
 complexified Lie algebra on the smooth complex-valued functions. This depends on
 {uses "instComplexLieAlgebraAction"}[].
@@ -257,7 +257,7 @@ complexified Lie algebra on the smooth complex functions.
 \end{definition}
 ```
 
-:::definition "instCentreAction" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.actionTensorCAlg'3")
+:::definition "instCentreAction" (parent := "gln_langlands_program")
 Thus the centre $`Z_n` of this universal enveloping algebra also acts on the
 smooth complex-valued functions. This depends on
 {uses "instUniversalEnvelopingAlgebraAction"}[].
@@ -298,7 +298,7 @@ From here on there is no more Lean right now, only LaTeX.
 :::definition "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ")
 A smooth function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is an
 $`O_n(\R)`-automorphic form on $`\GL_n(\A_{\Q})` if it satisfies the following
-five conditions. This depends on {uses "smooth_gln_function"}[],
+five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],
 {uses "AutomorphicForm.GLn.IsSlowlyIncreasing"}[],
 {uses "AutomorphicForm.GLn.Weight"}[], and {uses "instCentreAction"}[].
 

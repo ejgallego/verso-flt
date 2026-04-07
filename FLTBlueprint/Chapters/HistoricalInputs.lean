@@ -79,11 +79,11 @@ constructions, and Poitou--Tate duality.
 :::proof "future_assumptions_pipeline"
 The chapter's own forward-looking list already names these themes. In current
 blueprint terms, the relevant appendix nodes are
-`local_class_field_theory_placeholder`,
-`global_class_field_theory_placeholder`,
-`moret_bailly_placeholder`,
-`automorphic_to_galois_representation_placeholder`, and
-`poitou_tate_duality_placeholder`.
+`local_class_field_theory`,
+`global_class_field_theory`,
+`moret-bailly`,
+`Galois_representation_from_automorphic_representation_on_GL_2_form`, and the
+still-unwritten Poitou--Tate duality item.
 
 So the assumptions chapter and the appendix are not redundant: one marks the
 currently explicit axioms, the other marks the queue of future axioms or future

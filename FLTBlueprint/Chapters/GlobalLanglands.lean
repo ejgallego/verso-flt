@@ -59,7 +59,7 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 the theory in more generality when there is no extra effort needed to do.
 ```
 
-:::definition "affine_group_scheme_over_affine_base" (parent := "global_langlands_program")
+:::definition "affine_group_scheme_over_affine_base" (parent := "global_langlands_program") (lean := "???")
 An affine group scheme over $`R` is a group object in the category of affine
 schemes over $`R`.
 :::
@@ -70,7 +70,7 @@ schemes over $`R`.
   An \emph{affine group scheme over $R$} is a group object in the category of affine schemes over $R$.
 ```
 
-:::definition "Hopf_algebra" (parent := "global_langlands_program")
+:::definition "Hopf_algebra" (parent := "global_langlands_program") (lean := "TODO")
 TODO: Connected and reductive.
 :::
 

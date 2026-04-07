@@ -210,7 +210,6 @@ $`d_A(φ)μ = \phi^*μ`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_comap"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
 This follows from the pushforward formula applied to the regular Haar measure
 $`\phi^* \mu` and the fact that $`\phi_*\phi^*\mu = \mu`.
 :::
@@ -338,7 +337,6 @@ $`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"
-{uses "MeasureTheory.addEquivAddHaarChar_comap"}[]
 This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
 :::
 
@@ -367,7 +365,6 @@ $`d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
 
 :::proof "MeasureTheory.addEquivAddHaarChar_trans"
 {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
 
 Here's one way: it suffices to prove that
 $`d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu = d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu`
@@ -566,7 +563,6 @@ The function $`δ_R : R^\times → ℝ_{>0}` is continuous.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_continuous"
-{uses "MeasureTheory.ringHaarChar"}[]
 {uses "MeasureTheory.ringHaarChar_mul_integral"}[]
 Fix a Haar measure $`\mu` on `R` and a continuous real-valued function `f` on
 `R` with compact support and such that $`\int f(x) d\mu(x) \neq 0`. Then
@@ -593,7 +589,7 @@ continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
 \end{proof}
 ```
 
-:::theorem "padic_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_padic")
+:::theorem "padic_haar_character_formula" (parent := "haar_character_project")
 If $`R=\Q_p` then $`\delta_R(u)=|u|_p`, the usual $`p`-adic norm.
 :::
 
@@ -602,6 +598,7 @@ If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
 ```
 
 :::proof "padic_haar_character_formula"
+{uses "MeasureTheory.ringHaarChar_mul_volume"}[]
 Normalize Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
 $`u\Z_p=\Z_p` so multiplication by `u` does not change Haar measure. If however
 $`u = p` then $`u\Z_p` has index `p` in $`\Z_p`, and because
@@ -655,7 +652,7 @@ following lemma gives a formula for the scale factor $`d_V(φ)`.
   and our theory applies. The following lemma gives a formula for the scale factor $d_V(\phi)$.
 ```
 
-:::lemma_ "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det")
+:::lemma_ "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc")
 {uses "MeasureTheory.ringHaarChar"}[]
 Assume that there is an `F`-basis for `V` such that `φ` is a product of
 elementary and diagonal matrices. Then
@@ -681,6 +678,7 @@ $`d_V(φ)=δ_F(det(φ))`, where $`det(φ) ∈ F` is the determinant of `φ` as a
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"
+{uses "MeasureTheory.addEquivAddHaarChar"}[]
 The proof is a generalization of
 `Real.map_matrix_volume_pi_eq_smul_volume_pi`, which crucially uses the
 induction principle
@@ -858,7 +856,7 @@ $`det(r_u)=d^n`, so they are equal.
 \end{proof}
 ```
 
-:::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project") (lean := "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight")
+:::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project")
 For a central simple algebra `B` over a locally compact field `F` and
 $`u ∈ B^\times`, one has $`d_B(r_u) = δ_B(u)`.
 :::
@@ -1049,7 +1047,7 @@ Induction on the size of the finite set, using the previous lemma.
 \end{proof}
 ```
 
-:::theorem "product_ring_haar_character_formula" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
+:::theorem "product_ring_haar_character_formula" (parent := "haar_character_project")
 If `R` and `S` are locally compact topological rings, then
 `δ_{R × S}(r, s) = δ_R(r) × δ_S(s)`.
 :::
@@ -1059,8 +1057,8 @@ If $R$ and $S$ are locally compact topological rings, then $\delta_{R\times S}(r
 ```
 
 :::proof "product_ring_haar_character_formula"
-Follows immediately from
-{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[].
+Follows immediately from lemma
+`MeasureTheory.addEquivAddHaarChar_prodCongr`.
 :::
 
 ```tex "product_ring_haar_character_formula" (slot := proof)
@@ -1222,7 +1220,6 @@ Then $d_A(\phi)=1.$
 ```
 
 :::proof "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
 We have $`d_A(\phi)\mu(A)=\mu(A)`, and $`\mu(A)` is positive and finite because
 `A` is open and compact.
 :::
@@ -1260,7 +1257,6 @@ additive homeomorphisms such that the square commutes
 {uses "Topology.IsOpenEmbedding.isHaarMeasure_comap"}[]
 {uses "Topology.IsOpenEmbedding.regular_comap"}[]
 {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_comap"}[]
 Choose a regular Haar measure `μ_B` on `B`. The pullback `μ_A := f^* μ_B` is
 also a regular Haar measure by
 the first two lemmas just cited.
@@ -1692,6 +1688,7 @@ topology.
 ```
 
 :::proof "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv"
+{uses "IsModuleTopology.continuous_bilinear_of_finite_left"}[]
 Lemma `IsModuleTopology.continuous_bilinear_of_finite_left` tells us that
 $`V\otimes_K\A_K` has the $`\A_{\Q}`-module topology, and it is easily checked
 that the isomorphism is $`\A_{\Q}`-linear and hence automatically continuous.
@@ -1713,8 +1710,6 @@ only for $`K/\Q`.
 ```
 
 :::theorem "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (parent := "haar_character_project")
-{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
-{uses "central_simple_algebra_left_right_same_haar"}[]
 Let `B` be a finite-dimensional central simple `K`-algebra. Say $`u ∈ B_{\A}^\times`,
 and define $`\ell_u` and $`r_u : B_{\A} → B_{\A}` by $`\ell_u(x)=ux` and
 $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
@@ -1731,6 +1726,8 @@ $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
 ```
 
 :::proof "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"
+{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
+{uses "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight"}[]
 We think of $`B_{\A}` as $`B\otimes_K\A_K`. If $`u=(u_v)` as `v` runs through the
 places of `K`, then $`d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})` by
 `MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight`, and the
@@ -1755,9 +1752,6 @@ $`d_{B_{\A}}(r_u)`.
 ```
 
 :::theorem "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (parent := "haar_character_project") (lean := "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one")
-{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
-{uses "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv"}[]
 In the above situation, where `V` is a finite-dimensional $`\Q`-vector space,
 $`\phi : V \cong V` is $`\Q`-linear, and $`\phi_{\A}` is the base extension to
 $`V_{\A}:=V\otimes_{\Q}\A_{\Q}` as a continuous linear endomorphism of $`V_{\A}`

@@ -251,8 +251,6 @@ $`x\in D_A^{(1)}`, the obvious map $`xE\to D\backslash D_A` is not injective.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"
-{uses "NumberField.AdeleRing.discrete"}[]
-{uses "rational_adele_quotient_compact"}[]
 We know that if we pick a $`\Q`-basis for $`D` of size $`d` then this
 identifies $`D` with $`\Q^d`, $`D_{\A}` with $`\A_{\Q}^d`, and
 $`D\backslash D_{\A}` with $`(\Q\backslash\A_{\Q})^d`. Now $`\Q` is
@@ -411,7 +409,6 @@ $\beta X\cap D^\times\not=\emptyset$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[]
 Indeed by the previous lemma, the
 map $`\beta E\to D\backslash D_{\A}` is not injective, so there are distinct
 $`\beta e_1,\beta e_2\in \beta E` with $`e_i\in E` and
@@ -597,7 +594,6 @@ $`\nu \in D_A^{(1)}` such that $`\beta = b\nu` and $`(\nu, \nu^{-1}) \in C`.
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[]
-{uses "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[]
 
 By lemma `NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel`,
 $`\beta X\cap D^\times\not=\emptyset`, and lemma
@@ -642,7 +638,7 @@ $`\beta=b\nu` and $`(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X`. We are done!
 \end{proof}
 ```
 
-:::theorem "compact_quotient_for_division_algebra" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
+:::theorem "NumberField.AdeleRing.DivisionAlgebra.compact_quotient" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.compact_quotient")
 If $`D` is a division algebra then the quotient
 $`D^\times\backslash D_{\A}^{(1)}` with its quotient topology coming from
 $`D_{\A}^{(1)}` is compact.
@@ -659,7 +655,7 @@ $`D_{\A}^{(1)}` is compact.
 \end{theorem}
 ```
 
-:::proof "compact_quotient_for_division_algebra"
+:::proof "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[]
 Indeed, if `M` is the preimage of `C` under the inclusion
 $`D_A^{(1)} \to D_A \times D_A` sending $`\nu` to $`(\nu, \nu^{-1})`, then `M` is a
@@ -826,7 +822,7 @@ is compact.
 ```
 
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"
-{uses "compact_quotient_for_division_algebra"}[]
+{uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[]
 There's a natural map `α` from
 $`D^\times \backslash D_A^{(1)}` to
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that
@@ -899,7 +895,6 @@ is finite.
 ```
 
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"
-{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]
 The double cosets give a disjoint open cover of
 $`(D\otimes_K \A_K^\infty)` which descends to a disjoint open cover of the
 quotient space $`D^\times\backslash(D\otimes_K \A_K^\infty)^\times`. However

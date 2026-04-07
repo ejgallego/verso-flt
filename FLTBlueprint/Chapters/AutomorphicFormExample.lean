@@ -338,28 +338,6 @@ Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
     Explicitly, $e_N=0!+1!+\cdots+(N-1)!$ modulo $N$.
 \end{definition}
 ```
-
-:::proof "ZHat.e"
-The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots` looks like it makes no sense at
-all; it is the sum of an infinite series of larger and larger positive numbers.
-However, the sum is finite modulo $`N` for every positive integer $`N`, because
-all the terms from $`N!` onwards are multiples of $`N` and thus are zero in
-$`\Z/N\Z`.
-Thus it makes sense to define $`e_N` to be the value of the finite sum modulo
-$`N`.
-Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
-:::
-
-```tex "ZHat.e" (slot := proof)
-The infinite sum $0!+1!+2!+3!+4!+5!+\cdots$ looks
-like it makes no sense at all; it is the sum of an infinite series of larger and larger
-positive numbers.
-However, the sum is \emph{finite} modulo $N$ for every positive integer $N$, because
-all the terms from $N!$ onwards are multiples of $N$ and thus are zero in $\Z/N\Z$.
-Thus it makes sense to define $e_N$ to be the value of the finite sum modulo $N$.
-Explicitly, $e_N=0!+1!+\cdots+(N-1)!$ modulo $N$.
-```
-
 :::lemma_ "ZHat.e_def" (parent := "automorphic_example_program") (lean := "ZHat.e_def")
 {uses "ZHat.e"}[]
 The collection $`(e_N)_N` is an element of $`\Zhat`.
@@ -857,7 +835,6 @@ $`N\in\N^+`, and with $`N` and $`z` coprime.
 ```
 
 :::proof "QHat.lowestTerms"
-{uses "ZHat.multiples"}[]
 Existence: by the previous lemma, an arbitrary element can be written as
 $`z/N`; let $`D` be the greatest common divisor of $`N` and $`z_N` (lifted to a
 natural). If $`D=1` then the fraction is by definition in lowest terms. However
@@ -1160,7 +1137,7 @@ written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 
 :::proof "QHat.unitsrat_join_unitszHat"
 {uses "ZHat.multiples"}[]
-{uses "ZHat.torsionfree"}[]
+{uses "ZHat.eq_zero_of_mul_eq_zero"}[]
 {uses "QHat.canonicalForm"}[]
 We already know that a general element of $`\Qhat^\times` can be written as
 $`x/N` with $`N` positive, so this reduces us to proving that a general element
@@ -1689,7 +1666,6 @@ $`q` and $`r` such that $`a=qb+r` and $`N(r)<N(b)`.
 ```
 
 :::proof "Hurwitz.quot_rem"
-{uses "Hurwitz.exists_near"}[]
 Let $`q` be the Hurwitz quaternion obtained by applying
 lemma `Hurwitz.exists_near` to $`a/b := ab^{-1}`; then $`N(a/b-q)<1` and
 now everything follows after multiplying up.
@@ -1929,8 +1905,6 @@ $`\delta u` with $`\delta\in D^\times` and $`u\in\calOhat^\times`.
 ```
 
 :::proof "HurwitzRatHat.completed_units"
-{uses "HurwitzRatHat.canonicalForm"}[]
-{uses "Hurwitz.left_ideal_princ"}[]
 Given an element $`x` of $`\widehat{D}^\times`, we can use
 lemma `HurwitzRatHat.canonicalForm` to write it as $`z/N` with $`N` a
 positive integer and $`z\in\widehat{\calO}`. Note that $`N` is central and in

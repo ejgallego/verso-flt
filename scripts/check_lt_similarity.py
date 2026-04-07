@@ -13,6 +13,13 @@ import unicodedata
 
 from check_lt_source_pairs import Block, default_chapter_paths, parse_blocks
 
+PLACEHOLDER_LEAN_TARGETS = {"???", "TODO", "TBD", "FIXME"}
+
+
+def looks_like_placeholder_lean_target(target: str) -> bool:
+    stripped = target.strip()
+    return stripped in PLACEHOLDER_LEAN_TARGETS or stripped.endswith("_placeholder")
+
 
 @dataclass
 class PairScore:
@@ -55,6 +62,14 @@ class PairScore:
         return self.verso_lean - self.tex_lean
 
     @property
+    def placeholder_lean_attachments(self) -> set[str]:
+        return {
+            lean
+            for lean in self.verso_lean
+            if looks_like_placeholder_lean_target(lean) and lean not in self.tex_lean
+        }
+
+    @property
     def unresolved_ref_hints(self) -> set[str]:
         return self.tex_refs - self.tex_uses - self.tex_lean - self.verso_uses
 
@@ -73,6 +88,14 @@ class PairScore:
             self.pure_metadata_diff_count
             + (2 * len(self.strong_ref_candidates))
             + len(self.env_ref_hints)
+        )
+
+    @property
+    def exact_drift_count(self) -> int:
+        return (
+            self.pure_metadata_diff_count
+            + len(self.label_regrounding_candidates)
+            + len(self.witness_mismatch_hints)
         )
 
     @property
@@ -357,22 +380,40 @@ def summarize_file(
     primary_values = [score.primary_ratio for score in scores]
     low = [score for score in scores if score.primary_ratio < warn_below]
     low.sort(key=lambda score: (score.primary_ratio, score.sequence_ratio, score.block.start_line))
-    metadata_mismatches = [score for score in scores if score.metadata_diff_count > 0]
-    metadata_mismatches.sort(key=lambda score: (-score.metadata_diff_count, score.block.start_line))
+    exact_drift_pairs = [score for score in scores if score.exact_drift_count > 0]
+    exact_drift_pairs.sort(
+        key=lambda score: (
+            -len(score.placeholder_lean_attachments),
+            -score.exact_drift_count,
+            score.block.start_line,
+        )
+    )
     pure_metadata_pairs = [score for score in scores if score.pure_metadata_diff_count > 0]
+    placeholder_pairs = [score for score in scores if score.placeholder_lean_attachments]
     reground_pairs = [score for score in scores if score.label_regrounding_candidates]
     witness_pairs = [score for score in scores if score.witness_mismatch_hints]
-    ref_hint_pairs = [score for score in scores if score.ref_hint_count > 0]
+    ref_review_pairs = [score for score in scores if score.ref_hint_count > 0]
+    placeholder_count = sum(len(score.placeholder_lean_attachments) for score in scores)
 
     lines = [
         f"{path}: pairs={len(scores)} avg={statistics.mean(primary_values):.3f} "
         f"median={statistics.median(primary_values):.3f} min={min(primary_values):.3f} "
-        f"warn_below={warn_below:.2f} low={len(low)} metadata_mismatch={len(metadata_mismatches)} "
-        f"pure_metadata={len(pure_metadata_pairs)} reground={len(reground_pairs)} "
-        f"witness={len(witness_pairs)} ref_hints={len(ref_hint_pairs)}"
+        f"warn_below={warn_below:.2f} low={len(low)} drift={len(exact_drift_pairs)} "
+        f"pure_metadata={len(pure_metadata_pairs)} placeholder_lean={placeholder_count} "
+        f"reground={len(reground_pairs)} witness={len(witness_pairs)} "
+        f"ref_review={len(ref_review_pairs)}"
     ]
 
     if not verbose:
+        if placeholder_pairs:
+            lines.append("- LT-priority-1:")
+            for score in placeholder_pairs[: min(3, top)]:
+                kind = "prose" if score.block.kind == "prose" else "node"
+                lines.append(
+                    f"  line {score.block.start_line} {kind}: "
+                    f"placeholder_lean={len(score.placeholder_lean_attachments)} "
+                    f"text={score.block.preview()}"
+                )
         if low:
             lines.append("- LT-focus:")
             for score in low[: min(3, top)]:
@@ -381,22 +422,29 @@ def summarize_file(
                     f"  line {score.block.start_line} {kind}: tok={score.token_ratio:.3f} "
                     f"text={score.block.preview()}"
                 )
-        if metadata_mismatches:
+        if exact_drift_pairs:
             lines.append("- metadata-focus:")
-            for score in metadata_mismatches[: min(3, top)]:
+            for score in exact_drift_pairs[: min(3, top)]:
                 kind = "prose" if score.block.kind == "prose" else "node"
-                strong_ref_count = len(score.strong_ref_candidates)
-                env_ref_count = len(score.env_ref_hints)
                 lines.append(
                     f"  line {score.block.start_line} {kind}: "
-                    f"diffs={score.metadata_diff_count} "
+                    f"drift={score.exact_drift_count} "
                     f"pure={score.pure_metadata_diff_count} "
+                    f"placeholder_lean={len(score.placeholder_lean_attachments)} "
                     f"reground={len(score.label_regrounding_candidates)} "
                     f"witness={len(score.witness_mismatch_hints)} "
                     f"missing_uses={len(score.missing_uses)} "
                     f"missing_lean={len(score.missing_lean)} "
-                    f"strong_refs={strong_ref_count} "
-                    f"env_ref_hints={env_ref_count} "
+                    f"text={score.block.preview()}"
+                )
+        if ref_review_pairs:
+            lines.append("- ref-review:")
+            for score in ref_review_pairs[: min(3, top)]:
+                kind = "prose" if score.block.kind == "prose" else "node"
+                lines.append(
+                    f"  line {score.block.start_line} {kind}: "
+                    f"strong_refs={len(score.strong_ref_candidates)} "
+                    f"env_ref_hints={len(score.env_ref_hints)} "
                     f"soft_ref_hints={len(score.soft_ref_hints)} "
                     f"text={score.block.preview()}"
                 )
@@ -413,6 +461,10 @@ def summarize_file(
             metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
         if score.extra_lean:
             metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
+        if score.placeholder_lean_attachments:
+            metadata_bits.append(
+                f"placeholder_lean={sorted(score.placeholder_lean_attachments)}"
+            )
         if score.label_regrounding_candidates:
             metadata_bits.append(f"label_reground={sorted(score.label_regrounding_candidates)}")
         if score.witness_mismatch_hints:
@@ -430,9 +482,9 @@ def summarize_file(
             f"text={score.block.preview()}{metadata_suffix}"
         )
 
-    if metadata_mismatches:
+    if exact_drift_pairs:
         lines.append("- metadata-focus:")
-        for score in metadata_mismatches[: min(5, top)]:
+        for score in exact_drift_pairs[: min(5, top)]:
             kind = "prose" if score.block.kind == "prose" else "node"
             metadata_bits: list[str] = []
             if score.missing_uses:
@@ -443,19 +495,34 @@ def summarize_file(
                 metadata_bits.append(f"missing_lean={sorted(score.missing_lean)}")
             if score.extra_lean:
                 metadata_bits.append(f"extra_lean={sorted(score.extra_lean)}")
+            if score.placeholder_lean_attachments:
+                metadata_bits.append(
+                    f"placeholder_lean={sorted(score.placeholder_lean_attachments)}"
+                )
             if score.label_regrounding_candidates:
                 metadata_bits.append(f"label_reground={sorted(score.label_regrounding_candidates)}")
             if score.witness_mismatch_hints:
                 metadata_bits.append(f"witness_hints={list(score.witness_mismatch_hints)}")
-            if score.strong_ref_candidates:
-                metadata_bits.append(f"strong_refs={sorted(score.strong_ref_candidates)}")
-            if score.env_ref_hints:
-                metadata_bits.append(f"env_ref_hints={sorted(score.env_ref_hints)}")
-            if score.soft_ref_hints:
-                metadata_bits.append(f"soft_ref_hints={sorted(score.soft_ref_hints)}")
             lines.append(
                 f"  line {score.block.start_line} {kind}: "
                 + "; ".join(metadata_bits)
+                + f" text={score.block.preview()}"
+            )
+
+    if ref_review_pairs:
+        lines.append("- ref-review:")
+        for score in ref_review_pairs[: min(5, top)]:
+            kind = "prose" if score.block.kind == "prose" else "node"
+            review_bits: list[str] = []
+            if score.strong_ref_candidates:
+                review_bits.append(f"strong_refs={sorted(score.strong_ref_candidates)}")
+            if score.env_ref_hints:
+                review_bits.append(f"env_ref_hints={sorted(score.env_ref_hints)}")
+            if score.soft_ref_hints:
+                review_bits.append(f"soft_ref_hints={sorted(score.soft_ref_hints)}")
+            lines.append(
+                f"  line {score.block.start_line} {kind}: "
+                + "; ".join(review_bits)
                 + f" text={score.block.preview()}"
             )
 

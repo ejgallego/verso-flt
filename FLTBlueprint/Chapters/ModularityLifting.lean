@@ -2,6 +2,7 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLTBlueprint.TeXPrelude
+import FLT.Mathlib.RingTheory.SimpleRing.TensorProduct
 
 open Verso.Genre
 open Verso.Genre.Manual

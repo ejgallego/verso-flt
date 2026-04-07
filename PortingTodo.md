@@ -7,14 +7,14 @@ It follows the authoritative upstream blueprint chapter list from `content.tex`;
 The harness migration is largely done: most direct-port chapters now keep the remaining open source in local `tex` blocks, and the main work left is selective chapter fidelity rather than broad infrastructure.
 This board is not an LT certification report. Strict LT now also requires every translated informal block in the Verso chapter to sit next to a labeled `tex` witness block; check that separately with `python3 scripts/check_lt_source_pairs.py`.
 It ignores legacy `\leanok`, `\mathlibok`, and `\notready` markers for backlog purposes,
-and surfaces placeholder Lean targets, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work.
+and surfaces placeholder Lean targets, including outer-repo-only placeholder `(lean := ...)` attachments, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work.
 When a source block is still open, keep the raw TeX nearby in a labeled `tex` block instead of rewriting it into placeholder prose.
 
 ## Snapshot
 - Mapped TeX chapters scanned: 14
 - Source nodes scanned: 435
-- Chapters with open work: 8
-- Open source nodes: 47
+- Chapters with open work: 3
+- Open source nodes: 28
 
 ## Introduction
 - Source: `ch01introduction.tex` -> `Introduction.lean`
@@ -39,66 +39,33 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## First reductions of the problem
 - Source: `ch02reductions.tex` -> `Reductions.lean`
 - Scanned nodes: 18
-- Open work: 1 source nodes need port attention (0 formal statements, 1 proof sketches).
-- Tasks:
-- [ ] `proof @202` needs attention: proof sketch still reads as unfinished.
-  - source:
-```tex
-\begin{proof}
-%  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
-  This is the main content of Wiles' magnum opus.
-  We omit the argument for now, although later on in this project
-  we will have a lot to say about a proof of this.
-\end{proof}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
-\begin{proof}
-%  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
-  This is the main content of Wiles' magnum opus.
-  We omit the argument for now, although later on in this project
-  we will have a lot to say about a proof of this.
-\end{proof}
+\begin{lemma}\label{FermatLastTheorem.of_odd_primes}\lean{FermatLastTheorem.of_odd_primes}\leanok
+  If there is a counterexample to Fermat's Last Theorem, then there is a counterexample $a^p+b^p=c^p$
+  with $p$ an odd prime.
+\end{lemma}
 ```
 
 ## Reducibility of {\it p
 - Source: `ch03freyreduction.tex` -> `HardlyRamified.lean`
 - Scanned nodes: 16
-- Open work: 4 source nodes need port attention (0 formal statements, 4 proof sketches).
-- Tasks:
-- [ ] `proof @177` needs attention: proof sketch still reads as unfinished.
-  - source:
-```tex
-\begin{proof}
-  Omitted for now {\bf TODO}
-\end{proof}
-```
-- [ ] `proof @207` needs attention: proof sketch still reads as unfinished.
-  - source:
-```tex
-\begin{proof}
-  Omitted for now {\bf TODO}
-\end{proof}
-```
-- [ ] `proof @225` needs attention: proof sketch still reads as unfinished.
-  - source:
-```tex
-\begin{proof}
-  Omitted for now. {\bf TODO}
-\end{proof}
-```
-- [ ] `proof @242` needs attention: proof sketch still reads as unfinished.
-  - source:
-```tex
-\begin{proof}
-  Omitted for now {\bf TODO}
-\end{proof}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
-\begin{proof}
-  Omitted for now {\bf TODO}
-\end{proof}
+\begin{remark} We make some remarks to orient the reader.
+  \begin{itemize}
+    \item Any complete local Noetherian ring with finite residue field is a coefficient ring,
+      if the ring is equipped with the $\m$-adic topology where $\m$ is the maximal ideal.
+      In this case, all powers of $\m$ are open.
+    \item In particular finite fields, and integer rings of finite extensions
+      of $\Q_p$, are coefficient rings.
+    \item If $R$ is a coefficient ring then $R$ is isomorphic to the projective limit
+      of the finite rings $R/I$ as $I$ runs over the open ideals of~$R$.
+    \item A non-Noetherian example of a coefficient ring is the projective limit over $n$ of
+the rings $\Z/p\Z[\varepsilon_1,\ldots,\varepsilon_n]/(\forall i,j,\varepsilon_i\varepsilon_j=0)$;
+these rings are convenient to include as coefficient rings for technical reasons; they make
 ```
 
 ## An overview of the proof
@@ -168,26 +135,16 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## Stating the modularity lifting theorems
 - Source: `ch06automorphicrepresentations.tex` -> `ModularityLifting.lean`
 - Scanned nodes: 4
-- Open work: 1 source nodes need port attention (1 formal statements, 0 proof sketches).
-- Tasks:
-- [ ] `IsCentralSimple.baseChange` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsCentralSimple.baseChange}`.
-  - source:
-```tex
-\begin{lemma}
-    \label{IsCentralSimple.baseChange} % no Lean yet because Lean didn't seem to know L \otimes_K D was a ring
-    %\uses{IsCentralSimple}
-    If $D$ is a central simple algebra over~$K$ and $L/K$ is a field extension, then $L\otimes_KD$
-    is a central simple algebra over~$L$.
-\end{lemma}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
 \begin{lemma}
-    \label{IsCentralSimple.baseChange} % no Lean yet because Lean didn't seem to know L \otimes_K D was a ring
+    \label{MatrixRing.isCentralSimple}
+    %\lean{MatrixRing.isCentralSimple}
     %\uses{IsCentralSimple}
-    If $D$ is a central simple algebra over~$K$ and $L/K$ is a field extension, then $L\otimes_KD$
-    is a central simple algebra over~$L$.
+    \discussion{47}
+    \leanok
+    If $n\geq1$ then the $n\times n$ matrices $M_n(K)$ are a central simple algebra over~$K$.
 \end{lemma}
 ```
 
@@ -231,98 +188,17 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## Miniproject: Adeles
 - Source: `AdeleMiniproject.tex` -> `AdeleProject.lean`
 - Scanned nodes: 95
-- Open work: 7 source nodes need port attention (7 formal statements, 0 proof sketches).
-- Tasks:
-- [ ] `IsDedekindDomain.dvd_norm` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.dvd_norm}`.
-  - source:
-```tex
-\begin{lemma}
-  \label{IsDedekindDomain.dvd_norm}
-  If $0\not=b\in B$ then there exists $0\not=a\in A$ such that $b$ divides
-  the image of $a$ in $B$.
-\end{lemma}
-```
-- [ ] `IsDedekindDomain.AKLB.surjective_tensorProduct_map` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.AKLB.surjective_tensorProduct_map}`; uses: `\uses{IsDedekindDomain.dvd_norm}`.
-  - source:
-```tex
-\begin{corollary}
-  \label{IsDedekindDomain.AKLB.surjective_tensorProduct_map}
-  \uses{IsDedekindDomain.dvd_norm}
-  The $A$-bilinear map $B\times K\to L$ sending $(b,k)$ to $bk$ is surjective.
-\end{corollary}
-```
-- [ ] `IsDedekindDomain.pi_tensorProduct` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.pi_tensorProduct}`; uses: `\uses{IsDedekindDomain.AKLB.finitePresentation,pi_tensorProduct_of_finitePresentation}`.
-  - source:
-```tex
-\begin{corollary}
-  \label{IsDedekindDomain.pi_tensorProduct}
-  \uses{IsDedekindDomain.AKLB.finitePresentation,pi_tensorProduct_of_finitePresentation}
-  If $S$ is a finite set of nonzero primes of $A$ then the natural map
-  $B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
-  (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))$
-  is an isomorphism.
-\end{corollary}
-```
-- [ ] `IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1}`; uses: `\uses{IsDedekindDomain.pi_tensorProduct}`.
-  - source:
-```tex
-\begin{corollary}
-  \label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1}
-  \uses{IsDedekindDomain.pi_tensorProduct}
-  The natural map $B\otimes_A\A_K^\infty\to R$ is a $B$-algebra isomorphism.
-\end{corollary}
-```
-- [ ] `RestrictedProduct.relabelIso` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{RestrictedProduct.relabelIso}`.
-  - source:
-```tex
-\begin{definition}
-  \label{RestrictedProduct.relabelIso}
-  Let $V$ and $W$ be index sets, and let $f:W\to V$ be a map with finite fibres.
-  Let $X_v$ be sets, with subsets $C_v$, let $Y_w$ be sets with subsets $D_w$,
-  and say for all $v\in V$ we're given a bijection $X_v\to\prod_{w|f(w)=v}Y_w$,
-  identifying $C_v$ with $\prod_{w:f(w)=v}D_w$. Then there's an induced bijection between
-  the restricted products $\prod'_v(X_v,C_v)$ and $\prod'_w(Y_w,D_w)$.
-\end{definition}
-```
-- [ ] `IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}`; uses: `\uses{RestrictedProduct.relabelIso}`.
-  - source:
-```tex
-\begin{corollary}
-  \label{IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}
-  \uses{RestrictedProduct.relabelIso}
-  The ring $R$ introduced above (the restricted
-  product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$)
-  is isomorphic to $\mathbb{A}_L$.
-\end{corollary}
-```
-- [ ] `IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}`; uses: `\uses{RestrictedProduct.relabelIso,
-  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1,
-  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}`.
-  - source:
-```tex
-\begin{theorem}
-  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
-  \uses{RestrictedProduct.relabelIso,
-  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1,
-  IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2}
-  The natural map $B\otimes_A\A_K^\infty\to\A_L^\infty$ is a $B$-algebra
-  isomorphism.
-\end{theorem}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
-\begin{lemma}
-  \label{IsDedekindDomain.dvd_norm}
-  If $0\not=b\in B$ then there exists $0\not=a\in A$ such that $b$ divides
-  the image of $a$ in $B$.
-\end{lemma}
+\begin{theorem}
+  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \discussion{451}
+  \leanok
+  If $K$ is a number field and $v$ is a nonzero prime ideal of the integers of $K$,
+  then the integers of $K_v$ is a compact open subgroup.
+\end{theorem}
 ```
 
 ## Miniproject: Haar Characters
@@ -381,46 +257,23 @@ go broadly in the same direction, using elliptic curves and modular forms.
 ## Miniproject: Hecke Operators
 - Source: `HeckeOperatorProject.tex` -> `HeckeOperators.lean`
 - Scanned nodes: 43
-- Open work: 3 source nodes need port attention (3 formal statements, 0 proof sketches).
-- Tasks:
-- [ ] `nolean-compactopen-GL2` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{nolean-compactopen-GL2}`.
-  - source:
-```tex
-\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
-  \label{nolean-compactopen-GL2}
-\end{lemma}
-```
-- [ ] `nolean-compactopen-U1p` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{nolean-compactopen-U1p}`.
-  - source:
-```tex
-\begin{lemma}
-  \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
-\end{lemma}
-```
-- [ ] `nolean-hecke-algebra-commutative-noetherian` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{nolean-hecke-algebra-commutative-noetherian}`.
-  - source:
-```tex
-\begin{theorem}
-  \label{nolean-hecke-algebra-commutative-noetherian}
-  Say~$R$ is a Noetherian ring. Then the subalgebra of the $R$-linear endomorphisms
-  of $A^U$ generated by the Hecke operators $T_v$ for $v\notin S$ and $U_{v,\alpha}$ for $v\in S$
-  is a Noetherian commutative ring.
-\end{theorem}
-```
+- [x] No formal statements or proof sketches are currently flagged as open in the source.
 - Representative source:
 ```tex
-\begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
-  \label{nolean-compactopen-GL2}
-\end{lemma}
+\begin{definition}
+  \lean{AbstractHeckeOperator.HeckeOperator_toFun}
+  \label{AbstractHeckeOperator.HeckeOperator_toFun}
+  \leanok
+  Assuming $UgV$ is a finite union of cosets $g_iV$,
+  we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
+  to $\sum_i g_ia.$
+\end{definition}
 ```
 
 ## Appendix: A collection of results which are needed in the proof.
 - Source: `chtopbestiary.tex` -> `Bestiary.lean`
 - Scanned nodes: 43
-- Open work: 29 source nodes need port attention (29 formal statements, 0 proof sketches).
+- Open work: 26 source nodes need port attention (26 formal statements, 0 proof sketches).
 - Tasks:
 - [ ] `maximal_unramified_extension_of_p-adic_field` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{maximal_unramified_extension_of_p-adic_field}`; flags: `\notready`.
@@ -552,35 +405,12 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 \begin{definition}\label{connected_reductive_group}\notready An affine algebraic group~$G$ of finite type over a field~$k$ is said to be \emph{connected} if it is connected as a scheme, and \emph{reductive} if $G_{\overline{k}}$ has no nontrivial smooth connected unipotent normal $k$-subgroup.
 \end{definition}
 ```
-- [ ] `slowly_increasing` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{slowly_increasing}`; flags: `\notready`.
-  - source:
-```tex
-\begin{definition}\label{slowly_increasing}\notready A function $f : G(N_\infty)\to\bbC$ is \emph{slowly-increasing} if there exists some $C>0$
-    and $n\geq1$ such that $|f(x)\leq C||x||_\rho^n$.
-\end{definition}
-```
 - [ ] `slowly_increasing_well_defined` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{slowly_increasing_well_defined}`; uses: `\uses{slowly_increasing}`; flags: `\notready`.
   - source:
 ```tex
 \begin{theorem}\label{slowly_increasing_well_defined}\uses{slowly_increasing}\notready This is independent of the choice of $\rho$ as above.
 \end{theorem}
-```
-- [ ] `automorphic_form` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{automorphic_form}`; uses: `\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}`; flags: `\notready`.
-  - source:
-```tex
-\begin{definition}\label{automorphic_form}\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}\notready An \emph{automorphic form} is a function $\phi:G(\A_N)\to\bbC$ satisfying the following conditions:
-    \begin{itemize}
-        \item $\phi$ is locally constant on $G(\A_N^f)$ and $C^\infty$ on $G(N_\infty)$. In other words, for every $g_\infty$, $\phi(-,g_\infty)$ is locally constant, and for every $g_f$, $\phi(g_f,-)$ is smooth.
-        \item $\phi$ is left-invariant under $G(N)$;
-        \item $\phi$ is right-$U_\infty$-finite (that is, the space spanned by $x\mapsto \phi(xu)$ as $u$ varies over $U_\infty$ is finite-dimensional);
-        \item $\phi$ is right $K_f$-finite, where $K_f$ is one (or equivalently all) compact open subgroups of $G(\A_N^f)$;
-        \item $\phi$ is $\mathcal{z}$-finite, where $\mathcal{z}$ is the centre of the universal enveloping algebra of the Lie algebra of $G(N_\infty)$, acting via differential operators. Equivalently $\phi$ is annihiliated by a finite index ideal of this centre, so morally $\phi$ satisfies lots of differential equations of a certain type;
-        \item For all $g_f$, the function $g_\infty\mapsto \phi(g_f g\infty)$ is slowly-increasing in the sense above.
-    \end{itemize}
-\end{definition}
 ```
 - [ ] `cuspidal_automorphic_form` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{cuspidal_automorphic_form}`; uses: `\uses{automorphic_form}`; flags: `\notready`.
@@ -624,14 +454,6 @@ any finite extension then we can choose $L$ to be linearly disjoint from $K^{\av
 ```tex
 \begin{theorem}\label{automorphic_representation_local_decomposition}\uses{automorphic_representation}\notready An irreducible admissible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module is a restricted tensor product of irreducible representations $\pi_v$ of $G(N_v)$ as $v$ runs through the finite places of $N$, tensored with a tensor product of irreducible $(\mathfrak{g}_v,U_{\infty,v})$-modules as $v$ runs through the infinite places of $N$. The representations $\pi_v$ are unramified for all but finitely many $v$.
 \end{theorem}
-```
-- [ ] `compatible_family` needs attention: no `\lean{...}` target.
-  - metadata: labels: `\label{compatible_family}`.
-  - source:
-```tex
-\begin{definition}\label{compatible_family}\discussion{23} Let $N$ be a number field. A \emph{compatible family of $d$-dimensional Galois representations over $N$} is a finite set of finite places $S$ of $N$,
-a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place $\p$ of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside $S$ and the primes of $K$ above $\ell$, such that $\rho(\Frob_\p)$ has characteristic polynomial $P_\pi(X)$ if $\pi$ lies above a prime number $p\not=\ell$ with $p\not\in S$.
-\end{definition}
 ```
 - [ ] `Galois_representation_from_automorphic_representation_on_GL_2_form` needs attention: no `\lean{...}` target.
   - metadata: labels: `\label{Galois_representation_from_automorphic_representation_on_GL_2_form}`; uses: `\uses{automorphic_representation,Shimura_varieties,compatible_family}`; flags: `\notready`.

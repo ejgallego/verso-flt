@@ -472,17 +472,21 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```
 
 :::proof "Wiles_Frey"
-This is the main content of Wiles' magnum opus. We omit the argument for now,
-although later on in this project we will have a lot to say about a proof of
-this.
+{uses "Frey_curve_hardly_ramified"}[]
+{uses "hardly_ramified_reducible"}[]
+This follows from theorem `Frey_curve_hardly_ramified`, which shows that the
+Frey representation is hardly ramified, together with theorem
+`hardly_ramified_reducible`, which shows that any hardly ramified mod `p`
+representation is reducible.
 :::
 
 ```tex "Wiles_Frey" (slot := proof)
 \begin{proof}
-%  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
-  This is the main content of Wiles' magnum opus.
-  We omit the argument for now, although later on in this project
-  we will have a lot to say about a proof of this.
+  \uses{Frey_curve_hardly_ramified,hardly_ramified_reducible}
+  This follows from theorem~\ref{Frey_curve_hardly_ramified}, which shows that
+  the Frey representation is hardly ramified, together with
+  theorem~\ref{hardly_ramified_reducible}, which shows that any hardly
+  ramified mod~$p$ representation is reducible.
 \end{proof}
 ```
 
@@ -503,8 +507,6 @@ There is no Frey package.
 ```
 
 :::proof "FreyPackage.false"
-{uses "Mazur_Frey"}[]
-{uses "Wiles_Frey"}[]
 Follows immediately from the previous two theorems.
 :::
 

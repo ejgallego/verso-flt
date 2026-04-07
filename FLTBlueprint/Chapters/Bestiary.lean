@@ -30,88 +30,73 @@ needs to be done before we can start talking about formalising theorems.
 We start with the local case. In fact we restrict to the $p$-adic case, but only for simplicity of exposition because it's all we'll need (and, to be frank, because I'm not 100 percent of what is true in the function field case).
 
 Let $K$ be a finite extension of $\Q_p$. We write $\widehat{\Z}$ for the profinite completion of $\Z$; it is isomorphic to $\prod_p\Z_p$ where $\Z_p$ is the $p$-adic integers and the product is over all primes.
+```
 
+:::theorem "maximal_unramified_extension_of_p-adic_field" (parent := "bestiary_appendix")
+The maximal unramified extension $`K^{un}` in a given algebraic closure of `K`
+is Galois over `K` with Galois group "canonically" isomorphic to
+$`\widehat{\Z}` in two ways; one of these two isomorphisms identifies
+$`1\in\widehat{\Z}` with an arithmetic Frobenius, the endomorphism inducing
+$`x\mapsto x^q` on the residue field of $`K^{un}`, where $`q` is the size of
+the residue field of `K`. The other identifies `1` with geometric Frobenius,
+defined to be the inverse of arithmetic Frobenius.
+:::
+
+```tex "maximal_unramified_extension_of_p-adic_field" (slot := statement)
 \begin{theorem}\label{maximal_unramified_extension_of_p-adic_field}\notready The maximal unramified extension $K^{un}$ in a given algebraic closure of $K$
     is Galois over $K$ with Galois group ``canonically'' isomorphic to $\widehat{\Z}$ in two ways; one of these two isomorphisms identifies $1\in\widehat{\Z}$ with an arithmetic Frobenius (the endomorphism inducing $x\mapsto x^q$ on the residue field of $K^{un}$, where $q$ is the size of the residue field of $K$). The other identifies 1 with geometric Frobenius (defined to be the inverse of arithmetic Frobenius).
 \end{theorem}
+```
 
+```tex
 It is impossible to say which of the two canonical isomorphisms is ``the most canonical''; people working in different areas make different choices in order to locally minimise the number of minus signs in their results.
 
 As a result, the absolute Galois group of $K$ surjects onto $\widehat{\Z}$; its kernel is said to be the \emph{inertia subgroup} of this Galois group. Now pull back this surjection along the continuous map from $\Z$ (with its discrete topology) to $\widehat{\Z}$, in the category of topological groups. We end up with a group containing the inertia group as an open normal subgroup, and with quotient isomorphic to the integers.
+```
 
+:::definition "local_Weil_group" (parent := "bestiary_appendix")
+{uses "maximal_unramified_extension_of_p-adic_field"}[]
+The topological group described above is called the Weil group of `K`.
+:::
+
+```tex "local_Weil_group" (slot := statement)
 \begin{definition}\label{local_Weil_group}\uses{maximal_unramified_extension_of_p-adic_field}\notready The topological group described above is called the \emph{Weil group} of $K$.
 \end{definition}
+```
 
+```tex
 The following theorem is nontrivial.
+```
 
+:::theorem "local_class_field_theory" (parent := "bestiary_appendix")
+{uses "local_Weil_group"}[]
+If `K` is a finite extension of $`\Q_p`, then there are two canonical
+isomorphisms of topological abelian groups between $`K^\times` and the
+abelianization of the Weil group of `K`.
+:::
+
+```tex "local_class_field_theory" (slot := statement)
 \begin{theorem}\label{local_class_field_theory}\uses{local_Weil_group}\notready If $K$ is a finite extension of $\Q_p$ then there are two ``canonical'' isomorphisms of topological abelian groups, between $K^\times$ and the abelianisation of the Weil group of $K$.
 \end{theorem}
+```
+
+:::proof "local_class_field_theory"
+This is the main theorem of local class field theory; see for example the
+relevant articles in the cited class-field-theory references or many other
+places.
+:::
+
+```tex "local_class_field_theory" (slot := proof)
 \begin{proof} This is the main theorem of local class field theory; see for example the relevant articles in~\cite{cf} or many other places.
 \end{proof}
+```
 
+```tex
 Note that Mar\'ia In\'es de Frutos Fern\'andez and Filippo Nuccio are working on a formalisation of the proof of this using Lubin--Tate formal groups.
 
 Now let $M$ be an abelian group (with the discrete topology) equipped with a continuous action of $G_K$, the Galois group $\GK$ where we fix an algebraic closure $\Kbar$ of $K$. Note that if one doesn't want to choose an algebraic closure of $K$ one can instead think of $M$ as being an etale sheaf of abelian groups on $\Spec(K)$.
 
 Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using continuous cocycles and continuous coboundaries, or just as a colimit of usual group cohomology over the finite quotients of this absolute Galois group (or as etale cohomology, if you prefer). Here are some of the facts we will need about cohomology in this situation. A nice summary is that cohomology of a local Galois group behaves like the cohomology of a compact connected 2-manifold. All the theorems below will need extensive planning.
-
-\begin{theorem}
-    \label{local_galois_coh_finite}
-    \notready
-    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ are all finite.
-\end{theorem}
-\begin{proof}
-    This is Proposition~14 in section~5.2 of~\cite{serre-galcoh}.
-\end{proof}
-
-\begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
-  If $M$ is torsion then $H^i(G_K,M)=0$ if $i>2$.
-\end{theorem}
-\begin{proof} This follows from Proposition~15 in~section 5.3 of~\cite{serre-galcoh}.
-\end{proof}
-
-\begin{theorem} ["top degree"]
-    \label{local_galois_coh_top_degree}
-    \notready
-    $H^2(G_K,\mu_n)$ is ``canonically'' isomorphic to $\Z/n\Z$.
-\end{theorem}
-\begin{proof} This is also included in Lemma 2 of section 5.2 of \cite{serre-galcoh} (Serre just writes that the groups are equal; he clearly is not a Lean user. I can see no explanation in his book of this use of the equality symbol. When the statement of this theorem is formalised in Lean it may well actually be a definition, giving the map).
-\end{proof}
-
-\begin{theorem}\notready There is a ``canonical'' isomorphism $H^2(K,\mu_\infty)=\Q/\Z$.
-\end{theorem}
-\begin{proof}\notready
-This is in Theorem II.5.2 in~\cite{serre-galcoh}.
-\end{proof}
-
-\begin{theorem} ["Poincar\'e duality"]\label{local_galois_coh_poincare}\notready
-    If $\mu=\bigcup_{n\geq1}\mu_n$ and $M':=\Hom(M,\mu)$ is the dual of $M$ then for
-    $0\leq i\leq 2$ the cup product pairing $H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z$ is perfect.
-\end{theorem}
-\begin{proof}\notready This is Theorem 2 in section 5.2 in \cite{serre-galcoh}. Note again
-    the dubious (as far as Lean is concerned) use of the equality symbol.
-\end{proof}
-
-\begin{theorem} ["Euler-Poincar\'e characteristic"]\label{local_galois_coh_euler_poincare}\notready
-    If $h^i(M)$ denotes the order of $H^i(G_K,M)$ then $h^0(M)-h^1(M)+h^2(M)=0$.
-\end{theorem}
-
-We now move onto the global case. If $N$ is a number field, that is, a finite extension of $\Q$, then let $\A_N^f:= N\otimes_{\Z}\widehat{\Z}$ denote the finite adeles of $N$ and let $N_\infty := N\otimes_{\Q}\R$ denote the product of the completions of $N$ at the infinite places, so $\A_N:=\A_N^f\times N_\infty$ is the ring of adeles of $N$.
-
-\begin{theorem}\label{global_class_field_theory}\uses{local_class_field_theory}\notready If $N$ is a finite extension of $\Q$ then there are two ``canonical'' isomorphisms of topological groups between the profinite abelian groups $\pi_0(\A_N^\times/N^\times)$ and $\GN^{\ab}$; one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above.
-\end{theorem}
-\begin{proof}\notready This is the main theorem of global class field theory; see for example Tate's article in~\cite{cf}.
-\end{proof}
-
-We need the following consequence:
-
-\begin{theorem}\label{Skinner_Wiles_CFT_trick}\uses{global_class_field_theory}\notready Let $S$ be a finite set of places of a number field $K$ . For each $v \in S$
-let $L_v/K_v$ be a finite Galois extension. Then there is a finite solvable Galois extension
-$L/K$ such that if $w$ is a place of $L$ dividing $v \in S$, then $L_w/K_v$ is isomorphic to $L_v/K_v$ as $K_v$-algebra. Moreover, if $K^{\avoid} /K$ is
-any finite extension then we can choose $L$ to be linearly disjoint from $K^{\avoid}$.
-\end{theorem}
-
-We also need Poitou-Tate duality; I'll refrain from writing it down for now, because we don't even have Galois cohomology in Lean yet (although we are very close to it).
 ```
 
 :::theorem "local_galois_coh_finite" (parent := "bestiary_appendix")
@@ -172,7 +157,40 @@ $`h^0(M)-h^1(M)+h^2(M)=0`.
 \end{theorem}
 ```
 
+```tex
+We now move onto the global case. If $N$ is a number field, that is, a finite extension of $\Q$, then let $\A_N^f:= N\otimes_{\Z}\widehat{\Z}$ denote the finite adeles of $N$ and let $N_\infty := N\otimes_{\Q}\R$ denote the product of the completions of $N$ at the infinite places, so $\A_N:=\A_N^f\times N_\infty$ is the ring of adeles of $N$.
+```
+
+:::theorem "global_class_field_theory" (parent := "bestiary_appendix")
+{uses "local_class_field_theory"}[]
+If `N` is a finite extension of $`\Q`, then there are two canonical
+isomorphisms of topological groups between the profinite abelian groups
+$`\pi_0(\A_N^\times/N^\times)` and $`\Gamma_N^{ab}`; one sends local
+uniformizers to arithmetic Frobenii and the other to geometric Frobenii, and
+each is compatible with the local isomorphisms above.
+:::
+
+```tex "global_class_field_theory" (slot := statement)
+\begin{theorem}\label{global_class_field_theory}\uses{local_class_field_theory}\notready If $N$ is a finite extension of $\Q$ then there are two ``canonical'' isomorphisms of topological groups between the profinite abelian groups $\pi_0(\A_N^\times/N^\times)$ and $\GN^{\ab}$; one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above.
+\end{theorem}
+```
+
+:::proof "global_class_field_theory"
+This is the main theorem of global class field theory; see for example Tate's
+article in the cited class-field-theory references.
+:::
+
+```tex "global_class_field_theory" (slot := proof)
+\begin{proof}\notready This is the main theorem of global class field theory; see for example Tate's article in~\cite{cf}.
+\end{proof}
+```
+
+```tex
+We need the following consequence:
+```
+
 :::theorem "Skinner_Wiles_CFT_trick" (parent := "bestiary_appendix")
+{uses "global_class_field_theory"}[]
 Let `S` be a finite set of places of a number field `K`. For each $`v \in S`
 let $`L_v/K_v` be a finite Galois extension. Then there is a finite solvable
 Galois extension $`L/K` such that if `w` is a place of `L` dividing $`v \in S`,
@@ -187,6 +205,10 @@ let $L_v/K_v$ be a finite Galois extension. Then there is a finite solvable Galo
 $L/K$ such that if $w$ is a place of $L$ dividing $v \in S$, then $L_w/K_v$ is isomorphic to $L_v/K_v$ as $K_v$-algebra. Moreover, if $K^{\avoid} /K$ is
 any finite extension then we can choose $L$ to be linearly disjoint from $K^{\avoid}$.
 \end{theorem}
+```
+
+```tex
+We also need Poitou-Tate duality; I'll refrain from writing it down for now, because we don't even have Galois cohomology in Lean yet (although we are very close to it).
 ```
 
 # Structures on the points of an affine variety.
@@ -405,18 +427,64 @@ For some reason, in the literature people seem to fix a choice of maximal compac
 Example: if $G=\GL_2$ and $N=\Q$ then $N_\infty=\R$ and $G(N_\infty)$ is just $\GL_2(\R)$ with its usual Lie group structure and we can take $U_\infty$ to be $O_2(\R)$; $G(\A_N^f)$ is the restricted product of $\GL_2(\Q_p)$ over $\GL_2(\Z_p)$, for all primes $p$.
 
 By assumption, $G(N_\infty)$ admits a finite-dimensional (algebraic) representation $\rho$ with finite kernel. Consider $\rho$ as taking values in $GL_N(\bbC)=\Aut_{\bbC}(V)$. Fix a hermitian sesquilinear form on $V$ which is $U_\infty$ invariant, and now define a norm $||g||_\rho$ on $G(N_\infty)$ by $$||g||_\rho=(\tr \rho(g)^*\rho(g))^{1/2},$$ where the asterisk denotes adjoint with respect to the sesquilinear form. According to the article by Borel--Jacquet in \cite{corvallis1} (p189), if $\rho'$ is another such choice then there exists a positive real $C$ and a positive integer $n$ such that $||g||_{\rho'}\leq C||g||_\rho^n$ for all $g\in G(N_\infty)$.
+```
 
+:::definition "slowly_increasing" (parent := "bestiary_appendix")
+A function $`f : G(N_\infty)\to\bbC` is slowly-increasing if there exist some
+$`C>0` and $`n\geq1` such that $`|f(x)|\leq C||x||_\rho^n`.
+:::
+
+```tex "slowly_increasing" (slot := statement)
 \begin{definition}\label{slowly_increasing}\notready A function $f : G(N_\infty)\to\bbC$ is \emph{slowly-increasing} if there exists some $C>0$
     and $n\geq1$ such that $|f(x)\leq C||x||_\rho^n$.
 \end{definition}
+```
 
+```tex
 \begin{theorem}\label{slowly_increasing_well_defined}\uses{slowly_increasing}\notready This is independent of the choice of $\rho$ as above.
 \end{theorem}
 \begin{proof} Follows from the above.
 \end{proof}
 
 We can now give the definition of an automorphic form. For FLT we only need the definition for $G$ being either an abelian algebraic group, or an inner form of $GL(2)$, but we have chosen to work in full generality here.
+```
 
+:::theorem "slowly_increasing_well_defined" (parent := "bestiary_appendix")
+{uses "slowly_increasing"}[]
+This is independent of the choice of $`\rho` as above.
+:::
+
+```tex "slowly_increasing_well_defined" (slot := statement)
+\begin{theorem}\label{slowly_increasing_well_defined}\uses{slowly_increasing}\notready This is independent of the choice of $\rho$ as above.
+\end{theorem}
+```
+
+:::definition "automorphic_form" (parent := "bestiary_appendix")
+{uses "slowly_increasing_well_defined"}[]
+{uses "connected_reductive_group"}[]
+{uses "lie_group_from_algebraic_group"}[]
+{uses "topology_on_affine_variety_computation"}[]
+An automorphic form is a function $`\phi:G(\A_N)\to\bbC` satisfying the
+following conditions.
+
+1. `\phi` is locally constant on $`G(\A_N^f)` and $`C^\infty` on $`G(N_\infty)`.
+   In other words, for every $`g_\infty`, $`\phi(-,g_\infty)` is locally
+   constant, and for every $`g_f`, $`\phi(g_f,-)` is smooth.
+2. `\phi` is left-invariant under $`G(N)`.
+3. `\phi` is right-$`U_\infty`-finite, that is, the space spanned by
+   $`x\mapsto \phi(xu)` as $`u` varies over $`U_\infty` is finite-dimensional.
+4. `\phi` is right $`K_f`-finite, where $`K_f` is one, or equivalently all,
+   compact open subgroups of $`G(\A_N^f)`.
+5. `\phi` is $`\mathcal{z}`-finite, where $`\mathcal{z}` is the centre of the
+   universal enveloping algebra of the Lie algebra of $`G(N_\infty)`, acting
+   via differential operators. Equivalently `\phi` is annihilated by a finite
+   index ideal of this centre, so morally `\phi` satisfies many differential
+   equations of a certain type.
+6. For all $`g_f`, the function $`g_\infty\mapsto \phi(g_f g_\infty)` is
+   slowly-increasing in the sense above.
+:::
+
+```tex "automorphic_form" (slot := statement)
 \begin{definition}\label{automorphic_form}\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}\notready An \emph{automorphic form} is a function $\phi:G(\A_N)\to\bbC$ satisfying the following conditions:
     \begin{itemize}
         \item $\phi$ is locally constant on $G(\A_N^f)$ and $C^\infty$ on $G(N_\infty)$. In other words, for every $g_\infty$, $\phi(-,g_\infty)$ is locally constant, and for every $g_f$, $\phi(g_f,-)$ is smooth.
@@ -427,33 +495,68 @@ We can now give the definition of an automorphic form. For FLT we only need the 
         \item For all $g_f$, the function $g_\infty\mapsto \phi(g_f g\infty)$ is slowly-increasing.
     \end{itemize}
 \end{definition}
+```
 
+```tex
 Automorphic forms form a typically infinite-dimensional vector space.
+```
 
+:::definition "cuspidal_automorphic_form" (parent := "bestiary_appendix")
+{uses "automorphic_form"}[]
+An automorphic form is cuspidal, or a cusp form, if it furthermore satisfies
+$`\int_{U(N)\backslash U(\A_N)}\phi(ux)\,du=0`, where `P` runs through all the
+proper parabolic subgroups of `G` defined over `N` and `U` is the unipotent
+radical of `P`, and the integral is with respect to the measure coming from
+Haar measure.
+:::
+
+```tex "cuspidal_automorphic_form" (slot := statement)
 \begin{definition}\label{cuspidal_automorphic_form}\uses{automorphic_form}\notready An automorphic form is \emph{cuspidal} (or ``a cusp form'') if it furthermore satisfies $\int_{U(N)\backslash U(\A_N)}\phi(ux)du=0$, where $P$ runs through all the proper parabolic subgroups of $G$ defined over $N$ and $U$ is the unipotent radical of $P$, and the integral is with respect to the measure coming from Haar measure.
 \end{definition}
+```
 
+```tex
 The cuspidal automorphic forms form a complex subspace of the space of automorphic forms.
+```
 
-\begin{definition}\label{automorphic_form_actions}\uses{automorphic_form}\notready The group $G(\A_N)$ acts on itself on the right, and this induces a left action of its subgroup $G(\A_N^f)\times U_\infty$ on the spaces of automorphic forms and cusp forms. The Lie algebra $\mathfrak{g}$ of $G(N_\infty)$ also acts, via differential operators. Furthermore the actions of $\mathfrak{g}$ and $U_\infty$ are compatible in the sense that the differential of the $U_\infty$ action is the action of its Lie algebra considered as a subalgebra of $\mathfrak{g}$. We say that the spaces are $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
-\end{definition}
+:::definition "automorphic_form_actions" (parent := "bestiary_appendix")
+{uses "automorphic_form"}[]
+The group $`G(\A_N)` acts on itself on the right, and this induces a left
+action of its subgroup $`G(\A_N^f)\times U_\infty` on the spaces of automorphic
+forms and cusp forms. The Lie algebra $`\mathfrak{g}` of $`G(N_\infty)` also
+acts, via differential operators. Furthermore the actions of $`\mathfrak{g}`
+and $`U_\infty` are compatible in the sense that the differential of the
+$`U_\infty` action is the action of its Lie algebra considered as a subalgebra
+of $`\mathfrak{g}`. We say that the spaces are
+$`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
+:::
 
-\begin{theorem}\label{cuspidal_automorphic_form_decomposition}\uses{cuspidal_automorphic_form, automorphic_form_actions} The cusp forms decompose as a (typically infinite) direct sum of irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
-\end{theorem}
-\begin{definition}\label{cuspidal_automorphic_representation}\uses{cuspidal_automorphic_form_decomposition}\notready A cuspidal automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible summand of the space of cusp forms.
+```tex "automorphic_form_actions" (slot := statement)
+\begin{definition}\label{automorphic_form_actions}\uses{automorphic_form}\notready The group $G(\A_N)$ acts on itself on the right, and this induces a left action of its
+    subgroup $G(\A_N^f)\times U_\infty$ on the spaces of automorphic forms and cusp forms. The Lie algebra $\mathfrak{g}$ of $G(N_\infty)$ also acts, via differential operators. Furthermore the actions of $\mathfrak{g}$ and $U_\infty$ are compatible in the sense that the differential of the $U_\infty$ action is the action of its Lie algebra considered as a subalgebra of $\mathfrak{g}$. We say that the spaces are $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
 \end{definition}
+```
 
 For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case.
 
+```tex
+For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case.
+```
+
+:::definition "automorphic_representation" (parent := "bestiary_appendix")
+{uses "automorphic_form_actions"}[]
+An automorphic representation is an irreducible
+$`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
+subquotient of the space of automorphic forms.
+:::
+
+```tex "automorphic_representation" (slot := statement)
 \begin{definition}\label{automorphic_representation}\uses{automorphic_form_actions}\notready An automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible subquotient of the space of automorphic forms.
 \end{definition}
+```
 
+```tex
 Admissibility is a finiteness condition on an irreducible representation of $(G(\A_N^f)\times U_\infty,\mathfrak{g})$; automorphic representations are admissible, and this seems to boil down to theorems of Godement and Harish-Chandra in the general case.
-
-\begin{theorem}\label{automorphic_representation_local_decomposition}\uses{automorphic_representation}\notready An irreducible admissible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module is a restricted tensor product of irreducible representations $\pi_v$ of $G(N_v)$ as $v$ runs through the finite places of $N$, tensored with a tensor product of irreducible $(\mathfrak{g}_v,U_{\infty,v})$-modules as $v$ runs through the infinite places of $N$. The representations $\pi_v$ are unramified for all but finitely many $v$.
-\end{theorem}
-\begin{proof} See Flath's article in~\cite{corvallis1}.
-\end{proof}
 
 As mentioned above, we only need all of this for abelian algebraic groups and for inner forms of $\GL_2$ over totally real fields, where everything can be made more concrete (and in particular where I can write down concrete definitions, although this still needs to be done). In particular, we don't strictly speaking need all of the above, we could just cheat and deal with $\GL_2(\R)$ and $\bbH^\times$ separately.
 
@@ -463,13 +566,7 @@ The theorems I need are: Jacquet-Langlands for inner forms of $\GL_2$ over total
 
 Ivan Farabella has formalised the definition of a compatible family of Galois representations, modulo the existence of Frobenius elements, which has been established by Jou Glasheen.
 
-\begin{definition}\label{compatible_family}\discussion{23} Let $N$ be a number field. A \emph{compatible family of $d$-dimensional Galois representations over $N$} is a finite set of finite places $S$ of $N$, a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside `S` and the primes of `K` above `\ell`, such that `\rho(\Frob_\p)` has characteristic polynomial `P_\pi(X)` if `\pi` lies above a prime number `p\neq \ell` with `p\not\in S`.
-\end{definition}
-
 The big theorem, which again we are far from even stating right now, is
-
-\begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation `\pi` for an inner form of `\GL_2` over a totally real field and with reflex field~`E`, such that `\pi` is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to `\pi`, with `S` being the places at which `\pi` is ramified, and `F_{\p}(X)` being the monic polynomial with roots the two Satake parameters for `\pi` at `\p`.
-\end{theorem}
 
 \section{Algebraic geometry}
 
@@ -477,13 +574,36 @@ We have already mentioned Mazur's Theorem on torsion subgroups of elliptic curve
 The proof of this is the main theorem of~\cite{mazur-torsion}, 150 pages of subtle arithmetic geometry involving the bad reduction of modular curves, exotic cohomology theories (etale and more), and the consequences of this for the Neron models of their Jacobians. After a beautiful introductory chapter containing a history and examples, the convention is established that throughout the paper, `N` will denote a prime number which is at least `5`. And then the first sentence of chapter 1 of the paper proper is ``Consider quasi-finite separated commutative group schemes of finite presentation over the base `S:=\Spec{\Z}` which are finite flat group schemes over `S':=\Spec(Z[1/N]).`'' At the time of writing (May 2024), Lean's algebraic geometry cannot get us through the first sentence of Mazur's proof, which occupies pages 43 to 172 of the paper (not including the appendix or references, that's just the proof). Anyone interested in formalising Mazur's paper should make a formalisation of its first sentence their first milestone.
 
 Talking of modular curves, we also need the existence of Shimura curves and surfaces over totally real fields~`F` (of degree greater than~2, so always compact). The curves are "modeles \'etranges" in the sense of Deligne, so we also need moduli spaces of unitary Shimura varieties over CM extensions. We need to decompose the first and second `\'etale` cohomology groups of these varieties into Galois representations, by understanding them in terms of automorphic representations.
+```
 
-\begin{definition}\label{Shimura_varieties}\notready We need the definition of (the canonical model over `F` of) the Shimura curve attached to an inner form of `\GL_2` with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it's compact).
+:::definition "Shimura_varieties" (parent := "bestiary_appendix")
+We need the definition of the canonical model over `F` of the Shimura curve
+attached to an inner form of $`\GL_2` with precisely one split infinite place,
+and likewise the Shimura surface associated to an inner form split at two
+infinite places and ramified elsewhere.
+:::
+
+```tex "Shimura_varieties" (slot := statement)
+\begin{definition}\label{Shimura_varieties}\notready We need the definition of (the canonical model over $F$ of) the Shimura curve attached to an inner form of $\GL_2$ with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it's compact).
 \end{definition}
+```
 
+```tex
 We also need Moret-Bailly's theorem from~\cite{moretBailly1990}:
+```
 
-\begin{theorem}\label{moret_bailly}\notready Let $K^{\avoid}/K$ be a Galois extension of number fields. Suppose also
+:::theorem "moret-bailly" (parent := "bestiary_appendix")
+Let $`K^{\avoid}/K` be a Galois extension of number fields. Suppose also that
+`S` is a finite set of places of `K`, and for each $`v\in S` let
+$`L_v/K_v` be a finite Galois extension. Suppose also that $`T/K` is a
+smooth, geometrically connected curve and that for each $`v\in S` we are given
+a nonempty, $`\operatorname{Gal}(L_v/K_v)`-invariant open subset
+$`\Omega_v\subseteq T(L_v)`. Then there is a finite Galois extension `L/K` and
+a point $`P\in T(L)` with the prescribed local behavior.
+:::
+
+```tex "moret-bailly" (slot := statement)
+\begin{theorem}\label{moret-bailly}\notready Let $K^{\avoid}/K$ be a Galois extension of number fields. Suppose also
 that $S$ is a finite set of places of $K$. For $v\in S$ let $L_v/K_v$ be a finite Galois extension.
 Suppose also that $T /K$ is a smooth, geometrically connected curve and that for each
 $v\in S$ we are given a nonempty, $\Gal(L_v/K_v)$-invariant, open subset $\Omega_v\subseteq (L_v)$.
@@ -495,15 +615,22 @@ Then there is a finite Galois extension $L/K$ and a point $P \in T(L)$ such that
 (this makes sense as $\Omega_v$ is $\Gal(L_v/K v)$-invariant).
 \end{itemize}
 \end{theorem}
+```
 
 Note that we do not even have the definition of a curve over a field in Lean.
 
+```tex
+Note that we do not even have the definition of a curve over a field in Lean.
+```
+
+```tex
 \section{Algebra}
 
 We need the classification of finite subgroups of $\PGL_2(\overline{\F}_p)$. The answer is that they are all cyclic, dihedral, $A_4$, $S_4$, $A_5$, or isomorphic to $\PSL_2(k)$ or $\PGL_2(k)$ for some finite field of characteristic~`p`. This should at least be easy to state!
 ```
 
 :::definition "cuspidal_automorphic_representation" (parent := "bestiary_appendix")
+{uses "cuspidal_automorphic_form_decomposition"}[]
 A cuspidal automorphic representation is an irreducible
  $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
 summand of the space of cusp forms.
@@ -514,7 +641,20 @@ summand of the space of cusp forms.
 \end{definition}
 ```
 
+:::theorem "cuspidal_automorphic_form_decomposition" (parent := "bestiary_appendix")
+{uses "cuspidal_automorphic_form"}[]
+{uses "automorphic_form_actions"}[]
+The cusp forms decompose as a typically infinite direct sum of irreducible
+$`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
+:::
+
+```tex "cuspidal_automorphic_form_decomposition" (slot := statement)
+\begin{theorem}\label{cuspidal_automorphic_form_decomposition}\uses{cuspidal_automorphic_form, automorphic_form_actions} The cusp forms decompose as a (typically infinite) direct sum of irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
+\end{theorem}
+```
+
 :::theorem "automorphic_representation_local_decomposition" (parent := "bestiary_appendix")
+{uses "automorphic_representation"}[]
 An irreducible admissible $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module is a
 restricted tensor product of irreducible representations $`\pi_v` of $`G(N_v)`
 as `v` runs through the finite places of `N`, tensored with a tensor product of
@@ -528,7 +668,30 @@ finitely many `v`.
 \end{theorem}
 ```
 
+:::definition "compatible_family" (parent := "bestiary_appendix")
+Let `N` be a number field. A compatible family of `d`-dimensional Galois
+representations over `N` is a finite set of finite places `S` of `N`, a
+number field `E`, a monic degree `d` polynomial $`F_{\mathfrak p}(X)\in E[X]`
+for each finite place $`\mathfrak p` of `K` not in `S`, and, for each prime
+number $`\ell` and field embedding $`\phi : E \to \overline{\mathbf{Q}}_\ell`
+(or essentially equivalently for each finite place of `E`), a continuous
+homomorphism $`\rho:\operatorname{Gal}(\overline{K}/K)\to\GL_2(\overline{\mathbf{Q}}_\ell)`
+unramified outside `S` and the primes of `K` above $`\ell`, such that
+$`\rho(\operatorname{Frob}_{\mathfrak p})` has characteristic polynomial
+$`P_\pi(X)` if $`\pi` lies above a prime number $`p\neq \ell` with
+$`p\not\in S`.
+:::
+
+```tex "compatible_family" (slot := statement)
+\begin{definition}\label{compatible_family}\discussion{23} Let $N$ be a number field. A \emph{compatible family of $d$-dimensional Galois representations over $N$} is a finite set of finite places $S$ of $N$,
+a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside `S` and the primes of `K` above `\ell`, such that `\rho(\Frob_\p)` has characteristic polynomial `P_\pi(X)` if `\pi` lies above a prime number `p\neq \ell` with `p\not\in S`.
+\end{definition}
+```
+
 :::theorem "Galois_representation_from_automorphic_representation_on_GL_2_form" (parent := "bestiary_appendix")
+{uses "automorphic_representation"}[]
+{uses "Shimura_varieties"}[]
+{uses "compatible_family"}[]
 Given an automorphic representation $`\pi` for an inner form of $`\GL_2` over a
 totally real field and with reflex field `E`, such that $`\pi` is weight `2`
 discrete series at every infinite place, there exists a compatible family of

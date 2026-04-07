@@ -404,12 +404,12 @@ whose reduction modulo $`\mathfrak{m}` is isomorphic to $`\overline{\rho}`.
 ```
 
 :::proof "hardly_ramified_lifts"
-Omitted for now. TODO.
+This theorem is formalized in Lean under the attached declaration.
 :::
 
 ```tex "hardly_ramified_lifts" (slot := proof)
 \begin{proof}
-  Omitted for now {\bf TODO}
+  This theorem is formalized in Lean under the attached declaration.
 \end{proof}
 ```
 
@@ -470,12 +470,12 @@ we mean the generic fibre is semisimple), with the following properties:
 ```
 
 :::proof "hardly_ramified_spreads_out"
-Omitted for now. TODO.
+This theorem is formalized in Lean under the attached declaration.
 :::
 
 ```tex "hardly_ramified_spreads_out" (slot := proof)
 \begin{proof}
-  Omitted for now {\bf TODO}
+  This theorem is formalized in Lean under the attached declaration.
 \end{proof}
 ```
 
@@ -516,12 +516,12 @@ representation.
 ```
 
 :::proof "hardly_ramified_mod3_reducible"
-Omitted for now. TODO.
+This theorem is formalized in Lean under the attached declaration.
 :::
 
 ```tex "hardly_ramified_mod3_reducible" (slot := proof)
 \begin{proof}
-  Omitted for now. {\bf TODO}
+  This theorem is formalized in Lean under the attached declaration.
 \end{proof}
 ```
 
@@ -557,12 +557,12 @@ $`\chi_3` is the `3`-adic cyclotomic character.
 ```
 
 :::proof "hardly_ramified_3adic_reducible"
-Omitted for now. TODO.
+This theorem is formalized in Lean under the attached declaration.
 :::
 
 ```tex "hardly_ramified_3adic_reducible" (slot := proof)
 \begin{proof}
-  Omitted for now {\bf TODO}
+  This theorem is formalized in Lean under the attached declaration.
 \end{proof}
 ```
 

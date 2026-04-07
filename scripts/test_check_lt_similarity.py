@@ -116,6 +116,33 @@ Alpha.
         score = score_pair(verso, tex)
         self.assertEqual(score.label_regrounding_candidates, {"Demo.foo"})
 
+    def test_outer_repo_placeholder_lean_is_flagged(self) -> None:
+        verso = verso_block("Alpha.", header=':::theorem "demo" (lean := "Demo.foo_placeholder")')
+        tex = tex_block(
+            r"""
+\begin{theorem}
+\label{demo}
+Alpha.
+\end{theorem}
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.placeholder_lean_attachments, {"Demo.foo_placeholder"})
+
+    def test_source_placeholder_lean_is_not_flagged_as_outer_repo_placeholder(self) -> None:
+        verso = verso_block("Alpha.", header=':::theorem "demo" (lean := "Demo.foo_placeholder")')
+        tex = tex_block(
+            r"""
+\begin{theorem}
+\label{demo}
+\lean{Demo.foo_placeholder}
+Alpha.
+\end{theorem}
+""".strip()
+        )
+        score = score_pair(verso, tex)
+        self.assertEqual(score.placeholder_lean_attachments, set())
+
     def test_witness_mismatch_detects_multi_env_proof_witness(self) -> None:
         verso = verso_block("Alpha.", header=':::proof "Demo.foo"')
         tex = tex_block(
@@ -258,6 +285,73 @@ Alpha.
             self.assertIn("- metadata-focus:", result.stdout)
             self.assertNotIn("missing_uses=['bar']", result.stdout)
             self.assertIn("pure_metadata=", result.stdout)
+
+    def test_cli_separates_ref_review_from_exact_drift(self) -> None:
+        content = """#doc (Manual) "Demo" =>
+
+:::proof "demo"
+Alpha.
+:::
+```tex "demo/proof"
+\\begin{proof}
+By theorem~\\ref{bar}.
+\\end{proof}
+```
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "Demo.lean"
+            path.write_text(content, encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT_DIR / "check_lt_similarity.py"),
+                    str(path),
+                    "--top",
+                    "3",
+                ],
+                cwd=SCRIPT_DIR.parent,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, msg=result.stdout + result.stderr)
+            self.assertIn("drift=0", result.stdout)
+            self.assertIn("ref_review=1", result.stdout)
+            self.assertIn("- ref-review:", result.stdout)
+            self.assertNotIn("- metadata-focus:", result.stdout)
+
+    def test_cli_surfaces_placeholder_lean_priority(self) -> None:
+        content = """#doc (Manual) "Demo" =>
+
+:::theorem "demo" (lean := "Demo.foo_placeholder")
+Alpha.
+:::
+```tex "demo/theorem"
+\\begin{theorem}
+\\label{demo}
+Alpha.
+\\end{theorem}
+```
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "Demo.lean"
+            path.write_text(content, encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT_DIR / "check_lt_similarity.py"),
+                    str(path),
+                    "--top",
+                    "3",
+                ],
+                cwd=SCRIPT_DIR.parent,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, msg=result.stdout + result.stderr)
+            self.assertIn("placeholder_lean=1", result.stdout)
+            self.assertIn("- LT-priority-1:", result.stdout)
 
     def test_cli_verbose_shows_detailed_metadata(self) -> None:
         content = """#doc (Manual) "Demo" =>

@@ -7,6 +7,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - The root directory is the blueprint and harness root.
 - `FLT/` is the upstream FLT formalization checkout and should be treated as
   upstream-owned Lean code.
+- `FLT/` is strictly read-only for normal blueprint/integration work in this
+  repository. In particular, do not edit files under `FLT/`, including
+  `FLT/blueprint/src/chapter/*.tex`, unless the user explicitly asks for FLT
+  upstream/fork work.
 - Keep all Verso blueprint sources, scripts, CI wiring, and generated output
   management at the repository root, not inside `FLT/`.
 - There is no separate harness package anymore: the repository root itself is
@@ -21,6 +25,8 @@ This repository is the integration layer for the FLT Verso blueprint.
   `FLT/**/*.lean` together with `FLT/FermatsLastTheorem.lean`.
 - The source of truth for the TeX prose structure is
   `FLT/blueprint/src/chapter/*.tex`.
+- Treat those FLT-side sources as reference material, not as an editing target,
+  unless the user explicitly authorizes FLT-side work.
 - When a Verso blueprint node refers to existing formalized mathematics, prefer
   `(lean := "...")` links to the real declaration names in those FLT files.
 - Do not duplicate existing FLT declarations into the blueprint just to make a
@@ -34,6 +40,10 @@ This repository is the integration layer for the FLT Verso blueprint.
   structure: the port should be as close to word-for-word as practical, with
   the main intended change being the layout language translation from TeX to
   Verso rather than substantive rewriting.
+- Because `FLT/` is read-only in normal work, when the TeX source and the
+  Verso port diverge, fix the outer-repo Verso chapters and harness first; do
+  not “repair the source” in `FLT/blueprint/src/chapter/*.tex` unless the user
+  explicitly asks for that FLT-side change.
 - Keep the existing FLT formalization files unchanged for blueprint-port work
   unless we are doing explicit rc6 compatibility work intended for the FLT fork.
 
@@ -69,6 +79,14 @@ This repository is the integration layer for the FLT Verso blueprint.
 - Do not add placeholder theorem interfaces, roadmap nodes, or semantic
   scaffolding that goes beyond the TeX source. If the TeX chapter stops at a
   forward pointer or sketch, the Verso port should stop there too.
+- Treat placeholder `(lean := "...")` attachments as a priority-1 LT
+  violation when the TeX/source block does not already carry the corresponding
+  `\lean{...}` target. In particular, do not import helper modules such as
+  `FutureAssumptions` into direct-port chapters just to give frontier source
+  nodes an explicit interface.
+- If a source-grounded node has no real TeX-side `\lean{...}` target and no
+  existing formal declaration to attach honestly, leave the node unattached.
+  Do not close that gap with an outer-repo placeholder declaration.
 - Preserve TeX `\uses{...}` edges when they exist, but do not invent new
   dependency edges merely to make the blueprint graph look nicer.
 - Treat TeX/source labels and Lean declaration names as distinct namespaces.
@@ -294,6 +312,9 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 - Port TeX blueprint content into the root Verso chapters in this repository,
   not into `FLT/`.
+- Do not edit `FLT/blueprint/src/chapter/*.tex` during normal porting work in
+  this repository. Use those files as read-only source material and make the
+  corresponding faithful updates in the root Verso chapters instead.
 - Start with an LT pass: preserve paragraph boundaries, sentence order, section
   order, theorem order, and mathematical claims unless there is a clear build,
   tooling, or project-structure reason not to.
