@@ -156,7 +156,7 @@ point where native compilation of the outer harness is acceptable.
 For the current strict LT source-pair audit, run:
 
 ```bash
-python3 scripts/check_lt_source_pairs.py
+python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .
 ```
 
 To check that theorem/lemma/corollary/definition node kinds match the adjacent
@@ -169,14 +169,14 @@ python3 scripts/check_blueprint_node_kinds.py
 For a human-friendly combined LT audit on one or more chapters, run:
 
 ```bash
-python3 scripts/lt_audit.py FLTBlueprint/Chapters/HeckeOperators.lean
-python3 scripts/lt_audit.py FLTBlueprint/Chapters/AdeleProject.lean --pages
+python3 tools/verso-harness/scripts/lt_audit.py --project-root . FLTBlueprint/Chapters/HeckeOperators.lean
+python3 tools/verso-harness/scripts/lt_audit.py --project-root . FLTBlueprint/Chapters/AdeleProject.lean --pages
 ```
 
 For a compact project-status snapshot, run:
 
 ```bash
-python3 scripts/status_lt.py FLTBlueprint/Chapters/HeckeOperators.lean FLTBlueprint/Chapters/AdeleProject.lean
+python3 tools/verso-harness/scripts/status_lt.py --project-root . FLTBlueprint/Chapters/HeckeOperators.lean FLTBlueprint/Chapters/AdeleProject.lean
 ```
 
 Reviewed upstream-facing suggestions for possible TeX `\ref` to `\uses`
@@ -191,8 +191,8 @@ For the first draft of the block-level LT similarity report, following David's
 idea of using a mechanical drift signal, run:
 
 ```bash
-python3 scripts/check_lt_similarity.py
-python3 scripts/check_lt_similarity.py --verbose
+python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .
+python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root . --verbose
 ```
 
 The similarity report now also surfaces metadata drift heuristics:
@@ -208,7 +208,7 @@ The similarity report now also surfaces metadata drift heuristics:
 For regression checks on the LT similarity tool itself, run:
 
 ```bash
-python3 scripts/test_check_lt_similarity.py
+python3 tools/verso-harness/scripts/test_check_lt_similarity.py
 ```
 
 For malformed Verso math delimiters, especially bad TeX-to-Verso translations

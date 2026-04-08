@@ -6,7 +6,7 @@ This board is driven by source markers rather than stale cross-chapter match cou
 It follows the authoritative upstream blueprint chapter list from `content.tex`; commented-out or replaced chapter files are ignored.
 The harness migration is largely done: most direct-port chapters now keep the remaining open source in local `tex` blocks, and the main work left is selective source-side formalization debt rather than broad infrastructure.
 This board is not an LT certification report. It tracks source-side formalization debt in the active TeX source, not exact LT drift in the local Verso port.
-Strict LT status should be checked separately with `python3 scripts/check_lt_source_pairs.py`, `python3 scripts/check_blueprint_node_kinds.py`, `python3 scripts/check_lt_similarity.py`, and `python3 scripts/status_lt.py`.
+Strict LT status should be checked separately with `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .`, `python3 scripts/check_blueprint_node_kinds.py`, `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .`, and `python3 tools/verso-harness/scripts/status_lt.py --project-root .`.
 A chapter can therefore be LT-clean locally and still appear here if the active TeX source lacks `\lean{...}` targets or still contains unfinished proof sketches.
 It ignores legacy `\leanok`, `\mathlibok`, and `\notready` markers for backlog purposes,
 and surfaces placeholder Lean targets, including outer-repo-only placeholder `(lean := ...)` attachments, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work.

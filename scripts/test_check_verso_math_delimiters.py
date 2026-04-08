@@ -150,7 +150,7 @@ def test_shell_command_code_span_is_ignored() -> None:
             """
             #doc (Manual) "X" =>
 
-            Run `python3 scripts/check_lt_similarity.py` after the edit.
+            Run `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .` after the edit.
             """,
         )
         assert suspicious_math_syntax(path) == []

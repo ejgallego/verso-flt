@@ -432,9 +432,9 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " in the active TeX source, not exact LT drift in the local Verso port."
     )
     lines.append(
-        "Strict LT status should be checked separately with `python3 scripts/check_lt_source_pairs.py`,"
-        " `python3 scripts/check_blueprint_node_kinds.py`, `python3 scripts/check_lt_similarity.py`,"
-        " and `python3 scripts/status_lt.py`."
+        "Strict LT status should be checked separately with `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .`,"
+        " `python3 scripts/check_blueprint_node_kinds.py`, `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .`,"
+        " and `python3 tools/verso-harness/scripts/status_lt.py --project-root .`."
     )
     lines.append(
         "A chapter can therefore be LT-clean locally and still appear here if the active TeX source"

@@ -173,7 +173,7 @@ The main remaining frontiers are now:
 A first harness draft of the literal-translation comparison tool now exists,
 following a suggestion from David.
 
-- the current script is `python3 scripts/check_lt_similarity.py`
+- the current script is `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .`
 - it compares translated blocks against the adjacent local `tex` witness blocks
   rather than against a chapter only at coarse whole-file granularity
 - it normalizes markup on both sides before comparing the residual text
@@ -214,9 +214,9 @@ The repository-level chapter audit is now split into two layers.
   open merely because the old TeX source omitted a `\lean{...}` attachment.
 - the stricter LT audit tracks whether each translated informal block has a
   local adjacent `tex` witness block, checked with
-  `python3 scripts/check_lt_source_pairs.py`
+  `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .`
 - the mechanical drift report compares each translated block to its adjacent
-  witness block with `python3 scripts/check_lt_similarity.py`
+  witness block with `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .`
 - reviewed prose `\ref{...}` suggestions and definite dangling TeX `\uses`
   targets are tracked separately in `UpstreamSuggestions.md`
 

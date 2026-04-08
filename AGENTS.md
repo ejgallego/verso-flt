@@ -215,7 +215,7 @@ This repository is the integration layer for the FLT Verso blueprint.
   (`ensure`, `sync`, `hover`, `run-at`) over full rebuild loops whenever that is
   enough to validate the change.
 - For LT-facing checks on edited direct-port chapters, run
-  `python3 scripts/check_lt_source_pairs.py <chapter.lean>` after the edit and
+  `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root . <chapter.lean>` after the edit and
   treat any reported block as unaudited until the adjacent `tex` witness is in
   place.
 - After the source-pair check, run
@@ -223,7 +223,7 @@ This repository is the integration layer for the FLT Verso blueprint.
   direct-port chapters to ensure theorem/lemma/corollary/definition nodes match
   the adjacent TeX source environment kind.
 - After the source-pair check is green, use
-  `python3 scripts/check_lt_similarity.py <chapter.lean>` to get the first
+  `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root . <chapter.lean>` to get the first
   draft of the block-level mechanical drift report suggested by David. This now
   includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`, and
   TeX `\ref{...}` / `\uses{...}` mismatches. The default output is human-
@@ -232,7 +232,7 @@ This repository is the integration layer for the FLT Verso blueprint.
   touched chapters to catch malformed Verso math delimiters such as the bad
   TeX-to-Verso translation pattern `$`...`$`.
 - When changing the LT similarity tooling itself, run
-  `python3 scripts/test_check_lt_similarity.py` before relying on the updated
+  `python3 tools/verso-harness/scripts/test_check_lt_similarity.py` before relying on the updated
   scores for porting decisions.
 - Avoid issuing multiple `lean-beam sync` requests in parallel for the same
   project root. In this repository that sometimes trips a Beam/LSP worker exit
@@ -385,10 +385,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If the source block is still open, prefer a local `tex` block carrying the
   raw TeX excerpt over a rewritten placeholder. That keeps the board and the
   chapter close to the TeX source of truth.
-- After a chapter edit batch, run `python3 scripts/check_lt_source_pairs.py`
+- After a chapter edit batch, run `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .`
   on the touched chapter files before treating the batch as LT-audited.
 - When the source-pair checker passes, run
-  `python3 scripts/check_lt_similarity.py` on the touched chapters and record
+  `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .` on the touched chapters and record
   any obviously low-similarity blocks as follow-up LT audit work rather than
   silently accepting them.
 - When triaging an obviously low-similarity block, prefer this order:
