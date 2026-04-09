@@ -47,22 +47,28 @@ jobs:
             .lake/build/bin
             .lake/build/lib
             .lake/build/ir
-            FLT/.lake/build/lib
-            FLT/.lake/build/ir
-          key: ${{ runner.os }}-lean-build-v1-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean', '.gitmodules', 'FLT/lake-manifest.json', 'FLT/lakefile.lean', 'FLTBlueprint.lean', 'FLTBlueprint/**/*.lean', 'FLT/FLT/**/*.lean', 'scripts/ci-pages.sh') }}
+            __FORMALIZATION_PATH__/.lake/build/lib
+            __FORMALIZATION_PATH__/.lake/build/ir
+          key: ${{ runner.os }}-lean-build-v1-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean', '.gitmodules', 'BlueprintMain.lean', '*.lean', '**/*.lean', 'scripts/ci-pages.sh') }}
           restore-keys: |
-            ${{ runner.os }}-lean-build-v1-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean', '.gitmodules', 'FLT/lake-manifest.json', 'FLT/lakefile.lean') }}-
+            ${{ runner.os }}-lean-build-v1-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean', '.gitmodules') }}-
             ${{ runner.os }}-lean-build-v1-
       - name: Show tool versions
         run: |
           lean --version
           lake --version
-          git submodule status
+          git submodule status || true
       - name: Warm Lean dependency cache
         run: |
-          lake exe cache get
-          cd FLT
-          lake exe cache get
+          lake exe cache get || true
+          if [ -f "__FORMALIZATION_PATH__/lakefile.lean" ]; then
+            (
+              cd "__FORMALIZATION_PATH__"
+              lake exe cache get || true
+            )
+          fi
+      - name: Validate harness contract
+        run: python3 tools/verso-harness/scripts/check_harness.py --project-root .
       - name: Build Blueprint site
         run: bash ./scripts/ci-pages.sh
       - name: Upload Pages artifact
