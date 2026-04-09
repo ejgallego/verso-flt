@@ -1,5 +1,6 @@
 package_name = "FLTBlueprint"
 blueprint_main = "FLTBlueprintMain"
+formalization_path = "FLT"
 chapter_root = "FLTBlueprint/Chapters"
 tex_source_glob = "FLT/blueprint/src/chapter/*.tex"
 
