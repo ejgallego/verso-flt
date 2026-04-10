@@ -589,23 +589,19 @@ continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
 \end{proof}
 ```
 
-:::theorem "padic_haar_character_formula" (parent := "haar_character_project")
 If $`R=\Q_p` then $`\delta_R(u)=|u|_p`, the usual $`p`-adic norm.
-:::
 
 ```tex
 If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
 ```
 
-:::proof "padic_haar_character_formula"
-{uses "MeasureTheory.ringHaarChar_mul_volume"}[]
-Normalize Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
+Proof. Normalize Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
 $`u\Z_p=\Z_p` so multiplication by `u` does not change Haar measure. If however
 $`u = p` then $`u\Z_p` has index `p` in $`\Z_p`, and because
 $`μ(i+p\Z_p)=μ(p\Z_p)` we have that $`μ(\Z_p)=pμ(p\Z_p)` and thus
 $`δ(p)=p^{-1}`. These elements generate $`\Q_p^\times`, and two characters
-which agree on generators of a group must agree on the group.
-:::
+which agree on generators of a group must agree on the group; this is
+`MeasureTheory.ringHaarChar_mul_volume`.
 
 ```tex "padic_haar_character_formula" (slot := proof)
 \begin{proof}
@@ -856,25 +852,19 @@ $`det(r_u)=d^n`, so they are equal.
 \end{proof}
 ```
 
-:::theorem "central_simple_algebra_left_right_same_haar" (parent := "haar_character_project")
 For a central simple algebra `B` over a locally compact field `F` and
 $`u ∈ B^\times`, one has $`d_B(r_u) = δ_B(u)`.
-:::
 
 ```tex
 If $B$ is a central simple algebra over a locally compact field $F$, and if $u\in B^\times$, then $d_B(r_u)=\delta_B(u)$.
 ```
 
-:::proof "central_simple_algebra_left_right_same_haar"
-{uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[]
-If $`\ell_u` and $`r_u` denote left and right multiplication by `u` on `B`, then
+Proof. If $`\ell_u` and $`r_u` denote left and right multiplication by `u` on `B`, then
 we have seen in
 `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det` that
 $`d_B(r_u)=\delta_F(\det(r_u))`. `IsSimpleRing.mulLeft_det_eq_mulRight_det`
 tells us that this is $`\delta_F(\det(\ell_u))`, and this is $`\delta_B(u)` again
 by `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det`.
-:::
 
 ```tex "central_simple_algebra_left_right_same_haar" (slot := proof)
 \begin{proof}
@@ -1047,19 +1037,15 @@ Induction on the size of the finite set, using the previous lemma.
 \end{proof}
 ```
 
-:::theorem "product_ring_haar_character_formula" (parent := "haar_character_project")
 If `R` and `S` are locally compact topological rings, then
 `δ_{R × S}(r, s) = δ_R(r) × δ_S(s)`.
-:::
 
 ```tex
 If $R$ and $S$ are locally compact topological rings, then $\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)$.
 ```
 
-:::proof "product_ring_haar_character_formula"
-Follows immediately from lemma
+Proof. Follows immediately from lemma
 `MeasureTheory.addEquivAddHaarChar_prodCongr`.
-:::
 
 ```tex "product_ring_haar_character_formula" (slot := proof)
 \begin{proof}
@@ -1731,7 +1717,7 @@ $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
 We think of $`B_{\A}` as $`B\otimes_K\A_K`. If $`u=(u_v)` as `v` runs through the
 places of `K`, then $`d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})` by
 `MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight`, and the
-product is finite. By `central_simple_algebra_left_right_same_haar` this equals
+product is finite. By the central-simple-algebra formula established earlier this equals
 $`\prod_v d_{B_v}(r_{u_v})`, and again by
 `MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight` this is
 $`d_{B_{\A}}(r_u)`.

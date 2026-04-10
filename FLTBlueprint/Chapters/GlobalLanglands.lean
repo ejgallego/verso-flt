@@ -59,7 +59,7 @@ Let $R$ be a commutative base ring; it will often be a field but we shall develo
 the theory in more generality when there is no extra effort needed to do.
 ```
 
-:::definition "affine_group_scheme_over_affine_base" (parent := "global_langlands_program") (lean := "???")
+:::definition "affine_group_scheme_over_affine_base" (parent := "global_langlands_program")
 An affine group scheme over $`R` is a group object in the category of affine
 schemes over $`R`.
 :::
@@ -70,9 +70,8 @@ schemes over $`R`.
   An \emph{affine group scheme over $R$} is a group object in the category of affine schemes over $R$.
 ```
 
-:::definition "Hopf_algebra" (parent := "global_langlands_program") (lean := "TODO")
-TODO: Connected and reductive.
-:::
+/- TODO from TeX source (`Hopf_algebra`): Connected and reductive.
+Keep this as a comment until VersoBlueprint grows a dedicated todo macro. -/
 
 ```tex "Hopf_algebra" (slot := statement)
 \begin{definition}\label{Hopf_algebra}\lean{TODO}% we have Hopf algebras in mathlib

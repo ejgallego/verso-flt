@@ -938,12 +938,18 @@ follows from {uses "Submonoid.units_isOpen"}[] and
   results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
 \end{proof}
 ```
-:::definition "local_level_from_residue_subgroup" (parent := "hecke_operator_project")
 Recall that there is a projection $`\calO_v \to k_v` where $`k_v` is the
 residue field of $`v`, a finite field. This induces a ring homomorphism
 $`M_2(\calO_v) \to M_2(k_v)` with kernel $`M_2(\varpi\calO_v)`, an ideal
 $`I` of $`M_2(\calO_v)` isomorphic to $`(\varpi\calO_v)^4` and hence also
 compact and open.
+
+```tex
+Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
+field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
+with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
+and hence also compact and open.
+```
 
 Say $`\Gamma_v` is a subgroup of $`GL_2(k_v)`. Then $`\Gamma_v` is finite.
 Consider it as a submonoid of the multiplicative monoid $`M_2(k_v)`. Its
@@ -951,14 +957,8 @@ preimage $`U_v` in $`M_2(\calO_v)` is easily checked to be a submonoid of
 $`M_2(\calO_v)`; furthermore it is a finite union of cosets of $`I` and is
 hence compact and open as a submonoid of $`M_2(\calO_v)` and hence of
 $`M_2(K_v)`.
-:::
 
 ```tex
-Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
-field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
-with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
-and hence also compact and open.
-
 Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
 the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
 is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
@@ -1168,9 +1168,13 @@ which we shall be using.
 \section{Automorphic forms}
 ```
 # Automorphic forms
-:::definition "automorphic_forms_for_hecke_setup" (parent := "hecke_operator_project")
 We recall some of the definitions of spaces of automorphic forms, from the
 quaternion algebra project.
+
+```tex
+We recall some of the definitions of spaces of automorphic forms, from the
+quaternion algebra project, section~\ref{Quat_alg_project}.
+```
 
 We fix a totally real field $`F`, a totally definite quaternion algebra
 $`D/F`, and a coefficient additive abelian group $`R`. Set
@@ -1180,18 +1184,7 @@ definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm` that an
 `R`-valued weight `2` automorphic form is a function $`f : G \to R`
 satisfying the following axioms:
 
-1. $`f(dg) = f(g)` for all $`d \in D^\times \subseteq (D \otimes_F \A_F^\infty)^\times`.
-2. There exists a compact open subgroup `U`, the level of `f`, such that
-   $`f(gu) = f(g)` for all $`g \in G` and $`u \in U`.
-3. $`f(gz) = f(g)` for all $`z \in (\A_F^\infty)^\times`.
-:::
-
 ```tex
-\section{Automorphic forms}
-
-We recall some of the definitions of spaces of automorphic forms, from the
-quaternion algebra project, section~\ref{Quat_alg_project}.
-
 We fix a totally real field~$F$, a totally definite quaternion algebra~$D/F$,
 and a coefficient (additive abelian) group~$R$. Set
 $G=(D\otimes_F\A_F^\infty)^\times$ as in the previous section. Note that $G$
@@ -1199,6 +1192,14 @@ naturally contains copies of $D^\times$ and $(\A_F^\infty)^\times$. Recall from
 definition~\ref{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
 that an $R$-valued weight~2 automorphic form is a function $f:G\to R$
 satisfying the following axioms:
+```
+
+1. $`f(dg) = f(g)` for all $`d \in D^\times \subseteq (D \otimes_F \A_F^\infty)^\times`.
+2. There exists a compact open subgroup `U`, the level of `f`, such that
+   $`f(gu) = f(g)` for all $`g \in G` and $`u \in U`.
+3. $`f(gz) = f(g)` for all $`z \in (\A_F^\infty)^\times`.
+
+```tex
 \begin{enumerate}
   \item $f(dg)=f(g)$ for all $d\in D^\times\subseteq(D\otimes_F\A_F^\times)$;
   \item There exists a compact open subgroup of~$U$ (the \emph{level} of~$f$)

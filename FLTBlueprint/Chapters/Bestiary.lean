@@ -467,18 +467,18 @@ This is independent of the choice of $`\rho` as above.
 An automorphic form is a function $`\phi:G(\A_N)\to\bbC` satisfying the
 following conditions.
 
-1. `\phi` is locally constant on $`G(\A_N^f)` and $`C^\infty` on $`G(N_\infty)`.
+1. $`\phi` is locally constant on $`G(\A_N^f)` and $`C^\infty` on $`G(N_\infty)`.
    In other words, for every $`g_\infty`, $`\phi(-,g_\infty)` is locally
    constant, and for every $`g_f`, $`\phi(g_f,-)` is smooth.
-2. `\phi` is left-invariant under $`G(N)`.
-3. `\phi` is right-$`U_\infty`-finite, that is, the space spanned by
+2. $`\phi` is left-invariant under $`G(N)`.
+3. $`\phi` is right-$`U_\infty`-finite, that is, the space spanned by
    $`x\mapsto \phi(xu)` as $`u` varies over $`U_\infty` is finite-dimensional.
-4. `\phi` is right $`K_f`-finite, where $`K_f` is one, or equivalently all,
+4. $`\phi` is right $`K_f`-finite, where $`K_f` is one, or equivalently all,
    compact open subgroups of $`G(\A_N^f)`.
-5. `\phi` is $`\mathcal{z}`-finite, where $`\mathcal{z}` is the centre of the
+5. $`\phi` is $`\mathcal{z}`-finite, where $`\mathcal{z}` is the centre of the
    universal enveloping algebra of the Lie algebra of $`G(N_\infty)`, acting
-   via differential operators. Equivalently `\phi` is annihilated by a finite
-   index ideal of this centre, so morally `\phi` satisfies many differential
+   via differential operators. Equivalently $`\phi` is annihilated by a finite
+   index ideal of this centre, so morally $`\phi` satisfies many differential
    equations of a certain type.
 6. For all $`g_f`, the function $`g_\infty\mapsto \phi(g_f g_\infty)` is
    slowly-increasing in the sense above.
@@ -598,7 +598,7 @@ Let $`K^{\avoid}/K` be a Galois extension of number fields. Suppose also that
 $`L_v/K_v` be a finite Galois extension. Suppose also that $`T/K` is a
 smooth, geometrically connected curve and that for each $`v\in S` we are given
 a nonempty, $`\operatorname{Gal}(L_v/K_v)`-invariant open subset
-$`\Omega_v\subseteq T(L_v)`. Then there is a finite Galois extension `L/K` and
+$`\Omega_v\subseteq T(L_v)`. Then there is a finite Galois extension $`L/K` and
 a point $`P\in T(L)` with the prescribed local behavior.
 :::
 

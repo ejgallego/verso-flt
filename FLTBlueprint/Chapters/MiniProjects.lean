@@ -35,8 +35,8 @@ waiting for the entire FLT proof spine to be formalized first.
 :::definition "miniproject_success_story" (parent := "legacy_blueprint_map")
 The Frobenius miniproject is the model success case: it isolated a theorem of
 independent interest, reached a sorry-free formalization, and upstreamed the
-result to mathlib.
-See {uses "frobenius_project_status"}[].
+result to mathlib. See the status section of the Frobenius miniproject
+chapter.
 :::
 
 :::definition "overview_chapter_port" (parent := "legacy_blueprint_map")

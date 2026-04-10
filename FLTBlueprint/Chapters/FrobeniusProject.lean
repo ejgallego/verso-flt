@@ -18,11 +18,9 @@ FLT repo. Below is a fairly detailed sketch of the argument used.
 
 # Status
 
-:::definition "frobenius_project_status" (parent := "frobenius_project")
 This miniproject has been a success: the main results are sorry-free and merged
 into mathlib. As a result there will be no more work on this miniproject in the
 FLT repo. Below is a fairly detailed sketch of the argument used.
-:::
 
 ```tex
 \section{Status}
@@ -106,13 +104,11 @@ $G$ is a finite group acting (via ring isomorphisms) on a commutative ring $B$,
 and $A$ is the subring of $G$-invariants.
 ```
 
-:::definition "decomposition_group_definition" (parent := "frobenius_project")
 Say $`Q` is a prime ideal of $`B`, whose pullback to $`A` is the prime ideal
 $`P`. Note that $`G` naturally acts on the ideals of $`B`. Let the
 decomposition group $`D_Q` of $`Q` be the subgroup of $`G` which stabilizes
 $`Q` (just to be clear: $`g \in D_Q` means $`\{g \cdot q \,:\, q \in Q\}=Q`,
 not $`\forall q \in Q, g \cdot q = q`).
-:::
 
 ```tex
 Say $Q$ is a prime ideal of $B$, whose pullback to $A$ is the prime ideal $P$.

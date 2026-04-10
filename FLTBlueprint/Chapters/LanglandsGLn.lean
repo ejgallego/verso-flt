@@ -314,7 +314,7 @@ five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],
    $`\rho` for some $`m`.
 4. It has an infinite level: there is an ideal $`I \subseteq Z_n` of the
    centre $`Z_n` described in the previous section, with finite complex
-   codimension $`\dim_\C(Z_n/I) < \infty`, and $`I` annihilates the function
+   codimension, and $`I` annihilates the function
    $`y \mapsto f(x,y)` for all $`x \in \GL_n(\A_{\Q}^f)`. This is a very fancy
    way of saying that the function satisfies some natural differential
    equations. In the case of modular forms, these are the Cauchy-Riemann

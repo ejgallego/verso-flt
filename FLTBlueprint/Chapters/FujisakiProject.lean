@@ -171,7 +171,6 @@ generality).
 
 # Enter the adeles
 
-:::definition "adelic_division_algebra_setup" (parent := "fujisaki_project")
 Let $`K` be a number field and let $`D/K` be a finite-dimensional central
 simple $`K`-algebra (later on $`D` will be a division algebra, hence the
 name, but we do not need this yet). Then $`D_{\A}:=D\otimes_K\A_K` is an
@@ -184,7 +183,6 @@ $`\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}` measuring how left multiplication
 by an element of $`D_{\A}^\times` changes the additive Haar measure on
 $`D_{\A}`. Let $`D_{\A}^{(1)}` denote the kernel of $`\delta_{D_{\A}}`, and
 give it the subspace topology coming from $`D_{\A}^\times`.
-:::
 
 ```tex
 Let $K$ be a number field and let $D/K$ be a finite-dimensional central simple $K$-algebra

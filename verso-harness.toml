@@ -23,7 +23,12 @@ default_chapters = [
   "FLTBlueprint/Chapters/QuaternionAlgebras.lean",
 ]
 
+[lt.node_kinds]
+proposition = "theorem"
+
 [harness]
+native_warnings = false
+strict_external_code = true
 non_port_chapters = [
   "FLTBlueprint/Chapters/HistoricalInputs.lean",
   "FLTBlueprint/Chapters/MiniProjects.lean",
