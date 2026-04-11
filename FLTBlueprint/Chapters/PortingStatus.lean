@@ -228,6 +228,9 @@ Highlights from this audit:
 
 - the direct-port chapter set now passes the strict source-pair audit, and the
   current LT dashboard reports zero exact drift
+- native warning mode now reports missing upstream docstrings on restored
+  external-code attachments as a separate docstring-only bucket rather than
+  failing consumer chapter audits for them
 - the node-oriented task board and the stricter LT audit answer different
   questions and should not be conflated
 - the remaining board surface is now honest source-side formalization debt, not

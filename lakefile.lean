@@ -17,7 +17,7 @@ package FLTBlueprint where
     -- `strictResolve` is registered in `VersoBlueprint.Informal.ExternalCode`,
     -- so v4.28.0 requires the weak form here for non-ExternalCode modules.
     ⟨`weak.verso.blueprint.externalCode.strictResolve, true⟩,
-    ⟨`verso.code.warnLineLength, .ofNat 0⟩
+    ⟨`weak.verso.code.warnLineLength, .ofNat 0⟩
   ]
 
 @[default_target]
