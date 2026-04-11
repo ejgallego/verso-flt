@@ -595,13 +595,12 @@ If $`R=\Q_p` then $`\delta_R(u)=|u|_p`, the usual $`p`-adic norm.
 If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
 ```
 
-Proof. Normalize Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
+Normalize Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
 $`u\Z_p=\Z_p` so multiplication by `u` does not change Haar measure. If however
 $`u = p` then $`u\Z_p` has index `p` in $`\Z_p`, and because
 $`μ(i+p\Z_p)=μ(p\Z_p)` we have that $`μ(\Z_p)=pμ(p\Z_p)` and thus
 $`δ(p)=p^{-1}`. These elements generate $`\Q_p^\times`, and two characters
-which agree on generators of a group must agree on the group; this is
-`MeasureTheory.ringHaarChar_mul_volume`.
+which agree on generators of a group must agree on the group.
 
 ```tex "padic_haar_character_formula" (slot := proof)
 \begin{proof}
@@ -859,7 +858,7 @@ $`u ∈ B^\times`, one has $`d_B(r_u) = δ_B(u)`.
 If $B$ is a central simple algebra over a locally compact field $F$, and if $u\in B^\times$, then $d_B(r_u)=\delta_B(u)$.
 ```
 
-Proof. If $`\ell_u` and $`r_u` denote left and right multiplication by `u` on `B`, then
+If $`\ell_u` and $`r_u` denote left and right multiplication by `u` on `B`, then
 we have seen in
 `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det` that
 $`d_B(r_u)=\delta_F(\det(r_u))`. `IsSimpleRing.mulLeft_det_eq_mulRight_det`
@@ -1044,7 +1043,7 @@ If `R` and `S` are locally compact topological rings, then
 If $R$ and $S$ are locally compact topological rings, then $\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)$.
 ```
 
-Proof. Follows immediately from lemma
+Follows immediately from lemma
 `MeasureTheory.addEquivAddHaarChar_prodCongr`.
 
 ```tex "product_ring_haar_character_formula" (slot := proof)
