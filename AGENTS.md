@@ -88,9 +88,13 @@ This repository is the integration layer for the FLT Verso blueprint.
   `\lean{...}` target. In particular, do not import helper modules such as
   `FutureAssumptions` into direct-port chapters just to give frontier source
   nodes an explicit interface.
-- If a source-grounded node has no real TeX-side `\lean{...}` target and no
-  existing formal declaration to attach honestly, leave the node unattached.
-  Do not close that gap with an outer-repo placeholder declaration.
+- If a source-grounded node has no TeX-side `\lean{...}` target in the active
+  source, leave the local Verso node unattached. Do not add a local-only
+  `(lean := "...")` just because some real declaration exists, and do not edit
+  the local TeX witness block to simulate a source attachment that is not
+  present upstream.
+- Missing source `\lean{...}` targets are source-side debt, not permission to
+  legalize the node locally by metadata cleanup alone.
 - Preserve TeX `\uses{...}` edges when they exist, but do not invent new
   dependency edges merely to make the blueprint graph look nicer.
 - Treat TeX/source labels and Lean declaration names as distinct namespaces.
@@ -354,8 +358,8 @@ This repository is the integration layer for the FLT Verso blueprint.
   complete and source-local. The hard precondition for `(lean := "...")` /
   `{uses "..."}[]` cleanup is that the corresponding text already has its local
   witness pairing in place.
-- For each blueprint node, prefer attaching the real FLT declaration with
-  `(lean := "...")`.
+- For direct-port chapters, only add `(lean := "...")` when the active TeX
+  source already carries the corresponding `\lean{...}` target.
 - Before adding a Lean reference, check that the needed FLT module chain can be
   imported from the root harness without breaking the current toolchain or
   build surface.

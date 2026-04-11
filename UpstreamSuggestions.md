@@ -17,6 +17,12 @@ There is also a small class of stronger source issues:
 - `dangling uses target` means the TeX source already contains a `\uses{...}`
   edge to a label that is never defined as a graph-visible blueprint node
 
+There is a separate class of source-side debt that this file now tracks:
+- `missing source \lean target` means the active TeX source has a labeled
+  graph-visible block but does not provide any `\lean{...}` attachment
+- these are upstream/source issues only; the local Verso port must not
+  legalize them with local-only `(lean := "...")` attachments
+
 ## Current Queue
 
 ### Definite Source Issues
@@ -58,6 +64,49 @@ There is also a small class of stronger source issues:
   The likely intended target is
   [M2.localFullLevel.isCompact](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/HeckeOperators.lean#L892),
   which is the actual graph-visible node for compactness of the local matrix ring.
+
+### Active Source Missing `\lean{...}` Targets
+
+- High priority, concrete existing declaration:
+  `IsDedekindDomain.AKLB.finitePresentation`
+  Seen from [AdeleMiniproject.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/AdeleMiniproject.tex) via
+  [AdeleProject.lean](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/AdeleProject.lean#L967).
+  The TeX source has an active labeled theorem but no `\lean{...}` target.
+  The surrounding proof text explicitly points to
+  `Module.finitePresentation_of_finite`, which already exists in mathlib/FLT-facing dependencies.
+  This is the clearest current upstream candidate for adding a source-authorized `\lean{...}`.
+
+- Medium priority, active proof-spine / miniproject labels with no obvious exact declaration found in the current tree:
+  `Hurwitz.surjective_pnat_quotient`
+  `IsCentralSimple.baseChange`
+  `IsDedekindDomain.dvd_norm`
+  `IsDedekindDomain.AKLB.surjective_tensorProduct_map`
+  `IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv`
+  `pi_tensorProduct_of_finitePresentation`
+  `RestrictedProduct.relabelIso`
+  `IsDedekindDomain.pi_tensorProduct`
+  `IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1`
+  `IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2`
+  `IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv`
+  `nolean-compactopen-GL2`
+  `nolean-compactopen-U1p`
+  `nolean-hecke-algebra-commutative-noetherian`
+  `nolean-product-of-U-alpha`
+  These are active-source labels and not `\notready`, so they are reasonable upstream review targets.
+  However, current local triage did not find a clearly matching existing declaration name for them.
+  Upstream action here should start by checking whether the intended formal declaration now exists before adding any `\lean{...}` target.
+
+- Lower priority, active but broad API / expository labels with no obvious current declaration match:
+  `instLieAlgebraAction`
+  `instComplexLieAlgebraAction`
+  `instUniversalEnvelopingAlgebraAction`
+  `instCentreAction`
+  `topology_on_affine_variety_points`
+  `topology_on_affine_variety_computation`
+  `cuspidal_automorphic_form_decomposition`
+  `compatible_family`
+  These are active-source labels, but they currently look more like conceptual API or expository interface points than obvious already-formalized declarations.
+  They should stay source-side debt until upstream/source review identifies a real declaration to cite.
 
 ### Reductions
 

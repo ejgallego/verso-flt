@@ -3,6 +3,7 @@
 set -euo pipefail
 
 python3 scripts/check_active_chapter_alignment.py --project-root .
+python3 scripts/check_blueprint_heading_structure.py --project-root .
 
 lake build
 lake exe blueprint-gen --output _out/site

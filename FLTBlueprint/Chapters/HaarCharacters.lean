@@ -48,6 +48,16 @@ of this material.
 
 # Initial definitions
 
+```tex
+\section{Initial definitions}
+```
+
+## Scaling Haar Measure On A Group
+
+```tex
+\subsection{Scaling Haar measure on a group}
+```
+
 Let $`A` be a locally compact topological additive abelian group. There's then
 a regular additive Haar measure $`\mu` on $`A`, unique up to a positive
 scalar factor. If $`φ : (A, +) ≃ (A, +)` is a homeomorphism and an additive
@@ -56,10 +66,6 @@ measure `φ_* μ` on `A`, with the property that
 `(φ_* μ)(X) = μ(φ^{-1} X)` for any Borel subset `X` of `A`.
 
 ```tex
-\section{Initial definitions}
-
-\subsection{Scaling Haar measure on a group}
-
 Let $A$ be a locally compact topological additive abelian group. There's then a regular additive
 Haar measure $\mu$ on $A$, unique up to a positive scalar factor. If $\phi:(A,+)\cong(A,+)$ is a
 homeomorphism and an additive automorphism of $A$, then we can push forward $\mu$
@@ -450,7 +456,11 @@ change area. The general case follows.
 \end{proof}
 ```
 
-# Ring-level Haar characters
+## Scaling Haar Measure On A Ring
+
+```tex
+\subsection{Scaling Haar measure on a ring}
+```
 
 Now let $`R` be a locally compact topological ring. The Haar character of
 `R`, or more precisely the left Haar character of `R`, is a group homomorphism

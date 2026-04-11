@@ -360,7 +360,7 @@ Our job of reducing FLT to theorems of the 1980s is hence reduced to proving
 Theorem~\ref{hardly_ramified_reducible}.
 ```
 
-# Hardly Ramified Mod `p` Representations Are Reducible
+## Hardly Ramified Mod `p` Representations Are Reducible
 
 In this section we will state three theorems, from which
 `hardly_ramified_reducible` easily follows.

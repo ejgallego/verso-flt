@@ -33,18 +33,6 @@ on this miniproject in the FLT repo. Below is a fairly
 detailed sketch of the argument used.
 ```
 
-```tex
-\section{Introduction and goal}
-
-When this project started, I had thought that the existence of Frobenius elements was
-specific to the theory of local and global fields, and a slightly more general result
-held for Dedekind domains. Then Joel Riou pointed out on the Lean Zulip
-an extremely general result from from Bourbaki's Commutative Algebra
-(Chapter V, Section 2, number 2, theorem 2, part (ii)). This beautiful
-result is surely what we want to see in mathlib. Before we state Bourbaki's
-theorem, let us set the scene.
-```
-
 # Introduction And Goal
 
 When this project started, I had thought that the existence of Frobenius
@@ -86,10 +74,6 @@ In particular, $\Aut(L/K)$ is finite
 as a corollary. What is so striking about this theorem to me is that the only finiteness hypothesis
 is on the group $G$ which acts; there are no finiteness or Noetherian
 hypotheses on the rings at all.
-```
-
-```tex
-\section{Statement of the theorem}
 ```
 
 # Statement Of The Theorem
@@ -228,6 +212,10 @@ this maximal separable subextension.
 ```
 
 # The Extension B/A
+
+```tex
+\section{The extension \texorpdfstring{$B/A$}{B/A}.}
+```
 
 The precise set-up we'll work in is the following. We fix $`G` a finite group
 acting on $`B` a commutative ring, and we have another commutative ring $`A`
@@ -378,11 +366,11 @@ $gQ=Q'$ and one can deduce from this that $\Frob_Q$ and $\Frob_{Q'}$ are conjuga
 if $G$ is abelian then $\Frob_Q$ and $\Frob_{Q'}$ are equal, so we can call them both $\Frob_p$.
 ```
 
+# The Extension (B/Q)/(A/P)
+
 ```tex
 \section{The extension \texorpdfstring{$(B/Q)/(A/P)$}{(B/Q)/(A/P)}.}
 ```
-
-# The Extension (B/Q)/(A/P)
 
 Note that $`P` and $`Q` are primes, so the quotients $`A/P` and $`B/Q` are
 integral domains.
@@ -500,11 +488,11 @@ Multiply the $`b` from `fixed_of_fixed1_aux1` by $`b_0`.
 \end{proof}
 ```
 
+# The Extension L/K
+
 ```tex
 \section{The extension \texorpdfstring{$L/K$}{L/K}.}
 ```
-
-# The Extension L/K
 
 Let $`L^{D_Q}` denote the fixed field of the action $`D_Q` on $`L`. Our
 strategy for proving surjectivity of $`D_Q \to \Aut(L/K)` will be to write

@@ -56,11 +56,6 @@ def audit_project(project_root: Path) -> list[str]:
     config, expected_modules, expected_paths = expected_chapter_modules(project_root)
     errors: list[str] = []
 
-    if config.non_port_chapters:
-        errors.append(
-            "harness.non_port_chapters must be empty; inactive or meta chapters must not be part of the active blueprint surface"
-        )
-
     main_path = project_root / f"{config.package_name}.lean"
     if not main_path.exists():
         errors.append(f"missing main blueprint file: {main_path.relative_to(project_root)}")

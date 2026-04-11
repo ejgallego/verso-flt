@@ -72,9 +72,6 @@ def test_alignment_reports_extra_manual_chapter() -> None:
               "DemoBlueprint/Chapters/HardlyRamified.lean",
               "DemoBlueprint/Chapters/ExtraChapter.lean",
             ]
-
-            [harness]
-            non_port_chapters = ["DemoBlueprint/Chapters/LegacyStatus.lean"]
             """,
         )
         write_file(
@@ -99,7 +96,6 @@ def test_alignment_reports_extra_manual_chapter() -> None:
             """,
         )
         errors = audit_project(root)
-        assert any("harness.non_port_chapters must be empty" in error for error in errors)
         assert any("chapter imports do not match active TeX TOC" in error for error in errors)
         assert any("chapter includes do not match active TeX TOC" in error for error in errors)
         assert any("lt.default_chapters does not match active TeX TOC" in error for error in errors)

@@ -54,6 +54,10 @@ FORMAL_ENVS = {
 
 COMPLETION_FLAGS = {"leanok", "mathlibok"}
 PLACEHOLDER_LEAN_TARGETS = {"???", "TODO", "TBD", "FIXME"}
+ACTIVE_SOURCE_MISSING_LEAN = "active source node has no `\\lean{...}` target"
+FRONTIER_SOURCE_MISSING_LEAN = "frontier source node has no `\\lean{...}` target"
+PLACEHOLDER_LEAN_REASON = "placeholder Lean target"
+UNFINISHED_PROOF_REASON = "proof sketch still reads as unfinished"
 OPEN_PROOF_MARKERS = (
     "todo",
     "omitted for now",
@@ -307,13 +311,16 @@ def open_reasons(
         # they are not intended graph-visible source nodes and should not be
         # treated as "missing \lean{...}" work by this board.
         if node.labels and not node.leans and not node.verso_leans and not has_completion:
-            reasons.append("no `\\lean{...}` target")
+            if "notready" in node.flags:
+                reasons.append(FRONTIER_SOURCE_MISSING_LEAN)
+            else:
+                reasons.append(ACTIVE_SOURCE_MISSING_LEAN)
         elif lean_targets_are_placeholder(node):
-            reasons.append("placeholder Lean target")
+            reasons.append(PLACEHOLDER_LEAN_REASON)
 
     if node.kind == "proof":
         if proof_placeholder_counts_as_backlog(node, previous):
-            reasons.append("proof sketch still reads as unfinished")
+            reasons.append(UNFINISHED_PROOF_REASON)
 
     return reasons
 
@@ -345,6 +352,10 @@ def render_node_task(node: EnvNode) -> list[str]:
     title = display_name(node)
     reason = "; ".join(node.open_reasons)
     lines.append(f"- [ ] `{title}` needs attention: {reason}.")
+    if ACTIVE_SOURCE_MISSING_LEAN in node.open_reasons or FRONTIER_SOURCE_MISSING_LEAN in node.open_reasons:
+        lines.append(
+            "  - triage: source-side `\\lean{...}` debt; a local-only `(lean := \"...\")` attachment is not legal."
+        )
 
     metadata_bits: list[str] = []
     if node.labels:
@@ -376,12 +387,14 @@ def render_chapter(chapter: ChapterData) -> list[str]:
 
     open_nodes = chapter.open_nodes
     if open_nodes:
-        missing_lean = reason_count(open_nodes, "no `\\lean{...}` target")
-        placeholder_open = reason_count(open_nodes, "placeholder Lean target")
-        proof_open = reason_count(open_nodes, "proof sketch still reads as unfinished")
+        active_missing_lean = reason_count(open_nodes, ACTIVE_SOURCE_MISSING_LEAN)
+        frontier_missing_lean = reason_count(open_nodes, FRONTIER_SOURCE_MISSING_LEAN)
+        placeholder_open = reason_count(open_nodes, PLACEHOLDER_LEAN_REASON)
+        proof_open = reason_count(open_nodes, UNFINISHED_PROOF_REASON)
         lines.append(
             f"- Open work: {len(open_nodes)} source-side formalization items need attention "
-            f"({missing_lean} missing source `\\lean{{...}}` targets, "
+            f"({active_missing_lean} active-source missing `\\lean{{...}}` targets, "
+            f"{frontier_missing_lean} frontier `\\notready` missing `\\lean{{...}}` targets, "
             f"{placeholder_open} placeholder Lean targets, {proof_open} unfinished proof sketches)."
         )
         lines.append("- Tasks:")
@@ -403,9 +416,10 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
     total_chapters = len(chapters)
     open_chapters = sum(1 for chapter in chapters if chapter.open_nodes)
     all_open_nodes = [node for chapter in chapters for node in chapter.open_nodes]
-    total_missing_lean = reason_count(all_open_nodes, "no `\\lean{...}` target")
-    total_placeholder = reason_count(all_open_nodes, "placeholder Lean target")
-    total_proof_sketch = reason_count(all_open_nodes, "proof sketch still reads as unfinished")
+    total_active_missing_lean = reason_count(all_open_nodes, ACTIVE_SOURCE_MISSING_LEAN)
+    total_frontier_missing_lean = reason_count(all_open_nodes, FRONTIER_SOURCE_MISSING_LEAN)
+    total_placeholder = reason_count(all_open_nodes, PLACEHOLDER_LEAN_REASON)
+    total_proof_sketch = reason_count(all_open_nodes, UNFINISHED_PROOF_REASON)
 
     lines: list[str] = []
     lines.append("# TeX Source Formalization Debt Report")
@@ -433,6 +447,11 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         "It is an ad-hoc local report, not a checked-in source of truth for the harness."
     )
     lines.append(
+        "Missing source `\\lean{...}` targets here are source-side debt; they must not be"
+        " 'fixed' by adding local-only `(lean := \"...\")` attachments or by editing local"
+        " TeX witness blocks to claim attachments the active TeX source does not have."
+    )
+    lines.append(
         "Strict LT status should be checked separately with `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .`,"
         " `python3 scripts/check_blueprint_node_kinds.py`, `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root .`,"
         " and `python3 tools/verso-harness/scripts/status_lt.py --project-root .`."
@@ -441,10 +460,15 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         "A chapter can therefore be LT-clean locally and still appear here if the active TeX source"
         " lacks `\\lean{...}` targets or still contains unfinished proof sketches."
     )
-    lines.append("It ignores legacy `\\leanok`, `\\mathlibok`, and `\\notready` markers for backlog purposes,")
     lines.append(
-        "and surfaces placeholder Lean targets, including outer-repo-only placeholder `(lean := ...)`"
-        " attachments, missing Lean targets on unfinished labeled source items, and unfinished proof sketches as open work."
+        "It ignores legacy `\\leanok` and `\\mathlibok` completion flags as backlog signals,"
+        " and uses `\\notready` only to classify frontier source-side debt separately from"
+        " active-source missing attachments."
+    )
+    lines.append(
+        "It also surfaces placeholder Lean targets, including outer-repo-only placeholder"
+        " `(lean := ...)` attachments, missing Lean targets on labeled source items, and"
+        " unfinished proof sketches as open work."
     )
     lines.append(
         "Reviewed prose `\\ref{...}` suggestions are tracked separately in `UpstreamSuggestions.md`"
@@ -460,7 +484,8 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
     lines.append(f"- Source nodes scanned: {total_nodes}")
     lines.append(f"- Chapters with open work: {open_chapters}")
     lines.append(f"- Open source nodes: {total_open}")
-    lines.append(f"- Missing source `\\lean{{...}}` targets: {total_missing_lean}")
+    lines.append(f"- Active-source missing `\\lean{{...}}` targets: {total_active_missing_lean}")
+    lines.append(f"- Frontier `\\notready` missing `\\lean{{...}}` targets: {total_frontier_missing_lean}")
     lines.append(f"- Placeholder Lean targets: {total_placeholder}")
     lines.append(f"- Unfinished proof sketches: {total_proof_sketch}")
     lines.append("")

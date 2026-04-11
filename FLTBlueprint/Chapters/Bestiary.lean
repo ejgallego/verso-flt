@@ -561,13 +561,21 @@ Admissibility is a finiteness condition on an irreducible representation of $(G(
 As mentioned above, we only need all of this for abelian algebraic groups and for inner forms of $\GL_2$ over totally real fields, where everything can be made more concrete (and in particular where I can write down concrete definitions, although this still needs to be done). In particular, we don't strictly speaking need all of the above, we could just cheat and deal with $\GL_2(\R)$ and $\bbH^\times$ separately.
 
 The theorems I need are: Jacquet-Langlands for inner forms of $\GL_2$ over totally real fields, and multiplicity 1 for these inner forms. We also need cyclic base change plus classification of image, all for totally definite quaternion algebras, and we need automorphic induction from $\GL_1(K)$ to $\GL_2(F)$ when $K/F$ is a degree 2 totally imaginary extension. There seems to be little point formalising the statements of the theorems if we cannot yet even formalise the definition of an automorphic representation properly.
+```
 
+# Galois representations
+
+```tex
 \section{Galois representations}
 
 Ivan Farabella has formalised the definition of a compatible family of Galois representations, modulo the existence of Frobenius elements, which has been established by Jou Glasheen.
 
 The big theorem, which again we are far from even stating right now, is
+```
 
+# Algebraic geometry
+
+```tex
 \section{Algebraic geometry}
 
 We have already mentioned Mazur's Theorem on torsion subgroups of elliptic curves (theorem~\ref{mazur}).
@@ -622,6 +630,8 @@ Note that we do not even have the definition of a curve over a field in Lean.
 ```tex
 Note that we do not even have the definition of a curve over a field in Lean.
 ```
+
+# Algebra
 
 ```tex
 \section{Algebra}

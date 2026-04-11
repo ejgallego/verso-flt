@@ -1194,6 +1194,10 @@ minimality of $`g`.
 
 # The Hurwitz quaternions
 
+```tex
+\section{The Hurwitz quaternions}
+```
+
 :::definition "Hurwitz" (parent := "automorphic_example_program") (lean := "Hurwitz")
 The Hurwitz quaternions are the set
 $`\calO := \Z\oplus\Z \omega\oplus\Z i\oplus\Z i\omega` (as an abstract
@@ -1719,8 +1723,6 @@ another version of Euclid saying $`a=bq+r`.
 ```
 
 ```tex
-\section{Profinite completion of the Hurwitz quaternions}
-
 We define $\calOhat$ to be $\calO\otimes\Zhat$, so it's elements $a+bi+cj+d\omega$
 with $a,b,c,d\in\Zhat$. The basic thing we need is this:
 
@@ -1779,6 +1781,10 @@ particular choice of $D$ and $\calO$ the result is true.
 ```
 
 # Profinite completion of the Hurwitz quaternions
+
+```tex
+\section{Profinite completion of the Hurwitz quaternions}
+```
 
 We define $`\calOhat` to be $`\calO\otimes\Zhat`, so it's elements
 $`a+bi+cj+d\omega` with $`a,b,c,d\in\Zhat`. The basic thing we need is this:

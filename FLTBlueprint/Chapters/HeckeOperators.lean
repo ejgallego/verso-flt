@@ -229,7 +229,7 @@ sums are equal because $`g_ih_j=h_jg_i`.
   sums are equal because $g_ih_j=h_jg_i$.
 \end{proof}
 ```
-# Concrete theory
+# Restricted products
 In the concrete example of Hecke operators which we care about, the invariants
 $`A^G` will be spaces of quaternionic automorphic forms by definition. We do
 not need to worry about the definition of $`A` in this project at all.
@@ -697,6 +697,9 @@ There is no formal Lean code for the lemmas in this section; I am slightly dragg
 feet because it would seem more sensible to prove them in the right generality,
 and we don't have a definition of nonarchimedean local field yet.
 ```
+
+# Some local theory
+
 ```tex
 \section{Some local theory}
 
@@ -1147,8 +1150,6 @@ create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S
 define $\tilde{\Gamma}_v=GL_2(\calO_v)$. Then $\prod_v\tilde{\Gamma}_v$ is a compact
 open subgroup of $\prod_vGL_2(\calO_v)$. It is compact subgroups of this form
 which we shall be using.
-
-\section{Automorphic forms}
 ```
 If `S` is a finite set of finite places of `K`, and for each $`v \in S` we choose
 a subgroup $`Γ_v` of $`GL₂(k_v)` then we saw in the previous section how to create a
@@ -1164,10 +1165,12 @@ create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S
 define $\tilde{\Gamma}_v=GL_2(\calO_v)$. Then $\prod_v\tilde{\Gamma}_v$ is a compact
 open subgroup of $\prod_vGL_2(\calO_v)$. It is compact subgroups of this form
 which we shall be using.
-
-\section{Automorphic forms}
 ```
 # Automorphic forms
+
+```tex
+\section{Automorphic forms}
+```
 We recall some of the definitions of spaces of automorphic forms, from the
 quaternion algebra project.
 
