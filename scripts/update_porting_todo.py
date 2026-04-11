@@ -14,13 +14,11 @@ from pathlib import Path
 CHAPTER_TO_LEAN = {
     "ch01introduction.tex": "Introduction.lean",
     "ch02reductions.tex": "Reductions.lean",
-    "ch03freyold.tex": "EllipticFrey.lean",
     "ch03freyreduction.tex": "HardlyRamified.lean",
     "ch04overview.tex": "Overview.lean",
     "ch05automorphicformexample.tex": "AutomorphicFormExample.lean",
     "ch06automorphicrepresentations.tex": "ModularityLifting.lean",
     "ch07exampleGLn.tex": "LanglandsGLn.lean",
-    "global_langlands.tex": "GlobalLanglands.lean",
     "FrobeniusProject.tex": "FrobeniusProject.lean",
     "AdeleMiniproject.tex": "AdeleProject.lean",
     "HaarCharacterProject.tex": "HaarCharacters.lean",

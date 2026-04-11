@@ -8,6 +8,8 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+set_option maxRecDepth 20000
+
 #doc (Manual) "Miniproject: Haar Characters" =>
 
 :::group "haar_character_project"
@@ -604,7 +606,6 @@ which agree on generators of a group must agree on the group.
 
 ```tex "padic_haar_character_formula" (slot := proof)
 \begin{proof}
-  \uses{MeasureTheory.ringHaarChar_mul_volume}
   \leanok
   Normalise Haar measure so that $\mu(\Z_p)=1$.
   If $u$ is a $p$-adic unit then $u\Z_p=\Z_p$ so multiplication by $u$ didn't change
@@ -868,7 +869,6 @@ by `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det`.
 ```tex "central_simple_algebra_left_right_same_haar" (slot := proof)
 \begin{proof}
   \leanok
-  \uses{IsSimpleRing.mulLeft_det_eq_mulRight_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
   If $\ell_u$ and $r_u$ denote left and right multiplication by $u$ on $B$, then we have
   seen in lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} that $d_B(r_u)=\delta_F(\det(r_u))$.
   Lemma~\ref{IsSimpleRing.mulLeft_det_eq_mulRight_det} tells

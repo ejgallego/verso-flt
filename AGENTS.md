@@ -10,11 +10,15 @@ This repository is the integration layer for the FLT Verso blueprint.
 - `FLT/` is strictly read-only for normal blueprint/integration work in this
   repository. In particular, do not edit files under `FLT/`, including
   `FLT/blueprint/src/chapter/*.tex`, unless the user explicitly asks for FLT
-  upstream/fork work.
+  upstream-side work.
 - Keep all Verso blueprint sources, scripts, CI wiring, and generated output
   management at the repository root, not inside `FLT/`.
 - There is no separate harness package anymore: the repository root itself is
   the harness.
+- Keep the root `verso-harness.toml` checked in and treat it as the source of
+  truth for package layout, LT chapter scope, and the TeX source locator.
+- This repository currently keeps `harness.non_port_chapters` empty; inactive
+  or meta chapters should not live on the active blueprint surface.
 - Use the `ejgallego/verso-blueprint` mirror as the Lake dependency source for
   `VersoBlueprint`; do not switch back to the private upstream URL in project
   config until the upstream repo is public.
@@ -45,7 +49,7 @@ This repository is the integration layer for the FLT Verso blueprint.
   not “repair the source” in `FLT/blueprint/src/chapter/*.tex` unless the user
   explicitly asks for that FLT-side change.
 - Keep the existing FLT formalization files unchanged for blueprint-port work
-  unless we are doing explicit rc6 compatibility work intended for the FLT fork.
+  unless we are doing explicit FLT-side compatibility or upstream work.
 
 ## Literal Translation Standard
 
@@ -202,8 +206,18 @@ This repository is the integration layer for the FLT Verso blueprint.
 
 ## Build Harness
 
+- Start maintenance with
+  `python3 tools/verso-harness/scripts/status_harness.py --project-root .`
+  so helper, upstream, and `VersoBlueprint` drift are visible before editing.
+- Follow that with
+  `python3 tools/verso-harness/scripts/check_harness.py --project-root .`
+  to audit the local harness contract.
 - Prefer the focused target `nice lake build blueprint-gen`.
 - The site-generation smoke test is `bash ./scripts/ci-pages.sh`.
+- `bash ./scripts/ci-pages.sh` now includes
+  `python3 scripts/check_active_chapter_alignment.py --project-root .`, which
+  enforces that the active TeX TOC in `FLT/blueprint/src/content.tex`, the
+  root manual chapter order, and `lt.default_chapters` agree exactly.
 - When port metadata is unclear, consult the original blueprint harness inputs
   in `FLT/blueprint/src/web.tex`, `FLT/blueprint/src/plastex.cfg`,
   `FLT/blueprint/notes_on_how_blueprint_works.txt`, and the old TeX chapter
@@ -305,8 +319,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - If a declaration needs to be referenced, add or fix the `(lean := "...")`
   target in the Verso document rather than copying the Lean code.
 - If the current FLT declarations do not compile on the chosen toolchain, treat
-  that as a separate compatibility issue to fix deliberately in the FLT fork,
-  ideally in a way that can be proposed upstream.
+  that as a separate FLT-side compatibility issue to fix deliberately in
+  `FLT/` or upstream FLT, rather than by distorting the outer blueprint port.
 
 ## Porting Workflow
 
@@ -333,6 +347,9 @@ This repository is the integration layer for the FLT Verso blueprint.
   in a labeled `tex` block. The refreshed VersoBlueprint 4.28 branch supports
   this directly, so use it for source-backed notes instead of rewriting the
   passage into placeholder prose.
+- Treat the active TeX TOC in `FLT/blueprint/src/content.tex` as authoritative
+  for chapter order and active chapter membership. Do not keep deprecated or
+  commented-out TeX chapters in the main manual or in `lt.default_chapters`.
 - Treat metadata-only upgrades as blocked until the surrounding block is LT-
   complete and source-local. The hard precondition for `(lean := "...")` /
   `{uses "..."}[]` cleanup is that the corresponding text already has its local
@@ -340,16 +357,14 @@ This repository is the integration layer for the FLT Verso blueprint.
 - For each blueprint node, prefer attaching the real FLT declaration with
   `(lean := "...")`.
 - Before adding a Lean reference, check that the needed FLT module chain can be
-  imported from the root harness without pulling in unrelated rc6-broken code.
-- If the declaration exists but the import chain fails on `v4.29.0-rc6`, treat
-  that as an FLT-fork task first. Fix it in `FLT/`, push to
-  `ejgallego/FLT`, and only then enable the blueprint link.
+  imported from the root harness without breaking the current toolchain or
+  build surface.
 - Small, contained Lean-side fixes that directly unblock the port are fine.
-  Broader or cascading FLT-fork repair work should be postponed and tracked
+  Broader or cascading FLT-side repair work should be postponed and tracked
   explicitly instead of being expanded opportunistically during the port.
-- Keep rc6 compatibility fixes in the FLT fork and keep blueprint/integration
-  changes in the outer `verso-flt` repository.
-- After FLT-fork changes land, update the `FLT/` submodule pointer in the outer
+- Keep FLT-side compatibility fixes in `FLT/` or upstream FLT and keep
+  blueprint/integration changes in the outer `verso-flt` repository.
+- After FLT-side changes land, update the `FLT/` submodule pointer in the outer
   repository.
 
 ## Autonomous Porting Checklist
@@ -402,8 +417,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - In the work summary for each batch, include a short deviation report listing
   any non-literal changes that were introduced deliberately.
 - After a coherent batch, run `bash ./scripts/ci-pages.sh`.
-- Keep the root build green. If a faithful Lean link would pull in rc6-broken
-  imports, leave the chapter informal and note the dependency in prose instead
-  of breaking the build.
+- Keep the root build green. If a faithful Lean link would pull in imports that
+  are not clean on the current toolchain, leave the chapter informal and note
+  the dependency in prose instead of breaking the build.
 - Commit and push coherent validated batches in the outer repo. Only touch the
-  `FLT/` submodule when the task is explicitly FLT-fork compatibility work.
+  `FLT/` submodule when the task is explicitly FLT-side or upstream work.

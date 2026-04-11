@@ -8,19 +8,18 @@ tex_source_glob = "FLT/blueprint/src/chapter/*.tex"
 default_chapters = [
   "FLTBlueprint/Chapters/Introduction.lean",
   "FLTBlueprint/Chapters/Reductions.lean",
-  "FLTBlueprint/Chapters/EllipticFrey.lean",
   "FLTBlueprint/Chapters/HardlyRamified.lean",
   "FLTBlueprint/Chapters/Overview.lean",
   "FLTBlueprint/Chapters/AutomorphicFormExample.lean",
   "FLTBlueprint/Chapters/ModularityLifting.lean",
   "FLTBlueprint/Chapters/LanglandsGLn.lean",
-  "FLTBlueprint/Chapters/Bestiary.lean",
-  "FLTBlueprint/Chapters/AdeleProject.lean",
   "FLTBlueprint/Chapters/FrobeniusProject.lean",
-  "FLTBlueprint/Chapters/FujisakiProject.lean",
+  "FLTBlueprint/Chapters/AdeleProject.lean",
   "FLTBlueprint/Chapters/HaarCharacters.lean",
-  "FLTBlueprint/Chapters/HeckeOperators.lean",
+  "FLTBlueprint/Chapters/FujisakiProject.lean",
   "FLTBlueprint/Chapters/QuaternionAlgebras.lean",
+  "FLTBlueprint/Chapters/HeckeOperators.lean",
+  "FLTBlueprint/Chapters/Bestiary.lean",
 ]
 
 [lt.node_kinds]
@@ -29,9 +28,3 @@ proposition = "theorem"
 [harness]
 native_warnings = false
 strict_external_code = true
-non_port_chapters = [
-  "FLTBlueprint/Chapters/HistoricalInputs.lean",
-  "FLTBlueprint/Chapters/MiniProjects.lean",
-  "FLTBlueprint/Chapters/PortingStatus.lean",
-  "FLTBlueprint/Chapters/GlobalLanglands.lean",
-]
