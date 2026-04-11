@@ -964,12 +964,13 @@ The reason we care about this is the following.
 ```
 
 
-:::theorem "IsDedekindDomain.AKLB.finitePresentation" (parent := "adele_project")
+:::theorem "IsDedekindDomain.AKLB.finitePresentation" (parent := "adele_project") (lean := "Module.finitePresentation_of_finite")
 $`B` is a finitely presented $`A`-module.
 :::
 ```tex
 \begin{theorem} $B$ is a finitely-presented $A$-module.
   \label{IsDedekindDomain.AKLB.finitePresentation}
+  \lean{Module.finitePresentation_of_finite}
 \end{theorem}
 ```
 

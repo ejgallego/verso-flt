@@ -34,8 +34,8 @@ and maintenance rules, use the harness docs:
 
 Project-specific FLT status surfaces remain local:
 
-- [`PortingTodo.md`](/home/egallego/lean/verso-flt/PortingTodo.md)
 - [`UpstreamSuggestions.md`](/home/egallego/lean/verso-flt/UpstreamSuggestions.md)
+- `python3 scripts/update_porting_todo.py`
 
 ## Notes
 

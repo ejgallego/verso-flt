@@ -408,14 +408,14 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
     total_proof_sketch = reason_count(all_open_nodes, "proof sketch still reads as unfinished")
 
     lines: list[str] = []
-    lines.append("# TeX to Verso Porting Task Board")
+    lines.append("# TeX Source Formalization Debt Report")
     lines.append("")
     lines.append(
         "Generated from the active chapter list in `FLT/blueprint/src/content.tex`"
         " by `scripts/update_porting_todo.py`."
     )
     lines.append("")
-    lines.append("This board is driven by source markers rather than stale cross-chapter match counts.")
+    lines.append("This report is driven by source markers rather than stale cross-chapter match counts.")
     lines.append(
         "It follows the authoritative upstream blueprint chapter list from `content.tex`;"
         " commented-out or replaced chapter files are ignored."
@@ -426,8 +426,11 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
         " formalization debt rather than broad infrastructure."
     )
     lines.append(
-        "This board is not an LT certification report. It tracks source-side formalization debt"
+        "This report is not an LT certification report. It tracks source-side formalization debt"
         " in the active TeX source, not exact LT drift in the local Verso port."
+    )
+    lines.append(
+        "It is an ad-hoc local report, not a checked-in source of truth for the harness."
     )
     lines.append(
         "Strict LT status should be checked separately with `python3 tools/verso-harness/scripts/check_lt_source_pairs.py --project-root .`,"
@@ -468,23 +471,25 @@ def generate_markdown(chapters: list[ChapterData]) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Regenerate PortingTodo.md from FLT TeX chapters.")
+    parser = argparse.ArgumentParser(
+        description="Generate an ad-hoc source-side formalization debt report from active FLT TeX chapters."
+    )
     parser.add_argument(
         "--root",
         type=Path,
         default=Path(__file__).resolve().parents[1],
-        help="Repository root containing PortingTodo.md and FLT/.",
+        help="Repository root containing FLT/ and FLTBlueprint/.",
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=None,
-        help="Optional output path. Defaults to <root>/PortingTodo.md.",
+        help="Optional output path. Defaults to stdout.",
     )
     args = parser.parse_args()
 
     root = args.root.resolve()
-    output = args.output.resolve() if args.output else root / "PortingTodo.md"
+    output = args.output.resolve() if args.output else None
     chapter_root = root / "FLT" / "blueprint" / "src" / "chapter"
     chapters: list[ChapterData] = []
     for tex_name, lean_name in active_chapters_from_content(root):
@@ -495,7 +500,10 @@ def main() -> int:
         chapters.append(parse_chapter(tex_path, lean_name, extract_verso_lean_targets(verso_path)))
 
     markdown = generate_markdown(chapters)
-    output.write_text(markdown, encoding="utf-8")
+    if output is None:
+        print(markdown, end="")
+    else:
+        output.write_text(markdown, encoding="utf-8")
     return 0
 
 
