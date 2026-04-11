@@ -26,9 +26,7 @@ There is also a small class of stronger source issues:
   The label exists only in inactive source file
   [ch03freyold.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/ch03freyold.tex),
   while the active replacement chapter is `ch03freyreduction.tex`.
-  The local Verso port still has a graph node
-  [Frey_curve_irreducible](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/EllipticFrey.lean#L1172),
-  but in the active TeX source this is a stale cross-chapter dependency.
+  In the active TeX source this is a stale cross-chapter dependency.
 
 - `dangling uses target: ZHat.eq_zero_of_mul_eq_zero`
   Seen from [AutomorphicFormExample.lean](/home/egallego/lean/verso-flt/FLTBlueprint/Chapters/AutomorphicFormExample.lean#L1140), mirroring

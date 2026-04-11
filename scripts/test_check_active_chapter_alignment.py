@@ -70,11 +70,11 @@ def test_alignment_reports_extra_manual_chapter() -> None:
             default_chapters = [
               "DemoBlueprint/Chapters/Introduction.lean",
               "DemoBlueprint/Chapters/HardlyRamified.lean",
-              "DemoBlueprint/Chapters/EllipticFrey.lean",
+              "DemoBlueprint/Chapters/ExtraChapter.lean",
             ]
 
             [harness]
-            non_port_chapters = ["DemoBlueprint/Chapters/PortingStatus.lean"]
+            non_port_chapters = ["DemoBlueprint/Chapters/LegacyStatus.lean"]
             """,
         )
         write_file(
@@ -89,13 +89,13 @@ def test_alignment_reports_extra_manual_chapter() -> None:
             """
             import DemoBlueprint.Chapters.Introduction
             import DemoBlueprint.Chapters.HardlyRamified
-            import DemoBlueprint.Chapters.EllipticFrey
+            import DemoBlueprint.Chapters.ExtraChapter
 
             #doc (Manual) "Demo" =>
 
             {include 0 DemoBlueprint.Chapters.Introduction}
             {include 0 DemoBlueprint.Chapters.HardlyRamified}
-            {include 0 DemoBlueprint.Chapters.EllipticFrey}
+            {include 0 DemoBlueprint.Chapters.ExtraChapter}
             """,
         )
         errors = audit_project(root)
