@@ -222,6 +222,10 @@ This repository is the integration layer for the FLT Verso blueprint.
   `python3 scripts/check_active_chapter_alignment.py --project-root .`, which
   enforces that the active TeX TOC in `FLT/blueprint/src/content.tex`, the
   root manual chapter order, and `lt.default_chapters` agree exactly.
+- `bash ./scripts/ci-pages.sh` also includes
+  `python3 scripts/check_source_authorized_metadata.py --project-root .`,
+  which fails when local `{uses "..."}[]` edges or `(lean := "...")`
+  attachments are not authorized by the adjacent TeX witness.
 - When port metadata is unclear, consult the original blueprint harness inputs
   in `FLT/blueprint/src/web.tex`, `FLT/blueprint/src/plastex.cfg`,
   `FLT/blueprint/notes_on_how_blueprint_works.txt`, and the old TeX chapter
