@@ -10,3 +10,4 @@ def main (args : List String) : IO UInt32 :=
     (%doc FLTBlueprint)
     args
     (extensionImpls := by exact extension_impls%)
+    (config := { htmlDepth := 1 })
