@@ -13,8 +13,7 @@ open Informal
 #doc (Manual) "An Example Of An Automorphic Form" =>
 
 :::group "automorphic_example_program"
-The old chapter develops one explicit quaternionic automorphic example to guide
-the general definitions used later in the modularity-lifting story.
+A worked example of a quaternionic automorphic form.
 :::
 
 # Introduction

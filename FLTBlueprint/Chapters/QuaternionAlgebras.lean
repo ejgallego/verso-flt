@@ -12,7 +12,7 @@ open Informal
 #doc (Manual) "Miniproject: Quaternion algebras" =>
 
 :::group "quaternion_algebra_project"
-Miniproject: Quaternion algebras.
+Quaternion algebras for modularity lifting.
 :::
 
 # The goal

@@ -13,8 +13,7 @@ set_option maxRecDepth 20000
 #doc (Manual) "Miniproject: Haar Characters" =>
 
 :::group "haar_character_project"
-This miniproject develops the API around how additive Haar measure changes under
-linear automorphisms, especially on locally compact topological rings.
+Haar characters under linear automorphisms.
 :::
 
 # Goal

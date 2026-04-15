@@ -11,9 +11,7 @@ open Informal
 #doc (Manual) "Miniproject: Frobenius Elements" =>
 
 :::group "frobenius_project"
-This miniproject has been a success: the main results are sorry-free and merged
-into mathlib. As a result there will be no more work on this miniproject in the
-FLT repo. Below is a fairly detailed sketch of the argument used.
+Frobenius elements, now merged into mathlib.
 :::
 
 # Status

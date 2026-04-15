@@ -12,8 +12,7 @@ open Informal
 #doc (Manual) "Miniproject: Fujisaki's Lemma" =>
 
 :::group "fujisaki_project"
-Fujisaki's lemma packages the adelic compactness statement that underlies the
-finiteness of many spaces of quaternionic automorphic forms.
+Fujisaki's lemma and adelic compactness.
 :::
 
 ```tex

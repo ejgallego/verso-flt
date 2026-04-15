@@ -20,7 +20,7 @@ set_option maxRecDepth 20000
 #doc (Manual) "Reducibility Of p-Torsion Of The Frey Curve" =>
 
 :::group "hardly_ramified_program"
-Reducibility of `p`-torsion of the Frey curve.
+Reducibility of Frey-curve p-torsion.
 :::
 
 ```tex

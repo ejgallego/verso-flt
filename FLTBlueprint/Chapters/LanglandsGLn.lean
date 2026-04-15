@@ -12,10 +12,7 @@ open Informal
 #doc (Manual) "Automorphic forms and the Langlands Conjectures" =>
 
 :::group "gln_langlands_program"
-This chapter came from discussions between Patrick, Mario and myself, all
-currently visiting the Hausdorff Research Institute for Mathematics in Bonn.
-The ultimate goal is to formally state some version of the global Langlands
-reciprocity conjectures for `GL_n` over `Q`.
+Automorphic forms and Langlands for GLn over Q.
 :::
 
 ```tex

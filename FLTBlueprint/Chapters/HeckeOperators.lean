@@ -14,8 +14,7 @@ open Informal
 #doc (Manual) "Miniproject: Hecke Operators" =>
 
 :::group "hecke_operator_project"
-This miniproject packages the abstract double-coset formalism and then applies
-it to spaces of automorphic forms.
+Hecke operators via the double-coset formalism.
 :::
 
 ```tex

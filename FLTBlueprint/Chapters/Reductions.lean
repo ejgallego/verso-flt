@@ -15,7 +15,7 @@ open Informal
 #doc (Manual) "First Reductions Of The Problem" =>
 
 :::group "first_reductions"
-First reductions of the problem.
+Initial reductions of Fermat's Last Theorem.
 :::
 
 ```tex

@@ -11,7 +11,7 @@ open Informal
 #doc (Manual) "Stating the modularity lifting theorems" =>
 
 :::group "modularity_lifting_program"
-Stating the modularity lifting theorems.
+The modularity lifting theorems.
 :::
 
 ```tex

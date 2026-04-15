@@ -14,9 +14,7 @@ open Informal
 #doc (Manual) "Miniproject: Adeles" =>
 
 :::group "adele_project"
-The adele miniproject develops the finite adeles, infinite adeles, and full
-adeles of a number field together with the local compactness and base-change
-results needed later in the project.
+Finite and infinite adeles, with local compactness and base change.
 :::
 
 
