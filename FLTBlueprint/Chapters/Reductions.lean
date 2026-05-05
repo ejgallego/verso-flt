@@ -117,7 +117,8 @@ There are no solutions in positive integers to $`a^3+b^3=c^3`.
 
 :::proof "fermatLastTheoremThree"
 The proof in mathlib was formalized by a team from the Lean For the Curious
-Mathematician conference held in Luminy in March `2024`.
+Mathematician conference held in Luminy in March `2024` (its dependency graph
+can be visualized [here](https://pitmonticone.github.io/FLT3/blueprint/dep_graph_document.html)).
 :::
 
 ```tex "fermatLastTheoremThree" (slot := proof)
@@ -239,11 +240,12 @@ already `3` modulo `4` then we are done; if `a` is `1` modulo `4`, we replace
 
 # Galois Representations And Elliptic Curves
 
-To continue, we need some of the theory of elliptic curves over $`\Q`. Let
-`f(X)` denote a monic cubic polynomial with rational coefficients whose three
-complex roots are distinct, and consider the equation $`E : Y^2 = f(X)`. This
-defines a curve in the `(X,Y)`-plane, and more precisely its projectivization
-is an elliptic curve over $`\Q`.
+To continue, we need some of the theory of elliptic curves over $`\Q`. So let
+`f(X)` denote any monic cubic polynomial with rational coefficients and whose
+three complex roots are distinct, and let us consider the equation
+$`E : Y^2 = f(X)`, which defines a curve in the `(X,Y)`-plane. This curve, or
+strictly speaking its projectivization, is a so-called elliptic curve over
+$`\Q`.
 
 ```tex
 To continue, we need some of the theory of elliptic curves over $\Q$. So let $f(X)$ denote any
@@ -276,15 +278,19 @@ if and only if they are collinear.
 ```
 
 The group structure behaves well under change of field: if `E` is an elliptic
-curve over $`\Q` and `K -> L` is a homomorphism of characteristic-zero fields,
-then the induced map `E(K) -> E(L)` is a group homomorphism. If `K -> L` is an
-isomorphism, then the induced map is an isomorphism with inverse obtained from
-the inverse field map. This gives an action of the multiplicative group
-$`\Aut(K)` of automorphisms of `K` on `E(K)`, and hence on the `n`-torsion
-subgroup `E(K)[n]`. In particular, if $`\Qbar` denotes an algebraic closure of
-$`\Q` and $`\GQ` denotes the group of field automorphisms $`\Qbar \to \Qbar`,
-then for any elliptic curve `E` over $`\Q` we obtain an action of $`\GQ` on
-$`E(\Qbar)` and hence on $`E(\Qbar)[n]`.
+curve over $`\Q` and if $`K\to L` is a homomorphism of characteristic zero
+fields, then the induced map $`E(K)\to E(L)` is a group homomorphism. Thus if
+$`f:K\to L` is an isomorphism of characteristic zero fields, the induced map
+$`E(K)\to E(L)` is an isomorphism of groups, with the inverse isomorphism being
+the map $`E(L)\to E(K)` induced by $`f^{-1}`. This construction thus gives us an
+action of the multiplicative group $`\Aut(K)` of automorphisms of the field `K`
+on the additive abelian group $`E(K)`, and hence also on the `n`-torsion of this
+group for any positive integer `n`. In particular, if $`\Qbar` denotes an
+algebraic closure of the rationals, for example the algebraic numbers in
+$`\bbC`, and if $`\GQ` denotes the group of field isomorphisms
+$`\Qbar\to\Qbar`, then for any elliptic curve `E` over $`\Q` we have an action
+of $`\GQ` on the additive abelian group $`E(\Qbar)`, and hence on its
+`n`-torsion subgroup $`E(\Qbar)[n]`.
 
 ```tex
 The group structure behaves well under change of field: if $E$ is an elliptic curve over $\Q$
@@ -391,9 +397,11 @@ if there are precisely two $G$-stable subspaces of $W$, namely $0$ and $W$.
 The representation is said to be \emph{reducible} otherwise.
 ```
 
-Now let $`(a,b,c,p)` be a Frey package. Consider the mod `p` representation of
-$`\GQ` coming from the `p`-torsion in the Frey curve associated to the package,
-and call this representation $`\rho`. Is $`\rho` irreducible or not?
+Now say $`(a,b,c,p)` is a Frey package. Consider the mod `p` representation of
+$`\GQ` coming from the `p`-torsion in the Frey curve
+$`Y^2=X(x-a^p)(X+b^p)` associated to the package. Let's call this representation
+$`\rho`, and we say that $`\rho` is the mod `p` representation associated to the
+Frey package $`(a,b,c,p)`. Is $`\rho` irreducible or not?
 
 ```tex
 Now say $(a,b,c,p)$ is a Frey package.
@@ -421,7 +429,6 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```
 
 :::proof "Mazur_Frey"
-{uses "Frey_curve_irreducible"}[]
 This follows from a profound and long result of Mazur
 {Informal.citep mazurTorsion}[] from `1977`, namely the fact that the torsion
 subgroup of an elliptic curve over $`\Q` can have size at most `16`. In fact
@@ -538,10 +545,9 @@ Fermat's Last Theorem is true. In other words, there are no positive integers
 ```
 
 :::proof "FLT"
-Assume there is a counterexample $`a^n+b^n=c^n`. By
+Assume there is a there is a counterexample $`a^n+b^n=c^n`. By Corollary
 {uses "FermatLastTheorem.of_p_ge_5"}[], we may assume that there is also a
-counterexample of the form $`a^p+b^p=c^p`, where $`p` is prime and $`p \ge 5`.
-Then
+counterexample $`a^p+b^p=c^p` with $`p\geq 5` and prime. Then
 {uses "FreyPackage.of_not_FermatLastTheorem_p_ge_5"}[] produces a Frey package,
 contradicting {uses "FreyPackage.false"}[].
 :::

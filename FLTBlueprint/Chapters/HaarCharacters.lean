@@ -1132,6 +1132,7 @@ We have $`d_A(\phi)\mu(A)=\mu(A)`, and $`\mu(A)` is positive and finite because
 
 ```tex "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (slot := proof)
 \begin{proof}
+  \uses{MeasureTheory.mulEquivHaarChar_smul_preimage}
   \leanok
   We have $d_A(\phi)\mu(A)=\mu(A)$
   from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_preimage}

@@ -8,7 +8,7 @@ import sys
 
 
 CONTENT_INPUT_RE = re.compile(r"\\input\{chapter/([^}]+)\}")
-LABEL_RE = re.compile(r"\\label\{([^}]*)\}")
+LABEL_RE = re.compile(r"\\label\{([^}]*)\}", re.S)
 USES_RE = re.compile(r"\\uses\{([^}]*)\}")
 TEX_COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 NON_CHAPTER_INPUTS = {"biblio.tex"}
@@ -16,6 +16,10 @@ NON_CHAPTER_INPUTS = {"biblio.tex"}
 
 def strip_tex_comment(line: str) -> str:
     return TEX_COMMENT_RE.sub("", line)
+
+
+def split_label_list(chunk: str) -> list[str]:
+    return [item.strip() for item in chunk.split(",") if item.strip()]
 
 
 def active_chapter_paths(root: Path) -> list[Path]:
@@ -39,16 +43,16 @@ def collect_labels_and_uses(chapters: list[Path]) -> tuple[set[str], list[tuple[
     labels: set[str] = set()
     uses: list[tuple[str, Path, int]] = []
     for path in chapters:
-        text = path.read_text(encoding="utf-8")
-        for line_no, raw_line in enumerate(text.splitlines(), start=1):
-            stripped = strip_tex_comment(raw_line)
-            for label in LABEL_RE.findall(stripped):
-                labels.add(label.strip())
+        stripped_lines = [
+            strip_tex_comment(raw_line)
+            for raw_line in path.read_text(encoding="utf-8").splitlines()
+        ]
+        for chunk in LABEL_RE.findall("\n".join(stripped_lines)):
+            labels.update(split_label_list(chunk.replace("\n", " ")))
+        for line_no, stripped in enumerate(stripped_lines, start=1):
             for chunk in USES_RE.findall(stripped):
-                for item in chunk.split(","):
-                    target = item.strip()
-                    if target:
-                        uses.append((target, path, line_no))
+                for target in split_label_list(chunk):
+                    uses.append((target, path, line_no))
     return labels, uses
 
 

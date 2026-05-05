@@ -843,20 +843,20 @@ Openness is already in mathlib.
   Openness is already in mathlib.
 \end{proof}
 ```
-:::lemma_ "NumberField.instCompactSpaceAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+:::lemma_ "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 $`\calO_v` is a compact subring of $`K_v`.
 :::
 
 ```tex
 \begin{lemma}
   \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \label{local_integer_ring_compact}
   \leanok
   $\calO_v$ is a compact subring of $K_v$.
 \end{lemma}
 ```
 
-:::proof "NumberField.instCompactSpaceAdicCompletionIntegers"
+:::proof "local_integer_ring_compact"
 Compactness lies a little deeper because it assumes that the residue field of
 $`K_v` is finite.
 :::
@@ -905,15 +905,15 @@ $`M_2(\calO_v)` is a compact subring of $`M_2(K_v)`.
 ```
 
 :::proof "M2.localFullLevel.isCompact"
-{uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
+{uses "local_integer_ring_compact"}[]
 Topologically $`M_2(\calO_v) \cong \calO_v^4` as a subset of $`K_v^4`, so this
-follows from theorem {uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
+follows from theorem {uses "local_integer_ring_compact"}[]
 because a product of compacts is compact and a product of opens is open.
 :::
 ```tex
 \begin{proof}
   \leanok
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
+  \uses{local_integer_ring_compact}
   Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
@@ -928,7 +928,6 @@ $`GL_2(\calO_v)` is a compact open subgroup of $`GL_2(K_v)`.
 \end{lemma}
 ```
 :::proof "nolean-compactopen-GL2"
-{uses "nolean-compactopen-GL2"}[]
 $`K_v` is known to be Hausdorff, so $`M_2(K_v)` is Hausdorff and the result
 follows from {uses "Submonoid.units_isOpen"}[] and
 {uses "Submonoid.units_isCompact"}[].
@@ -936,7 +935,7 @@ follows from {uses "Submonoid.units_isOpen"}[] and
 
 ```tex
 \begin{proof}
-\uses{nolean-compactopen-GL2, Submonoid.units_isOpen, Submonoid.units_isCompact}
+\uses{nolean-compactopen-matrix, Submonoid.units_isOpen, Submonoid.units_isCompact}
   $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
   results follow from lemmas~\ref{Submonoid.units_isOpen} and~\ref{Submonoid.units_isCompact}.
 \end{proof}

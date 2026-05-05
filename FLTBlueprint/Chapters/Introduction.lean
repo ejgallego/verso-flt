@@ -67,20 +67,11 @@ Theorem to a computer. The computer is quite a challenging audience member --
 it will insist on being given all technical details of all arguments, and it
 will not accept proof by intimidation or by appeal to higher authority. Most
 mathematicians know humans who also behave in this manner. However, it is
-worse than this; in `2025` at least, the computer will only start filling in
-details of arguments by itself once the arguments are mathematically utterly
-obvious. Thus, currently, formalization can be a very time-consuming process.
+worse than this; the computer will only start filling in details of arguments
+by itself once the arguments are mathematically utterly obvious. Thus,
+currently, formalization can be a very time-consuming process.
 
 ```tex
-Lean is an interactive theorem prover; it checks mathematical arguments with super-human accuracy.
-Explaining a proof of Fermat's Last Theorem to Lean is in some sense like explaining the proof to
-Diophantus; for example, the proof starts by observing that before we go any further it's convenient
-to first invent/discover zero and negative numbers, and one can point explicitly at places in Lean's
-source code \href{https://github.com/leanprover/lean4/blob/260eaebf4e804c9ac1319532970544a4e157c336/src/Init/Prelude.lean#L1049}{here}
-and \href{https://github.com/leanprover/lean4/blob/260eaebf4e804c9ac1319532970544a4e157c336/src/Init/Data/Int/Basic.lean#L45}{here}
-where these things happen. However we will adopt a more efficient approach: we will assume all of
-the theorems both in core Lean and in its mathematics library
-\href{https://github.com/leanprover-community/mathlib4}{\tt mathlib}, and proceed from there.
 To give some idea of what this entails: {\tt mathlib} at the time of writing contains most of an
 undergraduate mathematics degree and parts of several relevant Masters level courses (for example,
 the definitions and basic properties of
