@@ -1787,11 +1787,9 @@ $`L \otimes_K K_\infty \cong L_\infty`.
 
 
 :::proof "NumberField.InfiniteAdeleRing.baseChangeEquiv"
-Since both sides of the `L`-algebra isomorphism in
-`NumberField.InfiniteAdeleRing.baseChangeAlgEquiv` have the
-$`K_\infty`-module topology, and since the isomorphism can equivalently be
-viewed as a $`K_\infty`-linear isomorphism, it is also a homeomorphism.
-The $`L_\infty` side has the $`K_\infty`-module topology.
+Since both sides of the $`L`-algebra isomorphism have the $`K_{\infty}`-module
+topology, and since the isomorphism can equivalently be viewed as a
+$`K_{\infty}`-linear isomorphism, it is also a homeomorphism.
 :::
 ```tex
 \begin{proof}

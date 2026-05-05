@@ -344,7 +344,7 @@ $`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"
-This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
+This is immediate from corollary.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (slot := proof)
@@ -497,8 +497,8 @@ $`d_R(ℓ_u)`.
 
 :::lemma_ "MeasureTheory.ringHaarChar_mul_integral" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
 {uses "MeasureTheory.ringHaarChar"}[]
-If $`f : R → ℝ` is Borel measurable and $`u ∈ R^\times`, then
-`δ_R(u) ∫ f(ux) dμ(x) = ∫ f(x) dμ(x)`.
+If $`f:R\to\R` is a Borel measurable function and $`u\in R^\times` then
+$`\delta_R(u)\int f(ux)d\mu(x)=\int f(x)d\mu(x)`.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := statement)
@@ -661,10 +661,10 @@ following lemma gives a formula for the scale factor $`d_V(φ)`.
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc")
 {uses "MeasureTheory.ringHaarChar"}[]
-Assume that there is an `F`-basis for `V` such that `φ` is a product of
-elementary and diagonal matrices. Then
-$`d_V(φ)=δ_F(det(φ))`, where $`det(φ) ∈ F` is the determinant of `φ` as an
-`F`-linear map.
+Assume that there's an `F`-basis for `V` such that $`\phi` is a product of
+elementary and diagonal matrices, note that this is automatic if `F` is a field
+and mathlib has this. Then $`d_V(\phi)=\delta_F(\det(\phi))`, where
+$`\det(\phi)\in F` is the determinant of $`\phi` as an `F`-linear map.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (slot := statement)
@@ -734,7 +734,7 @@ an $F$-linear homeomorphism.
 ```
 
 :::corollary "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det")
-If $`u ∈ R^\times` then `δ_R(u) = δ_F(det(ℓ_u))`.
+If $`u\in R^\times` then $`\delta_R(u)=\delta_F(\det(\ell_u))`.
 :::
 
 ```tex "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (slot := statement)
@@ -899,10 +899,10 @@ Here are two facts which we will need about products.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_prodCongr" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_prodCongr")
-If `(A, +)` and `(B, +)` are locally compact topological abelian groups, and if
-$`φ : A → A` and $`ψ : B → B` are additive homeomorphisms, then
-$`φ × ψ : A × B → A × B` is an additive homeomorphism and
-$`d_{A × B}(φ × ψ) = d_A(φ) d_B(ψ)`.
+If `(A,+)` and `(B,+)` are locally compact topological abelian groups, and if
+$`\phi:A\to A` and $`\psi:B\to B` are additive homeomorphisms, then
+$`\phi\times\psi:A\times B\to A\times B` is an additive homeomorphism, this is
+obvious, and $`d_{A\times B}(\phi\times\psi)=d_A(\phi)d_B(\psi)`.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_prodCongr" (slot := statement)
@@ -1166,16 +1166,15 @@ additive homeomorphisms such that the square commutes
 {uses "Topology.IsOpenEmbedding.regular_comap"}[]
 {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"}[]
 Choose a regular Haar measure `μ_B` on `B`. The pullback `μ_A := f^* μ_B` is
-also a regular Haar measure by
-the first two lemmas just cited.
-Now fix a continuous compactly-supported function `g` on `A` with
-$`0 < ∫ g(a) dμ(a) < ∞`. Then $`d_A(α) ∫ g(a) dμ_A(a) = ∫ g(a) d(α^* μ_A)(a)`
-by lemma `MeasureTheory.addEquivAddHaarChar_smul_integral_comap`.
-This equals `∫ g(a) d(α^* f^* μ_B)(a)` by definition, which is
-`∫ g(a) d(f^* β^* μ_B)(a)` because pullback of pullback is pullback.
-This equals $`d_B(β) ∫ g(a) d(f^* μ_B)(a)` by
-corollary `MeasureTheory.addEquivAddHaarChar_comap`, which is
-$`d_B(β) ∫ g(a) dμ_A(a)` by definition, and so $`d_A(α) = d_B(β)` as required.
+also a regular Haar measure by the first two lemmas just cited. Now fix a
+continuous compactly-supported function `g` on `A` with
+$`0<\int g(a)d\mu(a)<\infty`. Then
+$`d_A(\alpha)\int g(a)d\mu_A(a)=\int g(a)d(\alpha^*\mu_A)(a)` by lemma. This
+equals $`\int g(a)d(\alpha^* f^*\mu_B)(a)` by definition, which is
+$`\int g(a)d(f^*\beta^*\mu_B)(a)` because pullback of pullback is pullback.
+This equals $`d_B(\beta)\int g(a)d(f^*\mu_B)(a)` by corollary, which is
+$`d_B(\beta)\int g(a)d\mu_A(a)` by definition, and so
+$`d_A(\alpha)=d_B(\beta)` as required.
 :::
 
 ```tex
@@ -1736,8 +1735,10 @@ the product formula.
 ```
 
 :::corollary "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker")
-If `B` is a finite-dimensional $`\Q`-algebra, if $`B_{\A}` denotes the ring
-$`B \otimes_{\Q} \A_{\Q}`, and if $`b ∈ B^\times`, then $`δ_{B_{\A}}(b)=1`.
+If `B` is a finite-dimensional $`\Q`-algebra, for example a number field, or a
+quaternion algebra over a number field, if $`B_{\A}` denotes the ring
+$`B\otimes_{\Q}\A_{\Q}`, and if $`b\in B^\times`, then
+$`\delta_{B_{\A}}(b)=1`.
 :::
 
 ```tex "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (slot := statement)

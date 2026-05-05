@@ -475,7 +475,7 @@ for all $`g \in G`:
 
 :::proof "fixed_of_fixed1_aux2"
 {uses "fixed_of_fixed1_aux1"}[]
-Multiply the $`b` from the referenced lemma by $`b_0`.
+Multiply the $`b` from {uses "fixed_of_fixed1_aux1"}[] by $`b_0`.
 :::
 
 ```tex "fixed_of_fixed1_aux2" (slot := proof)
