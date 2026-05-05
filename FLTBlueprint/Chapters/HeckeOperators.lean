@@ -843,7 +843,7 @@ Openness is already in mathlib.
   Openness is already in mathlib.
 \end{proof}
 ```
-:::lemma_ "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
+:::lemma_ "NumberField.instCompactSpaceAdicCompletionIntegers" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
 $`\calO_v` is a compact subring of $`K_v`.
 :::
 
@@ -856,7 +856,7 @@ $`\calO_v` is a compact subring of $`K_v`.
 \end{lemma}
 ```
 
-:::proof "local_integer_ring_compact"
+:::proof "NumberField.instCompactSpaceAdicCompletionIntegers"
 Compactness lies a little deeper because it assumes that the residue field of
 $`K_v` is finite.
 :::
