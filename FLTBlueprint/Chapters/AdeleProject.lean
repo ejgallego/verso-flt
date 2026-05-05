@@ -372,7 +372,7 @@ $`e\times w(i(k))=v(k)`, where $`e` is the ramification index of $`w/v`.
 ```
 
 :::proof "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"
-Follows by continuity from lemma `IsDedekindDomain.HeightOneSpectrum.valuation_comap`.
+Follows by continuity from lemma.
 :::
 
 ```tex
@@ -641,10 +641,8 @@ of modules each of which has the module topology.
 
 :::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv")
 {uses "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology"}[]
-If $`L \otimes_K K_v` is given the $`K_v`-module topology, then the local
-algebraic isomorphism
-$`L \otimes_K K_v \cong \prod_{w \mid v} L_w`
-is also a homeomorphism.
+If we give $`L\otimes_KK_v` the $`K_v`-module topology, then the `L`-algebra
+isomorphism $`L\otimes_K K_v\cong\prod_{w|v}L_w` is also a homeomorphism.
 :::
 ```tex
 \begin{theorem}
@@ -658,9 +656,9 @@ is also a homeomorphism.
 
 
 :::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv"
-Indeed, it is a $`K_v`-algebra isomorphism between two modules each of which has
-the module topology, and any module map is automatically continuous for the
-module topologies.
+Indeed, it is a $`K_v`-algebra isomorphism between two modules each of which
+have the module topology, and any module map is automorphically continuous for
+the module topologies.
 :::
 ```tex
 \begin{proof} Indeed, is a $K_v$-algebra isomorphism between two modules each of which
@@ -948,9 +946,9 @@ $`B \otimes_A M \to L \otimes_K M` is an isomorphism.
 
 :::proof "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"
 We can factor this map as
-$`B \otimes_A M \cong B \otimes_A (K \otimes_K M) \cong
-(B \otimes_A K) \otimes_K M \to L \otimes_K M`$, and we just showed that the
-latter map was an isomorphism.
+$`B\otimes_AM\cong B\otimes_A(K\otimes_KM)\cong
+(B\otimes_A K)\cong_KM\to L\otimes_KM`, and we just showed that the latter map
+was an isomorphism.
 :::
 ```tex
 \begin{proof}
@@ -980,7 +978,9 @@ $`B` is a finitely presented $`A`-module.
 
 :::proof "IsDedekindDomain.AKLB.finitePresentation"
 $`A` is Noetherian as it is a Dedekind domain, so it suffices to prove that
-$`B` is finitely generated as an $`A`-module. But this is in mathlib already.
+$`B` is finitely generated as an $`A`-module. But this is in mathlib already:
+a proof is around line `101` of `BaseChange.lean` in FLT at the time of
+writing.
 :::
 ```tex
 \begin{proof} $A$ is Noetherian as it is a Dedekind domain, so it suffices to prove that $B$ is
@@ -1849,9 +1849,9 @@ Follows from the previous results.
 
 :::theorem "NumberField.AdeleRing.baseChange_moduleTopology" (parent := "adele_project") (lean := "NumberField.AdeleRing.instIsModuleTopology")
 {uses "NumberField.AdeleRing.baseChangeEquiv"}[]
-If `K -> L` is a ring homomorphism between two number fields, then the topology
+If $`K\to L` is a ring homomorphism between two number fields, then the topology
 on $`\A_L` is the $`\A_K`-module topology, where the module structure comes from
-the natural map $`\A_K -> \A_L`.
+the natural map $`\A_K\to\A_L`.
 :::
 ```tex
 \begin{theorem}
@@ -1867,8 +1867,8 @@ the natural map $`\A_K -> \A_L`.
 
 
 :::proof "NumberField.AdeleRing.baseChange_moduleTopology"
-Indeed theorem `NumberField.AdeleRing.baseChangeEquiv` identifies $`\A_L` with
-$`L \otimes_K \A_K`, and the right hand side has the $`\A_K`-module topology.
+Indeed $`\A_L\cong L\otimes_K\A_K` is a homeomorphism, and the right hand side
+has the $`\A_K`-module topology.
 :::
 ```tex
 \begin{proof}
@@ -1893,8 +1893,8 @@ quotient topology) is compact. Here is a proposed proof.
 
 
 :::theorem "Rat.AdeleRing.zero_discrete" (parent := "adele_project") (lean := "Rat.AdeleRing.zero_discrete")
-There is an open subset of the rational adeles whose intersection with `ℚ` is
-just `{0}`.
+There's an open subset of $`\A_{\Q}` whose intersection with $`\Q` is
+$`\{0\}`.
 :::
 ```tex
 \begin{theorem}
@@ -1982,7 +1982,7 @@ and $`U+x` is open.
 
 
 :::theorem "Rat.AdeleRing.cocompact" (parent := "adele_project") (lean := "Rat.AdeleRing.cocompact")
-The quotient $`\mathbf{A}_{\mathbf{Q}} / \mathbf{Q}` is compact.
+The quotient $`\A_{\Q}/\Q` is compact.
 :::
 ```tex
 \begin{theorem}

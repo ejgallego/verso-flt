@@ -427,9 +427,8 @@ $T_g(f)=\sum g_i\cdot f$.
 ```
 
 :::lemma_ "gln_hecke_operator_well_defined" (parent := "gln_langlands_program")
-This function is well-defined, in the sense that it sends a $`U`-invariant form
-to a $`U`-invariant form and is independent of the choice of the representatives
-$`g_i`.
+This function is well-defined, i.e. it sends a $`U`-invariant form to a
+$`U`-invariant form which is independent of the choice of $`g_i`.
 :::
 
 ```tex "gln_hecke_operator_well_defined" (slot := statement)

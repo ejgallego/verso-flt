@@ -29,14 +29,14 @@ Reducibility of `p`-torsion of the Frey curve.
 
 # Overview
 
-In the reductions chapter we reduced Fermat's Last Theorem, modulo a hard
-theorem from the `1970`s, to the assertion that `p`-torsion in the Frey curve
-is reducible. In this chapter we deduce that assertion from three more complex
-claims about hardly ramified Galois representations. One of those three claims
-is comparatively close to Fontaine's work from the `1980`s on the
-nonexistence of nontrivial abelian schemes over $`\mathbf{Z}`. The other two
-lie deeper and use techniques developed in the `1990`s and later around
-Wiles-style $`R = T` arguments.
+In the reductions chapter we reduced FLT, modulo a hard theorem from the
+`1970`s, to theorem `Wiles_Frey`, the assertion that `p`-torsion in the Frey
+curve is reducible. In this chapter we deduce this assertion from three more
+complex claims about hardly ramified Galois representations. It is relatively
+straightforward to reduce one of these three claims to a result of Fontaine
+proved in the `1980`s in his paper on the nonexistence of nontrivial abelian
+schemes over $`\mathbf{Z}`. The other two claims lie deeper, and their proofs
+use techniques initially developed by Wiles in the `1990`s.
 
 ```tex
 In chapter~\ref{ch_reductions} we reduced FLT, modulo a hard theorem from the 1970s,
@@ -51,11 +51,11 @@ the 1990s.
 
 # Hardly Ramified Representations
 
-Let $`(a,b,c,p)` be a Frey package, let `E` be the corresponding Frey curve
-over $`\Q`, and let
+Let $`(a,b,c,p)` be a Frey package, so in particular $`p\geq5` is prime and
+$`a^p+b^p=c^p`, let `E` be the corresponding Frey curve over $`\Q`, and let
 $`\rho : \GQ \to \Aut(E(\Qbar)[p])`
-be the `2`-dimensional Galois representation on the `p`-torsion of `E`. Our
-goal is to prove that $`\rho` is reducible.
+be the `2`-dimensional Galois representation on the $`p`-torsion of `E`.
+Recall that our goal is to prove that $`\rho` is reducible.
 
 ```tex
 Let $(a,b,c,p)$ be a Frey package (so in particular $p\geq5$ is prime and $a^p+b^p=c^p$),
@@ -166,10 +166,10 @@ representability theorems easier.
 \end{remark}
 ```
 
-Because a coefficient ring with residue characteristic $`\ell` is naturally a
-$`\mathbf{Z}_\ell`-algebra, we can talk about the $`\ell`-adic cyclotomic
-character with values in that ring. We are now ready to define hardly ramified
-representations.
+Because a coefficient ring `R` with residue field of characteristic $`\ell` is
+naturally a $`\mathbf{Z}_\ell`-algebra, we can talk about the $`\ell`-adic
+cyclotomic character $`\GQ\to R^\times`. We are now ready to define hardly
+ramified representations.
 
 ```tex
 Because a coefficient ring~$R$ with residue field of characteristic $\ell$ is naturally
@@ -229,8 +229,8 @@ A well-known result, which basically goes back to Frey, is the following:
 
 :::theorem "Frey_curve_hardly_ramified" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_isHardlyRamified")
 {uses "hardly_ramified"}[]
-The $`\ell`-torsion representation in the Frey curve attached to a Frey package
-$`(a,b,c,\ell)` is hardly ramified.
+The $`\ell`-torsion $`\rho:\GQ\to\GL_2(\Z/\ell\Z)` in the Frey curve associated
+to a Frey package $`(a,b,c,\ell)` is hardly ramified.
 :::
 
 ```tex "Frey_curve_hardly_ramified" (slot := statement)
@@ -340,8 +340,9 @@ Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 :::proof "Wiles_Frey_again"
 {uses "Frey_curve_hardly_ramified"}[]
 {uses "hardly_ramified_reducible"}[]
-Indeed, $`\rho` is hardly ramified by the former theorem and thus reducible by
-the latter.
+Indeed, $`\rho` is hardly ramified by theorem
+{uses "Frey_curve_hardly_ramified"}[] and thus reducible by theorem
+{uses "hardly_ramified_reducible"}[].
 :::
 
 ```tex "Wiles_Frey_again" (slot := proof)
@@ -353,7 +354,7 @@ the latter.
 ```
 
 Our job of reducing FLT to theorems of the `1980`s is hence reduced to proving
-`hardly_ramified_reducible`.
+the theorem.
 
 ```tex
 Our job of reducing FLT to theorems of the 1980s is hence reduced to proving
@@ -362,7 +363,7 @@ Theorem~\ref{hardly_ramified_reducible}.
 
 ## Hardly Ramified Mod `p` Representations Are Reducible
 
-In this section we will state three theorems, from which
+In this section we will state three theorems, from which theorem
 `hardly_ramified_reducible` easily follows.
 
 ```tex

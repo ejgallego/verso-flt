@@ -24,8 +24,8 @@ First reductions of the problem.
 
 # Goal
 
-The goal of this chapter is to reduce Fermat's Last Theorem to one deep theorem
-of Mazur and one deep theorem of Wiles about a Galois representation.
+The goal of this chapter is to reduce FLT to a deep theorem of Mazur and a deep
+theorem of Wiles about a Galois representation.
 
 ```tex
 The goal of this chapter is to reduce FLT to a deep theorem of Mazur and a deep theorem of Wiles
@@ -116,9 +116,9 @@ There are no solutions in positive integers to $`a^3+b^3=c^3`.
 ```
 
 :::proof "fermatLastTheoremThree"
-The proof in mathlib was formalized by a team from the Lean For the Curious
-Mathematician conference held in Luminy in March `2024` (its dependency graph
-can be visualized [here](https://pitmonticone.github.io/FLT3/blueprint/dep_graph_document.html)).
+The proof in mathlib was formalized by a team from the "Lean For the Curious
+Mathematician" conference held in Luminy in March `2024` (its dependency graph
+can be visualised [here](https://pitmonticone.github.io/FLT3/blueprint/dep_graph_document.html)).
 :::
 
 ```tex "fermatLastTheoremThree" (slot := proof)
@@ -193,26 +193,26 @@ exists a Frey package.
 ```
 
 :::proof "FreyPackage.of_not_FermatLastTheorem_p_ge_5"
-Suppose we have a counterexample $`a^p+b^p=c^p`; we now build a Frey package
-from this data, following the arithmetic normalization recorded in
-{uses "FreyPackage"}[].
+{uses "FreyPackage"}[]
+Suppose we have a counterexample $`a^p+b^p=c^p` for the given `p`; we now build
+a Frey package from this data.
 
-If the greatest common divisor of `a`, `b`, and `c` is `d`, then
-$`a^p+b^p=c^p` implies $`(a/d)^p+(b/d)^p=(c/d)^p`. Dividing through, we may
-thus assume that no prime divides all of `a`, `b`, and `c`. Under this
-assumption, the three integers are pairwise coprime, because if some prime
-divides two of them then the equation forces it to divide the third as well.
-In particular, not all of `a`, `b`, and `c` are even, and reducing modulo `2`
-shows that precisely one of them must be even.
+If the greatest common divisor of $`a,b,c` is `d`, then $`a^p+b^p=c^p` implies
+$`(a/d)^p+(b/d)^p=(c/d)^p`. Dividing through, we can thus assume that no prime
+divides all of $`a,b,c`. Under this assumption we must have that $`a,b,c` are
+pairwise coprime, as if some prime divides two of the integers $`a,b,c` then by
+$`a^p+b^p=c^p` and unique factorization it must divide all three of them. In
+particular we may assume that not all of $`a,b,c` are even, and now reducing
+modulo `2` shows that precisely one of them must be even.
 
-Next we arrange that `b` is the even one. If `a` is even, we switch `a` and
-`b`. If `c` is even, we replace `c` by `-b` and `b` by `-c`, using that `p` is
-odd.
+Next we show that we can find a counterexample with `b` even. If `a` is the
+even one, then we can just switch `a` and `b`. If `c` is the even one, then we
+can replace `c` by `-b` and `b` by `-c`, using that `p` is odd.
 
-The last thing to ensure is that `a` is `3` modulo `4`. Because `b` is even,
-we know that `a` is odd, so it is either `1` or `3` modulo `4`. If `a` is
-already `3` modulo `4` then we are done; if `a` is `1` modulo `4`, we replace
-`a`, `b`, and `c` by their negatives, and this gives the Frey package we seek.
+The last thing to ensure is that `a` is `3` mod `4`. Because `b` is even, we
+know that `a` is odd, so it is either `1` or `3` mod `4`. If `a` is `3` mod `4`
+then we are home; if however `a` is `1` mod `4`, we replace $`a,b,c` by their
+negatives, and this is the Frey package we seek.
 :::
 
 ```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (slot := proof)
@@ -256,13 +256,15 @@ This curve (or strictly speaking its projectivisation) is a so-called elliptic c
 of $f(X)$ lie).
 ```
 
-If $`E : Y^2 = f(X)` is an elliptic curve over $`\Q`, and if `K` is any field
-of characteristic zero, then `E(K)` denotes the set of solutions to
-$`y^2=f(x)` with $`x,y \in K`, together with a point at infinity. It is an
+If $`E : Y^2 = f(X)` is an elliptic curve over $`\Q`, and if `K` is any
+characteristic zero field, and hence a $`\Q`-algebra, then we write `E(K)` for
+the set of solutions to $`y^2=f(x)` with $`x,y \in K`, together with an
+additional "point at infinity" corresponding morally to $`x=y=\infty`. It is an
 extraordinary fact, and not at all obvious, that `E(K)` naturally has the
-structure of an additive abelian group with the point at infinity as identity.
-This group law is already in mathlib. It has the further property that three
-distinct points `P`, `Q`, and `R` of `E(K)` sum to zero if and only if they are
+structure of an additive abelian group, with the point at infinity being the
+zero element, the identity. Fortunately this fact is already in `mathlib`. This
+additive group structure has the property that three distinct points `P`, `Q`,
+`R` in $`K^2` which are in `E(K)` will sum to zero if and only if they are
 collinear.
 
 ```tex

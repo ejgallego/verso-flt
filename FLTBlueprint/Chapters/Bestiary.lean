@@ -163,11 +163,11 @@ We now move onto the global case. If $N$ is a number field, that is, a finite ex
 
 :::theorem "global_class_field_theory" (parent := "bestiary_appendix")
 {uses "local_class_field_theory"}[]
-If `N` is a finite extension of $`\Q`, then there are two canonical
+If `N` is a finite extension of $`\Q` then there are two "canonical"
 isomorphisms of topological groups between the profinite abelian groups
 $`\pi_0(\A_N^\times/N^\times)` and $`\Gamma_N^{ab}`; one sends local
-uniformizers to arithmetic Frobenii and the other to geometric Frobenii, and
-each is compatible with the local isomorphisms above.
+uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each
+of the global isomorphisms is compatible with the local isomorphisms above.
 :::
 
 ```tex "global_class_field_theory" (slot := statement)
@@ -177,7 +177,7 @@ each is compatible with the local isomorphisms above.
 
 :::proof "global_class_field_theory"
 This is the main theorem of global class field theory; see for example Tate's
-article in the cited class-field-theory references.
+article in the cited reference.
 :::
 
 ```tex "global_class_field_theory" (slot := proof)
@@ -607,7 +607,14 @@ $`L_v/K_v` be a finite Galois extension. Suppose also that $`T/K` is a
 smooth, geometrically connected curve and that for each $`v\in S` we are given
 a nonempty, $`\operatorname{Gal}(L_v/K_v)`-invariant open subset
 $`\Omega_v\subseteq T(L_v)`. Then there is a finite Galois extension $`L/K` and
-a point $`P\in T(L)` with the prescribed local behavior.
+a point $`P\in T(L)` such that:
+
+- $`L/K` is Galois and linearly disjoint from $`K^{\avoid}` over `K`.
+- If $`v\in S` and `w` is a prime of `L` above `v`, then $`L_w/K_v` is
+  isomorphic to $`L_v/K_v`.
+- $`P\in\Omega_v\subseteq T(L_v)\cong T(L_w)` via one such $`K_v`-algebra
+  morphism; this makes sense as $`\Omega_v` is
+  $`\operatorname{Gal}(L_v/K_v)`-invariant.
 :::
 
 ```tex "moret-bailly" (slot := statement)

@@ -68,8 +68,6 @@ which acts; there are no finiteness or Noetherian hypotheses on the rings at
 all.
 
 ```tex
-The goal of the mini-project is to get this theorem formalised and ideally into mathlib.
-
 In particular, $\Aut(L/K)$ is finite
 as a corollary. What is so striking about this theorem to me is that the only finiteness hypothesis
 is on the group $G$ which acts; there are no finiteness or Noetherian
@@ -477,7 +475,7 @@ for all $`g \in G`:
 
 :::proof "fixed_of_fixed1_aux2"
 {uses "fixed_of_fixed1_aux1"}[]
-Multiply the $`b` from `fixed_of_fixed1_aux1` by $`b_0`.
+Multiply the $`b` from the referenced lemma by $`b_0`.
 :::
 
 ```tex "fixed_of_fixed1_aux2" (slot := proof)
@@ -667,7 +665,7 @@ $`\Aut(L/K)`. But this is exactly `fixed_of_fixed1`.
 \end{proof}
 ```
 
-Combining this with `FixedPoints.toAlgAut_surjective` finishes the proof.
+Combining this with the referenced theorem finishes the proof.
 
 ```tex
 Combining this with~\ref{FixedPoints.toAlgAut_surjective} finishes the proof.

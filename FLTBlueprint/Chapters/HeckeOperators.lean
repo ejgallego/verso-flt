@@ -1112,8 +1112,8 @@ to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
 ```
 :::theorem "GL2.restrictedProduct" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct")
-`G` is isomorphic and homeomorphic to the restricted product of $`GL₂(K_v)` with respect
-to the compact open subgroups $`GL₂(\mathcal{O}_v)`.
+`G` is isomorphic and homeomorphic to the restricted product of $`GL_2(K_v)`
+with respect to the compact open subgroups $`GL_2(\calO_v)`.
 :::
 
 ```tex
@@ -1130,7 +1130,7 @@ to the compact open subgroups $`GL₂(\mathcal{O}_v)`.
 {uses "ContinuousMulEquiv.restrictedProductUnits"}[]
 {uses "Homeomorph.restrictedProductMatrix"}[]
 {uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[]
-This follows from the former lemma and the latter lemma.
+This follows from lemma and lemma.
 :::
 
 ```tex

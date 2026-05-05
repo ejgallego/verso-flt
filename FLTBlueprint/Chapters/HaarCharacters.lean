@@ -74,10 +74,10 @@ $(\phi_*\mu)(X)=\mu(\phi^{-1}X)$ for any Borel subset $X$ of $A$.
 ```
 
 :::definition "MeasureTheory.addEquivAddHaarChar" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar")
-For a locally compact additive abelian group `A`, a regular Haar measure `μ`,
-and an additive homeomorphism $`φ : A ≃ₜ+ A`, the Haar character $`d_A(φ)` is
-the unique positive real such that $`μ(X) = d_A(φ) (φ_* μ)(X)` for every Borel
-set `X`.
+If `A` is a locally compact topological additive abelian group, if $`\mu` is a
+regular Haar measure on `A`, and if $`\phi:A\to A` is an additive
+homeomorphism, then we let $`d_A(\phi)` denote the unique positive real number
+such that $`\mu(X)=d_A(\phi)(\phi_*\mu)(X)` for any Borel set `X`.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar" (slot := statement)
@@ -309,8 +309,7 @@ $`d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_map"
 {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
-This also follows immediately from lemma
-`MeasureTheory.addEquivAddHaarChar_smul_map`.
+This also follows immediately from lemma.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := proof)
@@ -357,7 +356,7 @@ This is immediate from corollary `MeasureTheory.addEquivAddHaarChar_comap`.
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_trans" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
 {uses "MeasureTheory.addEquivAddHaarChar"}[]
-$`d_A(φ ∘ ψ)=d_A(φ)d_A(ψ)`.
+$`d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi)`.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := statement)
@@ -516,7 +515,7 @@ If $`f : R → ℝ` is Borel measurable and $`u ∈ R^\times`, then
 
 :::proof "MeasureTheory.ringHaarChar_mul_integral"
 {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_map"}[]
-A short calculation using the previous lemma.
+A short calculation using lemma.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := proof)
@@ -547,7 +546,7 @@ If `X` is a Borel subset of `R` and $`r ∈ R^\times`, then
 
 :::proof "MeasureTheory.ringHaarChar_mul_volume"
 {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
-Immediate from the previous lemma.
+Immediate from lemma.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_mul_volume" (slot := proof)
@@ -577,11 +576,13 @@ The function $`δ_R : R^\times → ℝ_{>0}` is continuous.
 :::proof "MeasureTheory.ringHaarChar_continuous"
 {uses "MeasureTheory.ringHaarChar_mul_integral"}[]
 Fix a Haar measure $`\mu` on `R` and a continuous real-valued function `f` on
-`R` with compact support and such that $`\int f(x) d\mu(x) \neq 0`. Then
-$`r \mapsto \int f(rx) d\mu(x)` is continuous, and so is
-$`u \mapsto (\int f(ux) d\mu(x))/(\int f(x) d\mu(x))`. Hence `δ_R^{-1}` is
-continuous from {uses "MeasureTheory.ringHaarChar_mul_integral"}[], and thus
-`δ_R` is too.
+`R` with compact support and such that $`\int f(x) d\mu(x)\not=0`. Then
+$`r \mapsto \int f(rx) d\mu(x)` is a continuous function from $`R\to\R`,
+because a continuous function with compact support is uniformly continuous, and
+thus gives a continuous function $`R^\times\to\R`. Thus the function
+$`u\mapsto(\int f(ux)d\mu(x))/(\int f(x)d\mu(x))` is a continuous function from
+$`R^\times` to $`\R` taking values in $`\R_{>0}`. Hence $`\delta_R^{-1}` is
+continuous from lemma, and thus $`\delta_R` is too.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_continuous" (slot := proof)
@@ -692,7 +693,7 @@ induction principle
 explicitly for diagonal matrices and for matrices which are the identity except
 that one off-diagonal entry is non-zero.
 
-Note: we assume that `F` is second countable, but it should not be necessary.
+Note: we assume that `F` is second countable, but it shouldn't be necessary.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (slot := proof)
@@ -1007,7 +1008,7 @@ $`\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_prod"
-Follows immediately from lemma `MeasureTheory.addEquivAddHaarChar_prodCongr`.
+Follows immediately from lemma.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_prod" (slot := proof)
@@ -1036,7 +1037,7 @@ $`\delta_{\prod_i R_i}((u_i)_i)=\prod_i\delta_{R_i}(u_i)`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_pi"
-Follows immediately from lemma `MeasureTheory.addEquivAddHaarChar_piCongrRight`.
+Follows immediately from lemma.
 :::
 
 ```tex "MeasureTheory.ringHaarChar_pi" (slot := proof)
@@ -1300,8 +1301,8 @@ The following theorem shows that the value of this product is $d(\phi)$.
 ```
 
 :::theorem "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight")
-With `A`, $`A_i`, $`C_i`, `φ_i`, and `φ` defined as above, one has
-$`δ_A(φ) = ∏_i δ_{A_i}(φ_i)`.
+With `A`, $`A_i`, $`C_i`, $`\phi_i`, $`\phi` defined as above, we have
+$`\delta_A(\phi)=\prod_i\delta_{A_i}(\phi_i)`.
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight" (slot := statement)
@@ -1353,17 +1354,16 @@ algebra and this is all we need in our applications to adeles.
 {uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[]
 Assume $`φ_i(C_i)=C_i` for all $`i\not\in S`, a finite set, and work in the
 open subgroup $`U:=\prod_{i\in S}A_i\times\prod_{i\not\in S}C_i`. Then `φ`
-induces an automorphism `φ_S` of `U`, and
-tells us that $`δ(\phi)=δ_U(\phi_S)`.
-
-Next note that `φ_S` can be written as a product of automorphisms of
-$`\prod_{i\not\in S}C_i` and $`\prod_{i\in S}A_i`, so by
-{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[] we have
-$`δ(\phi)=δ(\prod_{i\not\in S}\phi_i|_{C_i})\times\delta(\prod_{i\in S}\phi_i)`.
-Because $`\prod_{i\notin S}C_i` is a compact group, the first term is `1` by
-lemma `MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace`. Finally
-lemma `MeasureTheory.addEquivAddHaarChar_piCongrRight` gives the second
-term as $`\prod_{i\in S}\delta(\phi_i)`.
+induces an automorphism $`\phi_S` of this open subgroup `U` of `A`, and in
+particular lemma tells us that $`\delta(\phi)=\delta_U(\phi_S)`. Next note
+that $`\phi_S:U\to U` can be written as a product of the automorphisms
+$`\prod_{i\not\in S}\phi_i|_{C_i}` of $`\prod_{i\not\in S}C_i` and
+$`\prod_{i\in S}\phi_i` of $`\prod_{i\in S}A_i`, so by lemma we have
+$`\delta(\phi)=\delta(\prod_{i\not\in S}\phi_i|_{C_i})\times\delta(\prod_{i\in S}\phi_i)`.
+Because $`\prod_{i\not\in S}C_i` is a compact group we must have
+$`\delta(\phi_{i\not\in S}\phi_i|_{C_i})=1` by lemma. Finally
+$`\delta(\prod_{i\in S}\phi_i)=\prod_{i\in S}\delta(\phi_i)` by lemma and we are
+home.
 :::
 
 ```tex

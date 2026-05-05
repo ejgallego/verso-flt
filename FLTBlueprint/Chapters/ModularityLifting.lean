@@ -153,21 +153,23 @@ We prove more generally that matrices with coefficients in `K` and indexed by
 an arbitrary nonempty finite type are a central simple algebra over `K`.
 
 They are clearly an algebra over `K`, with `K` embedded via scalar matrices as
-usual; the injectivity of the map from `K` comes from nonemptiness of the
-finite index type. The centre clearly contains `K`. To show that it equals
-`K`, let `e(i,j)` be the matrix with a `1` in the `i`th row and `j`th column
-and zeros everywhere else. An element $`Z = (Z_{s,t})` of the centre commutes
-with all matrices `e(i,j)` for $`i \ne j`, and these equations immediately imply
-that $`Z_{i,j} = 0` if $`i \ne j` and that $`Z_{i,i} = Z_{j,j}`.
+usual (the injectivity of the map from `K` comes from nonemptiness of the finite
+index type). The centre clearly contains `K`; to show that it equals `K`, we
+argue as follows. Let `e(i,j)` be the matrix with a `1` in the `i`th row and
+`j`th column, and zeros everywhere else. An element
+$`Z=(Z_{s,t})_{s,t}` of the centre commutes with all matrices `e(i,j)` for
+$`i\not=j` and these equations immediately imply that $`Z_{i,j}=0` if
+$`i\not=j` and that $`Z_{i,i}=Z_{j,j}`.
 
-It remains to prove that any nonzero two-sided ideal is the whole matrix ring.
-Choose a nonzero matrix in the ideal and a nonzero entry of that matrix. The
-usual matrix-unit computation then shows that a nonzero scalar multiple of the
-identity lies in the ideal, hence the identity itself lies in the ideal, so the
-ideal is all of $`M_n(K)`.
+It suffices to prove that any nonzero two-sided ideal `I` is all of
+$`M_n(K)`. So say $`0\not=M\in I` and let us fix $`(i,j)` such that
+$`M_{i,j}\not=0`. One easily checks that
+$`M_{i,j} \mathrm{id} = \sum_k e(k,i)\times M\times e(j,k)\in I`, where
+$`\mathrm{id}\in M_n(K)` is the identity matrix. Therefore,
+$`\mathrm{id}\in I`, so $`I=M_n(K)`.
 
-The nonzero condition in the definition follows from the index type being
-nonempty.
+The definition also requires that the ring be nonzero, but this follows from
+the index type being nonempty.
 :::
 
 ```tex "MatrixRing.isCentralSimple" (slot := proof)

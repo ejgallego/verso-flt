@@ -489,7 +489,7 @@ Let $`T = Y \cap D^\times`.
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
-The set `T` is finite.
+$`T` is finite.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (slot := statement)
@@ -525,8 +525,7 @@ finite.
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.C" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-Define the compact constraint set
-$`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
+Define $`C := (T^{-1}.X)\times X\subset D_{\A}\times D_{\A}`.
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C" (slot := statement)
@@ -542,7 +541,7 @@ $`C = (T^{-1} X) \times X \subseteq D_A \times D_A`.
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact")
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
-The set `C` is compact.
+$`C` is compact.
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"}[]
 {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"}[]
 :::
