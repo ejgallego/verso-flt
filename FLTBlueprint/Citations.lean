@@ -1,4 +1,7 @@
+import VersoManual.InlineLean.LongLines
 import VersoManual.Bibliography
+import VersoBlueprint.MathLint
+import VersoBlueprint.Informal.ExternalCode
 import VersoBlueprint.Cite
 
 open Verso.Genre.Manual
