@@ -141,8 +141,7 @@ counterexample $`a^p+b^p=c^p` with `p` prime and $`p \ge 5`.
 ```
 
 :::proof "FermatLastTheorem.of_p_ge_5"
-{uses "fermatLastTheoremThree"}[]
-{uses "FermatLastTheorem.of_odd_primes"}[]
+Uses {uses "fermatLastTheoremThree"}[] and {uses "FermatLastTheorem.of_odd_primes"}[].
 Follows from the previous two lemmas.
 :::
 
@@ -193,7 +192,7 @@ exists a Frey package.
 ```
 
 :::proof "FreyPackage.of_not_FermatLastTheorem_p_ge_5"
-{uses "FreyPackage"}[]
+Uses {uses "FreyPackage"}[].
 Suppose we have a counterexample $`a^p+b^p=c^p` for the given `p`; we now build
 a Frey package from this data.
 
@@ -346,7 +345,7 @@ then a Frey package exists.
 ```
 
 :::definition "FreyCurve" (parent := "first_reductions") (lean := "FreyPackage.freyCurve")
-{uses "FreyPackage"}[]
+Uses {uses "FreyPackage"}[].
 Given a Frey package $`(a,b,c,p)`, the corresponding Frey curve is the elliptic
 curve over $`\Q` (considered by Frey and, before him, Hellegouarch) defined by the equation
 $`Y^2 = X(X-a^p)(X+b^p)`.
@@ -414,7 +413,7 @@ Is it irreducible or not?
 ```
 
 :::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey")
-{uses "FreyCurve"}[]
+Uses {uses "FreyCurve"}[].
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is irreducible.
 :::
@@ -464,7 +463,7 @@ a lot about the next result, which says the exact opposite.
 ```
 
 :::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey")
-{uses "FreyCurve"}[]
+Uses {uses "FreyCurve"}[].
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is reducible.
 :::
@@ -481,8 +480,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```
 
 :::proof "Wiles_Frey"
-{uses "Frey_curve_hardly_ramified"}[]
-{uses "hardly_ramified_reducible"}[]
+Uses {uses "Frey_curve_hardly_ramified"}[] and {uses "hardly_ramified_reducible"}[].
 This follows from theorem `Frey_curve_hardly_ramified`, which shows that the
 Frey representation is hardly ramified, together with theorem
 `hardly_ramified_reducible`, which shows that any hardly ramified mod `p`
@@ -500,8 +498,7 @@ representation is reducible.
 ```
 
 :::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false")
-{uses "Mazur_Frey"}[]
-{uses "Wiles_Frey"}[]
+Uses {uses "Mazur_Frey"}[] and {uses "Wiles_Frey"}[].
 There is no Frey package.
 :::
 

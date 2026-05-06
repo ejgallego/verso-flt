@@ -228,7 +228,7 @@ A well-known result, which basically goes back to Frey, is the following:
 ```
 
 :::theorem "Frey_curve_hardly_ramified" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_isHardlyRamified")
-{uses "hardly_ramified"}[]
+Uses {uses "hardly_ramified"}[].
 The $`\ell`-torsion $`\rho:\GQ\to\GL_2(\Z/\ell\Z)` in the Frey curve associated
 to a Frey package $`(a,b,c,\ell)` is hardly ramified.
 :::
@@ -338,8 +338,7 @@ Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 ```
 
 :::proof "Wiles_Frey_again"
-{uses "Frey_curve_hardly_ramified"}[]
-{uses "hardly_ramified_reducible"}[]
+Uses {uses "Frey_curve_hardly_ramified"}[] and {uses "hardly_ramified_reducible"}[].
 Indeed, $`\rho` is hardly ramified by theorem
 {uses "Frey_curve_hardly_ramified"}[] and thus reducible by theorem
 {uses "hardly_ramified_reducible"}[].
@@ -380,7 +379,7 @@ an irreducible hardly ramified mod $\ell$ representation lifts to an $\ell$-adic
 ```
 
 :::theorem "hardly_ramified_lifts" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.lifts")
-{uses "hardly_ramified"}[]
+Uses {uses "hardly_ramified"}[].
 If $`\ell \ge 3` is prime and
 $`\overline{\rho} : \GQ \to \GL_2(\mathbf{Z}/\ell\mathbf{Z})`
 is hardly ramified and irreducible, then there exists a finite extension
@@ -426,7 +425,7 @@ not made a definition of a hardly ramified 2-adic representation).
 ```
 
 :::theorem "hardly_ramified_spreads_out" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mem_isCompatible")
-{uses "hardly_ramified"}[]
+Uses {uses "hardly_ramified"}[].
 If $`\ell \ge 3` is prime, `K` is a finite extension of $`\Q_\ell` with
 integers $`\mathcal{O}` and if $`\rho : \GQ \to \GL_2(\mathcal{O})` is a hardly
 ramified representation whose reduction is irreducible, then there exists a
@@ -497,7 +496,7 @@ However, we can essentially completely classify the hardly ramified mod 3 Galois
 ```
 
 :::theorem "hardly_ramified_mod3_reducible" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.mod_three")
-{uses "hardly_ramified"}[]
+Uses {uses "hardly_ramified"}[].
 If `k` is a finite field of characteristic `3` and
 $`\overline{\rho} : \GQ \to \GL_2(k)` is hardly ramified, then
 $`\overline{\rho}` is an extension of the cyclotomic character by the trivial
@@ -535,8 +534,7 @@ representations:
 ```
 
 :::theorem "hardly_ramified_3adic_reducible" (parent := "hardly_ramified_program") (lean := "GaloisRepresentation.IsHardlyRamified.three_adic")
-{uses "hardly_ramified"}[]
-{uses "hardly_ramified_mod3_reducible"}[]
+Uses {uses "hardly_ramified"}[] and {uses "hardly_ramified_mod3_reducible"}[].
 If $`L / \Q_3` is a finite extension with integer ring $`\mathcal{O}_L` and
 $`\rho_3 : \GQ \to \GL_2(\mathcal{O}_L)` is hardly ramified, then, viewed as a
 representation to $`\GL_2(L)`, one has
@@ -580,9 +578,7 @@ as we now show.
 ```
 
 :::proof "hardly_ramified_reducible"
-{uses "hardly_ramified_lifts"}[]
-{uses "hardly_ramified_spreads_out"}[]
-{uses "hardly_ramified_3adic_reducible"}[]
+Uses {uses "hardly_ramified_lifts"}[], {uses "hardly_ramified_spreads_out"}[], and {uses "hardly_ramified_3adic_reducible"}[].
 Assume for a contradiction that $`\overline{\rho}` is irreducible. By theorem
 `hardly_ramified_lifts`, $`\overline{\rho}` lifts to a hardly ramified
  $`\ell`-adic representation $`\rho`. By theorem

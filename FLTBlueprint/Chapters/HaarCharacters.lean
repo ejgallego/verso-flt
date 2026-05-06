@@ -142,7 +142,7 @@ for additive groups.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_eq" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq")
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 $`d_A(\phi)` is independent of choice of regular Haar measure.
 :::
 
@@ -172,7 +172,7 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_map")
-{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_eq"}[].
 If `μ` is any regular Haar measure on `A` then
 $`d_A(\phi)(\phi_*\mu) = \mu.`
 :::
@@ -200,7 +200,7 @@ This is a restatement of the previous result.
 ```
 
 :::corollary "MeasureTheory.addEquivAddHaarChar_comap" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_eq_comap")
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[].
 If `μ` is any regular Haar measure on `A` then
 $`d_A(φ)μ = \phi^*μ`.
 :::
@@ -230,7 +230,7 @@ $`\phi^* \mu` and the fact that $`\phi_*\phi^*\mu = \mu`.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_refl" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_refl")
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 $`d_A(id)=1`.
 :::
 
@@ -245,7 +245,7 @@ $`d_A(id)=1`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_refl"
-{uses "MeasureTheory.addEquivAddHaarChar_eq"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_eq"}[].
 Clear.
 :::
 
@@ -258,7 +258,7 @@ Clear.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_preimage" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_preimage")
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 If `X` is a Borel set, then $`μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 :::
 
@@ -274,7 +274,7 @@ If `X` is a Borel set, then $`μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_preimage"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[].
 This follows immediately from lemma `MeasureTheory.addEquivAddHaarChar_smul_map`
 and the definition of the pushforward of a measure.
 :::
@@ -289,7 +289,7 @@ and the definition of the pushforward of a measure.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_smul_integral_map")
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 If $`f : A → ℝ` is a Borel measurable function then
 $`d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 :::
@@ -307,7 +307,7 @@ $`d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_map"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[].
 This also follows immediately from lemma.
 :::
 
@@ -326,7 +326,7 @@ We also have the following variant:
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (parent := "haar_character_project") (lean := "MeasureTheory.integral_comap_eq_addEquivAddHaarChar_smul")
-{uses "MeasureTheory.addEquivAddHaarChar_comap"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_comap"}[].
 If $`f : A → ℝ` is a Borel measurable function then
 $`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
 :::
@@ -354,7 +354,7 @@ This is immediate from corollary.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_trans" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_trans")
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 $`d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi)`.
 :::
 
@@ -370,7 +370,7 @@ $`d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi)`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_trans"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[].
 
 Here's one way: it suffices to prove that
 $`d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu = d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu`
@@ -408,7 +408,7 @@ If $`R=\R` then $`\delta_R(u)=|u|`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_real"
-{uses "MeasureTheory.ringHaarChar_mul_volume"}[]
+Uses {uses "MeasureTheory.ringHaarChar_mul_volume"}[].
 Take $`\mu` to be Lebesgue measure and $`X = [0,1]`. We have
 $`δ(u) = \mu(uX)`. If $`u > 0` then $`u[0,1] = [0,u]`, which has measure
 `u = |u|`, and if $`u < 0` then $`u[0,1] = [u,0]`, which has measure `-u = |u|`.
@@ -438,7 +438,7 @@ If $`R=\bbC` then $`\delta_R(u)=|u|^2`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_complex"
-{uses "MeasureTheory.ringHaarChar_mul_volume"}[]
+Uses {uses "MeasureTheory.ringHaarChar_mul_volume"}[].
 Multiplication by a positive real `r` sends a unit square to a square of area
 $`r^2 = |r|^2`. Multiplication by $`e^{i\theta}` is a rotation and thus does not
 change area. The general case follows.
@@ -476,9 +476,7 @@ an additive automorphism of $(R,+)$, so the preceding theory applies to $\ell_u$
 ```
 
 :::definition "MeasureTheory.ringHaarChar" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar")
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_refl"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_trans"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[], {uses "MeasureTheory.addEquivAddHaarChar_refl"}[], and {uses "MeasureTheory.addEquivAddHaarChar_trans"}[].
 We define `δ_R(u)`, or just `δ(u)` when the ring `R` is clear, to be
 $`d_R(ℓ_u)`.
 :::
@@ -495,7 +493,7 @@ $`d_R(ℓ_u)`.
 ```
 
 :::lemma_ "MeasureTheory.ringHaarChar_mul_integral" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_integral")
-{uses "MeasureTheory.ringHaarChar"}[]
+Uses {uses "MeasureTheory.ringHaarChar"}[].
 If $`f:R\to\R` is a Borel measurable function and $`u\in R^\times` then
 $`\delta_R(u)\int f(ux)d\mu(x)=\int f(x)d\mu(x)`.
 :::
@@ -513,7 +511,7 @@ $`\delta_R(u)\int f(ux)d\mu(x)=\int f(x)d\mu(x)`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_mul_integral"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_integral_map"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_map"}[].
 A short calculation using lemma.
 :::
 
@@ -526,8 +524,7 @@ A short calculation using lemma.
 ```
 
 :::lemma_ "MeasureTheory.ringHaarChar_mul_volume" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_mul_volume")
-{uses "MeasureTheory.ringHaarChar"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
+Uses {uses "MeasureTheory.ringHaarChar"}[] and {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[].
 If `X` is a Borel subset of `R` and $`r ∈ R^\times`, then
 `μ(rX) = δ_R(r) μ(X)`.
 :::
@@ -544,7 +541,7 @@ If `X` is a Borel subset of `R` and $`r ∈ R^\times`, then
 ```
 
 :::proof "MeasureTheory.ringHaarChar_mul_volume"
-{uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[].
 Immediate from lemma.
 :::
 
@@ -557,7 +554,7 @@ Immediate from lemma.
 ```
 
 :::corollary "MeasureTheory.ringHaarChar_continuous" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_continuous")
-{uses "MeasureTheory.ringHaarChar"}[]
+Uses {uses "MeasureTheory.ringHaarChar"}[].
 The function $`δ_R : R^\times → ℝ_{>0}` is continuous.
 :::
 
@@ -573,7 +570,7 @@ The function $`δ_R : R^\times → ℝ_{>0}` is continuous.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_continuous"
-{uses "MeasureTheory.ringHaarChar_mul_integral"}[]
+Uses {uses "MeasureTheory.ringHaarChar_mul_integral"}[].
 Fix a Haar measure $`\mu` on `R` and a continuous real-valued function `f` on
 `R` with compact support and such that $`\int f(x) d\mu(x)\not=0`. Then
 $`r \mapsto \int f(rx) d\mu(x)` is a continuous function from $`R\to\R`,
@@ -659,7 +656,7 @@ following lemma gives a formula for the scale factor $`d_V(φ)`.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc")
-{uses "MeasureTheory.ringHaarChar"}[]
+Uses {uses "MeasureTheory.ringHaarChar"}[].
 Assume that there's an `F`-basis for `V` such that $`\phi` is a product of
 elementary and diagonal matrices, note that this is automatic if `F` is a field
 and mathlib has this. Then $`d_V(\phi)=\delta_F(\det(\phi))`, where
@@ -684,7 +681,7 @@ $`\det(\phi)\in F` is the determinant of $`\phi` as an `F`-linear map.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"
-{uses "MeasureTheory.addEquivAddHaarChar"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 The proof is a generalization of
 `Real.map_matrix_volume_pi_eq_smul_volume_pi`, which crucially uses the
 induction principle
@@ -746,7 +743,7 @@ If $`u\in R^\times` then $`\delta_R(u)=\delta_F(\det(\ell_u))`.
 ```
 
 :::proof "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det"
-{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[].
 Follows immediately from the preceding lemma.
 :::
 
@@ -867,8 +864,7 @@ defined to mean $`d_B(\ell_u)`.
 ```
 
 :::proof "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight"
-{uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[]
+Uses {uses "IsSimpleRing.mulLeft_det_eq_mulRight_det"}[] and {uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[].
 If $`\ell_u` and $`r_u` denote left and right multiplication by `u` on `B`, then
 we have seen in lemma `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det`
 that $`d_B(r_u)=\delta_F(\det(r_u))`. Lemma
@@ -961,7 +957,7 @@ a group homomorphism we're home.
 ```
 
 :::lemma_ "MeasureTheory.addEquivAddHaarChar_piCongrRight" (parent := "haar_character_project") (lean := "MeasureTheory.addEquivAddHaarChar_piCongrRight")
-{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[].
 If $`A_i` are a finite collection of locally compact topological abelian groups,
 with $`\phi_i : A_i → A_i` additive homeomorphisms, then
 $`d_{\prod_i A_i}(\prod_i\phi_i)=\prod_i d_{A_i}(\phi_i)`.
@@ -991,7 +987,7 @@ Induction on the size of the finite set, using the previous lemma.
 ```
 
 :::lemma_ "MeasureTheory.ringHaarChar_prod" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_prod")
-{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[].
 If `R` and `S` are locally compact topological rings, then
 $`\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)`.
 :::
@@ -1018,7 +1014,7 @@ Follows immediately from lemma.
 ```
 
 :::lemma_ "MeasureTheory.ringHaarChar_pi" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_pi")
-{uses "MeasureTheory.addEquivAddHaarChar_piCongrRight"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_piCongrRight"}[].
 If $`R_i` are a finite collection of locally compact topological rings, and
 $`u_i\in R_i^\times`, then
 $`\delta_{\prod_i R_i}((u_i)_i)=\prod_i\delta_{R_i}(u_i)`.
@@ -1161,9 +1157,7 @@ additive homeomorphisms such that the square commutes
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding"
-{uses "Topology.IsOpenEmbedding.isHaarMeasure_comap"}[]
-{uses "Topology.IsOpenEmbedding.regular_comap"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"}[]
+Uses {uses "Topology.IsOpenEmbedding.isHaarMeasure_comap"}[], {uses "Topology.IsOpenEmbedding.regular_comap"}[], and {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"}[].
 Choose a regular Haar measure `μ_B` on `B`. The pullback `μ_A := f^* μ_B` is
 also a regular Haar measure by the first two lemmas just cited. Now fix a
 continuous compactly-supported function `g` on `A` with
@@ -1345,11 +1339,7 @@ algebra and this is all we need in our applications to adeles.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"
-{uses "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding"}[]
-{uses "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_piCongrRight"}[]
-{uses "Continuous.restrictedProduct_congrRight"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding"}[], {uses "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"}[], {uses "MeasureTheory.addEquivAddHaarChar_piCongrRight"}[], {uses "Continuous.restrictedProduct_congrRight"}[], and {uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[].
 Assume $`φ_i(C_i)=C_i` for all $`i\not\in S`, a finite set, and work in the
 open subgroup $`U:=\prod_{i\in S}A_i\times\prod_{i\not\in S}C_i`. Then `φ`
 induces an automorphism $`\phi_S` of this open subgroup `U` of `A`, and in
@@ -1405,7 +1395,7 @@ $`\delta_R(u)=\prod_i\delta_{R_i}(u_i)`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_restrictedProduct"
-{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[].
 By definition of restricted product we have $`u_i\in C_i` for all but finitely
 many `i`. Note also that `u` has an inverse $`v=(v_i)_i` with $`v_i\in C_i`
 for all but finitely many `i`. The fact that $`u_iv_i=v_iu_i=1` means that
@@ -1448,7 +1438,7 @@ topology.
 ```
 
 :::proof "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv"
-{uses "IsModuleTopology.continuous_bilinear_of_finite_left"}[]
+Uses {uses "IsModuleTopology.continuous_bilinear_of_finite_left"}[].
 Lemma `IsModuleTopology.continuous_bilinear_of_finite_left` tells us that
 $`V\otimes_K\A_K` has the $`\A_{\Q}`-module topology, and it is easily checked
 that the isomorphism is $`\A_{\Q}`-linear and hence automatically continuous.
@@ -1486,8 +1476,7 @@ $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
 ```
 
 :::proof "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"
-{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
-{uses "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[] and {uses "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight"}[].
 We think of $`B_{\A}` as $`B\otimes_K\A_K`. If $`u=(u_v)` as `v` runs through the
 places of `K`, then $`d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})` by
 `MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight`, and the
@@ -1539,10 +1528,7 @@ $`\delta_{\A_{\Q}}(x)=\prod_v|x_v|_v`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_adeles_rat"
-{uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[]
-{uses "MeasureTheory.ringHaarChar_real"}[]
-{uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[]
-{uses "MeasureTheory.ringHaarChar_padic"}[]
+Uses {uses "MeasureTheory.addEquivAddHaarChar_prodCongr"}[], {uses "MeasureTheory.ringHaarChar_real"}[], {uses "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"}[], and {uses "MeasureTheory.ringHaarChar_padic"}[].
 By theorem `MeasureTheory.addEquivAddHaarChar_prodCongr` we have
 $`\delta_{\A_{\Q}}(x)=\delta_{\A_{\Q}^\infty}(x^\infty)\times\delta_{\R}(x_\infty)`.
 By lemma `MeasureTheory.ringHaarChar_real` we have
@@ -1592,7 +1578,7 @@ $`\delta_{\A_{\Q}}(x)=1`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_adeles_units_rat_eq_one"
-{uses "MeasureTheory.ringHaarChar_adeles_rat"}[]
+Uses {uses "MeasureTheory.ringHaarChar_adeles_rat"}[].
 By lemma `MeasureTheory.ringHaarChar_adeles_rat` we have
 $`\delta_{\A_{\Q}}(x)=\prod_v|x|_v`. But the product formula says that this is
 `1`. A quick proof: if $`x=\pm\prod_pp^{e_p}`, then
@@ -1677,7 +1663,7 @@ $`\Lambda` in `V` and use the isomorphisms
 $$`V\otimes_{\mathbb{Q}}\mathbb{A}
 =\Lambda\otimes_{\mathbb{Z}}\mathbb{A}
 =\Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_\infty\times\prod'_p[\Lambda\otimes_{\mathbb{Z}}\mathbb{Q}_p;\Lambda\otimes_{\mathbb{Z}}\mathbb{Z}_p]
-=V\otimes_{\mathbb{Q}}\mathbb{Q}_\infty\times\prod'_p[V\otimes_{\mathbb{Q}}\mathbb{Q}_p;im(\Lambda\otimes_{\Z}\mathbb{Z}_p)]`$$
+=V\otimes_{\mathbb{Q}}\mathbb{Q}_\infty\times\prod'_p[V\otimes_{\mathbb{Q}}\mathbb{Q}_p;im(\Lambda\otimes_{\Z}\mathbb{Z}_p)]`
 and check that all of these canonical maps are continuous. One of these claims
 boils down to yet another claim of the form "if you do something to the
 factors and then take the restricted product, then this is topologically the
@@ -1752,7 +1738,7 @@ $`\delta_{B_{\A}}(b)=1`.
 ```
 
 :::proof "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"
-{uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[]
+Uses {uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[].
 Follows immediately from the previous theorem.
 :::
 
@@ -1781,7 +1767,7 @@ right multiplication by `b` does not change Haar measure on $`B_{\A}`.
 ```
 
 :::proof "NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one"
-{uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[]
+Uses {uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[].
 Follows immediately from the previous theorem.
 :::
 

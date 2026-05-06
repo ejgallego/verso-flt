@@ -121,7 +121,7 @@ to $`\sum_i g_i a`.
 \end{definition}
 ```
 :::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
-{uses "AbstractHeckeOperator.HeckeOperator_toFun"}[]
+Uses {uses "AbstractHeckeOperator.HeckeOperator_toFun"}[].
 This function is well-defined (that is, independent of the
 choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 :::
@@ -197,7 +197,7 @@ this cover must thus be finite.
 \end{proof}
 ```
 :::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
-{uses "AbstractHeckeOperator.HeckeOperator"}[]
+Uses {uses "AbstractHeckeOperator.HeckeOperator"}[].
 Say $`g,h \in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_i h_j = h_j g_i` for all $`i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
@@ -377,7 +377,7 @@ properties. The trick is `RestrictedProduct.continuous_dom_prod` in mathlib
 (this is where we assume $`B_i` and $`D_i` are open), which tells us that a map out of
 a binary product of restricted products is continuous when its restriction to
 $`\left(\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)\right)\times
-\left(\left(\prod_{i\in S}C_i\right)\times\left(\prod_{i\notin S}D_i\right)\right)`$
+\left(\left(\prod_{i\in S}C_i\right)\times\left(\prod_{i\notin S}D_i\right)\right)`
 is, for all finite $`S` (note that the $`S` in the mathlib lemma is actually our $`I-S`).
 The map from this to the restricted product factors through
 $`\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)`;
@@ -646,8 +646,7 @@ homeomorphism.
 \end{theorem}
 ```
 :::proof "ContinuousMulEquiv.restrictedProductUnits"
-{uses "ContinuousMulEquiv.piUnits"}[]
-{uses "Submonoid.units_isOpen"}[]
+Uses {uses "ContinuousMulEquiv.piUnits"}[] and {uses "Submonoid.units_isOpen"}[].
 I don't know a clean way of showing that the map from left to right is
 continuous, so here is a direct proof that the map is a homeomorphism. It is
 certainly an abstract group isomorphism between topological groups. So to prove
@@ -904,7 +903,7 @@ $`M_2(\calO_v)` is a compact subring of $`M_2(K_v)`.
 ```
 
 :::proof "M2.localFullLevel.isCompact"
-{uses "local_integer_ring_compact"}[]
+Uses {uses "local_integer_ring_compact"}[].
 Topologically $`M_2(\calO_v) \cong \calO_v^4` as a subset of $`K_v^4`, so this
 follows from theorem {uses "local_integer_ring_compact"}[]
 because a product of compacts is compact and a product of opens is open.
@@ -1126,9 +1125,7 @@ with respect to the compact open subgroups $`GL_2(\calO_v)`.
 \end{theorem}
 ```
 :::proof "GL2.restrictedProduct"
-{uses "ContinuousMulEquiv.restrictedProductUnits"}[]
-{uses "Homeomorph.restrictedProductMatrix"}[]
-{uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[]
+Uses {uses "ContinuousMulEquiv.restrictedProductUnits"}[], {uses "Homeomorph.restrictedProductMatrix"}[], and {uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[].
 This follows from lemma and lemma.
 :::
 

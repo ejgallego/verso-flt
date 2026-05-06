@@ -291,7 +291,7 @@ bigger than $`m`). Then $`\mu(xE)=\mu(E)>m` so the map can't be injective.
 ```
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.E" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.E")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[].
 We let `E` denote any compact set satisfying the hypothesis of the previous lemma.
 :::
 
@@ -306,7 +306,7 @@ We let `E` denote any compact set satisfying the hypothesis of the previous lemm
 ```
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[].
 Define $`X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}`.
 :::
 
@@ -321,7 +321,7 @@ Define $X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}$.
 ```
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[].
 Define $`Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}`.
 :::
 
@@ -336,7 +336,7 @@ Define $Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}$.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[].
 $`X` is a compact subset of $`D_{\A}`.
 :::
 
@@ -362,7 +362,7 @@ It's the continuous image of the compact set $`E\times E`.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[].
 $`Y` is a compact subset of $`D_{\A}`.
 :::
 
@@ -388,8 +388,7 @@ It's the continuous image of the compact set $`X\times X`.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[] and {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[].
 If $`\beta\in D_{\A}^{(1)}` then $`\beta X\cap D^\times\not=\emptyset`.
 :::
 
@@ -428,7 +427,7 @@ And $e_1-e_2\in X$ so $b=\beta(e_1-e_2)\in \beta X$, so we're done.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[].
 Similarly, if $`\beta\in D_{\A}^{(1)}` then
 $`X\beta^{-1}\cap D^\times\not=\emptyset`.
 :::
@@ -445,8 +444,7 @@ $`X\beta^{-1}\cap D^\times\not=\emptyset`.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-{uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[] and {uses "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"}[].
 Indeed, $`\beta^{-1}\in D_{\A}^{(1)}`, and so left multiplication by
 $`\beta^{-1}` does not change Haar measure on $`D_{\A}`, so neither does
 right multiplication (by theorem
@@ -472,7 +470,7 @@ $`b\in D` and then $`(e_1-e_2)\beta^{-1}\in D-\{0\}=D^\times`.
 ```
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.T" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[].
 Let $`T = Y \cap D^\times`.
 :::
 
@@ -487,7 +485,7 @@ Let $`T = Y \cap D^\times`.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[].
 $`T` is finite.
 :::
 
@@ -502,7 +500,7 @@ $`T` is finite.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"}[].
 It suffices to prove that $`Y\cap D` is finite. But
 $`D\subseteq D_{\A}` is a discrete additive subgroup, and hence closed. And
 $`Y\subseteq D_{\A}` is compact. So $`D\cap Y` is compact and discrete, so
@@ -522,8 +520,7 @@ finite.
 ```
 
 :::definition "NumberField.AdeleRing.DivisionAlgebra.Aux.C" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[] and {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[].
 Define $`C := (T^{-1}.X)\times X\subset D_{\A}\times D_{\A}`.
 :::
 
@@ -539,10 +536,9 @@ Define $`C := (T^{-1}.X)\times X\subset D_{\A}\times D_{\A}`.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[].
 $`C` is compact.
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"}[] and {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"}[].
 :::
 
 ```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (slot := statement)
@@ -569,7 +565,7 @@ $`C` is compact.
 ```
 
 :::lemma_ "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (parent := "fujisaki_project") (lean := "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C")
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[].
 For every $`\beta \in D_A^{(1)}`, there exist $`b \in D^\times` and
 $`\nu \in D_A^{(1)}` such that $`\beta = b\nu` and $`(\nu, \nu^{-1}) \in C`.
 :::
@@ -586,10 +582,7 @@ $`\nu \in D_A^{(1)}` such that $`\beta = b\nu` and $`(\nu, \nu^{-1}) \in C`.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[]
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C"}[], {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[], {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"}[], and {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"}[].
 
 By lemma `NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel`,
 $`\beta X\cap D^\times\not=\emptyset`, and lemma
@@ -652,7 +645,7 @@ $`D_{\A}^{(1)}` is compact.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"
-{uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"}[].
 Indeed, if `M` is the preimage of `C` under the inclusion
 $`D_A^{(1)} \to D_A \times D_A` sending $`\nu` to $`(\nu, \nu^{-1})`, then `M` is a
 closed subspace of a compact space so it's compact (note that $`\delta_{D_A}` is
@@ -818,7 +811,7 @@ is compact.
 ```
 
 :::proof "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"
-{uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[]
+Uses {uses "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"}[].
 There's a natural map `α` from
 $`D^\times \backslash D_A^{(1)}` to
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`. We claim that
@@ -872,7 +865,7 @@ There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
 ```
 
 :::theorem "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (parent := "fujisaki_project") (lean := "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset")
-{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]
+Uses {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[].
 If `U` is an open subgroup of
 $`(D \otimes_K \mathbf{A}_K^\infty)^\times`, then the double coset space
 $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times / U`
