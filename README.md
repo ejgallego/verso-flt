@@ -1,44 +1,29 @@
 # FLT Verso Blueprint
 
-This repository is the Verso port and integration repo for the FLT blueprint.
+[![Blueprint Pages](https://github.com/ejgallego/verso-flt/actions/workflows/blueprint.yml/badge.svg)](https://github.com/ejgallego/verso-flt/actions/workflows/blueprint.yml)
 
-- Upstream formalization: [`FLT/`](/home/egallego/lean/verso-flt/FLT)
-- Shared harness: [`tools/verso-harness/`](/home/egallego/lean/verso-flt/tools/verso-harness)
-- Harness config: [`verso-harness.toml`](/home/egallego/lean/verso-flt/verso-harness.toml)
+Verso Blueprint port of the FLT Blueprint, with the upstream
+[`FLT`](FLT/) formalization carried locally as a submodule.
 
-## Pages
+Blueprint: <https://ejgallego.github.io/verso-flt/>
 
-- Public site: <https://ejgallego.github.io/verso-flt/>
-- Workflow: <https://github.com/ejgallego/verso-flt/actions/workflows/blueprint.yml>
-- Local build: `bash ./scripts/ci-pages.sh`
-- Local output: `_out/site/html-multi/index.html`
+This repo follows the upstream blueprint strictly and translates its source
+markup language to Verso with the help of AI.
 
-## Port Source
+## Build
 
-The written-mathematics source of truth remains the TeX blueprint in
-`FLT/blueprint/src/chapter/*.tex`.
+```bash
+lake build
+```
 
-For normal blueprint and integration work in this repo, treat `FLT/` as
-read-only. Make harness and Verso chapter changes in the repository root unless
-you are explicitly doing FLT upstream or fork work.
+## Generate
 
-## Workflow
+```bash
+lake env lean --run FLTBlueprintMain.lean --output _out/site
+```
 
-This repo is a consumer of the shared harness. For startup, retrofit, LT audit,
-and maintenance rules, use the harness docs:
-
-- [`tools/verso-harness/README.md`](/home/egallego/lean/verso-flt/tools/verso-harness/README.md)
-- [`tools/verso-harness/references/start-new-port.md`](/home/egallego/lean/verso-flt/tools/verso-harness/references/start-new-port.md)
-- [`tools/verso-harness/references/retrofit.md`](/home/egallego/lean/verso-flt/tools/verso-harness/references/retrofit.md)
-- [`AGENTS.md`](/home/egallego/lean/verso-flt/AGENTS.md)
-
-Project-specific FLT status surfaces remain local:
-
-- [`UpstreamSuggestions.md`](/home/egallego/lean/verso-flt/UpstreamSuggestions.md)
-- `python3 scripts/update_porting_todo.py`
-
-## Notes
-
-- Root `lean-toolchain` follows the upstream formalization toolchain.
-- `lakefile.lean` pins the matching `VersoBlueprint` branch for that toolchain.
-- Generic LT commands should be run via `tools/verso-harness/scripts/...`.
+This repository follows the shared
+[`tools/verso-harness`](tools/verso-harness/) workflow. The root
+[`lean-toolchain`](lean-toolchain) matches the upstream formalization, and
+[`lakefile.lean`](lakefile.lean) pins `VersoBlueprint` to the matching release
+branch.
