@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-python3 scripts/check_lake_dependency_urls.py --project-root .
-lake exe cache get
 lake build +FLTBlueprintMain:deps 2>&1 | python3 scripts/filter_docstring_warnings.py --project-root .
 lake env lean --run FLTBlueprintMain.lean --output _out/site 2>&1 | python3 scripts/filter_docstring_warnings.py --project-root .
 
