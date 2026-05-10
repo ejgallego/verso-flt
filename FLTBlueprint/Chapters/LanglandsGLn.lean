@@ -7,7 +7,7 @@ import FLTBlueprint.TeXPrelude
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "Automorphic forms and the Langlands Conjectures" =>
 
@@ -36,7 +36,7 @@ this section we will explain the definition of an automorphic form for the
 group $`\GL_n/\Q`, following the exposition by Borel and Jacquet in Corvallis
 {Informal.citep corvallisAutomorphicForms}[].
 
-```tex
+```tex (accuracy := 1000)
 The global Langlands reciprocity conjectures relate automorphic forms to Galois representations.
 The statements for a general connected reductive group involve the construction of the Langlands
 dual group, and we do not have quite enough Lie algebra theory to push this definition through
@@ -52,7 +52,7 @@ Mathlib already has the definition of the finite adeles $`\A_{\Q}^f` of the
 rationals as a commutative $`\Q`-algebra, and the proof that it's a
 topological ring.
 
-```tex
+```tex (accuracy := 1000)
 Mathlib already has the definition of the finite adeles $\A_{\Q}^f$ of the rationals as a
 commutative $\Q$-algebra, and the proof that it's a topological ring.
 ```
@@ -64,7 +64,7 @@ product topology. They are a topological ring. Hence
 $`\GL_n(\A_{\Q}) = \GL_n(\A_{\Q}^f) \times \GL_n(\R)` is a topological group,
 where we are being a bit liberal with our use of the equality symbol.
 
-```tex
+```tex (accuracy := 1000)
 The adeles $\A_{\Q}$ of $\Q$ are the product $\A_{\Q}^f\times\R$, with the product topology.
 They are a topological ring. Hence $\GL_n(\A_{\Q})=\GL_n(\A_{\Q}^f)\times\GL_n(\R)$ is a
 topological group, where we are being a bit liberal with our use of the equality symbol.
@@ -81,7 +81,7 @@ the following three properties:
 3. For all $`y \in \GL_n(\R)`, the function $`x \mapsto f(x,y)` is locally constant.
 :::
 
-```tex
+```tex (accuracy := 961)
 \section{Smooth functions}
 
 \begin{definition}
@@ -102,7 +102,7 @@ say the the function is smooth on the infinite part, because I have never used
 the manifold library before and I have no idea what my model with corners is
 supposed to be.
 
-```tex
+```tex (accuracy := 1000)
 Current state of this definition: I've half-formalised it; I don't know how to
 say the the function is smooth on the infinite part, because I have never used
 the manifold library before and I have no idea what my model with corners is
@@ -114,7 +114,7 @@ supposed to be.
 Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 
-```tex
+```tex (accuracy := 1000)
 Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 ```
@@ -124,7 +124,7 @@ by $`s(M) = \operatorname{trace}(MM^T + M^{-1}M^{-T})`, where $`M^{-T}`
 denotes inverse-transpose. Note that $`s(M)` is always positive, and is large
 if $`M` has a very large or very small, in absolute value, eigenvalue.
 
-```tex
+```tex (accuracy := 852)
 Automorphic representations satisfy a growth condition which we may as well
 factor out into a separate definition.
 
@@ -140,7 +140,7 @@ is some real constant $`C` and positive integer $`n` such that
 $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 :::
 
-```tex "AutomorphicForm.GLn.IsSlowlyIncreasing" (slot := statement)
+```tex "AutomorphicForm.GLn.IsSlowlyIncreasing" (slot := statement) (accuracy := 963)
 \begin{definition}
   \label{AutomorphicForm.GLn.IsSlowlyIncreasing}
   \lean{AutomorphicForm.GLn.IsSlowlyIncreasing}
@@ -154,7 +154,7 @@ $`|f(M)| \leq C s(M)^n` for all $`M \in \GL_n(\R)`.
 Note: the book says $`n` is positive, but $`\{M|s(M)\leq 1\}` is compact so I
 don't think it makes any difference.
 
-```tex
+```tex (accuracy := 1000)
 Note: the book says $n$ is positive, but $\{M|s(M)\leq 1\}$ is compact so I
 don't think it makes any difference.
 ```
@@ -168,7 +168,7 @@ compact subgroup of $`\GL_n(\R)`, and it's convenient to choose one (they're
 all conjugate) so we choose $`O_n(\R)`.
 :::
 
-```tex
+```tex (accuracy := 970)
 \section{Weights at infinity}
 
 \begin{definition}
@@ -186,7 +186,7 @@ The Lean definition is incomplete right now -- I don't demand irreducibility
 theory then I might have struggled to say that the representation was
 continuous).
 
-```tex
+```tex (accuracy := 1000)
 The Lean definition is incomplete right now -- I don't demand irreducibility
 (I wasn't sure whether I was doing this the right way; if I used category
 theory then I might have struggled to say that the representation was
@@ -200,7 +200,7 @@ There is a natural action of the real Lie algebra of $`\GL_n(\R)` on the
 complex vector space of smooth complex-valued functions on $`\GL_n(\R)`.
 :::
 
-```tex
+```tex (accuracy := 889)
 \section{The action of the universal enveloping algebra.}
 
 \begin{definition}
@@ -227,7 +227,7 @@ the real Lie algebra on the smooth complex-valued functions on $`\GL_n(\R)`.
 This depends on {uses "instLieAlgebraAction"}[].
 :::
 
-```tex "instComplexLieAlgebraAction" (slot := statement)
+```tex "instComplexLieAlgebraAction" (slot := statement) (accuracy := 912)
 \begin{definition}
   \label{instComplexLieAlgebraAction}
   \uses{instLieAlgebraAction}
@@ -244,7 +244,7 @@ complexified Lie algebra on the smooth complex-valued functions. This depends on
 {uses "instComplexLieAlgebraAction"}[].
 :::
 
-```tex "instUniversalEnvelopingAlgebraAction" (slot := statement)
+```tex "instUniversalEnvelopingAlgebraAction" (slot := statement) (accuracy := 913)
 \begin{definition}
   \label{instUniversalEnvelopingAlgebraAction}
   \uses{instComplexLieAlgebraAction}
@@ -260,7 +260,7 @@ smooth complex-valued functions. This depends on
 {uses "instUniversalEnvelopingAlgebraAction"}[].
 :::
 
-```tex "instCentreAction" (slot := statement)
+```tex "instCentreAction" (slot := statement) (accuracy := 895)
 \begin{definition}
 \label{instCentreAction}
 \uses{instUniversalEnvelopingAlgebraAction}
@@ -275,7 +275,7 @@ $`\bbC`. Note that Harish-Chandra, or possibly this was known earlier, showed
 that it is a polynomial ring in $`n` variables over the complexes. We shall not
 need this.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark} The centre we just defined is a commutative ring which contains a copy of $\bbC$.
   Note that Harish-Chandra, or possibly this was known earlier, showed that it is a polynomial
   ring in $n$ variables over the complexes. We shall not need this.
@@ -286,7 +286,7 @@ need this.
 
 From here on there is no more Lean right now, only LaTeX.
 
-```tex
+```tex (accuracy := 923)
 \section{Automorphic forms}
 
 From here on there is no more Lean right now, only LaTeX.
@@ -320,7 +320,7 @@ five conditions. This depends on {uses "AutomorphicForm.GLn.IsSmooth"}[],
    function $`y \mapsto f(x,y)` on $`\GL_n(\R)` is slowly-increasing.
 :::
 
-```tex
+```tex (accuracy := 920)
 \begin{definition}
   \label{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
   \lean{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
@@ -356,7 +356,7 @@ subspace which is finite-dimensional; this is a theorem of Harish-Chandra.
 There is also the concept of a cusp form, meaning an automorphic form for which
 furthermore some adelic integrals vanish.
 
-```tex
+```tex (accuracy := 1000)
 Automorphic forms of a fixed weight $\rho$ form a complex vector space, and if we also
 fix the finite level $U$ and the infinite level $I$ then we get a subspace which is
 finite-dimensional; this is a theorem of Harish-Chandra. There is also the concept
@@ -371,7 +371,7 @@ The group $`\GL_n(\A_{\Q}^f)` acts on the space of automorphic forms for
 $`\GL_n(\A_{\Q})` by the formula $`(g \cdot f)(x,y) = f(xg,y)`.
 :::
 
-```tex "hecke_operator_action_gln" (slot := statement)
+```tex "hecke_operator_action_gln" (slot := statement) (accuracy := 952)
 \begin{lemma} The group $\GL_n(\A_{\Q}^f)$ acts (on the left) on the space of automorphic forms
   for $\GL_n(\A_{\Q})$ by the formula $(g\cdot f)(x,y)=f(xg,y)$.
 \end{lemma}
@@ -382,7 +382,7 @@ This is obvious. Note that the conjugate of a compact open subgroup is still
 compact and open.
 :::
 
-```tex "hecke_operator_action_gln" (slot := proof)
+```tex "hecke_operator_action_gln" (slot := proof) (accuracy := 1000)
 \begin{proof}
   This is obvious. Note that the conjugate of a compact open subgroup is still
   compact and open.
@@ -391,7 +391,7 @@ compact and open.
 
 A formal development of the theory of Hecke operators looks like the following.
 
-```tex
+```tex (accuracy := 1000)
 A formal development of the theory of Hecke operators looks like the following.
 ```
 
@@ -404,7 +404,7 @@ a finite disjoint union of single cosets $`g_iU`: the double coset space is
 certainly a disjoint union of left cosets, but the double coset space is
 compact and the left cosets are open.
 
-```tex
+```tex (accuracy := 943)
 Let $U$ be a fixed compact open subgroup of $\GL_n(\A_{\Q}^f)$, and let's also fix
 a weight $\rho$, and let $M_\rho(n)$ denote the complex vector space of automorphic
 forms for $\GL_n/\Q$ of weight $\rho$. The level $U$ forms $M_\rho(n,U)$ are just the $U$-invariants
@@ -418,7 +418,7 @@ are open.
 Define the Hecke operator $`T_g : M_\rho(n,U) \to M_\rho(n,U)` by
 $`T_g(f) = \sum g_i \cdot f`.
 
-```tex
+```tex (accuracy := 1000)
 Define the Hecke operator $T_g:M_\rho(n,U)\to M_\rho(n,U)$ by
 $T_g(f)=\sum g_i\cdot f$.
 ```
@@ -428,7 +428,7 @@ This function is well-defined, i.e. it sends a $`U`-invariant form to a
 $`U`-invariant form which is independent of the choice of $`g_i`.
 :::
 
-```tex "gln_hecke_operator_well_defined" (slot := statement)
+```tex "gln_hecke_operator_well_defined" (slot := statement) (accuracy := 1000)
 \begin{lemma} This function is well-defined, i.e., it sends a $U$-invariant form to
   a $U$-invariant form which is independent of the choice of $g_i$.
 \end{lemma}
@@ -438,7 +438,7 @@ $`U`-invariant form which is independent of the choice of $`g_i`.
 Easy group theory.
 :::
 
-```tex "gln_hecke_operator_well_defined" (slot := proof)
+```tex "gln_hecke_operator_well_defined" (slot := proof) (accuracy := 1000)
 \begin{proof} Easy group theory.
 \end{proof}
 ```

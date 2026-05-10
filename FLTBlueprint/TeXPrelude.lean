@@ -1,8 +1,9 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import FLTBlueprint.TeXReview
 
-open Informal
+open Informal hiding tex
 
 /-
 The old blueprint prelude is the source vocabulary, but the Verso/KaTeX harness

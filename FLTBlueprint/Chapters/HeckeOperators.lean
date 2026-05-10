@@ -9,7 +9,7 @@ import FLT.QuaternionAlgebra.NumberField
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "Miniproject: Hecke Operators" =>
 
@@ -32,7 +32,7 @@ This is an active miniproject. The abstract theory is completely formalized;
 at the time of writing the concrete theory has no sorried definitions but it
 does have some sorried proofs.
 
-```tex
+```tex (accuracy := 984)
 \section{Status}
 
 This is an active miniproject. The abstract theory is completely formalized;
@@ -45,7 +45,7 @@ acting on spaces of automorphic forms. These Hecke operators generate
 Hecke algebras, which are the rings called $`T` in the modularity lifting theorems,
 or $`R=T` theorems, crucially introduced by Wiles in order to prove FLT.
 
-```tex
+```tex (accuracy := 980)
 \section{The goal}
 
 The goal of this project is to get sorry-free definitions of Hecke operators
@@ -61,7 +61,7 @@ the concrete theory still needs some work because to apply the theory to the
 adelic groups we care about we need to develop some more API around the theory
 of restricted products, and of compact open subgroups of matrix groups.
 
-```tex
+```tex (accuracy := 1000)
 The theory comes in two parts;
 the ``abstract'' theory, which is pure algebra, and the ``concrete'' theory
 where we apply the abstract constructions to produce endomorphisms of
@@ -74,20 +74,20 @@ of restricted products, and of compact open subgroups of matrix groups.
 The set-up: we have a commutative ring $R$, the coefficient ring, and
 all of our spaces which the operators act on will be $R$-modules.
 
-```tex
+```tex (accuracy := 1000)
 The set-up: we have a commutative ring $R$, the coefficient ring, and
 all of our spaces which the operators act on will be $R$-modules.
 ```
 We have a group $`G` acting $`R`-linearly on an $`R`-module $`A`.
 
-```tex
+```tex (accuracy := 1000)
 We have a group $G$ acting $R$-linearly on an $R$-module $A$.
 ```
 We have subgroups $`U` and $`V` of $`G`.
 We will be particularly interested in the $`R`-modules $`A^U` and $`A^V`
 of invariant elements.
 
-```tex
+```tex (accuracy := 1000)
 We have subgroups $U$ and $V$ of $G$.
 We will be particularly interested in the $R$-modules $A^U$ and $A^V$
 of invariant elements.
@@ -98,7 +98,7 @@ from $`A^V` to $`A^U`. The finiteness hypothesis is that the
 double coset $`UgV` can be written as a finite union of single
 cosets $`g_iV`.
 
-```tex
+```tex (accuracy := 1000)
 Given an element $g\in G$, then under a certain finiteness hypothesis
 we will be able to define an $R$-linear map $T_g$ or $[UgV]$
 from $A^V$ to $A^U$. The finiteness hypothesis is that the
@@ -110,7 +110,7 @@ Assuming $`UgV` is a finite union of cosets $`g_iV`,
 we define $`[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
 :::
-```tex "AbstractHeckeOperator.HeckeOperator_toFun" (slot := statement)
+```tex "AbstractHeckeOperator.HeckeOperator_toFun" (slot := statement) (accuracy := 954)
 \begin{definition}
   \lean{AbstractHeckeOperator.HeckeOperator_toFun}
   \label{AbstractHeckeOperator.HeckeOperator_toFun}
@@ -125,7 +125,7 @@ Uses {uses "AbstractHeckeOperator.HeckeOperator_toFun"}[].
 This function is well-defined (that is, independent of the
 choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 :::
-```tex "AbstractHeckeOperator.HeckeOperator" (slot := statement)
+```tex "AbstractHeckeOperator.HeckeOperator" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \lean{AbstractHeckeOperator.HeckeOperator}
   \label{AbstractHeckeOperator.HeckeOperator}
@@ -144,7 +144,7 @@ fixes $`UgV` and hence permutes the cosets $`g_iV`.
 
 Finally $`R`-linearity is because the $`G`-action is $`R`-linear.
 :::
-```tex "AbstractHeckeOperator.HeckeOperator" (slot := proof)
+```tex "AbstractHeckeOperator.HeckeOperator" (slot := proof) (accuracy := 952)
 \begin{proof}
   \leanok
   Well-definedness is because if we change $g_i$ to $g'_i:=g_iv$
@@ -160,7 +160,7 @@ The finiteness hypothesis that the decomposition $`UgV = \coprod_i g_iV` is
 into a finite union is necessary for the theory to work. If `G` is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
 
-```tex
+```tex (accuracy := 1000)
 The finiteness hypothesis that the decomposition $UgV=\coprod_i g_iV$ is
 into a finite union is necessary for the theory to work. If $G$ is a topological
 group then here is a criterion which gives the finiteness hypothesis for free.
@@ -172,7 +172,7 @@ also open, and if $`g \in G`, then the double coset space $`UgV` is a finite uni
 of left cosets $`g_iV`.
 :::
 
-```tex "QuotientGroup.mk_image_finite_of_compact_of_open" (slot := statement)
+```tex "QuotientGroup.mk_image_finite_of_compact_of_open" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \lean{QuotientGroup.mk_image_finite_of_compact_of_open}
   \label{QuotientGroup.mk_image_finite_of_compact_of_open}
@@ -188,7 +188,7 @@ The subset $`UgV` of $`G` is a continuous image of the compact set $`U \times V`
 and is hence compact, and it is covered by the disjoint left cosets $`g_iV`;
 this cover must thus be finite.
 :::
-```tex "QuotientGroup.mk_image_finite_of_compact_of_open" (slot := proof)
+```tex "QuotientGroup.mk_image_finite_of_compact_of_open" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   The subset $UgV$ of $G$ is a continuous image of the compact set $U\times V$
@@ -203,7 +203,7 @@ and $`UhU=\coprod_j h_j` and that $`g_i h_j = h_j g_i` for all $`i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
 acting on $`A^U` commute.
 :::
-```tex "AbstractHeckeOperator.comm" (slot := statement)
+```tex "AbstractHeckeOperator.comm" (slot := statement) (accuracy := 896)
 \begin{lemma}
   \lean{AbstractHeckeOperator.comm}
   \label{AbstractHeckeOperator.comm}
@@ -220,7 +220,7 @@ We have $`[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja`
 and $`[UhU][UgU]a=\sum_jh_j\sum_ig_ia=\sum_{j,i}h_jg_ia` and these
 sums are equal because $`g_ih_j=h_jg_i`.
 :::
-```tex "AbstractHeckeOperator.comm" (slot := proof)
+```tex "AbstractHeckeOperator.comm" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   We have $[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja$
@@ -237,7 +237,7 @@ $`G` which we are interested in, and they are restricted products. So we now
 develop some theory for restricted products, starting by recalling the
 definition.
 
-```tex
+```tex (accuracy := 987)
 \section{Restricted products}
 
 In the concrete example of Hecke operators which we care about, the invariants $A^G$
@@ -256,7 +256,7 @@ the $`Y_i` from the notation in this document, although in Lean we cannot do
 this and the restricted product looks something like
 $`\prod{}^{r} i,[X\ i, Y\ i]`.
 
-```tex
+```tex (accuracy := 979)
 If $I$ is an index set, if $X_i$ are sets indexed by $i \in I$ and if $Y_i$
 are subsets, then the \emph{restricted product} $\prod'_iX_i$ (note the dash) is defined
 to be the subset of the full product $\prod_i X_i$ consisting of those
@@ -271,7 +271,7 @@ is inherited via the inclusion $`\prod'_iX_i\subseteq\prod_iX_i` and the fact
 that arbitrary products of groups, rings, and modules are groups, rings, and
 modules.
 
-```tex
+```tex (accuracy := 985)
 It is straightforward to check that if the $X_i$ are groups or rings or $R$-modules,
 and the $Y_i$ are subgroups or subrings or submodules, then the restricted product
 is a group, ring or $R$-module; indeed the structure is inherited via the
@@ -292,7 +292,7 @@ $`\left(\prod'_iX_i\right)\cap U` for any open subset $`U` of $`\prod_iX_i`
 in general; the map from $`\prod'_iX_i` to $`\prod_iX_i` is continuous but is
 not in general an embedding.
 
-```tex
+```tex (accuracy := 955)
 More subtle is the theory of topological space structures. If the $X_i$
 are topological spaces then we do \emph{not} give $\prod'_iX_i$ the subspace
 topology coming from the product topology on $\prod_iX_i$; instead we give
@@ -315,7 +315,7 @@ restricted product of $`GL_2(F_v)` with respect to
 $`GL_2(\mathcal{O}_v)`. We now spend some time justifying this claim, which is
 a little more intricate than it sounds.
 
-```tex
+```tex (accuracy := 963)
 If you've seen automorphic forms before, then here is an obvious-sounding claim:
 because the adeles $\mathbb{A}_F$ of a number field are a restricted product of
 completions $F_v$ with respect to the integer rings $\mathcal{O}_v$, then
@@ -332,7 +332,7 @@ $`\prod'_i(A_i \times C_i)= (\prod'_i A_i) \times (\prod'_i B_i)`
 is a homeomorphism.
 :::
 
-```tex "Homeomorph.restrictedProductProd" (slot := statement)
+```tex "Homeomorph.restrictedProductProd" (slot := statement) (accuracy := 889)
 \begin{lemma}
   \lean{Homeomorph.restrictedProductProd}
   \label{Homeomorph.restrictedProductProd}
@@ -351,7 +351,7 @@ This may well not be true if $`B_i` and $`D_i` are not open, because
 filtered colimits and binary products do not appear in general to commute
 in the category of topological spaces. I don't know an explicit counterexample though.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark} This may well not be true if $B_i$ and $D_i$ are not open, because
   filtered colimits and binary products do not appear in general to commute
   in the category of topological spaces. I don't know an explicit counterexample though.
@@ -385,7 +385,7 @@ the first map is a homeomorphism (use the fact that $`\prod_i X_i\times Y_i` is 
 to $`\left(\prod_i X_i\right)\times\left(\prod_i Y_i\right)`), and the second is continuous
 by definition of the topology on a restricted product.
 :::
-```tex
+```tex (accuracy := 986)
 \begin{proof}
   \leanok
   \proves{Homeomorph.restrictedProductProd}
@@ -425,7 +425,7 @@ subspaces $`Y_{ji}`, then the obvious bijection
 $`\prod'_i(\prod_j X_{ji})=\prod_j(\prod'_i X_{ji})` is a homeomorphism.
 :::
 
-```tex "Homeomorph.restrictedProductPi" (slot := statement)
+```tex "Homeomorph.restrictedProductPi" (slot := statement) (accuracy := 984)
 \begin{corollary}
   \lean{Homeomorph.restrictedProductPi}
   \label{Homeomorph.restrictedProductPi}
@@ -442,7 +442,7 @@ $`\prod'_i(\prod_j X_{ji})=\prod_j(\prod'_i X_{ji})` is a homeomorphism.
 Induction on the size of the finite set, using
 {uses "Homeomorph.restrictedProductProd"}[] to get started.
 :::
-```tex "Homeomorph.restrictedProductPi" (slot := proof)
+```tex "Homeomorph.restrictedProductPi" (slot := proof) (accuracy := 923)
 \begin{proof}
   \leanok
   \uses{Homeomorph.restrictedProductProd}
@@ -455,7 +455,7 @@ If $`X_i` are topological spaces and the $`Y_i` are open subspaces, then the
 obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)` is a homeomorphism.
 :::
 
-```tex "Homeomorph.restrictedProductMatrix" (slot := statement)
+```tex "Homeomorph.restrictedProductMatrix" (slot := statement) (accuracy := 1000)
 \begin{corollary}
   \label{Homeomorph.restrictedProductMatrix}
   \lean{Homeomorph.restrictedProductMatrix}
@@ -468,7 +468,7 @@ obvious map $`M_n(\prod'_iX_i)=\prod'_iM_n(X_i)` is a homeomorphism.
 :::proof "Homeomorph.restrictedProductMatrix"
 Immediate from the previous corollary {uses "Homeomorph.restrictedProductPi"}[].
 :::
-```tex "Homeomorph.restrictedProductMatrix" (slot := proof)
+```tex "Homeomorph.restrictedProductMatrix" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   \uses{Homeomorph.restrictedProductPi}
@@ -480,7 +480,7 @@ If $`M` is a topological monoid and $`U` is an open submonoid, then the units
 $`U^\times` of $`U` are naturally an open subgroup of $`M^\times`.
 :::
 
-```tex "Submonoid.units_isOpen" (slot := statement)
+```tex "Submonoid.units_isOpen" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \lean{Submonoid.units_isOpen}
   \label{Submonoid.units_isOpen}
@@ -494,7 +494,7 @@ $`U^\times` of $`U` are naturally an open subgroup of $`M^\times`.
 $`M^\times` does not get the subspace topology from `M`; it is embedded into
 $`M \times M` via $`g \mapsto (g, g^{-1})` and gets the subspace topology from
 the product. This makes it into a topological group.
-```tex
+```tex (accuracy := 923)
 \begin{remark} Note that $M^\times$ doesn't get the subspace topology from~$M$,
   it is embedded into $M\times M$ via $g\mapsto (g,g^{-1})$ and gets the subspace
   topology from the product. This makes it into a topological group.
@@ -508,7 +508,7 @@ $`M^\times` which are in $`U` and whose inverse is also in $`U`, which is easily
 to be the copy of $`U^\times` we're talking about.
 :::
 
-```tex "Submonoid.units_isOpen" (slot := proof)
+```tex "Submonoid.units_isOpen" (slot := proof) (accuracy := 911)
 \begin{proof}
   \proves{Submonoid.units_isOpen}
   We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
@@ -523,7 +523,7 @@ If $`M` is a Hausdorff topological monoid and $`U` is a compact submonoid, then
 the units $`U^\times` of $`U` are naturally a compact subgroup of $`M^\times`.
 :::
 
-```tex "Submonoid.units_isCompact" (slot := statement)
+```tex "Submonoid.units_isCompact" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \lean{Submonoid.units_isCompact}
   \label{Submonoid.units_isCompact}
@@ -535,7 +535,7 @@ the units $`U^\times` of $`U` are naturally a compact subgroup of $`M^\times`.
 ```
 
 Is Hausdorffness necessary?
-```tex
+```tex (accuracy := 1000)
 \begin{remark} Is Hausdorffness necessary?
 \end{remark}
 ```
@@ -550,7 +550,7 @@ We have $`U \times U` is a compact subset of $`M \times M`, and so
 $`U^\times = M^\times \cap U \times U` is a closed subspace of a compact space and is thus compact.
 :::
 
-```tex "Submonoid.units_isCompact" (slot := proof)
+```tex "Submonoid.units_isCompact" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \proves{Submonoid.units_isCompact}
   First I claim that $M^\times$ embedded in $M\times M$ via $g\mapsto (g,g^{-1})$
@@ -569,7 +569,7 @@ If $`U_i` are topological monoids then the canonical group isomorphism
 $`(\prod_i U_i)^\times = \prod_i (U_i^\times)` is a homeomorphism.
 :::
 
-```tex "ContinuousMulEquiv.piUnits" (slot := statement)
+```tex "ContinuousMulEquiv.piUnits" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \lean{ContinuousMulEquiv.piUnits}
   \label{ContinuousMulEquiv.piUnits}
@@ -602,7 +602,7 @@ the maps we're concerned with are composites of these maps and are hence
 continuous.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{proof}
   \leanok
   We prove that the maps in both directions are continuous. Let's start
@@ -634,7 +634,7 @@ $`U_i`, then the canonical map $`(\prod'_i M_i)^\times \to \prod'_i(M_i^\times)`
 homeomorphism.
 :::
 
-```tex "ContinuousMulEquiv.restrictedProductUnits" (slot := statement)
+```tex "ContinuousMulEquiv.restrictedProductUnits" (slot := statement) (accuracy := 954)
 \begin{theorem}
   \lean{ContinuousMulEquiv.restrictedProductUnits}
   \label{ContinuousMulEquiv.restrictedProductUnits}
@@ -658,7 +658,7 @@ $`\prod_i(U_iˣ)`. Note that the former is open because of
 `Submonoid.units_isOpen`. The result now follows from the previous lemma
 `ContinuousMulEquiv.piUnits`.
 :::
-```tex
+```tex (accuracy := 938)
 \begin{proof}
   \leanok
   \uses{ContinuousMulEquiv.piUnits, Submonoid.units_isOpen}
@@ -678,7 +678,7 @@ field $`K` at a finite place $`v`. Such a completion is a topological field $`K_
 equipped with a discrete valuation, a ring of integers $`\calO_v` having a principal
 maximal ideal $`(\varpi)`, and a finite residue field $`k_v := \calO_v/(\varpi)`.
 
-```tex
+```tex (accuracy := 1000)
 We could work over a general nonarchimedean normed field but we still do not have them
 in mathlib, so we stick to the case of interest which is the completion of a number
 field~$K$ at a finite place~$v$. Such a completion is a topological field~$K_v$
@@ -690,7 +690,7 @@ There is no formal Lean code for the lemmas in this section; it would seem more 
 to prove them in the right generality, and we don't have a definition of nonarchimedean
 local field yet.
 
-```tex
+```tex (accuracy := 911)
 There is no formal Lean code for the lemmas in this section; I am slightly dragging my
 feet because it would seem more sensible to prove them in the right generality,
 and we don't have a definition of nonarchimedean local field yet.
@@ -823,7 +823,7 @@ Let's do an explicit double coset decomposition in preparation for a calculation
 $`\calO_v` is an open subring of $`K_v`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{lemma}
   \lean{NumberField.isOpenAdicCompletionIntegers}
   \label{NumberField.isOpenAdicCompletionIntegers}
@@ -835,7 +835,7 @@ $`\calO_v` is an open subring of $`K_v`.
 :::proof "NumberField.isOpenAdicCompletionIntegers"
 Openness is already in mathlib.
 :::
-```tex
+```tex (accuracy := 1000)
 \begin{proof}
   \leanok
   Openness is already in mathlib.
@@ -845,7 +845,7 @@ Openness is already in mathlib.
 $`\calO_v` is a compact subring of $`K_v`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{lemma}
   \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
   \label{local_integer_ring_compact}
@@ -858,7 +858,7 @@ $`\calO_v` is a compact subring of $`K_v`.
 Compactness lies a little deeper because it assumes that the residue field of
 $`K_v` is finite.
 :::
-```tex
+```tex (accuracy := 1000)
 \begin{proof}
   \leanok
   Compactness lies a little deeper because it
@@ -869,7 +869,7 @@ $`K_v` is finite.
 $`M_2(\calO_v)` is an open subring of $`M_2(K_v)`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{lemma} $M_2(\calO_v)$ is an open subring of $M_2(K_v)$.
   \lean{IsDedekindDomain.M2.localFullLevel.isOpen}
   \label{M2.localFullLevel.isOpen}
@@ -882,7 +882,7 @@ Topologically $`M_2(\calO_v) \cong \calO_v^4` as a subset of $`K_v^4`, so this
 follows from {uses "NumberField.isOpenAdicCompletionIntegers"}[] because a
 product of compacts is compact and a product of opens is open.
 :::
-```tex
+```tex (accuracy := 985)
 \begin{proof}
   \leanok
   \uses{NumberField.isOpenAdicCompletionIntegers}
@@ -894,7 +894,7 @@ product of compacts is compact and a product of opens is open.
 $`M_2(\calO_v)` is a compact subring of $`M_2(K_v)`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{lemma} $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$.
   \lean{IsDedekindDomain.M2.localFullLevel.isCompact}
   \label{M2.localFullLevel.isCompact}
@@ -908,7 +908,7 @@ Topologically $`M_2(\calO_v) \cong \calO_v^4` as a subset of $`K_v^4`, so this
 follows from theorem {uses "local_integer_ring_compact"}[]
 because a product of compacts is compact and a product of opens is open.
 :::
-```tex
+```tex (accuracy := 971)
 \begin{proof}
   \leanok
   \uses{local_integer_ring_compact}
@@ -920,7 +920,7 @@ because a product of compacts is compact and a product of opens is open.
 $`GL_2(\calO_v)` is a compact open subgroup of $`GL_2(K_v)`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{lemma} $GL_2(\calO_v)$ is a compact open subgroup of $GL_2(K_v)$.
   \label{nolean-compactopen-GL2}
 \end{lemma}
@@ -931,7 +931,7 @@ follows from {uses "Submonoid.units_isOpen"}[] and
 {uses "Submonoid.units_isCompact"}[].
 :::
 
-```tex
+```tex (accuracy := 878)
 \begin{proof}
 \uses{nolean-compactopen-matrix, Submonoid.units_isOpen, Submonoid.units_isCompact}
   $K_v$ is known to be Hausdorff, so $M_2(K_v)$ is Hausdorff and the
@@ -944,7 +944,7 @@ $`M_2(\calO_v) \to M_2(k_v)` with kernel $`M_2(\varpi\calO_v)`, an ideal
 $`I` of $`M_2(\calO_v)` isomorphic to $`(\varpi\calO_v)^4` and hence also
 compact and open.
 
-```tex
+```tex (accuracy := 1000)
 Recall that there is a projection $\calO_v\to k_v$ where $k_v$ is the residue
 field of~$v$, a finite field. This induces a ring homomorphism $M_2(\calO_v)\to M_2(k_v)$
 with kernel $M_2(\varpi\calO_v)$, an ideal~$I$ of $M_2(\calO_v)$ isomorphic to $(\varpi\calO_v)^4$
@@ -958,7 +958,7 @@ $`M_2(\calO_v)`; furthermore it is a finite union of cosets of $`I` and is
 hence compact and open as a submonoid of $`M_2(\calO_v)` and hence of
 $`M_2(K_v)`.
 
-```tex
+```tex (accuracy := 1000)
 Say $\Gamma_v$ is a subgroup of $GL_2(k_v)$. Then $\Gamma_v$ is finite. Consider it as a submonoid of
 the multiplicative monoid $M_2(k_v)$. Its preimage~$U_v$ in $M_2(\calO_v)$
 is easily checked to be a submonoid of $M_2(\calO_v)$; furthermore it is a finite union of
@@ -969,7 +969,7 @@ cosets of $I$ and is hence compact and open as a submonoid of $M_2(\calO_v)$ and
 $`U_v` is a compact open subgroup of $`GL_2(K_v)`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{lemma}
   \label{nolean-compactopen-U1p} $U_v$ is a compact open subgroup of $GL_2(K_v)$.
 \end{lemma}
@@ -982,7 +982,7 @@ $`U_v`) are a subgroup of $`GL_2(K_v)`, which is compact and open, again by
 {uses "Submonoid.units_isCompact"}[].
 :::
 
-```tex
+```tex (accuracy := 981)
 \begin{proof}
   \uses{Submonoid.units_isOpen, Submonoid.units_isCompact}
   $\Gamma_v$ is a group and hence its preimage $U_v$ is a subgroup of the monoid
@@ -997,7 +997,7 @@ and let $`U:=U_v` be its preimage in $`GL_2(\calO_v)`, considered as a compact o
 of $`GL_2(K_v)`. Choose $`0\not=\alpha\in\calO_v` and define
 $`g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)`. Let's do an explicit
 double coset decomposition in preparation for a calculation with Hecke operators.
-```tex
+```tex (accuracy := 920)
 Say now $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
 and let $U:=U_v$ be its preimage in $GL_2(\calO_v)$, considered as a compact open subgroup of $GL_2(K_v)$.
 Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\in GL_2(K_v)$.
@@ -1010,7 +1010,7 @@ through $`\calO_v/\alpha\calO_v` and $`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1
 where $`\tilde{t}` is any lift of $`t` to $`\calO_v`.
 :::
 
-```tex
+```tex (accuracy := 927)
 \begin{lemma}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
   \label{bijOn_unipotent_mul_diagU1_U1diagU1}
@@ -1036,7 +1036,7 @@ then $`u\in h_tU^\alpha` iff $`b\in\calO_v` reduces mod $`\alpha` to $`t\in\calO
 We do this by computing $`h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}`
 and observing that its top right hand entry mod~$`\alpha` is zero iff $`b` mod $`\alpha` is $`t`.
 :::
-```tex
+```tex (accuracy := 955)
 \begin{proof}
   \leanok
   We first manipulate the statement into a statement about finite groups.
@@ -1063,7 +1063,7 @@ topological ring, defined to be the restricted
 product of the commutative topological fields $`K_v` as `v` runs through the finite places
 of `K`, with respect to the compact open subrings $`\calO_v`.
 
-```tex
+```tex (accuracy := 989)
 \section{Adelic groups}
 
 We are finally ready to discuss the group~$G$ and the subgroups~$U$ which we will be
@@ -1077,7 +1077,7 @@ of~$K$, with respect to the compact open subrings $\calO_v$.
 The group~$G$ we are interested in for the rest of this miniproject is the group
 $(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
 but the first thing we need to do is to find a way of talking about elements of the group.
-```tex
+```tex (accuracy := 1000)
 The group~$G$ we are interested in for the rest of this miniproject is the group
 $(D\otimes_K\A_K^\infty)^\times$. We want to write down compact open subgroups of this group,
 but the first thing we need to do is to find a way of talking about elements of the group.
@@ -1091,7 +1091,7 @@ fancy way of saying the product topology. They are both free of rank `4` as
 $`\A_K^\infty`-modules, and the rigidification is then a homeomorphism because
 all $`\A_K^\infty`-module maps between modules with the
 $`\A_K^\infty`-module topology are continuous.
-```tex
+```tex (accuracy := 995)
 We will assume that there exists an $\A_K^\infty$-algebra isomorphism
 $D\otimes_K\A_K^\infty=M_2(\A_K^\infty)$ and we will fix such an isomorphism $r$
 (called a \emph{rigidification} in the Lean code). We give both of these $\A_K^\infty$-algebras
@@ -1104,7 +1104,7 @@ topology are continuous).
 This means that our group~$G$ is isomorphic (both algebraically and topologically)
 to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
-```tex
+```tex (accuracy := 1000)
 This means that our group~$G$ is isomorphic (both algebraically and topologically)
 to $GL_2(\A_K^\infty)$. Before we go any further,
 let say something about matrix rings over complete fields.
@@ -1114,7 +1114,7 @@ let say something about matrix rings over complete fields.
 with respect to the compact open subgroups $`GL_2(\calO_v)`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{theorem}
   \lean{IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct}
   \label{GL2.restrictedProduct}
@@ -1129,7 +1129,7 @@ Uses {uses "ContinuousMulEquiv.restrictedProductUnits"}[], {uses "Homeomorph.res
 This follows from lemma and lemma.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{proof}
   \leanok
   \uses{ContinuousMulEquiv.restrictedProductUnits,
@@ -1153,7 +1153,7 @@ $`\tilde{Γ}_v = GL₂(\mathcal{O}_v)`. Then $`\prod_v \tilde{Γ}_v` is a compac
 subgroup of $`\prod_v GL₂(\mathcal{O}_v)`. It is compact subgroups of this form
 which we shall be using.
 
-```tex
+```tex (accuracy := 851)
 If~$S$ is a finite set of finite places of~$K$, and for each $v\in S$ we choose
 a subgroup $\Gamma_v$ of $GL_2(k_v)$ then we saw in the previous section how to
 create a compact open subgroup $\tilde{\Gamma}_v$ of $GL_2(K_v)$. For $v\notin S$
@@ -1169,7 +1169,7 @@ which we shall be using.
 We recall some of the definitions of spaces of automorphic forms, from the
 quaternion algebra project.
 
-```tex
+```tex (accuracy := 970)
 We recall some of the definitions of spaces of automorphic forms, from the
 quaternion algebra project, section~\ref{Quat_alg_project}.
 ```
@@ -1182,7 +1182,7 @@ definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm` that an
 `R`-valued weight `2` automorphic form is a function $`f : G \to R`
 satisfying the following axioms:
 
-```tex
+```tex (accuracy := 986)
 We fix a totally real field~$F$, a totally definite quaternion algebra~$D/F$,
 and a coefficient (additive abelian) group~$R$. Set
 $G=(D\otimes_F\A_F^\infty)^\times$ as in the previous section. Note that $G$
@@ -1197,7 +1197,7 @@ satisfying the following axioms:
    $`f(gu) = f(g)` for all $`g \in G` and $`u \in U`.
 3. $`f(gz) = f(g)` for all $`z \in (\A_F^\infty)^\times`.
 
-```tex
+```tex (accuracy := 957)
 \begin{enumerate}
   \item $f(dg)=f(g)$ for all $d\in D^\times\subseteq(D\otimes_F\A_F^\times)$;
   \item There exists a compact open subgroup of~$U$ (the \emph{level} of~$f$)
@@ -1215,7 +1215,7 @@ points $`A^U`. In other words, the forms of level `U` are the forms satisfying
 the three axioms defining an automorphic form but with the compact open subgroup
 in the second axiom being `U`.
 
-```tex
+```tex (accuracy := 1000)
 It can be checked that the collection of all such forms is an additive abelian
 group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
 group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
@@ -1231,7 +1231,7 @@ Let $`F` be a number field. For each finite place $`v` we have the completion
 $`F_v` of $`F` at $`v`, which is a normed field equipped with its integer
 ring $`\calO_v`, a local ring with finite residue field $`k_v`.
 
-```tex
+```tex (accuracy := 966)
 \section{Concrete Hecke operators}
 
 Let~$F$ be a number field. For each finite place $v$ we have the completion $F_v$ of $F$ at $v$,
@@ -1243,7 +1243,7 @@ $`k_v^\times` and consider the subgroup $`\Gamma_v` of $`GL_2(k_v)`
 consisting of matrices $`\begin{pmatrix}a&b\\0&d\end{pmatrix}` with
 $`a,d\in k_v^\times` and $`a/d\in\Delta_v`.
 
-```tex
+```tex (accuracy := 950)
 For $v$ a finite place of~$F$, let $\Delta_v$ be a subgroup of $k_v^\times$ and consider
 the subgroup $\Gamma_v$ of $GL_2(k_v)$ consisting of matrices $\begin{pmatrix}a&b\\0&d\end{pmatrix}$
 with $a,d\in k_v^\times$ and $a/d\in\Delta_v$. Then
@@ -1254,7 +1254,7 @@ so the local double-coset decomposition above applies. Let
 $`U_{\Delta_v}` be the preimage of this subgroup in $`GL_2(\calO_v)`. This
 is a compact open subgroup of $`GL_2(\calO_v)`, by the remarks above.
 
-```tex
+```tex (accuracy := 872)
 It is easily checked that this is a subgroup, and that
 $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix},$
 so lemma~\ref{nolean-U1-coset-decomposition} applies.
@@ -1271,7 +1271,7 @@ the inclusion $`\prod_v GL_2(\calO_v)\to GL_2(\A_F^\infty)` is an open
 embedding, we can regard $`U_\Delta(S)` as a compact open subgroup of
 $`GL_2(\A_F^\infty)`.
 
-```tex
+```tex (accuracy := 1000)
 Let~$S$ be a finite set of finite places of~$F$, and define $U_\Delta(S)$ to be the matrices
 in $\prod_v GL_2(\calO_v)$ which are in $U_{\Delta_v}$ for all $v\in S$ (we put no condition
 at the places $v\notin S$). We can consider
@@ -1284,14 +1284,14 @@ If we fix $`r` a rigidification, it induces an isomorphism
 $`GL_2(\A_F^\infty)=(D\otimes_F\A_F^\infty)^\times` and so we can identify
 $`U_\Delta(S)` with its image in $`(D\otimes_F\A_F^\infty)`.
 
-```tex
+```tex (accuracy := 1000)
 If we fix $r$ a rigidification, it
 induces an isomorphism $GL_2(\A_F^\infty)=(D\otimes_F\A_F^\infty)^\times$
 and so we can identify~$U_\Delta(S)$ with its image in $(D\otimes_F\A_F^\infty)$.
 ```
 We introduce Hecke operators of two types.
 
-```tex
+```tex (accuracy := 1000)
 We introduce Hecke operators of two types.
 ```
 First, for $`v` any place not in $`S`, we choose a uniformiser
@@ -1302,7 +1302,7 @@ $`w\not=v` be the identity. We define the Hecke operator
 $`T_v:A^U\to A^U` to be $`[UgU]`, using the notation defined at the
 beginning of this section.
 
-```tex
+```tex (accuracy := 976)
 First, for $v$ any place not in~$S$ we choose a uniformiser $\varpi_v\in F_v$,
 form the invertible $2\times 2$ matrix $\begin{pmatrix}\varpi_v&0\\0&1\end{pmatrix}\in GL_2(F_v)$
 and extend this element to an element $g\in G$ by letting its component at all finite places
@@ -1315,7 +1315,7 @@ $`\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}` at $`v` and `1` at all other
 local components. Via the rigidification $`r` we obtain an element $`g\in G`.
 We define the Hecke operator $`U_{v,\alpha}` to be $`[UgU]`.
 
-```tex
+```tex (accuracy := 971)
 For the second kind of Hecke operator we choose
 $0\not=\alpha\in\calO_v$ and we consider the $2\times 2$ matrix in $GL_2(\A_K^\infty)$
 which is $\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$ at~$v$ and 1 at all other local components.
@@ -1325,7 +1325,7 @@ We define the Hecke operator $U_{v,\alpha}$ to be $[UgU]$.
 The Hecke algebra of interest to us will be generated by the Hecke operators
 $`T_v` for $`v\notin S` and $`U_{v,\alpha}` for $`v\in S`.
 
-```tex
+```tex (accuracy := 1000)
 The Hecke algebra of interest to us will be generated by the Hecke operators $T_v$ for $v\notin S$
 and $U_{v,\alpha}$ for $v\in S$.
 ```
@@ -1335,7 +1335,7 @@ endomorphisms of $`A^U` generated by the Hecke operators $`T_v` for $`v\notin S`
 and $`U_{v,\alpha}` for $`v\in S` is a Noetherian commutative ring.
 :::
 
-```tex
+```tex (accuracy := 901)
 The big theorem we want in this section is
   \begin{theorem}
     \label{nolean-hecke-algebra-commutative-noetherian}
@@ -1356,7 +1356,7 @@ and in particular can be decomposed into single left `U`-cosets of the form $`g_
 where $`g_i` is also supported at `v`. This is
 `RestrictedProduct.mem_coset_and_mulSupport_subset_of_isProductAt`.
 
-```tex
+```tex (accuracy := 888)
 First we discuss commutativity of the Hecke operators. First, assume that $v\not\in S$.
 Then $U=GL_2(\calO_v)\times U'$ where $U'$ is a subgroup of the restricted product
 of $GL_2(F_w)$ for $w\not=v$. We can use {\tt RestrictedProduct.SubmonoidClass.isProductAt} to express this
@@ -1372,7 +1372,7 @@ $`g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}` and is `1` elsewhere, then the
 double coset space $`UgU` can again be written as $`\coprod_i g_iU` with the
 $`g_i` supported only at `v`.
 
-```tex
+```tex (accuracy := 959)
 Similarly if $v\in S$, if $0\not=\alpha\in\calO_v$ and if $g_v=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}$
 and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\coprod_i g_iU$
 with the $g_i$ supported only at~$v$.
@@ -1384,7 +1384,7 @@ What remains is to check that $`U_{α,v}` and $`U_{β,v}` commute. In fact we cl
 more, namely that $`U_{α,v}U_{β,v}=U_{αβ,v}`. This will suffice
 because $`αβ=βα`.
 
-```tex
+```tex (accuracy := 874)
 We deduce immediately from lemma~\ref{AbstractHeckeOperator.comm} that two Hecke operators
 associated to different finite places of~$F$ commute.
 What remains is to check that $U_{\alpha,v}$ and $U_{\beta,v}$ commute. In fact we claim
@@ -1397,7 +1397,7 @@ If $`v\in S` and $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subsete
 then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`.
 :::
 
-```tex "nolean-product-of-U-alpha" (slot := statement)
+```tex "nolean-product-of-U-alpha" (slot := statement) (accuracy := 857)
 \begin{lemma}
   \label{nolean-product-of-U-alpha}
   If $v\in S$ and $\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}$
@@ -1409,7 +1409,7 @@ then $`U_{\alpha,v}U_{\beta,v}=U_{\alpha\beta,v}`.
 Follows easily from the explicit double coset decomposition proved above.
 :::
 
-```tex "nolean-product-of-U-alpha" (slot := proof)
+```tex "nolean-product-of-U-alpha" (slot := proof) (accuracy := 1000)
 \begin{proof} Follows easily from the explicit double coset decomposition proved above.
 \end{proof}
 ```
@@ -1420,7 +1420,7 @@ and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $`R`-mod
 so the sub-$`R`-algebra generated by the Hecke operators is also a Noetherian $`R`-module
 and thus a Noetherian ring.
 
-```tex
+```tex (accuracy := 1000)
 The reason that the Hecke algebra is Noetherian is that the main theorem of the Fujisaki
 miniproject immediately implies that $A^G$ is a submodule of a finite free $R$-module
 and is hence Noetherian. Its endomorphism algebra is hence a Noetherian $R$-module,

@@ -6,7 +6,7 @@ import FLTBlueprint.Citations
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "An overview of the proof" =>
 
@@ -16,7 +16,7 @@ Fermat's Last Theorem can be reduced to the statement that there is no prime
 $`\ell \geq 5` and hardly-ramified irreducible `2`-dimensional Galois
 representation $`\rho : \GQ \to \GL_2(\Z/\ell\Z)`.
 
-```tex
+```tex (accuracy := 1000)
 So far we have seen that, modulo Mazur's theorem (and various other things which will still take some work to formalise but which are much easier), Fermat's Last Theorem can be reduced
 to the statement that there is no prime $\ell\geq 5$ and hardly-ramified
 irreducible 2-dimensional Galois representation $\rho:\GQ\to\GL_2(\Z/\ell\Z)$.
@@ -27,7 +27,7 @@ collect various results which we will need along the way. Note that we no
 longer need to assume that $`\rho` comes from the $`\ell`-torsion in an
 elliptic curve.
 
-```tex
+```tex (accuracy := 1000)
 In this chapter we give an overview of our strategy for proving this, and collect
 various results which we will need along the way. Note that we no longer need to assume that $\rho$ comes from the $\ell$-torsion in an elliptic curve.
 ```
@@ -44,7 +44,7 @@ modularity. We can furthermore even demand that the infinity type of the form
 is trivial (the analogue in this setting of classical weight `2` forms), as
 these are the only forms we shall need for FLT.
 
-```tex
+```tex (accuracy := 1000)
 We will only speak about modularity for 2-dimensional representations of the
 absolute Galois group of a totally real field $F$ \emph{of even degree over} $\Q$.
 What we will mean by ``modular'' is ``associated to an automorphic representation of the
@@ -62,7 +62,7 @@ unramified at $`\ell`, and disjoint from $`K`, such that $`\rho|G_F` is
 modular. The proof of this is very long, and uses a host of machinery. For
 example:
 
-```tex
+```tex (accuracy := 1000)
 Assume we have a hardly-ramified representation~$\rho$ as above. Let $K$
 be the number field corresponding to the kernel of~$\rho$. Our first claim
 is that there is some totally real field $F$ of even degree, Galois over $\Q$,
@@ -78,7 +78,7 @@ The proof of this is very long, and uses a host of machinery. For example:
   induced from a character are modular (this follows from converse theorems);
 - A modularity lifting theorem.
 
-```tex
+```tex (accuracy := 980)
 \begin{itemize}
     \item Moret--Bailly's result~\cite{moret-bailly} on points on curves with prescribed
     local behaviour;
@@ -92,7 +92,7 @@ The proof of this is very long, and uses a host of machinery. For example:
 Almost everything here dates back to the `1980`s or before. The exception is
 the modularity lifting theorem, which we now state explicitly.
 
-```tex
+```tex (accuracy := 933)
 Almost everything here dates back to the 1980s or before.
 The exception is the modularity lifting theorem, which we now state explicitly.
 ```
@@ -104,7 +104,7 @@ degree in which $`\ell` is unramified, and that $`S` is a finite set of finite
 places of $`F` not dividing $`\ell`. Write $`G_F` for the absolute Galois group
 of $`F`.
 
-```tex
+```tex (accuracy := 1000)
 Suppose $\ell\geq5$ is a prime, that $F$ is a totally real field of even degree in which $\ell$
 is unramified, and that~$S$ is a finite set of finite places of~$F$ not dividing~$\ell$. Write
 $G_F$ for the absolute Galois group of~$F$.
@@ -117,7 +117,7 @@ the inertia subgroup at $`v`. Local class field theory (or a more elementary
 approach) gives a map $`I_v \to \calO_{F_v}^\times` and hence a map
 $`I_v \to k(v)^\times`. Let $`J_v` denote the kernel of this map.
 
-```tex
+```tex (accuracy := 989)
 If $v\in S$ then let $F_v$ denote the completion of~$F$ at~$v$, fix an inclusion $\overline{F}\to\overline{F_v}$,
 let $\calO_v$ denote the integers of $F_v$ and $k(v)$ the residue field. Let $I_v\subset G_F$ denote the inertia
 subgroup at~$v$. Local class field theory (or a more elementary approach) gives a map $I_v\to\calO_{F_v}^\times$
@@ -128,7 +128,7 @@ Let $`R` be a complete local Noetherian $`\Z_\ell`-algebra with finite residue
 field of characteristic $`\ell`. We will be interested in representations
 $`\rho : G_F \to \GL_2(R)` with the following four properties.
 
-```tex
+```tex (accuracy := 1000)
 Let $R$ be a complete local Noetherian $\Z_\ell$-algebra with finite residue field of characteristic $\ell$.
 We will be interested in representations $\rho:G_F\to\GL_2(R)$ with the following four properties.
 ```
@@ -138,7 +138,7 @@ We will be interested in representations $\rho:G_F\to\GL_2(R)$ with the followin
 - If $`v \in S` then $`\rho(g)` has trace equal to `2` for all $`g \in J_v`;
 - If $`v \mid \ell` is a place of $`F` then $`\rho` is flat at $`v`.
 
-```tex
+```tex (accuracy := 1000)
 \begin{itemize}
     \item $\det(\rho)$ is the cyclotomic character;
     \item $\rho$ is unramified outside $S\cup\{\ell\}$;
@@ -151,7 +151,7 @@ In the last bullet point, "flat" means "projective limit of representations
 arising from finite flat group schemes". Let us use the lousy temporary
 notation "S-good" to denote representations with these four properties.
 
-```tex
+```tex (accuracy := 1000)
 In the last bullet point, ``flat'' means ``projective limit of representations arising from
 finite flat group schemes''. Let us use the lousy temporary notation ``$S$-good'' to denote
 representations with these four properties.
@@ -162,7 +162,7 @@ $`\rhobar : G_F \to \GL_2(k)` is continuous, absolutely irreducible when
 restricted to $`F(\zeta_\ell)`, and S-good. One can check that the functor
 representing S-good lifts of $`\rhobar` is representable.
 
-```tex
+```tex (accuracy := 1000)
 Say $k$ is a finite extension of $\Z/\ell\Z$ and $\rhobar:G_F\to\GL_2(k)$ is continuous,
 absolutely irreducible when restricted to $F(\zeta_\ell)$, and $S$-good. One can check
 that the functor representing $S$-good lifts of $\rhobar$ is representable.
@@ -176,7 +176,7 @@ integers of a finite extension of $`\Q_\ell`, then $`\rho` is also modular of
 level $`\Gamma_1(S)`.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{theorem}
     \label{modularity_lifting_theorem}
     \uses{Skinner_Wiles_CFT_trick,local_galois_coh_dim_two,local_galois_coh_top_degree,
@@ -193,7 +193,7 @@ level $`\Gamma_1(S)`.
 
 Right now we are very far from even stating this theorem in Lean.
 
-```tex
+```tex (accuracy := 1000)
 Right now we are very far from even stating this theorem in Lean.
 ```
 
@@ -207,7 +207,7 @@ contains $`\SL_2(\Z/p\Z)` (however it is well-known to the experts that this
 can be weakened to give the result we need). One reference for the proof is
 Richard Taylor's `2018` Stanford course.
 
-```tex
+```tex (accuracy := 972)
 I am not entirely sure where to find a proof of this in the literature, although it has
 certainly been known to the experts for some time. Theorem `3.3` of {Informal.citep
 taylorMeroCont}[] comes close, although it assumes that $`\ell` is totally split in
@@ -232,7 +232,7 @@ In the minimal case, the argument is the usual Taylor--Wiles trick, using
 refinements due to Kisin and others.
 :::
 
-```tex
+```tex (accuracy := 1000)
 \begin{proof} (Sketch)
 
 The proof is a two-stage procedure and has a nontrivial analytic input. First one uses
@@ -256,7 +256,7 @@ representation of $`\GL_2/F` and hence by Jacquet--Langlands it is modular. Now
 we use the modularity lifting theorem to deduce the modularity of the curve
 over $`F` and hence the modularity of the $`\ell`-torsion.
 
-```tex
+```tex (accuracy := 1000)
 Given this modularity lifting theorem, the strategy to show potential modularity of $\rho$
 is to use Moret--Bailly to find an appropriate totally real field $F$, an auxiliary prime
 $p$, and an auxiliary elliptic curve over $F$ whose mod $\ell$ Galois representation is $\rho$
@@ -280,7 +280,7 @@ representation would cut out a number field whose discriminant violates the
 Odlyzko bounds). One can now go on to deduce that the `3`-adic representation
 must be reducible, which contradicts the irreducibility of $`\rho`.
 
-```tex
+```tex (accuracy := 987)
 We now use Khare--Wintenberger to lift $\rho$ to a potentially modular $\ell$-adic
 Galois representation of conductor 2, and put it into an $\ell$-adic family using
 the Brauer's theorem trick in {Informal.citep blggtPotentialAutomorphy}[]. Finally we
@@ -299,7 +299,7 @@ this document grows, we will add a far more detailed discussion of what is
 going on here. Note in particular that stating the modularity lifting theorem
 in Lean is the first target.
 
-```tex
+```tex (accuracy := 1000)
 We apologise for the sketchiness of what is here, however at the time of
 writing it is so far from what we are even able to state in Lean that there
 seems to be little point right now in fleshing out the argument further. As

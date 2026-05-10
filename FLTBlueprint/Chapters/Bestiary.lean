@@ -8,7 +8,7 @@ import FLT.GlobalLanglandsConjectures.GLnDefs
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "Appendix: A collection of results which are needed in the proof." =>
 
@@ -34,7 +34,7 @@ the residue field of `K`. The other identifies `1` with geometric Frobenius,
 defined to be the inverse of arithmetic Frobenius.
 :::
 
-```tex "maximal_unramified_extension_of_p-adic_field" (slot := statement)
+```tex "maximal_unramified_extension_of_p-adic_field" (slot := statement) (accuracy := 988)
 \begin{theorem}\label{maximal_unramified_extension_of_p-adic_field}\notready The maximal unramified extension $K^{un}$ in a given algebraic closure of $K$
     is Galois over $K$ with Galois group ``canonically'' isomorphic to $\widehat{\Z}$ in two ways; one of these two isomorphisms identifies $1\in\widehat{\Z}$ with an arithmetic Frobenius (the endomorphism inducing $x\mapsto x^q$ on the residue field of $K^{un}$, where $q$ is the size of the residue field of $K$). The other identifies 1 with geometric Frobenius (defined to be the inverse of arithmetic Frobenius).
 \end{theorem}
@@ -51,7 +51,7 @@ Uses {uses "maximal_unramified_extension_of_p-adic_field"}[].
 The topological group described above is called the Weil group of `K`.
 :::
 
-```tex "local_Weil_group" (slot := statement)
+```tex "local_Weil_group" (slot := statement) (accuracy := 1000)
 \begin{definition}\label{local_Weil_group}\uses{maximal_unramified_extension_of_p-adic_field}\notready The topological group described above is called the \emph{Weil group} of $K$.
 \end{definition}
 ```
@@ -67,7 +67,7 @@ isomorphisms of topological abelian groups between $`K^\times` and the
 abelianization of the Weil group of `K`.
 :::
 
-```tex "local_class_field_theory" (slot := statement)
+```tex "local_class_field_theory" (slot := statement) (accuracy := 968)
 \begin{theorem}\label{local_class_field_theory}\uses{local_Weil_group}\notready If $K$ is a finite extension of $\Q_p$ then there are two ``canonical'' isomorphisms of topological abelian groups, between $K^\times$ and the abelianisation of the Weil group of $K$.
 \end{theorem}
 ```
@@ -78,7 +78,7 @@ relevant articles in the cited class-field-theory references or many other
 places.
 :::
 
-```tex "local_class_field_theory" (slot := proof)
+```tex "local_class_field_theory" (slot := proof) (accuracy := 857)
 \begin{proof} This is the main theorem of local class field theory; see for example the relevant articles in~\cite{cf} or many other places.
 \end{proof}
 ```
@@ -95,7 +95,7 @@ Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using co
 If `M` is finite then the cohomology groups $`H^i(G_K,M)` are all finite.
 :::
 
-```tex "local_galois_coh_finite" (slot := statement)
+```tex "local_galois_coh_finite" (slot := statement) (accuracy := 1000)
 \begin{theorem}
     \label{local_galois_coh_finite}
     \notready
@@ -107,7 +107,7 @@ If `M` is finite then the cohomology groups $`H^i(G_K,M)` are all finite.
 If `M` is torsion then $`H^i(G_K,M)=0` if $`i>2`.
 :::
 
-```tex "local_galois_coh_dim_two" (slot := statement)
+```tex "local_galois_coh_dim_two" (slot := statement) (accuracy := 875)
 \begin{theorem} ["the dimension is 2"]\label{local_galois_coh_dim_two}\notready
   If $M$ is torsion then $H^i(G_K,M)=0$ if $i>2$.
 \end{theorem}
@@ -117,7 +117,7 @@ If `M` is torsion then $`H^i(G_K,M)=0` if $`i>2`.
 $`H^2(G_K,\mu_n)` is canonically isomorphic to $`\Z/n\Z`.
 :::
 
-```tex "local_galois_coh_top_degree" (slot := statement)
+```tex "local_galois_coh_top_degree" (slot := statement) (accuracy := 929)
 \begin{theorem} ["top degree"]
     \label{local_galois_coh_top_degree}
     \notready
@@ -131,7 +131,7 @@ then for $`0\leq i\leq 2` the cup-product pairing
 $`H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z` is perfect.
 :::
 
-```tex "local_galois_coh_poincare" (slot := statement)
+```tex "local_galois_coh_poincare" (slot := statement) (accuracy := 971)
 \begin{theorem} ["Poincar\'e duality"]\label{local_galois_coh_poincare}\notready
     If $\mu=\bigcup_{n\geq1}\mu_n$ and $M':=\Hom(M,\mu)$ is the dual of $M$ then for
     $0\leq i\leq 2$ the cup product pairing $H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu)=\Q/\Z$ is perfect.
@@ -143,7 +143,7 @@ If $`h^i(M)` denotes the order of $`H^i(G_K,M)`, then
 $`h^0(M)-h^1(M)+h^2(M)=0`.
 :::
 
-```tex "local_galois_coh_euler_poincare" (slot := statement)
+```tex "local_galois_coh_euler_poincare" (slot := statement) (accuracy := 923)
 \begin{theorem} ["Euler-Poincar\'e characteristic"]\label{local_galois_coh_euler_poincare}\notready
     If $h^i(M)$ denotes the order of $H^i(G_K,M)$ then $h^0(M)-h^1(M)+h^2(M)=0$.
 \end{theorem}
@@ -162,7 +162,7 @@ uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each
 of the global isomorphisms is compatible with the local isomorphisms above.
 :::
 
-```tex "global_class_field_theory" (slot := statement)
+```tex "global_class_field_theory" (slot := statement) (accuracy := 974)
 \begin{theorem}\label{global_class_field_theory}\uses{local_class_field_theory}\notready If $N$ is a finite extension of $\Q$ then there are two ``canonical'' isomorphisms of topological groups between the profinite abelian groups $\pi_0(\A_N^\times/N^\times)$ and $\GN^{\ab}$; one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above.
 \end{theorem}
 ```
@@ -172,7 +172,7 @@ This is the main theorem of global class field theory; see for example Tate's
 article in the cited reference.
 :::
 
-```tex "global_class_field_theory" (slot := proof)
+```tex "global_class_field_theory" (slot := proof) (accuracy := 895)
 \begin{proof}\notready This is the main theorem of global class field theory; see for example Tate's article in~\cite{cf}.
 \end{proof}
 ```
@@ -191,7 +191,7 @@ $`K^{\avoid}/K` is any finite extension then `L` can be chosen linearly
 disjoint from $`K^{\avoid}`.
 :::
 
-```tex "Skinner_Wiles_CFT_trick" (slot := statement)
+```tex "Skinner_Wiles_CFT_trick" (slot := statement) (accuracy := 971)
 \begin{theorem}\label{Skinner_Wiles_CFT_trick}\uses{global_class_field_theory}\notready Let $S$ be a finite set of places of a number field $K$ . For each $v \in S$
 let $L_v/K_v$ be a finite Galois extension. Then there is a finite solvable Galois extension
 $L/K$ such that if $w$ is a place of $L$ dividing $v \in S$, then $L_w/K_v$ is isomorphic to $L_v/K_v$ as $K_v$-algebra. Moreover, if $K^{\avoid} /K$ is
@@ -208,7 +208,7 @@ We also need Poitou-Tate duality; I'll refrain from writing it down for now, bec
 All rings and algebras in this section are commutative with a `1`, and all
 morphisms send `1` to `1`.
 
-```tex
+```tex (accuracy := 1000)
 All rings and algebras in this section are commutative with a 1, and all
 morphisms send 1 to 1.
 ```
@@ -218,7 +218,7 @@ example `X` could be an affine algebraic variety; in fact we shall only be
 interested in smooth affine varieties in the applications, but the initial
 definition and theorem are fine for all finite type schemes.
 
-```tex
+```tex (accuracy := 1000)
 Let $X=\Spec(A)$ be an affine scheme of finite type over a field $K$. For
 example $X$ could be an affine algebraic variety; in fact we shall only be
 interested in smooth affine varieties in the applications, but the initial
@@ -229,7 +229,7 @@ If `R` is any `K`-algebra then one can talk about the `R`-points `X(R)` of `X`,
 which in this case naturally bijects with the `K`-algebra homomorphisms from
 `A` to `R`.
 
-```tex
+```tex (accuracy := 1000)
 If $R$ is any $K$-algebra then one can talk about the $R$-points $X(R)$ of $X$,
 which in this case naturally bijects with the $K$-algebra homomorphisms from
 $A$ to $R$.
@@ -243,7 +243,7 @@ the set-theoretic maps from `A` to `R` with its product topology, and giving it
 the subspace topology.
 :::
 
-```tex "topology_on_affine_variety_points" (slot := statement)
+```tex "topology_on_affine_variety_points" (slot := statement) (accuracy := 1000)
 \begin{definition}\label{topology_on_affine_variety_points} If $X$ is an affine
 scheme of finite type over $K$, and if $R$ is a $K$-algebra which is also a
 topological ring, then we define a topology on the $R$-points $X(R)$ of $X$ by
@@ -260,7 +260,7 @@ topological spaces (that is, a homeomorphism onto its image).
 This uses {uses "topology_on_affine_variety_points"}[].
 :::
 
-```tex "topology_on_affine_variety_computation" (slot := statement)
+```tex "topology_on_affine_variety_computation" (slot := statement) (accuracy := 966)
 \begin{theorem}\label{topology_on_affine_variety_computation}\uses{topology_on_affine_variety_points}
 If $X$ is as above and $X\to\mathbb{A}^n_K$ is a closed immersion, then the
 induced map from $X(R)$ with its topology as above to $R^n$ is an embedding of
@@ -272,7 +272,7 @@ topological spaces (that is, a homeomorphism onto its image).
 See [Conrad's notes](https://math.stanford.edu/~conrad/papers/adelictop.pdf).
 :::
 
-```tex "topology_on_affine_variety_computation" (slot := proof)
+```tex "topology_on_affine_variety_computation" (slot := proof) (accuracy := 1000)
 \begin{proof}
 See \href{https://math.stanford.edu/~conrad/papers/adelictop.pdf}{Conrad's
 notes}.
@@ -282,7 +282,7 @@ notes}.
 We now specialise to the smooth case. I want to make the following conjectural
 definition:
 
-```tex
+```tex (accuracy := 1000)
 We now specialise to the smooth case. I want to make the following conjectural
 ``definition'':
 ```
@@ -294,7 +294,7 @@ variety over `K`. Then the points `X(K)` naturally inherit the structure of a
 manifold over `K`.
 :::
 
-```tex "manifold_on_algebraic_variety_points" (slot := statement)
+```tex "manifold_on_algebraic_variety_points" (slot := statement) (accuracy := 1000)
 \begin{definition}\label{manifold_on_algebraic_variety_points}\notready Let $K$
 be a field equipped with an isomorphism to the reals, complexes, or a finite
 extension of the $p$-adic numbers. Let $X$ be a smooth affine algebraic variety
@@ -305,7 +305,7 @@ over $K$.
 
 Probably this is fine for a broader class of fields `K`.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark}
 Probably this is fine for a broader class of fields $K$.
 \end{remark}
@@ -318,7 +318,7 @@ $`K^n` is an embedding of manifolds.
 This uses {uses "manifold_on_algebraic_variety_points"}[].
 :::
 
-```tex "manifold_on_algebraic_variety_computation" (slot := statement)
+```tex "manifold_on_algebraic_variety_computation" (slot := statement) (accuracy := 961)
 \begin{theorem}\label{manifold_on_algebraic_variety_computation}\uses{manifold_on_algebraic_variety_points}\notready
 If $X$ is as in the previous definition and $X\to\mathbb{A}^n_K$ is a closed
 immersion, then the induced map from $X(K)$ with its manifold structure to
@@ -330,7 +330,7 @@ $K^n$ is an embedding of manifolds.
 I'm assuming this is standard, if true.
 :::
 
-```tex "manifold_on_algebraic_variety_computation" (slot := proof)
+```tex "manifold_on_algebraic_variety_computation" (slot := proof) (accuracy := 1000)
 \begin{proof}
 I'm assuming this is standard, if true.
 \end{proof}
@@ -342,7 +342,7 @@ then $`G(K)` is naturally a real or complex Lie group.
 This uses {uses "manifold_on_algebraic_variety_computation"}[].
 :::
 
-```tex "lie_group_from_algebraic_group" (slot := statement)
+```tex "lie_group_from_algebraic_group" (slot := statement) (accuracy := 964)
 \begin{corollary}\label{lie_group_from_algebraic_group}\uses{manifold_on_algebraic_variety_computation}\notready
 If $G$ is an affine algebraic group of finite type over $K=\R$ or $K=\bbC$
 then $G(K)$ is naturally a real or complex Lie group.
@@ -356,7 +356,7 @@ As a toy example, one can embed $`\GL_n(\R)` into either $`\R^{n^2+1}` via
  $`M \mapsto (M,\det(M)^{-1})` or into $`\R^{2n^2}` via $`M \mapsto (M,M^{-1})`
 and the claim is that the two induced manifold structures are the same.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark}
 
 The corollary, for sure, is true! And it's all we need. I have not yet made any
@@ -378,7 +378,7 @@ same to mathematicians but different to Lean and some thought should go into
 which of these should be the actual definition, and which should be proved to
 be the same thing as the definition.
 
-```tex
+```tex (accuracy := 1000)
 The concept of an affine algebraic group over a field $K$ can be implemented in
 Lean as a commutative Hopf algebra over $K$, as a group object in the category
 of affine schemes over $K$, as a representable group functor on the category of
@@ -395,7 +395,7 @@ connected if it is connected as a scheme, and reductive if $`G_{\overline{k}}`
 has no nontrivial smooth connected unipotent normal `k`-subgroup.
 :::
 
-```tex "connected_reductive_group" (slot := statement)
+```tex "connected_reductive_group" (slot := statement) (accuracy := 987)
 \begin{definition}\label{connected_reductive_group}\notready An affine algebraic
 group~$G$ of finite type over a field~$k$ is said to be \emph{connected} if it
 is connected as a scheme, and \emph{reductive} if $G_{\overline{k}}$ has no
@@ -426,7 +426,7 @@ A function $`f : G(N_\infty)\to\bbC` is slowly-increasing if there exist some
 $`C>0` and $`n\geq1` such that $`|f(x)|\leq C||x||_\rho^n`.
 :::
 
-```tex "slowly_increasing" (slot := statement)
+```tex "slowly_increasing" (slot := statement) (accuracy := 967)
 \begin{definition}\label{slowly_increasing}\notready A function $f : G(N_\infty)\to\bbC$ is \emph{slowly-increasing} if there exists some $C>0$
     and $n\geq1$ such that $|f(x)\leq C||x||_\rho^n$.
 \end{definition}
@@ -446,7 +446,7 @@ Uses {uses "slowly_increasing"}[].
 This is independent of the choice of $`\rho` as above.
 :::
 
-```tex "slowly_increasing_well_defined" (slot := statement)
+```tex "slowly_increasing_well_defined" (slot := statement) (accuracy := 1000)
 \begin{theorem}\label{slowly_increasing_well_defined}\uses{slowly_increasing}\notready This is independent of the choice of $\rho$ as above.
 \end{theorem}
 ```
@@ -473,7 +473,7 @@ following conditions.
    slowly-increasing in the sense above.
 :::
 
-```tex "automorphic_form" (slot := statement)
+```tex "automorphic_form" (slot := statement) (accuracy := 953)
 \begin{definition}\label{automorphic_form}\uses{slowly_increasing_well_defined,connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation}\notready An \emph{automorphic form} is a function $\phi:G(\A_N)\to\bbC$ satisfying the following conditions:
     \begin{itemize}
         \item $\phi$ is locally constant on $G(\A_N^f)$ and $C^\infty$ on $G(N_\infty)$. In other words, for every $g_\infty$, $\phi(-,g_\infty)$ is locally constant, and for every $g_f$, $\phi(g_f,-)$ is smooth.
@@ -499,7 +499,7 @@ radical of `P`, and the integral is with respect to the measure coming from
 Haar measure.
 :::
 
-```tex "cuspidal_automorphic_form" (slot := statement)
+```tex "cuspidal_automorphic_form" (slot := statement) (accuracy := 1000)
 \begin{definition}\label{cuspidal_automorphic_form}\uses{automorphic_form}\notready An automorphic form is \emph{cuspidal} (or ``a cusp form'') if it furthermore satisfies $\int_{U(N)\backslash U(\A_N)}\phi(ux)du=0$, where $P$ runs through all the proper parabolic subgroups of $G$ defined over $N$ and $U$ is the unipotent radical of $P$, and the integral is with respect to the measure coming from Haar measure.
 \end{definition}
 ```
@@ -520,7 +520,7 @@ of $`\mathfrak{g}`. We say that the spaces are
 $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
 :::
 
-```tex "automorphic_form_actions" (slot := statement)
+```tex "automorphic_form_actions" (slot := statement) (accuracy := 980)
 \begin{definition}\label{automorphic_form_actions}\uses{automorphic_form}\notready The group $G(\A_N)$ acts on itself on the right, and this induces a left action of its
     subgroup $G(\A_N^f)\times U_\infty$ on the spaces of automorphic forms and cusp forms. The Lie algebra $\mathfrak{g}$ of $G(N_\infty)$ also acts, via differential operators. Furthermore the actions of $\mathfrak{g}$ and $U_\infty$ are compatible in the sense that the differential of the $U_\infty$ action is the action of its Lie algebra considered as a subalgebra of $\mathfrak{g}$. We say that the spaces are $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
 \end{definition}
@@ -528,7 +528,7 @@ $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
 
 For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case.
 
-```tex
+```tex (accuracy := 1000)
 For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case.
 ```
 
@@ -539,7 +539,7 @@ $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
 subquotient of the space of automorphic forms.
 :::
 
-```tex "automorphic_representation" (slot := statement)
+```tex "automorphic_representation" (slot := statement) (accuracy := 981)
 \begin{definition}\label{automorphic_representation}\uses{automorphic_form_actions}\notready An automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible subquotient of the space of automorphic forms.
 \end{definition}
 ```
@@ -580,7 +580,7 @@ and likewise the Shimura surface associated to an inner form split at two
 infinite places and ramified elsewhere.
 :::
 
-```tex "Shimura_varieties" (slot := statement)
+```tex "Shimura_varieties" (slot := statement) (accuracy := 918)
 \begin{definition}\label{Shimura_varieties}\notready We need the definition of (the canonical model over $F$ of) the Shimura curve attached to an inner form of $\GL_2$ with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it's compact).
 \end{definition}
 ```
@@ -606,7 +606,7 @@ a point $`P\in T(L)` such that:
   $`\operatorname{Gal}(L_v/K_v)`-invariant.
 :::
 
-```tex "moret-bailly" (slot := statement)
+```tex "moret-bailly" (slot := statement) (accuracy := 985)
 \begin{theorem}\label{moret-bailly}\notready Let $K^{\avoid}/K$ be a Galois extension of number fields. Suppose also
 that $S$ is a finite set of places of $K$. For $v\in S$ let $L_v/K_v$ be a finite Galois extension.
 Suppose also that $T /K$ is a smooth, geometrically connected curve and that for each
@@ -623,7 +623,7 @@ Then there is a finite Galois extension $L/K$ and a point $P \in T(L)$ such that
 
 Note that we do not even have the definition of a curve over a field in Lean.
 
-```tex
+```tex (accuracy := 1000)
 Note that we do not even have the definition of a curve over a field in Lean.
 ```
 
@@ -642,7 +642,7 @@ A cuspidal automorphic representation is an irreducible
 summand of the space of cusp forms.
 :::
 
-```tex "cuspidal_automorphic_representation" (slot := statement)
+```tex "cuspidal_automorphic_representation" (slot := statement) (accuracy := 982)
 \begin{definition}\label{cuspidal_automorphic_representation}\uses{cuspidal_automorphic_form_decomposition}\notready A cuspidal automorphic representation is an irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module isomorphic to an irreducible summand of the space of cusp forms.
 \end{definition}
 ```
@@ -653,7 +653,7 @@ The cusp forms decompose as a typically infinite direct sum of irreducible
 $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
 :::
 
-```tex "cuspidal_automorphic_form_decomposition" (slot := statement)
+```tex "cuspidal_automorphic_form_decomposition" (slot := statement) (accuracy := 977)
 \begin{theorem}\label{cuspidal_automorphic_form_decomposition}\uses{cuspidal_automorphic_form, automorphic_form_actions} The cusp forms decompose as a (typically infinite) direct sum of irreducible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-modules.
 \end{theorem}
 ```
@@ -668,7 +668,7 @@ infinite places of `N`. The representations $`\pi_v` are unramified for all but
 finitely many `v`.
 :::
 
-```tex "automorphic_representation_local_decomposition" (slot := statement)
+```tex "automorphic_representation_local_decomposition" (slot := statement) (accuracy := 986)
 \begin{theorem}\label{automorphic_representation_local_decomposition}\uses{automorphic_representation}\notready An irreducible admissible $(G(\A_N^f)\times U_\infty,\mathfrak{g})$-module is a restricted tensor product of irreducible representations $\pi_v$ of $G(N_v)$ as $v$ runs through the finite places of $N$, tensored with a tensor product of irreducible $(\mathfrak{g}_v,U_{\infty,v})$-modules as $v$ runs through the infinite places of $N$. The representations $\pi_v$ are unramified for all but finitely many $v$.
 \end{theorem}
 ```
@@ -687,7 +687,7 @@ $`P_\pi(X)` if $`\pi` lies above a prime number $`p\neq \ell` with
 $`p\not\in S`.
 :::
 
-```tex "compatible_family" (slot := statement)
+```tex "compatible_family" (slot := statement) (accuracy := 916)
 \begin{definition}\label{compatible_family}\discussion{23} Let $N$ be a number field. A \emph{compatible family of $d$-dimensional Galois representations over $N$} is a finite set of finite places $S$ of $N$,
 a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside `S` and the primes of `K` above `\ell`, such that `\rho(\Frob_\p)` has characteristic polynomial `P_\pi(X)` if `\pi` lies above a prime number `p\neq \ell` with `p\not\in S`.
 \end{definition}
@@ -703,7 +703,7 @@ places at which $`\pi` is ramified and $`F_{\mathfrak p}(X)` the monic
 polynomial with roots the two Satake parameters for $`\pi` at $`\mathfrak p`.
 :::
 
-```tex "Galois_representation_from_automorphic_representation_on_GL_2_form" (slot := statement)
+```tex "Galois_representation_from_automorphic_representation_on_GL_2_form" (slot := statement) (accuracy := 973)
 \begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation `\pi` for an inner form of `\GL_2` over a totally real field and with reflex field~`E`, such that `\pi` is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to `\pi`, with `S` being the places at which `\pi` is ramified, and `F_{\p}(X)` being the monic polynomial with roots the two Satake parameters for `\pi` at `\p`.
 \end{theorem}
 ```

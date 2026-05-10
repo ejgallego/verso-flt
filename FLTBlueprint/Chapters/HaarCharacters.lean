@@ -6,7 +6,7 @@ import FLT.HaarMeasure.HaarChar.AdeleRing
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 set_option maxRecDepth 20000
 
@@ -26,7 +26,7 @@ number field `K`, then $`B^\times` is in the kernel of the Haar character of
 $`B\otimes_K\A_K`, where $`\A_K` is the ring of adeles of `K`. Most if not all
 of this should probably be in mathlib.
 
-```tex
+```tex (accuracy := 970)
 \section{The goal}
 
 The goal of this miniproject is to develop the theory (i.e., the basic API) of Haar characters.
@@ -40,7 +40,7 @@ should probably be in mathlib.
 KMB would like to heartily thank Sebastien Gouezel for the help he gave during
 the preparation of this material.
 
-```tex
+```tex (accuracy := 850)
 KMB would like to heartily thank S\'ebastien Gou\"ezel for the help he gave during the preparation
 of this material.
 ```
@@ -64,7 +64,7 @@ automorphism of `A`, then we can push forward `μ` along `φ` to get a second
 measure `φ_* μ` on `A`, with the property that
 `(φ_* μ)(X) = μ(φ^{-1} X)` for any Borel subset `X` of `A`.
 
-```tex
+```tex (accuracy := 931)
 Let $A$ be a locally compact topological additive abelian group. There's then a regular additive
 Haar measure $\mu$ on $A$, unique up to a positive scalar factor. If $\phi:(A,+)\cong(A,+)$ is a
 homeomorphism and an additive automorphism of $A$, then we can push forward $\mu$
@@ -79,7 +79,7 @@ homeomorphism, then we let $`d_A(\phi)` denote the unique positive real number
 such that $`\mu(X)=d_A(\phi)(\phi_*\mu)(X)` for any Borel set `X`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar" (slot := statement) (accuracy := 1000)
 \begin{definition}
   \label{MeasureTheory.addEquivAddHaarChar}
   \lean{MeasureTheory.addEquivAddHaarChar}
@@ -95,7 +95,7 @@ Now `φ_* μ` is a translation-invariant and regular measure, and hence also a
 Haar measure on `A`. It must thus differ from `μ` by a positive scalar factor,
 which we call $`d_A(φ)`.
 
-```tex
+```tex (accuracy := 939)
 Now $\phi_*\mu$ is a translation-invariant and regular measure,
 and hence also a Haar measure on $A.$ It must thus differ from
 $\mu$ by a positive scalar factor, which we call $d_A(\phi)$.
@@ -104,7 +104,7 @@ $\mu$ by a positive scalar factor, which we call $d_A(\phi)$.
 There is a choice of normalization here between $`d_A(\phi)` and
 $`d_A(\phi)^{-1}`, so let us be more precise.
 
-```tex
+```tex (accuracy := 1000)
 There is a choice of normalization here between $d_A(\phi)$ and $d_A(\phi)^{-1}$, so let us be more precise.
 ```
 
@@ -115,7 +115,7 @@ $`1 = d_A(\phi)/2`, meaning that $`d_A(\phi) = 2`. Similarly if `φ` is
 multiplication by `-2` and $`X = [0,1]` then $`φ^{-1}(X) = [-1/2,0]`, which
 again has measure `1/2`, so $`d_A(\phi)` is `2` again.
 
-```tex
+```tex (accuracy := 947)
 To give an example, if $\phi$ is multiplication by $2$ on the real numbers,
 if $X=[0,1]$, and if $\mu$ is Lebesgue measure on the Borel subsets of $\R$,
 we have that $\phi_*\mu(X)=\mu(\phi^{-1}(X))=\mu([0,1/2])=1/2$,
@@ -131,7 +131,7 @@ and the actual definition of $`d_A` in the code uses this definition. Note also
 that the code defines everything for multiplicative groups and uses
 `@[to_additive]` to deduce the corresponding results for additive groups.
 
-```tex
+```tex (accuracy := 972)
 Strictly speaking our definition of $d_A(\phi)$ depends on the choice of regular Haar
 measure $\mu$. Note that {\tt mathlib} offers a fixed Borel regular Haar measure
 {\tt MeasureTheory.Measure.haar} on any locally compact topological group
@@ -146,7 +146,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 $`d_A(\phi)` is independent of choice of regular Haar measure.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_eq}
   \lean{MeasureTheory.addEquivAddHaarChar_eq}
@@ -162,7 +162,7 @@ If `μ'` is a second choice then `μ' = λ μ` for some positive real `λ`, and 
 `λ`s on each side of $`μ'(X) = d_A(\phi)(\phi_* μ')(X)` cancel.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_eq" (slot := proof) (accuracy := 857)
 \begin{proof}
   \leanok
   If $\mu'$ is a second choice then $\mu'=\lambda\mu$ for some
@@ -177,7 +177,7 @@ If `μ` is any regular Haar measure on `A` then
 $`d_A(\phi)(\phi_*\mu) = \mu.`
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := statement) (accuracy := 968)
 \begin{lemma}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_map}
   \label{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -192,7 +192,7 @@ $`d_A(\phi)(\phi_*\mu) = \mu.`
 This is a restatement of the previous result.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_map" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   This is a restatement of the previous result.
@@ -205,7 +205,7 @@ If `μ` is any regular Haar measure on `A` then
 $`d_A(φ)μ = \phi^*μ`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_comap" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_comap" (slot := statement) (accuracy := 857)
 \begin{corollary}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_eq_comap}
   \label{MeasureTheory.addEquivAddHaarChar_comap}
@@ -221,7 +221,7 @@ This follows from the pushforward formula applied to the regular Haar measure
 $`\phi^* \mu` and the fact that $`\phi_*\phi^*\mu = \mu`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_comap" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_comap" (slot := proof) (accuracy := 905)
 \begin{proof}
   \leanok
   This follows from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -234,7 +234,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 $`d_A(id)=1`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_refl" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_refl" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_refl}
   \lean{MeasureTheory.addEquivAddHaarChar_refl}
@@ -249,7 +249,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar_eq"}[].
 Clear.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_refl" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_refl" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_eq}
   \leanok
@@ -262,7 +262,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 If `X` is a Borel set, then $`μ(X) = d_A(φ) μ(φ⁻¹(X))`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_preimage" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_preimage" (slot := statement) (accuracy := 857)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_smul_preimage}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -279,7 +279,7 @@ This follows immediately from lemma `MeasureTheory.addEquivAddHaarChar_smul_map`
 and the definition of the pushforward of a measure.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_preimage" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_preimage" (slot := proof) (accuracy := 875)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -294,7 +294,7 @@ If $`f : A → ℝ` is a Borel measurable function then
 $`d_A(φ) ∫ f(x) d(φ_* μ)(x) = ∫ f(x) dμ(x)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := statement) (accuracy := 851)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
   \lean{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
@@ -311,7 +311,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_map"}[].
 This also follows immediately from lemma.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_map" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_map}
@@ -321,7 +321,7 @@ This also follows immediately from lemma.
 
 We also have the following variant:
 
-```tex
+```tex (accuracy := 1000)
 We also have the following variant:
 ```
 
@@ -331,7 +331,7 @@ If $`f : A → ℝ` is a Borel measurable function then
 $`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (slot := statement) (accuracy := 851)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_smul_integral_comap}
   \lean{MeasureTheory.integral_comap_eq_addEquivAddHaarChar_smul}
@@ -346,7 +346,7 @@ $`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
 This is immediate from corollary.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   This is immediate from corollary~\ref{MeasureTheory.addEquivAddHaarChar_comap}.
@@ -358,7 +358,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar"}[].
 $`d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_trans}
   \lean{MeasureTheory.addEquivAddHaarChar_trans}
@@ -379,7 +379,7 @@ lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
 $`(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to `μ`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_trans" (slot := proof) (accuracy := 959)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -398,7 +398,7 @@ $`(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to `μ`
 If $`R=\R` then $`\delta_R(u)=|u|`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_real" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_real" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_real}
   \lean{MeasureTheory.ringHaarChar_real}
@@ -414,7 +414,7 @@ $`δ(u) = \mu(uX)`. If $`u > 0` then $`u[0,1] = [0,u]`, which has measure
 `u = |u|`, and if $`u < 0` then $`u[0,1] = [u,0]`, which has measure `-u = |u|`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_real" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_real" (slot := proof) (accuracy := 989)
 \begin{proof}
   \uses{MeasureTheory.ringHaarChar_mul_volume}
   \leanok
@@ -428,7 +428,7 @@ and if $u<0$ then $u*[0,1]=[u,0]$ which has measure $-u=|u|$.
 If $`R=\bbC` then $`\delta_R(u)=|u|^2`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_complex" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_complex" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_complex}
   \lean{MeasureTheory.ringHaarChar_complex}
@@ -444,7 +444,7 @@ $`r^2 = |r|^2`. Multiplication by $`e^{i\theta}` is a rotation and thus does not
 change area. The general case follows.
 :::
 
-```tex "MeasureTheory.ringHaarChar_complex" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_complex" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \uses{MeasureTheory.ringHaarChar_mul_volume}
   \leanok
@@ -467,7 +467,7 @@ left multiplication by `u`, namely the map $`\ell_u : (R,+) → (R,+)` defined b
 $`\ell_u(r) = ur`, is a homeomorphism and an additive automorphism of `(R,+)`,
 so the preceding theory applies to $`\ell_u`.
 
-```tex
+```tex (accuracy := 987)
 Now let $R$ be a locally compact topological ring. The \emph{Haar character} of $R$,
 or more precisely the \emph{left Haar character} of $R$, is a group homomorphism
 $R^\times\to\R^\times$ defined in the following way. If $u\in R^\times$ then left multiplication
@@ -481,7 +481,7 @@ We define `δ_R(u)`, or just `δ(u)` when the ring `R` is clear, to be
 $`d_R(ℓ_u)`.
 :::
 
-```tex "MeasureTheory.ringHaarChar" (slot := statement)
+```tex "MeasureTheory.ringHaarChar" (slot := statement) (accuracy := 900)
 \begin{definition}
   \label{MeasureTheory.ringHaarChar}
   \lean{MeasureTheory.ringHaarChar}
@@ -498,7 +498,7 @@ If $`f:R\to\R` is a Borel measurable function and $`u\in R^\times` then
 $`\delta_R(u)\int f(ux)d\mu(x)=\int f(x)d\mu(x)`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_mul_integral}
   \lean{MeasureTheory.ringHaarChar_mul_integral}
@@ -515,7 +515,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_integral_map"}[].
 A short calculation using lemma.
 :::
 
-```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_mul_integral" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_smul_integral_map}
   \leanok
@@ -529,7 +529,7 @@ If `X` is a Borel subset of `R` and $`r ∈ R^\times`, then
 `μ(rX) = δ_R(r) μ(X)`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_mul_volume" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_mul_volume" (slot := statement) (accuracy := 895)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_mul_volume}
   \lean{MeasureTheory.ringHaarChar_mul_volume}
@@ -545,7 +545,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[].
 Immediate from lemma.
 :::
 
-```tex "MeasureTheory.ringHaarChar_mul_volume" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_mul_volume" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_smul_preimage}
@@ -558,7 +558,7 @@ Uses {uses "MeasureTheory.ringHaarChar"}[].
 The function $`δ_R : R^\times → ℝ_{>0}` is continuous.
 :::
 
-```tex "MeasureTheory.ringHaarChar_continuous" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_continuous" (slot := statement) (accuracy := 900)
 \begin{corollary}
   \label{MeasureTheory.ringHaarChar_continuous}
   \lean{MeasureTheory.ringHaarChar_continuous}
@@ -581,7 +581,7 @@ $`R^\times` to $`\R` taking values in $`\R_{>0}`. Hence $`\delta_R^{-1}` is
 continuous from lemma, and thus $`\delta_R` is too.
 :::
 
-```tex "MeasureTheory.ringHaarChar_continuous" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_continuous" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.ringHaarChar_mul_integral}
@@ -600,7 +600,7 @@ continuous from lemma, and thus $`\delta_R` is too.
 
 If $`R=\Q_p` then $`\delta_R(u)=|u|_p`, the usual $`p`-adic norm.
 
-```tex
+```tex (accuracy := 1000)
 If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
 ```
 
@@ -611,7 +611,7 @@ $`μ(i+p\Z_p)=μ(p\Z_p)` we have that $`μ(\Z_p)=pμ(p\Z_p)` and thus
 $`δ(p)=p^{-1}`. These elements generate $`\Q_p^\times`, and two characters
 which agree on generators of a group must agree on the group.
 
-```tex "padic_haar_character_formula" (slot := proof)
+```tex "padic_haar_character_formula" (slot := proof) (accuracy := 934)
 \begin{proof}
   \leanok
   Normalise Haar measure so that $\mu(\Z_p)=1$.
@@ -628,7 +628,7 @@ is the norm on $`R` normalised in the following way:
 $`\delta_R(\varpi)=q^{-1}`, where $`\varpi` is a uniformiser
 and $`q` is the size of the (finite) residue field.
 
-```tex
+```tex (accuracy := 1000)
 If $R$ is a finite extension of $\Q_p$ then $\delta_R(u)$ is the norm on $R$ normalised in the following way: $\delta_R(\varpi)=q^{-1}$, where $\varpi$ is a uniformiser and $q$ is the size of the (finite) residue field.
 ```
 
@@ -643,7 +643,7 @@ implies continuity, this is `IsModuleTopology.continuous_of_linearMap` in
 `mathlib`, so in fact `φ` is a homeomorphism and our theory applies. The
 following lemma gives a formula for the scale factor $`d_V(φ)`.
 
-```tex
+```tex (accuracy := 962)
   Say $F$ is a locally compact topological ring (for example $\R$ or $\bbC$ or $\Q_p$,
   or the adeles of a number field), $V$
   is a finite free $F$-module, and $\phi:V\to V$ is an invertible $F$-linear map.
@@ -663,7 +663,7 @@ and mathlib has this. Then $`d_V(\phi)=\delta_F(\det(\phi))`, where
 $`\det(\phi)\in F` is the determinant of $`\phi` as an `F`-linear map.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det,
     MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det_of_existsListTransvecEtc}
@@ -692,7 +692,7 @@ that one off-diagonal entry is non-zero.
 Note: we assume that `F` is second countable, but it shouldn't be necessary.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" (slot := proof) (accuracy := 750)
 \begin{proof}
 \uses{MeasureTheory.addEquivAddHaarChar}
 \leanok
@@ -719,7 +719,7 @@ topological ring. Now say $`u ∈ R^\times`, and recall that $`\ell_u : R → R`
 left multiplication by `u`. Then $`\ell_u` is easily checked to be an `F`-linear
 homeomorphism.
 
-```tex
+```tex (accuracy := 947)
 Now say $F$ is a locally compact topological field, and that $R$ is a (possibly
 non-commutative) $F$-algebra. Recall that this means that ($R=0$ or) $F$ lies in the centre of $R$.
 Assume that $R$ is finite-dimensional as an $F$-vector space. Then if we give $R$ the
@@ -733,7 +733,7 @@ an $F$-linear homeomorphism.
 If $`u\in R^\times` then $`\delta_R(u)=\delta_F(\det(\ell_u))`.
 :::
 
-```tex "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (slot := statement)
+```tex "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (slot := statement) (accuracy := 1000)
 \begin{corollary}
   \label{MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det}
   \lean{MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det}
@@ -747,7 +747,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"}[].
 Follows immediately from the preceding lemma.
 :::
 
-```tex "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (slot := proof)
+```tex "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
   \leanok
@@ -770,7 +770,7 @@ $`\begin{pmatrix}x&y\\0&z\end{pmatrix}` to
 $`\begin{pmatrix}ax&y\\0&z\end{pmatrix}` and thus scales `R`'s additive Haar
 measure by a factor of $`|a|`.
 
-```tex
+```tex (accuracy := 900)
 If $R$ is a locally compact topological ring, and if multiplication on $R$ is not commutative,
 then left and right multiplication by an element of~$R$ can scale Haar measure in different ways.
 For example if $R$ is the upper-triangular $2\times 2$ matrices with real
@@ -787,7 +787,7 @@ $`\R`-linear maps from `R` to `R`, then their associated matrices with respect
 to the obvious basis are `diag(a,a,1)` and `diag(a,1,1)`, which have different
 determinants.
 
-```tex
+```tex (accuracy := 1000)
 What's going on here is that if we regard left and right multiplication as $\R$-linear
 maps from $R$ to $R$, then their associated matrices with respect to the obvious basis
 are $diag(a,a,1)$ and $diag(a,1,1)$, which have different determinants.
@@ -799,7 +799,7 @@ about later, and if $`u\in B^\times` then $`x\mapsto ux` and $`x\mapsto xu`
 are both `k`-linear endomorphisms of `B`, and I claim that they have the same
 determinant.
 
-```tex
+```tex (accuracy := 1000)
 However, if $k$ is now any field and if $B$ is a finite-dimensional central
 simple algebra over $k$ (for example a quaternion algebra, the case we'll care about later),
 and if $u\in B^\times$ then $x\mapsto ux$ and $x\mapsto xu$
@@ -814,7 +814,7 @@ $`u ∈ B^\times`. Let $`\ell_u : B → B` be the `k`-linear map sending `x` to
 $`det(\ell_u)=det(r_u)`.
 :::
 
-```tex "IsSimpleRing.mulLeft_det_eq_mulRight_det" (slot := statement)
+```tex "IsSimpleRing.mulLeft_det_eq_mulRight_det" (slot := statement) (accuracy := 944)
 \begin{lemma}
   \label{IsSimpleRing.mulLeft_det_eq_mulRight_det}
   \lean{IsSimpleRing.mulLeft_det_eq_mulRight_det}
@@ -836,7 +836,7 @@ left `B`-module becomes a direct sum of `n` copies of the standard
 $`det(r_u)=d^n`, so they are equal.
 :::
 
-```tex "IsSimpleRing.mulLeft_det_eq_mulRight_det" (slot := proof)
+```tex "IsSimpleRing.mulLeft_det_eq_mulRight_det" (slot := proof) (accuracy := 870)
 \begin{proof}
   \leanok
   Determinants are unchanged by base extension, so WLOG $k$ is algebraically closed.
@@ -853,7 +853,7 @@ $`u\in B^\times`, then $`d_B(r_u)=\delta_B(u)`, recalling that the latter is
 defined to mean $`d_B(\ell_u)`.
 :::
 
-```tex "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight" (slot := statement)
+```tex "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight" (slot := statement) (accuracy := 974)
 \begin{corollary}
   \label{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
   \lean{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
@@ -873,7 +873,7 @@ $`\delta_F(\det(\ell_u))`, and this is $`\delta_B(u)` again by corollary
 `MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det`.
 :::
 
-```tex "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight" (slot := proof)
+```tex "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight" (slot := proof) (accuracy := 864)
 \begin{proof}
   \leanok
   \uses{IsSimpleRing.mulLeft_det_eq_mulRight_det, MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}
@@ -889,7 +889,7 @@ $`\delta_F(\det(\ell_u))`, and this is $`\delta_B(u)` again by corollary
 
 Here are two facts which we will need about products.
 
-```tex
+```tex (accuracy := 1000)
 Here are two facts which we will need about products.
 ```
 
@@ -900,7 +900,7 @@ $`\phi\times\psi:A\times B\to A\times B` is an additive homeomorphism, this is
 obvious, and $`d_{A\times B}(\phi\times\psi)=d_A(\phi)d_B(\psi)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_prodCongr" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_prodCongr" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_prodCongr}
   \lean{MeasureTheory.addEquivAddHaarChar_prodCongr}
@@ -934,7 +934,7 @@ $`\delta_{A\times B}(0,b)=\delta_B(b)`, and because $`\delta_{A\times B}` is
 a group homomorphism we're home.
 :::
 
-```tex
+```tex (accuracy := 986)
 \begin{proof}
   \leanok
   We only need this result in the case where both $A$ and $B$ are second-countable, in which case
@@ -963,7 +963,7 @@ with $`\phi_i : A_i → A_i` additive homeomorphisms, then
 $`d_{\prod_i A_i}(\prod_i\phi_i)=\prod_i d_{A_i}(\phi_i)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_piCongrRight" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_piCongrRight" (slot := statement) (accuracy := 987)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_piCongrRight}
   \lean{MeasureTheory.addEquivAddHaarChar_piCongrRight}
@@ -979,7 +979,7 @@ $`d_{\prod_i A_i}(\prod_i\phi_i)=\prod_i d_{A_i}(\phi_i)`.
 Induction on the size of the finite set, using the previous lemma.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_piCongrRight" (slot := proof)
+```tex "MeasureTheory.addEquivAddHaarChar_piCongrRight" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   Induction on the size of the finite set, using the previous lemma.
@@ -992,7 +992,7 @@ If `R` and `S` are locally compact topological rings, then
 $`\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_prod" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_prod" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_prod}
   \lean{MeasureTheory.ringHaarChar_prod}
@@ -1006,7 +1006,7 @@ $`\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)`.
 Follows immediately from lemma.
 :::
 
-```tex "MeasureTheory.ringHaarChar_prod" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_prod" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   Follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}.
@@ -1020,7 +1020,7 @@ $`u_i\in R_i^\times`, then
 $`\delta_{\prod_i R_i}((u_i)_i)=\prod_i\delta_{R_i}(u_i)`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_pi" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_pi" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_pi}
   \lean{MeasureTheory.ringHaarChar_pi}
@@ -1035,7 +1035,7 @@ $`\delta_{\prod_i R_i}((u_i)_i)=\prod_i\delta_{R_i}(u_i)`.
 Follows immediately from lemma.
 :::
 
-```tex "MeasureTheory.ringHaarChar_pi" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_pi" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   Follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_piCongrRight}.
@@ -1050,7 +1050,7 @@ both a group homomorphism and an open embedding. The pullback along `f` of a
 Haar measure on `B` is a Haar measure on `A`.
 :::
 
-```tex "Topology.IsOpenEmbedding.isHaarMeasure_comap" (slot := statement)
+```tex "Topology.IsOpenEmbedding.isHaarMeasure_comap" (slot := statement) (accuracy := 974)
 \begin{lemma}
   \label{Topology.IsOpenEmbedding.isHaarMeasure_comap}
   \lean{Topology.IsOpenEmbedding.isHaarMeasure_comap}
@@ -1068,7 +1068,7 @@ image of compact is compact, open sets are bounded because image of open is
 open.
 :::
 
-```tex "Topology.IsOpenEmbedding.isHaarMeasure_comap" (slot := proof)
+```tex "Topology.IsOpenEmbedding.isHaarMeasure_comap" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   Translation-invariance is easy, compact sets are finite because continuous image of compact is compact, open sets are bounded because image of open is open.
@@ -1080,7 +1080,7 @@ The pullback of a regular Borel measure along an open embedding is a regular
 Borel measure.
 :::
 
-```tex "Topology.IsOpenEmbedding.regular_comap" (slot := statement)
+```tex "Topology.IsOpenEmbedding.regular_comap" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{Topology.IsOpenEmbedding.regular_comap}
   \lean{Topology.IsOpenEmbedding.regular_comap}
@@ -1096,7 +1096,7 @@ Again this is because the image of compact is compact and the image of open is
 open, so all the properties of being a regular measure are easily checked.
 :::
 
-```tex "Topology.IsOpenEmbedding.regular_comap" (slot := proof)
+```tex "Topology.IsOpenEmbedding.regular_comap" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   Again this is because the image of compact is compact and the
@@ -1110,7 +1110,7 @@ Say `A` is a compact topological additive group and $`φ : A → A` is an additi
 isomorphism. Then $`d_A(φ)=1`.
 :::
 
-```tex "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (slot := statement)
+```tex "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (slot := statement) (accuracy := 927)
 \begin{lemma}
   \label{MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace}
   \lean{MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace}
@@ -1126,7 +1126,7 @@ We have $`d_A(\phi)\mu(A)=\mu(A)`, and $`\mu(A)` is positive and finite because
 `A` is open and compact.
 :::
 
-```tex "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (slot := proof)
+```tex "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (slot := proof) (accuracy := 957)
 \begin{proof}
   \uses{MeasureTheory.mulEquivHaarChar_smul_preimage}
   \leanok
@@ -1143,7 +1143,7 @@ additive homeomorphisms such that the square commutes
 (i.e., `f ∘ α = β ∘ f`), then $`d_A(α) = d_B(β)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding" (slot := statement) (accuracy := 882)
 \begin{lemma}
   \label{MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding}
   \lean{MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding}
@@ -1170,7 +1170,7 @@ $`d_B(\beta)\int g(a)d\mu_A(a)` by definition, and so
 $`d_A(\alpha)=d_B(\beta)` as required.
 :::
 
-```tex
+```tex (accuracy := 938)
 \begin{proof}
   \uses{Topology.IsOpenEmbedding.isHaarMeasure_comap,
     Topology.IsOpenEmbedding.regular_comap,
@@ -1207,7 +1207,7 @@ and $`D_i` are subgroups or subrings or submodules, and the `φ_i` are group or
 ring or module homomorphisms, then `φ` is a group or ring or module
 homomorphism. However topological facts lie a little deeper.
 
-```tex
+```tex (accuracy := 919)
 Now say $A=\prod'_i A_i$ is the restricted product of a collection of types $A_i$
   with respect to the subsets $C_i$. Recall that this is the subset of $\prod_i A_i$
   consisting of y Say $B=\prod'_i B_i$ is the restricted
@@ -1227,7 +1227,7 @@ functions, then the restricted product $`φ = \prod'_i φ_i` is a continuous
 function.
 :::
 
-```tex "Continuous.restrictedProduct_congrRight" (slot := statement)
+```tex "Continuous.restrictedProduct_congrRight" (slot := statement) (accuracy := 947)
 \begin{lemma}
   \lean{Continuous.restrictedProduct_congrRight}
   \label{Continuous.restrictedProduct_congrRight}
@@ -1249,7 +1249,7 @@ $`A_S\to B_S\to B`, and $`B_S\to B` is continuous, so it suffices to prove that
 $`A_S\to B_S` is continuous, but this is just a product of continuous maps.
 :::
 
-```tex "Continuous.restrictedProduct_congrRight" (slot := proof)
+```tex "Continuous.restrictedProduct_congrRight" (slot := proof) (accuracy := 981)
 \begin{proof}
   \leanok
   We use the universal property {\tt RestrictedProduct.continuous\_dom} of the
@@ -1277,7 +1277,7 @@ measure as it is open and compact. Hence the product $`\prod_i d_{A_i}(φ_i)` is
 a finite product, in the sense that all but finitely many terms are `1`. The
 following theorem shows that the value of this product is `d(φ)`.
 
-```tex
+```tex (accuracy := 951)
 We now focus on the case that $B_i=A_i$ are locally compact groups, $D_i=C_i$ are compact
 open subgroups, and $\phi_i:A_i\to A_i$ are group isomorphisms and homeomorphisms sending
 $C_i$ onto $C_i$ for all but finitely many $i$. Then the restricted product $A:=\prod'A_i$
@@ -1297,7 +1297,7 @@ With `A`, $`A_i`, $`C_i`, $`\phi_i`, $`\phi` defined as above, we have
 $`\delta_A(\phi)=\prod_i\delta_{A_i}(\phi_i)`.
 :::
 
-```tex "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight" (slot := statement)
+```tex "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight" (slot := statement) (accuracy := 1000)
 \begin{theorem}
   \label{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
   \lean{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
@@ -1322,7 +1322,7 @@ construction in FLT, we simply restrict to a countable index set and add
 second countability assumptions, because then the product is a Borel sigma
 algebra and this is all we need in our applications to adeles.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark} In the Lean file we make the additional assumption that the index set over
   which we're taking the product, is countable, and that the $A_i$ are second countable.
   This is because in this proof we make use
@@ -1354,7 +1354,7 @@ $`\delta(\prod_{i\in S}\phi_i)=\prod_{i\in S}\delta(\phi_i)` by lemma and we are
 home.
 :::
 
-```tex
+```tex (accuracy := 995)
 \begin{proof}
   \leanok
   \uses{
@@ -1384,7 +1384,7 @@ If $`u=(u_i)_i\in R^\times`, then
 $`\delta_R(u)=\prod_i\delta_{R_i}(u_i)`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_restrictedProduct" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_restrictedProduct" (slot := statement) (accuracy := 1000)
 \begin{corollary}
   \label{MeasureTheory.ringHaarChar_restrictedProduct}
   \lean{MeasureTheory.ringHaarChar_restrictedProduct}
@@ -1404,7 +1404,7 @@ theorem `MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight`
 applies.
 :::
 
-```tex "MeasureTheory.ringHaarChar_restrictedProduct" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_restrictedProduct" (slot := proof) (accuracy := 980)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
@@ -1425,7 +1425,7 @@ $`\A_K`-module topology and the right-hand side has the $`\A_{\Q}`-module
 topology.
 :::
 
-```tex "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (slot := statement)
+```tex "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (slot := statement) (accuracy := 984)
 \begin{corollary}
   \label{NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv}
   \lean{NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv}
@@ -1447,7 +1447,7 @@ Note that in Lean this is proved for a general extension $`L/K` rather than
 only for $`K/\Q`.
 :::
 
-```tex "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (slot := proof)
+```tex "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (slot := proof) (accuracy := 876)
 \begin{proof}
   \leanok
   \uses{IsModuleTopology.continuous_bilinear_of_finite_left}
@@ -1465,7 +1465,7 @@ and define $`\ell_u` and $`r_u : B_{\A} → B_{\A}` by $`\ell_u(x)=ux` and
 $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
 :::
 
-```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := statement)
+```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := statement) (accuracy := 979)
 \begin{theorem}
   \label{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
   \leanok
@@ -1486,7 +1486,7 @@ $`\prod_v d_{B_v}(r_{u_v})`, and again by
 $`d_{B_{\A}}(r_u)`.
 :::
 
-```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := proof)
+```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := proof) (accuracy := 889)
 \begin{proof}
   \uses{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight,
     IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
@@ -1506,7 +1506,7 @@ finite-dimensional `K`-algebra. Before we state it let's remind ourselves of the
 product formula for $`\Q`, and restate it in the language of these Haar
 characters.
 
-```tex
+```tex (accuracy := 1000)
 The previous theorem only applies to inner forms of matrix algebras, but the below theorem,
 a generalization of the adelic product formula, is valid for any finite-dimensional
 $K$-algebra. Before we state it let's remind ourselves of the product formula for $\Q$,
@@ -1518,7 +1518,7 @@ If $`x\in\A_{\Q}^\times`, then
 $`\delta_{\A_{\Q}}(x)=\prod_v|x_v|_v`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_adeles_rat" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_adeles_rat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_adeles_rat}
   \lean{MeasureTheory.ringHaarChar_adeles_rat}
@@ -1540,7 +1540,7 @@ $`\delta_{\Q_p}(x_p)=|x_p|_p`, and putting everything together we get the
 result.
 :::
 
-```tex "MeasureTheory.ringHaarChar_adeles_rat" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_adeles_rat" (slot := proof) (accuracy := 915)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addEquivAddHaarChar_prodCongr,MeasureTheory.ringHaarChar_real,
@@ -1558,7 +1558,7 @@ Now $`\A_{\Q}` is a nonzero $`\Q`-algebra and hence we have an inclusion
 $`\Q^\times\to\A_{\Q}^\times`. Here is our reinterpretation of the product
 formula.
 
-```tex
+```tex (accuracy := 1000)
 Now $\A_{\Q}$ is nonzero a $\Q$-algebra and hence we have an inclusion $\Q^\times\to\A_{\Q}^\times$.
 Here is our reinterpretation of the product formula.
 ```
@@ -1568,7 +1568,7 @@ If $`x\in\Q^\times\subseteq\A_{\Q}^\times`, then
 $`\delta_{\A_{\Q}}(x)=1`.
 :::
 
-```tex "MeasureTheory.ringHaarChar_adeles_units_rat_eq_one" (slot := statement)
+```tex "MeasureTheory.ringHaarChar_adeles_units_rat_eq_one" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{MeasureTheory.ringHaarChar_adeles_units_rat_eq_one}
   \lean{MeasureTheory.ringHaarChar_adeles_units_rat_eq_one}
@@ -1586,7 +1586,7 @@ $`\prod_p|x|_p=\prod_pp^{-e_p}` and $`|x|_\infty=\prod_pp^{e_p}`, so they
 cancel.
 :::
 
-```tex "MeasureTheory.ringHaarChar_adeles_units_rat_eq_one" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_adeles_units_rat_eq_one" (slot := proof) (accuracy := 962)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.ringHaarChar_adeles_rat}
@@ -1599,7 +1599,7 @@ cancel.
 
 Next we generalize this to finite-dimensional $`\Q`-vector spaces.
 
-```tex
+```tex (accuracy := 1000)
 Next we generalize this to finite-dimensional $\Q$-vector spaces.
 ```
 
@@ -1608,7 +1608,7 @@ $`V_{\A}:= V\otimes_{\Q}\A_{\Q}` with its $`\A_{\Q}`-module topology. If we
 choose an isomorphism $`V\cong\Q^N`, then $`V_{\A}\cong\A_{\Q}^N` as an
 additive topological abelian group. In particular, $`V_{\A}` is locally compact.
 
-```tex
+```tex (accuracy := 1000)
 So say $V$ is an $N$-dimensional $\Q$-vector space,
 and define $V_{\A}:= V\otimes_{\Q}\A_{\Q}$ with its $\A_{\Q}$-module topology.
 If we choose an isomorphism $V\cong\Q^N$ then $V_{\A}\cong\A_{\Q}^N$
@@ -1620,7 +1620,7 @@ an $`\A_{\Q}`-linear automorphism $`\phi_{\A}` of $`V_{\A}` which is also a
 homeomorphism of $`V_{\A}` if $`V_{\A}` is given the module topology as an
 $`\A_{\Q}`-module. Our goal is
 
-```tex
+```tex (accuracy := 989)
 Fix a $\Q$-linear automorphism $\phi:V\to V$. By base extension $\phi$ induces
 an $\A_{\Q}$-linear automorphism $\phi_{\A}$ of $V_{\A}$ which is also a homeomorphism of $V_{\A}$
 if $V_{\A}$ is given the module topology as an $\A_{\Q}$-module. Our goal is
@@ -1633,7 +1633,7 @@ $`V_{\A}:=V\otimes_{\Q}\A_{\Q}` as a continuous linear endomorphism of $`V_{\A}`
 with the $`\A_{\Q}`-module topology, we have $`d_{V_{\A}}(\phi_{\A})=1`.
 :::
 
-```tex "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (slot := statement)
+```tex "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (slot := statement) (accuracy := 954)
 \begin{theorem}
   \label{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
   \lean{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
@@ -1681,7 +1681,7 @@ endomorphisms over a commutative ring, which gives the result immediately by
 the product formula.
 :::
 
-```tex "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (slot := proof)
+```tex "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" (slot := proof) (accuracy := 935)
 \begin{proof}
   \leanok
   \uses{
@@ -1726,7 +1726,7 @@ $`B\otimes_{\Q}\A_{\Q}`, and if $`b\in B^\times`, then
 $`\delta_{B_{\A}}(b)=1`.
 :::
 
-```tex "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (slot := statement)
+```tex "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (slot := statement) (accuracy := 1000)
 \begin{corollary}
     \label{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}
     \lean{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}
@@ -1742,7 +1742,7 @@ Uses {uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[].
 Follows immediately from the previous theorem.
 :::
 
-```tex "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (slot := proof)
+```tex "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \uses{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}
   \leanok
@@ -1755,7 +1755,7 @@ If `B` is a finite-dimensional $`\Q`-algebra and if $`b\in B^\times`, then
 right multiplication by `b` does not change Haar measure on $`B_{\A}`.
 :::
 
-```tex "NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one" (slot := statement)
+```tex "NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one" (slot := statement) (accuracy := 1000)
 \begin{corollary}
   \label{NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one}
   \lean{NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one}
@@ -1771,7 +1771,7 @@ Uses {uses "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"}[].
 Follows immediately from the previous theorem.
 :::
 
-```tex "NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one" (slot := proof)
+```tex "NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   \uses{MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one}

@@ -6,7 +6,7 @@ import FLT.Mathlib.RingTheory.SimpleRing.TensorProduct
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "Stating the modularity lifting theorems" =>
 
@@ -26,7 +26,7 @@ using various more modern tricks which were developed later. This chapter
 (currently work in progress) will contain a detailed discussion of all the
 things involved in the statement of the theorem.
 
-```tex
+```tex (accuracy := 1000)
 I think that a nice and accessible goal (which will maybe take a month or two) would be to
 \emph{state} the modularity lifting theorems which we'll be formalising. There are in fact two;
 one (the "minimal case") is proved using an extension of the original Taylor--Wiles techniques,
@@ -48,7 +48,7 @@ finite extension of $`\Q` (a number field) or a finite extension of
 $`(\Z/p\Z)(T)` (a function field), and $`G` is a connected reductive group
 variety over $`k`.
 
-```tex
+```tex (accuracy := 988)
 Modular forms were historically the first nontrivial examples of automorphic forms, but by the
 1950s or so it was realised that they were special cases of a very general notion of an automorphic
 form, as were Dirichlet characters! Modular forms are holomorphic automorphic forms for the group
@@ -77,7 +77,7 @@ quaternions, a maximal compact subgroup would be the quaternions of norm `1`
 (homeomorphic to the `3`-sphere $`S^3`) and quotienting out $`\bbH^\times` by
 its centre $`\R^\times` and $`S^3` again just gives you `1` point.
 
-```tex
+```tex (accuracy := 1000)
 The reason that the definition of a modular form involves some analysis (they are holomorphic
 functions) is that if you quotient out the group $\GL_2(\R)$ by its centre and the maximal compact
 subgroup $O_2(\R)$, you get something which can be naturally identified with the upper half plane, a
@@ -97,7 +97,7 @@ gives you 1 point.
 Before we talk about quaternion algebras, let's talk about central simple
 algebras.
 
-```tex
+```tex (accuracy := 1000)
 Before we talk about quaternion algebras, let's talk about central simple algebras.
 ```
 
@@ -106,7 +106,7 @@ Before we talk about quaternion algebras, let's talk about central simple algebr
 Convention: in this section, fields are commutative, but algebras over a field
 may not be.
 
-```tex
+```tex (accuracy := 1000)
 Convention: in this section, fields are commutative, but algebras over a field may not be.
 ```
 
@@ -114,7 +114,7 @@ Recall that a central simple algebra over a field $`K` is a nonzero
 $`K`-algebra $`D` such that $`K` is the centre of $`D` and that $`D` has no
 nontrivial two-sided ideals.
 
-```tex
+```tex (accuracy := 1000)
 Recall that a \emph{central simple algebra} over a field $K$ is a
 nonzero $K$-algebra $D$ such that $K$ is the
 centre of $D$ and that $D$ has no nontrivial two-sided ideals.
@@ -125,7 +125,7 @@ surjective ring homomorphism $`D\twoheadrightarrow A` to any ring $`A` is
 either an isomorphism, or the zero map to the zero ring. Note that this latter
 condition has nothing to do with $`K`.
 
-```tex
+```tex (accuracy := 1000)
 Another way of saying that $D$ has no nontrivial two-sided ideals: every surjective ring
 homomorphism $D\twoheadrightarrow A$ to any ring~$A$ is either an isomorphism, or the zero map
 to the zero ring. Note that this latter condition
@@ -137,7 +137,7 @@ If $`n\geq1` then the $`n\times n` matrices $`M_n(K)` are a central simple
 algebra over $`K`.
 :::
 
-```tex "MatrixRing.isCentralSimple" (slot := statement)
+```tex "MatrixRing.isCentralSimple" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{MatrixRing.isCentralSimple}
     %\lean{MatrixRing.isCentralSimple}
@@ -172,7 +172,7 @@ The definition also requires that the ring be nonzero, but this follows from
 the index type being nonempty.
 :::
 
-```tex "MatrixRing.isCentralSimple" (slot := proof)
+```tex "MatrixRing.isCentralSimple" (slot := proof) (accuracy := 983)
 \begin{proof}\leanok
 We prove more generally that matrices with coefficients in~$K$ and indexed by an arbitrary nonempty
 finite type are a central simple algebra over~$K$.
@@ -200,7 +200,7 @@ If $`D` is a central simple algebra over $`K` and $`L/K` is a field extension,
 then $`L\otimes_KD` is a central simple algebra over $`L`.
 :::
 
-```tex "IsCentralSimple.baseChange" (slot := statement)
+```tex "IsCentralSimple.baseChange" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{IsCentralSimple.baseChange} % no Lean yet because Lean didn't seem to know L \otimes_K D was a ring
     %\uses{IsCentralSimple}
@@ -214,7 +214,7 @@ This is not too hard: it's lemma b of section `12.4` in Peirce's
 "Associative algebras".
 :::
 
-```tex "IsCentralSimple.baseChange" (slot := proof)
+```tex "IsCentralSimple.baseChange" (slot := proof) (accuracy := 1000)
 \begin{proof}
     This is not too hard: it's lemma b of section 12.4 in Peirce's "Associative algebras".
 \end{proof}
@@ -222,6 +222,6 @@ This is not too hard: it's lemma b of section `12.4` in Peirce's
 
 Next: define trace and norm.
 
-```tex
+```tex (accuracy := 1000)
 Next: define trace and norm.
 ```
