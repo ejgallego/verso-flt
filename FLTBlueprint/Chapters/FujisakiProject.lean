@@ -7,7 +7,7 @@ import FLTBlueprint.Citations
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "Miniproject: Fujisaki's Lemma" =>
 
@@ -29,7 +29,7 @@ happy to adopt this name. In the quaternion algebra miniproject we will use
 this compactness result to prove finite-dimensionality of a space of
 quaternionic modular forms.
 
-```tex
+```tex (accuracy := 993)
 In fact there is even a noncommutative version of this statement. In John Voight's
 book~\cite{voightbook} this is Main Theorem 27.6.14(a) and Voight calls it Fujisaki’s lemma.
 I know nothing of the history but I'm happy to adopt this name. In the quaternion algebra
@@ -41,7 +41,7 @@ The compact quotient theorem for a division algebra is meant to be the
 noncommutative analogue of the classical compactness of
 $`K \backslash \mathbf{A}_K`.
 
-```tex
+```tex (accuracy := 980)
 The compact quotient theorem for a division algebra is meant to be the
 noncommutative analogue of the classical compactness of
 $`K \backslash \mathbf{A}_K`.
@@ -53,7 +53,7 @@ embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
 for the same style of compactness after replacing the commutative additive group
 by the norm-one units in an adelic division algebra.
 
-```tex
+```tex (accuracy := 991)
 The TeX chapter uses this analogy repeatedly. The quotient
 $`K \backslash \mathbf{A}_K` is the model case: a global field
 embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
@@ -71,7 +71,7 @@ clear we will just refer to them as central simple algebras. We remark that a
 `4`-dimensional central simple algebra is called a quaternion algebra; we will
 have more to say about these later on.
 
-```tex
+```tex (accuracy := 953)
 Let $K$ be a field. A \emph{central simple $K$-algebra} is a $K$-algebra~$B$ (not necessarily
 commutative) with centre $K$ such that $B$ has exactly two two-sided ideals, namely ${0}$ and $B$
 (or $\bot$ and $\top$, as Lean would call them). We will be concerned
@@ -85,7 +85,7 @@ Matrix algebras $`M_n(K)` are examples of finite-dimensional central simple
 `K`-algebras. If `K = ℂ` or more generally if `K` is algebraically closed, then
 matrix algebras are the only finite-dimensional examples up to isomorphism.
 
-```tex
+```tex (accuracy := 973)
 Matrix algebras $M_n(K)$ are examples of finite-dimensional central simple $K$-algebras.
 If $K=\bbC$ (or more generally if $K$ is algebraically closed)
 then matrix algebras are the only finite-dimensional examples
@@ -101,7 +101,7 @@ field `K` one can make an analogue of Hamilton's quaternions
 multiplication, and if the characteristic of `K` is not `2` then this is a
 quaternion algebra which may or may not be isomorphic to $`M_2(K)`.
 
-```tex
+```tex (accuracy := 895)
 There are other examples over the reals: for example Hamilton's quaternions
 $\bbH:=\R\oplus\R i\oplus\R j\oplus\R k$ with the usual rules $i^2=j^2=k^2=-1$,
 $ij=-ji=k$ etc, are an example of a central simple $\R$-algebra (and a quaternion algebra), and
@@ -122,7 +122,7 @@ $`(x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2`, so the inverse of a nonzero
 $`x+yi+zj+tk` is
 $`(x-yi-zj-tk)/(x^2+y^2+z^2+t^2)`.
 
-```tex
+```tex (accuracy := 1000)
 Some central simple algebras~$B$ are \emph{division algebras}, meaning that they are division
 rings, or equivalently that every nonzero $b\in B$ has a two-sided inverse. For example
 Hamilton's quaternions are a division algebra over $\R$,
@@ -135,7 +135,7 @@ simple algebra over $`K`, are never a division algebra, because a nonzero
 matrix with determinant zero such as
 $`\begin{pmatrix}1&0\\0&0\end{pmatrix}` has no inverse.
 
-```tex
+```tex (accuracy := 905)
 However $2\times 2$ matrices over a field~$K$, whilst being a central simple algebra
 over~$K$, are never a division algebra
 (even if $K=\bbC$) because a nonzero matrix with determinant zero such as
@@ -183,7 +183,7 @@ by an element of $`D_{\A}^\times` changes the additive Haar measure on
 $`D_{\A}`. Let $`D_{\A}^{(1)}` denote the kernel of $`\delta_{D_{\A}}`, and
 give it the subspace topology coming from $`D_{\A}^\times`.
 
-```tex
+```tex (accuracy := 981)
 Let $K$ be a number field and let $D/K$ be a finite-dimensional central simple $K$-algebra
 (later on $D$ will be a division algebra (hence the name) but we do not need this yet).
 Then $D_{\A}:=D\otimes_K\A_K$ is an $\A_K$-algebra which
@@ -203,7 +203,7 @@ coincide. Indeed, the topology on $`\A_K` is the $`\A_{\Q}`-module topology,
 as $`\A_K=\A_{\Q}\otimes_{\Q}K` as topological $`\A_{\Q}`-algebras, where the
 right hand side has the $`\A_{\Q}`-module topology by definition.
 
-```tex
+```tex (accuracy := 1000)
 One can furthermore check that if $R$ is a finite $K$-algebra then the $\A_K$-module topologies and $\A_{\Q}$-module
 topologies on $R_{\A}$ coincide. Indeed, the topology on $\A_K$
 is the $\A_{\Q}$-module topology, as
@@ -236,7 +236,7 @@ There's a compact subset $`E` of $`D_A` with the property that for all
 $`x\in D_A^{(1)}`, the obvious map $`xE\to D\backslash D_A` is not injective.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE}
@@ -266,7 +266,7 @@ ball, large enough to ensure the measure of $`E:=E_f\times E_{\infty}` is
 bigger than $`m`). Then $`\mu(xE)=\mu(E)>m` so the map can't be injective.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" (slot := proof) (accuracy := 985)
 \begin{proof}
   \leanok
   We know that if we pick a $\Q$-basis for $D$
@@ -295,7 +295,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[].
 We let `E` denote any compact set satisfying the hypothesis of the previous lemma.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.E" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.E" (slot := statement) (accuracy := 1000)
 \begin{definition}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.E}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.E}
@@ -310,7 +310,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.E"}[].
 Define $`X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X" (slot := statement) (accuracy := 1000)
 \begin{definition}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X}
@@ -325,7 +325,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[].
 Define $`Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y" (slot := statement) (accuracy := 1000)
 \begin{definition}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.Y}
@@ -340,7 +340,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[].
 $`X` is a compact subset of $`D_{\A}`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact}
@@ -354,7 +354,7 @@ $`X` is a compact subset of $`D_{\A}`.
 It's the continuous image of the compact set $`E\times E`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   It's the continuous image of the compact set~$E\times E$.
@@ -366,7 +366,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[].
 $`Y` is a compact subset of $`D_{\A}`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact}
@@ -380,7 +380,7 @@ $`Y` is a compact subset of $`D_{\A}`.
 It's the continuous image of the compact set $`X\times X`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   It's the continuous image of the compact set~$X\times X$.
@@ -392,7 +392,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X"}[] and {uses "NumberFie
 If $`\beta\in D_{\A}^{(1)}` then $`\beta X\cap D^\times\not=\emptyset`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel}
@@ -413,7 +413,7 @@ algebra, so $`b\in D^\times`. And $`e_1-e_2\in X` so
 $`b=\beta(e_1-e_2)\in \beta X`, so we are done.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" (slot := proof) (accuracy := 950)
 \begin{proof}
   \leanok
 Indeed by lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE},
@@ -432,7 +432,7 @@ Similarly, if $`\beta\in D_{\A}^{(1)}` then
 $`X\beta^{-1}\cap D^\times\not=\emptyset`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'}
@@ -454,7 +454,7 @@ injective so choose $`e_1\beta^{-1}\not=e_2\beta^{-1}` with difference
 $`b\in D` and then $`(e_1-e_2)\beta^{-1}\in D-\{0\}=D^\times`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" (slot := proof) (accuracy := 917)
 \begin{proof}
   \leanok
   % TODO does this make the lines dottted? I used E in the proof here
@@ -474,7 +474,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"}[].
 Let $`T = Y \cap D^\times`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T" (slot := statement) (accuracy := 1000)
 \begin{definition}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.T}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.T}
@@ -489,7 +489,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[].
 $`T` is finite.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite}
@@ -507,7 +507,7 @@ $`Y\subseteq D_{\A}` is compact. So $`D\cap Y` is compact and discrete, so
 finite.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact}
   \leanok
@@ -524,7 +524,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T"}[] and {uses "NumberFie
 Define $`C := (T^{-1}.X)\times X\subset D_{\A}\times D_{\A}`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C" (slot := statement) (accuracy := 1000)
 \begin{definition}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.C}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.C}
@@ -541,7 +541,7 @@ $`C` is compact.
 Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"}[] and {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"}[].
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (slot := statement) (accuracy := 1000)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact}
@@ -557,7 +557,7 @@ Uses {uses "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"}[] and {uses "Nu
 `X` is compact and `T` is finite.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" (slot := proof) (accuracy := 1000)
 \begin{proof}
   \leanok
   $X$ is compact and $T$ is finite.
@@ -570,7 +570,7 @@ For every $`\beta \in D_A^{(1)}`, there exist $`b \in D^\times` and
 $`\nu \in D_A^{(1)}` such that $`\beta = b\nu` and $`(\nu, \nu^{-1}) \in C`.
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (slot := statement)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (slot := statement) (accuracy := 967)
 \begin{lemma}
   \label{NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C}
   \lean{NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C}
@@ -602,7 +602,7 @@ $`\nu=x_1^{-1}\in D_{\A}^{(1)}` and $`b=b_1\in D^\times` then we have
 $`\beta=b\nu` and $`(\nu,\nu^{-1})\in C := (T^{-1}.X)\times X`. We are done!
 :::
 
-```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (slot := proof)
+```tex "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" (slot := proof) (accuracy := 949)
 \begin{proof}
   \leanok
   \uses{NumberField.AdeleRing.DivisionAlgebra.Aux.E,
@@ -633,7 +633,7 @@ $`D^\times\backslash D_{\A}^{(1)}` with its quotient topology coming from
 $`D_{\A}^{(1)}` is compact.
 :::
 
-```tex "compact_quotient_for_division_algebra" (slot := statement)
+```tex "compact_quotient_for_division_algebra" (slot := statement) (accuracy := 1000)
 \begin{theorem}
   \label{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
   \lean{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
@@ -657,7 +657,7 @@ of $`D_A \times D_A`).
 $`D^\times \backslash D_A^{(1)}` which is thus also compact.
 :::
 
-```tex "compact_quotient_for_division_algebra" (slot := proof)
+```tex "compact_quotient_for_division_algebra" (slot := proof) (accuracy := 989)
 \begin{proof}
   \proves{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
   \leanok
@@ -791,7 +791,7 @@ There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
 
 We note here some useful consequences.
 
-```tex
+```tex (accuracy := 1000)
 We note here some useful consequences.
 ```
 
@@ -801,7 +801,7 @@ $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times`
 is compact.
 :::
 
-```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" (slot := statement)
+```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" (slot := statement) (accuracy := 889)
 \begin{theorem}
   \label{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}
   \lean{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}
@@ -839,7 +839,7 @@ scaling by a factor of `x` on $`D_\mathbf{R}\cong\mathbf{R}^d`. In particular
 we can set $`x=y^{1/d}`.
 :::
 
-```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" (slot := proof)
+```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" (slot := proof) (accuracy := 955)
 \begin{proof}
   \uses{NumberField.AdeleRing.DivisionAlgebra.compact_quotient}
   \leanok
@@ -872,7 +872,7 @@ $`D^\times \backslash (D \otimes_K \mathbf{A}_K^\infty)^\times / U`
 is finite.
 :::
 
-```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (slot := statement)
+```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (slot := statement) (accuracy := 970)
 \begin{theorem}
   \label{NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
   \lean{NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
@@ -891,7 +891,7 @@ this space is compact by theorem
 `NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact`.
 :::
 
-```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (slot := proof)
+```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (slot := proof) (accuracy := 945)
 \begin{proof}
   \leanok
   The double cosets give a disjoint open cover of $(D\otimes_K \A_K^\infty)$

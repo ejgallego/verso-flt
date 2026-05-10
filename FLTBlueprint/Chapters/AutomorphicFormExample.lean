@@ -8,7 +8,7 @@ import FLT.Data.QHat
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 #doc (Manual) "An Example Of An Automorphic Form" =>
 
@@ -25,7 +25,7 @@ that they're equal is basically the Shimura--Taniyama--Weil conjecture, now
 known as the Breuil--Conrad--Diamond--Taylor modularity theorem: any elliptic
 curve over the rationals is modular.
 
-```tex
+```tex (accuracy := 1000)
 The key ingredient in Wiles' proof of Fermat's Last Theorem is a \emph{modularity lifting theorem},
 sometimes called an $R=T$ theorem. For Wiles, the $R$ came from elliptic curves, the $T$ came from
 classical modular forms, and the fact that they're equal is basically the Shimura--Taniyama--Weil
@@ -44,7 +44,7 @@ are the norm `1` units in rings such as Hamilton's quaternions
 $`\R\oplus\R i\oplus\R j\oplus\R k`, and subrings such as
 $`\Z\oplus\Z i\oplus\Z j\oplus\Z k`.
 
-```tex
+```tex (accuracy := 1000)
 At the heart of the proof we shall formalise is also an $R=T$ theorem, however the $T$ which we
 shall use will be associated not to classical modular forms, but to spaces of more general
 automorphic forms called quaternionic modular forms. Those of you who know something about
@@ -63,7 +63,7 @@ example, in the cases we need, the definition is completely algebraic; there
 are no holomorphic functions in sight, and the analogue of the upper half plane
 in the quaternionic theory is a finite set of points).
 
-```tex
+```tex (accuracy := 1000)
 One of the main goals of the FLT project at the time of writing this sentence, is formalising
 the \emph{statement} of the modularity lifting theorem which we shall use. So we are going
 to need to develop the theory of quaternionic modular forms, which is rather different
@@ -81,7 +81,7 @@ forms. The process of constructing the example might even inform what kind of
 machinery we should be developing in general. Let's begin by discussing the
 quaternion algebra we shall use.
 
-```tex
+```tex (accuracy := 1000)
 We could just launch into the general theory over totally real fields, which will be the generality
 which we'll need. But when I was a PhD student, I learnt about
 these objects by playing with explicit examples. So, whilst not logically necessary for the proof,
@@ -101,7 +101,7 @@ quaternion algebra relations $`i^2=j^2=k^2=ijk=-1`. You can think of $`D` as
 an analogue of `2 × 2` matrices with rational coefficients, hence its units
 $`D^\times` are an analogue of the group $`\GL_2(\Q)`.
 
-```tex
+```tex (accuracy := 994)
 Let's define $D$ to be the quaternion algebra $\Q\oplus\Q i\oplus\Q j\oplus\Q k$. As a vector
 space, $D$ is 4-dimensional over $\Q$ with $[1,i,j,k]$ giving a basis. It has a (non-commutative)ring structure,
 with multiplication satisfying the usual quaternion algebra relations $i^2=j^2=k^2=ijk=-1$.
@@ -118,7 +118,7 @@ $`(i+j+k)^2=-3`. The simplest way to understand $`\calO` is that it's
 quaternions $`a+bi+cj+dk` where either $`a,b,c,d` are all integers or are all
 in $`\frac{1}{2}+\Z`.
 
-```tex
+```tex (accuracy := 989)
 We will also need an analogue of the group $\GL_2(\Z)$, which will come from an integral structure
 on~$D$. We choose the Hurwitz order, namely the subring $\calO:=\Z\oplus\Z i\oplus\Z j\oplus\Z \omega$,
 where $\omega=\frac{-1+(i+j+k)}{2}$, a cube root of unity, as $(i+j+k)^2=-3$. The simplest way
@@ -130,7 +130,7 @@ Note that $`\calO` is a maximal order and a Euclidean domain, which is why we
 prefer it over the more obvious sublattice
 $`\Z\oplus\Z i\oplus\Z j\oplus\Z k`.
 
-```tex
+```tex (accuracy := 1000)
 Note that $\calO$ is a maximal order and a Euclidean domain, which is why we prefer it over the
 more obvious sublattice $\Z\oplus\Z i\oplus\Z j\oplus\Z k.$
 ```
@@ -139,7 +139,7 @@ In this chapter, we are going to compute a complex vector space which could be
 called something like the "weight `2` level `2` modular forms for $`D^\times`".
 The main result will be that this space is `1`-dimensional.
 
-```tex
+```tex (accuracy := 1000)
 In this chapter, we are going to compute a complex vector space which could be called something
 like the ``weight 2 level 2 modular forms for $D^\times$''. The main result will be that this
 space is 1-dimensional.
@@ -152,7 +152,7 @@ mathlib gets the necessary complex analysis, then the first nonzero space of
 modular forms to be proved finite-dimensional in Lean will be a space of
 quaternionic modular forms.
 
-```tex
+```tex (accuracy := 1000)
 Note that mathlib has modular forms, but it doesn't have enough complex analysis to deduce
 that the space of modular forms of a given weight and level is finite-dimensional. If all
 the `sorry`s in this chapter are completed
@@ -163,7 +163,7 @@ to be proved finite-dimensional in Lean will be a space of quaternionic modular 
 We will use a modern "adelic" definition of our modular forms, so the first
 thing we need to do is to talk about profinite completions.
 
-```tex
+```tex (accuracy := 1000)
 We will use a modern "adelic" definition of our modular forms, so the first thing we need
 to do is to talk about profinite completions.
 ```
@@ -178,7 +178,7 @@ A collection is said to be compatible if for all positive integers
 $`D \mid N`, we have $`c_N` mod $`D` equals $`c_D`.
 :::
 
-```tex
+```tex (accuracy := 991)
 \section{\texorpdfstring{$\Zhat$}{Zhat}}
 
 \begin{definition}\label{ZHat}\lean{ZHat}\leanok The profinite completion $\Zhat$ of $\Z$ is the set of
@@ -202,7 +202,7 @@ can work instead with the conceptually simpler object $`\Zhat`, the profinite
 completion of $`\Z`. So what is $`\Zhat`? We offer a low-level definition of
 this object.
 
-```tex
+```tex (accuracy := 1000)
 Classically automorphic forms were defined as functions on symmetric spaces (like the upper half
 plane) which transformed well under the action of certain discrete groups (for example $\SL_2(\Z)$).
 However such definitions became combinatorially problematic when generalised to number fields
@@ -220,7 +220,7 @@ Uses {uses "ZHat"}[].
 $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 :::
 
-```tex "ZHat.commRing" (slot := statement)
+```tex "ZHat.commRing" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.commRing}
     \lean{ZHat.commRing}
@@ -234,7 +234,7 @@ $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 Follow your nose.
 :::
 
-```tex "ZHat.commRing" (slot := proof)
+```tex "ZHat.commRing" (slot := proof) (accuracy := 1000)
 \begin{proof} \leanok Follow your nose.
 \end{proof}
 ```
@@ -244,7 +244,7 @@ Uses {uses "ZHat.commRing"}[].
 $`0\not=1` in $`\Zhat`.
 :::
 
-```tex "ZHat.nontrivial" (slot := statement)
+```tex "ZHat.nontrivial" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.nontrivial}
     \lean{ZHat.nontrivial}
@@ -260,7 +260,7 @@ Evaluating $`0` at `2` gives $`0`, and evaluating $`1` at `2` gives $`1`, and
 these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 :::
 
-```tex "ZHat.nontrivial" (slot := proof)
+```tex "ZHat.nontrivial" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     Recall that you can evaluate an element of $\Zhat$ at a positive integer.
@@ -273,7 +273,7 @@ these are distinct elements of $`\Z/2\Z`, so $`0\not=1` in $`\Zhat`.
 The map from the naturals into $`\Zhat` sending $`n` to $`n` is injective.
 :::
 
-```tex "ZHat.charZero" (slot := statement)
+```tex "ZHat.charZero" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.charZero}
     \lean{ZHat.charZero}
@@ -286,7 +286,7 @@ The map from the naturals into $`\Zhat` sending $`n` to $`n` is injective.
 Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
 :::
 
-```tex "ZHat.charZero" (slot := proof)
+```tex "ZHat.charZero" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
@@ -296,7 +296,7 @@ Generalise the above idea. Feel free to write up a LaTeX proof and PR it.
 Note that it follows easily that that the map from the integers to $`\Zhat` is
 injective.
 
-```tex
+```tex (accuracy := 1000)
 Note that it follows easily that that the map from the integers to $\Zhat$ is injective.
 ```
 
@@ -304,7 +304,7 @@ But $`\Zhat` is *much* larger than $`\Z`; it has the same cardinality as
 the reals in fact. Let's write down an explicit example of an element of
 $`\Zhat` which isn't obviously in $`\Z`.
 
-```tex
+```tex (accuracy := 1000)
 But $\Zhat$
 is \emph{much} larger than $\Z$; it has the same cardinality as the reals in fact.
 Let's write down an explicit example of an element of $\Zhat$ which isn't obviously in $\Z$.
@@ -322,7 +322,7 @@ $`N`.
 Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
 :::
 
-```tex "ZHat.e" (slot := statement)
+```tex "ZHat.e" (slot := statement) (accuracy := 1000)
 \begin{definition}
     \label{ZHat.e}
     \lean{ZHat.e}
@@ -342,7 +342,7 @@ Uses {uses "ZHat.e"}[].
 The collection $`(e_N)_N` is an element of $`\Zhat`.
 :::
 
-```tex "ZHat.e_def" (slot := statement)
+```tex "ZHat.e_def" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.e_def}
     \lean{ZHat.e_def}
@@ -357,7 +357,7 @@ This boils down to checking that $`D!+(D+1)!+\cdots+(N-1)!` is a multiple of
 $`D`.
 :::
 
-```tex "ZHat.e_def" (slot := proof)
+```tex "ZHat.e_def" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     This boils down to checking that $D!+(D+1)!+\cdots+(N-1)!$ is a multiple of~$D$.
@@ -369,7 +369,7 @@ Uses {uses "ZHat.e"}[].
 The element $`(e_N)_N` of $`\Zhat` is not in $`\Z`.
 :::
 
-```tex "ZHat.e_not_in_Int" (slot := statement)
+```tex "ZHat.e_not_in_Int" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.e_not_in_Int}
     \lean{ZHat.e_not_in_Int}
@@ -393,7 +393,7 @@ j!`) and then set $`N=(j+1)!` and we have $`0 < e_N<N-t<N` so we cannot have
 $`e_N=-t` in $`\Z/N\Z`, so again $`e\not=n`.
 :::
 
-```tex "ZHat.e_not_in_Int" (slot := proof)
+```tex "ZHat.e_not_in_Int" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     First imagine that $e=n$ with $n\in\Z$ and $0\leq n$. In this case, choose $j$
@@ -415,7 +415,7 @@ Uses {uses "ZHat.commRing"}[] and {uses "ZHat.charZero"}[].
 If $`0<N` is an integer then multiplication by $`N` is injective on $`\Zhat`.
 :::
 
-```tex "ZHat.torsionfree" (slot := statement)
+```tex "ZHat.torsionfree" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.torsionfree}
     \lean{ZHat.torsionfree}
@@ -435,7 +435,7 @@ compatibility assumption on the $`z_i` we have that $`z_j\in\Z/j\Z` is the
 mod~$`j` reduction of $`z_{Nj}` and hence is zero.
 :::
 
-```tex "ZHat.torsionfree" (slot := proof)
+```tex "ZHat.torsionfree" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     Suppose that $(z_i)_i\in\Zhat$ and $Nz=0$. This means that $Nz_i=0\in\Z/i\Z$ for all $i$.
@@ -453,7 +453,7 @@ The multiples of~$`N` in $`\Zhat` are precisely the compatible collections
 $`(z_i)_i\in\Zhat` with $`z_N=0`.
 :::
 
-```tex "ZHat.multiples" (slot := statement)
+```tex "ZHat.multiples" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{ZHat.multiples}
     \lean{ZHat.multiples}
@@ -475,7 +475,7 @@ how we construct $`y_j`. It is easily checked that the $`y_j` are compatible
 and that $`Ny=z`.
 :::
 
-```tex "ZHat.multiples" (slot := proof)
+```tex "ZHat.multiples" (slot := proof) (accuracy := 1000)
 \begin{proof} \leanok
     Clearly $z_N=0$ is a necessary condition to be a multiple of~$N$. To see it is sufficient,
     take a general $(z_i)\in\Zhat$ such that $z_N=0$,
@@ -491,7 +491,7 @@ and that $`Ny=z`.
 
 This section can be skipped on first reading.
 
-```tex
+```tex (accuracy := 1000)
 This section can be skipped on first reading.
 ```
 
@@ -502,7 +502,7 @@ go to $`\Q`, a multiplicative localisation of $`\Z`, and only complete after tha
 The process of "completing before localising" gives us a far more arithmetic completion
 of $`\Z`.
 
-```tex
+```tex (accuracy := 1000)
 People who have seen some more advanced algebra might recognise this construction of $\Zhat$
 as being the profinite completion of the additive abelian group $\Z$, so it is a fundamental
 object of mathematics in some sense. But usually, when building mathematics, after $\Z$ we
@@ -520,7 +520,7 @@ ring of infinite adeles of $`F`, which is $`F\otimes_{\Q}\R`: some kind of unive
 archimedean completion of $`F`. I don't know a reference which develops the theory of adeles
 in this way, so this is what we shall do here.
 
-```tex
+```tex (accuracy := 1000)
 Even though $\Q$ is a divisible abelian group and hence its profinite completion vanishes,
 we can still attempt to "locally profinitely complete it" by defining $\Qhat:=\Q\otimes_{\Z}\Zhat$.
 This object is more commonly known as the \emph{finite adeles} of $\Q$. More generally if $F$ is
@@ -536,7 +536,7 @@ in this way, so this is what we shall do here.
 The definition of $`\Qhat` is easy if you know about tensor products of
 additive abelian groups.
 
-```tex
+```tex (accuracy := 1000)
 The definition of $\Qhat$ is easy if you know about tensor products
 of additive abelian groups.
 ```
@@ -547,7 +547,7 @@ The profinite completion $`\Qhat` of $`\Q` is the tensor product
 $`\Q\otimes_{\Z}\Zhat`, or $`\Qhat=\Q\otimes\Zhat` for short.
 :::
 
-```tex "QHat" (slot := statement)
+```tex "QHat" (slot := statement) (accuracy := 1000)
 \begin{definition}
     \label{QHat}
     \lean{QHat}
@@ -566,7 +566,7 @@ just to orient yourself, if $`A` and $`B` are additive abelian groups, then
 $`A\otimes B` is also an abelian group. And if $`A` and $`B` are commutative
 rings (as they are in our case), then $`A\otimes B` is also a commutative ring.
 
-```tex
+```tex (accuracy := 1000)
 We've defined $\Qhat$ to be $\Q\otimes\Zhat$. Whatever does this mean? Well just to orient yourself,
 if $A$ and $B$ are additive abelian groups, then $A\otimes B$ is also an abelian group.
 And if $A$ and $B$ are commutative rings (as they are in our case), then $A\otimes B$ is also
@@ -580,7 +580,7 @@ over the integers). It is not like the product of groups or the disjoint union
 of two sets, where you have a completely explicit unambiguous formula for each
 element.
 
-```tex
+```tex (accuracy := 1000)
 Even if $A$ and $B$ are completely concrete commutative rings, their tensor product $A\otimes B$
 might be incomprehensible. For example $\bbC\otimes\bbC$ is completely incomprehensible (note that we are
 tensoring over the integers). It is not like the product of groups or the disjoint union of
@@ -600,7 +600,7 @@ no "canonical form" for a general continuous function, and yet we prove things
 about them anyway. We shall adopt the same attitude for elements of
 $`A\otimes B`.
 
-```tex
+```tex (accuracy := 1000)
 In this sense, the theory of tensor products is a bit like the theory of continuous functions.
 Humanity started off studying concrete polynomial equations such as $x^2+1$ and then moved on to
 concrete analytic functions such as $\log(x)$ and $\sin(x)$, but eventually the abstract concept
@@ -617,7 +617,7 @@ groups $`A` and $`B` is a "constructor" for the type. In other words, how can
 we make elements $`A\otimes B`? Well, it turns out that given elements
 $`a\in A` and $`b\in B`, we can form the element $`a\otimes_t b\in A\otimes B`.
 
-```tex
+```tex (accuracy := 1000)
 The first thing to know about the tensor product $A\otimes B$ of two abelian groups $A$ and $B$
 is a ``constructor'' for the type. In other words, how can we make elements $A\otimes B$?
 Well, it turns out that given elements $a\in A$ and $b\in B$, we can form the element
@@ -628,7 +628,7 @@ Recall that the sum of all the factorials is an element $`e\in\Zhat`, and
 $`22/7` is certainly a rational number, so we can make the element
 $`\frac{22}{7}\otimes_te\in\Qhat`.
 
-```tex
+```tex (accuracy := 986)
 \begin{example} Recall that the sum of all the factorials is an element $e\in\Zhat$, and $22/7$ is certainly
 a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 \end{example}
@@ -636,7 +636,7 @@ a rational number, so we can make the element $\frac{22}{7}\otimes_te\in\Qhat$.
 
 This example is in the Lean code.
 
-```tex
+```tex (accuracy := 1000)
 This example is in the Lean code.
 ```
 
@@ -646,7 +646,7 @@ follow `mathlib`'s convention in reserving the $`\otimes` symbol for groups
 like $`A \otimes B`, and adorning it with a $`t` when using it on elements of
 the groups (or, as Lean calls them, terms, which explains the notation).
 
-```tex
+```tex (accuracy := 993)
 Elements of the form $a\otimes_t b\in A\otimes B$ are known as \emph{pure tensors}. In the
 literature, pure tensors
 are often written $a\otimes b$, but we shall follow {\tt mathlib}'s convention in reserving
@@ -666,7 +666,7 @@ pure tensors, with the result that one can attempt to define additive maps from
 $`A\otimes B` by saying what they do on pure tensors, and then extending
 linearly.
 
-```tex
+```tex (accuracy := 1000)
 Addition of pure tensors obeys the ``distributivity'' rules
 $a\otimes_t b_1+a\otimes_t b_2=a\otimes_t(b_1+b_2)$ and
 $a_1\otimes_t b+a_2\otimes_t b=(a_1+a_2)\otimes_t b$, but there is no rule which simplifies
@@ -688,7 +688,7 @@ equality is hard: in general there may not be an algorithm to decide whether
 two pure tensors $`a\otimes_t b` and $`c\otimes_t d` are equal in
 $`A\otimes B`.
 
-```tex
+```tex (accuracy := 1000)
 Another thing worth understanding is that just like how rational numbers can be written as
 quotients of integers in several ways (for example $1/2=2/4=3/6=\cdots$), a general pure tensor
 in $A\otimes B$ can be represented as $a\otimes_t b$ in many ways. For example, in $\Qhat$
@@ -705,7 +705,7 @@ nonunique, and furthermore given explicit elements $`a_1,a_2\in A` and
 $`b_1,b_2\in B` it might be a hard problem to figure out if
 $`a_1\otimes_t b_1=a_2\otimes_t b_2`.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark} A summary of the situation: if $A$ and $B$ are abelian groups, then every element
     of $A\otimes B$ can be written in the form $\sum_{i=1}^Na_i\otimes_tb_i$. It's just that this
     representation is highly nonunique, and furthermore given explicit elements $a_1,a_2\in A$
@@ -717,7 +717,7 @@ For example, it turns out that $`(\Z/2\Z)\otimes(\Z/3\Z)=0` and so in this
 tensor product all the $`a\otimes_t b` are equal to each other and to
 $`0\otimes 0`.
 
-```tex
+```tex (accuracy := 1000)
     For example, it turns out that $(\Z/2\Z)\otimes(\Z/3\Z)=0$
     and so in this tensor product all the $a\otimes_t b$ are equal to each other and to $0\otimes 0$.
 \end{remark}
@@ -726,7 +726,7 @@ $`0\otimes 0`.
 Having said all of that, one nice property of $`\Qhat` is that every tensor is
 pure; let's prove this now.
 
-```tex
+```tex (accuracy := 1000)
 Having said all of that, one nice property of $\Qhat$ is that every tensor \emph{is} pure;
 let's prove this now.
 ```
@@ -738,7 +738,7 @@ with $`q\in\Q` and $`z\in\Zhat`. Furthermore one can even assume that
 $`q=\frac{1}{N}` for some positive integer $`N`.
 :::
 
-```tex "QHat.canonicalForm" (slot := statement)
+```tex "QHat.canonicalForm" (slot := statement) (accuracy := 987)
 \begin{lemma}
     \label{QHat.canonicalForm}
     \lean{QHat.canonicalForm}
@@ -767,7 +767,7 @@ prove using the above technique whilst avoiding the general theory of finite
 sums.
 :::
 
-```tex "QHat.canonicalForm" (slot := proof)
+```tex "QHat.canonicalForm" (slot := proof) (accuracy := 989)
 \begin{proof} \leanok
     A proof I would write on the board would look like the following. Take a general
     element of $\Qhat$; we know it can be expressed as a finite sum
@@ -789,7 +789,7 @@ $`q\otimes z`, this representation may not be unique. For example
 $`2\otimes 1=1\otimes 2`. However, writing $`\frac{1}{N}\otimes_t z` as
 $`z/N` does tempt us into the following definition.
 
-```tex
+```tex (accuracy := 989)
 Be careful though: just because every element of $\Qhat$ can be written as $q\otimes z$, this
 representation may not be unique. For example $2\otimes 1=1\otimes 2$. However, writing
 $\frac{1}{N}\otimes_t z$ as $z/N$ does tempt us into the following definition.
@@ -802,7 +802,7 @@ $`z_N\in(\Z/N\Z)^\times`. We write $`z/N` as notation for the element
 $`\frac{1}{N}\otimes_tz`.
 :::
 
-```tex "QHat.IsCoprime" (slot := statement)
+```tex "QHat.IsCoprime" (slot := statement) (accuracy := 987)
 \begin{definition}
     \label{QHat.IsCoprime}
     \lean{QHat.IsCoprime}
@@ -820,7 +820,7 @@ Every element of $`\Qhat` can be uniquely written as $`z/N` with $`z\in\Zhat`,
 $`N\in\N^+`, and with $`N` and $`z` coprime.
 :::
 
-```tex "QHat.lowestTerms" (slot := statement)
+```tex "QHat.lowestTerms" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{QHat.lowestTerms}
     \lean{QHat.lowestTerms}
@@ -853,7 +853,7 @@ prime divided $`L/N` then $`w/M` would not be in lowest terms. We deduce that
 $`L=M=N` and hence $`z=w` by torsionfreeness.
 :::
 
-```tex "QHat.lowestTerms" (slot := proof)
+```tex "QHat.lowestTerms" (slot := proof) (accuracy := 988)
 \begin{proof}
     Existence: by the previous lemma, an arbitrary element can be written as $z/N$; let $D$
     be the greatest common divisor of $N$ and $z_N$ (lifted to a natural). If $D=1$
@@ -884,7 +884,7 @@ $`B\to A\otimes B` sending $`a` to $`a\otimes_t 1` and $`b` to
 $`1\otimes_t b`. In general such maps are not injective, but in the case of
 $`\Qhat=\Q\otimes\Zhat` both maps from $`\Q` and $`\Zhat` are inclusions.
 
-```tex
+```tex (accuracy := 1000)
 If $A$ and $B$ are additive abelian groups then $A\otimes B$ is also an additive abelian group.
 However if $A$ and $B$ are commutative rings, then $A\otimes B$ also inherits the structure
 of a commutative ring, with $0=0\otimes_t 0$ and $1=1\otimes_t 1$. Pure tensors multiply in the
@@ -900,7 +900,7 @@ The ring homomorphism $`\Q\to\Qhat` sending $`q` to $`q\otimes_t 1` is
 injective.
 :::
 
-```tex "QHat.injective_rat" (slot := statement)
+```tex "QHat.injective_rat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{QHat.injective_rat}
     \lean{QHat.injective_rat}
@@ -918,7 +918,7 @@ the map from $`\Q=\Q\otimes\Z` to $`\Qhat=\Q\otimes\Zhat` is also injective.
 There is no doubt a more elementary proof of this fact.
 :::
 
-```tex "QHat.injective_rat" (slot := proof)
+```tex "QHat.injective_rat" (slot := proof) (accuracy := 1000)
 \begin{proof} \leanok
     We have seen that the map from $\Z$ to $\Zhat$ is
     injective. Now $\Q$ is a flat $\Z$-module, because it's
@@ -934,7 +934,7 @@ The ring homomorphism $`\Zhat\to\Qhat` sending $`z` to $`1\otimes_t z` is
 injective.
 :::
 
-```tex "QHat.injective_zHat" (slot := statement)
+```tex "QHat.injective_zHat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{QHat.injective_zHat}
     \lean{QHat.injective_zHat}
@@ -951,7 +951,7 @@ torsion-free and thus flat $`\Z`-module, so the map from $`\Zhat` to
 $`\Qhat` is also injective.
 :::
 
-```tex "QHat.injective_zHat" (slot := proof)
+```tex "QHat.injective_zHat" (slot := proof) (accuracy := 1000)
 \begin{proof} \leanok
     The map from $\Z$ to $\Q$ is injective, and we have seen
     that $\Zhat$ is a torsion-free and thus flat $\Z$-module,
@@ -965,7 +965,7 @@ Here we forget the ring structure on everything, and analyse $`\Qhat` as an
 additive abelian group, and in particular how the subgroups $`\Z`, $`\Q` and
 $`\Zhat` sit within it.
 
-```tex
+```tex (accuracy := 1000)
 Here we forget the ring structure on everything, and analyse $\Qhat$ as an additive
 abelian group, and in particular how the subgroups $\Z$, $\Q$ and $\Zhat$ sit within it.
 ```
@@ -974,7 +974,7 @@ The two results we prove in this section are that $`\Q\cap\Zhat=\Z` and that
 $`\Q+\Zhat=\Qhat`. Using lattice-theoretic notation we could write these
 results as $`\Q\sqcap\Zhat=\Z` and $`\Q\sqcup\Zhat=\Qhat`.
 
-```tex
+```tex (accuracy := 1000)
 The two results we prove in this section are that $\Q\cap\Zhat=\Z$ and
 that $\Q+\Zhat=\Qhat$. Using lattice-theoretic notation we could write
 these results as $\Q\sqcap\Zhat=\Z$ and $\Q\sqcup\Zhat=\Qhat$.
@@ -985,7 +985,7 @@ Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
 The intersection of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Z`.
 :::
 
-```tex "QHat.rat_meet_zHat" (slot := statement)
+```tex "QHat.rat_meet_zHat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{QHat.rat_meet_zHat}
     \lean{QHat.rat_meet_zHat}
@@ -1005,7 +1005,7 @@ $`x\in\Zhat` implies that $`x=x/1` is in lowest terms, so we deduce that
 $`B=1` and thus $`x=A\in\Z`.
 :::
 
-```tex "QHat.rat_meet_zHat" (slot := proof)
+```tex "QHat.rat_meet_zHat" (slot := proof) (accuracy := 994)
 \begin{proof}
     \uses{QHat.lowestTerms}
     \leanok
@@ -1024,7 +1024,7 @@ element of $`\Qhat` can be written as $`q+z` with $`q\in\Q` and $`z\in\Zhat`,
 or more precisely as $`q\otimes_t 1+1\otimes_t z`.
 :::
 
-```tex "QHat.rat_join_zHat" (slot := statement)
+```tex "QHat.rat_join_zHat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{QHat.rat_join_zHat}
     \lean{QHat.rat_join_zHat}
@@ -1043,7 +1043,7 @@ $`t` and observe that $`(z-t)_N=0`, hence $`z-t=Ny` for some $`y\in\Zhat`. Now
 $`x=t/N+y\in\Q+\Zhat`.
 :::
 
-```tex "QHat.rat_join_zHat" (slot := proof)
+```tex "QHat.rat_join_zHat" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \uses{QHat.canonicalForm}
     \leanok
@@ -1059,7 +1059,7 @@ consider the multiplicative structure of its group of units $`\Qhat^\times`
 (which I couldn't get into the section title). We have the obvious subgroups
 $`\Q^\times`, $`\Z^\times` and $`\Zhat^\times`.
 
-```tex
+```tex (accuracy := 1000)
 We now forget the additive structure on the commutative ring $\Qhat$ and consider
 the multiplicative structure of its group of units $\Qhat^\times$ (which I couldn't
 get into the section title). We have the obvious
@@ -1072,7 +1072,7 @@ The intersection of $`\Q^\times` and $`\Zhat^\times` in $`\Qhat^\times` is
 $`\Z^\times`.
 :::
 
-```tex "Qhat.unitsrat_meet_unitszHat" (slot := statement)
+```tex "Qhat.unitsrat_meet_unitszHat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Qhat.unitsrat_meet_unitszHat}
     \lean{QHat.unitsrat_meet_unitszHat}
@@ -1090,7 +1090,7 @@ lowest terms but also in $`\Zhat`, and hence $`|n|=1` by uniqueness of lowest
 term representation.
 :::
 
-```tex "Qhat.unitsrat_meet_unitszHat" (slot := proof)
+```tex "Qhat.unitsrat_meet_unitszHat" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \uses{QHat.lowestTerms,QHat.rat_meet_zHat}
     \leanok
@@ -1102,7 +1102,7 @@ term representation.
 
 Note that by the previous lemma, this representation will be unique up to sign.
 
-```tex
+```tex (accuracy := 1000)
 Note that by the previous lemma, this representation will be unique up to sign.
 ```
 
@@ -1113,7 +1113,7 @@ $`\Qhat^\times`. More precisely, every element of $`\Qhat^\times` can be
 written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 :::
 
-```tex "QHat.unitsrat_join_unitszHat" (slot := statement)
+```tex "QHat.unitsrat_join_unitszHat" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{QHat.unitsrat_join_unitszHat}
     \lean{QHat.unitsrat_join_unitszHat}
@@ -1152,7 +1152,7 @@ $`x_g-x` is a multiple of $`g` and hence of $`x`, and this contradicts
 minimality of $`g`.
 :::
 
-```tex "QHat.unitsrat_join_unitszHat" (slot := proof)
+```tex "QHat.unitsrat_join_unitszHat" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \uses{ZHat.multiples,ZHat.eq_zero_of_mul_eq_zero,QHat.canonicalForm}
     \leanok
@@ -1196,7 +1196,7 @@ is a Hurwitz quaternion if either $`a,b,c,d\in\Z` or
 $`a,b,c,d\in\Z+\frac{1}{2}`.
 :::
 
-```tex "Hurwitz" (slot := statement)
+```tex "Hurwitz" (slot := statement) (accuracy := 982)
 \begin{definition}
     \label{Hurwitz}
     \lean{Hurwitz}
@@ -1374,7 +1374,7 @@ Uses {uses "Hurwitz"}[].
 The Hurwitz quaternions form a ring.
 :::
 
-```tex "Hurwitz.ring" (slot := statement)
+```tex "Hurwitz.ring" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.ring}
     \lean{Hurwitz.ring}
@@ -1388,7 +1388,7 @@ The Hurwitz quaternions form a ring.
 Follow your nose.
 :::
 
-```tex "Hurwitz.ring" (slot := proof)
+```tex "Hurwitz.ring" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     Follow your nose.
@@ -1399,7 +1399,7 @@ This ring is isomorphic to $`\Z^4` as an additive group, and
 $`\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega`
 is the usual Hamilton quaternions.
 
-```tex
+```tex (accuracy := 1000)
 This ring is isomorphic to $\Z^4$ as an additive group, and
 $\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega$
 is the usual Hamilton quaternions.
@@ -1414,7 +1414,7 @@ $`(xy)^*=y^*x^*` and $`(x+y)^*=x^*+y^*`. In particular, the Hurwitz quaternions
 are a "star ring" in the sense of mathlib.
 :::
 
-```tex "Hurwitz.starRing" (slot := statement)
+```tex "Hurwitz.starRing" (slot := statement) (accuracy := 1000)
 \begin{definition}
     \label{Hurwitz.starRing}
     \lean{Hurwitz.starRing}
@@ -1434,7 +1434,7 @@ $`a^2+b^2+c^2+d^2` on $`a+bi+cj+dk` but needs to be modified a bit to deal with
 $`\omega`.
 :::
 
-```tex "Hurwitz.norm" (slot := statement)
+```tex "Hurwitz.norm" (slot := statement) (accuracy := 1000)
 \begin{definition}
     \label{Hurwitz.norm}
     \lean{Hurwitz.norm}
@@ -1449,7 +1449,7 @@ $`\omega`.
 We have $`N(x)=x\overline{x}`.
 :::
 
-```tex "Hurwitz.norm_eq_mul_conj" (slot := statement)
+```tex "Hurwitz.norm_eq_mul_conj" (slot := statement) (accuracy := 923)
 \begin{lemma}
     \label{Hurwitz.norm_eq_mul_conj}
     \lean{Hurwitz.norm_eq_mul_conj}
@@ -1463,7 +1463,7 @@ Uses {uses "Hurwitz.norm"}[] and {uses "Hurwitz.starRing"}[].
 Easy calculation.
 :::
 
-```tex "Hurwitz.norm_eq_mul_conj" (slot := proof)
+```tex "Hurwitz.norm_eq_mul_conj" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \uses{Hurwitz.norm, Hurwitz.starRing}
     \leanok
@@ -1476,7 +1476,7 @@ Uses {uses "Hurwitz.norm"}[].
 The norm of $`0` is $`0`.
 :::
 
-```tex "Hurwitz.norm_zero" (slot := statement)
+```tex "Hurwitz.norm_zero" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.norm_zero}
     \lean{Hurwitz.norm_zero}
@@ -1490,7 +1490,7 @@ The norm of $`0` is $`0`.
 A calculation.
 :::
 
-```tex "Hurwitz.norm_zero" (slot := proof)
+```tex "Hurwitz.norm_zero" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     A calculation.
@@ -1502,7 +1502,7 @@ Uses {uses "Hurwitz.norm"}[].
 The norm of $`1` is $`1`.
 :::
 
-```tex "Hurwitz.norm_one" (slot := statement)
+```tex "Hurwitz.norm_one" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.norm_one}
     \lean{Hurwitz.norm_one}
@@ -1516,7 +1516,7 @@ The norm of $`1` is $`1`.
 A calculation.
 :::
 
-```tex "Hurwitz.norm_one" (slot := proof)
+```tex "Hurwitz.norm_one" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     A calculation.
@@ -1528,7 +1528,7 @@ Uses {uses "Hurwitz.norm"}[].
 The norm of a product is the product of the norms.
 :::
 
-```tex "Hurwitz.norm_mul" (slot := statement)
+```tex "Hurwitz.norm_mul" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.norm_mul}
     \lean{Hurwitz.norm_mul}
@@ -1542,7 +1542,7 @@ The norm of a product is the product of the norms.
 A calculation.
 :::
 
-```tex "Hurwitz.norm_mul" (slot := proof)
+```tex "Hurwitz.norm_mul" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     A calculation.
@@ -1554,7 +1554,7 @@ Uses {uses "Hurwitz.norm"}[].
 The norm of an element is nonnegative.
 :::
 
-```tex "Hurwitz.norm_nonneg" (slot := statement)
+```tex "Hurwitz.norm_nonneg" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.norm_nonneg}
     \lean{Hurwitz.norm_nonneg}
@@ -1568,7 +1568,7 @@ The norm of an element is nonnegative.
 It's a sum of rational squares.
 :::
 
-```tex "Hurwitz.norm_nonneg" (slot := proof)
+```tex "Hurwitz.norm_nonneg" (slot := proof) (accuracy := 1000)
 \begin{proof} \leanok
     It's a sum of rational squares.
 \end{proof}
@@ -1579,7 +1579,7 @@ Uses {uses "Hurwitz.norm"}[].
 The norm of an element is zero if and only if the element is zero.
 :::
 
-```tex "Hurwitz.norm_eq_zero" (slot := statement)
+```tex "Hurwitz.norm_eq_zero" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.norm_eq_zero}
     \lean{Hurwitz.norm_eq_zero}
@@ -1593,7 +1593,7 @@ The norm of an element is zero if and only if the element is zero.
 It's a sum of rational squares.
 :::
 
-```tex "Hurwitz.norm_eq_zero" (slot := proof)
+```tex "Hurwitz.norm_eq_zero" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \leanok
     It's a sum of rational squares.
@@ -1606,7 +1606,7 @@ Given a "usual" quaternion $`a=x+yi+zj+wk` with $`x,y,z,w\in\R`, there exists a
 Hurwitz quaternion $`q` such that $`N(a-q)<1`.
 :::
 
-```tex "Hurwitz.exists_near" (slot := statement)
+```tex "Hurwitz.exists_near" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.exists_near}
     \lean{Hurwitz.exists_near}
@@ -1627,7 +1627,7 @@ $`|x-[x]|=|y-[y]|=|z-[z]|=|w-[w]|=\frac{1}{2}`, in which case
 $`a\in\mathcal{O}` because $`a-\omega` has integer coordinates.
 :::
 
-```tex "Hurwitz.exists_near" (slot := proof)
+```tex "Hurwitz.exists_near" (slot := proof) (accuracy := 954)
 \begin{proof}
     \leanok
   If $[r]$ denotes the nearest integer to the real number $r$, then $|r-[r]|\leq \frac{1}{2}$.
@@ -1644,7 +1644,7 @@ Given two Hurwitz quaternions $`a` and $`b` with $`b` nonzero, there exists
 $`q` and $`r` such that $`a=qb+r` and $`N(r)<N(b)`.
 :::
 
-```tex "Hurwitz.quot_rem" (slot := statement)
+```tex "Hurwitz.quot_rem" (slot := statement) (accuracy := 1000)
 \begin{lemma}
     \label{Hurwitz.quot_rem}
     \lean{Hurwitz.quot_rem}
@@ -1661,7 +1661,7 @@ lemma `Hurwitz.exists_near` to $`a/b := ab^{-1}`; then $`N(a/b-q)<1` and
 now everything follows after multiplying up.
 :::
 
-```tex "Hurwitz.quot_rem" (slot := proof)
+```tex "Hurwitz.quot_rem" (slot := proof) (accuracy := 949)
 \begin{proof}
     \leanok
   Let $q$ be the Hurwitz quaternion obtained by applying Lemma~\ref{Hurwitz.exists_near}
@@ -1674,7 +1674,7 @@ Uses {uses "Hurwitz.norm"}[].
 All left ideals of $`\calO` are principal.
 :::
 
-```tex "Hurwitz.left_ideal_princ" (slot := statement)
+```tex "Hurwitz.left_ideal_princ" (slot := statement) (accuracy := 1000)
 \begin{corollary}
     \label{Hurwitz.left_ideal_princ}
     \lean{Hurwitz.left_ideal_princ}
@@ -1690,7 +1690,7 @@ If the ideal is `0`, use `0`. Otherwise, choose a nonzero element of smallest
 norm.
 :::
 
-```tex "Hurwitz.left_ideal_princ" (slot := proof)
+```tex "Hurwitz.left_ideal_princ" (slot := proof) (accuracy := 1000)
 \begin{proof}
     \uses{Hurwitz.quot_rem}
     \leanok
@@ -1701,7 +1701,7 @@ norm.
 All right ideals are principal too, because there's
 another version of Euclid saying $`a=bq+r`.
 
-```tex
+```tex (accuracy := 1000)
 \begin{remark}
     All right ideals are principal too, because there's
     another version of Euclid saying $a=bq+r$.
@@ -1775,7 +1775,7 @@ particular choice of $D$ and $\calO$ the result is true.
 We define $`\calOhat` to be $`\calO\otimes\Zhat`, so it's elements
 $`a+bi+cj+d\omega` with $`a,b,c,d\in\Zhat`. The basic thing we need is this:
 
-```tex
+```tex (accuracy := 1000)
 We define $\calOhat$ to be $\calO\otimes\Zhat$, so it's elements $a+bi+cj+d\omega$
 with $a,b,c,d\in\Zhat$. The basic thing we need is this:
 ```
@@ -1786,7 +1786,7 @@ If $`N` is a positive natural then the obvious map
 $`\calO\to\calOhat/N\calOhat` is surjective.
 :::
 
-```tex "Hurwitz.surjective_pnat_quotient" (slot := statement)
+```tex "Hurwitz.surjective_pnat_quotient" (slot := statement) (accuracy := 1000)
 \begin{theorem}
     \label{Hurwitz.surjective_pnat_quotient}
     \uses{Hurwitz}
@@ -1801,7 +1801,7 @@ $`z\in\Zhat` you can subtract an integer $`w` such that $`(z-w)_N=0`, so
 $`z-w` is a multiple of $`N`.
 :::
 
-```tex "Hurwitz.surjective_pnat_quotient" (slot := proof)
+```tex "Hurwitz.surjective_pnat_quotient" (slot := proof) (accuracy := 1000)
 \begin{proof}
     This is just four copies of the surjection $\Z\to\Zhat/N\Zhat$.
     Note that this latter map is surjective because $\Z\to\Z/N\Z$ is surjective,
@@ -1814,7 +1814,7 @@ We define $`D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\
 Finally, we define $`\widehat{D}:=D\otimes\Zhat`. Just as with $`\Qhat` we
 have
 
-```tex
+```tex (accuracy := 987)
 We define $D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\oplus\Q j\oplus\Q k$.
 Finally, we define $\widehat{D}:=D\otimes\Zhat$. Just as with $\Qhat$ we have
 ```
@@ -1825,7 +1825,7 @@ Every element of $`\widehat{D}` can be written as $`z/N` with
 $`z\in\calOhat` and $`N\in\N^+`.
 :::
 
-```tex "HurwitzRatHat.canonicalForm" (slot := statement)
+```tex "HurwitzRatHat.canonicalForm" (slot := statement) (accuracy := 973)
 \begin{lemma}
     \label{HurwitzRatHat.canonicalForm}
     \lean{HurwitzRatHat.canonicalForm}
@@ -1839,7 +1839,7 @@ $`z\in\calOhat` and $`N\in\N^+`.
 Same as the proof for $`\Qhat`.
 :::
 
-```tex "HurwitzRatHat.canonicalForm" (slot := proof)
+```tex "HurwitzRatHat.canonicalForm" (slot := proof) (accuracy := 1000)
 \begin{proof}
     Same as the proof for $\Qhat$.
 \end{proof}
@@ -1851,7 +1851,7 @@ $`\widehat{\calO}\cap D=\calO` and $`\widehat{\calO}+D=\widehat{D}`.
 This is because $`\calO` is just four copies of $`\Z` and we've proved
 the analogous result for $`\Z`.
 
-```tex
+```tex (accuracy := 951)
 It is not hard to check that $\widehat{D}$ contains $\widehat{\calO}$
 and $D$ as subrings, and that as additive abelian groups we have
 $\widehat{\calO}\cap D=\calO$ and $\widehat{\calO}+D=\widehat{D}$.
@@ -1866,7 +1866,7 @@ there are "class group obstructions". The double coset space is some
 kind of non-commutative analogue of a class group. However for our
 particular choice of $`D` and $`\calO` the result is true.
 
-```tex
+```tex (accuracy := 984)
 However the multiplicative structure is more interesting, especially
 as $D$ is not commutative. For a general quaternion algebra it is \emph{not}
 true that $(\widehat{D})^\times=D^\times(\widehat{\calO})^\times$, because
@@ -1882,7 +1882,7 @@ precisely, every element of $`\widehat{D}^\times` can be written as a product
 $`\delta u` with $`\delta\in D^\times` and $`u\in\calOhat^\times`.
 :::
 
-```tex "HurwitzRatHat.completed_units" (slot := statement)
+```tex "HurwitzRatHat.completed_units" (slot := statement) (accuracy := 973)
 \begin{theorem}
     \label{HurwitzRatHat.completed_units}
     \lean{HurwitzRatHat.completed_units}
@@ -1938,7 +1938,7 @@ $`\calOhat y\cap\calO=\calO\alpha`, meaning $`\beta=\gamma\alpha` for some
 $`\gamma\in\calO`. Hence $`y\in\beta+\calOhat T\subseteq\calOhat\alpha`.
 :::
 
-```tex "HurwitzRatHat.completed_units" (slot := proof)
+```tex "HurwitzRatHat.completed_units" (slot := proof) (accuracy := 987)
 \begin{proof}
     Given an element $x$ of $\widehat{D}^\times$, we can use lemma~\ref{HurwitzRatHat.canonicalForm}
     to write it as $z/N$ with $N$ a positive integer

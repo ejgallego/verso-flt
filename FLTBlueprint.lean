@@ -23,7 +23,7 @@ import FLTBlueprint.Chapters.Bestiary
 
 open Verso.Genre
 open Verso.Genre.Manual
-open Informal
+open Informal hiding tex
 
 set_option verso.blueprint.math.lint true
 set_option maxRecDepth 20000
