@@ -119,14 +119,17 @@ This repository is the integration layer for the FLT Verso blueprint.
   old blueprint limitations, it is acceptable to consolidate that into a single
   source-grounded Verso `{uses "..."}[]` in the relevant node or proof, so long
   as this does not invent a new mathematical dependency.
+- When a TeX `\ref{...}` is only a prose pointer to another blueprint node, use
+  `{bpref "..."}[]` so the reference renders as a blueprint link without adding
+  a graph dependency edge.
 - Treat metadata cleanup as a second phase of LT rather than as a substitute for
   LT. In particular, do not do metadata-only cleanup on a block that is not yet
   source-localized with an adjacent witness. First make the text LT/source-
-  paired, then tighten `(lean := "...")`, `{uses "..."}[]`, and related
-  metadata on that localized block.
+  paired, then tighten `(lean := "...")`, `{uses "..."}[]`,
+  `{bpref "..."}[]`, and related metadata on that localized block.
 - Conversely, do not promote every prose `\ref{...}` into a `{uses "..."}[]`.
-  Only do so when the reference is clearly carrying dependency meaning rather
-  than merely helping the prose read naturally.
+  Use `{uses "..."}[]` only when the reference is clearly carrying dependency
+  meaning rather than merely helping the prose read naturally.
 - When non-literal material is genuinely unavoidable, keep it visibly separate
   and label it as an editorial or harness note rather than blending it into the
   translation.
@@ -247,8 +250,8 @@ This repository is the integration layer for the FLT Verso blueprint.
 - After the source-pair check is green, use
   `python3 tools/verso-harness/scripts/check_lt_similarity.py --project-root . <chapter.lean>` to get the first
   draft of the block-level mechanical drift report suggested by David. This now
-  includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`, and
-  TeX `\ref{...}` / `\uses{...}` mismatches. The default output is human-
+  includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`,
+  `{bpref "..."}[]`, and TeX `\ref{...}` / `\uses{...}` mismatches. The default output is human-
   oriented summary; use `--verbose` when an agent needs the full per-block dump.
 - Run `python3 scripts/check_verso_math_delimiters.py <chapter.lean>` on
   touched chapters to catch malformed Verso math delimiters such as the bad
@@ -399,6 +402,8 @@ This repository is the integration layer for the FLT Verso blueprint.
   `{uses "..."}[]` inside the relevant theorem/definition/proof nodes so the
   graph remains faithful. Do not leave important `\uses` edges only in free
   prose, and do not invent new ones without a source basis.
+- When the TeX source has link-only `\ref{...}` prose to another blueprint node,
+  preserve that as `{bpref "..."}[]` rather than adding a dependency edge.
 - If a TeX chapter is only partially ported, continue with the next coherent
   section block rather than scattering small edits across unrelated chapters.
 - Keep Lean references conservative. Add `(lean := "...")` only when the import
