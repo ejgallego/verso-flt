@@ -1126,7 +1126,8 @@ written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 ```
 
 :::proof "QHat.unitsrat_join_unitszHat"
-Uses {uses "ZHat.multiples"}[] and {uses "QHat.canonicalForm"}[].
+Uses {uses "ZHat.multiples"}[], {uses "ZHat.eq_zero_of_mul_eq_zero"}[], and
+{uses "QHat.canonicalForm"}[].
 We already know that a general element of $`\Qhat^\times` can be written as
 $`x/N` with $`N` positive, so this reduces us to proving that a general element
 $`x\in\Zhat` which is invertible in $`\Qhat^\times` can be written as

@@ -926,6 +926,7 @@ $`GL_2(\calO_v)` is a compact open subgroup of $`GL_2(K_v)`.
 \end{lemma}
 ```
 :::proof "nolean-compactopen-GL2"
+Uses {uses "nolean-compactopen-matrix"}[].
 $`K_v` is known to be Hausdorff, so $`M_2(K_v)` is Hausdorff and the result
 follows from {uses "Submonoid.units_isOpen"}[] and
 {uses "Submonoid.units_isCompact"}[].

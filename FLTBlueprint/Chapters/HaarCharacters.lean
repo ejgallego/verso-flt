@@ -1122,6 +1122,7 @@ Then $d_A(\phi)=1.$
 ```
 
 :::proof "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"
+Uses {uses "MeasureTheory.mulEquivHaarChar_smul_preimage"}[].
 We have $`d_A(\phi)\mu(A)=\mu(A)`, and $`\mu(A)` is positive and finite because
 `A` is open and compact.
 :::
