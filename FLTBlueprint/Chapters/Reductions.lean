@@ -514,7 +514,8 @@ There is no Frey package.
 ```
 
 :::proof "FreyPackage.false"
-Follows immediately from the previous two theorems.
+Follows immediately from the previous two theorems
+{bpref "Mazur_Frey"}[] and {bpref "Wiles_Frey"}[].
 :::
 
 ```tex "FreyPackage.false" (slot := proof)
@@ -565,8 +566,8 @@ contradicting {uses "FreyPackage.false"}[].
 ```
 
 Because we are, for now at least, assuming Mazur's theorem, we now turn our
-attention to a proof of theorem `Wiles_Frey`. We start on this proof
-in the next chapter.
+attention to a proof of theorem {bpref "Wiles_Frey"}[]. We start on this proof
+in {bpref "ch_freyreduction"}[].
 
 ```tex
 Because we are (for now at least) assuming Mazur's theorem, we now need to turn our attention

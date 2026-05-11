@@ -177,6 +177,7 @@ $`\A_K`-algebra which is free of finite rank, and if we give $`D_{\A}` the
 $`\A_K`-module topology then it is a topological ring. Furthermore
 $`D_{\A}` is free of finite rank over the locally compact topological ring
 $`\A_K` and is thus also locally compact. So by the theory of Haar characters
+(see {bpref "Haar_char_project"}[])
 there is a canonical character
 $`\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}` measuring how left multiplication
 by an element of $`D_{\A}^\times` changes the additive Haar measure on
@@ -251,9 +252,9 @@ $`x\in D_A^{(1)}`, the obvious map $`xE\to D\backslash D_A` is not injective.
 We know that if we pick a $`\Q`-basis for $`D` of size $`d` then this
 identifies $`D` with $`\Q^d`, $`D_{\A}` with $`\A_{\Q}^d`, and
 $`D\backslash D_{\A}` with $`(\Q\backslash\A_{\Q})^d`. Now $`\Q` is
-discrete in $`\A_{\Q}` by theorem `NumberField.AdeleRing.discrete`, and the
+discrete in $`\A_{\Q}` by theorem {bpref "NumberField.AdeleRing.discrete"}[], and the
 quotient $`\Q\backslash \A_{\Q}` is compact by theorem
-`Rat.AdeleRing.cocompact`. Hence $`D` is discrete in $`D_{\A}` and the
+{bpref "Rat.AdeleRing.cocompact"}[]. Hence $`D` is discrete in $`D_{\A}` and the
 quotient $`D\backslash D_{\A}` is compact.
 
 Fix a Haar measure $`\mu` on $`D_{\A}` and push it forward to
@@ -405,7 +406,7 @@ $\beta X\cap D^\times\not=\emptyset$.
 ```
 
 :::proof "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
-Indeed by the previous lemma, the
+Indeed by the previous lemma {bpref "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"}[], the
 map $`\beta E\to D\backslash D_{\A}` is not injective, so there are distinct
 $`\beta e_1,\beta e_2\in \beta E` with $`e_i\in E` and
 $`\beta e_1-\beta e_2=b\in D`. Now $`b\not=0` and $`D` is a division
@@ -591,7 +592,7 @@ $`X\beta^{-1}\cap D^\times\not=\emptyset`, so we can write
 $`\beta x_1=b_1` and $`x_2\beta^{-1}=b_2` with $`b_i\in D^\times` and
 $`x_i\in X`. Note that $`\beta\in D_{\A}^{(1)}` and
 $`b_i\in D^{\times}\subseteq D_{\A}^{(1)}` by corollary
-`NumberField.AdeleRing.units_mem_ringHaarCharacter_ker`, so $`x_i\in D_{\A}^{(1)}`
+{bpref "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"}[], so $`x_i\in D_{\A}^{(1)}`
 as well. In particular $`x_i\in D_{\A}^\times` so $`x_1^{-1}` makes sense.
 
 Multiplying the equations defining the $`x_i` and $`b_i` we deduce that
@@ -888,7 +889,7 @@ The double cosets give a disjoint open cover of
 $`(D\otimes_K \A_K^\infty)` which descends to a disjoint open cover of the
 quotient space $`D^\times\backslash(D\otimes_K \A_K^\infty)^\times`. However
 this space is compact by theorem
-`NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact`.
+{bpref "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[].
 :::
 
 ```tex "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" (slot := proof)

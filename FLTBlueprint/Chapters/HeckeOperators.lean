@@ -1168,7 +1168,7 @@ which we shall be using.
 \section{Automorphic forms}
 ```
 We recall some of the definitions of spaces of automorphic forms, from the
-quaternion algebra project.
+quaternion algebra project {bpref "Quat_alg_project"}[].
 
 ```tex
 We recall some of the definitions of spaces of automorphic forms, from the
@@ -1179,7 +1179,7 @@ We fix a totally real field $`F`, a totally definite quaternion algebra
 $`D/F`, and a coefficient additive abelian group $`R`. Set
 $`G = (D \otimes_F \A_F^\infty)^\times` as in the previous section. Note that
 $`G` naturally contains copies of $`D^\times` and $`(\A_F^\infty)^\times`. Recall from
-definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm` that an
+definition {bpref "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[] that an
 `R`-valued weight `2` automorphic form is a function $`f : G \to R`
 satisfying the following axioms:
 
@@ -1251,7 +1251,7 @@ with $a,d\in k_v^\times$ and $a/d\in\Delta_v$. Then
 ```
 It is easily checked that this is a subgroup, and that
 $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}`,
-so the local double-coset decomposition above applies. Let
+so lemma {bpref "nolean-U1-coset-decomposition"}[] applies. Let
 $`U_{\Delta_v}` be the preimage of this subgroup in $`GL_2(\calO_v)`. This
 is a compact open subgroup of $`GL_2(\calO_v)`, by the remarks above.
 
@@ -1379,7 +1379,7 @@ and is 1 elsewhere, then the double coset space $UgU$ can again be written as $\
 with the $g_i$ supported only at~$v$.
 ```
 
-We deduce immediately from `AbstractHeckeOperator.comm` that two Hecke operators
+We deduce immediately from lemma {bpref "AbstractHeckeOperator.comm"}[] that two Hecke operators
 associated to different finite places of `F` commute.
 What remains is to check that $`U_{α,v}` and $`U_{β,v}` commute. In fact we claim
 more, namely that $`U_{α,v}U_{β,v}=U_{αβ,v}`. This will suffice

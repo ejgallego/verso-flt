@@ -75,7 +75,9 @@ assume that $`D` is *totally definite*, that is, that for all field
 embeddings $`\tau : F \to \R` we have $`D \otimes_{F,\tau} \R \cong \bbH`.
 Because $`F` has at least one real place, the totally definite hypothesis is
 enough to show that $`D` is not a matrix algebra and thus must be a division
-algebra. Thus Fujisaki's theorem from the Fujisaki miniproject applies, and we
+algebra. Thus Fujisaki's theorem
+{bpref "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[] from
+the Fujisaki miniproject applies, and we
 know that
 $`D^\times\backslash (D\otimes_F\A_F)^{(1)}` is compact.
 
@@ -449,7 +451,7 @@ $`k`-vector space. This depends on
 
 :::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"
 The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
-proved in the Fujisaki miniproject.
+proved in the Fujisaki miniproject {bpref "Fujisaki_project"}[].
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[], and
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"}[].
 Write $`(D \otimes_F \A_F^\infty)^\times`

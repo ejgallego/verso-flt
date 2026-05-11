@@ -659,7 +659,7 @@ $`\Aut(L/K)`. But this is exactly `fixed_of_fixed1`.
 \end{proof}
 ```
 
-Combining this with the referenced theorem finishes the proof.
+Combining this with {bpref "FixedPoints.toAlgAut_surjective"}[] finishes the proof.
 
 ```tex
 Combining this with~\ref{FixedPoints.toAlgAut_surjective} finishes the proof.

@@ -218,7 +218,8 @@ $`d_A(φ)μ = \phi^*μ`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_comap"
-This follows from the pushforward formula applied to the regular Haar measure
+This follows from the pushforward formula {bpref "MeasureTheory.addEquivAddHaarChar_smul_map"}[]
+applied to the regular Haar measure
 $`\phi^* \mu` and the fact that $`\phi_*\phi^*\mu = \mu`.
 :::
 
@@ -344,7 +345,7 @@ $`d_A(φ) ∫ f(x) dμ(x) = ∫ f(x) d(φ^*μ)(x)`.
 ```
 
 :::proof "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"
-This is immediate from corollary.
+This is immediate from corollary {bpref "MeasureTheory.addEquivAddHaarChar_comap"}[].
 :::
 
 ```tex "MeasureTheory.addEquivAddHaarChar_smul_integral_comap" (slot := proof)
@@ -376,7 +377,7 @@ Uses {uses "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[].
 Here's one way: it suffices to prove that
 $`d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu = d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu`
 (because there exists a compact set with positive finite measure), and using
-lemma `MeasureTheory.addEquivAddHaarChar_smul_map` and the fact that
+lemma {bpref "MeasureTheory.addEquivAddHaarChar_smul_map"}[] and the fact that
 $`(\phi\circ\psi)_*\mu = \phi_*(\psi_*\mu)`, one can simplify both sides to `μ`.
 :::
 
@@ -1004,7 +1005,7 @@ $`\delta_{R\times S}(r,s)=\delta_R(r)\times\delta_S(s)`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_prod"
-Follows immediately from lemma.
+Follows immediately from lemma {bpref "MeasureTheory.addEquivAddHaarChar_prodCongr"}[].
 :::
 
 ```tex "MeasureTheory.ringHaarChar_prod" (slot := proof)
@@ -1033,7 +1034,7 @@ $`\delta_{\prod_i R_i}((u_i)_i)=\prod_i\delta_{R_i}(u_i)`.
 ```
 
 :::proof "MeasureTheory.ringHaarChar_pi"
-Follows immediately from lemma.
+Follows immediately from lemma {bpref "MeasureTheory.addEquivAddHaarChar_piCongrRight"}[].
 :::
 
 ```tex "MeasureTheory.ringHaarChar_pi" (slot := proof)
@@ -1125,7 +1126,7 @@ Then $d_A(\phi)=1.$
 :::proof "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"
 Uses {uses "MeasureTheory.mulEquivHaarChar_smul_preimage"}[].
 We have $`d_A(\phi)\mu(A)=\mu(A)`, and $`\mu(A)` is positive and finite because
-`A` is open and compact.
+`A` is open and compact, using {bpref "MeasureTheory.addEquivAddHaarChar_smul_preimage"}[].
 :::
 
 ```tex "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" (slot := proof)
@@ -1167,7 +1168,8 @@ $`0<\int g(a)d\mu(a)<\infty`. Then
 $`d_A(\alpha)\int g(a)d\mu_A(a)=\int g(a)d(\alpha^*\mu_A)(a)` by lemma. This
 equals $`\int g(a)d(\alpha^* f^*\mu_B)(a)` by definition, which is
 $`\int g(a)d(f^*\beta^*\mu_B)(a)` because pullback of pullback is pullback.
-This equals $`d_B(\beta)\int g(a)d(f^*\mu_B)(a)` by corollary, which is
+This equals $`d_B(\beta)\int g(a)d(f^*\mu_B)(a)` by corollary
+{bpref "MeasureTheory.addEquivAddHaarChar_comap"}[], which is
 $`d_B(\beta)\int g(a)d\mu_A(a)` by definition, and so
 $`d_A(\alpha)=d_B(\beta)` as required.
 :::

@@ -29,8 +29,8 @@ Reducibility of Frey-curve p-torsion.
 
 # Overview
 
-In the reductions chapter we reduced FLT, modulo a hard theorem from the
-`1970`s, to theorem `Wiles_Frey`, the assertion that `p`-torsion in the Frey
+In {bpref "ch_reductions"}[] we reduced FLT, modulo a hard theorem from the
+`1970`s, to theorem {bpref "Wiles_Frey"}[], the assertion that `p`-torsion in the Frey
 curve is reducible. In this chapter we deduce this assertion from three more
 complex claims about hardly ramified Galois representations. It is relatively
 straightforward to reduce one of these three claims to a result of Fontaine
@@ -311,7 +311,8 @@ Note that this (deep) claim is a consequence of Serre's conjecture
 {Informal.citep serreModularityConjecture}[], now a theorem of Khare and
 Wintenberger {Informal.citep khareWintenbergerII}[], and indeed we shall use
 methods introduced by Khare and Wintenberger to prove this special case of
-Serre's conjecture. Given this result, we can deduce theorem `Wiles_Frey`
+Serre's conjecture. Given this result, we can deduce theorem
+{bpref "Wiles_Frey"}[]
 (which we restate here) easily:
 
 ```tex
@@ -353,7 +354,7 @@ Indeed, $`\rho` is hardly ramified by theorem
 ```
 
 Our job of reducing FLT to theorems of the `1980`s is hence reduced to proving
-the theorem.
+theorem {bpref "hardly_ramified_reducible"}[].
 
 ```tex
 Our job of reducing FLT to theorems of the 1980s is hence reduced to proving
@@ -363,7 +364,7 @@ Theorem~\ref{hardly_ramified_reducible}.
 ## Hardly Ramified Mod `p` Representations Are Reducible
 
 In this section we will state three theorems, from which theorem
-`hardly_ramified_reducible` easily follows.
+{bpref "hardly_ramified_reducible"}[] easily follows.
 
 ```tex
 In this section we will state three theorems, from which Theorem~\ref{hardly_ramified_reducible}
@@ -565,7 +566,7 @@ This theorem is formalized in Lean under the attached declaration.
 \end{proof}
 ```
 
-Theorem `hardly_ramified_reducible` (if $`\ell\geq 3` is a prime and
+Theorem {bpref "hardly_ramified_reducible"}[] (if $`\ell\geq 3` is a prime and
 $`\overline{\rho}:\GQ\to\GL_2(\Z/\ell\Z)` is hardly ramified, then
 $`\overline{\rho}` is reducible) is an easy consequence of these theorems, as
 we now show.
@@ -618,9 +619,10 @@ contradiction we seek.
 ```
 
 What remains then, modulo several results which were known in the `1980`s, is
-to prove the three theorems `hardly_ramified_lifts`,
-`hardly_ramified_spreads_out`, and `hardly_ramified_3adic_reducible`. By far
-the easiest is theorem `hardly_ramified_3adic_reducible`; this follows from old
+to prove the three theorems {bpref "hardly_ramified_lifts"}[],
+{bpref "hardly_ramified_spreads_out"}[], and {bpref "hardly_ramified_3adic_reducible"}[].
+By far
+the easiest is theorem {bpref "hardly_ramified_3adic_reducible"}[]; this follows from old
 estimates of Fontaine, ultimately relying on bounds for root discriminants due
 to Odlyzko and Poitou, originally developed to prove that there was no
 nontrivial abelian scheme over $`\mathbf{Z}`. The other two theorems are deeper,
