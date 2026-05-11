@@ -2,6 +2,7 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLTBlueprint.TeXPrelude
+import FLT.Mathlib.MeasureTheory.Measure.Regular
 import FLT.HaarMeasure.HaarChar.AdeleRing
 
 open Verso.Genre
