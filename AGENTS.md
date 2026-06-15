@@ -117,19 +117,22 @@ This repository is the integration layer for the FLT Verso blueprint.
   semantics, not about copying TeX syntax mechanically. If the TeX source splits
   one dependency awkwardly across `\uses{...}` and prose `\ref{...}` because of
   old blueprint limitations, it is acceptable to consolidate that into a single
-  source-grounded Verso `{uses "..."}[]` in the relevant node or proof, so long
-  as this does not invent a new mathematical dependency.
+  source-grounded `(uses := ...)` entry on the relevant node or proof, so long
+  as this does not invent a new mathematical dependency. Use inline
+  `{uses "..."}[]` only when the source reference is naturally part of the
+  translated prose.
 - When a TeX `\ref{...}` is only a prose pointer to another blueprint node, use
-  `{bpref "..."}[]` so the reference renders as a blueprint link without adding
-  a graph dependency edge.
+  inline `{bpref "..."}[]` so the reference renders as a blueprint link without
+  adding a graph dependency edge.
 - Treat metadata cleanup as a second phase of LT rather than as a substitute for
   LT. In particular, do not do metadata-only cleanup on a block that is not yet
   source-localized with an adjacent witness. First make the text LT/source-
-  paired, then tighten `(lean := "...")`, `{uses "..."}[]`,
-  `{bpref "..."}[]`, and related metadata on that localized block.
+  paired, then tighten `(lean := "...")`, `(uses := ...)`, inline
+  `{uses "..."}[]` where it is natural in prose, `{bpref "..."}[]`, and
+  related metadata on that localized block.
 - Conversely, do not promote every prose `\ref{...}` into a `{uses "..."}[]`.
-  Use `{uses "..."}[]` only when the reference is clearly carrying dependency
-  meaning rather than merely helping the prose read naturally.
+  Use `uses` only when the reference is clearly carrying dependency meaning
+  rather than merely helping the prose read naturally.
 - When non-literal material is genuinely unavoidable, keep it visibly separate
   and label it as an editorial or harness note rather than blending it into the
   translation.
