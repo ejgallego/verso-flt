@@ -120,8 +120,7 @@ to $`\sum_i g_i a`.
   to $\sum_i g_ia.$
 \end{definition}
 ```
-:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator")
-Uses {uses "AbstractHeckeOperator.HeckeOperator_toFun"}[].
+:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator") (uses := "AbstractHeckeOperator.HeckeOperator_toFun")
 This function is well-defined (that is, independent of the
 choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 :::
@@ -196,8 +195,7 @@ this cover must thus be finite.
   this cover must thus be finite.
 \end{proof}
 ```
-:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm")
-Uses {uses "AbstractHeckeOperator.HeckeOperator"}[].
+:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm") (uses := "AbstractHeckeOperator.HeckeOperator")
 Say $`g,h \in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_i h_j = h_j g_i` for all $`i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
@@ -645,8 +643,7 @@ homeomorphism.
   is a homeomorphism.
 \end{theorem}
 ```
-:::proof "ContinuousMulEquiv.restrictedProductUnits"
-Uses {uses "ContinuousMulEquiv.piUnits"}[] and {uses "Submonoid.units_isOpen"}[].
+:::proof "ContinuousMulEquiv.restrictedProductUnits" (uses := "ContinuousMulEquiv.piUnits, Submonoid.units_isOpen")
 I don't know a clean way of showing that the map from left to right is
 continuous, so here is a direct proof that the map is a homeomorphism. It is
 certainly an abstract group isomorphism between topological groups. So to prove
@@ -902,8 +899,7 @@ $`M_2(\calO_v)` is a compact subring of $`M_2(K_v)`.
 \end{lemma}
 ```
 
-:::proof "M2.localFullLevel.isCompact"
-Uses {uses "local_integer_ring_compact"}[].
+:::proof "M2.localFullLevel.isCompact" (uses := "local_integer_ring_compact")
 Topologically $`M_2(\calO_v) \cong \calO_v^4` as a subset of $`K_v^4`, so this
 follows from theorem {uses "local_integer_ring_compact"}[]
 because a product of compacts is compact and a product of opens is open.
@@ -925,8 +921,7 @@ $`GL_2(\calO_v)` is a compact open subgroup of $`GL_2(K_v)`.
   \label{nolean-compactopen-GL2}
 \end{lemma}
 ```
-:::proof "nolean-compactopen-GL2"
-Uses {uses "nolean-compactopen-matrix"}[].
+:::proof "nolean-compactopen-GL2" (uses := "nolean-compactopen-matrix")
 $`K_v` is known to be Hausdorff, so $`M_2(K_v)` is Hausdorff and the result
 follows from {uses "Submonoid.units_isOpen"}[] and
 {uses "Submonoid.units_isCompact"}[].
@@ -1125,8 +1120,7 @@ with respect to the compact open subgroups $`GL_2(\calO_v)`.
   to the compact open subgroups $GL_2(\calO_v)$.
 \end{theorem}
 ```
-:::proof "GL2.restrictedProduct"
-Uses {uses "ContinuousMulEquiv.restrictedProductUnits"}[], {uses "Homeomorph.restrictedProductMatrix"}[], and {uses "ContinuousMulEquiv.restrictedProductMatrixUnits"}[].
+:::proof "GL2.restrictedProduct" (uses := "ContinuousMulEquiv.restrictedProductUnits, Homeomorph.restrictedProductMatrix, ContinuousMulEquiv.restrictedProductMatrixUnits")
 This follows from lemma and lemma.
 :::
 

@@ -168,8 +168,7 @@ absolutely irreducible when restricted to $F(\zeta_\ell)$, and $S$-good. One can
 that the functor representing $S$-good lifts of $\rhobar$ is representable.
 ```
 
-:::theorem "modularity_lifting_theorem" (parent := "overview_strategy")
-Uses {uses "Skinner_Wiles_CFT_trick"}[], {uses "local_galois_coh_dim_two"}[], {uses "local_galois_coh_top_degree"}[], {uses "local_galois_coh_poincare"}[], {uses "local_galois_coh_euler_poincare"}[], {uses "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"}[], {uses "automorphic_representation_local_decomposition"}[], {uses "cuspidal_automorphic_representation"}[], {uses "Galois_representation_from_automorphic_representation_on_GL_2_form"}[], {uses "moret-bailly"}[], and {uses "local_galois_coh_finite"}[].
+:::theorem "modularity_lifting_theorem" (parent := "overview_strategy") (uses := "Skinner_Wiles_CFT_trick, local_galois_coh_dim_two, local_galois_coh_top_degree, local_galois_coh_poincare, local_galois_coh_euler_poincare, IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv, automorphic_representation_local_decomposition, cuspidal_automorphic_representation, Galois_representation_from_automorphic_representation_on_GL_2_form, moret-bailly, local_galois_coh_finite")
 If $`\rhobar` is modular of level $`\Gamma_1(S)` and
 $`\rho : G_F \to \GL_2(\calO)` is an S-good lift of $`\rhobar` to $`\calO`, the
 integers of a finite extension of $`\Q_\ell`, then $`\rho` is also modular of

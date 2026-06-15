@@ -140,8 +140,7 @@ counterexample $`a^p+b^p=c^p` with `p` prime and $`p \ge 5`.
 \end{corollary}
 ```
 
-:::proof "FermatLastTheorem.of_p_ge_5"
-Uses {uses "fermatLastTheoremThree"}[] and {uses "FermatLastTheorem.of_odd_primes"}[].
+:::proof "FermatLastTheorem.of_p_ge_5" (uses := "fermatLastTheoremThree, FermatLastTheorem.of_odd_primes")
 Follows from the previous two lemmas.
 :::
 
@@ -191,8 +190,7 @@ exists a Frey package.
 \end{lemma}
 ```
 
-:::proof "FreyPackage.of_not_FermatLastTheorem_p_ge_5"
-Uses {uses "FreyPackage"}[].
+:::proof "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (uses := "FreyPackage")
 Suppose we have a counterexample $`a^p+b^p=c^p` for the given `p`; we now build
 a Frey package from this data.
 
@@ -344,8 +342,7 @@ $a\equiv3\pmod4$ and $b\equiv0\pmod2$. We have shown above that if Fermat's Last
 then a Frey package exists.
 ```
 
-:::definition "FreyCurve" (parent := "first_reductions") (lean := "FreyPackage.freyCurve")
-Uses {uses "FreyPackage"}[].
+:::definition "FreyCurve" (parent := "first_reductions") (lean := "FreyPackage.freyCurve") (uses := "FreyPackage")
 Given a Frey package $`(a,b,c,p)`, the corresponding Frey curve is the elliptic
 curve over $`\Q` (considered by Frey and, before him, Hellegouarch) defined by the equation
 $`Y^2 = X(X-a^p)(X+b^p)`.
@@ -412,8 +409,7 @@ and we say that $\rho$ is the mod $p$ representation associated to the Frey pack
 Is it irreducible or not?
 ```
 
-:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey")
-Uses {uses "FreyCurve"}[].
+:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is irreducible.
 :::
@@ -429,8 +425,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 \end{theorem}
 ```
 
-:::proof "Mazur_Frey"
-Uses {uses "Frey_curve_irreducible"}[].
+:::proof "Mazur_Frey" (uses := "Frey_curve_irreducible")
 This follows from a profound and long result of Mazur
 {Informal.citep mazurTorsion}[] from `1977`, namely the fact that the torsion
 subgroup of an elliptic curve over $`\Q` can have size at most `16`. In fact
@@ -463,8 +458,7 @@ a formalization of this result, as it was known in the 1980s. We will however be
 a lot about the next result, which says the exact opposite.
 ```
 
-:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey")
-Uses {uses "FreyCurve"}[].
+:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is reducible.
 :::
@@ -480,8 +474,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 \end{theorem}
 ```
 
-:::proof "Wiles_Frey"
-Uses {uses "Frey_curve_hardly_ramified"}[] and {uses "hardly_ramified_reducible"}[].
+:::proof "Wiles_Frey" (uses := "Frey_curve_hardly_ramified, hardly_ramified_reducible")
 This follows from theorem `Frey_curve_hardly_ramified`, which shows that the
 Frey representation is hardly ramified, together with theorem
 `hardly_ramified_reducible`, which shows that any hardly ramified mod `p`
@@ -498,8 +491,7 @@ representation is reducible.
 \end{proof}
 ```
 
-:::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false")
-Uses {uses "Mazur_Frey"}[] and {uses "Wiles_Frey"}[].
+:::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false") (uses := "Mazur_Frey, Wiles_Frey")
 There is no Frey package.
 :::
 

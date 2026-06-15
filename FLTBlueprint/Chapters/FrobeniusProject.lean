@@ -143,8 +143,7 @@ The theorem we want in this mini-project is
 The theorem we want in this mini-project is
 ```
 
-:::theorem "IsFractionRing.stabilizerHom_surjective" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom_surjective")
-Uses {uses "IsFractionRing.stabilizerHom"}[].
+:::theorem "IsFractionRing.stabilizerHom_surjective" (parent := "frobenius_project") (lean := "IsFractionRing.stabilizerHom_surjective") (uses := "IsFractionRing.stabilizerHom")
 The map $`g \mapsto \phi_g` from $`D_Q` to $`\Aut(L/K)` defined above is
 surjective.
 :::
@@ -255,8 +254,7 @@ Clearly $`F_b` is a monic polynomial.
 Clearly $F_b$ is a monic polynomial.
 ```
 
-:::lemma_ "MulSemiringAction.monic_charpoly" (parent := "frobenius_project") (lean := "MulSemiringAction.monic_charpoly")
-Uses {uses "MulSemiringAction.charpoly"}[].
+:::lemma_ "MulSemiringAction.monic_charpoly" (parent := "frobenius_project") (lean := "MulSemiringAction.monic_charpoly") (uses := "MulSemiringAction.charpoly")
 $`F_b` is monic.
 :::
 
@@ -297,8 +295,7 @@ also refer to $M_b$ as the characteristic polynomial of $b$, even though
 it's not even well-defined if the map $A\to B$ isn't injective.
 ```
 
-:::lemma_ "Algebra.IsInvariant.charpoly_mem_lifts" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.charpoly_mem_lifts")
-Uses {uses "MulSemiringAction.charpoly"}[].
+:::lemma_ "Algebra.IsInvariant.charpoly_mem_lifts" (parent := "frobenius_project") (lean := "Algebra.IsInvariant.charpoly_mem_lifts") (uses := "MulSemiringAction.charpoly")
 $`F_b` is the lift of some monic polynomial $`M_b` in $`A[X]`.
 :::
 
@@ -337,8 +334,7 @@ $`B/A` is integral.
 \end{theorem}
 ```
 
-:::proof "Algebra.IsInvariant.isIntegral"
-Uses {uses "MulSemiringAction.monic_charpoly"}[] and {uses "Algebra.IsInvariant.charpoly_mem_lifts"}[].
+:::proof "Algebra.IsInvariant.isIntegral" (uses := "MulSemiringAction.monic_charpoly, Algebra.IsInvariant.charpoly_mem_lifts")
 Use $`M_b`.
 :::
 
@@ -402,8 +398,7 @@ of $`A`, such that for all $`g \in G`:
 \end{lemma}
 ```
 
-:::proof "fixed_of_fixed1_aux1"
-Uses {uses "Algebra.IsInvariant.charpoly_mem_lifts"}[].
+:::proof "fixed_of_fixed1_aux1" (uses := "Algebra.IsInvariant.charpoly_mem_lifts")
 The ideals $`g \cdot Q \neq Q` are not contained in $`Q`. Since $`Q` is a
 prime ideal, this implies that the intersection of all $`g \cdot Q \neq Q` is
 still not contained in $`Q`. Then we can find an element $`c \notin Q` with
@@ -470,8 +465,7 @@ for all $`g \in G`:
 \end{lemma}
 ```
 
-:::proof "fixed_of_fixed1_aux2"
-Uses {uses "fixed_of_fixed1_aux1"}[].
+:::proof "fixed_of_fixed1_aux2" (uses := "fixed_of_fixed1_aux1")
 Multiply the $`b` from {uses "fixed_of_fixed1_aux1"}[] by $`b_0`.
 :::
 
@@ -541,8 +535,7 @@ $\Aut(L/K)$.
 We first show this for elements of $B/Q$ fixed by $D_Q$.
 ```
 
-:::theorem "fixed_of_fixed1" (parent := "frobenius_project")
-Uses {uses "IsFractionRing.stabilizerHom"}[].
+:::theorem "fixed_of_fixed1" (parent := "frobenius_project") (uses := "IsFractionRing.stabilizerHom")
 Let $`b_0 \in B/Q`. Suppose that $`b_0` is fixed by the stabilizer subgroup
 $`D_Q`. Then $`b_0` is fixed by $`\Aut(L/K)`.
 :::
@@ -558,8 +551,7 @@ $`D_Q`. Then $`b_0` is fixed by $`\Aut(L/K)`.
 \end{proposition}
 ```
 
-:::proof "fixed_of_fixed1"
-Uses {uses "fixed_of_fixed1_aux1"}[] and {uses "fixed_of_fixed1_aux2"}[].
+:::proof "fixed_of_fixed1" (uses := "fixed_of_fixed1_aux1, fixed_of_fixed1_aux2")
 Let $`a,b \in B` be elements from `fixed_of_fixed1_aux2`. Let
 $`M_b \in A[X]` be the characteristic polynomial of $`b`. We can map
 $`M_b` to $`L[X]` in two different ways: via $`B[X]` and via $`K[X]`.
@@ -637,8 +629,7 @@ Then $`x` is fixed by the automorphism group $`\Aut(L/K)`.
 \end{proposition}
 ```
 
-:::proof "fixed_of_fixed2"
-Uses {uses "Algebra.IsInvariant.isIntegral"}[], {uses "IsAlgebraic.exists_smul_eq_mul"}[], and {uses "fixed_of_fixed1"}[].
+:::proof "fixed_of_fixed2" (uses := "Algebra.IsInvariant.isIntegral, IsAlgebraic.exists_smul_eq_mul, fixed_of_fixed1")
 Since $`(B/Q)/(A/P)` is algebraic by `Algebra.IsInvariant.isIntegral`,
 `IsAlgebraic.exists_smul_eq_mul` lets us write $`x=b/a` for $`b \in B/Q` and
 $`a \in A/P`. Then $`b` is fixed by the stabilizer subgroup $`D_Q`, and it
@@ -665,8 +656,7 @@ Combining this with {bpref "FixedPoints.toAlgAut_surjective"}[] finishes the pro
 Combining this with~\ref{FixedPoints.toAlgAut_surjective} finishes the proof.
 ```
 
-:::proof "IsFractionRing.stabilizerHom_surjective"
-Uses {uses "fixed_of_fixed2"}[] and {uses "FixedPoints.toAlgAut_surjective"}[].
+:::proof "IsFractionRing.stabilizerHom_surjective" (uses := "fixed_of_fixed2, FixedPoints.toAlgAut_surjective")
 The map $`D_Q \to \Aut(L/L^{D_Q})` is surjective by
 `FixedPoints.toAlgAut_surjective`. For surjectivity of
 $`\Aut(L/L^{D_Q}) \to \Aut(L/K)`, let $`\sigma` be a field automorphism of

@@ -215,8 +215,7 @@ explicitly; we can work instead with the conceptually simpler object $\Zhat$,
 the profinite completion of $\Z$. So what is $\Zhat$? We offer a low-level definition of this object.
 ```
 
-:::lemma_ "ZHat.commRing" (parent := "automorphic_example_program") (lean := "ZHat.commRing")
-Uses {uses "ZHat"}[].
+:::lemma_ "ZHat.commRing" (parent := "automorphic_example_program") (lean := "ZHat.commRing") (uses := "ZHat")
 $`\Zhat` is a subring of $`\prod_{N\geq1}(Z/N\Z)` and in particular is a ring.
 :::
 
@@ -239,8 +238,7 @@ Follow your nose.
 \end{proof}
 ```
 
-:::lemma_ "ZHat.nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial")
-Uses {uses "ZHat.commRing"}[].
+:::lemma_ "ZHat.nontrivial" (parent := "automorphic_example_program") (lean := "ZHat.nontrivial") (uses := "ZHat.commRing")
 $`0\not=1` in $`\Zhat`.
 :::
 
@@ -310,8 +308,7 @@ is \emph{much} larger than $\Z$; it has the same cardinality as the reals in fac
 Let's write down an explicit example of an element of $\Zhat$ which isn't obviously in $\Z$.
 ```
 
-:::definition "ZHat.e" (parent := "automorphic_example_program") (lean := "ZHat.e")
-Uses {uses "ZHat.commRing"}[].
+:::definition "ZHat.e" (parent := "automorphic_example_program") (lean := "ZHat.e") (uses := "ZHat.commRing")
 The infinite sum $`0!+1!+2!+3!+4!+5!+\cdots` looks like it makes no sense at
 all; it is the sum of an infinite series of larger and larger positive numbers.
 However, the sum is finite modulo $`N` for every positive integer $`N`, because
@@ -337,8 +334,7 @@ Explicitly, $`e_N=0!+1!+\cdots+(N-1)!` modulo $`N`.
     Explicitly, $e_N=0!+1!+\cdots+(N-1)!$ modulo $N$.
 \end{definition}
 ```
-:::lemma_ "ZHat.e_def" (parent := "automorphic_example_program") (lean := "ZHat.e_def")
-Uses {uses "ZHat.e"}[].
+:::lemma_ "ZHat.e_def" (parent := "automorphic_example_program") (lean := "ZHat.e_def") (uses := "ZHat.e")
 The collection $`(e_N)_N` is an element of $`\Zhat`.
 :::
 
@@ -364,8 +360,7 @@ $`D`.
 \end{proof}
 ```
 
-:::lemma_ "ZHat.e_not_in_Int" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int")
-Uses {uses "ZHat.e"}[].
+:::lemma_ "ZHat.e_not_in_Int" (parent := "automorphic_example_program") (lean := "ZHat.e_not_in_Int") (uses := "ZHat.e")
 The element $`(e_N)_N` of $`\Zhat` is not in $`\Z`.
 :::
 
@@ -410,8 +405,7 @@ $`e_N=-t` in $`\Z/N\Z`, so again $`e\not=n`.
 \end{proof}
 ```
 
-:::lemma_ "ZHat.torsionfree" (parent := "automorphic_example_program") (lean := "ZHat.torsionfree")
-Uses {uses "ZHat.commRing"}[] and {uses "ZHat.charZero"}[].
+:::lemma_ "ZHat.torsionfree" (parent := "automorphic_example_program") (lean := "ZHat.torsionfree") (uses := "ZHat.commRing, ZHat.charZero")
 If $`0<N` is an integer then multiplication by $`N` is injective on $`\Zhat`.
 :::
 
@@ -447,8 +441,7 @@ mod~$`j` reduction of $`z_{Nj}` and hence is zero.
 \end{proof}
 ```
 
-:::lemma_ "ZHat.multiples" (parent := "automorphic_example_program") (lean := "ZHat.multiples")
-Uses {uses "ZHat.commRing"}[].
+:::lemma_ "ZHat.multiples" (parent := "automorphic_example_program") (lean := "ZHat.multiples") (uses := "ZHat.commRing")
 The multiples of~$`N` in $`\Zhat` are precisely the compatible collections
 $`(z_i)_i\in\Zhat` with $`z_N=0`.
 :::
@@ -541,8 +534,7 @@ The definition of $\Qhat$ is easy if you know about tensor products
 of additive abelian groups.
 ```
 
-:::definition "QHat" (parent := "automorphic_example_program") (lean := "QHat")
-Uses {uses "ZHat"}[].
+:::definition "QHat" (parent := "automorphic_example_program") (lean := "QHat") (uses := "ZHat")
 The profinite completion $`\Qhat` of $`\Q` is the tensor product
 $`\Q\otimes_{\Z}\Zhat`, or $`\Qhat=\Q\otimes\Zhat` for short.
 :::
@@ -731,8 +723,7 @@ Having said all of that, one nice property of $\Qhat$ is that every tensor \emph
 let's prove this now.
 ```
 
-:::lemma_ "QHat.canonicalForm" (parent := "automorphic_example_program") (lean := "QHat.canonicalForm")
-Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
+:::lemma_ "QHat.canonicalForm" (parent := "automorphic_example_program") (lean := "QHat.canonicalForm") (uses := "QHat, ZHat.commRing")
 Every element of $`\Qhat:=\Q\otimes\Zhat` can be written as $`q\otimes_t z`
 with $`q\in\Q` and $`z\in\Zhat`. Furthermore one can even assume that
 $`q=\frac{1}{N}` for some positive integer $`N`.
@@ -795,8 +786,7 @@ representation may not be unique. For example $2\otimes 1=1\otimes 2$. However, 
 $\frac{1}{N}\otimes_t z$ as $z/N$ does tempt us into the following definition.
 ```
 
-:::definition "QHat.IsCoprime" (parent := "automorphic_example_program") (lean := "QHat.IsCoprime")
-Uses {uses "ZHat.commRing"}[].
+:::definition "QHat.IsCoprime" (parent := "automorphic_example_program") (lean := "QHat.IsCoprime") (uses := "ZHat.commRing")
 If $`N\in\N^+` and $`z\in\Zhat` then we say that $`N` and $`z` are coprime if
 $`z_N\in(\Z/N\Z)^\times`. We write $`z/N` as notation for the element
 $`\frac{1}{N}\otimes_tz`.
@@ -814,8 +804,7 @@ $`\frac{1}{N}\otimes_tz`.
 \end{definition}
 ```
 
-:::lemma_ "QHat.lowestTerms" (parent := "automorphic_example_program") (lean := "QHat.lowestTerms")
-Uses {uses "QHat.IsCoprime"}[].
+:::lemma_ "QHat.lowestTerms" (parent := "automorphic_example_program") (lean := "QHat.lowestTerms") (uses := "QHat.IsCoprime")
 Every element of $`\Qhat` can be uniquely written as $`z/N` with $`z\in\Zhat`,
 $`N\in\N^+`, and with $`N` and $`z` coprime.
 :::
@@ -894,8 +883,7 @@ and $b$ to $1\otimes_t b$. In general such maps are not injective, but in the ca
 $\Qhat=\Q\otimes\Zhat$ both maps from $\Q$ and $\Zhat$ are inclusions.
 ```
 
-:::lemma_ "QHat.injective_rat" (parent := "automorphic_example_program") (lean := "QHat.injective_rat")
-Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
+:::lemma_ "QHat.injective_rat" (parent := "automorphic_example_program") (lean := "QHat.injective_rat") (uses := "QHat, ZHat.commRing")
 The ring homomorphism $`\Q\to\Qhat` sending $`q` to $`q\otimes_t 1` is
 injective.
 :::
@@ -928,8 +916,7 @@ There is no doubt a more elementary proof of this fact.
 \end{proof}
 ```
 
-:::lemma_ "QHat.injective_zHat" (parent := "automorphic_example_program") (lean := "QHat.injective_zHat")
-Uses {uses "QHat"}[] and {uses "ZHat.torsionfree"}[].
+:::lemma_ "QHat.injective_zHat" (parent := "automorphic_example_program") (lean := "QHat.injective_zHat") (uses := "QHat, ZHat.torsionfree")
 The ring homomorphism $`\Zhat\to\Qhat` sending $`z` to $`1\otimes_t z` is
 injective.
 :::
@@ -980,8 +967,7 @@ that $\Q+\Zhat=\Qhat$. Using lattice-theoretic notation we could write
 these results as $\Q\sqcap\Zhat=\Z$ and $\Q\sqcup\Zhat=\Qhat$.
 ```
 
-:::lemma_ "QHat.rat_meet_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_meet_zHat")
-Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
+:::lemma_ "QHat.rat_meet_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_meet_zHat") (uses := "QHat, ZHat.commRing")
 The intersection of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Z`.
 :::
 
@@ -995,8 +981,7 @@ The intersection of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Z`.
 \end{lemma}
 ```
 
-:::proof "QHat.rat_meet_zHat"
-Uses {uses "QHat.lowestTerms"}[].
+:::proof "QHat.rat_meet_zHat" (uses := "QHat.lowestTerms")
 Clearly $`\Z\subseteq\Q\cap\Zhat`. Now suppose that $`x\in\Q\cap\Zhat`.
 Because $`x` is rational we can write it as $`\frac{A}{B}\otimes_t1` for some
 fraction $`A/B` in lowest terms, and hence $`x=A/B` where now we regard
@@ -1017,8 +1002,7 @@ $`B=1` and thus $`x=A\in\Z`.
 \end{proof}
 ```
 
-:::lemma_ "QHat.rat_join_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_join_zHat")
-Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
+:::lemma_ "QHat.rat_join_zHat" (parent := "automorphic_example_program") (lean := "QHat.rat_join_zHat") (uses := "QHat, ZHat.commRing")
 The sum of $`\Q` and $`\Zhat` in $`\Qhat` is $`\Qhat`. More precisely, every
 element of $`\Qhat` can be written as $`q+z` with $`q\in\Q` and $`z\in\Zhat`,
 or more precisely as $`q\otimes_t 1+1\otimes_t z`.
@@ -1036,8 +1020,7 @@ or more precisely as $`q\otimes_t 1+1\otimes_t z`.
 \end{lemma}
 ```
 
-:::proof "QHat.rat_join_zHat"
-Uses {uses "QHat.canonicalForm"}[].
+:::proof "QHat.rat_join_zHat" (uses := "QHat.canonicalForm")
 Write $`x\in\Qhat` as $`x=z/N` in lowest terms. Lift $`z_N` to an integer
 $`t` and observe that $`(z-t)_N=0`, hence $`z-t=Ny` for some $`y\in\Zhat`. Now
 $`x=t/N+y\in\Q+\Zhat`.
@@ -1066,8 +1049,7 @@ get into the section title). We have the obvious
 subgroups $\Q^\times$, $\Z^\times$ and $\Zhat^\times$.
 ```
 
-:::lemma_ "Qhat.unitsrat_meet_unitszHat" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_meet_unitszHat")
-Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
+:::lemma_ "Qhat.unitsrat_meet_unitszHat" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_meet_unitszHat") (uses := "QHat, ZHat.commRing")
 The intersection of $`\Q^\times` and $`\Zhat^\times` in $`\Qhat^\times` is
 $`\Z^\times`.
 :::
@@ -1082,8 +1064,7 @@ $`\Z^\times`.
 \end{lemma}
 ```
 
-:::proof "Qhat.unitsrat_meet_unitszHat"
-Uses {uses "QHat.lowestTerms"}[] and {uses "QHat.rat_meet_zHat"}[].
+:::proof "Qhat.unitsrat_meet_unitszHat" (uses := "QHat.lowestTerms, QHat.rat_meet_zHat")
 Clearly the intersection is contained within $`\Q\cap\Zhat=\Z`. If $`n\in\Z`
 is in $`\Zhat^\times` then $`n\not=0` and its inverse $`1/n=\pm1/|n|` is in
 lowest terms but also in $`\Zhat`, and hence $`|n|=1` by uniqueness of lowest
@@ -1106,8 +1087,7 @@ Note that by the previous lemma, this representation will be unique up to sign.
 Note that by the previous lemma, this representation will be unique up to sign.
 ```
 
-:::lemma_ "QHat.unitsrat_join_unitszHat" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_join_unitszHat")
-Uses {uses "QHat"}[] and {uses "ZHat.commRing"}[].
+:::lemma_ "QHat.unitsrat_join_unitszHat" (parent := "automorphic_example_program") (lean := "QHat.unitsrat_join_unitszHat") (uses := "QHat, ZHat.commRing")
 The product of $`\Q^\times` and $`\Zhat^\times` in $`\Qhat^\times` is all of
 $`\Qhat^\times`. More precisely, every element of $`\Qhat^\times` can be
 written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
@@ -1125,9 +1105,7 @@ written as $`qz` with $`q\in\Q^\times` and $`z\in\Zhat^\times`.
 \end{lemma}
 ```
 
-:::proof "QHat.unitsrat_join_unitszHat"
-Uses {uses "ZHat.multiples"}[], {uses "ZHat.eq_zero_of_mul_eq_zero"}[], and
-{uses "QHat.canonicalForm"}[].
+:::proof "QHat.unitsrat_join_unitszHat" (uses := "ZHat.multiples, ZHat.eq_zero_of_mul_eq_zero, QHat.canonicalForm")
 We already know that a general element of $`\Qhat^\times` can be written as
 $`x/N` with $`N` positive, so this reduces us to proving that a general element
 $`x\in\Zhat` which is invertible in $`\Qhat^\times` can be written as
@@ -1370,8 +1348,7 @@ is the usual Hamilton quaternions.
 \end{remark}
 ```
 
-:::lemma_ "Hurwitz.ring" (parent := "automorphic_example_program") (lean := "Hurwitz.ring")
-Uses {uses "Hurwitz"}[].
+:::lemma_ "Hurwitz.ring" (parent := "automorphic_example_program") (lean := "Hurwitz.ring") (uses := "Hurwitz")
 The Hurwitz quaternions form a ring.
 :::
 
@@ -1406,8 +1383,7 @@ $\calO\otimes_{\Z}\R=\R\oplus \R i\oplus \R j\oplus\R \omega$
 is the usual Hamilton quaternions.
 ```
 
-:::definition "Hurwitz.starRing" (parent := "automorphic_example_program") (lean := "Hurwitz.starRing")
-Uses {uses "Hurwitz.ring"}[].
+:::definition "Hurwitz.starRing" (parent := "automorphic_example_program") (lean := "Hurwitz.starRing") (uses := "Hurwitz.ring")
 There's a conjugation map (which we'll call "star") from the Hurwitz
 quaternions to themselves, sending integers to themselves and purely imaginary
 elements like $`2\omega+1` to minus themselves. It satisfies $`(x^*)^*=x`,
@@ -1428,8 +1404,7 @@ are a "star ring" in the sense of mathlib.
 \end{definition}
 ```
 
-:::definition "Hurwitz.norm" (parent := "automorphic_example_program") (lean := "Hurwitz.norm")
-Uses {uses "Hurwitz"}[].
+:::definition "Hurwitz.norm" (parent := "automorphic_example_program") (lean := "Hurwitz.norm") (uses := "Hurwitz")
 The Hurwitz quaternions come equipped with an integer-valued norm, which is
 $`a^2+b^2+c^2+d^2` on $`a+bi+cj+dk` but needs to be modified a bit to deal with
 $`\omega`.
@@ -1459,8 +1434,7 @@ We have $`N(x)=x\overline{x}`.
 \end{lemma}
 ```
 
-:::proof "Hurwitz.norm_eq_mul_conj"
-Uses {uses "Hurwitz.norm"}[] and {uses "Hurwitz.starRing"}[].
+:::proof "Hurwitz.norm_eq_mul_conj" (uses := "Hurwitz.norm, Hurwitz.starRing")
 Easy calculation.
 :::
 
@@ -1472,8 +1446,7 @@ Easy calculation.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.norm_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_zero")
-Uses {uses "Hurwitz.norm"}[].
+:::lemma_ "Hurwitz.norm_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_zero") (uses := "Hurwitz.norm")
 The norm of $`0` is $`0`.
 :::
 
@@ -1498,8 +1471,7 @@ A calculation.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.norm_one" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_one")
-Uses {uses "Hurwitz.norm"}[].
+:::lemma_ "Hurwitz.norm_one" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_one") (uses := "Hurwitz.norm")
 The norm of $`1` is $`1`.
 :::
 
@@ -1524,8 +1496,7 @@ A calculation.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.norm_mul" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_mul")
-Uses {uses "Hurwitz.norm"}[].
+:::lemma_ "Hurwitz.norm_mul" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_mul") (uses := "Hurwitz.norm")
 The norm of a product is the product of the norms.
 :::
 
@@ -1550,8 +1521,7 @@ A calculation.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.norm_nonneg" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg")
-Uses {uses "Hurwitz.norm"}[].
+:::lemma_ "Hurwitz.norm_nonneg" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_nonneg") (uses := "Hurwitz.norm")
 The norm of an element is nonnegative.
 :::
 
@@ -1575,8 +1545,7 @@ It's a sum of rational squares.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.norm_eq_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_zero")
-Uses {uses "Hurwitz.norm"}[].
+:::lemma_ "Hurwitz.norm_eq_zero" (parent := "automorphic_example_program") (lean := "Hurwitz.norm_eq_zero") (uses := "Hurwitz.norm")
 The norm of an element is zero if and only if the element is zero.
 :::
 
@@ -1601,8 +1570,7 @@ It's a sum of rational squares.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.exists_near" (parent := "automorphic_example_program") (lean := "Hurwitz.exists_near")
-Uses {uses "Hurwitz.norm"}[].
+:::lemma_ "Hurwitz.exists_near" (parent := "automorphic_example_program") (lean := "Hurwitz.exists_near") (uses := "Hurwitz.norm")
 Given a "usual" quaternion $`a=x+yi+zj+wk` with $`x,y,z,w\in\R`, there exists a
 Hurwitz quaternion $`q` such that $`N(a-q)<1`.
 :::
@@ -1639,8 +1607,7 @@ $`a\in\mathcal{O}` because $`a-\omega` has integer coordinates.
 \end{proof}
 ```
 
-:::lemma_ "Hurwitz.quot_rem" (parent := "automorphic_example_program") (lean := "Hurwitz.quot_rem")
-Uses {uses "Hurwitz.norm"}[] and {uses "Hurwitz.exists_near"}[].
+:::lemma_ "Hurwitz.quot_rem" (parent := "automorphic_example_program") (lean := "Hurwitz.quot_rem") (uses := "Hurwitz.norm, Hurwitz.exists_near")
 Given two Hurwitz quaternions $`a` and $`b` with $`b` nonzero, there exists
 $`q` and $`r` such that $`a=qb+r` and $`N(r)<N(b)`.
 :::
@@ -1670,8 +1637,7 @@ now everything follows after multiplying up.
 \end{proof}
 ```
 
-:::corollary "Hurwitz.left_ideal_princ" (parent := "automorphic_example_program") (lean := "Hurwitz.left_ideal_princ")
-Uses {uses "Hurwitz.norm"}[].
+:::corollary "Hurwitz.left_ideal_princ" (parent := "automorphic_example_program") (lean := "Hurwitz.left_ideal_princ") (uses := "Hurwitz.norm")
 All left ideals of $`\calO` are principal.
 :::
 
@@ -1685,8 +1651,7 @@ All left ideals of $`\calO` are principal.
 \end{corollary}
 ```
 
-:::proof "Hurwitz.left_ideal_princ"
-Uses {uses "Hurwitz.quot_rem"}[].
+:::proof "Hurwitz.left_ideal_princ" (uses := "Hurwitz.quot_rem")
 If the ideal is `0`, use `0`. Otherwise, choose a nonzero element of smallest
 norm.
 :::
@@ -1781,8 +1746,7 @@ We define $\calOhat$ to be $\calO\otimes\Zhat$, so it's elements $a+bi+cj+d\omeg
 with $a,b,c,d\in\Zhat$. The basic thing we need is this:
 ```
 
-:::theorem "Hurwitz.surjective_pnat_quotient" (parent := "automorphic_example_program")
-Uses {uses "Hurwitz"}[].
+:::theorem "Hurwitz.surjective_pnat_quotient" (parent := "automorphic_example_program") (uses := "Hurwitz")
 If $`N` is a positive natural then the obvious map
 $`\calO\to\calOhat/N\calOhat` is surjective.
 :::
@@ -1820,8 +1784,7 @@ We define $D:=\Q\otimes\calO=\Q\oplus\Q i\oplus\Q j\oplus\Q\omega=\Q\oplus\Q i\o
 Finally, we define $\widehat{D}:=D\otimes\Zhat$. Just as with $\Qhat$ we have
 ```
 
-:::lemma_ "HurwitzRatHat.canonicalForm" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.canonicalForm")
-Uses {uses "QHat"}[], {uses "ZHat"}[], and {uses "Hurwitz"}[].
+:::lemma_ "HurwitzRatHat.canonicalForm" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.canonicalForm") (uses := "QHat, ZHat, Hurwitz")
 Every element of $`\widehat{D}` can be written as $`z/N` with
 $`z\in\calOhat` and $`N\in\N^+`.
 :::
@@ -1876,8 +1839,7 @@ kind of non-commutative analogue of a class group. However for our
 particular choice of $D$ and $\calO$ the result is true.
 ```
 
-:::theorem "HurwitzRatHat.completed_units" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.completed_units")
-Uses {uses "HurwitzRatHat.canonicalForm"}[].
+:::theorem "HurwitzRatHat.completed_units" (parent := "automorphic_example_program") (lean := "HurwitzRatHat.completed_units") (uses := "HurwitzRatHat.canonicalForm")
 The group of units of $`\widehat{D}` is $`D^\times\calOhat^\times`. More
 precisely, every element of $`\widehat{D}^\times` can be written as a product
 $`\delta u` with $`\delta\in D^\times` and $`u\in\calOhat^\times`.

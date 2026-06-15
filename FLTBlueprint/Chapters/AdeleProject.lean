@@ -200,8 +200,7 @@ Once we have this, the above result from mathlib gives us
 Once we have this, the above result from mathlib gives us
 ```
 
-:::theorem "NumberField.AdeleRing.locallyCompactSpace" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace")
-Uses {uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[].
+:::theorem "NumberField.AdeleRing.locallyCompactSpace" (parent := "adele_project") (lean := "NumberField.AdeleRing.locallyCompactSpace") (uses := "NumberField.instCompactSpaceAdicCompletionIntegers")
 The adeles of a number field are locally compact.
 :::
 ```tex
@@ -328,8 +327,7 @@ Standard (and formalized).
 \end{proof}
 ```
 
-:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[].
+:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
 There's a natural ring map $`K_v\to L_w` extending the map $`K\to L`. It is
 defined by completing the inclusion $`K\to L` at the finite places $`v` and
 $`w` (which can be done because the previous lemma shows that the map is
@@ -349,8 +347,7 @@ uniformly continuous for the $`v`-adic and $`w`-adic topologies).
 \end{definition}
 ```
 
-:::lemma_ "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[] and {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[].
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.valuation_comap, IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
 If $`i_v:K_v\to L_w` denotes the map of the previous definition
 then for $`x\in K_v` we have
 $`e\times w(i(k))=v(k)`, where $`e` is the ramification index of $`w/v`.
@@ -379,8 +376,7 @@ Follows by continuity from lemma {bpref "IsDedekindDomain.HeightOneSpectrum.valu
 \end{proof}
 ```
 
-:::lemma_ "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"}[].
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers") (uses := "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap")
 The map $`i_v:K_v\to L_w` sends the integer ring $`A_v` into $`B_w`.
 :::
 ```tex
@@ -405,8 +401,7 @@ valuations) so the result follows from {bpref "IsDedekindDomain.HeightOneSpectru
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[].
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
 Giving $`L_w` the $`K_v`-algebra structure coming from the natural map
 $`K_v\to L_w`, the $`w`-adic topology on $`L_w` is the $`K_v`-module
 topology.
@@ -506,8 +501,7 @@ We write $`w|v` to denote the fact that $`w` is a prime of $`B` above $`v` of $`
 We write $w|v$ to denote the fact that $w$ is a prime of $B$ above $v$ of $A$.
 ```
 
-:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[].
+:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
 The product of the maps $`K_v\to L_w` for $`w|v` is a natural ring map
 $`K_v\to\prod_{w|v}L_w` lying over $`K\to L`.
 :::
@@ -534,8 +528,7 @@ in this section. The proof is probably the hardest proof
 in this section to formalize.
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'"}[] and {uses "IsDedekindDomain.HeightOneSpectrum.Extension.finite"}[].
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom', IsDedekindDomain.HeightOneSpectrum.Extension.finite")
 The induced $`L`-algebra homomorphism
 $`L\otimes_KK_v\to\prod_{w|v}L_w` is an isomorphism of rings.
 :::
@@ -602,8 +595,7 @@ to have $`ef<n` and BGR goes into details.
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"}[].
+:::theorem "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
 For $`v` fixed, the product topology on $`\prod_{w|v}L_w` is the
 $`K_v`-module topology.
 :::
@@ -636,8 +628,7 @@ each of which has the module topology.
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology"}[].
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology")
 If we give $`L\otimes_KK_v` the $`K_v`-module topology, then the `L`-algebra
 isomorphism $`L\otimes_K K_v\cong\prod_{w|v}L_w` is also a homeomorphism.
 :::
@@ -665,8 +656,7 @@ the module topologies.
 ```
 
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.integerBaseChangeLinearEquiv_bijOn")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"}[].
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.integerBaseChangeLinearEquiv_bijOn") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
 The isomorphism $`L\otimes_KK_v\to\prod_{w|v}L_w` induces an isomorphism
 $`B\otimes_AA_v\to \prod_{w|v}B_w`
 for all $`v` in the height one spectrum of $`A`.
@@ -754,8 +744,7 @@ theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.ma
 that this sends $A_v$ to $B_w$. We conclude
 ```
 
-:::definition "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom")
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[] and {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"}[].
+:::definition "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom, IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers")
 There's a natural ring homomorphism
 $`\A_{A,K}^\infty\to\A_{B,L}^\infty` lying over $`K\to L`.
 :::
@@ -821,8 +810,7 @@ conjugates of $b$ in some normal closure of $L$, and hence it is integral, and t
 \end{proof}
 ```
 
-:::corollary "IsDedekindDomain.AKLB.surjective_tensorProduct_map" (parent := "adele_project")
-Uses {uses "IsDedekindDomain.dvd_norm"}[].
+:::corollary "IsDedekindDomain.AKLB.surjective_tensorProduct_map" (parent := "adele_project") (uses := "IsDedekindDomain.dvd_norm")
 The $`A`-bilinear map $`B\times K\to L` sending $`(b,k)` to $`bk` is
 surjective.
 :::
@@ -847,8 +835,7 @@ $`\lambda=nb\times a^{-1}`.
 \end{proof}
 ```
 
-:::corollary "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv" (parent := "adele_project")
-Uses {uses "IsDedekindDomain.dvd_norm"}[].
+:::corollary "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv" (parent := "adele_project") (uses := "IsDedekindDomain.dvd_norm")
 The natural map $`B\otimes_AK\to L` is a $`B`-algebra isomorphism.
 :::
 
@@ -901,10 +888,9 @@ Our next goal in this section is the following two results. First the algebraic 
 ```
 
 
-:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral, RestrictedProduct.relabelIso, IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv, IsDedekindDomain.AKLB.tensorProduct_module_algEquiv")
 The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty` is an
 isomorphism.
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[], {uses "RestrictedProduct.relabelIso"}[], {uses "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"}[], and {uses "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"}[].
 :::
 ```tex
 \begin{theorem}
@@ -1077,8 +1063,7 @@ easily from the definition of the topology.
 ```
 
 
-:::corollary "IsDedekindDomain.pi_tensorProduct" (parent := "adele_project")
-Uses {uses "IsDedekindDomain.AKLB.finitePresentation"}[] and {uses "pi_tensorProduct_of_finitePresentation"}[].
+:::corollary "IsDedekindDomain.pi_tensorProduct" (parent := "adele_project") (uses := "IsDedekindDomain.AKLB.finitePresentation, pi_tensorProduct_of_finitePresentation")
 If `S` is a finite set of nonzero primes of `A` then the natural map
 $`B\otimes((\prod_{v\in S}K_v)\times(\prod_{v\notin S}A_v))\to
 (\prod_{v\in S}(B\otimes_AK_v))\times(\prod_{v\notin S}(B\otimes_AA_v))`
@@ -1114,8 +1099,7 @@ where $v$ runs through the nonzero primes of $A$. Let $R$ denote the restricted
 product of the $B\otimes_A K_v$ with respect to the $B\otimes_A A_v$.
 ```
 
-:::corollary "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1" (parent := "adele_project")
-Uses {uses "IsDedekindDomain.pi_tensorProduct"}[].
+:::corollary "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1" (parent := "adele_project") (uses := "IsDedekindDomain.pi_tensorProduct")
 The natural map $`B\otimes_A\A_K^\infty\to R` is a `B`-algebra isomorphism.
 :::
 ```tex
@@ -1136,8 +1120,7 @@ commute with filtered colimits.
 \end{proof}
 ```
 
-:::corollary "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2" (parent := "adele_project")
-Uses {uses "RestrictedProduct.relabelIso"}[].
+:::corollary "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2" (parent := "adele_project") (uses := "RestrictedProduct.relabelIso")
 The ring `R` introduced above, the restricted product of the
 $`B\otimes_A K_v` with respect to the $`B\otimes_A A_v`, is isomorphic to
 $`\mathbb{A}_L`.
@@ -1171,8 +1154,7 @@ From this, we can deduce the theorem we claimed earlier:
 From this, we can deduce the theorem we claimed earlier:
 ```
 
-:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv" (parent := "adele_project")
-Uses {uses "RestrictedProduct.relabelIso"}[], {uses "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1"}[], and {uses "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2"}[].
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv" (parent := "adele_project") (uses := "RestrictedProduct.relabelIso, IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1, IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2")
 The natural map $`B \otimes_A \A_K^\infty \to \A_L^\infty` is a `B`-algebra
 isomorphism.
 :::
@@ -1228,10 +1210,9 @@ Now $L\otimes_K\A_{A,K}^\infty$ is an $\A_{A,K}^\infty$-module and hence can be 
 the $\A_{A,K}^\infty$-module topology. We also claim
 ```
 
-:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
 The induced $`L`-algebra morphism
 $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty` is a topological isomorphism.
-Uses {uses "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[].
 :::
 ```tex
 \begin{theorem}
@@ -1432,8 +1413,7 @@ corresponds to the global embedding of `K` into $`(L_w)_w`.
 ```
 
 
-:::definition "NumberField.InfinitePlace.Completion.baseChange" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange")
-Uses {uses "NumberField.InfinitePlace.Completion.piExtension"}[].
+:::definition "NumberField.InfinitePlace.Completion.baseChange" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange") (uses := "NumberField.InfinitePlace.Completion.piExtension")
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homomorphism $`L \otimes_K K_v \to \prod_{w \mid v} L_w`, whose restriction to
 $`1 \otimes_K K_v` corresponds to the map in
@@ -1459,8 +1439,7 @@ $L$-algebra homomorphism defined on $L\otimes_K K_v$.
 ```
 
 
-:::theorem "NumberField.InfinitePlace.Completion.baseChange_surjective" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange_surjective")
-Uses {uses "NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi"}[].
+:::theorem "NumberField.InfinitePlace.Completion.baseChange_surjective" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange_surjective") (uses := "NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi")
 For a fixed infinite place `v` of `K`, the local infinite-place base-change map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`
 is surjective.
@@ -1505,8 +1484,7 @@ $`L \otimes_K K_v`, and base change is surjective.
 ```
 
 
-:::theorem "NumberField.InfinitePlace.Completion.baseChange_injective" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange_injective")
-Uses {uses "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct"}[].
+:::theorem "NumberField.InfinitePlace.Completion.baseChange_injective" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChange_injective") (uses := "NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct")
 For a fixed infinite place `v` of `K`, the local infinite-place base-change map
 $`L \otimes_K K_v \to \prod_{w \mid v} L_w`
 is injective.
@@ -1569,12 +1547,11 @@ $`K_v`-module topology.
 ```
 
 
-:::theorem "NumberField.InfinitePlace.Completion.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
+:::theorem "NumberField.InfinitePlace.Completion.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.baseChangeEquiv") (uses := "NumberField.InfinitePlace.Completion.baseChange, NumberField.InfinitePlace.Completion.baseChange_surjective, NumberField.InfinitePlace.Completion.baseChange_injective, NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT")
 Let `v` be an infinite place of `K`. There is a natural `L`-algebra
 homeomorphism $`L \otimes_K K_v \cong \prod_{w \mid v} L_w`, whose restriction
 to $`1 \otimes_K K_v` corresponds to the map in
 {bpref "NumberField.InfinitePlace.Completion.piExtension"}[].
-Uses {uses "NumberField.InfinitePlace.Completion.baseChange"}[], {uses "NumberField.InfinitePlace.Completion.baseChange_surjective"}[], {uses "NumberField.InfinitePlace.Completion.baseChange_injective"}[], and {uses "NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT"}[].
 :::
 ```tex
 \begin{theorem}
@@ -1617,8 +1594,7 @@ a $`K_v`-algebra isomorphism, it is also a homeomorphism.
 ```
 
 
-:::theorem "NumberField.InfinitePlace.Completion.piEquiv" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piEquiv")
-Uses {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
+:::theorem "NumberField.InfinitePlace.Completion.piEquiv" (parent := "adele_project") (lean := "NumberField.InfinitePlace.Completion.piEquiv") (uses := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
 Let `v` be an infinite place of `K`. There is a natural $`K_v`-linear
 homeomorphism $`K_v^{[L:K]} \cong \prod_{w \mid v} L_w`.
 :::
@@ -1650,8 +1626,7 @@ then this is also a homeomorphism.
 ```
 
 
-:::theorem "NumberField.InfiniteAdeleRing.piEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.piEquiv")
-Uses {uses "NumberField.InfinitePlace.Completion.piEquiv"}[].
+:::theorem "NumberField.InfiniteAdeleRing.piEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.piEquiv") (uses := "NumberField.InfinitePlace.Completion.piEquiv")
 There is a natural $`K_\infty`-linear homeomorphism
 $`K_\infty^{[L:K]} \cong L_\infty`.
 :::
@@ -1691,8 +1666,7 @@ $`(x \cdot y)_w = x_{v_w} \cdot y_w`, which is true by definition.
 ```
 
 
-:::theorem "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT")
-Uses {uses "NumberField.InfiniteAdeleRing.piEquiv"}[].
+:::theorem "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT") (uses := "NumberField.InfiniteAdeleRing.piEquiv")
 $`L_\infty` has the $`K_\infty`-module topology.
 :::
 ```tex
@@ -1718,8 +1692,7 @@ $`K_\infty`-vector space, it has the $`K_\infty`-module topology.
 ```
 
 
-:::theorem "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv")
-Uses {uses "NumberField.InfinitePlace.Completion.baseChangeEquiv"}[].
+:::theorem "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv") (uses := "NumberField.InfinitePlace.Completion.baseChangeEquiv")
 There is a natural `L`-algebra isomorphism
 $`L \otimes_K K_\infty \cong L_\infty`.
 :::
@@ -1761,8 +1734,7 @@ $`L \otimes_K K_v \cong \prod_{w \mid v} L_w` from
 ```
 
 
-:::theorem "NumberField.InfiniteAdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeEquiv, NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT")
-Uses {uses "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv"}[].
+:::theorem "NumberField.InfiniteAdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.InfiniteAdeleRing.baseChangeEquiv, NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT") (uses := "NumberField.InfiniteAdeleRing.baseChangeAlgEquiv")
 If `K -> L` is a ring homomorphism between two number fields, then there is a
 natural isomorphism, both topological and algebraic,
 $`L \otimes_K K_\infty \cong L_\infty`.
@@ -1811,8 +1783,7 @@ of number fields then there's a natural (topological and algebraic) isomorphism
 $L\otimes_K\A_K\to \A_L$.
 ```
 
-:::theorem "NumberField.AdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.AdeleRing.baseChangeEquiv")
-Uses {uses "NumberField.InfiniteAdeleRing.baseChangeEquiv"}[] and {uses "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"}[].
+:::theorem "NumberField.AdeleRing.baseChangeEquiv" (parent := "adele_project") (lean := "NumberField.AdeleRing.baseChangeEquiv") (uses := "NumberField.InfiniteAdeleRing.baseChangeEquiv, IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv")
 If $`K\to L` is a ring homomorphism between two number fields then there is a natural isomorphism
 (both topological and algebraic) $`L\otimes_K\A_K\cong\A_L`.
 :::
@@ -1839,8 +1810,7 @@ Follows from the previous results.
 ```
 
 
-:::theorem "NumberField.AdeleRing.baseChange_moduleTopology" (parent := "adele_project") (lean := "NumberField.AdeleRing.instIsModuleTopology")
-Uses {uses "NumberField.AdeleRing.baseChangeEquiv"}[].
+:::theorem "NumberField.AdeleRing.baseChange_moduleTopology" (parent := "adele_project") (lean := "NumberField.AdeleRing.instIsModuleTopology") (uses := "NumberField.AdeleRing.baseChangeEquiv")
 If $`K\to L` is a ring homomorphism between two number fields, then the topology
 on $`\A_L` is the $`\A_K`-module topology, where the module structure comes from
 the natural map $`\A_K\to\A_L`.
@@ -1914,8 +1884,7 @@ that $`q\in(-1,1)` implies $`q=0`.
 ```
 
 
-:::theorem "NumberField.AdeleRing.zero_discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.zero_discrete")
-Uses {uses "Rat.AdeleRing.zero_discrete"}[] and {uses "NumberField.AdeleRing.baseChangeEquiv"}[].
+:::theorem "NumberField.AdeleRing.zero_discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.zero_discrete") (uses := "Rat.AdeleRing.zero_discrete, NumberField.AdeleRing.baseChangeEquiv")
 There's an open subset of $`\A_{K}` whose intersection with $`K` is $`\{0\}`.
 :::
 ```tex
@@ -1943,8 +1912,7 @@ and the result follows from the previous theorem.
 ```
 
 
-:::theorem "NumberField.AdeleRing.discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.discrete")
-Uses {uses "NumberField.AdeleRing.zero_discrete"}[].
+:::theorem "NumberField.AdeleRing.discrete" (parent := "adele_project") (lean := "NumberField.AdeleRing.discrete") (uses := "NumberField.AdeleRing.zero_discrete")
 The additive subgroup `K` of $`\mathbf{A}_K` is discrete.
 :::
 ```tex

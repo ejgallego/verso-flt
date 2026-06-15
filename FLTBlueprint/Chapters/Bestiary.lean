@@ -46,8 +46,7 @@ It is impossible to say which of the two canonical isomorphisms is ``the most ca
 As a result, the absolute Galois group of $K$ surjects onto $\widehat{\Z}$; its kernel is said to be the \emph{inertia subgroup} of this Galois group. Now pull back this surjection along the continuous map from $\Z$ (with its discrete topology) to $\widehat{\Z}$, in the category of topological groups. We end up with a group containing the inertia group as an open normal subgroup, and with quotient isomorphic to the integers.
 ```
 
-:::definition "local_Weil_group" (parent := "bestiary_appendix")
-Uses {uses "maximal_unramified_extension_of_p-adic_field"}[].
+:::definition "local_Weil_group" (parent := "bestiary_appendix") (uses := "maximal_unramified_extension_of_p-adic_field")
 The topological group described above is called the Weil group of `K`.
 :::
 
@@ -60,8 +59,7 @@ The topological group described above is called the Weil group of `K`.
 The following theorem is nontrivial.
 ```
 
-:::theorem "local_class_field_theory" (parent := "bestiary_appendix")
-Uses {uses "local_Weil_group"}[].
+:::theorem "local_class_field_theory" (parent := "bestiary_appendix") (uses := "local_Weil_group")
 If `K` is a finite extension of $`\Q_p`, then there are two canonical
 isomorphisms of topological abelian groups between $`K^\times` and the
 abelianization of the Weil group of `K`.
@@ -153,8 +151,7 @@ $`h^0(M)-h^1(M)+h^2(M)=0`.
 We now move onto the global case. If $N$ is a number field, that is, a finite extension of $\Q$, then let $\A_N^f:= N\otimes_{\Z}\widehat{\Z}$ denote the finite adeles of $N$ and let $N_\infty := N\otimes_{\Q}\R$ denote the product of the completions of $N$ at the infinite places, so $\A_N:=\A_N^f\times N_\infty$ is the ring of adeles of $N$.
 ```
 
-:::theorem "global_class_field_theory" (parent := "bestiary_appendix")
-Uses {uses "local_class_field_theory"}[].
+:::theorem "global_class_field_theory" (parent := "bestiary_appendix") (uses := "local_class_field_theory")
 If `N` is a finite extension of $`\Q` then there are two "canonical"
 isomorphisms of topological groups between the profinite abelian groups
 $`\pi_0(\A_N^\times/N^\times)` and $`\Gamma_N^{ab}`; one sends local
@@ -181,8 +178,7 @@ article in the cited reference.
 We need the following consequence:
 ```
 
-:::theorem "Skinner_Wiles_CFT_trick" (parent := "bestiary_appendix")
-Uses {uses "global_class_field_theory"}[].
+:::theorem "Skinner_Wiles_CFT_trick" (parent := "bestiary_appendix") (uses := "global_class_field_theory")
 Let `S` be a finite set of places of a number field `K`. For each $`v \in S`
 let $`L_v/K_v` be a finite Galois extension. Then there is a finite solvable
 Galois extension $`L/K` such that if `w` is a place of `L` dividing $`v \in S`,
@@ -253,11 +249,10 @@ topology.
 \end{definition}
 ```
 
-:::theorem "topology_on_affine_variety_computation" (parent := "bestiary_appendix")
+:::theorem "topology_on_affine_variety_computation" (parent := "bestiary_appendix") (uses := "topology_on_affine_variety_points")
 If `X` is as above and $`X \to \mathbb{A}^n_K` is a closed immersion, then the
 induced map from $`X(R)` with its topology as above to $`R^n` is an embedding of
 topological spaces (that is, a homeomorphism onto its image).
-This uses {uses "topology_on_affine_variety_points"}[].
 :::
 
 ```tex "topology_on_affine_variety_computation" (slot := statement)
@@ -311,11 +306,10 @@ Probably this is fine for a broader class of fields $K$.
 \end{remark}
 ```
 
-:::theorem "manifold_on_algebraic_variety_computation" (parent := "bestiary_appendix")
+:::theorem "manifold_on_algebraic_variety_computation" (parent := "bestiary_appendix") (uses := "manifold_on_algebraic_variety_points")
 If `X` is as in the previous definition and $`X \to \mathbb{A}^n_K` is a closed
 immersion, then the induced map from $`X(K)` with its manifold structure to
 $`K^n` is an embedding of manifolds.
-This uses {uses "manifold_on_algebraic_variety_points"}[].
 :::
 
 ```tex "manifold_on_algebraic_variety_computation" (slot := statement)
@@ -336,10 +330,9 @@ I'm assuming this is standard, if true.
 \end{proof}
 ```
 
-:::corollary "lie_group_from_algebraic_group" (parent := "bestiary_appendix")
+:::corollary "lie_group_from_algebraic_group" (parent := "bestiary_appendix") (uses := "manifold_on_algebraic_variety_computation")
 If `G` is an affine algebraic group of finite type over $`K=\R` or $`K=\bbC`
 then $`G(K)` is naturally a real or complex Lie group.
-This uses {uses "manifold_on_algebraic_variety_computation"}[].
 :::
 
 ```tex "lie_group_from_algebraic_group" (slot := statement)
@@ -441,8 +434,7 @@ $`C>0` and $`n\geq1` such that $`|f(x)|\leq C||x||_\rho^n`.
 We can now give the definition of an automorphic form. For FLT we only need the definition for $G$ being either an abelian algebraic group, or an inner form of $GL(2)$, but we have chosen to work in full generality here.
 ```
 
-:::theorem "slowly_increasing_well_defined" (parent := "bestiary_appendix")
-Uses {uses "slowly_increasing"}[].
+:::theorem "slowly_increasing_well_defined" (parent := "bestiary_appendix") (uses := "slowly_increasing")
 This is independent of the choice of $`\rho` as above.
 :::
 
@@ -451,8 +443,7 @@ This is independent of the choice of $`\rho` as above.
 \end{theorem}
 ```
 
-:::definition "automorphic_form" (parent := "bestiary_appendix")
-Uses {uses "slowly_increasing_well_defined"}[], {uses "connected_reductive_group"}[], {uses "lie_group_from_algebraic_group"}[], and {uses "topology_on_affine_variety_computation"}[].
+:::definition "automorphic_form" (parent := "bestiary_appendix") (uses := "slowly_increasing_well_defined, connected_reductive_group, lie_group_from_algebraic_group, topology_on_affine_variety_computation")
 An automorphic form is a function $`\phi:G(\A_N)\to\bbC` satisfying the
 following conditions.
 
@@ -490,8 +481,7 @@ following conditions.
 Automorphic forms form a typically infinite-dimensional vector space.
 ```
 
-:::definition "cuspidal_automorphic_form" (parent := "bestiary_appendix")
-Uses {uses "automorphic_form"}[].
+:::definition "cuspidal_automorphic_form" (parent := "bestiary_appendix") (uses := "automorphic_form")
 An automorphic form is cuspidal, or a cusp form, if it furthermore satisfies
 $`\int_{U(N)\backslash U(\A_N)}\phi(ux)\,du=0`, where `P` runs through all the
 proper parabolic subgroups of `G` defined over `N` and `U` is the unipotent
@@ -508,8 +498,7 @@ Haar measure.
 The cuspidal automorphic forms form a complex subspace of the space of automorphic forms.
 ```
 
-:::definition "automorphic_form_actions" (parent := "bestiary_appendix")
-Uses {uses "automorphic_form"}[].
+:::definition "automorphic_form_actions" (parent := "bestiary_appendix") (uses := "automorphic_form")
 The group $`G(\A_N)` acts on itself on the right, and this induces a left
 action of its subgroup $`G(\A_N^f)\times U_\infty` on the spaces of automorphic
 forms and cusp forms. The Lie algebra $`\mathfrak{g}` of $`G(N_\infty)` also
@@ -532,8 +521,7 @@ For non-cuspidal representations, they do not decompose as a direct sum; there i
 For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case.
 ```
 
-:::definition "automorphic_representation" (parent := "bestiary_appendix")
-Uses {uses "automorphic_form_actions"}[].
+:::definition "automorphic_representation" (parent := "bestiary_appendix") (uses := "automorphic_form_actions")
 An automorphic representation is an irreducible
 $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
 subquotient of the space of automorphic forms.
@@ -635,8 +623,7 @@ Note that we do not even have the definition of a curve over a field in Lean.
 We need the classification of finite subgroups of $\PGL_2(\overline{\F}_p)$. The answer is that they are all cyclic, dihedral, $A_4$, $S_4$, $A_5$, or isomorphic to $\PSL_2(k)$ or $\PGL_2(k)$ for some finite field of characteristic~`p`. This should at least be easy to state!
 ```
 
-:::definition "cuspidal_automorphic_representation" (parent := "bestiary_appendix")
-Uses {uses "cuspidal_automorphic_form_decomposition"}[].
+:::definition "cuspidal_automorphic_representation" (parent := "bestiary_appendix") (uses := "cuspidal_automorphic_form_decomposition")
 A cuspidal automorphic representation is an irreducible
  $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module isomorphic to an irreducible
 summand of the space of cusp forms.
@@ -647,8 +634,7 @@ summand of the space of cusp forms.
 \end{definition}
 ```
 
-:::theorem "cuspidal_automorphic_form_decomposition" (parent := "bestiary_appendix")
-Uses {uses "cuspidal_automorphic_form"}[] and {uses "automorphic_form_actions"}[].
+:::theorem "cuspidal_automorphic_form_decomposition" (parent := "bestiary_appendix") (uses := "cuspidal_automorphic_form, automorphic_form_actions")
 The cusp forms decompose as a typically infinite direct sum of irreducible
 $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
 :::
@@ -658,8 +644,7 @@ $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-modules.
 \end{theorem}
 ```
 
-:::theorem "automorphic_representation_local_decomposition" (parent := "bestiary_appendix")
-Uses {uses "automorphic_representation"}[].
+:::theorem "automorphic_representation_local_decomposition" (parent := "bestiary_appendix") (uses := "automorphic_representation")
 An irreducible admissible $`(G(\A_N^f)\times U_\infty,\mathfrak{g})`-module is a
 restricted tensor product of irreducible representations $`\pi_v` of $`G(N_v)`
 as `v` runs through the finite places of `N`, tensored with a tensor product of
@@ -693,8 +678,7 @@ a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each f
 \end{definition}
 ```
 
-:::theorem "Galois_representation_from_automorphic_representation_on_GL_2_form" (parent := "bestiary_appendix")
-Uses {uses "automorphic_representation"}[], {uses "Shimura_varieties"}[], and {uses "compatible_family"}[].
+:::theorem "Galois_representation_from_automorphic_representation_on_GL_2_form" (parent := "bestiary_appendix") (uses := "automorphic_representation, Shimura_varieties, compatible_family")
 Given an automorphic representation $`\pi` for an inner form of $`\GL_2` over a
 totally real field and with reflex field `E`, such that $`\pi` is weight `2`
 discrete series at every infinite place, there exists a compatible family of
