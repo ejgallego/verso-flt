@@ -1,6 +1,6 @@
 import FLTBlueprint.Citations
-import FLT.Basic.FreyPackage
-import FLT.Basic.Reductions
+import FLT.FreyCurve.FreyPackage
+import FLT.FreyCurve.Contradiction
 import Mathlib.NumberTheory.FLT.Four
 import Mathlib.NumberTheory.FLT.Three
 import Verso

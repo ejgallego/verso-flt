@@ -105,22 +105,22 @@ from $A^V$ to $A^U$. The finiteness hypothesis is that the
 double coset $UgV$ can be written as a \emph{finite} union of single
 cosets $g_iV$.
 ```
-:::definition "AbstractHeckeOperator.HeckeOperator_toFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator_toFun")
+:::definition "AbstractHeckeOperator.HeckeOperatorToFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperatorToFun")
 Assuming $`UgV` is a finite union of cosets $`g_iV`,
 we define $`[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
 :::
-```tex "AbstractHeckeOperator.HeckeOperator_toFun" (slot := statement)
+```tex "AbstractHeckeOperator.HeckeOperatorToFun" (slot := statement)
 \begin{definition}
-  \lean{AbstractHeckeOperator.HeckeOperator_toFun}
-  \label{AbstractHeckeOperator.HeckeOperator_toFun}
+  \lean{AbstractHeckeOperator.HeckeOperatorToFun}
+  \label{AbstractHeckeOperator.HeckeOperatorToFun}
   \leanok
   Assuming $UgV$ is a finite union of cosets $g_iV$,
   we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
   to $\sum_i g_ia.$
 \end{definition}
 ```
-:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator") (uses := "AbstractHeckeOperator.HeckeOperator_toFun")
+:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator") (uses := "AbstractHeckeOperator.HeckeOperatorToFun")
 This function is well-defined (that is, independent of the
 choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 :::
@@ -128,7 +128,7 @@ choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 \begin{lemma}
   \lean{AbstractHeckeOperator.HeckeOperator}
   \label{AbstractHeckeOperator.HeckeOperator}
-  \uses{AbstractHeckeOperator.HeckeOperator_toFun}
+  \uses{AbstractHeckeOperator.HeckeOperatorToFun}
   \leanok
   This function is well-defined (that is, independent of the
   choice of $g_i$), has image in $A^U$ and is $R$-linear.

@@ -1,5 +1,5 @@
 import FLTBlueprint.Citations
-import FLT.Basic.Reductions
+import FLT.FreyCurve.Contradiction
 import FLT.GaloisRepresentation.HardlyRamified.Defs
 import FLT.GaloisRepresentation.HardlyRamified.Family
 import FLT.GaloisRepresentation.HardlyRamified.Frey
