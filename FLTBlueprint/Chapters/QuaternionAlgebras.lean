@@ -2,7 +2,7 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLTBlueprint.TeXPrelude
-import FLT.AutomorphicForm.QuaternionAlgebra.Defs
+import FLT.AutomorphicForm.QuaternionAlgebra.Basic
 import FLT.AutomorphicForm.QuaternionAlgebra.FiniteDimensional
 
 open Verso.Genre
@@ -386,7 +386,7 @@ $`D_{\A^\infty}^\times`.
 Now let $U$ be a level, that is, a compact open subgroup of $D_{\A^\infty}^\times$.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form")
 The quaternionic modular forms of level $`U`, with notation $`S^D(U;R)`, are
 the $`U`-invariants for the $`D_{\A^\infty}^\times`-action on $`S^D(R)`. This
 depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
@@ -395,10 +395,10 @@ depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
 :::
 
-```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (slot := statement)
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form" (slot := statement)
 \begin{definition}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form}
   \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
     TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
     TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction,
@@ -434,24 +434,27 @@ of that classical claim, although of course the Jacquet--Langlands theorem is
 much much harder to prove than the classical proof of finite-dimensionality.
 ```
 
-:::theorem "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional")
+:::theorem "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite")
 Let $`k` be a field. Then the space $`S^D(U;k)` is a finite-dimensional
 $`k`-vector space. This depends on
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
+{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form"}[] and
+{uses "TotallyDefiniteQuaternionAlgebra.finite_doubleCoset"}[].
 :::
 
-```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (slot := statement)
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite" (slot := statement)
 \begin{theorem}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
-  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite}
+  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form,
+    TotallyDefiniteQuaternionAlgebra.finite_doubleCoset}
   Let $k$ be a field. Then the space $S^D(U;k)$ is a finite-dimensional $k$-vector space.
 \end{theorem}
 ```
 
-:::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"
+:::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite"
 The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
 proved in the Fujisaki miniproject {bpref "Fujisaki_project"}[].
+{uses "TotallyDefiniteQuaternionAlgebra.finite_doubleCoset"}[],
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[], and
 {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"}[].
 Write $`(D \otimes_F \A_F^\infty)^\times`
@@ -478,8 +481,9 @@ that $`f_1(g) = f_2(g)` as required.
 
 ```tex
 \begin{proof}
-  \proves{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
-  \uses{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact,
+  \proves{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite}
+  \uses{TotallyDefiniteQuaternionAlgebra.finite_doubleCoset,
+  NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact,
   NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
   The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
   proved in the Fukisaki miniproject, chapter~\ref{Fujisaki_project}.

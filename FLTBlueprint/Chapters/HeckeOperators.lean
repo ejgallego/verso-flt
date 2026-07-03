@@ -105,36 +105,36 @@ from $A^V$ to $A^U$. The finiteness hypothesis is that the
 double coset $UgV$ can be written as a \emph{finite} union of single
 cosets $g_iV$.
 ```
-:::definition "AbstractHeckeOperator.HeckeOperatorToFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperatorToFun")
+:::definition "AbstractHeckeOperator.heckeOperator.toFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.heckeOperator.toFun")
 Assuming $`UgV` is a finite union of cosets $`g_iV`,
 we define $`[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
 :::
-```tex "AbstractHeckeOperator.HeckeOperatorToFun" (slot := statement)
+```tex "AbstractHeckeOperator.heckeOperator.toFun" (slot := statement)
 \begin{definition}
-  \lean{AbstractHeckeOperator.HeckeOperatorToFun}
-  \label{AbstractHeckeOperator.HeckeOperatorToFun}
+  \lean{AbstractHeckeOperator.heckeOperator.toFun}
+  \label{AbstractHeckeOperator.heckeOperator.toFun}
   \leanok
   Assuming $UgV$ is a finite union of cosets $g_iV$,
   we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
   to $\sum_i g_ia.$
 \end{definition}
 ```
-:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.HeckeOperator") (uses := "AbstractHeckeOperator.HeckeOperatorToFun")
+:::lemma_ "AbstractHeckeOperator.heckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.heckeOperator") (uses := "AbstractHeckeOperator.heckeOperator.toFun")
 This function is well-defined (that is, independent of the
 choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 :::
-```tex "AbstractHeckeOperator.HeckeOperator" (slot := statement)
+```tex "AbstractHeckeOperator.heckeOperator" (slot := statement)
 \begin{lemma}
-  \lean{AbstractHeckeOperator.HeckeOperator}
-  \label{AbstractHeckeOperator.HeckeOperator}
-  \uses{AbstractHeckeOperator.HeckeOperatorToFun}
+  \lean{AbstractHeckeOperator.heckeOperator}
+  \label{AbstractHeckeOperator.heckeOperator}
+  \uses{AbstractHeckeOperator.heckeOperator.toFun}
   \leanok
   This function is well-defined (that is, independent of the
   choice of $g_i$), has image in $A^U$ and is $R$-linear.
 \end{lemma}
 ```
-:::proof "AbstractHeckeOperator.HeckeOperator"
+:::proof "AbstractHeckeOperator.heckeOperator"
 Well-definedness is because if we change $`g_i` to $`g'_i := g_i v`
 for some $`v \in V` then $`g_i a = g'_i a` because $`a \in A^V`.
 
@@ -143,7 +143,7 @@ fixes $`UgV` and hence permutes the cosets $`g_iV`.
 
 Finally $`R`-linearity is because the $`G`-action is $`R`-linear.
 :::
-```tex "AbstractHeckeOperator.HeckeOperator" (slot := proof)
+```tex "AbstractHeckeOperator.heckeOperator" (slot := proof)
 \begin{proof}
   \leanok
   Well-definedness is because if we change $g_i$ to $g'_i:=g_iv$
@@ -195,7 +195,7 @@ this cover must thus be finite.
   this cover must thus be finite.
 \end{proof}
 ```
-:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm") (uses := "AbstractHeckeOperator.HeckeOperator")
+:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm") (uses := "AbstractHeckeOperator.heckeOperator")
 Say $`g,h \in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_i h_j = h_j g_i` for all $`i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
@@ -205,7 +205,7 @@ acting on $`A^U` commute.
 \begin{lemma}
   \lean{AbstractHeckeOperator.comm}
   \label{AbstractHeckeOperator.comm}
-  \uses{AbstractHeckeOperator.HeckeOperator}
+  \uses{AbstractHeckeOperator.heckeOperator}
   \leanok
   Say $g,h\in G$ and we have $UgU=\coprod_i g_iU$
   and $UhU=\coprod_j h_j$ and we have $g_ih_j=h_jg_i$ for all $i,j$.
@@ -791,8 +791,8 @@ Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{p
 Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
 
 \begin{lemma}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
-  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1}
   \leanok
   The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
   through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
@@ -1000,7 +1000,7 @@ Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{p
 Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
 ```
 
-:::lemma_ "bijOn_unipotent_mul_diagU1_U1diagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1")
+:::lemma_ "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1")
 The double coset space $`UgU` is the disjoint union of $`g_tU` as $`t` ranges
 through $`\calO_v/\alpha\calO_v` and $`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}`,
 where $`\tilde{t}` is any lift of $`t` to $`\calO_v`.
@@ -1008,15 +1008,15 @@ where $`\tilde{t}` is any lift of $`t` to $`\calO_v`.
 
 ```tex
 \begin{lemma}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1}
-  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1}
   \leanok
   The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
   through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
   where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
 \end{lemma}
 ```
-:::proof "bijOn_unipotent_mul_diagU1_U1diagU1"
+:::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1"
 We first manipulate the statement into a statement about finite groups.
 We have $`UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})`.
 By the second isomorphism theorem this is true if
