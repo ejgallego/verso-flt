@@ -1,6 +1,7 @@
 import FLTBlueprint.Citations
 import FLT.FreyCurve.FreyPackage
-import FLT.FreyCurve.Contradiction
+import FLT.FreyCurve.Mazur
+import FLT.GaloisRepresentation.HardlyRamified.Frey
 import Mathlib.NumberTheory.FLT.Four
 import Mathlib.NumberTheory.FLT.Three
 import Verso
@@ -175,7 +176,7 @@ Our next reduction is as follows.
 Our next reduction is as follows:
 ```
 
-:::lemma_ "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheorem_p_ge_5")
+:::lemma_ "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheoremFor_p_ge_5")
 If Fermat's Last Theorem is false for `p` prime and $`p \ge 5`, then there
 exists a Frey package.
 :::
@@ -183,7 +184,7 @@ exists a Frey package.
 ```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (slot := statement)
 \begin{lemma}
   \label{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
-  \lean{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
+  \lean{FreyPackage.of_not_FermatLastTheoremFor_p_ge_5}
   \leanok
   \discussion{19}
   If Fermat's Last Theorem is false for $p \ge 5$ and prime, then there exists a Frey package.
@@ -409,7 +410,7 @@ and we say that $\rho$ is the mod $p$ representation associated to the Frey pack
 Is it irreducible or not?
 ```
 
-:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey") (uses := "FreyCurve")
+:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "FreyPackage.mazur") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is irreducible.
 :::
@@ -417,7 +418,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```tex "Mazur_Frey" (slot := statement)
 \begin{theorem}[Mazur]
   \label{Mazur_Frey}
-  \lean{Mazur_Frey}
+  \lean{FreyPackage.mazur}
   \uses{FreyCurve}
   \leanok
   If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
@@ -458,7 +459,7 @@ a formalization of this result, as it was known in the 1980s. We will however be
 a lot about the next result, which says the exact opposite.
 ```
 
-:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey") (uses := "FreyCurve")
+:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "FreyCurve.torsion_not_isIrreducible") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is reducible.
 :::
@@ -466,7 +467,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```tex "Wiles_Frey" (slot := statement)
 \begin{theorem}[Wiles,Taylor--Wiles, Ribet,\ldots]
   \label{Wiles_Frey}
-  \lean{Wiles_Frey}
+  \lean{FreyCurve.torsion_not_isIrreducible}
   \uses{FreyCurve}
   \leanok
   If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
@@ -491,16 +492,14 @@ representation is reducible.
 \end{proof}
 ```
 
-:::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false") (uses := "Mazur_Frey, Wiles_Frey")
+:::corollary "FreyPackage.false" (parent := "first_reductions") (uses := "Mazur_Frey, Wiles_Frey")
 There is no Frey package.
 :::
 
 ```tex "FreyPackage.false" (slot := statement)
 \begin{corollary}
   \label{FreyPackage.false}
-  \lean{FreyPackage.false}
   \uses{Mazur_Frey, Wiles_Frey}
-  \leanok
   There is no Frey package.
 \end{corollary}
 ```
@@ -522,7 +521,7 @@ We deduce.
 We deduce
 ```
 
-:::corollary "FLT" (parent := "first_reductions") (lean := "Wiles_Taylor_Wiles")
+:::corollary "FLT" (parent := "first_reductions")
 Fermat's Last Theorem is true. In other words, there are no positive integers
 `a`, `b`, and `c` and natural numbers `n >= 3` such that $`a^n+b^n=c^n`.
 :::
@@ -530,8 +529,6 @@ Fermat's Last Theorem is true. In other words, there are no positive integers
 ```tex "FLT" (slot := statement)
 \begin{corollary}
   \label{FLT}
-  \lean{Wiles_Taylor_Wiles}
-  \leanok
   Fermat's Last Theorem is true. In other words, there are no positive integers $a,b,c$ and
   natural $n\geq3$ such that $a^n+b^n=c^n$.
 \end{corollary}

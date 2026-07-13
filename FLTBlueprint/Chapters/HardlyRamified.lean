@@ -1,5 +1,4 @@
 import FLTBlueprint.Citations
-import FLT.FreyCurve.Contradiction
 import FLT.GaloisRepresentation.HardlyRamified.Defs
 import FLT.GaloisRepresentation.HardlyRamified.Family
 import FLT.GaloisRepresentation.HardlyRamified.Frey
@@ -322,7 +321,7 @@ Serre's conjecture. Given this result, we can deduce Theorem~\ref{Wiles_Frey}
 (which we restate here) easily:
 ```
 
-:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program") (lean := "Wiles_Frey")
+:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_not_isIrreducible")
 If $`\overline{\rho}` is the mod `p` Galois representation associated to a
 Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 :::
@@ -330,7 +329,7 @@ Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 ```tex "Wiles_Frey_again" (slot := statement)
 \begin{theorem}
   \label{Wiles_Frey_again}
-  \lean{Wiles_Frey}
+  \lean{FreyCurve.torsion_not_isIrreducible}
   \leanok
   If $\overline{\rho}$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
   $\overline{\rho}$ is reducible.
