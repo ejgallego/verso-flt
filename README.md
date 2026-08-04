@@ -13,20 +13,19 @@ This repo follows the upstream blueprint strictly and translates its source
 markup language to Verso with the help of AI. Credit for the original blueprint
 and formalization belongs to the upstream project.
 
-## Build
+## Build the Blueprint site
 
 ```bash
-lake build
+bash ./scripts/ci-pages.sh
 ```
 
-## Generate
-
-```bash
-lake env lean --run FLTBlueprintMain.lean --output _out/site
-```
+The harness command checks the dependency cache before running
+`lake exe vbp build --output _out/site`.
 
 This repository follows the shared
 [`tools/verso-harness`](tools/verso-harness/) workflow. The root
-[`lean-toolchain`](lean-toolchain) matches the upstream formalization, and
-[`lakefile.lean`](lakefile.lean) pins `VersoBlueprint` to the matching release
-branch.
+[`lean-toolchain`](lean-toolchain) selects Lean v4.33.0-rc2 for the wrapper.
+The formalization currently selects v4.33.0-rc1; the exact reviewed
+compatibility exception is recorded as `harness.wrapper_toolchain_override` in
+[`verso-harness.toml`](verso-harness.toml). [`lakefile.lean`](lakefile.lean)
+pins `VersoBlueprint` to the matching v4.33 release branch.

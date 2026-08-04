@@ -29,3 +29,4 @@ proposition = "theorem"
 native_warnings = false
 docstring_warnings = false
 strict_external_code = true
+wrapper_toolchain_override = "leanprover/lean4:v4.33.0-rc2"
