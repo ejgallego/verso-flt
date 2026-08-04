@@ -21,8 +21,10 @@ jobs:
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Refresh Lake manifest
+        continue-on-error: true
         run: lake --keep-toolchain update
       - name: Upload Lake manifest
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lake-manifest
