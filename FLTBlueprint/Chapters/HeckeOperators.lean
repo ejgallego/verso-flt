@@ -105,36 +105,36 @@ from $A^V$ to $A^U$. The finiteness hypothesis is that the
 double coset $UgV$ can be written as a \emph{finite} union of single
 cosets $g_iV$.
 ```
-:::definition "AbstractHeckeOperator.heckeOperator.toFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.heckeOperator.toFun")
+:::definition "AbstractHeckeOperator.HeckeOperatorToFun" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.heckeOperator.toFun")
 Assuming $`UgV` is a finite union of cosets $`g_iV`,
 we define $`[UgV] : A^V \to A^U` to be the map sending $`a \in A^V`
 to $`\sum_i g_i a`.
 :::
-```tex "AbstractHeckeOperator.heckeOperator.toFun" (slot := statement)
+```tex "AbstractHeckeOperator.HeckeOperatorToFun" (slot := statement)
 \begin{definition}
   \lean{AbstractHeckeOperator.heckeOperator.toFun}
-  \label{AbstractHeckeOperator.heckeOperator.toFun}
+  \label{AbstractHeckeOperator.HeckeOperatorToFun}
   \leanok
   Assuming $UgV$ is a finite union of cosets $g_iV$,
   we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
   to $\sum_i g_ia.$
 \end{definition}
 ```
-:::lemma_ "AbstractHeckeOperator.heckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.heckeOperator") (uses := "AbstractHeckeOperator.heckeOperator.toFun")
+:::lemma_ "AbstractHeckeOperator.HeckeOperator" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.heckeOperator") (uses := "AbstractHeckeOperator.HeckeOperatorToFun")
 This function is well-defined (that is, independent of the
 choice of $`g_i`), has image in $`A^U` and is $`R`-linear.
 :::
-```tex "AbstractHeckeOperator.heckeOperator" (slot := statement)
+```tex "AbstractHeckeOperator.HeckeOperator" (slot := statement)
 \begin{lemma}
   \lean{AbstractHeckeOperator.heckeOperator}
-  \label{AbstractHeckeOperator.heckeOperator}
+  \label{AbstractHeckeOperator.HeckeOperator}
   \uses{AbstractHeckeOperator.heckeOperator.toFun}
   \leanok
   This function is well-defined (that is, independent of the
   choice of $g_i$), has image in $A^U$ and is $R$-linear.
 \end{lemma}
 ```
-:::proof "AbstractHeckeOperator.heckeOperator"
+:::proof "AbstractHeckeOperator.HeckeOperator"
 Well-definedness is because if we change $`g_i` to $`g'_i := g_i v`
 for some $`v \in V` then $`g_i a = g'_i a` because $`a \in A^V`.
 
@@ -143,7 +143,7 @@ fixes $`UgV` and hence permutes the cosets $`g_iV`.
 
 Finally $`R`-linearity is because the $`G`-action is $`R`-linear.
 :::
-```tex "AbstractHeckeOperator.heckeOperator" (slot := proof)
+```tex "AbstractHeckeOperator.HeckeOperator" (slot := proof)
 \begin{proof}
   \leanok
   Well-definedness is because if we change $g_i$ to $g'_i:=g_iv$
@@ -195,7 +195,7 @@ this cover must thus be finite.
   this cover must thus be finite.
 \end{proof}
 ```
-:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm") (uses := "AbstractHeckeOperator.heckeOperator")
+:::lemma_ "AbstractHeckeOperator.comm" (parent := "hecke_operator_project") (lean := "AbstractHeckeOperator.comm") (uses := "AbstractHeckeOperator.HeckeOperator")
 Say $`g,h \in G` and suppose we have $`UgU=\coprod_i g_iU`
 and $`UhU=\coprod_j h_j` and that $`g_i h_j = h_j g_i` for all $`i,j`.
 Then $`[UgU][UhU]=[UhU][UgU]`, that is, the Hecke operators
@@ -508,6 +508,7 @@ to be the copy of $`U^\times` we're talking about.
 
 ```tex "Submonoid.units_isOpen" (slot := proof)
 \begin{proof}
+  \leanok
   \proves{Submonoid.units_isOpen}
   We have $U\times U$ is an open subset of $M\times M$, and if we imagine $M^\times$
   embedded in $M\times M$ as explained in the remark above, then the intersection
@@ -838,29 +839,12 @@ Openness is already in mathlib.
   Openness is already in mathlib.
 \end{proof}
 ```
-:::lemma_ "local_integer_ring_compact" (parent := "hecke_operator_project") (lean := "NumberField.instCompactSpaceAdicCompletionIntegers")
-$`\calO_v` is a compact subring of $`K_v`.
-:::
+$`\calO_v` is also a compact subring of $`K_v`; we proved this in the adele
+miniproject.
 
 ```tex
-\begin{lemma}
-  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \label{local_integer_ring_compact}
-  \leanok
-  $\calO_v$ is a compact subring of $K_v$.
-\end{lemma}
-```
-
-:::proof "local_integer_ring_compact"
-Compactness lies a little deeper because it assumes that the residue field of
-$`K_v` is finite.
-:::
-```tex
-\begin{proof}
-  \leanok
-  Compactness lies a little deeper because it
-  assumes that the residue field of $K_v$ is finite.
-\end{proof}
+$\calO_v$ is also a compact subring of $K_v$; we proved this in the adele
+miniproject.
 ```
 :::lemma_ "M2.localFullLevel.isOpen" (parent := "hecke_operator_project") (lean := "IsDedekindDomain.M2.localFullLevel.isOpen")
 $`M_2(\calO_v)` is an open subring of $`M_2(K_v)`.
@@ -899,15 +883,15 @@ $`M_2(\calO_v)` is a compact subring of $`M_2(K_v)`.
 \end{lemma}
 ```
 
-:::proof "M2.localFullLevel.isCompact" (uses := "local_integer_ring_compact")
+:::proof "M2.localFullLevel.isCompact" (uses := "NumberField.instCompactSpaceAdicCompletionIntegers")
 Topologically $`M_2(\calO_v) \cong \calO_v^4` as a subset of $`K_v^4`, so this
-follows from theorem {uses "local_integer_ring_compact"}[]
+follows from {uses "NumberField.instCompactSpaceAdicCompletionIntegers"}[]
 because a product of compacts is compact and a product of opens is open.
 :::
 ```tex
 \begin{proof}
   \leanok
-  \uses{local_integer_ring_compact}
+  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
   Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
   follows because a product of compacts is compact and a product of opens is open.
 \end{proof}
@@ -1000,23 +984,23 @@ Choose $0\not=\alpha\in\calO_v$ and define $g=\begin{pmatrix}\alpha&0\\0&1\end{p
 Let's do an explicit double coset decomposition in preparation for a calculation with Hecke operators.
 ```
 
-:::lemma_ "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1")
+:::lemma_ "bijOn_unipotent_mul_diagU1_U1diagU1" (parent := "hecke_operator_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1")
 The double coset space $`UgU` is the disjoint union of $`g_tU` as $`t` ranges
 through $`\calO_v/\alpha\calO_v` and $`g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}`,
 where $`\tilde{t}` is any lift of $`t` to $`\calO_v`.
 :::
 
-```tex
+```tex "bijOn_unipotent_mul_diagU1_U1diagU1" (slot := statement)
 \begin{lemma}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1}
+  \label{bijOn_unipotent_mul_diagU1_U1diagU1}
   \leanok
   The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
   through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
   where $\tilde{t}$ is any lift of $t$ to $\calO_v$.
 \end{lemma}
 ```
-:::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1"
+:::proof "bijOn_unipotent_mul_diagU1_U1diagU1"
 We first manipulate the statement into a statement about finite groups.
 We have $`UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})`.
 By the second isomorphism theorem this is true if
@@ -1032,7 +1016,7 @@ then $`u\in h_tU^\alpha` iff $`b\in\calO_v` reduces mod $`\alpha` to $`t\in\calO
 We do this by computing $`h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}`
 and observing that its top right hand entry mod~$`\alpha` is zero iff $`b` mod $`\alpha` is $`t`.
 :::
-```tex
+```tex "bijOn_unipotent_mul_diagU1_U1diagU1" (slot := proof)
 \begin{proof}
   \leanok
   We first manipulate the statement into a statement about finite groups.
@@ -1200,26 +1184,26 @@ satisfying the following axioms:
   \item $f(gz)=f(g)$ for all $z\in(\A_F^\infty)^\times$.
 \end{enumerate}
 ```
-It can be checked that the collection of all such forms is an additive abelian
-group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
-group `A` for short. Then `A` has a left action of `G`, with $`g \cdot f`
-defined via $`(g \cdot f)(x) := f(xg)`. Recall from
-definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel` that
-a weight `2` automorphic form of level `U` is simply an element of the fixed
-points $`A^U`. In other words, the forms of level `U` are the forms satisfying
-the three axioms defining an automorphic form but with the compact open subgroup
-in the second axiom being `U`.
+It can be checked that the collection of all such forms is an additive abelian group,
+and if $`R` is a ring then it is naturally an $`R`-module. Let's call this group $`A` for short.
+Then $`A` has a left action of $`G`, with $`g\cdot f`
+defined via $`(g\cdot f)(x):=f(xg)`. Recall from
+definition {bpref "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"}[]
+that a weight 2 automorphic form of level $`U` is simply an element of the
+fixed points $`A^U`. In other words, the forms of level $`U` are the forms satisfying the three axioms
+defining an automorphic form but with the compact open subgroup in the second
+axiom being $`U`.
 
 ```tex
-It can be checked that the collection of all such forms is an additive abelian
-group, and if `R` is a ring then it is naturally an `R`-module. Let's call this
-group `A` for short. Then `A` has a left action of `G`, with `g \cdot f`
-defined via $`(g \cdot f)(x) := f(xg)`. Recall from
-definition `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel` that
-a weight `2` automorphic form of level `U` is simply an element of the fixed
-points $`A^U`. In other words, the forms of level `U` are the forms satisfying
-the three axioms defining an automorphic form but with the compact open subgroup
-in the second axiom being `U`.
+It can be checked that the collection of all such forms is an additive abelian group,
+and if~$R$ is a ring then it is naturally an~$R$-module. Let's call this group~$A$ for short.
+Then~$A$ has a left action of $G$, with $g\cdot f$
+defined via $(g\cdot f)(x):=f(xg)$. Recall from
+definition~\ref{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
+that a weight 2 automorphic form of level~$U$ is simply an element of the
+fixed points $A^U$. In other words, the forms of level~$U$ are the forms satisfying the three axioms
+defining an automorphic form but with the compact open subgroup in the second
+axiom being~$U$.
 ```
 # Concrete Hecke operators
 Let $`F` be a number field. For each finite place $`v` we have the completion
