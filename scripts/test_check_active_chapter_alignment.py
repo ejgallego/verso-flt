@@ -30,6 +30,10 @@ def test_alignment_passes_for_matching_project() -> None:
               "DemoBlueprint/Chapters/Introduction.lean",
               "DemoBlueprint/Chapters/HardlyRamified.lean",
             ]
+
+            [lt.source_files]
+            "DemoBlueprint/Chapters/Introduction.lean" = ["FLT/blueprint/src/chapter/ch01introduction.tex"]
+            "DemoBlueprint/Chapters/HardlyRamified.lean" = ["FLT/blueprint/src/chapter/ch03freyreduction.tex"]
             """,
         )
         write_file(
@@ -72,6 +76,11 @@ def test_alignment_reports_extra_manual_chapter() -> None:
               "DemoBlueprint/Chapters/HardlyRamified.lean",
               "DemoBlueprint/Chapters/ExtraChapter.lean",
             ]
+
+            [lt.source_files]
+            "DemoBlueprint/Chapters/Introduction.lean" = ["FLT/blueprint/src/chapter/ch01introduction.tex"]
+            "DemoBlueprint/Chapters/HardlyRamified.lean" = ["FLT/blueprint/src/chapter/ch03freyreduction.tex"]
+            "DemoBlueprint/Chapters/ExtraChapter.lean" = ["FLT/blueprint/src/chapter/extra.tex"]
             """,
         )
         write_file(

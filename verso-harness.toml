@@ -22,6 +22,22 @@ default_chapters = [
   "FLTBlueprint/Chapters/Bestiary.lean",
 ]
 
+[lt.source_files]
+"FLTBlueprint/Chapters/Introduction.lean" = ["FLT/blueprint/src/chapter/ch01introduction.tex"]
+"FLTBlueprint/Chapters/Reductions.lean" = ["FLT/blueprint/src/chapter/ch02reductions.tex"]
+"FLTBlueprint/Chapters/HardlyRamified.lean" = ["FLT/blueprint/src/chapter/ch03freyreduction.tex"]
+"FLTBlueprint/Chapters/Overview.lean" = ["FLT/blueprint/src/chapter/ch04overview.tex"]
+"FLTBlueprint/Chapters/AutomorphicFormExample.lean" = ["FLT/blueprint/src/chapter/ch05automorphicformexample.tex"]
+"FLTBlueprint/Chapters/ModularityLifting.lean" = ["FLT/blueprint/src/chapter/ch06automorphicrepresentations.tex"]
+"FLTBlueprint/Chapters/LanglandsGLn.lean" = ["FLT/blueprint/src/chapter/ch07exampleGLn.tex"]
+"FLTBlueprint/Chapters/FrobeniusProject.lean" = ["FLT/blueprint/src/chapter/FrobeniusProject.tex"]
+"FLTBlueprint/Chapters/AdeleProject.lean" = ["FLT/blueprint/src/chapter/AdeleMiniproject.tex"]
+"FLTBlueprint/Chapters/HaarCharacters.lean" = ["FLT/blueprint/src/chapter/HaarCharacterProject.tex"]
+"FLTBlueprint/Chapters/FujisakiProject.lean" = ["FLT/blueprint/src/chapter/FujisakiProject.tex"]
+"FLTBlueprint/Chapters/QuaternionAlgebras.lean" = ["FLT/blueprint/src/chapter/QuaternionAlgebraProject.tex"]
+"FLTBlueprint/Chapters/HeckeOperators.lean" = ["FLT/blueprint/src/chapter/HeckeOperatorProject.tex"]
+"FLTBlueprint/Chapters/Bestiary.lean" = ["FLT/blueprint/src/chapter/chtopbestiary.tex"]
+
 [lt.node_kinds]
 proposition = "theorem"
 

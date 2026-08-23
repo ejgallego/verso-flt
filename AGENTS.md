@@ -227,9 +227,10 @@ This repository is the integration layer for the FLT Verso blueprint.
 - `bash ./scripts/ci-pages.sh` now includes
   `python3 scripts/check_active_chapter_alignment.py --project-root .`, which
   enforces that the active TeX TOC in `FLT/blueprint/src/content.tex`, the
-  root manual chapter order, and `lt.default_chapters` agree exactly.
+  root manual chapter order, `lt.default_chapters`, and `[lt.source_files]`
+  agree exactly.
 - `bash ./scripts/ci-pages.sh` also includes
-  `python3 scripts/check_source_authorized_metadata.py --project-root .`,
+  `python3 tools/verso-harness/scripts/check_source_authorized_metadata.py --project-root .`,
   which fails when local `{uses "..."}[]` edges or `(lean := "...")`
   attachments are not authorized by the adjacent TeX witness.
 - When port metadata is unclear, consult the original blueprint harness inputs
@@ -247,7 +248,7 @@ This repository is the integration layer for the FLT Verso blueprint.
   treat any reported block as unaudited until the adjacent `tex` witness is in
   place.
 - After the source-pair check, run
-  `python3 scripts/check_blueprint_node_kinds.py <chapter.lean>` on touched
+  `python3 tools/verso-harness/scripts/check_blueprint_node_kinds.py --project-root . <chapter.lean>` on touched
   direct-port chapters to ensure theorem/lemma/corollary/definition nodes match
   the adjacent TeX source environment kind.
 - After the source-pair check is green, use
@@ -256,7 +257,7 @@ This repository is the integration layer for the FLT Verso blueprint.
   includes metadata-drift hints for `(lean := "...")`, `{uses "..."}[]`,
   `{bpref "..."}[]`, and TeX `\ref{...}` / `\uses{...}` mismatches. The default output is human-
   oriented summary; use `--verbose` when an agent needs the full per-block dump.
-- Run `python3 scripts/check_verso_math_delimiters.py <chapter.lean>` on
+- Run `python3 tools/verso-harness/scripts/check_verso_math_delimiters.py --project-root . <chapter.lean>` on
   touched chapters to catch malformed Verso math delimiters such as the bad
   TeX-to-Verso translation pattern `$`...`$`.
 - When changing the LT similarity tooling itself, run

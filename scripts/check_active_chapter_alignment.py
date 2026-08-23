@@ -5,24 +5,77 @@ import argparse
 import re
 import sys
 from pathlib import Path
+import tomllib
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
+HELPER_SCRIPT_DIR = SCRIPT_DIR.parent / "tools/verso-harness/scripts"
+if str(HELPER_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(HELPER_SCRIPT_DIR))
 
-from _helper_shim import load_helper_module
-from update_porting_todo import active_chapters_from_content
+from _harnesslib import load_config  # noqa: E402
 
 
-_harnesslib = load_helper_module("_harnesslib.py")
+CONTENT_INPUT_RE = re.compile(r"\\input\{chapter/([^}]+)\}")
+TEX_COMMENT_RE = re.compile(r"(?<!\\)%.*$")
+NON_CHAPTER_INPUTS = {"biblio.tex"}
+
+
+def active_source_paths_from_content(project_root: Path) -> list[str]:
+    content_path = project_root / "FLT/blueprint/src/content.tex"
+    sources: list[str] = []
+    for raw_line in content_path.read_text(encoding="utf-8").splitlines():
+        line = TEX_COMMENT_RE.sub("", raw_line)
+        match = CONTENT_INPUT_RE.search(line)
+        if match is None:
+            continue
+        tex_name = match.group(1)
+        if not tex_name.endswith(".tex"):
+            tex_name += ".tex"
+        if tex_name in NON_CHAPTER_INPUTS:
+            continue
+        sources.append(str(Path("FLT/blueprint/src/chapter") / tex_name))
+    return sources
+
+
+def configured_source_owners(project_root: Path) -> dict[str, str]:
+    config_path = project_root / "verso-harness.toml"
+    data = tomllib.loads(config_path.read_text(encoding="utf-8"))
+    lt = data.get("lt", {})
+    source_files = lt.get("source_files", {}) if isinstance(lt, dict) else {}
+    if not isinstance(source_files, dict) or not source_files:
+        raise ValueError("verso-harness.toml must define [lt.source_files]")
+
+    owners: dict[str, str] = {}
+    for chapter, sources in source_files.items():
+        if not isinstance(chapter, str) or not isinstance(sources, list):
+            raise ValueError("verso-harness.toml has invalid [lt.source_files]")
+        for source in sources:
+            if not isinstance(source, str):
+                raise ValueError("verso-harness.toml has invalid [lt.source_files]")
+            normalized = str(Path(source))
+            previous = owners.get(normalized)
+            if previous is not None and previous != chapter:
+                raise ValueError(
+                    f"source file {normalized} is owned by both {previous} and {chapter}"
+                )
+            owners[normalized] = chapter
+    return owners
 
 
 def expected_chapter_modules(project_root: Path) -> tuple[object, list[str], list[str]]:
-    config = _harnesslib.load_config(project_root)
-    active = active_chapters_from_content(project_root)
-    modules = [Path(lean_name).stem for _, lean_name in active]
-    paths = [str(Path(config.chapter_root) / lean_name) for _, lean_name in active]
+    config = load_config(project_root)
+    owners = configured_source_owners(project_root)
+    active_sources = active_source_paths_from_content(project_root)
+    missing = [source for source in active_sources if source not in owners]
+    if missing:
+        raise ValueError(
+            "active TeX source files have no lt.source_files owner: " + ", ".join(missing)
+        )
+    paths = [owners[source] for source in active_sources]
+    modules = [Path(path).stem for path in paths]
     return config, modules, paths
 
 
@@ -53,8 +106,11 @@ def render_sequence(items: list[str]) -> str:
 
 
 def audit_project(project_root: Path) -> list[str]:
-    config, expected_modules, expected_paths = expected_chapter_modules(project_root)
     errors: list[str] = []
+    try:
+        config, expected_modules, expected_paths = expected_chapter_modules(project_root)
+    except (OSError, tomllib.TOMLDecodeError, ValueError) as exc:
+        return [str(exc)]
 
     main_path = project_root / f"{config.package_name}.lean"
     if not main_path.exists():
