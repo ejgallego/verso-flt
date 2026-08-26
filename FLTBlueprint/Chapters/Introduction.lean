@@ -67,9 +67,9 @@ Theorem to a computer. The computer is quite a challenging audience member --
 it will insist on being given all technical details of all arguments, and it
 will not accept proof by intimidation or by appeal to higher authority. Most
 mathematicians know humans who also behave in this manner. However, it is
-worse than this; the computer will only start filling in details of arguments
-by itself once the arguments are mathematically utterly obvious. Thus,
-currently, formalization can be a very time-consuming process.
+worse than this; in `2025` at least, the computer will only start filling in
+details of arguments by itself once the arguments are mathematically utterly
+obvious. Thus, currently, formalization can be a very time-consuming process.
 
 ```tex
 To give some idea of what this entails: {\tt mathlib} at the time of writing contains most of an
@@ -80,10 +80,10 @@ and \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberThe
 are in {\tt mathlib}). Thus our task can be likened to teaching a graduate level course on
 Fermat's Last Theorem to a computer. The computer is quite a challenging audience member -- it
 will insist on being given all technical details of all arguments, and it will not accept proof by
-intimidation or by appeal to higher authority. Most mathematicians know humans who also behave in
-this manner. However, it is worse than this; the computer will only start filling in details of
-arguments by itself once the arguments are mathematically utterly obvious. Thus, currently,
-formalization can be a very time-consuming process.
+intimidation or by appeal to higher authority. Most mathematicians know humans who also behave
+in this manner. However, it is worse than this; in 2025 at least, the computer will only start filling
+in details of arguments by itself once the arguments are mathematically utterly obvious.
+Thus, currently, formalization can be a very time-consuming process.
 ```
 
 # Which proof is being formalised?

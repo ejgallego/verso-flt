@@ -207,14 +207,8 @@ can be weakened to give the result we need). One reference for the proof is
 Richard Taylor's `2018` Stanford course.
 
 ```tex
-I am not entirely sure where to find a proof of this in the literature, although it has
-certainly been known to the experts for some time. Theorem `3.3` of {Informal.citep
-taylorMeroCont}[] comes close, although it assumes that $`\ell` is totally split in
-$`F` rather than just unramified. Another near-reference is Theorem `5.2` of
-{Informal.citep tobyModularity}[], although this assumes the slightly stronger assumption
-that the image of $`\rho` contains $`\SL_2(\Z/p\Z)` (however it is well-known to the
-experts that this can be weakened to give the result we need). One reference for the proof
-is Richard Taylor's `2018` Stanford course.
+I am not entirely sure where to find a proof of this in the literature, although it has certainly been known to the experts for some time. Theorem 3.3 of~\cite{taylor-mero-cont} comes close, although it assumes that $\ell$ is totally split in $F$ rather than just unramified. Another near-reference is Theorem~5.2 of~\cite{toby-modularity}, although this assumes
+the slightly stronger assumption that the image of $\rho$ contains $\SL_2(\Z/p\Z)$ (however it is well-known to the experts that this can be weakened to give the result we need). One reference for the proof is \href{https://math.berkeley.edu/~fengt/249A_2018.pdf}{Richard Taylor's 2018 Stanford course}.
 ```
 
 :::proof "modularity_lifting_theorem"
@@ -282,13 +276,13 @@ must be reducible, which contradicts the irreducibility of $`\rho`.
 ```tex
 We now use Khare--Wintenberger to lift $\rho$ to a potentially modular $\ell$-adic
 Galois representation of conductor 2, and put it into an $\ell$-adic family using
-the Brauer's theorem trick in {Informal.citep blggtPotentialAutomorphy}[]. Finally we
-look at the `3`-adic specialisation of this family. Reducing mod `3` we get a representation
-which is flat at `3` and tame at `2`, so must be reducible because of the techniques
-introduced in Fontaine's paper on abelian varieties over $\Z$ (an irreducible representation
-would cut out a number field whose discriminant violates the Odlyzko bounds). One can now
-go on to deduce that the `3`-adic representation must be reducible, which contradicts the
-irreducibility of $\rho$.
+the Brauer's theorem trick in \cite{blggt}. Finally we look at the 3-adic specialisation
+of this family. Reducing mod 3 we get a representation which is flat at 3 and tame at 2,
+so must be reducible because
+of the techniques introduced in Fontaine's paper on abelian varieties over $\Z$ (an irreducible
+representation would cut out a number field whose discriminant violates the Odlyzko bounds).
+One can now go on to deduce that the 3-adic representation must be reducible, which
+contradicts the irreducibility of $\rho$.
 ```
 
 We apologise for the sketchiness of what is here, however at the time of

@@ -53,13 +53,6 @@ result is surely what we want to see in mathlib. Before we state Bourbaki's
 theorem, let us set the scene.
 ```
 
-The goal of the mini-project is to get this theorem formalised and ideally into
-mathlib.
-
-```tex
-The goal of the mini-project is to get this theorem formalised and ideally into mathlib.
-```
-
 In particular, $`\Aut(L/K)` is finite as a corollary. What is so striking about
 this theorem to me is that the only finiteness hypothesis is on the group `G`
 which acts; there are no finiteness or Noetherian hypotheses on the rings at
@@ -630,8 +623,8 @@ Then $`x` is fixed by the automorphism group $`\Aut(L/K)`.
 ```
 
 :::proof "fixed_of_fixed2" (uses := "Algebra.IsInvariant.isIntegral, IsAlgebraic.exists_smul_eq_mul, fixed_of_fixed1")
-Since $`(B/Q)/(A/P)` is algebraic by `Algebra.IsInvariant.isIntegral`,
-`IsAlgebraic.exists_smul_eq_mul` lets us write $`x=b/a` for $`b \in B/Q` and
+Since $`(B/Q)/(A/Q)` is algebraic by `Algebra.IsInvariant.isIntegral`,
+`IsAlgebraic.exists_smul_eq_mul` let's us write $`x=b/a` for $`b \in B/Q` and
 $`a \in A/P`. Then $`b` is fixed by the stabilizer subgroup $`D_Q`, and it
 suffices to show that $`b` is fixed by the automorphism group
 $`\Aut(L/K)`. But this is exactly `fixed_of_fixed1`.
@@ -641,8 +634,8 @@ $`\Aut(L/K)`. But this is exactly `fixed_of_fixed1`.
 \begin{proof}
   \uses{fixed_of_fixed1, Algebra.IsInvariant.isIntegral,
     IsAlgebraic.exists_smul_eq_mul}
-  Since $(B/Q)/(A/P)$ is algebraic by~\ref{Algebra.IsInvariant.isIntegral},
-  ~\ref{IsAlgebraic.exists_smul_eq_mul} lets us write $x=b/a$ for $b \in B/Q$ and $a \in A/P$.
+  Since $(B/Q)/(A/Q)$ is algebraic by~\ref{Algebra.IsInvariant.isIntegral},
+  ~\ref{IsAlgebraic.exists_smul_eq_mul} let's us write $x=b/a$ for $b \in B/Q$ and $a \in A/P$.
   Then $b$ is fixed by the stabilizer subgroup $D_Q$, and it suffices to show that
   $b$ is fixed by the automorphism group $\Aut(L/K)$.
   But this is exactly~\ref{fixed_of_fixed1}.
