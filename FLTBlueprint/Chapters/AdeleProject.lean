@@ -38,26 +38,36 @@ There are several goals to this miniproject.
 ```
 
 1. Define the adeles $`\A_K` of a number field $`K` and give them the
-   structure of a $`K`-algebra.
-2. Prove that $`\A_K` is a locally compact topological ring.
+   structure of a $`K`-algebra (status: now in mathlib thanks to Salvatore
+   Mercuri).
+2. Prove that $`\A_K` is a locally compact topological ring (status:
+   [also proved by Mercuri](https://github.com/smmercuri/adele-ring_locally-compact)
+   but not yet in mathlib).
 3. Base change: show that if $`L/K` is a finite extension of number fields
    then the natural map $`L\otimes_K\A_K\to\A_L` is an isomorphism, both
-   algebraic and topological.
+   algebraic and topological; (status: not formalized yet, but there is a plan --
+   see the project dashboard).
 4. Prove that $`K \subseteq \A_K` is a discrete subgroup and the quotient is
-   compact.
-5. Get this stuff into mathlib.
+   compact (status: not formalized yet, but there is a plan -- see the project
+   dashboard).
+5. Get this stuff into mathlib (status: (1) done, (2)--(4) not done).
 
 ```tex
 \begin{enumerate}
   \item Define the adeles $\A_K$ of a number field~$K$ and
-    give them the structure of a $K$-algebra;
-  \item Prove that $\A_K$ is a locally compact topological ring;
+    give them the structure of a $K$-algebra (status: now in mathlib thanks to
+    Salvatore Mercuri);
+  \item Prove that $\A_K$ is a locally compact topological ring (status:
+      \href{https://github.com/smmercuri/adele-ring_locally-compact}{
+      also proved by Mercuri} but not yet in mathlib);
   \item Base change: show that if $L/K$ is a finite extension of number fields then the
     natural map $L\otimes_K\A_K\to\A_L$ is an isomorphism, both algebraic and
-    topological;
+    topological; (status: not
+    formalized yet, but there is a plan -- see the project dashboard);
   \item Prove that $K \subseteq \A_K$ is a discrete subgroup and the quotient
-    is compact;
-  \item Get this stuff into mathlib.
+    is compact (status: not formalized yet, but there is a plan -- see the project
+    dashboard);
+  \item Get this stuff into mathlib (status: (1) done, (2)--(4) not done).
 \end{enumerate}
 ```
 
@@ -1954,24 +1964,51 @@ The quotient $`\A_{\Q}/\Q` is compact.
 
 
 :::proof "Rat.AdeleRing.cocompact"
-The space $`\prod_p\Z_p\times[0,1]` is a product of compact spaces
-and is hence compact. I claim that it surjects onto $`\A_{\Q}/\Q`. Indeed,
+The space $`\prod_p\Z_p\times[0,1]\subseteq\A_{\Q}` is a product of compact
+spaces and is hence compact. I claim that it surjects onto $`\A_{\Q}/\Q`. Indeed,
 if $`a\in\A_{\Q}` then for the finitely many prime numbers $`p\in S` such that $`a_p\not\in\Z_p`
-we have $`a_p\in\frac{r_p}{p^{n_p}}+\Z_p` with $`r_p/p^{n_p}\in\Q`.
-If we set $`q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q`, then
-$`a-q\in \prod_p\Z_p\times\R`. Subtracting $`\lfloor a_{\infty}-q\rfloor` moves
-the archimedean coordinate into $`\prod_p\Z_p\times[0,1)`, so every class in
-$`\A_{\Q}/\Q` has a representative in the compact set.
+we have $`a_p\in\frac{r_p}{p^{n_p}}+\Z_p` with $`r_p/p^{n_p}\in\Q`, and if
+$`q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q` then
+$`a-q\in \prod_p\Z_p\times\R`. Now just subtract
+$`\lfloor a_{\infty}-q\rfloor` to move into $`\prod_p\Z_p\times[0,1)`, and we
+are done.
 :::
 ```tex
 \begin{proof}
   The space $\prod_p\Z_p\times[0,1]\subseteq\A_{\Q}$ is a product of compact spaces
   and is hence compact. I claim that it surjects onto $\A_{\Q}/\Q$. Indeed,
   if $a\in\A_{\Q}$ then for the finitely many prime numbers $p\in S$ such that $a_p\not\in\Z_p$
-  we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$.
-  If we set $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$, then
-  $a-q\in \prod_p\Z_p\times\R$. Subtracting $\lfloor a_{\infty}-q\rfloor$ moves
-  the archimedean coordinate into $[0,1)$, so every class in $\A_{\Q}/\Q$ has a
-  representative in the compact set.
+  we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$, and
+  if $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$ then $a-q\in \prod_p\Z_p\times\R$.
+  Now just subtract $\lfloor a_{\infty}-q\rfloor$ to move into $\prod_p\Z_p\times[0,1)$
+  and we are done.
+\end{proof}
+```
+
+:::theorem "NumberField.AdeleRing.cocompact" (parent := "adele_project") (lean := "NumberField.AdeleRing.cocompact") (uses := "Rat.AdeleRing.cocompact, NumberField.AdeleRing.baseChangeEquiv")
+The quotient $`\A_K/K` is compact.
+:::
+
+```tex "NumberField.AdeleRing.cocompact" (slot := statement)
+\begin{theorem}
+  \lean{NumberField.AdeleRing.cocompact}
+  \label{NumberField.AdeleRing.cocompact}
+  \uses{Rat.AdeleRing.cocompact,NumberField.AdeleRing.baseChangeEquiv}
+  \leanok
+  The quotient $\A_K/K$ is compact.
+\end{theorem}
+```
+
+:::proof "NumberField.AdeleRing.cocompact"
+We proceed as in the discreteness proof above, by reducing to $`\Q`. As before,
+choosing a $`\Q`-basis of `K` gives us
+$`\A_K/K\cong(\A_{\Q}/\Q)^n`, so the result follows from the previous theorem.
+:::
+
+```tex "NumberField.AdeleRing.cocompact" (slot := proof)
+\begin{proof}
+  We proceed as in the discreteness proof above, by reducing to $\Q$. As before, choosing
+  a $\Q$-basis of $K$ gives us $\A_K/K\cong(\A_{\Q}/\Q)^n$ so the result follows from
+  the previous theorem.
 \end{proof}
 ```

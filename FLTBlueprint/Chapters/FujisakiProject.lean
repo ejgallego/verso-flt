@@ -37,30 +37,6 @@ miniproject we will use this compactness result to prove finite-dimensionality o
 space of quaternionic modular forms.
 ```
 
-The compact quotient theorem for a division algebra is meant to be the
-noncommutative analogue of the classical compactness of
-$`K \backslash \mathbf{A}_K`.
-
-```tex
-The compact quotient theorem for a division algebra is meant to be the
-noncommutative analogue of the classical compactness of
-$`K \backslash \mathbf{A}_K`.
-```
-
-The TeX chapter uses this analogy repeatedly. The quotient
-$`K \backslash \mathbf{A}_K` is the model case: a global field
-embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
-for the same style of compactness after replacing the commutative additive group
-by the norm-one units in an adelic division algebra.
-
-```tex
-The TeX chapter uses this analogy repeatedly. The quotient
-$`K \backslash \mathbf{A}_K` is the model case: a global field
-embedded discretely in its adeles with compact quotient. Fujisaki's lemma asks
-for the same style of compactness after replacing the commutative additive group
-by the norm-one units in an adelic division algebra.
-```
-
 # Initial definitions
 
 Let `K` be a field. A central simple `K`-algebra is a `K`-algebra `B` not

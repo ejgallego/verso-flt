@@ -2,6 +2,7 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import FLTBlueprint.TeXPrelude
+import FLT.DivisionAlgebra.Finiteness
 import FLT.Mathlib.MeasureTheory.Measure.Regular
 import FLT.HaarMeasure.HaarChar.AdeleRing
 
@@ -579,21 +580,31 @@ continuous from lemma, and thus $`\delta_R` is too.
 \end{proof}
 ```
 
+:::lemma_ "MeasureTheory.ringHaarChar_padic" (parent := "haar_character_project") (lean := "MeasureTheory.ringHaarChar_padic")
 If $`R=\Q_p` then $`\delta_R(u)=|u|_p`, the usual $`p`-adic norm.
+:::
 
-```tex
-If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
+```tex "MeasureTheory.ringHaarChar_padic" (slot := statement)
+\begin{lemma}
+  \label{MeasureTheory.ringHaarChar_padic}
+  \lean{MeasureTheory.ringHaarChar_padic}
+  \leanok
+  If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm.
+\end{lemma}
 ```
 
-Normalize Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
-$`u\Z_p=\Z_p` so multiplication by `u` does not change Haar measure. If however
+:::proof "MeasureTheory.ringHaarChar_padic" (uses := "MeasureTheory.ringHaarChar_mul_volume")
+Normalise Haar measure so that $`μ(\Z_p)=1`. If `u` is a `p`-adic unit then
+$`u\Z_p=\Z_p` so multiplication by `u` didn't change Haar measure. If however
 $`u = p` then $`u\Z_p` has index `p` in $`\Z_p`, and because
 $`μ(i+p\Z_p)=μ(p\Z_p)` we have that $`μ(\Z_p)=pμ(p\Z_p)` and thus
 $`δ(p)=p^{-1}`. These elements generate $`\Q_p^\times`, and two characters
 which agree on generators of a group must agree on the group.
+:::
 
-```tex "padic_haar_character_formula" (slot := proof)
+```tex "MeasureTheory.ringHaarChar_padic" (slot := proof)
 \begin{proof}
+  \uses{MeasureTheory.ringHaarChar_mul_volume}
   \leanok
   Normalise Haar measure so that $\mu(\Z_p)=1$.
   If $u$ is a $p$-adic unit then $u\Z_p=\Z_p$ so multiplication by $u$ didn't change
@@ -1389,6 +1400,106 @@ applies.
 
 # Adeles
 
+We finish this miniproject by proving some results about Haar characters for
+algebras over adele rings. So let `K` be a number field and let $`\A_K` be the
+adeles of `K`. We will prove some theorems about $`\A_K`-algebras `R` which are
+finite and free as $`\A_K`-modules. Such algebras can be given the
+$`\A_K`-module topology, and this makes them into locally compact topological
+rings. In fact we shall only be concerned in applications with algebras of the
+form $`B\otimes_K\A_K` where `B` is a finite-dimensional `K`-algebra. So fix
+such a `B`, and write $`B_{\A}` for $`B\otimes_K\A_K`. Let us first deal with a
+subtlety. Recall that if $`K\subseteq L` are number fields, then $`\A_L` is a
+module-finite $`\A_K`-algebra and hence an $`\A_K`-module, and theorem
+{bpref "NumberField.AdeleRing.baseChange_moduleTopology"}[] tells us that
+$`\A_L` has the $`\A_K`-module topology. Thus the next lemma applies.
+
+```tex
+We finish this miniproject by proving some results about Haar characters for
+algebras over adele rings.
+So let $K$ be a number field and let $\A_K$ be the adeles of $K$.
+We will prove some theorems about $\A_K$-algebras $R$ which are finite
+and free as $\A_K$-modules. Such algebras can be given the $\A_K$-module topology
+and this makes them into locally compact topological rings. In fact we shall only be concerned
+in applications with algebras of the form $B\otimes_K\A_K$ where $B$ is a finite-dimensional
+$K$-algebra. So fix such a $B$, and write $B_{\A}$ for $B\otimes_K\A_K$. Let us first
+deal with a subtlety. Recall that if $K\subseteq L$ are number fields, then $\A_L$ is a
+module-finite $\A_K$-algebra and hence an $\A_K$-module, and
+theorem~\ref{NumberField.AdeleRing.baseChange_moduleTopology}
+tells us that $\A_L$ has the $\A_K$-module topology. Thus the next lemma applies.
+```
+
+:::lemma_ "IsModuleTopology.continuous_bilinear_of_finite_left" (parent := "haar_character_project") (lean := "IsModuleTopology.continuous_bilinear_of_finite_left")
+Say `R` and `S` are topological rings, and `S` is an `R`-algebra, finite as an
+`R`-module. Assume that the topology on `S` is the `R`-module topology. Now say
+`M` is an `S`-module, and give it the induced `R`-module structure. Then the
+`R`-module topology and `S`-module topology on `M` coincide.
+:::
+
+```tex "IsModuleTopology.continuous_bilinear_of_finite_left" (slot := statement)
+\begin{lemma}
+  \label{IsModuleTopology.continuous_bilinear_of_finite_left}
+  \lean{IsModuleTopology.continuous_bilinear_of_finite_left}
+  \leanok
+  Say $R$ and $S$ are topological rings, and $S$ is an $R$-algebra, finite as an $R$-module.
+  Assume that the topology
+  on $S$ is the $R$-module topology. Now say $M$ is an $S$-module, and give it the induced
+  $R$-module structure. Then the $R$-module topology and $S$-module topology on~$M$ coincide.
+\end{lemma}
+```
+
+:::proof "IsModuleTopology.continuous_bilinear_of_finite_left"
+Let $`i:R\to S` denote the structure map. First observe that `S` has the
+`R`-module topology, so the `R`-action map $`R\times S\to S`, explicitly
+defined by $`(r,s)\mapsto i(r)s`, is continuous, and restricting to $`s=1` we
+deduce that `i` is continuous.
+
+Now let $`M_R` and $`M_S` denote `M` with the `R`-module and `S`-module
+topologies respectively. It suffices to prove that the identity maps
+$`M_R\to M_S` and $`M_S\to M_R` are continuous. Equivalently, because the
+`A`-module topology on an `A`-module is the finest topology making it into a
+topological module, we need to prove that $`M_R` is a topological `S`-module
+and that $`M_S` is a topological `R`-module. We start with the latter claim.
+
+First observe that $`M_S` is a topological `S`-module, so addition is
+continuous. Next note that the map $`R\times M_S\to M_S` factors through
+$`S\times M_S` and is hence the composite of two continuous maps and thus
+continuous. Hence $`M_S` is a topological `R`-module.
+
+It thus remains to check that $`M_R` is a topological `S`-module, or
+equivalently that the map $`S\times M_R\to M_R` is continuous. But this map is
+`R`-bilinear, and by the result
+`Module.continuous_bilinear_of_finite` in `mathlib`, any `R`-bilinear map
+between modules with the `R`-module topology is automatically continuous if
+one of the source modules is finitely-generated. The result applies because
+`S` is assumed to be a finite `R`-module and the proof is complete.
+:::
+
+```tex "IsModuleTopology.continuous_bilinear_of_finite_left" (slot := proof)
+\begin{proof}
+  \leanok
+  Let $i:R\to S$ denote the structure map. First observe that $S$ has the $R$-module topology
+  so the $R$-action map $R\times S\to S$ (explicitly defined by $(r,s)\mapsto i(r)s$)
+  is continuous, and restricting to $s=1$ we deduce that $i$ is continuous.
+
+  Now let $M_R$ and $M_S$ denote $M$ with the $R$-module and $S$-module topologies respectively.
+  It suffices to prove that the identity maps $M_R\to M_S$ and $M_S\to M_R$ are continuous.
+  Equivalently, because the $A$-module topology on an $A$-module is the finest topology
+  making it into a topological module, we need to prove that $M_R$ is a topological $S$-module
+  and that $M_S$ is a topological $R$-module. We start with the latter claim.
+
+  First observe that $M_S$ is a topological $S$-module, so addition is continuous.
+  Next note that the map $R\times M_S\to M_S$ factors through $S\times M_S$ and is hence the
+  composite of two continuous maps and thus continuous. Hence $M_S$ is a topological $R$-module.
+
+  It thus remains to check that $M_R$ is a topological $S$-module, or equivalently
+  that the map $S\times M_R\to M_R$ is continuous. But this map is $R$-bilinear, and
+  by the result {\tt Module.continuous\_bilinear\_of\_finite} in {\tt mathlib}, any
+  $R$-bilinear map between modules with the $R$-module topology is automatically continuous
+  if one of the source modules is finitely-generated. The result applies because $S$ is
+  assumed to be a finite $R$-module and the proof is complete.
+\end{proof}
+```
+
 :::corollary "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.ModuleBaseChangeContinuousLinearEquiv")
 If `K` is a number field and `V` is a `K`-module, then the natural isomorphism
 $`V \otimes_K \A_K = V \otimes_{\Q} \A_{\Q}` induced by the natural isomorphism
@@ -1430,7 +1541,7 @@ only for $`K/\Q`.
 \end{proof}
 ```
 
-:::theorem "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (parent := "haar_character_project")
+:::theorem "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (parent := "haar_character_project") (lean := "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul")
 Let `B` be a finite-dimensional central simple `K`-algebra. Say $`u ∈ B_{\A}^\times`,
 and define $`\ell_u` and $`r_u : B_{\A} → B_{\A}` by $`\ell_u(x)=ux` and
 $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
@@ -1439,6 +1550,7 @@ $`r_u(x)=xu`. Then $`d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)`.
 ```tex "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" (slot := statement)
 \begin{theorem}
   \label{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
+  \lean{NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul}
   \leanok
   Let $B$ be a finite-dimensional central simple $K$-algebra.
   Say $u\in B_{\A}^\times$, and define $\ell_u$ and $r_u:B_{\A}\to B_{\A}$ by

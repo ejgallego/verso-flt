@@ -134,19 +134,18 @@ In particular, it is possible to talk about mod $p^n$ and $p$-adic automorphic f
 
 # Brief introduction to automorphic forms in this setting
 
-Having made assumptions on $`D` which make the theory of automorphic forms over
-$`D^\times` far less technical, we will now make it a little more technical by
-using the modern adelic approach to the theory. Note that many results about
-the adeles of a number field are proved in the adele miniproject. Our
-automorphic forms will be certain functions on the units of the ring
-$`D_{\A^\infty} := D \otimes_F \A_F^\infty \cong D \otimes_{\Q} \A_{\Q}^\infty`.
+Having made assumptions on $`D` which makes the theory of automorphic forms over
+$`D^\times` far less technical, we will now make it a little more technical by using the modern adelic
+approach to the theory. Note that many results about the adeles of a number field are proved
+in the adele miniproject (section {bpref "Adele_miniproject"}[]). Our automorphic forms will be certain
+functions on the units of the ring $`D_{\A^\infty}:=D\otimes_F\A_F^\infty\cong D\otimes_{\Q}\A_{\Q}^\infty`.
 
 ```tex
-Having made assumptions on $D$ which make the theory of automorphic forms over
-$D^\times$ far less technical, we will now make it a little more technical by
-using the modern adelic approach to the theory. Note that many results about
-the adeles of a number field are proved in the adele miniproject. Our
-automorphic forms will be certain functions on the units of the ring
+Having made assumptions on $D$ which makes the theory of automorphic forms over $D^\times$
+far less technical, we will now make it a little more technical by using the modern adelic
+approach to the theory. Note that many results about the adeles of a number field are proved
+in the adele miniproject (section \ref{Adele_miniproject}). Our automorphic forms will be certain
+functions on the units of the ring
 $D_{\A^\infty}:=D\otimes_F\A_F^\infty\cong D\otimes_{\Q}\A_{\Q}^\infty$.
 ```
 
@@ -198,78 +197,21 @@ are a topological group. This group is locally profinite, and hence has many com
 we will see explicit examples later on.
 ```
 
-We regard $`\A_F^\infty` as a subring of
-$`D_{\A^\infty} := D \otimes_F \A_F^\infty`, which is possible because $`F` is
-a subring of $`D`. More precisely, we embed $`\A_F^\infty` into
-$`D \otimes_F \A_F^\infty` via the map sending $`g` to $`1 \otimes g`.
-Because $`F` is in the centre of $`D`, we have that $`\A_F^\infty` is in the
-centre of $`D_{\A^\infty}`. As a consequence we can identify
-$`(\A_F^\infty)^\times` as a subgroup of $`(D \otimes_F \A_F^\infty)^\times`.
-We may also regard $`D` as a subring of $`D \otimes_F \A_F^\infty` via the map
-$`d \mapsto d \otimes 1`, and hence we can think of $`D^\times` as a subgroup
-of $`(D \otimes_F \A_F^\infty)^\times`.
-
-```tex
-We regard $\A_F^\infty$ as a subring of
-$D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because $F$ is a
-subring of $D$. More precisely, we embed $\A_F^\infty$ into
-$D\otimes_F\A_F^\infty$ via the map sending $g$ to $1\otimes g$. Because $F$ is
-in the centre of $D$, we have that $\A_F^\infty$ is in the centre of
-$D_{\A^\infty}$. As a consequence we can identify $(\A_F^\infty)^\times$ as a
-subgroup of $(D\otimes_F\A_F^\infty)^\times$. We may also regard $D$ as a
-subring of $D\otimes_F\A_F^\infty$ via the map $d\mapsto d\otimes 1$, and hence
-we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
-```
-
-Let $`R` be an additive commutative group. Later on $`R` will be a commutative
-ring but we will not need this for the definition.
-
-```tex
-Let $R$ be an additive commutative group. Later on $R$ will be a commutative
-ring but we will not need this for the definition.
-```
-
-Let us now give some precise definitions. Recall that by $`\A_F^\infty` we mean
-the finite adeles of the totally real number field $`F`.
-
-```tex
-Let us now give some precise definitions. Recall that by $\A_F^\infty$ we mean
-the finite adeles of the totally real number field $F$.
-```
-
-A level is a compact open subgroup $`U` of $`(D\otimes_F\A_F^\infty)^\times`.
-These are plentiful. The ring $`D_f:=D\otimes_F\A_F^\infty` is a topological
-ring, and hence the units $`D_f^\times` of this ring are a topological group.
-This group is locally profinite, and hence has many compact open subgroups; we
-will see explicit examples later on.
-
-```tex
-A level is a compact open subgroup~$U$ of $(D\otimes_F\A_F^\infty)^\times$.
-These are plentiful. The ring $D_f:=D\otimes_F\A_F^\infty$ is a topological
-ring, and hence the units $D_f^\times$ of this ring are a topological group.
-This group is locally profinite, and hence has many compact open subgroups; we
-will see explicit examples later on.
-```
-
-We regard $`\A_F^\infty` as a subring of
-$`D_{\A^\infty}:=D\otimes_F\A_F^\infty`, which is possible because $`F` is a
-subring of $`D`. More precisely, we embed $`\A_F^\infty` into
-$`D\otimes_F\A_F^\infty` via the map sending $`g` to $`1\otimes g`. Because $`F` is
-in the centre of $`D`, we have that $`\A_F^\infty` is in the centre of
-$`D_{\A^\infty}`. As a consequence we can identify $`(\A_F^\infty)^\times` as a
-subgroup of $`(D\otimes_F\A_F^\infty)^\times`. We may also regard $`D` as a
-subring of $`D\otimes_F\A_F^\infty` via the map $`d\mapsto d\otimes 1`, and hence
+We regard $`\A_F^\infty` as a subring of $`D_{\A^\infty}:=D\otimes_F\A_F^\infty`, which is possible because
+$`F` is a subring of $`D`. More precisely we embed $`\A_F^\infty` into $`D\otimes_F\A_F^\infty`
+via the map sending $`g` to $`1\otimes g`. Because $`F` is in the centre of $`D`, we have
+that $`\A_F^\infty` is in the centre of $`D_{\A^\infty}` (in fact it is the centre, but we do not need this).
+As a consequence we can identify $`(\A_F^\infty)^\times` as a subgroup of $`(D\otimes_F\A_F^\infty)^\times`.
+We may also regard $`D` as a subring of $`D\otimes_F\A_F^\infty` via the map $`d\mapsto d\otimes 1`, and hence
 we can think of $`D^\times` as a subgroup of $`(D\otimes_F\A_F^\infty)^\times`.
 
 ```tex
-We regard $\A_F^\infty$ as a subring of
-$D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because $F$ is a
-subring of $D$. More precisely, we embed $\A_F^\infty$ into
-$D\otimes_F\A_F^\infty$ via the map sending $g$ to $1\otimes g$. Because $F$ is
-in the centre of $D$, we have that $\A_F^\infty$ is in the centre of
-$D_{\A^\infty}$. As a consequence we can identify $(\A_F^\infty)^\times$ as a
-subgroup of $(D\otimes_F\A_F^\infty)^\times$. We may also regard $D$ as a
-subring of $D\otimes_F\A_F^\infty$ via the map $d\mapsto d\otimes 1$, and hence
+We regard $\A_F^\infty$ as a subring of $D_{\A^\infty}:=D\otimes_F\A_F^\infty$, which is possible because
+$F$ is a subring of $D$. More precisely we embed $\A_F^\infty$ into $D\otimes_F\A_F^\infty$
+via the map sending $g$ to $1\otimes g$. Because $F$ is in the centre of~$D$, we have
+that $\A_F^\infty$ is in the centre of $D_{\A^\infty}$ (in fact it is the centre, but we do not need this).
+As a consequence we can identify $(\A_F^\infty)^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
+We may also regard $D$ as a subring of $D\otimes_F\A_F^\infty$ via the map $d\mapsto d\otimes 1$, and hence
 we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
 ```
 
@@ -296,7 +238,7 @@ functions $`f:D_{\A^\infty}^\times\to R` satisfying the following axioms:
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
   \leanok
-  The space of $R$-valued *automorphic forms* for $D^\times$ is the set of
+  The space of $R$-valued \emph{automorphic forms} for $D^\times$ is the set of
   functions $f:D_{\A^\infty}^\times\to R$ satisfying the following axioms:
   \begin{itemize}
     \item $f(dg)=f(g)$ for all $d\in D^\times$ and $g\in D_{\A^\infty}^\times$.
@@ -307,13 +249,14 @@ functions $`f:D_{\A^\infty}^\times\to R` satisfying the following axioms:
 \end{definition}
 ```
 
-Let $`S^D(R)` denote the set of automorphic forms for $`D^\times`. The space
-$`S^D(R)` is sometimes referred to as a space of "quaternionic modular forms"
-over $`R`. Three basic observations about $`S^D(R)` are as follows.
+Let $`S^D(R)` denote the set of automorphic forms for $`D^\times`. The space $`S^D(R)` is sometimes referred to as a space of
+“quaternionic modular forms” over $`R`.
+Three basic observations about $`S^D(R)` are
 
 ```tex
 Let $S^D(R)$ denote the set of automorphic forms for $D^\times$. The space $S^D(R)$ is sometimes referred to as a space of
-quaternionic modular forms over $R$. Three basic observations about $S^D(R)$ are as follows.
+``quaternionic modular forms'' over $R$.
+Three basic observations about $S^D(R)$ are
 ```
 
 :::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup")
@@ -328,7 +271,7 @@ additive abelian group. This depends on
   \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
   \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
   \leanok
-  Pointwise addition $(f_1 + f_2)(g) := f_1(g) + f_2(g)$ makes $S^D(R)$ into an
+  Pointwise addition $(f_1+f_2)(g):=f_1(g)+f_2(g)$ makes $S^D(R)$ into an
   additive abelian group.
 \end{definition}
 ```
@@ -368,7 +311,7 @@ by $`(g \cdot f)(x) = f(xg)`. This depends on
     TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
     TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
   \leanok
-  The group $D_{\A^f}^\times$ acts on the additive abelian group $S^D(R)$ by $(g \cdot f)(x) = f(xg)$.
+  The group $D_{\A^f}^\times$ acts on the additive abelian group $S^D(R)$ by $(g\cdot f)(x)=f(xg)$.
 \end{definition}
 ```
 
@@ -386,7 +329,7 @@ $`D_{\A^\infty}^\times`.
 Now let $U$ be a level, that is, a compact open subgroup of $D_{\A^\infty}^\times$.
 ```
 
-:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form")
+:::definition "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form")
 The quaternionic modular forms of level $`U`, with notation $`S^D(U;R)`, are
 the $`U`-invariants for the $`D_{\A^\infty}^\times`-action on $`S^D(R)`. This
 depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
@@ -395,10 +338,10 @@ depends on {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"}[],
 {uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"}[].
 :::
 
-```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form" (slot := statement)
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" (slot := statement)
 \begin{definition}
   \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
   \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
     TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
     TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction,
@@ -434,39 +377,34 @@ of that classical claim, although of course the Jacquet--Langlands theorem is
 much much harder to prove than the classical proof of finite-dimensionality.
 ```
 
-:::theorem "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite")
+:::theorem "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (parent := "quaternion_algebra_project") (lean := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.instFiniteSubtypeMemSubmoduleFormOfIsSufficientlySmallOfIsFinite") (uses := "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel, TotallyDefiniteQuaternionAlgebra.instIsFinite")
 Let $`k` be a field. Then the space $`S^D(U;k)` is a finite-dimensional
-$`k`-vector space. This depends on
-{uses "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form"}[] and
-{uses "TotallyDefiniteQuaternionAlgebra.finite_doubleCoset"}[].
+$`k`-vector space.
 :::
 
-```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite" (slot := statement)
+```tex "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (slot := statement)
 \begin{theorem}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite}
+  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.instFiniteSubtypeMemSubmoduleFormOfIsSufficientlySmallOfIsFinite}
+  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
   \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.form,
-    TotallyDefiniteQuaternionAlgebra.finite_doubleCoset}
+    TotallyDefiniteQuaternionAlgebra.instIsFinite}
   Let $k$ be a field. Then the space $S^D(U;k)$ is a finite-dimensional $k$-vector space.
 \end{theorem}
 ```
 
-:::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite"
+:::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (uses := "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact, NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset")
 The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
-proved in the Fujisaki miniproject {bpref "Fujisaki_project"}[].
-{uses "TotallyDefiniteQuaternionAlgebra.finite_doubleCoset"}[],
-{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[], and
-{uses "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"}[].
+proved in the Fukisaki miniproject, chapter {bpref "Fujisaki_project"}[].
 Write $`(D \otimes_F \A_F^\infty)^\times`
 as a disjoint union of double cosets $`\coprod_i D^\times g_i U`. This open
 cover descends to a disjoint open cover of
 $`D^\times \backslash (D \otimes_F \A_F^\infty)^\times`, and this latter space
-is compact by {uses "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]. Hence the cover
+is compact by theorem {bpref "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"}[]. Hence the cover
 is finite; write the double coset representatives as $`g_1, g_2, \ldots, g_n`.
 
-We claim that the function $`S^D(U;k) \to k^n` sending $`f` to
+We claim that the function $`S^D(U;k) \to W^n` sending $`f` to
 $`(f(g_1), f(g_2), \ldots, f(g_n))` is injective and $`k`-linear, which
-suffices by finite-dimensionality of $`k^n`. $`k`-linearity is easy, so let us
+suffices by finite-dimensionality of $`W`. $`k`-linearity is easy, so let us
 talk about injectivity.
 
 Say $`f_1` and $`f_2` are two elements of $`S^D(U;k)` which agree on each
@@ -481,9 +419,8 @@ that $`f_1(g) = f_2(g)` as required.
 
 ```tex
 \begin{proof}
-  \proves{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.IsFinite}
-  \uses{TotallyDefiniteQuaternionAlgebra.finite_doubleCoset,
-  NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact,
+  \proves{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.instFiniteSubtypeMemSubmoduleFormOfIsSufficientlySmallOfIsFinite}
+  \uses{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact,
   NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
   The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
   proved in the Fukisaki miniproject, chapter~\ref{Fujisaki_project}.
@@ -500,7 +437,7 @@ that $`f_1(g) = f_2(g)` as required.
   Say $f_1$ and $f_2$ are two elements of $S^D(U;k)$ which agree on
   each $g_i$. It suffices to prove that $f_1(g)=f_2(g)$ for all
   $g\in(D\otimes_F\A_F^\infty)^\times$. So say $g\in(D\otimes_F\A_F^\infty)^\times$,
-  and write $g=\delta g_i u$ for $\delta \in D^\times$ and $u\in U$.
+  and write $g=\delta g_iu$ for $\delta \in D^\times$ and $u\in U$.
   Then $f_1(g)=f_1(\delta g_iu)=f_1(g_i)$ (by the definition of $S^D(U;k)$), and similarly $f_2(g)=f_2(g_i)$
   and because $f_1(g_i)=f_2(g_i)$ by assumption, we deduce $f_1(g)=f_2(g)$ as required.
 \end{proof}
