@@ -184,7 +184,7 @@ exists a Frey package.
 ```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (slot := statement)
 \begin{lemma}
   \label{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
-  \lean{FreyPackage.of_not_FermatLastTheoremFor_p_ge_5}
+  \lean{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
   \leanok
   \discussion{19}
   If Fermat's Last Theorem is false for $p \ge 5$ and prime, then there exists a Frey package.
@@ -418,7 +418,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```tex "Mazur_Frey" (slot := statement)
 \begin{theorem}[Mazur]
   \label{Mazur_Frey}
-  \lean{FreyPackage.mazur}
+  \lean{Mazur_Frey}
   \uses{FreyCurve}
   \leanok
   If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
@@ -467,7 +467,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```tex "Wiles_Frey" (slot := statement)
 \begin{theorem}[Wiles,Taylor--Wiles, Ribet,\ldots]
   \label{Wiles_Frey}
-  \lean{FreyCurve.torsion_not_isIrreducible}
+  \lean{Wiles_Frey}
   \uses{FreyCurve}
   \leanok
   If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
@@ -499,7 +499,9 @@ There is no Frey package.
 ```tex "FreyPackage.false" (slot := statement)
 \begin{corollary}
   \label{FreyPackage.false}
+  \lean{FreyPackage.false}
   \uses{Mazur_Frey, Wiles_Frey}
+  \leanok
   There is no Frey package.
 \end{corollary}
 ```
@@ -529,6 +531,8 @@ Fermat's Last Theorem is true. In other words, there are no positive integers
 ```tex "FLT" (slot := statement)
 \begin{corollary}
   \label{FLT}
+  \lean{Wiles_Taylor_Wiles}
+  \leanok
   Fermat's Last Theorem is true. In other words, there are no positive integers $a,b,c$ and
   natural $n\geq3$ such that $a^n+b^n=c^n$.
 \end{corollary}

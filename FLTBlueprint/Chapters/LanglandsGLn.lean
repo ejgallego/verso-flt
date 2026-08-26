@@ -72,7 +72,7 @@ topological group, where we are being a bit liberal with our use of the equality
 
 # Smooth Functions
 
-:::definition "AutomorphicForm.GLn.IsSmooth" (parent := "gln_langlands_program")
+:::definition "AutomorphicForm.GLn.IsSmooth" (parent := "gln_langlands_program") (lean := "AutomorphicForm.GLn.IsSmooth")
 A function $`f : \GL_n(\A_{\Q}^f) \times \GL_n(\R) \to \bbC` is smooth if it has
 the following three properties:
 
@@ -86,6 +86,7 @@ the following three properties:
 
 \begin{definition}
   \label{AutomorphicForm.GLn.IsSmooth}
+  \lean{AutomorphicForm.GLn.IsSmooth}
   A function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is \emph{smooth}
   if it has the following three properties.
 

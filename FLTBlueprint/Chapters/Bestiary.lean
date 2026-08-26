@@ -472,7 +472,7 @@ following conditions.
         \item $\phi$ is right-$U_\infty$-finite (that is, the space spanned by $x\mapsto \phi(xu)$ as $u$ varies over $U_\infty$ is finite-dimensional);
         \item $\phi$ is right $K_f$-finite, where $K_f$ is one (or equivalently all) compact open subgroups of $G(\A_N^f)$;
         \item $\phi$ is $\mathcal{z}$-finite, where $\mathcal{z}$ is the centre of the universal enveloping algebra of the Lie algebra of $G(N_\infty)$, acting via differential operators. Equivalently $\phi$ is annihiliated by a finite index ideal of this centre, so morally $\phi$ satisfies lots of differential equations of a certain type;
-        \item For all $g_f$, the function $g_\infty\mapsto \phi(g_f g\infty)$ is slowly-increasing.
+        \item For all $g_f$, the function $g_\infty\mapsto \phi(g_f g\infty)$ is slowly-increasing in the sense above.
     \end{itemize}
 \end{definition}
 ```
@@ -688,6 +688,6 @@ polynomial with roots the two Satake parameters for $`\pi` at $`\mathfrak p`.
 :::
 
 ```tex "Galois_representation_from_automorphic_representation_on_GL_2_form" (slot := statement)
-\begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation `\pi` for an inner form of `\GL_2` over a totally real field and with reflex field~`E`, such that `\pi` is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to `\pi`, with `S` being the places at which `\pi` is ramified, and `F_{\p}(X)` being the monic polynomial with roots the two Satake parameters for `\pi` at `\p`.
+\begin{theorem}\label{Galois_representation_from_automorphic_representation_on_GL_2_form}\uses{automorphic_representation,Shimura_varieties,compatible_family}\notready Given an automorphic representation $\pi$ for an inner form of $\GL_2$ over a totally real field and with reflex field~$E$, such that $\pi$ is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to $\pi$, with $S$ being the places at which $\pi$ is ramified, and $F_{\p}(X)$ being the monic polynomial with roots the two Satake parameters for $\pi$ at $\p$.
 \end{theorem}
 ```

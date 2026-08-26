@@ -1146,7 +1146,7 @@ minimality of $`g`.
   well-known that $J=(g)$.
 
   I claim that it suffices to show that $x\Zhat=g\Zhat$. Because knowing
-  $g=yx$ and $x=gz$ for some $y,z\in\Zhat` tells us that
+  $g=yx$ and $x=gz$ for some $y,z\in\Zhat$ tells us that
   $g(1-yz)=0$, and we know that multiplication by $g$ is injective, hence
   $yz=1$, so $z$ is a unit and we have written $x=gz$ with
   $g\in\Q^\times$ and $z\in\Zhat^\times$.
@@ -1154,8 +1154,8 @@ minimality of $`g`.
   It remains to prove the claim. By definition $g\in J\subseteq x\Zhat$ so this
   is one inclusion. For the other, it suffices to prove that $x_g=0$. However if
   $0<x_g<g$ lifts $x_g$ to the naturals then I claim that $x_g\in J$, for
-  $x_g-x$ is a multiple of $g$ and hence of $x$, and this contradicts
-  minimality of $g$.
+  $x_g-x$ is a multiple of~$g$ and hence of~$x$, and this contradicts
+  minimality of~$g$.
 \end{proof}
 ```
 

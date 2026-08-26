@@ -329,7 +329,7 @@ Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 ```tex "Wiles_Frey_again" (slot := statement)
 \begin{theorem}
   \label{Wiles_Frey_again}
-  \lean{FreyCurve.torsion_not_isIrreducible}
+  \lean{Wiles_Frey}
   \leanok
   If $\overline{\rho}$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
   $\overline{\rho}$ is reducible.
