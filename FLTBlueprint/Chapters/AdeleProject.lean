@@ -337,16 +337,16 @@ Standard (and formalized).
 \end{proof}
 ```
 
-:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
+:::definition "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.valuation_comap")
 There's a natural ring map $`K_v\to L_w` extending the map $`K\to L`. It is
 defined by completing the inclusion $`K\to L` at the finite places $`v` and
 $`w` (which can be done because the previous lemma shows that the map is
 uniformly continuous for the $`v`-adic and $`w`-adic topologies).
 :::
-```tex "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" (slot := statement)
+```tex "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom" (slot := statement)
 \begin{definition}
   \lean{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \label{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom}
   \uses{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
   \leanok
   There's a natural ring map $K_v\to L_w$ extending the map $K\to L$.
@@ -357,7 +357,7 @@ uniformly continuous for the $`v`-adic and $`w`-adic topologies).
 \end{definition}
 ```
 
-:::lemma_ "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.valuation_comap, IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.valuation_comap, IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom")
 If $`i_v:K_v\to L_w` denotes the map of the previous definition
 then for $`x\in K_v` we have
 $`e\times w(i(k))=v(k)`, where $`e` is the ramification index of $`w/v`.
@@ -365,9 +365,9 @@ $`e\times w(i(k))=v(k)`, where $`e` is the ramification index of $`w/v`.
 ```tex
 \begin{lemma}
   \lean{IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom}
-  \label{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
+  \label{IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom}
   \uses{IsDedekindDomain.HeightOneSpectrum.valuation_comap,
-  IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom}
   \leanok
   If $i_v:K_v\to L_w$ denotes the map of the previous definition
   then for $x\in K_v$ we have
@@ -375,7 +375,7 @@ $`e\times w(i(k))=v(k)`, where $`e` is the ramification index of $`w/v`.
 \end{lemma}
 ```
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"
+:::proof "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom"
 Follows by continuity from lemma {bpref "IsDedekindDomain.HeightOneSpectrum.valuation_comap"}[].
 :::
 
@@ -386,32 +386,32 @@ Follows by continuity from lemma {bpref "IsDedekindDomain.HeightOneSpectrum.valu
 \end{proof}
 ```
 
-:::lemma_ "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers") (uses := "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap")
+:::lemma_ "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers") (uses := "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom")
 The map $`i_v:K_v\to L_w` sends the integer ring $`A_v` into $`B_w`.
 :::
 ```tex
 \begin{lemma}
   \lean{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
-  \uses{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
+  \label{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers}
+  \uses{IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom}
   \leanok
   The map $i_v:K_v\to L_w$ sends the integer ring $A_v$ into $B_w$.
 \end{lemma}
 ```
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"
+:::proof "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers"
 The integer ring is defined by $`v\geq0` (or $`v\leq 1` in mathlib, which uses multiplicative
-valuations) so the result follows from {bpref "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"}[].
+valuations) so the result follows from {bpref "IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom"}[].
 :::
 ```tex
 \begin{proof}
   \leanok
   The integer ring is defined by $v\geq0$ (or $v\leq 1$ in mathlib, which uses multiplicative
-  valuations) so the result follows from \ref{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}.
+  valuations) so the result follows from \ref{IsDedekindDomain.HeightOneSpectrum.Extension.valued_adicCompletionSemialgHom}.
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology") (uses := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom")
 Giving $`L_w` the $`K_v`-algebra structure coming from the natural map
 $`K_v\to L_w`, the $`w`-adic topology on $`L_w` is the $`K_v`-module
 topology.
@@ -419,8 +419,8 @@ topology.
 ```tex
 \begin{theorem}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology}
+  \uses{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom}
   \leanok
   \discussion{326}
   Giving $L_w$ the $K_v$-algebra structure coming from the natural map $K_v\to L_w$,
@@ -429,7 +429,7 @@ topology.
 ```
 
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology"
 Any basis for $`L` as a $`K`-vector space spans $`L_w` as a $`K_v`-module,
 so $`L_w` is finite-dimensional over $`K_v` and the module topology is the
 same as the product topology. So we need to establish that the product topology on
@@ -511,15 +511,15 @@ We write $`w|v` to denote the fact that $`w` is a prime of $`B` above $`v` of $`
 We write $w|v$ to denote the fact that $w$ is a prime of $B$ above $v$ of $A$.
 ```
 
-:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom")
+:::definition "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi") (uses := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom")
 The product of the maps $`K_v\to L_w` for $`w|v` is a natural ring map
 $`K_v\to\prod_{w|v}L_w` lying over $`K\to L`.
 :::
-```tex "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" (slot := statement)
+```tex "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi" (slot := statement)
 \begin{definition}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi}
+  \uses{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom}
   \leanok
   The product of the maps $K_v\to L_w$ for $w|v$ is a natural ring map $K_v\to\prod_{w|v}L_w$
   lying over $K\to L$.
@@ -538,15 +538,15 @@ in this section. The proof is probably the hardest proof
 in this section to formalize.
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom', IsDedekindDomain.HeightOneSpectrum.Extension.finite")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi, IsDedekindDomain.HeightOneSpectrum.Extension.finite")
 The induced $`L`-algebra homomorphism
 $`L\otimes_KK_v\to\prod_{w|v}L_w` is an isomorphism of rings.
 :::
 ```tex
 \begin{theorem}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom',
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletion.semialgHomPi,
   IsDedekindDomain.HeightOneSpectrum.Extension.finite}
   \leanok
   The induced $L$-algebra homomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ is an
@@ -555,7 +555,7 @@ $`L\otimes_KK_v\to\prod_{w|v}L_w` is an isomorphism of rings.
 ```
 
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv"
 My current proposal to formalize this is as follows. The map is surjective
 because the image is dense and closed; this has been formalized already. It is
 also a $`K_v`-algebra homomorphism if we give $`L_w` the obvious $`K_v`-algebra
@@ -605,15 +605,15 @@ to have $`ef<n` and BGR goes into details.
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology")
 For $`v` fixed, the product topology on $`\prod_{w|v}L_w` is the
 $`K_v`-module topology.
 :::
 ```tex
 \begin{theorem}
-  \label{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology}
   \leanok
   For $v$ fixed, the product topology on $\prod_{w|v}L_w$ is the $K_v$-module
   topology.
@@ -621,9 +621,9 @@ $`K_v`-module topology.
 ```
 
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi"
 This is a finite product of $`K_v`-modules each of which has the $`K_v`-module
-topology by {bpref "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"}[],
+topology by {bpref "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology"}[],
 and the product topology is the module topology for a finite product of modules
 each of which has the module topology.
 :::
@@ -632,28 +632,28 @@ each of which has the module topology.
 \begin{proof}
   \leanok
   This is a finite product of $K_v$-modules each of which has the $K_v$-module topology
-  by~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology},
+  by~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopology},
   and the product topology is the module topology for a finite product of modules each of which
   has the module topology (this is in mathlib).
 \end{proof}
 ```
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi")
 If we give $`L\otimes_KK_v` the $`K_v`-module topology, then the `L`-algebra
 isomorphism $`L\otimes_K K_v\cong\prod_{w|v}L_w` is also a homeomorphism.
 :::
 ```tex
 \begin{theorem}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv}
+  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv}
   \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletion.instIsModuleTopologyPi}
   If we give $L\otimes_KK_v$ the $K_v$-module topology then the $L$-algebra isomorphism
   $L\otimes_K K_v\cong\prod_{w|v}L_w$ is also a homeomorphism.
 \end{theorem}
 ```
 
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv"
+:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeContinuousAlgEquiv"
 Indeed, it is a $`K_v`-algebra isomorphism between two modules each of which
 have the module topology, and any module map is automorphically continuous for
 the module topologies.
@@ -666,16 +666,16 @@ the module topologies.
 ```
 
 
-:::theorem "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.integerBaseChangeLinearEquiv_bijOn") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv")
+:::theorem "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi" (parent := "adele_project") (lean := "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv")
 The isomorphism $`L\otimes_KK_v\to\prod_{w|v}L_w` induces an isomorphism
 $`B\otimes_AA_v\to \prod_{w|v}B_w`
 for all $`v` in the height one spectrum of $`A`.
 :::
 ```tex
 \begin{theorem}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletion.integerBaseChangeLinearEquiv_bijOn}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
+  \lean{IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi}
+  \label{IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi}
+  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletion.baseChangeAlgEquiv}
   \leanok
   The isomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ induces an isomorphism
   $B\otimes_AA_v\to \prod_{w|v}B_w$
@@ -684,7 +684,7 @@ for all $`v` in the height one spectrum of $`A`.
 ```
 
 
-:::proof "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"
+:::proof "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi"
 Certainly the image of the integral elements are integral. The argument in the
 other direction is more delicate. My original plan was to follow
 Cassels--Froehlich, Cassels' article Global fields, section 12 lemma, p61,
@@ -739,22 +739,22 @@ Recall that the finite adeles $`\A_{A,K}^\infty` is defined in mathlib to be
 the restricted product of the $`K_v` with respect to the $`A_v`, equipped with a certain
 restricted product topology (which is not the subspace topology of the product
 topology, indeed $`\prod_v A_v` is open in this topology). We have seen in
-definition {bpref "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"}[] that
+definition {bpref "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom"}[] that
 there's a map $`K_v\to L_w` if $`w|v`, extending $`K\to L`, and we have seen in
-theorem {bpref "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"}[]
+theorem {bpref "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers"}[]
 that this sends $`A_v` to $`B_w`. We conclude
 ```tex
 Recall that the finite adeles $\A_{A,K}^\infty$ is defined in mathlib to be
 the restricted product of the $K_v$ with respect to the $A_v$, equipped with a certain
 restricted product topology (which is not the subspace topology of the product
 topology, indeed $\prod_v A_v$ is open in this topology). We have seen in
-definition~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom} that
+definition~\ref{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom} that
 there's a map $K_v\to L_w$ if $w|v$, extending $K\to L$, and we have seen in
-theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+theorem~\ref{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers}
 that this sends $A_v$ to $B_w$. We conclude
 ```
 
-:::definition "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom, IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers")
+:::definition "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom") (uses := "IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom, IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers")
 There's a natural ring homomorphism
 $`\A_{A,K}^\infty\to\A_{B,L}^\infty` lying over $`K\to L`.
 :::
@@ -762,8 +762,8 @@ $`\A_{A,K}^\infty\to\A_{B,L}^\infty` lying over $`K\to L`.
 \begin{definition}
   \label{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
   \lean{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom,
-  IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+  \uses{IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom,
+  IsDedekindDomain.HeightOneSpectrum.Extension.adicCompletionSemialgHom_image_adicCompletionIntegers}
   \leanok
   There's a natural ring homomorphism
   $\A_{A,K}^\infty\to\A_{B,L}^\infty$ lying over $K\to L$.
@@ -898,7 +898,7 @@ Our next goal in this section is the following two results. First the algebraic 
 ```
 
 
-:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral, RestrictedProduct.relabelIso, IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv, IsDedekindDomain.AKLB.tensorProduct_module_algEquiv")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi, RestrictedProduct.relabelIso, IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv, IsDedekindDomain.AKLB.tensorProduct_module_algEquiv")
 The natural map $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty` is an
 isomorphism.
 :::
@@ -906,7 +906,7 @@ isomorphism.
 \begin{theorem}
   \label{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
   \lean{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral,
+  \uses{IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi,
     RestrictedProduct.relabelIso,
     IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv,
     IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}
@@ -1031,13 +1031,13 @@ Let `V` be the finite places of `K` and `W` the finite places of `L`, let
 $`X_v` be $`B \otimes_A K_v`, let $`C_v` be $`B \otimes_A A_v`, let $`Y_w` be
 $`L_w`, let $`D_w` be $`B_w`, and the result follows from the previous
 definition, given theorem
-{bpref "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[].
+{bpref "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi"}[].
 :::
 ```tex
 \begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
   let $X_v$ be $B\otimes_A K_v$, let $C_v$ be $B\otimes_A A_v$, let $Y_w$ be $L_w$,
   let $D_w$ be $B_w$ and the result follows from the previous definition, given
-  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}.
+  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi}.
 \end{proof}
 ```
 
@@ -1149,13 +1149,13 @@ $`\mathbb{A}_L`.
 Let `V` be the finite places of `K` and `W` the finite places of `L`, let
 $`X_v` be $`B\otimes_A K_v`, let $`C_v` be $`B\otimes_A A_v`, let $`Y_w` be $`L_w`,
 let $`D_w` be $`B_w`, and the result follows from the previous definition, given
-theorem {bpref "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"}[].
+theorem {bpref "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi"}[].
 :::
 ```tex
 \begin{proof} Let $V$ be the finite places of $K$ and $W$ the finite places of $L$,
   let $X_v$ be $B\otimes_A K_v$, let $C_v$ be $B\otimes_A A_v$, let $Y_w$ be $L_w$,
   let $D_w$ be $B_w$ and the result follows from the previous definition, given
-  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}.
+  theorem~\ref{IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi}.
 \end{proof}
 ```
 
@@ -1220,7 +1220,7 @@ Now $L\otimes_K\A_{A,K}^\infty$ is an $\A_{A,K}^\infty$-module and hence can be 
 the $\A_{A,K}^\infty$-module topology. We also claim
 ```
 
-:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral")
+:::theorem "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" (parent := "adele_project") (lean := "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv") (uses := "IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi")
 The induced $`L`-algebra morphism
 $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty` is a topological isomorphism.
 :::
@@ -1228,7 +1228,7 @@ $`L \otimes_K \A_{A,K}^\infty \to \A_{B,L}^\infty` is a topological isomorphism.
 \begin{theorem}
   \label{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
   \lean{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
+  \uses{IsDedekindDomain.HeightOneSpectrum.range_baseChange_comp_tensorAdicCompletionTo_eq_pi}
   \leanok
 The induced $L$-algebra morphism
   $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is a topological isomorphism.
