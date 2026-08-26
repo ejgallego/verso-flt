@@ -176,7 +176,7 @@ Our next reduction is as follows.
 Our next reduction is as follows:
 ```
 
-:::lemma_ "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheorem_p_ge_5")
+:::lemma_ "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (parent := "first_reductions") (lean := "FreyPackage.of_not_FermatLastTheoremFor_p_ge_5")
 If Fermat's Last Theorem is false for `p` prime and $`p \ge 5`, then there
 exists a Frey package.
 :::
@@ -410,7 +410,7 @@ and we say that $\rho$ is the mod $p$ representation associated to the Frey pack
 Is it irreducible or not?
 ```
 
-:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "Mazur_Frey") (uses := "FreyCurve")
+:::theorem "Mazur_Frey" (parent := "first_reductions") (lean := "FreyPackage.mazur") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is irreducible.
 :::
@@ -459,7 +459,7 @@ a formalization of this result, as it was known in the 1980s. We will however be
 a lot about the next result, which says the exact opposite.
 ```
 
-:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "Wiles_Frey") (uses := "FreyCurve")
+:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "FreyCurve.torsion_not_isIrreducible") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is reducible.
 :::
@@ -492,7 +492,7 @@ representation is reducible.
 \end{proof}
 ```
 
-:::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FreyPackage.false") (uses := "Mazur_Frey, Wiles_Frey")
+:::corollary "FreyPackage.false" (parent := "first_reductions") (uses := "Mazur_Frey, Wiles_Frey")
 There is no Frey package.
 :::
 
@@ -523,7 +523,7 @@ We deduce.
 We deduce
 ```
 
-:::corollary "FLT" (parent := "first_reductions") (lean := "Wiles_Taylor_Wiles")
+:::corollary "FLT" (parent := "first_reductions")
 Fermat's Last Theorem is true. In other words, there are no positive integers
 `a`, `b`, and `c` and natural numbers `n >= 3` such that $`a^n+b^n=c^n`.
 :::
