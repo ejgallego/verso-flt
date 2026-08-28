@@ -2,8 +2,8 @@ import Lake
 open Lake DSL
 
 require FLT from "./FLT"
-require VersoBlueprint from git "https://github.com/leanprover/verso-blueprint.git" @ "v4.33.0"
-require mathlib from git "https://github.com/leanprover-community/mathlib4.git" @ "db584cd6d46c92f209a44c0f1c829460d327499d"
+require VersoBlueprint from git "https://github.com/leanprover/verso-blueprint.git" @ "v4.34.0"
+require mathlib from git "https://github.com/leanprover-community/mathlib4.git" @ "f30f4b18d1058ce1879f7254ef066ebaed3515f2"
 
 package FLTBlueprint where
   precompileModules := false

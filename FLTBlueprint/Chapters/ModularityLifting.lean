@@ -173,7 +173,7 @@ the index type being nonempty.
 :::
 
 ```tex "MatrixRing.isCentralSimple" (slot := proof)
-\begin{proof}\leanok
+\begin{proof}
 We prove more generally that matrices with coefficients in~$K$ and indexed by an arbitrary nonempty
 finite type are a central simple algebra over~$K$.
 
