@@ -21,11 +21,6 @@ default_chapters = [
   "FLTBlueprint/Chapters/HeckeOperators.lean",
   "FLTBlueprint/Chapters/Bestiary.lean",
 ]
-unresolved_lean_targets = [
-  "FreyPackage.false",
-  "Wiles_Taylor_Wiles",
-]
-
 [lt.source_files]
 "FLTBlueprint/Chapters/Introduction.lean" = ["FLT/blueprint/src/chapter/ch01introduction.tex"]
 "FLTBlueprint/Chapters/Reductions.lean" = ["FLT/blueprint/src/chapter/ch02reductions.tex"]
@@ -41,11 +36,6 @@ unresolved_lean_targets = [
 "FLTBlueprint/Chapters/QuaternionAlgebras.lean" = ["FLT/blueprint/src/chapter/QuaternionAlgebraProject.tex"]
 "FLTBlueprint/Chapters/HeckeOperators.lean" = ["FLT/blueprint/src/chapter/HeckeOperatorProject.tex"]
 "FLTBlueprint/Chapters/Bestiary.lean" = ["FLT/blueprint/src/chapter/chtopbestiary.tex"]
-
-[lt.lean_target_aliases]
-"FreyPackage.of_not_FermatLastTheorem_p_ge_5" = "FreyPackage.of_not_FermatLastTheoremFor_p_ge_5"
-"Mazur_Frey" = "FreyPackage.mazur"
-"Wiles_Frey" = "FreyCurve.torsion_not_isIrreducible"
 
 [lt.node_kinds]
 proposition = "theorem"

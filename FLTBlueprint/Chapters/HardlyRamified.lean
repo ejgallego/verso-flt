@@ -1,4 +1,5 @@
 import FLTBlueprint.Citations
+import FLT.Proof
 import FLT.GaloisRepresentation.HardlyRamified.Defs
 import FLT.GaloisRepresentation.HardlyRamified.Family
 import FLT.GaloisRepresentation.HardlyRamified.Frey
@@ -321,7 +322,7 @@ Serre's conjecture. Given this result, we can deduce Theorem~\ref{Wiles_Frey}
 (which we restate here) easily:
 ```
 
-:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program") (lean := "FreyCurve.torsion_not_isIrreducible")
+:::theorem "Wiles_Frey_again" (parent := "hardly_ramified_program") (lean := "FLT.Bosses.B4_proof")
 If $`\overline{\rho}` is the mod `p` Galois representation associated to a
 Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 :::
@@ -329,7 +330,7 @@ Frey package `(a,b,c,p)` then $`\overline{\rho}` is reducible.
 ```tex "Wiles_Frey_again" (slot := statement)
 \begin{theorem}
   \label{Wiles_Frey_again}
-  \lean{Wiles_Frey}
+  \lean{FLT.Bosses.B4_proof}
   \leanok
   If $\overline{\rho}$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
   $\overline{\rho}$ is reducible.
@@ -401,12 +402,12 @@ whose reduction modulo $`\mathfrak{m}` is isomorphic to $`\overline{\rho}`.
 ```
 
 :::proof "hardly_ramified_lifts"
-This theorem is formalized in Lean under the attached declaration.
+Omitted for now. **TODO**
 :::
 
 ```tex "hardly_ramified_lifts" (slot := proof)
 \begin{proof}
-  This theorem is formalized in Lean under the attached declaration.
+  Omitted for now {\bf TODO}
 \end{proof}
 ```
 
@@ -466,12 +467,12 @@ we mean the generic fibre is semisimple), with the following properties:
 ```
 
 :::proof "hardly_ramified_spreads_out"
-This theorem is formalized in Lean under the attached declaration.
+Omitted for now. **TODO**
 :::
 
 ```tex "hardly_ramified_spreads_out" (slot := proof)
 \begin{proof}
-  This theorem is formalized in Lean under the attached declaration.
+  Omitted for now {\bf TODO}
 \end{proof}
 ```
 
@@ -511,12 +512,12 @@ representation.
 ```
 
 :::proof "hardly_ramified_mod3_reducible"
-This theorem is formalized in Lean under the attached declaration.
+Omitted for now. **TODO**
 :::
 
 ```tex "hardly_ramified_mod3_reducible" (slot := proof)
 \begin{proof}
-  This theorem is formalized in Lean under the attached declaration.
+  Omitted for now. {\bf TODO}
 \end{proof}
 ```
 
@@ -550,12 +551,12 @@ $`\chi_3` is the `3`-adic cyclotomic character.
 ```
 
 :::proof "hardly_ramified_3adic_reducible"
-This theorem is formalized in Lean under the attached declaration.
+Omitted for now. **TODO**
 :::
 
 ```tex "hardly_ramified_3adic_reducible" (slot := proof)
 \begin{proof}
-  This theorem is formalized in Lean under the attached declaration.
+  Omitted for now {\bf TODO}
 \end{proof}
 ```
 

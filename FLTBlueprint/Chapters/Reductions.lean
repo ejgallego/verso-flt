@@ -1,4 +1,5 @@
 import FLTBlueprint.Citations
+import FLT.Proof
 import FLT.FreyCurve.FreyPackage
 import FLT.FreyCurve.Mazur
 import FLT.GaloisRepresentation.HardlyRamified.Frey
@@ -93,9 +94,10 @@ says that this is impossible.
   a power of 2 or has an odd prime factor. If $n=kp$ has an odd prime factor $p$ then
   $(a^k)^p+(b^k)^p=(c^k)^p$ is the counterexample we seek. It remains to deal with the case where
   $n$ is a power of 2, so let's assume this. We have $3\leq n$ by assumption, so
-  $n=4k$ must be a multiple of~4, and thus $(a^k)^4+(b^k)^4=(c^k)^4$, giving us a counterexample
-  to Fermat's Last Theorem for $n=4$. But Fermat's theorem for exponent `4`, already in mathlib,
-  says that this is impossible.
+  $n=4k$ must be a multiple of~4, and thus $(a^k)^4=(b^k)^4=(c^k)^4$, giving us a counterexample
+  to Fermat's Last Theorem for $n=4$. However an old result of Fermat himself (proved as
+  \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#fermatLastTheoremFour}{\tt fermatLastTheoremFour}
+  in {\tt mathlib}) says that $x^4+y^4=z^4$ has no solutions in positive integers.
 \end{proof}
 ```
 
@@ -184,7 +186,7 @@ exists a Frey package.
 ```tex "FreyPackage.of_not_FermatLastTheorem_p_ge_5" (slot := statement)
 \begin{lemma}
   \label{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
-  \lean{FreyPackage.of_not_FermatLastTheorem_p_ge_5}
+  \lean{FreyPackage.of_not_FermatLastTheoremFor_p_ge_5}
   \leanok
   \discussion{19}
   If Fermat's Last Theorem is false for $p \ge 5$ and prime, then there exists a Frey package.
@@ -418,7 +420,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```tex "Mazur_Frey" (slot := statement)
 \begin{theorem}[Mazur]
   \label{Mazur_Frey}
-  \lean{Mazur_Frey}
+  \lean{FreyPackage.mazur}
   \uses{FreyCurve}
   \leanok
   If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
@@ -426,7 +428,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 \end{theorem}
 ```
 
-:::proof "Mazur_Frey" (uses := "Frey_curve_irreducible")
+:::proof "Mazur_Frey"
 This follows from a profound and long result of Mazur
 {Informal.citep mazurTorsion}[] from `1977`, namely the fact that the torsion
 subgroup of an elliptic curve over $`\Q` can have size at most `16`. In fact
@@ -438,7 +440,6 @@ Proposition `6` in Section `4.1` of
 
 ```tex "Mazur_Frey" (slot := proof)
 \begin{proof}
-  \uses{Frey_curve_irreducible}
   \notready
   This follows from a profound and long result of Mazur \cite{mazur-torsion} from 1977,
   namely the fact that the torsion subgroup of an elliptic curve over $\Q$ can have size at most~16.
@@ -459,7 +460,7 @@ a formalization of this result, as it was known in the 1980s. We will however be
 a lot about the next result, which says the exact opposite.
 ```
 
-:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "FreyCurve.torsion_not_isIrreducible") (uses := "FreyCurve")
+:::theorem "Wiles_Frey" (parent := "first_reductions") (lean := "FLT.Bosses.B4_proof") (uses := "FreyCurve")
 If $`\rho` is the mod `p` Galois representation associated to a Frey package
 `(a,b,c,p)` then $`\rho` is reducible.
 :::
@@ -467,7 +468,7 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 ```tex "Wiles_Frey" (slot := statement)
 \begin{theorem}[Wiles,Taylor--Wiles, Ribet,\ldots]
   \label{Wiles_Frey}
-  \lean{Wiles_Frey}
+  \lean{FLT.Bosses.B4_proof}
   \uses{FreyCurve}
   \leanok
   If $\rho$ is the mod $p$ Galois representation associated to a Frey package $(a,b,c,p)$ then
@@ -475,31 +476,28 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 \end{theorem}
 ```
 
-:::proof "Wiles_Frey" (uses := "Frey_curve_hardly_ramified, hardly_ramified_reducible")
-This follows from theorem `Frey_curve_hardly_ramified`, which shows that the
-Frey representation is hardly ramified, together with theorem
-`hardly_ramified_reducible`, which shows that any hardly ramified mod `p`
-representation is reducible.
+:::proof "Wiles_Frey"
+This is the main content of Wiles' magnum opus. We omit the argument for now,
+although later on in this project we will have a lot to say about its proof.
 :::
 
 ```tex "Wiles_Frey" (slot := proof)
 \begin{proof}
-  \uses{Frey_curve_hardly_ramified,hardly_ramified_reducible}
-  This follows from theorem~\ref{Frey_curve_hardly_ramified}, which shows that
-  the Frey representation is hardly ramified, together with
-  theorem~\ref{hardly_ramified_reducible}, which shows that any hardly
-  ramified mod~$p$ representation is reducible.
+%  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
+  This is the main content of Wiles' magnum opus.
+  We omit the argument for now, although later on in this project
+  we will have a lot to say about a proof of this.
 \end{proof}
 ```
 
-:::corollary "FreyPackage.false" (parent := "first_reductions") (uses := "Mazur_Frey, Wiles_Frey")
+:::corollary "FreyPackage.false" (parent := "first_reductions") (lean := "FLT.Bosses.B3_proof") (uses := "Mazur_Frey, Wiles_Frey")
 There is no Frey package.
 :::
 
 ```tex "FreyPackage.false" (slot := statement)
 \begin{corollary}
   \label{FreyPackage.false}
-  \lean{FreyPackage.false}
+  \lean{FLT.Bosses.B3_proof}
   \uses{Mazur_Frey, Wiles_Frey}
   \leanok
   There is no Frey package.
@@ -512,7 +510,7 @@ Follows immediately from the previous two theorems
 :::
 
 ```tex "FreyPackage.false" (slot := proof)
-\begin{proof}\leanok Follows immediately from the previous two
+\begin{proof} Follows immediately from the previous two
   theorems~\ref{Mazur_Frey} and~\ref{Wiles_Frey}.
 \end{proof}
 ```
@@ -523,7 +521,7 @@ We deduce.
 We deduce
 ```
 
-:::corollary "FLT" (parent := "first_reductions")
+:::corollary "FLT" (parent := "first_reductions") (lean := "flt")
 Fermat's Last Theorem is true. In other words, there are no positive integers
 `a`, `b`, and `c` and natural numbers `n >= 3` such that $`a^n+b^n=c^n`.
 :::
@@ -531,7 +529,7 @@ Fermat's Last Theorem is true. In other words, there are no positive integers
 ```tex "FLT" (slot := statement)
 \begin{corollary}
   \label{FLT}
-  \lean{Wiles_Taylor_Wiles}
+  \lean{flt}
   \leanok
   Fermat's Last Theorem is true. In other words, there are no positive integers $a,b,c$ and
   natural $n\geq3$ such that $a^n+b^n=c^n$.
@@ -549,7 +547,6 @@ contradicting {uses "FreyPackage.false"}[].
 ```tex "FLT" (slot := proof)
 \begin{proof}
   \uses{FermatLastTheorem.of_p_ge_5, FreyPackage.false, FreyPackage.of_not_FermatLastTheorem_p_ge_5}
-  \leanok
   Assume there is a there is a counterexample $a^n+b^n=c^n$.
   By Corollary \ref{FermatLastTheorem.of_p_ge_5} we may assume that there is also a counterexample
   $a^p+b^p=c^p$ with $p\geq 5$ and prime.

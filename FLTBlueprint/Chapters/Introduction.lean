@@ -66,10 +66,11 @@ task can be likened to teaching a graduate level course on Fermat's Last
 Theorem to a computer. The computer is quite a challenging audience member --
 it will insist on being given all technical details of all arguments, and it
 will not accept proof by intimidation or by appeal to higher authority. Most
-mathematicians know humans who also behave in this manner. However, it is
-worse than this; in `2025` at least, the computer will only start filling in
-details of arguments by itself once the arguments are mathematically utterly
-obvious. Thus, currently, formalization can be a very time-consuming process.
+mathematicians know humans who also behave in this manner. Up until `2026`, the
+computer would only start filling in details of arguments by itself once the
+arguments are mathematically utterly obvious. This made formalization of
+mathematics a very time-consuming process. However, with the advent of AI
+computers are now getting better at filling in arguments themselves.
 
 ```tex
 To give some idea of what this entails: {\tt mathlib} at the time of writing contains most of an
@@ -81,9 +82,10 @@ are in {\tt mathlib}). Thus our task can be likened to teaching a graduate level
 Fermat's Last Theorem to a computer. The computer is quite a challenging audience member -- it
 will insist on being given all technical details of all arguments, and it will not accept proof by
 intimidation or by appeal to higher authority. Most mathematicians know humans who also behave
-in this manner. However, it is worse than this; in 2025 at least, the computer will only start filling
+in this manner. Up until 2026, the computer would only start filling
 in details of arguments by itself once the arguments are mathematically utterly obvious.
-Thus, currently, formalization can be a very time-consuming process.
+This made formalization of mathematics a very time-consuming process. However, with the
+advent of AI computers are now getting better at filling in arguments themselves.
 ```
 
 # Which proof is being formalised?
@@ -98,14 +100,14 @@ although we are currently actively working on fixing this.
 ```
 
 From `2024` to `2029` we will be beginning to build a proof of FLT, following a
-strategy constructed by Taylor, taking into account Buzzard's comments on what
-would be easy or hard to do in Lean. Our strategy uses refinements of the
-original Taylor--Wiles method by Diamond/Fujiwara, Khare--Wintenberger,
-Skinner--Wiles, Kisin, Taylor and others. One could call it a `21`st century
-proof of the theorem. During this initial phase of the project, we shall also
-be assuming many nontrivial theorems without proof, as long as they were
-published by `31 December 1989`. To get technical for just a second, we shall
-for example be assuming the
+strategy basically due to Khare, and modified by Taylor, taking into account
+Buzzard's comments on what would be easy or hard to do in Lean. Our strategy
+uses refinements of the original Taylor--Wiles method by Diamond/Fujiwara,
+Khare--Wintenberger, Skinner--Wiles, Kisin, Taylor and others. One could call it
+a `21`st century proof of the theorem. During this initial phase of the project,
+we shall also be assuming many nontrivial theorems without proof, as long as
+they were published by `31 December 1989`. To get technical for just a second,
+we shall for example be assuming the
 existence of Galois representations attached to weight `2` Hilbert modular
 forms, Langlands' cyclic base change theorem for $`\GL_2`, Mazur's theorem
 bounding the torsion subgroup of an elliptic curve over the rationals, and
@@ -113,7 +115,8 @@ several other nontrivial results which were known by the end of the `1980`s.
 
 ```tex
 From 2024 to 2029 we will be beginning to build a proof of FLT, following a strategy
-constructed by Taylor, taking into account Buzzard's comments on what would be easy or hard to do
+basically due to Khare, and modified by Taylor, taking into account Buzzard's comments on what
+would be easy or hard to do
 in Lean. Our strategy uses refinements of the original Taylor--Wiles method by Diamond/Fujiwara,
 Khare--Wintenberger, Skinner--Wiles, Kisin, Taylor and others -- one could call it a 21st century
 proof of the theorem. During this initial phase of the project, we shall also be \emph{assuming}
@@ -191,19 +194,20 @@ currently calling mini-projects. A mini-project is a bottom-up project,
 typically at early graduate student level, with a concrete goal. The ultimate
 goal of many of these projects is to actually get some result into mathlib. We
 have had one success so far: the Frobenius mini-project is currently being
-PRed to mathlib by Thomas Browning. Currently most of my efforts are going into
-running mini-projects, with the two most active ones currently being the adeles
-mini-project and the quaternion algebra mini-project. These projects do not
-logically depend on each other for the most part, and one can pick and choose
-how one reads them.
+PRed to mathlib by Thomas Browning. Several other mini-projects have been
+completed in this repo but have not yet been PRed to mathlib. Examples of
+completed miniproject which are not yet upstreamed include adeles mini-project
+and the quaternion algebra mini-project. These projects do not logically depend
+on each other for the most part, and one can pick and choose how one reads them.
 
 ```tex
 All of the remaining chapters are experiments, and most of them are what I am currently
 calling ``mini-projects''. A mini-project is a bottom-up project, typically at early graduate
 student level, with a concrete goal. The ultimate goal of many of these projects is to actually
 get some result into mathlib. We have had one success so far -- the Frobenius mini-project
-is currently being PRed to mathlib by Thomas Browning. Currently most of my efforts are
-going into running mini-projects, with the two most active ones currently being the adeles
+is currently being PRed to mathlib by Thomas Browning. Several other mini-projects have
+been completed in this repo but have not yet been PRed to mathlib. Examples of completed
+miniproject which are not yet upstreamed include adeles
 mini-project and the quaternion algebra mini-project. These projects do not logically depend
 on each other for the most part, and one can pick and choose how one reads them.
 ```
