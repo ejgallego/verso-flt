@@ -94,9 +94,10 @@ says that this is impossible.
   a power of 2 or has an odd prime factor. If $n=kp$ has an odd prime factor $p$ then
   $(a^k)^p+(b^k)^p=(c^k)^p$ is the counterexample we seek. It remains to deal with the case where
   $n$ is a power of 2, so let's assume this. We have $3\leq n$ by assumption, so
-  $n=4k$ must be a multiple of~4, and thus $(a^k)^4+(b^k)^4=(c^k)^4$, giving us a counterexample
-  to Fermat's Last Theorem for $n=4$. But Fermat's theorem for exponent `4`, already in mathlib,
-  says that this is impossible.
+  $n=4k$ must be a multiple of~4, and thus $(a^k)^4=(b^k)^4=(c^k)^4$, giving us a counterexample
+  to Fermat's Last Theorem for $n=4$. However an old result of Fermat himself (proved as
+  \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#fermatLastTheoremFour}{\tt fermatLastTheoremFour}
+  in {\tt mathlib}) says that $x^4+y^4=z^4$ has no solutions in positive integers.
 \end{proof}
 ```
 
@@ -475,20 +476,17 @@ If $`\rho` is the mod `p` Galois representation associated to a Frey package
 \end{theorem}
 ```
 
-:::proof "Wiles_Frey" (uses := "Frey_curve_hardly_ramified, hardly_ramified_reducible")
-This follows from theorem `Frey_curve_hardly_ramified`, which shows that the
-Frey representation is hardly ramified, together with theorem
-`hardly_ramified_reducible`, which shows that any hardly ramified mod `p`
-representation is reducible.
+:::proof "Wiles_Frey"
+This is the main content of Wiles' magnum opus. We omit the argument for now,
+although later on in this project we will have a lot to say about its proof.
 :::
 
 ```tex "Wiles_Frey" (slot := proof)
 \begin{proof}
-  \uses{Frey_curve_hardly_ramified,hardly_ramified_reducible}
-  This follows from theorem~\ref{Frey_curve_hardly_ramified}, which shows that
-  the Frey representation is hardly ramified, together with
-  theorem~\ref{hardly_ramified_reducible}, which shows that any hardly
-  ramified mod~$p$ representation is reducible.
+%  \uses{modularity_lifting_theorem,frey_curve_hardly_ramified,moret-bailly}
+  This is the main content of Wiles' magnum opus.
+  We omit the argument for now, although later on in this project
+  we will have a lot to say about a proof of this.
 \end{proof}
 ```
 

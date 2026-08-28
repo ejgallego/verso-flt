@@ -170,6 +170,10 @@ to do is to talk about profinite completions.
 
 # Zhat
 
+```tex
+\section{\texorpdfstring{$\Zhat$}{Zhat}}
+```
+
 :::definition "ZHat" (parent := "automorphic_example_program") (lean := "ZHat")
 The profinite completion $`\Zhat` of $`\Z` is the set of all compatible
 collections $`c=(c_N)_N` of elements of $`\Z/N\Z` indexed by
@@ -179,8 +183,6 @@ $`D \mid N`, we have $`c_N` mod $`D` equals $`c_D`.
 :::
 
 ```tex
-\section{\texorpdfstring{$\Zhat$}{Zhat}}
-
 \begin{definition}\label{ZHat}\lean{ZHat}\leanok The profinite completion $\Zhat$ of $\Z$ is the set of
     all compatible collections $c=(c_N)_N$ of elements of $\Z/N\Z$ indexed by $\N^+:=\{1,2,3,\ldots\}$.
     A collection is said to be \emph{compatible} if for all positive integers

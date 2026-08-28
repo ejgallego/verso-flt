@@ -90,14 +90,14 @@ Continuous group cohomology $H^i(G_K,M)$ in this setting can be defined using co
 ```
 
 :::theorem "local_galois_coh_finite" (parent := "bestiary_appendix")
-If `M` is finite then the cohomology groups $`H^i(G_K,M)` are all finite.
+If `M` is finite then the cohomology groups $`H^i(G_K,M)` are finite.
 :::
 
 ```tex "local_galois_coh_finite" (slot := statement)
 \begin{theorem}
     \label{local_galois_coh_finite}
     \notready
-    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ are all finite.
+    If $M$ is finite then the cohomology groups $H^i(G_K,M)$ all finite.
 \end{theorem}
 ```
 
@@ -242,7 +242,7 @@ the subspace topology.
 ```tex "topology_on_affine_variety_points" (slot := statement)
 \begin{definition}\label{topology_on_affine_variety_points} If $X$ is an affine
 scheme of finite type over $K$, and if $R$ is a $K$-algebra which is also a
-topological ring, then we define a topology on the $R$-points $X(R)$ of $X$ by
+topological ring, then we define a topology on the $R$-points $X(R)$ of $K$ by
 embedding the $K$-algebra homomorphisms from $A$ to $R$ into the set-theoretic
 maps from $A$ to $R$ with its product topology, and giving it the subspace
 topology.
@@ -337,7 +337,7 @@ then $`G(K)` is naturally a real or complex Lie group.
 
 ```tex "lie_group_from_algebraic_group" (slot := statement)
 \begin{corollary}\label{lie_group_from_algebraic_group}\uses{manifold_on_algebraic_variety_computation}\notready
-If $G$ is an affine algebraic group of finite type over $K=\R$ or $K=\bbC$
+If $G$ is an affine algebraic group of finite type over $K=\R$ or $\bbC$
 then $G(K)$ is naturally a real or complex Lie group.
 \end{corollary}
 ```
@@ -599,7 +599,7 @@ a point $`P\in T(L)` such that:
 that $S$ is a finite set of places of $K$. For $v\in S$ let $L_v/K_v$ be a finite Galois extension.
 Suppose also that $T /K$ is a smooth, geometrically connected curve and that for each
 $v\in S$ we are given a nonempty, $\Gal(L_v/K_v)$-invariant, open subset $\Omega_v\subseteq (L_v)$.
-Then there is a finite Galois extension $L/K$ and a point $P \in T(L)$ such that
+Then there is a finite Galois extension $L/K$ and a point $P ∈ T (L)$ such that
 \begin{itemize}
 \item $L/K$ is Galois and linearly disjoint from $K^{\avoid}$ over $K$;
 \item if $v\in S$ and $w$ is a prime of $L$ above $v$ then $L_w /K_v$ is isomorphic to $L_v/K_v$;
@@ -674,7 +674,7 @@ $`p\not\in S`.
 
 ```tex "compatible_family" (slot := statement)
 \begin{definition}\label{compatible_family}\discussion{23} Let $N$ be a number field. A \emph{compatible family of $d$-dimensional Galois representations over $N$} is a finite set of finite places $S$ of $N$,
-a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside `S` and the primes of `K` above `\ell`, such that `\rho(\Frob_\p)` has characteristic polynomial `P_\pi(X)` if `\pi` lies above a prime number `p\neq \ell` with `p\not\in S`.
+a number field $E$, a monic degree $d$ polynomial $F_{\p}(X)\in E[X]$ for each finite place $\p$ of $K$ not in $S$ and, for each prime number $\ell$ and field embedding $\phi : E\to\Qlbar$ (or essentially equivalently for each finite place of $E$), a continuous homomorphism $\rho:\GK\to\GL_2(\Qlbar)$ unramified outside $S$ and the primes of $K$ above $\ell$, such that $\rho(\Frob_\p)$ has characteristic polynomial $P_\pi(X)$ if $\pi$ lies above a prime number $p\not=\ell$ with $p\not\in S$.
 \end{definition}
 ```
 
