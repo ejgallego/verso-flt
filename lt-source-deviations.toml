@@ -4,3 +4,10 @@ version = 1
 chapter = "FLTBlueprint/Chapters/FujisakiProject.lean"
 fingerprint = "66111ab3f8f9c790d8be7bfb21e4f32e998a9f737128508e6ace0a969844b6b3"
 reason = "Upstream still uses the retired addHaarScalarFactor.left_mul_eq_right_mul label; keep the current source label so the Verso dependency resolves."
+
+[[reference]]
+chapter = "FLTBlueprint/Chapters/HeckeOperators.lean"
+fingerprint = "e78e50aedbc6efdecac35ceac4a95880b1b41bc7e24b71b9b27f964dc6151cfa"
+source_label = "nolean-U1-coset-decomposition"
+target_label = "bijOn_unipotent_mul_diagU1_U1diagU1"
+reason = "The local double-coset lemma was relabeled upstream, but the later prose reference was not; preserve the source witness and link to the current lemma."

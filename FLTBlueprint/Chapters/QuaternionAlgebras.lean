@@ -10,6 +10,9 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "Miniproject: Quaternion algebras" =>
+%%%
+tag := "Quat_alg_project"
+%%%
 
 :::group "quaternion_algebra_project"
 Quaternion algebras for modularity lifting.
@@ -137,7 +140,7 @@ In particular, it is possible to talk about mod $p^n$ and $p$-adic automorphic f
 Having made assumptions on $`D` which makes the theory of automorphic forms over
 $`D^\times` far less technical, we will now make it a little more technical by using the modern adelic
 approach to the theory. Note that many results about the adeles of a number field are proved
-in the adele miniproject (section {bpref "Adele_miniproject"}[]). Our automorphic forms will be certain
+in the adele miniproject (section {ref "Adele_miniproject"}[Miniproject: Adeles]). Our automorphic forms will be certain
 functions on the units of the ring $`D_{\A^\infty}:=D\otimes_F\A_F^\infty\cong D\otimes_{\Q}\A_{\Q}^\infty`.
 
 ```tex
@@ -394,7 +397,7 @@ $`k`-vector space.
 
 :::proof "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" (uses := "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact, NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset")
 The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
-proved in the Fukisaki miniproject, chapter {bpref "Fujisaki_project"}[].
+proved in the Fukisaki miniproject, chapter {ref "Fujisaki_project"}[Miniproject: Fujisaki's Lemma].
 Write $`(D \otimes_F \A_F^\infty)^\times`
 as a disjoint union of double cosets $`\coprod_i D^\times g_i U`. This open
 cover descends to a disjoint open cover of

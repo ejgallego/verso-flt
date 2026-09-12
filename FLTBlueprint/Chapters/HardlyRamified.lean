@@ -18,6 +18,9 @@ open Informal
 set_option maxRecDepth 20000
 
 #doc (Manual) "Reducibility Of p-Torsion Of The Frey Curve" =>
+%%%
+tag := "ch_freyreduction"
+%%%
 
 :::group "hardly_ramified_program"
 Reducibility of Frey-curve p-torsion.
@@ -29,7 +32,7 @@ Reducibility of Frey-curve p-torsion.
 
 # Overview
 
-In {bpref "ch_reductions"}[] we reduced FLT, modulo a hard theorem from the
+In {ref "ch_reductions"}[First reductions of the problem] we reduced FLT, modulo a hard theorem from the
 `1970`s, to theorem {bpref "Wiles_Frey"}[], the assertion that `p`-torsion in the Frey
 curve is reducible. In this chapter we deduce this assertion from three more
 complex claims about hardly ramified Galois representations. It is relatively

@@ -15,6 +15,9 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "First Reductions Of The Problem" =>
+%%%
+tag := "ch_reductions"
+%%%
 
 :::group "first_reductions"
 Initial reductions of Fermat's Last Theorem.
@@ -557,7 +560,7 @@ contradicting {uses "FreyPackage.false"}[].
 
 Because we are, for now at least, assuming Mazur's theorem, we now turn our
 attention to a proof of theorem {bpref "Wiles_Frey"}[]. We start on this proof
-in {bpref "ch_freyreduction"}[].
+in {ref "ch_freyreduction"}[Reducibility of p-torsion of the Frey curve].
 
 ```tex
 Because we are (for now at least) assuming Mazur's theorem, we now need to turn our attention

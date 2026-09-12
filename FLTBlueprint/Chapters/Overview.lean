@@ -9,6 +9,9 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "An overview of the proof" =>
+%%%
+tag := "ch_overview"
+%%%
 
 So far we have seen that, modulo Mazur's theorem (and various other things
 which will still take some work to formalise but which are much easier),

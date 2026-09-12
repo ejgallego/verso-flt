@@ -27,6 +27,17 @@ There is a separate class of source-side debt that this file now tracks:
 
 ### Definite Source Issues
 
+- `stale prose reference: nolean-U1-coset-decomposition`
+  The concrete Hecke operators section in
+  [HeckeOperatorProject.tex](FLT/blueprint/src/chapter/HeckeOperatorProject.tex)
+  still refers to this old label. The local double-coset lemma earlier in the
+  same source now has label `bijOn_unipotent_mul_diagU1_U1diagU1` and Lean
+  attachment
+  `TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotentMulDiagU1`.
+  The Verso prose links to that existing lemma; the adjacent TeX witness retains
+  the original reference. This corrects the destination without adding a node
+  or a dependency edge.
+
 - `dangling uses target: Frey_curve_irreducible`
   Seen from [ch02reductions.tex](/home/egallego/lean/verso-flt/FLT/blueprint/src/chapter/ch02reductions.tex).
   The label exists only in inactive source file
