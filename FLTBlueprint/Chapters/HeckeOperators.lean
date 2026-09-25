@@ -1146,7 +1146,7 @@ which we shall be using.
 \section{Automorphic forms}
 ```
 We recall some of the definitions of spaces of automorphic forms, from the
-quaternion algebra project {ref "quaternion_algebra_project"}[].
+quaternion algebra project.
 
 ```tex
 We recall some of the definitions of spaces of automorphic forms, from the
