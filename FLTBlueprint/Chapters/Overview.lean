@@ -10,6 +10,10 @@ open Informal
 
 #doc (Manual) "An overview of the proof" =>
 
+:::group "overview_strategy"
+Overview of the proof strategy and supporting results.
+:::
+
 So far we have seen that, modulo Mazur's theorem (and various other things
 which will still take some work to formalise but which are much easier),
 Fermat's Last Theorem can be reduced to the statement that there is no prime
