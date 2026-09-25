@@ -1146,7 +1146,7 @@ which we shall be using.
 \section{Automorphic forms}
 ```
 We recall some of the definitions of spaces of automorphic forms, from the
-quaternion algebra project {bpref "Quat_alg_project"}[].
+quaternion algebra project.
 
 ```tex
 We recall some of the definitions of spaces of automorphic forms, from the
@@ -1229,7 +1229,7 @@ with $a,d\in k_v^\times$ and $a/d\in\Delta_v$. Then
 ```
 It is easily checked that this is a subgroup, and that
 $`\begin{pmatrix}1&*\\0&1\end{pmatrix}\subseteq\Gamma_v\subseteq\begin{pmatrix}*&*\\0&*\end{pmatrix}`,
-so lemma {bpref "nolean-U1-coset-decomposition"}[] applies. Let
+so the standard coset-decomposition lemma applies. Let
 $`U_{\Delta_v}` be the preimage of this subgroup in $`GL_2(\calO_v)`. This
 is a compact open subgroup of $`GL_2(\calO_v)`, by the remarks above.
 

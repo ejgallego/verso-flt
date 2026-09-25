@@ -155,7 +155,7 @@ are not designed to be read in order. Each chapter is self-contained and has a w
 typically stated at the top of the chapter.
 ```
 
-After this chapter, you should next read {bpref "ch_reductions"}[], which explains
+After this chapter, you should next read the first reductions chapter, which explains
 how to reduce FLT to two highly nontrivial statements about the `p`-torsion in
 a certain elliptic curve (the Frey curve). One of these statements was proved
 in the `1970`s by Mazur, and we shall not be concentrating on it until after
@@ -180,7 +180,7 @@ The actual blueprint currently also contains a lot of disorganised ideas. Curren
 should be disregarded.
 ```
 
-{bpref "ch_overview"}[] is an extremely sketchy overview of how the rest of the
+The overview chapter is an extremely sketchy overview of how the rest of the
 proof goes. This is currently being expanded and should be ignored right now.
 
 ```tex
@@ -222,7 +222,7 @@ list of nontrivial theorems many of which we will be assuming without proof in t
 project.
 ```
 
-The next chapter to read, where the proof begins, is {bpref "ch_reductions"}[].
+The next chapter to read, where the proof begins, is the first reductions chapter.
 
 ```tex
 The next chapter to read, where the proof begins, is chapter~\ref{ch_reductions}.
