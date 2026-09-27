@@ -153,7 +153,7 @@ $`\A_K`-algebra which is free of finite rank, and if we give $`D_{\A}` the
 $`\A_K`-module topology then it is a topological ring. Furthermore
 $`D_{\A}` is free of finite rank over the locally compact topological ring
 $`\A_K` and is thus also locally compact. So by the theory of Haar characters
-(see {bpref "Haar_char_project"}[])
+(see the Haar characters miniproject)
 there is a canonical character
 $`\delta_{D_{\A}}:D_{\A}^\times\to\R_{>0}` measuring how left multiplication
 by an element of $`D_{\A}^\times` changes the additive Haar measure on

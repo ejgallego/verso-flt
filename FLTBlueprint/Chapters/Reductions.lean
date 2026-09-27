@@ -557,7 +557,7 @@ contradicting {uses "FreyPackage.false"}[].
 
 Because we are, for now at least, assuming Mazur's theorem, we now turn our
 attention to a proof of theorem {bpref "Wiles_Frey"}[]. We start on this proof
-in {bpref "ch_freyreduction"}[].
+in the Frey-curve reducibility chapter.
 
 ```tex
 Because we are (for now at least) assuming Mazur's theorem, we now need to turn our attention
