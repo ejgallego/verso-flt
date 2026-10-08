@@ -13,6 +13,9 @@ open Informal
 set_option maxRecDepth 20000
 
 #doc (Manual) "Miniproject: Haar Characters" =>
+%%%
+tag := "Haar_char_project"
+%%%
 
 :::group "haar_character_project"
 Haar characters under linear automorphisms.

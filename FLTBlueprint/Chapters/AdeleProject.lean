@@ -12,6 +12,9 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "Miniproject: Adeles" =>
+%%%
+tag := "Adele_miniproject"
+%%%
 
 :::group "adele_project"
 Finite and infinite adeles, with local compactness and base change.

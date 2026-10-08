@@ -9,6 +9,9 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "An overview of the proof" =>
+%%%
+tag := "ch_overview"
+%%%
 
 :::group "overview_strategy"
 Overview of the proof strategy and supporting results.

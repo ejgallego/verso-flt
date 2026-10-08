@@ -6,61 +6,7 @@ fingerprint = "66111ab3f8f9c790d8be7bfb21e4f32e998a9f737128508e6ace0a969844b6b3"
 reason = "Upstream still uses the retired addHaarScalarFactor.left_mul_eq_right_mul label; keep the current source label so the Verso dependency resolves."
 
 [[reference]]
-chapter = "FLTBlueprint/Chapters/FujisakiProject.lean"
-target = "Haar_char_project"
-fingerprint = "9d08576dcefc6a9cca6d376953a9217e2ec28ffb7d2eb31f1e7ce54c96b81f4a"
-reason = "The source chapter label maps to group haar_character_project, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/HardlyRamified.lean"
-target = "ch_reductions"
-fingerprint = "a9b0c4584b793061549cb9b5f7a59f3418cfab7b4da6c2555612c5d6061b262a"
-reason = "The source chapter label maps to group first_reductions, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/HeckeOperators.lean"
-target = "Quat_alg_project"
-fingerprint = "543064d2a1fb9b1d69194fcf6b180a0fe343e6d097a95f9c30d667bec8bbfa95"
-reason = "The source chapter label maps to group quaternion_algebra_project, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
 chapter = "FLTBlueprint/Chapters/HeckeOperators.lean"
 target = "nolean-U1-coset-decomposition"
 fingerprint = "e78e50aedbc6efdecac35ceac4a95880b1b41bc7e24b71b9b27f964dc6151cfa"
 reason = "The maintained TeX witness references a label with no active upstream definition or local node; retain the visible source text until repaired upstream."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/Introduction.lean"
-target = "ch_reductions"
-fingerprint = "c37aa7028dfb7d2afe1cfc428d139291e12c2e8ca858b080a4ce25fc910fccfd"
-reason = "The source chapter label maps to group first_reductions, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/Introduction.lean"
-target = "ch_overview"
-fingerprint = "cbbb5e391a24116757bb3fb029edac6195f8b829681c1f3f7b98bda6d5a81bcf"
-reason = "The source chapter label maps to group overview_strategy, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/Introduction.lean"
-target = "ch_reductions"
-fingerprint = "54336f33461c3fffd26469182ca732c1b6fef3b7fec0cdb97e1b295b306a8491"
-reason = "The source chapter label maps to group first_reductions, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/QuaternionAlgebras.lean"
-target = "Adele_miniproject"
-fingerprint = "950b0a3db90f5c4227db9f48c884ca050f1ddb49f0f39757624dd2719466e165"
-reason = "The source chapter label maps to group adele_project, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/QuaternionAlgebras.lean"
-target = "Fujisaki_project"
-fingerprint = "11d5eaf6117b13aa587c2fb99f55559b650794bbd11c0628253b65c4a8276ab7"
-reason = "The source chapter label maps to group fujisaki_project, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
-
-[[reference]]
-chapter = "FLTBlueprint/Chapters/Reductions.lean"
-target = "ch_freyreduction"
-fingerprint = "3140c648308ac633cbbd4f1bc638b151a81262dd947e1bd1ee429fc315555c74"
-reason = "The source chapter label maps to group hardly_ramified_program, but VBP has no group-reference target; published commit 1d9334b removed this unresolved link."
