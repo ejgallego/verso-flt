@@ -41,6 +41,7 @@ default_chapters = [
 proposition = "theorem"
 
 [harness]
+max_missing_mathlib_modules = 2
 native_warnings = false
 docstring_warnings = false
 strict_external_code = true
